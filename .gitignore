@@ -1,0 +1,11 @@
+*.DS_Store
+
+
+~$*
+*/~$*
+
+*/*.RData
+*/*.tmp
+*.Rhistory
+
+Stats101_2022
