@@ -1,0 +1,1426 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="Lecture1_introduction_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Lecture1_introduction_files/libs/quarto-html/tabby.min.js"></script>
+<script src="Lecture1_introduction_files/libs/quarto-html/popper.min.js"></script>
+<script src="Lecture1_introduction_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="Lecture1_introduction_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Lecture1_introduction_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="Lecture1_introduction_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.2.269">
+
+  <title>lecture1_introduction</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="Lecture1_introduction_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="Lecture1_introduction_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="Lecture1_introduction_files/libs/revealjs/dist/theme/quarto.css" id="theme">
+  <link rel="stylesheet" href="theme/theme.css">
+  <link href="Lecture1_introduction_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="Lecture1_introduction_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="Lecture1_introduction_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="Lecture1_introduction_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-captioned.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-captioned) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-captioned.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-captioned .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-captioned .callout-caption  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-captioned.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-captioned.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-caption {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-caption {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-caption {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-captioned .callout-body > .callout-content > :last-child {
+    margin-bottom: 0.5rem;
+  }
+
+  .callout.callout-captioned .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-captioned) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-caption {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-caption {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-caption {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-caption {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-caption {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+
+<section id="section" class="slide level2">
+<h2></h2>
+<h1 style="text-align: center">
+<p>Application of Statistics in Psychology</p>
+</h1>
+<p><br></p>
+<h2 style="text-align: center">
+<p>01 - Introduction</p>
+</h2>
+<p><br></p>
+<h3 style="text-align: center">
+<p>Hu Chuan-Peng</p>
+</h3>
+<h3 style="text-align: center">
+<p>2023-02-22</p>
+</h3>
+</section>
+<section id="教师介绍" class="slide level2">
+<h2>教师介绍</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="images/image-378771590.png"></p>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>2005.09 – 2009.06 湖北大学法学学士；心理学学士（双学位）</li>
+<li>2009.09 – 2012.06 湖北大学发展与教育心理学硕士</li>
+<li>2012.08 – 2017.06 清华大学心理学系，博士</li>
+<li>2017.10 – 2020.10 德国莱布尼茨心理韧性研究所，博士后 Chinese Open Science Network（公众号：Open Science）的发起人 研究兴趣：元科学（meta-science）、贝叶斯模型（Bayesian modelling）和自我认知（self-cognition）等</li>
+</ul>
+<p>主页：https://xlxy.njnu.edu.cn/info/1073/8311.html</p>
+</div>
+</div>
+</section>
+<section id="学科基础" class="slide level2">
+<h2>学科基础</h2>
+</section>
+<section id="对课程的认识" class="slide level2">
+<h2>对课程的认识</h2>
+</section>
+<section id="对统计学的认识" class="slide level2">
+<h2>对统计学的认识</h2>
+</section>
+<section>
+<section id="课程概况" class="title-slide slide level1 center">
+<h1>课程概况</h1>
+
+</section>
+<section id="心理统计学的两种视角" class="slide level2">
+<h2>心理统计学的两种视角</h2>
+<p><br><br></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3>
+统计学
+</h3>
+<ul>
+<li>在心理学中的应用</li>
+<li>在经济学中的应用</li>
+<li>在生物学中的应用</li>
+<li>…</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<h3>
+科学心理学(研究方法)
+</h3>
+<ul>
+<li>心理统计学</li>
+<li>实验心理学/实验设计</li>
+<li>心理测量</li>
+<li>神经成像方法</li>
+<li>…</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="参考教材" class="slide level2">
+<h2>参考教材</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="images/image-108763919.png"></p>
+<p>《心理统计学与SPSS应用》（第1版），邓铸等编著，北京师范大学出版社，2017年</p>
+</div><div class="column" style="width:50%;">
+<p><img data-src="images/image-1836043770.png"></p>
+<p>《心理统计学》（第3版），（美）B.H.科恩编著，高定国、周欣悦译，华东师范大学出版社，2011年</p>
+</div>
+</div>
+</section>
+<section id="课外读物" class="slide level2">
+<h2>课外读物</h2>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img data-src="images/image-700611717.png" style="height: 300px;"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p>《女士品茶：20世纪统计怎样变革了科学》，（美） David Salsburg编著，邱冬等译，中国统计出版社，2004年</p>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img data-src="images/image-764284369.png" style="height: 300px;"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p>《数理统计简史》，陈希孺编著，湖南教育出版社，2002年</p>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img data-src="images/image-1722956437.png" style="height: 300px;"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p>《赤裸裸的统计学》，（美）查尔斯·韦兰编著，曹槟译，中信出版社，2013年</p>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img data-src="images/image-580219303.png" style="height: 300px;"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p>《统计学的世界》，（美）David S. Moore编著，郑磊译，中信出版社，2016年</p>
+</div>
+</div>
+</div>
+</section>
+<section id="教学目标" class="slide level2">
+<h2>教学目标</h2>
+<div class="fragment fade-in-then-out">
+<ol type="1">
+<li>Know it [as an educated citizen]</li>
+</ol>
+<p>掌握基本的统计知识。</p>
+<ul>
+<li>区分不同，比如分辨不同数据类型，数据的分布类型。</li>
+<li>了解最常用的统计方法软件。</li>
+<li>能够区分科普读物中正确与错误的统计推断。</li>
+</ul>
+</div>
+<div class="fragment fade-in-then-out">
+<ol start="2" type="1">
+<li>Do it [as a trad. psychologist]</li>
+</ol>
+<ul>
+<li>掌握用不同统计方法，以及统计软件的实现。</li>
+<li>具体问题，具体分析，数据类型与分析方法相对应。</li>
+<li>用软件实现需要的分析功能。</li>
+</ul>
+</div>
+<div class="fragment fade-in-then-out">
+<ol start="3" type="1">
+<li>Do it appropriately [as a well-trained researcher]</li>
+</ol>
+<p>Research question based workflow</p>
+<ul>
+<li>Visualization of data; (可视化)</li>
+<li>If p-value is the answer, what is the questions? (提炼核心问题);</li>
+<li>Appropriate model/technique (方法与问题匹配);</li>
+<li>Reproducible.</li>
+</ul>
+</div>
+</section>
+<section id="职业规划" class="slide level2">
+<h2>职业规划</h2>
+</section>
+<section id="教学目标与职业规划的关系" class="slide level2">
+<h2>教学目标与职业规划的关系</h2>
+<div class="fragment fade-in-then-semi-out">
+<ul>
+<li>Know it. 拥有一些统计学常识，辨别心理健康数据，企业项目数据。</li>
+</ul>
+</div>
+<div class="fragment fade-in-then-semi-out">
+<ul>
+<li>Do it. 利用统计软件对数据进行处理，验证或发现规律。</li>
+</ul>
+</div>
+<div class="fragment fade-in-then-semi-out">
+<ul>
+<li>Do it correctly. 看懂数据，正确决策，靠谱的科普。</li>
+</ul>
+</div>
+<div class="fragment fade-in-then-semi-out">
+<ul>
+<li>Invent it. 在实践过程中，开发新的软件，做出统计方法的改进与改良。</li>
+</ul>
+</div>
+</section>
+<section id="心理学就业与心理统计学" class="slide level2">
+<h2>心理学就业与心理统计学</h2>
+
+<img data-src="images/image-1124630285.png" class="r-stretch quarto-figure-center"><center>
+(2017年美国心理学就业方向，图片来源：DATA USA:Psychologists)
+</center>
+</section>
+<section id="心理学就业与心理统计学-1" class="slide level2">
+<h2>心理学就业与心理统计学</h2>
+
+<img data-src="images/image-343379133.png" class="r-stretch quarto-figure-center"><center>
+(中国心理学各岗位工资水平，图片来源：北师大赛客双创中心公众号)
+</center>
+</section>
+<section id="心理学就业与心理统计学-2" class="slide level2">
+<h2>心理学就业与心理统计学</h2>
+
+<img data-src="images/image-72944179.png" class="r-stretch quarto-figure-center"><center>
+(图片来源：北师大赛客双创中心公众号)
+</center>
+</section>
+<section id="统计学与数字时代" class="slide level2">
+<h2>统计学与数字时代</h2>
+
+<img data-src="images/image-1253298138.png" class="r-stretch quarto-figure-center"><center>
+(图片来源：Twitter @OffciallyChadd)
+</center>
+<div class="fragment fade-in">
+<blockquote>
+<p>一分钟产生的数据量</p>
+</blockquote>
+</div>
+<div class="fragment fade-in">
+<blockquote>
+<p>数据素养不是数学技能而是生活技能</p>
+</blockquote>
+</div>
+</section>
+<section id="本课目标与就业及数字化社会" class="slide level2">
+<h2>本课目标与就业及数字化社会</h2>
+<p>培养统计素养的理由：</p>
+<div class="fragment fade-in-then-out">
+<p>个体：</p>
+<ul>
+<li>数据消费者，避坑；</li>
+<li>职业发展：潜在的（心理与行为）数据科学从业者。</li>
+</ul>
+</div>
+<div class="fragment fade-in-then-out">
+<p>组织：</p>
+<ul>
+<li>数据是其最有价值的资产之一。</li>
+<li>相同的数据可以在不同的应用程序和场景中使用和复用。</li>
+<li>数据的正确使用为企业赋能，提高竞争力，如Tik Tok，京东。</li>
+</ul>
+</div>
+<div class="fragment fade-in-then-out">
+<p>市场：</p>
+<ul>
+<li>拥有数据素养的雇员能够使企业在市场竞争中获益。</li>
+<li>数字企业科技发展更快，数字化经济渗透，更好发展。</li>
+</ul>
+</div>
+<div class="fragment fade-in-then-out">
+<p>国家政策：</p>
+<ul>
+<li>数字技术的使用能够促进传统企业转型升级。</li>
+<li>数字技术能够驱动生活方式与治理方式变革。</li>
+</ul>
+</div>
+</section>
+<section id="本课目标与就业及数字化社会-1" class="slide level2">
+<h2>本课目标与就业及数字化社会</h2>
+
+<img data-src="images/image-1772948230.png" class="r-stretch quarto-figure-center"><center>
+(图片来源：中国信息通信研究院)
+</center>
+</section>
+<section id="教学内容" class="slide level2">
+<h2>教学内容</h2>
+<table>
+<thead>
+<tr class="header">
+<th><strong>序号</strong></th>
+<th><strong>内容</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>统计学的历史与意义</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>概率与概率分布</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>数据与数据可视化</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>集中量数和离散量数</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>离散变量概率分布</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>正态分布</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>标准分数</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>参数估计1</td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td>参数估计2</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td>假设检验（Fisher）</td>
+</tr>
+<tr class="odd">
+<td>11</td>
+<td>P值</td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td>两类错误</td>
+</tr>
+<tr class="odd">
+<td>13</td>
+<td>相关和相关显著性</td>
+</tr>
+<tr class="even">
+<td>14</td>
+<td>z检验和单样本t检验</td>
+</tr>
+<tr class="odd">
+<td>15</td>
+<td>双样本t检验</td>
+</tr>
+<tr class="even">
+<td>16</td>
+<td>线性代数基础）</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="r" class="slide level2">
+<h2>R</h2>
+
+<img data-src="images/image-1392413531.png" class="r-stretch quarto-figure-center"></section>
+<section id="考查方式" class="slide level2">
+<h2>考查方式</h2>
+<p>出勤(10%)</p>
+<p>课堂测试成绩(10*3=30%)</p>
+<ul>
+<li>3次小测验</li>
+</ul>
+<p>小组作业(20%)</p>
+<ul>
+<li><p>自由分组</p></li>
+<li><p>完整的workflow</p></li>
+</ul>
+<p>期末考试(40%)</p>
+</section>
+<section id="如何学好这门课" class="slide level2">
+<h2>如何学好这门课</h2>
+<p>1.本课内容没有想象中那么困难，仅仅高中水平的数学知识。</p>
+<p>2.理解 &gt; 推导，方法与问题相匹配是关键。</p>
+<p>3.编码/软件操作 &gt; 手动运算，合理使用现代工作。</p>
+<p>4.一图胜千言，理解和使用可视化工具。</p>
+<p>5.广泛阅读课外科普书籍，可能会有意外收获。</p>
+<div class="fragment fade-in">
+<blockquote>
+<p>Warnings: 学好 ≠ 考好, 理解 ≠ 会用, “做中学”</p>
+</blockquote>
+</div>
+</section></section>
+<section id="section-1" class="title-slide slide level1 center">
+<h1></h1>
+<p><span class="r-fit-text">Any question?</span></p>
+</section>
+
+<section>
+<section id="统计学简史" class="title-slide slide level1 center">
+<h1>统计学简史</h1>
+
+</section>
+<section id="统计statistics" class="slide level2">
+<h2>“统计(statistics)”</h2>
+
+<img data-src="images/image-817550615.png" class="r-stretch quarto-figure-center"><center>
+亚里士多德
+</center>
+<p>国情调查(State of the Nation Survey):</p>
+<ul>
+<li><p>“统计(statistic)”来源于拉丁语 “statisticum collegium” ，意为国会.</p></li>
+<li><p>亚里士多德(Aristotle)写了150多部”城邦编年史(city-state chronicles)“，其中包括对各个城邦在历史、管理、资源和财富方面的社会和经济状况进行比较分析。</p></li>
+</ul>
+</section>
+<section id="统计statistics-1" class="slide level2">
+<h2>“统计(statistics)”</h2>
+
+<img data-src="images/image-2138489439.png" class="r-stretch quarto-figure-center"><center>
+政治算术
+</center>
+</section>
+<section id="统计statistics-2" class="slide level2">
+<h2>“统计(statistics)”</h2>
+<p>政治算术(Political Arithmetic)：</p>
+<ul>
+<li><p>威廉·配第(William Petty)</p></li>
+<li><p>In 1960</p></li>
+<li><p><em>政治算术(Political Arithmetic)</em> 一书的出版标志着统计学的诞生.</p></li>
+</ul>
+<blockquote>
+<p>“This book does not use comparatives or superiors for thought or argument, but uses numbers to express what it wants to say, by which it examines the causes that have a visible basis in nature.” William Allotey writes.</p>
+</blockquote>
+</section>
+<section id="贝叶斯bayes" class="slide level2">
+<h2>贝叶斯(Bayes)</h2>
+<p>贝叶斯(1702-1763)</p>
+
+<img data-src="images/image-484122936.png" class="r-stretch quarto-figure-center"><center>
+<span class="math inline">\(p(A|B) = \frac{p(B|A)p(A)}{p(B)}\)</span>
+</center>
+<blockquote>
+<p>1763 修建圆明园</p>
+</blockquote>
+<blockquote>
+<p>1783 美国独立</p>
+</blockquote>
+</section>
+<section id="高尔顿galton" class="slide level2">
+<h2>高尔顿(Galton)</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="images/image-1939130143.png"></p>
+<center>
+(1822-1911)
+</center>
+</div><div class="column" style="width:50%;">
+<ul>
+<li><p>Francis Galton</p></li>
+<li><p>达尔文的表弟</p></li>
+<li><p>气象学家、地理学家</p></li>
+<li><p>优生学(Eugenics)</p></li>
+<li><p>遗传的天才(Genetic genius)</p></li>
+<li><p>《人类的才能及其发展研究》(<em>Research on human talent and its development</em>)</p></li>
+</ul>
+</div>
+</div>
+<blockquote>
+<p>1840 第一次工业革命完成</p>
+</blockquote>
+<blockquote>
+<p>1859 达尔文发表《物种起源》</p>
+</blockquote>
+<blockquote>
+<p>诺贝尔奖设立</p>
+</blockquote>
+<blockquote>
+<p>辛亥革命</p>
+</blockquote>
+</section>
+<section id="回归分析" class="slide level2">
+<h2>回归分析</h2>
+<ul>
+<li><p>在生物统计学实验室，他收集了家庭成员的身高、体重、特定骨骼的测量值和其他特征。</p></li>
+<li><p>他和他的助手们将这些数据制成表格，并对它们进行检查和重新检查。</p></li>
+<li><p>通过这种方式，高尔顿发现了一个他称之为 “向平均值回归”的现象。</p></li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="images/image-2132258847.png"></p>
+</div><div class="column" style="width:50%;">
+<p><img data-src="images/image-1665017054.png"></p>
+</div>
+</div>
+<center>
+Salsburg, David, (2001), THE LADY TASTING TEA
+</center>
+</section>
+<section id="戈塞特" class="slide level2">
+<h2>戈塞特</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="images/image-1348474519.png"></p>
+<center>
+(1822-1911)
+</center>
+</div><div class="column" style="width:50%;">
+<ul>
+<li><p>William Sealy Gosset</p></li>
+<li><p>统计学家</p></li>
+<li><p>学生氏(student)</p></li>
+<li><p>小样本原理</p></li>
+</ul>
+</div>
+</div>
+<blockquote>
+<p>1870 第二次工业革命完成</p>
+</blockquote>
+<blockquote>
+<p>1937 卢沟桥事变</p>
+</blockquote>
+</section>
+<section id="t检验" class="slide level2">
+<h2>t检验</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="images/image-1298362363.png"></p>
+</div><div class="column" style="width:50%;">
+<p><img data-src="images/image-1836396512.png"></p>
+</div>
+</div>
+<center>
+Salsburg, David, (2001), THE LADY TASTING TEA
+</center>
+</section>
+<section id="卡尔皮尔逊karl-pearson" class="slide level2">
+<h2>卡尔·皮尔逊(Karl Pearson)</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="images/image-1329326813.png"></p>
+<center>
+(1857-1936)
+</center>
+</div><div class="column" style="width:50%;">
+<ul>
+<li><p>Karl Pearson</p></li>
+<li><p>数学家、生物统计学家、数理统计学家</p></li>
+<li><p>现代统计科学的奠基者</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="拟合优度检验goodness-of-fit" class="slide level2">
+<h2>拟合优度检验(Goodness of fit)</h2>
+<p>通过比较观察值(<strong>observed value</strong>)和预测值(<strong>predicted value</strong>)，皮尔逊能够使用一个统计数据来计算拟合度。</p>
+
+<img data-src="images/image-720021776.png" class="r-stretch quarto-figure-center"><center>
+Salsburg, David, (2001), THE LADY TASTING TEA
+</center>
+</section>
+<section id="皮尔逊相关pearson-correlation" class="slide level2">
+<h2>皮尔逊相关(Pearson correlation)</h2>
+<p>皮尔逊相关系数用于衡量两个变量X和Y之间的相关关系（线性相关），其数值在-1和1之间。<br><br></p>
+<center>
+<span class="math inline">\(p_{X, Y} = \frac{cov(X, Y)}{\sigma_X\sigma_Y} = \frac{E[(X-\mu_X)(Y-\mu_Y)]}{\sigma_X\sigma_Y}\)</span>
+</center>
+
+<img data-src="images/image-613066882.png" class="r-stretch quarto-figure-center"></section>
+<section id="费歇尔fisher" class="slide level2">
+<h2>费歇尔(Fisher)</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="images/image-1384914361.png"></p>
+<center>
+(1890-1962)
+</center>
+</div><div class="column" style="width:50%;">
+<ul>
+<li><p>Sir Ronald Aylmer Fisher</p></li>
+<li><p>统计学家、基因学家</p></li>
+<li><p>曾工作于Lausanne农业实验站</p></li>
+<li><p>《实验设计》(<em>Experimental design</em>)</p></li>
+</ul>
+</div>
+</div>
+<blockquote>
+<p>1949 新中国成立</p>
+</blockquote>
+<blockquote>
+<p>1958 大跃进</p>
+</blockquote>
+</section>
+<section id="方差分析analysis-of-variance-anova" class="slide level2">
+<h2>方差分析(Analysis of Variance, ANOVA)</h2>
+<p>方差分析用于检验两个或多个样本的平均值之间的差异的显著性。</p>
+
+<img data-src="images/image-1962673157.png" class="r-stretch quarto-figure-center"></section>
+<section id="p值p-value" class="slide level2">
+<h2><em>p</em>值(<em>p</em>-value)</h2>
+<p>R. A. Fisher开发了现在普遍使用的大多数显著性检验方法。他把允许人们报告显著性的概率称为 “P值”。</p>
+
+<img data-src="images/image-359996773.png" class="r-stretch quarto-figure-center"><center>
+Salsburg, David, (2001), THE LADY TASTING TEA
+</center>
+</section>
+<section id="极大似然法maximum-likelihood-estimator-mle" class="slide level2">
+<h2>极大似然法(Maximum likelihood estimator, MLE)</h2>
+<p>在研究数学的过程中，Fisher意识到，Karl Pearson用来计算其分布参数的方法所产生的统计数据不一定是一致的，而且往往是有偏见的，还有更有效的统计数据可以利用。为了产生一致和有效的（但不一定是无偏的）统计数据，Fisher提出了极大似然法。</p>
+
+<img data-src="images/image-1259773780.png" class="r-stretch quarto-figure-center"><center>
+Salsburg, David, (2001), THE LADY TASTING TEA
+</center>
+</section>
+<section id="内曼和皮尔逊neyman-egon-pearson" class="slide level2">
+<h2>内曼和皮尔逊(Neyman &amp; Egon Pearson)</h2>
+<ul>
+<li><p>Neyman(1894-1981) &amp; Egon Pearson(1895-1980)</p></li>
+<li><p>假设检验</p></li>
+<li><p>统计检验力</p></li>
+</ul>
+
+<img data-src="images/image-602184698.png" class="r-stretch quarto-figure-center"></section>
+<section id="假设检验hypothesis-testing" class="slide level2">
+<h2>假设检验(Hypothesis testing)</h2>
+<p>为了区分用于计算Fisher <em>P</em>值的假设和其他可能的假设，内曼和皮尔逊将被用来验证的假设称为 “虚无假设”，将其他假设称为 “备择假设”。</p>
+
+<img data-src="images/image-1286812743.png" class="r-stretch quarto-figure-center"><center>
+Salsburg, David, (2001), THE LADY TASTING TEA
+</center>
+</section></section>
+<section>
+<section id="统计学简史中国" class="title-slide slide level1 center">
+<h1>统计学简史(中国)</h1>
+
+</section>
+<section id="大案牍术" class="slide level2">
+<h2>大案牍术</h2>
+
+<img data-src="images/image-2109820452.png" class="r-stretch quarto-figure-center"><center>
+内容出自《长安十二时辰》(马伯庸著) 图片来自知乎@溜达兔
+</center>
+<blockquote>
+<p>大数据</p>
+</blockquote>
+</section>
+<section id="鱼鳞图册" class="slide level2">
+<h2>鱼鳞图册</h2>
+
+<img data-src="images/image-700468932.png" class="r-stretch quarto-figure-center"><p>https://baike.so.com/doc/6226918-6440241.html</p>
+<blockquote>
+<p>大数据</p>
+</blockquote>
+</section>
+<section id="推步聚顶" class="slide level2">
+<h2>推步聚顶</h2>
+
+<img data-src="images/image-1546917996.png" class="r-stretch quarto-figure-center"><center>
+内容出自《显微镜下的大明》(马伯庸著) 图片来自微博@显微镜下的大明官微
+</center>
+<blockquote>
+<p>网格近似</p>
+</blockquote>
+</section>
+<section id="section-2" class="slide level2">
+<h2></h2>
+<p>上古时期</p>
+<ul>
+<li><p>结绳记事</p></li>
+<li><p>书契记数</p></li>
+</ul>
+<p>夏商周</p>
+<ul>
+<li><p>“方以类聚，物以群分” ——《周易·系辞上》</p></li>
+<li><p>“关石和钧”——《尚书·夏书》</p></li>
+</ul>
+<p>春秋战国</p>
+<ul>
+<li><p>“举事必成，不知计数不可”——《管子·问》</p></li>
+<li><p>“五事”，“七计”——《孙子》</p></li>
+<li><p>“强国知十三数”——《商君书》</p></li>
+</ul>
+<p>汉代</p>
+<ul>
+<li><p>司马迁提出统计表编制理论</p></li>
+<li><p>徐干强调人口统计是治国之本</p></li>
+<li><p>仲长统重视人口调查与财经统计分析</p></li>
+</ul>
+<p>南北朝</p>
+<ul>
+<li>苏绰创制”计账、户籍之法”，制定”文案程式”，开创”朱出墨入”。</li>
+</ul>
+<p>唐代</p>
+<ul>
+<li>刘晏在各道设置巡院官，安排专人报告商情，采取措施，稳定物价。</li>
+</ul>
+<p>明代</p>
+<ul>
+<li>张居正对当时财政收支状况进行统计分析。他以万历年间的财政收支为依据，指出其存在的问题，并根据”量入为出”原则，提出改进措施。</li>
+</ul>
+<p>清代（鸦片战争前）</p>
+<ul>
+<li>顾炎武肯定了户籍和地籍制度的重要性。他说：“人民之丁产事业，官府必有册；土田之鳞次栉比，乡里必有图。按图以稽荒熟，为某人见业则不可隐；按册以稽某家某户占田若干、坐落某处，则税不可逋。……可见图之与册相须而不可无也。”</li>
+</ul>
+<p>近代</p>
+<ul>
+<li><p>吴定良(1894-1969)，生物统计学家、体质人类学家。南京高等师范学堂(后为国立东南大学)毕业，1924 年赴哥伦比亚大学攻读心理统计硕士学位，1926 年转到伦敦大学学院应用统计学系，师从<strong>卡尔 · 皮尔逊</strong>，1928 年获得统计学博士学位。对统计学相关分析的研究和广泛应用起到了重要推动作用。</p></li>
+<li><p>唐培经(1903-1988)，1927 年毕业于东南大学数学系，1929 年至 1934 年任教于清华大学数学系。1934 年到伦敦大学学院，师从<strong>内曼教授</strong>，1937 年获统计学博士学位。学有所成的唐培经，在非中心<em>F</em>分布对方差分析检验功效函数方面作出了贡献</p></li>
+<li><p>许宝騄(1910-1970)，在国内先后就读于燕京大学化学系、清华大学数学系，1936 年赴英留学，在伦敦大学学院高尔顿实验室和应用统计学系攻读数理统计，同时还在剑桥大学学习，1938 年获伦敦大学统计学博士学位，1940年获剑桥大学科学博士学位。许宝騄深受<strong>内曼</strong>青睐，被视为内曼最优秀的学生。1938 年许宝騄在<strong>内曼</strong>和<strong>皮尔逊</strong>的《统计研究报告》第二卷上发表论文《Student 分布理论用于两样本问题》，在概率论和数理统计领域暂露头角，其研究方法后来被称为 “许方法”，其后更以在大数定律、中心极限定理、统计推断、方差分析等多领域富有建树的突破性成果，当之无愧地成为我国最早达到世界先进水平的数学家和统计学家。</p></li>
+<li><p>朱君毅(1892-1963)，浙江省江山县人，1910 年考取清华学堂留美预备生。1916 年秋赴美，获霍普金斯大学教育系学士学位后进入哥伦比亚大学研究所，师从爱德华 ·L 桑代克(Edward Lee Thorndike)专攻教育心理学与教育统计学，1922年获博士学位。朱君毅设定了一系列分析指标，利用大量的统计分析量表，对中国留美学生的学术能力、领导能力、英文能力、中文能力等四种能力经过 “同伴评价”（the judgment of associates），得出”成功” 的结果，将该结果与高中成绩、大学成绩、个人情况、留学时间一一加以对比，得出了四种能力之间的相关性以及与留学时间之间的相关性，进而对国内中英文能力的培养、留美期限、留美生出国前应具备的学历学识等提出了建议和主张。<strong>曾就职于南京女子师范学校</strong></p></li>
+<li><p>张厚粲(1927-2022)，1927年生于北京。1948年，张厚粲先生毕业于北平辅仁大学心理学系并且留校任教，1952年经过高等院校教育的调整转入北京师范大学，现任北京师范大学心理学院教授、博士生导师，校委员，中国心理学会常务理事，曾任国际心联副主席。2005年台湾辅仁大学授予张先生心理学博士学位。张厚粲先生的主要研究领域包括实验心理学、人类的认知以及心理和教育测量。她首先将认知心理学引入中国，在心理统计和测量方面，她主编了我国最早的心理与教育统计学的教材，率先开设了心理测量的课程，组织修订中文标准推理测验、韦氏智力测验，编制中国儿童发展量表，使得测验在我国广泛地应用和发展。</p></li>
+</ul>
+</section>
+<section id="section-3" class="slide level2">
+<h2></h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="images/image-970105751.png"></p>
+</div><div class="column" style="width:50%;">
+<p><img data-src="images/image-72765480.png"></p>
+</div>
+</div>
+</section></section>
+<section>
+<section id="统计学的发展" class="title-slide slide level1 center">
+<h1>统计学的发展</h1>
+
+</section>
+<section id="chatgpt" class="slide level2">
+<h2>chatGPT</h2>
+
+<img data-src="images/image-1718791570.png" class="r-stretch"><p>https://americanfaith.com/users-figure-out-how-to-break-chatgpt-to-ignore-ais-leftist-bias/</p>
+</section>
+<section id="alphago" class="slide level2">
+<h2>AlphaGo</h2>
+
+<img data-src="images/image-465354874.png" class="r-stretch"><p>https://medium.com/@greychen/alphago-research-review-6e8632221a22</p>
+</section>
+<section id="deep-learning" class="slide level2">
+<h2>Deep learning</h2>
+
+<img data-src="images/image-1256736781.png" class="r-stretch"><p>https://cn.bing.com/newtabredir?url=https%3A%2F%2Fwww.skampakis.com%2Fwhat-deep-learning-is-and-isnt%2F</p>
+</section>
+<section id="machine-learning" class="slide level2">
+<h2>Machine learning</h2>
+
+<img data-src="images/image-799930328.png" class="r-stretch"><p>https://auto.ifeng.com/qichezixun/20200120/1374691.shtml</p>
+</section></section>
+<section>
+<section id="生活中的统计学" class="title-slide slide level1 center">
+<h1>生活中的统计学</h1>
+
+</section>
+<section id="统计与霍乱" class="slide level2">
+<h2>统计与霍乱</h2>
+</section>
+<section id="统计与新冠" class="slide level2">
+<h2>统计与新冠</h2>
+</section>
+<section id="武汉人民心理健康的纵向趋势" class="slide level2">
+<h2>武汉人民心理健康的纵向趋势</h2>
+</section>
+<section id="统计与收入不平等" class="slide level2">
+<h2>统计与收入不平等</h2>
+</section>
+<section id="吸烟会导致肺癌吗" class="slide level2">
+<h2>吸烟会导致肺癌吗</h2>
+</section></section>
+<section id="总结" class="title-slide slide level1 center">
+<h1>总结</h1>
+
+<img src="images/image-393370223.png" class="slide-logo r-stretch"><div class="footer footer-default">
+
+</div>
+</section>
+    </div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="Lecture1_introduction_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="Lecture1_introduction_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="Lecture1_introduction_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="Lecture1_introduction_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="Lecture1_introduction_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="Lecture1_introduction_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="Lecture1_introduction_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="Lecture1_introduction_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="Lecture1_introduction_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="Lecture1_introduction_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'smaller': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        target: function(trigger) {
+          return trigger.previousElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      });
+      function tippyHover(el, contentFn) {
+        const config = {
+          allowHTML: true,
+          content: contentFn,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'quarto-reveal',
+          placement: 'bottom-start'
+        };
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          return note.innerHTML;
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>

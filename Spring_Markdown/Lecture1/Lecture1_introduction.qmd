@@ -1,0 +1,678 @@
+---
+format: 
+  revealjs:
+    slide-number: true
+    logo: images/image-393370223.png
+    scrollable: true # Allow in-slide scrolling
+    css: ["theme/theme.css"]
+    theme: simple
+editor: visual
+---
+
+## 
+
+<h1 style="text-align: center">
+
+Application of Statistics in Psychology
+
+</h1>
+
+</br>
+
+<h2 style="text-align: center">
+
+01 - Introduction
+
+</h2>
+
+</br>
+
+<h3 style="text-align: center">
+
+Hu Chuan-Peng
+
+</h3>
+
+<h3 style="text-align: center">
+
+2023-02-22
+
+</h3>
+
+## 教师介绍
+
+::: columns
+::: {.column width="50%"}
+![](images/image-378771590.png)
+:::
+
+::: {.column width="50%"}
+-   2005.09 -- 2009.06 湖北大学法学学士；心理学学士（双学位）
+-   2009.09 -- 2012.06 湖北大学发展与教育心理学硕士
+-   2012.08 -- 2017.06 清华大学心理学系，博士
+-   2017.10 -- 2020.10 德国莱布尼茨心理韧性研究所，博士后 Chinese Open Science Network（公众号：Open Science）的发起人 研究兴趣：元科学（meta-science）、贝叶斯模型（Bayesian modelling）和自我认知（self-cognition）等
+
+主页：https://xlxy.njnu.edu.cn/info/1073/8311.html
+:::
+:::
+
+## 学科基础
+
+## 对课程的认识
+
+## 对统计学的认识
+
+# 课程概况
+
+## 心理统计学的两种视角
+
+<br></br>
+
+::: columns
+::: {.column width="50%"}
+<h3>统计学</h3>
+
+-   在心理学中的应用
+-   在经济学中的应用
+-   在生物学中的应用
+-   ...
+:::
+
+::: {.column width="50%"}
+<h3>科学心理学(研究方法)</h3>
+
+-   心理统计学
+-   实验心理学/实验设计
+-   心理测量
+-   神经成像方法
+-   ...
+:::
+:::
+
+## 参考教材
+
+::: columns
+::: {.column width="50%"}
+![](images/image-108763919.png)
+
+《心理统计学与SPSS应用》（第1版），邓铸等编著，北京师范大学出版社，2017年
+:::
+
+::: {.column width="50%"}
+![](images/image-1836043770.png)
+
+《心理统计学》（第3版），（美）B.H.科恩编著，高定国、周欣悦译，华东师范大学出版社，2011年
+:::
+:::
+
+## 课外读物
+
+::: {layout-ncol="2"}
+![](images/image-700611717.png){style="height: 300px;"}
+
+《女士品茶：20世纪统计怎样变革了科学》，（美） David Salsburg编著，邱冬等译，中国统计出版社，2004年
+
+![](images/image-764284369.png){style="height: 300px;"}
+
+《数理统计简史》，陈希孺编著，湖南教育出版社，2002年
+
+![](images/image-1722956437.png){style="height: 300px;"}
+
+《赤裸裸的统计学》，（美）查尔斯·韦兰编著，曹槟译，中信出版社，2013年
+
+![](images/image-580219303.png){style="height: 300px;"}
+
+《统计学的世界》，（美）David S. Moore编著，郑磊译，中信出版社，2016年
+:::
+
+## 教学目标
+
+::: {.fragment .fade-in-then-out}
+1.  Know it \[as an educated citizen\]
+
+掌握基本的统计知识。
+
+-   区分不同，比如分辨不同数据类型，数据的分布类型。
+-   了解最常用的统计方法软件。
+-   能够区分科普读物中正确与错误的统计推断。
+:::
+
+::: {.fragment .fade-in-then-out}
+2.  Do it \[as a trad. psychologist\]
+
+-   掌握用不同统计方法，以及统计软件的实现。
+-   具体问题，具体分析，数据类型与分析方法相对应。
+-   用软件实现需要的分析功能。
+:::
+
+::: {.fragment .fade-in-then-out}
+3.  Do it appropriately \[as a well-trained researcher\]
+
+Research question based workflow
+
+-   Visualization of data; (可视化)
+-   If p-value is the answer, what is the questions? (提炼核心问题);
+-   Appropriate model/technique (方法与问题匹配);
+-   Reproducible.
+:::
+
+## 职业规划
+
+## 教学目标与职业规划的关系
+
+::: {.fragment .fade-in-then-semi-out}
+-   Know it. 拥有一些统计学常识，辨别心理健康数据，企业项目数据。
+:::
+
+::: {.fragment .fade-in-then-semi-out}
+-   Do it. 利用统计软件对数据进行处理，验证或发现规律。
+:::
+
+::: {.fragment .fade-in-then-semi-out}
+-   Do it correctly. 看懂数据，正确决策，靠谱的科普。
+:::
+
+::: {.fragment .fade-in-then-semi-out}
+-   Invent it. 在实践过程中，开发新的软件，做出统计方法的改进与改良。
+:::
+
+## 心理学就业与心理统计学
+
+![](images/image-1124630285.png){fig-align="center"}
+
+<center>(2017年美国心理学就业方向，图片来源：DATA USA:Psychologists)</center>
+
+## 心理学就业与心理统计学
+
+![](images/image-343379133.png){fig-align="center"}
+
+<center>(中国心理学各岗位工资水平，图片来源：北师大赛客双创中心公众号)</center>
+
+## 心理学就业与心理统计学
+
+![](images/image-72944179.png){fig-align="center"}
+
+<center>(图片来源：北师大赛客双创中心公众号)</center>
+
+## 统计学与数字时代
+
+![](images/image-1253298138.png){fig-align="center"}
+
+<center>(图片来源：Twitter \@OffciallyChadd)</center>
+
+::: {.fragment .fade-in}
+> 一分钟产生的数据量
+:::
+
+::: {.fragment .fade-in}
+> 数据素养不是数学技能而是生活技能
+:::
+
+## 本课目标与就业及数字化社会
+
+培养统计素养的理由：
+
+::: {.fragment .fade-in-then-out}
+个体：
+
+-   数据消费者，避坑；
+-   职业发展：潜在的（心理与行为）数据科学从业者。
+:::
+
+::: {.fragment .fade-in-then-out}
+组织：
+
+-   数据是其最有价值的资产之一。
+-   相同的数据可以在不同的应用程序和场景中使用和复用。
+-   数据的正确使用为企业赋能，提高竞争力，如Tik Tok，京东。
+:::
+
+::: {.fragment .fade-in-then-out}
+市场：
+
+-   拥有数据素养的雇员能够使企业在市场竞争中获益。
+-   数字企业科技发展更快，数字化经济渗透，更好发展。
+:::
+
+::: {.fragment .fade-in-then-out}
+国家政策：
+
+-   数字技术的使用能够促进传统企业转型升级。
+-   数字技术能够驱动生活方式与治理方式变革。
+:::
+
+## 本课目标与就业及数字化社会
+
+![](images/image-1772948230.png){fig-align="center"}
+
+<center>(图片来源：中国信息通信研究院)</center>
+
+## 教学内容
+
+| **序号** | **内容**           |
+|----------|--------------------|
+| 1        | 统计学的历史与意义 |
+| 2        | 概率与概率分布     |
+| 3        | 数据与数据可视化   |
+| 4        | 集中量数和离散量数 |
+| 5        | 离散变量概率分布   |
+| 6        | 正态分布           |
+| 7        | 标准分数           |
+| 8        | 参数估计1          |
+| 9        | 参数估计2          |
+| 10       | 假设检验（Fisher） |
+| 11       | P值                |
+| 12       | 两类错误           |
+| 13       | 相关和相关显著性   |
+| 14       | z检验和单样本t检验 |
+| 15       | 双样本t检验        |
+| 16       | 线性代数基础）     |
+
+## R
+
+![](images/image-1392413531.png){fig-align="center"}
+
+## 考查方式
+
+出勤(10%)
+
+课堂测试成绩(10\*3=30%)
+
+-   3次小测验
+
+小组作业(20%)
+
+-   自由分组
+
+-   完整的workflow
+
+期末考试(40%)
+
+## 如何学好这门课
+
+1.本课内容没有想象中那么困难，仅仅高中水平的数学知识。
+
+2.理解 \> 推导，方法与问题相匹配是关键。
+
+3.编码/软件操作 \> 手动运算，合理使用现代工作。
+
+4.一图胜千言，理解和使用可视化工具。
+
+5.广泛阅读课外科普书籍，可能会有意外收获。
+
+::: {.fragment .fade-in}
+> Warnings: 学好 ≠ 考好, 理解 ≠ 会用, "做中学"
+:::
+
+# 
+
+[Any question?]{.r-fit-text}
+
+# 统计学简史
+
+## "统计(statistics)"
+
+![](images/image-817550615.png){fig-align="center"}
+
+<center>亚里士多德</center>
+
+国情调查(State of the Nation Survey):
+
+-   "统计(statistic)"来源于拉丁语 "statisticum collegium" ，意为国会.
+
+-   亚里士多德(Aristotle)写了150多部"城邦编年史(city-state chronicles)"，其中包括对各个城邦在历史、管理、资源和财富方面的社会和经济状况进行比较分析。
+
+## "统计(statistics)"
+
+![](images/image-2138489439.png){fig-align="center"}
+
+<center>政治算术</center>
+
+## "统计(statistics)"
+
+政治算术(Political Arithmetic)：
+
+-   威廉·配第(William Petty)
+
+-   In 1960
+
+-   *政治算术(Political Arithmetic)* 一书的出版标志着统计学的诞生.
+
+> "This book does not use comparatives or superiors for thought or argument, but uses numbers to express what it wants to say, by which it examines the causes that have a visible basis in nature." William Allotey writes.
+
+## 贝叶斯(Bayes)
+
+贝叶斯(1702-1763)
+
+![](images/image-484122936.png){fig-align="center"}
+
+<center>$p(A|B) = \frac{p(B|A)p(A)}{p(B)}$</center>
+
+> 1763 修建圆明园
+
+> 1783 美国独立
+
+## 高尔顿(Galton)
+
+::: columns
+::: {.column width="50%"}
+![](images/image-1939130143.png)
+
+<center>(1822-1911)</center>
+:::
+
+::: {.column width="50%"}
+-   Francis Galton
+
+-   达尔文的表弟
+
+-   气象学家、地理学家
+
+-   优生学(Eugenics)
+
+-   遗传的天才(Genetic genius)
+
+-   《人类的才能及其发展研究》(*Research on human talent and its development*)
+:::
+:::
+
+> 1840 第一次工业革命完成
+
+> 1859 达尔文发表《物种起源》
+
+> 诺贝尔奖设立
+
+> 辛亥革命
+
+## 回归分析
+
+-   在生物统计学实验室，他收集了家庭成员的身高、体重、特定骨骼的测量值和其他特征。
+
+-   他和他的助手们将这些数据制成表格，并对它们进行检查和重新检查。
+
+-   通过这种方式，高尔顿发现了一个他称之为 "向平均值回归"的现象。
+
+::: columns
+::: {.column width="50%"}
+![](images/image-2132258847.png)
+:::
+
+::: {.column width="50%"}
+![](images/image-1665017054.png)
+:::
+:::
+
+<center>Salsburg, David, (2001), THE LADY TASTING TEA</center>
+
+## 戈塞特
+
+::: columns
+::: {.column width="50%"}
+![](images/image-1348474519.png)
+
+<center>(1822-1911)</center>
+:::
+
+::: {.column width="50%"}
+-   William Sealy Gosset
+
+-   统计学家
+
+-   学生氏(student)
+
+-   小样本原理
+:::
+:::
+
+> 1870 第二次工业革命完成
+
+> 1937 卢沟桥事变
+
+## t检验
+
+::: columns
+::: {.column width="50%"}
+![](images/image-1298362363.png)
+:::
+
+::: {.column width="50%"}
+![](images/image-1836396512.png)
+:::
+:::
+
+<center>Salsburg, David, (2001), THE LADY TASTING TEA</center>
+
+## 卡尔·皮尔逊(Karl Pearson)
+
+::: columns
+::: {.column width="50%"}
+![](images/image-1329326813.png)
+
+<center>(1857-1936)</center>
+:::
+
+::: {.column width="50%"}
+-   Karl Pearson
+
+-   数学家、生物统计学家、数理统计学家
+
+-   现代统计科学的奠基者
+:::
+:::
+
+## 拟合优度检验(Goodness of fit)
+
+通过比较观察值(**observed value**)和预测值(**predicted value**)，皮尔逊能够使用一个统计数据来计算拟合度。
+
+![](images/image-720021776.png){fig-align="center"}
+
+<center>Salsburg, David, (2001), THE LADY TASTING TEA</center>
+
+## 皮尔逊相关(Pearson correlation)
+
+皮尔逊相关系数用于衡量两个变量X和Y之间的相关关系（线性相关），其数值在-1和1之间。</br></br>
+
+<center>$p_{X, Y} = \frac{cov(X, Y)}{\sigma_X\sigma_Y} = \frac{E[(X-\mu_X)(Y-\mu_Y)]}{\sigma_X\sigma_Y}$</center>
+
+![](images/image-613066882.png){fig-align="center"}
+
+## 费歇尔(Fisher)
+
+::: columns
+::: {.column width="50%"}
+![](images/image-1384914361.png)
+
+<center>(1890-1962)</center>
+:::
+
+::: {.column width="50%"}
+-   Sir Ronald Aylmer Fisher
+
+-   统计学家、基因学家
+
+-   曾工作于Lausanne农业实验站
+
+-   《实验设计》(*Experimental design*)
+:::
+:::
+
+> 1949 新中国成立
+
+> 1958 大跃进
+
+## 方差分析(Analysis of Variance, ANOVA)
+
+方差分析用于检验两个或多个样本的平均值之间的差异的显著性。
+
+![](images/image-1962673157.png){fig-align="center"}
+
+## *p*值(*p*-value)
+
+R. A. Fisher开发了现在普遍使用的大多数显著性检验方法。他把允许人们报告显著性的概率称为 "P值"。
+
+![](images/image-359996773.png){fig-align="center"}
+
+<center>Salsburg, David, (2001), THE LADY TASTING TEA</center>
+
+## 极大似然法(Maximum likelihood estimator, MLE)
+
+在研究数学的过程中，Fisher意识到，Karl Pearson用来计算其分布参数的方法所产生的统计数据不一定是一致的，而且往往是有偏见的，还有更有效的统计数据可以利用。为了产生一致和有效的（但不一定是无偏的）统计数据，Fisher提出了极大似然法。
+
+![](images/image-1259773780.png){fig-align="center"}
+
+<center>Salsburg, David, (2001), THE LADY TASTING TEA</center>
+
+## 内曼和皮尔逊(Neyman & Egon Pearson)
+
+-   Neyman(1894-1981) & Egon Pearson(1895-1980)
+
+-   假设检验
+
+-   统计检验力
+
+![](images/image-602184698.png){fig-align="center"}
+
+## 假设检验(Hypothesis testing)
+
+为了区分用于计算Fisher *P*值的假设和其他可能的假设，内曼和皮尔逊将被用来验证的假设称为 "虚无假设"，将其他假设称为 "备择假设"。
+
+![](images/image-1286812743.png){fig-align="center"}
+
+<center>Salsburg, David, (2001), THE LADY TASTING TEA</center>
+
+# 统计学简史(中国)
+
+## 大案牍术
+
+![](images/image-2109820452.png){fig-align="center"}
+
+<center>内容出自《长安十二时辰》(马伯庸著) 图片来自知乎\@溜达兔</center>
+
+> 大数据
+
+## 鱼鳞图册
+
+![](images/image-700468932.png){fig-align="center"}
+
+https://baike.so.com/doc/6226918-6440241.html
+
+
+> 大数据
+
+## 推步聚顶
+
+![](images/image-1546917996.png){fig-align="center"}
+
+<center>内容出自《显微镜下的大明》(马伯庸著) 图片来自微博\@显微镜下的大明官微</center>
+
+> 网格近似
+
+## 
+
+上古时期
+
+-   结绳记事
+
+-   书契记数
+
+夏商周
+
+-   "方以类聚，物以群分" ------《周易·系辞上》
+
+-   "关石和钧"------《尚书·夏书》
+
+春秋战国
+
+-   "举事必成，不知计数不可"------《管子·问》
+
+-   "五事"，"七计"------《孙子》
+
+-   "强国知十三数"------《商君书》
+
+汉代
+
+-   司马迁提出统计表编制理论
+
+-   徐干强调人口统计是治国之本
+
+-   仲长统重视人口调查与财经统计分析
+
+南北朝
+
+-   苏绰创制"计账、户籍之法"，制定"文案程式"，开创"朱出墨入"。
+
+唐代
+
+-   刘晏在各道设置巡院官，安排专人报告商情，采取措施，稳定物价。
+
+明代
+
+-   张居正对当时财政收支状况进行统计分析。他以万历年间的财政收支为依据，指出其存在的问题，并根据"量入为出"原则，提出改进措施。
+
+清代（鸦片战争前）
+
+-   顾炎武肯定了户籍和地籍制度的重要性。他说："人民之丁产事业，官府必有册；土田之鳞次栉比，乡里必有图。按图以稽荒熟，为某人见业则不可隐；按册以稽某家某户占田若干、坐落某处，则税不可逋。......可见图之与册相须而不可无也。"
+
+近代
+
+-   吴定良(1894-1969)，生物统计学家、体质人类学家。南京高等师范学堂(后为国立东南大学)毕业，1924 年赴哥伦比亚大学攻读心理统计硕士学位，1926 年转到伦敦大学学院应用统计学系，师从**卡尔 · 皮尔逊**，1928 年获得统计学博士学位。对统计学相关分析的研究和广泛应用起到了重要推动作用。
+
+-   唐培经(1903-1988)，1927 年毕业于东南大学数学系，1929 年至 1934 年任教于清华大学数学系。1934 年到伦敦大学学院，师从**内曼教授**，1937 年获统计学博士学位。学有所成的唐培经，在非中心*F*分布对方差分析检验功效函数方面作出了贡献
+
+-   许宝騄(1910-1970)，在国内先后就读于燕京大学化学系、清华大学数学系，1936 年赴英留学，在伦敦大学学院高尔顿实验室和应用统计学系攻读数理统计，同时还在剑桥大学学习，1938 年获伦敦大学统计学博士学位，1940年获剑桥大学科学博士学位。许宝騄深受**内曼**青睐，被视为内曼最优秀的学生。1938 年许宝騄在**内曼**和**皮尔逊**的《统计研究报告》第二卷上发表论文《Student 分布理论用于两样本问题》，在概率论和数理统计领域暂露头角，其研究方法后来被称为 "许方法"，其后更以在大数定律、中心极限定理、统计推断、方差分析等多领域富有建树的突破性成果，当之无愧地成为我国最早达到世界先进水平的数学家和统计学家。
+
+-   朱君毅(1892-1963)，浙江省江山县人，1910 年考取清华学堂留美预备生。1916 年秋赴美，获霍普金斯大学教育系学士学位后进入哥伦比亚大学研究所，师从爱德华 ·L 桑代克(Edward Lee Thorndike)专攻教育心理学与教育统计学，1922年获博士学位。朱君毅设定了一系列分析指标，利用大量的统计分析量表，对中国留美学生的学术能力、领导能力、英文能力、中文能力等四种能力经过 "同伴评价"（the judgment of associates），得出"成功" 的结果，将该结果与高中成绩、大学成绩、个人情况、留学时间一一加以对比，得出了四种能力之间的相关性以及与留学时间之间的相关性，进而对国内中英文能力的培养、留美期限、留美生出国前应具备的学历学识等提出了建议和主张。**曾就职于南京女子师范学校**
+
+-   张厚粲(1927-2022)，1927年生于北京。1948年，张厚粲先生毕业于北平辅仁大学心理学系并且留校任教，1952年经过高等院校教育的调整转入北京师范大学，现任北京师范大学心理学院教授、博士生导师，校委员，中国心理学会常务理事，曾任国际心联副主席。2005年台湾辅仁大学授予张先生心理学博士学位。张厚粲先生的主要研究领域包括实验心理学、人类的认知以及心理和教育测量。她首先将认知心理学引入中国，在心理统计和测量方面，她主编了我国最早的心理与教育统计学的教材，率先开设了心理测量的课程，组织修订中文标准推理测验、韦氏智力测验，编制中国儿童发展量表，使得测验在我国广泛地应用和发展。
+
+## 
+
+::: columns
+::: {.column width="50%"}
+![](images/image-970105751.png)
+:::
+
+::: {.column width="50%"}
+![](images/image-72765480.png)
+:::
+:::
+
+# 统计学的发展
+
+## chatGPT
+
+![](images/image-1718791570.png)
+
+https://americanfaith.com/users-figure-out-how-to-break-chatgpt-to-ignore-ais-leftist-bias/
+
+## AlphaGo
+
+![](images/image-465354874.png)
+
+https://medium.com/\@greychen/alphago-research-review-6e8632221a22
+
+## Deep learning
+
+![](images/image-1256736781.png)
+
+https://cn.bing.com/newtabredir?url=https%3A%2F%2Fwww.skampakis.com%2Fwhat-deep-learning-is-and-isnt%2F
+
+## Machine learning
+
+![](images/image-799930328.png)
+
+https://auto.ifeng.com/qichezixun/20200120/1374691.shtml
+
+# 生活中的统计学
+
+## 统计与霍乱
+
+## 统计与新冠
+
+## 武汉人民心理健康的纵向趋势
+
+## 统计与收入不平等
+
+## 吸烟会导致肺癌吗
+
+# 总结
