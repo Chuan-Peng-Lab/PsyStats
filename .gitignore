@@ -7,5 +7,6 @@
 */*.RData
 */*.tmp
 *.Rhistory
+/test
 
 Stats101_2022
