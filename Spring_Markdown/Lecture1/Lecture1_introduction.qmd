@@ -556,7 +556,6 @@ R. A. Fisher开发了现在普遍使用的大多数显著性检验方法。他�
 
 https://baike.so.com/doc/6226918-6440241.html
 
-
 > 大数据
 
 ## 推步聚顶
@@ -665,14 +664,94 @@ https://auto.ifeng.com/qichezixun/20200120/1374691.shtml
 
 # 生活中的统计学
 
-## 统计与霍乱
+## 统计与霍乱(Cholera)
+
+![](images%5C%E5%9B%BE%E7%89%871.jpg)
+
+![](images%5C%E5%9B%BE%E7%89%872.gif)
+
+-   Cholera（霍乱）is an acute, diarrheal illness caused by infection of the intestine (肠道) with the toxigenic bacterium *Vibrio cholerae* （霍乱弧菌）serogroup（血清群） O1 or O139.
+
+-   An estimated 2.9 million cases and 95,000 deaths occur each year around the world. The infection is often mild or without symptoms, but can be severe.
+
+-   Cholera is most likely to occur and spread in places with inadequate water treatment, poor sanitation, and inadequate hygiene.
+
+    > 资料来源：Centers for Disease Control and Prevention, USA
+
+------------------------------------------------------------------------
+
+<img src="images\图片3.png"/>
+
+<img src="images\图片14.png"/>
+
+*Broad street* is still in London
 
 ## 统计与新冠
 
+<img src="images\图片15.png"/>
+
+------------------------------------------------------------------------
+
+![](images%5C%E5%9B%BE%E7%89%875.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+![](images%5C%E5%9B%BE%E7%89%876.png)
+
+vp ： the volume concentration
+
+*D*p ： diameter of respiratory particles
+
+dvp/dlogDp： the volume distribution function
+
+> Cheng, Y., (2021), *Science*
+
+## 心理健康
+
+<img src="images\图片8.png" style="zoom:80%;"/>
+
+> 资料来源：《中国国民心理健康发展报告（2019～2020）》
+
+------------------------------------------------------------------------
+
+<img src="images\图片9.png"/>
+
+<img src="images\图片10.png"/>
+
+> 资料来源：《中国国民心理健康发展报告（2019～2020）》
+
+------------------------------------------------------------------------
+
 ## 武汉人民心理健康的纵向趋势
+
+<img src="images\图片12.png"/>
+
+> Shuquan Chen, (2022), *American Psychologist*
 
 ## 统计与收入不平等
 
+<img src="images\图片7.png"/>
+
+> Max Roser, (2021)
+
 ## 吸烟会导致肺癌吗
 
+<img src="images\图片11.jpg"/>
+
+> 资料来源：Judea Pearl & Dana Mackenzie, (2019), 为什么：关于因果关系的新科学
+
+![](images%5C%E5%9B%BE%E7%89%8713.png)
+
 # 总结
+
+•课程概况
+
+•统计简史
+
+•统计学的起源
+
+•西方统计学史
+
+•中国统计学史
+
+•统计在生活中的应用
