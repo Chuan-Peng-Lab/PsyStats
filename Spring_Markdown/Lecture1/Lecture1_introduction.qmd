@@ -71,7 +71,6 @@ Hu Chuan-Peng
 ::: columns
 ::: {.column width="50%"}
 <h3>统计学</h3>
-
 -   在心理学中的应用
 -   在经济学中的应用
 -   在生物学中的应用
@@ -80,7 +79,6 @@ Hu Chuan-Peng
 
 ::: {.column width="50%"}
 <h3>科学心理学(研究方法)</h3>
-
 -   心理统计学
 -   实验心理学/实验设计
 -   心理测量
@@ -181,25 +179,21 @@ Research question based workflow
 ![](images/image-1124630285.png){fig-align="center"}
 
 <center>(2017年美国心理学就业方向，图片来源：DATA USA:Psychologists)</center>
-
 ## 心理学就业与心理统计学
 
 ![](images/image-343379133.png){fig-align="center"}
 
 <center>(中国心理学各岗位工资水平，图片来源：北师大赛客双创中心公众号)</center>
-
 ## 心理学就业与心理统计学
 
 ![](images/image-72944179.png){fig-align="center"}
 
 <center>(图片来源：北师大赛客双创中心公众号)</center>
-
 ## 统计学与数字时代
 
 ![](images/image-1253298138.png){fig-align="center"}
 
 <center>(图片来源：Twitter \@OffciallyChadd)</center>
-
 ::: {.fragment .fade-in}
 > 一分钟产生的数据量
 :::
@@ -246,7 +240,6 @@ Research question based workflow
 ![](images/image-1772948230.png){fig-align="center"}
 
 <center>(图片来源：中国信息通信研究院)</center>
-
 ## 教学内容
 
 | **序号** | **内容**           |
@@ -315,7 +308,6 @@ Research question based workflow
 ![](images/image-817550615.png){fig-align="center"}
 
 <center>亚里士多德</center>
-
 国情调查(State of the Nation Survey):
 
 -   "统计(statistic)"来源于拉丁语 "statisticum collegium" ，意为国会.
@@ -327,7 +319,6 @@ Research question based workflow
 ![](images/image-2138489439.png){fig-align="center"}
 
 <center>政治算术</center>
-
 ## "统计(statistics)"
 
 政治算术(Political Arithmetic)：
@@ -347,7 +338,6 @@ Research question based workflow
 ![](images/image-484122936.png){fig-align="center"}
 
 <center>$p(A|B) = \frac{p(B|A)p(A)}{p(B)}$</center>
-
 > 1763 修建圆明园
 
 > 1783 美国独立
@@ -403,7 +393,6 @@ Research question based workflow
 :::
 
 <center>Salsburg, David, (2001), THE LADY TASTING TEA</center>
-
 ## 戈塞特
 
 ::: columns
@@ -441,7 +430,6 @@ Research question based workflow
 :::
 
 <center>Salsburg, David, (2001), THE LADY TASTING TEA</center>
-
 ## 卡尔·皮尔逊(Karl Pearson)
 
 ::: columns
@@ -467,13 +455,11 @@ Research question based workflow
 ![](images/image-720021776.png){fig-align="center"}
 
 <center>Salsburg, David, (2001), THE LADY TASTING TEA</center>
-
 ## 皮尔逊相关(Pearson correlation)
 
 皮尔逊相关系数用于衡量两个变量X和Y之间的相关关系（线性相关），其数值在-1和1之间。</br></br>
 
 <center>$p_{X, Y} = \frac{cov(X, Y)}{\sigma_X\sigma_Y} = \frac{E[(X-\mu_X)(Y-\mu_Y)]}{\sigma_X\sigma_Y}$</center>
-
 ![](images/image-613066882.png){fig-align="center"}
 
 ## 费歇尔(Fisher)
@@ -513,7 +499,6 @@ R. A. Fisher开发了现在普遍使用的大多数显著性检验方法。他�
 ![](images/image-359996773.png){fig-align="center"}
 
 <center>Salsburg, David, (2001), THE LADY TASTING TEA</center>
-
 ## 极大似然法(Maximum likelihood estimator, MLE)
 
 在研究数学的过程中，Fisher意识到，Karl Pearson用来计算其分布参数的方法所产生的统计数据不一定是一致的，而且往往是有偏见的，还有更有效的统计数据可以利用。为了产生一致和有效的（但不一定是无偏的）统计数据，Fisher提出了极大似然法。
@@ -521,7 +506,6 @@ R. A. Fisher开发了现在普遍使用的大多数显著性检验方法。他�
 ![](images/image-1259773780.png){fig-align="center"}
 
 <center>Salsburg, David, (2001), THE LADY TASTING TEA</center>
-
 ## 内曼和皮尔逊(Neyman & Egon Pearson)
 
 -   Neyman(1894-1981) & Egon Pearson(1895-1980)
@@ -539,7 +523,6 @@ R. A. Fisher开发了现在普遍使用的大多数显著性检验方法。他�
 ![](images/image-1286812743.png){fig-align="center"}
 
 <center>Salsburg, David, (2001), THE LADY TASTING TEA</center>
-
 # 统计学简史(中国)
 
 ## 大案牍术
@@ -547,7 +530,6 @@ R. A. Fisher开发了现在普遍使用的大多数显著性检验方法。他�
 ![](images/image-2109820452.png){fig-align="center"}
 
 <center>内容出自《长安十二时辰》(马伯庸著) 图片来自知乎\@溜达兔</center>
-
 > 大数据
 
 ## 鱼鳞图册
@@ -563,7 +545,6 @@ https://baike.so.com/doc/6226918-6440241.html
 ![](images/image-1546917996.png){fig-align="center"}
 
 <center>内容出自《显微镜下的大明》(马伯庸著) 图片来自微博\@显微镜下的大明官微</center>
-
 > 网格近似
 
 ## 
@@ -666,9 +647,9 @@ https://auto.ifeng.com/qichezixun/20200120/1374691.shtml
 
 ## 统计与霍乱(Cholera)
 
-![](images%5C%E5%9B%BE%E7%89%871.jpg)
+![](images\图片1.jpg)
 
-![](images%5C%E5%9B%BE%E7%89%872.gif)
+![](images\图片2.gif)
 
 -   Cholera（霍乱）is an acute, diarrheal illness caused by infection of the intestine (肠道) with the toxigenic bacterium *Vibrio cholerae* （霍乱弧菌）serogroup（血清群） O1 or O139.
 
@@ -692,11 +673,11 @@ https://auto.ifeng.com/qichezixun/20200120/1374691.shtml
 
 ------------------------------------------------------------------------
 
-![](images%5C%E5%9B%BE%E7%89%875.png){fig-align="center"}
+![](images\图片5.png)
 
 ------------------------------------------------------------------------
 
-![](images%5C%E5%9B%BE%E7%89%876.png)
+![](images\图片6.png)
 
 vp ： the volume concentration
 
