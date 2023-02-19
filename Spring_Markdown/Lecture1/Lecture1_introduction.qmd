@@ -666,9 +666,9 @@ https://auto.ifeng.com/qichezixun/20200120/1374691.shtml
 
 ## 统计与霍乱(Cholera)
 
-![](images%5C%E5%9B%BE%E7%89%871.jpg)
+![](images\图片1.jpg)
 
-![](images%5C%E5%9B%BE%E7%89%872.gif)
+![](images\图片2.gif)
 
 -   Cholera（霍乱）is an acute, diarrheal illness caused by infection of the intestine (肠道) with the toxigenic bacterium *Vibrio cholerae* （霍乱弧菌）serogroup（血清群） O1 or O139.
 
@@ -692,11 +692,11 @@ https://auto.ifeng.com/qichezixun/20200120/1374691.shtml
 
 ------------------------------------------------------------------------
 
-![](images%5C%E5%9B%BE%E7%89%875.png){fig-align="center"}
+![](images\图片5.png){fig-align="center"}
 
 ------------------------------------------------------------------------
 
-![](images%5C%E5%9B%BE%E7%89%876.png)
+![](images\图片6.png)
 
 vp ： the volume concentration
 
@@ -740,7 +740,7 @@ dvp/dlogDp： the volume distribution function
 
 > 资料来源：Judea Pearl & Dana Mackenzie, (2019), 为什么：关于因果关系的新科学
 
-![](images%5C%E5%9B%BE%E7%89%8713.png)
+![](images\图片13.png)
 
 # 总结
 
