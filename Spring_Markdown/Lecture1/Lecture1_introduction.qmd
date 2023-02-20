@@ -9,7 +9,7 @@ format:
 editor: visual
 ---
 
-## 
+------------------------------------------------------------------------
 
 <h1 style="text-align: center">
 
@@ -198,15 +198,15 @@ Research question based workflow
 
 ![](images/image-1253298138.png){fig-align="center"}
 
-<center>(图片来源：Twitter \@OffciallyChadd)</center>
-
 ::: {.fragment .fade-in}
-> 一分钟产生的数据量
+一分钟产生的数据量
 :::
 
 ::: {.fragment .fade-in}
-> 数据素养不是数学技能而是生活技能
+数据素养不是数学技能而是生活技能
 :::
+
+<center>图片来源：Twitter \@OffciallyChadd</center>
 
 ## 本课目标与就业及数字化社会
 
@@ -402,7 +402,7 @@ Research question based workflow
 :::
 :::
 
-<center>Salsburg, David, (2001), THE LADY TASTING TEA</center>
+<center>(Salsburg, David, (2001), THE LADY TASTING TEA)</center>
 
 ## 戈塞特
 
@@ -440,7 +440,7 @@ Research question based workflow
 :::
 :::
 
-<center>Salsburg, David, (2001), THE LADY TASTING TEA</center>
+<center>(Salsburg, David, (2001), THE LADY TASTING TEA)</center>
 
 ## 卡尔·皮尔逊(Karl Pearson)
 
@@ -466,7 +466,7 @@ Research question based workflow
 
 ![](images/image-720021776.png){fig-align="center"}
 
-<center>Salsburg, David, (2001), THE LADY TASTING TEA</center>
+<center>(Salsburg, David, (2001), THE LADY TASTING TEA)</center>
 
 ## 皮尔逊相关(Pearson correlation)
 
@@ -512,7 +512,7 @@ R. A. Fisher开发了现在普遍使用的大多数显著性检验方法。他�
 
 ![](images/image-359996773.png){fig-align="center"}
 
-<center>Salsburg, David, (2001), THE LADY TASTING TEA</center>
+<center>(Salsburg, David, (2001), THE LADY TASTING TEA)</center>
 
 ## 极大似然法(Maximum likelihood estimator, MLE)
 
@@ -520,7 +520,7 @@ R. A. Fisher开发了现在普遍使用的大多数显著性检验方法。他�
 
 ![](images/image-1259773780.png){fig-align="center"}
 
-<center>Salsburg, David, (2001), THE LADY TASTING TEA</center>
+<center>(Salsburg, David, (2001), THE LADY TASTING TEA)</center>
 
 ## 内曼和皮尔逊(Neyman & Egon Pearson)
 
@@ -538,7 +538,7 @@ R. A. Fisher开发了现在普遍使用的大多数显著性检验方法。他�
 
 ![](images/image-1286812743.png){fig-align="center"}
 
-<center>Salsburg, David, (2001), THE LADY TASTING TEA</center>
+<center>(Salsburg, David, (2001), THE LADY TASTING TEA)</center>
 
 # 统计学简史(中国)
 
@@ -546,7 +546,7 @@ R. A. Fisher开发了现在普遍使用的大多数显著性检验方法。他�
 
 ![](images/image-2109820452.png){fig-align="center"}
 
-<center>内容出自《长安十二时辰》(马伯庸著) 图片来自知乎\@溜达兔</center>
+<center>(图片来源：知乎\@溜达兔)</center>
 
 > 大数据
 
@@ -554,7 +554,7 @@ R. A. Fisher开发了现在普遍使用的大多数显著性检验方法。他�
 
 ![](images/image-700468932.png){fig-align="center"}
 
-https://baike.so.com/doc/6226918-6440241.html
+<center>(图片来源：https://baike.so.com/doc/6226918-6440241.html)</center>
 
 > 大数据
 
@@ -562,11 +562,9 @@ https://baike.so.com/doc/6226918-6440241.html
 
 ![](images/image-1546917996.png){fig-align="center"}
 
-<center>内容出自《显微镜下的大明》(马伯庸著) 图片来自微博\@显微镜下的大明官微</center>
+<center>(图片来源：微博\@显微镜下的大明官微)</center>
 
-> 网格近似
-
-## 
+## \> 网格近似
 
 上古时期
 
@@ -624,7 +622,7 @@ https://baike.so.com/doc/6226918-6440241.html
 
 -   张厚粲(1927-2022)，1927年生于北京。1948年，张厚粲先生毕业于北平辅仁大学心理学系并且留校任教，1952年经过高等院校教育的调整转入北京师范大学，现任北京师范大学心理学院教授、博士生导师，校委员，中国心理学会常务理事，曾任国际心联副主席。2005年台湾辅仁大学授予张先生心理学博士学位。张厚粲先生的主要研究领域包括实验心理学、人类的认知以及心理和教育测量。她首先将认知心理学引入中国，在心理统计和测量方面，她主编了我国最早的心理与教育统计学的教材，率先开设了心理测量的课程，组织修订中文标准推理测验、韦氏智力测验，编制中国儿童发展量表，使得测验在我国广泛地应用和发展。
 
-## 
+------------------------------------------------------------------------
 
 ::: columns
 ::: {.column width="50%"}
@@ -640,63 +638,63 @@ https://baike.so.com/doc/6226918-6440241.html
 
 ## chatGPT
 
-![](images/image-1718791570.png)
+![](images/image-1718791570.png){fig-align="center"}
 
-https://americanfaith.com/users-figure-out-how-to-break-chatgpt-to-ignore-ais-leftist-bias/
+<center>(图片来源：https://americanfaith.com/users-figure-out-how-to-break-chatgpt-to-ignore-ais-leftist-bias/)</center>
 
 ## AlphaGo
 
-![](images/image-465354874.png)
+![](images/image-465354874.png){fig-align="center"}
 
-https://medium.com/\@greychen/alphago-research-review-6e8632221a22
+<center>(图片来源：https://medium.com/\@greychen/alphago-research-review-6e8632221a22)</center>
 
 ## Deep learning
 
-![](images/image-1256736781.png)
+![](images/image-1256736781.png){fig-align="center"}
 
-https://cn.bing.com/newtabredir?url=https%3A%2F%2Fwww.skampakis.com%2Fwhat-deep-learning-is-and-isnt%2F
+<center>(图片来源： https://cn.bing.com/newtabredir?url=https%3A%2F%2Fwww.skampakis.com%2Fwhat-deep-learning-is-and-isnt%2F)</center>
 
 ## Machine learning
 
-![](images/image-799930328.png)
+![](images/image-799930328.png){fig-align="center"}
 
-https://auto.ifeng.com/qichezixun/20200120/1374691.shtml
+<center>(图片来源：https://auto.ifeng.com/qichezixun/20200120/1374691.shtml)</center>
 
 # 生活中的统计学
 
 ## 统计与霍乱(Cholera)
 
-![](images\图片1.jpg)
+![](images%5C%E5%9B%BE%E7%89%871.jpg){fig-align="center"}
 
-![](images\图片2.gif)
+![](images%5C%E5%9B%BE%E7%89%872.gif){fig-align="center"}
 
--   Cholera（霍乱）is an acute, diarrheal illness caused by infection of the intestine (肠道) with the toxigenic bacterium *Vibrio cholerae* （霍乱弧菌）serogroup（血清群） O1 or O139.
+-   霍乱(Cholera)是一种急性腹泻疾病，由肠道感染霍乱弧菌（Vibrio Cholerae\*）引起。O1或O139。
 
--   An estimated 2.9 million cases and 95,000 deaths occur each year around the world. The infection is often mild or without symptoms, but can be severe.
+-   据估计，全世界每年有290万个病例和9.5万人死亡。这种感染通常是温和的或没有症状，但也可能是严重的。
 
--   Cholera is most likely to occur and spread in places with inadequate water treatment, poor sanitation, and inadequate hygiene.
+-   霍乱最容易在水处理不当、卫生条件差和不卫生的地方发生和传播。
 
-    > 资料来源：Centers for Disease Control and Prevention, USA
+<center>(资料来源：Centers for Disease Control and Prevention, USA)</center>
 
 ------------------------------------------------------------------------
 
-<img src="images\图片3.png"/>
+<img src="images\图片3.png" align="middle"/>
 
-<img src="images\图片14.png"/>
+<img src="images\图片14.png" align="middle"/>
 
 *Broad street* is still in London
 
 ## 统计与新冠
 
-<img src="images\图片15.png"/>
+<img src="images\图片15.png" align="middle"/>
 
 ------------------------------------------------------------------------
 
-![](images\图片5.png){fig-align="center"}
+![](images%5C%E5%9B%BE%E7%89%875.png){fig-align="center"}
 
 ------------------------------------------------------------------------
 
-![](images\图片6.png)
+![](images%5C%E5%9B%BE%E7%89%876.png){fig-align="center"}
 
 vp ： the volume concentration
 
@@ -704,43 +702,43 @@ vp ： the volume concentration
 
 dvp/dlogDp： the volume distribution function
 
-> Cheng, Y., (2021), *Science*
+<center>(Cheng, Y., (2021), *Science* )</center>
 
 ## 心理健康
 
-<img src="images\图片8.png" style="zoom:80%;"/>
+<img src="images\图片8.png" align="middle"/>
 
-> 资料来源：《中国国民心理健康发展报告（2019～2020）》
+<center>(资料来源：《中国国民心理健康发展报告（2019～2020）》)</center>
 
 ------------------------------------------------------------------------
 
-<img src="images\图片9.png"/>
+<img src="images\图片9.png" align="middle"/>
 
-<img src="images\图片10.png"/>
+<img src="images\图片10.png" align="middle"/>
 
-> 资料来源：《中国国民心理健康发展报告（2019～2020）》
+<center>(资料来源：《中国国民心理健康发展报告（2019～2020）》)</center>
 
 ------------------------------------------------------------------------
 
 ## 武汉人民心理健康的纵向趋势
 
-<img src="images\图片12.png"/>
+<img src="images\图片12.png" align="middle"/>
 
-> Shuquan Chen, (2022), *American Psychologist*
+<center>Shuquan Chen, (2022), *American Psychologist*)</center>
 
 ## 统计与收入不平等
 
-<img src="images\图片7.png"/>
+![](images%5C%E5%9B%BE%E7%89%877.png){align="middle" fig-align="center"}
 
-> Max Roser, (2021)
+<center>(Max Roser, (2021))</center>
 
 ## 吸烟会导致肺癌吗
 
-<img src="images\图片11.jpg"/>
+![](images%5C%E5%9B%BE%E7%89%8711.jpg){align="middle" fig-align="center"}
 
-> 资料来源：Judea Pearl & Dana Mackenzie, (2019), 为什么：关于因果关系的新科学
+<center>(资料来源：Judea Pearl & Dana Mackenzie, (2019), 为什么：关于因果关系的新科学)</center>
 
-![](images\图片13.png)
+![](images%5C%E5%9B%BE%E7%89%8713.png){fig-align="center"}
 
 # 总结
 
