@@ -1,0 +1,59 @@
+---
+format: 
+  revealjs:
+    slide-number: true
+    logo: images/image-393370223.png
+    scrollable: true # Allow in-slide scrolling
+    css: ["theme/theme.css"]
+    theme: simple
+editor: visual
+---
+
+## 
+
+<h1 style="text-align: center">
+
+02 - A gentle introduction to statistics
+
+</h1>
+
+<h3 style="text-align: center">
+
+Hu Chuan-Peng
+
+</h3>
+
+<h3 style="text-align: center">
+
+2023-03-01
+
+</h3>
+
+## 心理统计学的两种视角
+
+<br></br>
+
+::: columns
+::: {.column width="50%"}
+<h3>统计学</h3>
+
+-   在心理学中的应用
+-   在经济学中的应用
+-   在生物学中的应用
+-   ...
+:::
+
+::: {.column width="50%"}
+<h3>科学心理学(研究方法)</h3>
+
+-   心理统计学
+-   实验心理学/实验设计
+-   心理测量
+-   神经成像方法
+-   ...
+:::
+:::
+
+## 
+
+![](images/image-1227697380.png){fig-align="center"}
