@@ -8,5 +8,6 @@
 */*.tmp
 *.Rhistory
 /test
+/idea
 
 Stats101_2022
