@@ -7,15 +7,20 @@ format:
     css: ["theme/theme.css"]
     theme: simple
 editor: visual
+fontsize: 20pt
 ---
 
 ## 
 
+</br></br>
+
 <h1 style="text-align: center">
 
-02 - A gentle introduction to statistics
+02 - A gentle introduction to probability and statistics
 
 </h1>
+
+</br></br>
 
 <h3 style="text-align: center">
 
@@ -23,11 +28,17 @@ Hu Chuan-Peng
 
 </h3>
 
+</br></br>
+
 <h3 style="text-align: center">
 
 2023-03-01
 
 </h3>
+
+</br></br>
+
+# Review
 
 ## 心理统计学的两种视角
 
@@ -56,4 +67,699 @@ Hu Chuan-Peng
 
 ## 
 
-![](images/image-1227697380.png){fig-align="center"}
+![](images/image-1227697380.png){fig-align="center" width="580"}
+
+## 
+
+![](images/image-1294083371.png){fig-align="center"}
+
+<center>(William Feller (1968). An introduction to probability theory and its applications. Chapter 1)</center>
+
+## 
+
+![](images/image-2128019921.png){fig-align="center"}
+
+# 概率(Probablity)
+
+## 
+
+![](images/image-858917210.png){fig-align="center"}
+
+## 
+
+</br></br>
+
+<h3 style="text-align: center">
+
+</br></br> </br></br>
+
+当你掷硬币的时候，哪面朝上？ </br></br> 数字 或 花
+
+</h3>
+
+## 随机现象(Random phenomena)</br></br>
+
+-   在一定条件下，出现的可能结果不止一个，事前**不能**确切知道哪一个结果一定会出现，但**大量重复试验(trial)**中其结果又具有统计规律的现象;</br></br>
+
+-   **偶然性(Uncertainty)**: 在每一次试验(trial)之前，结果都无法事前确定;</br></br>
+
+-   **规律性(Regularity)**: 相同条件下进行多次重复试验(trial)，实验(experiment)的结果会呈现出统计规律.</br></br>
+
+## 
+
+</br></br>
+
+<h3 style="text-align: center">
+
+</br></br> </br></br>
+
+你可以列出实验(experiment)的所有结果吗？ </br></br>
+
+</h3>
+
+## 样本空间(Sample space, $\Omega$)
+
+-   随机实验(experiment)的所有可能结果构成的集合(set);</br></br>
+
+-   $p(\Omega)$ = 1;</br></br>
+
+-   E.g. 当你掷一枚硬币，$\Omega$={数字，花}
+
+## 
+
+</br></br>
+
+<h3 style="text-align: center">
+
+</br></br> </br></br>
+
+你可以预测实验(experiment)中的下一个试次(trial)的结果吗？ </br></br>
+
+</h3>
+
+## 事件(Event)
+
+-   实验(experiment)结果的集合(样本空间的一个子集(subset));</br></br>
+
+<h3 style="text-align: left">
+
+基本事件(Elementary event)
+
+</h3>
+
+-   在样本空间中只包含一个结果的事件;</br></br>
+-   任何两个基本事件是互斥的;</br></br>
+
+<h3 style="text-align: left">
+
+复合事件(Compound event)
+
+</h3>
+
+-   在样本空间中包含一个以上结果的事件;</br></br>
+
+-   任何复合事件都可以表示为若干个基本事件的和。
+
+## 
+
+</br></br>
+
+<h3 style="text-align: center">
+
+</br></br> </br></br>
+
+当你掷硬币一次，基本事件是什么呢？ </br></br>
+
+</h3>
+
+## 
+
+</br></br>
+
+<h3 style="text-align: center">
+
+</br></br> </br></br>
+
+当你掷硬币两次，基本事件是什么呢？ </br></br>
+
+</h3>
+
+## 
+
+</br></br>
+
+<h3 style="text-align: center">
+
+</br></br> </br></br>
+
+当你掷硬币三次，基本事件是什么呢？ </br></br>
+
+</h3>
+
+## 
+
+![](images/image-124036223.png){fig-align="center"}
+
+<h6 style="text-align: center">
+
+(注："0"表示花，"1"表示数字)</br></br>
+
+$2*2*2=8$
+
+</h6>
+
+## 排列(Permutation)
+
+</br></br>
+
+<h3 style="text-align: center">
+
+</br></br> </br></br>
+
+若我们将三枚硬币分别编码为硬币A、B、C </br></br> 前两次掷硬币结果为*数字*有几种情况？
+
+</h3>
+
+## 排列(Permutation)
+
+![](images/image-951080482.png){fig-align="center"}
+
+<h6 style="text-align: center">
+
+$P_3^2 = 3*2=6$
+
+</h6>
+
+## 排列(Permutation)
+
+</br></br>
+
+-   从给定个数的元素中取出指定个数的元素进行排序;</br></br>
+
+-   从n个不同元素中，任取m(m≤n,m与n均为自然数,下同）个不同的元素按照一定的顺序排成一列，叫做从n个不同元素中取出m个元素的一个排列;</br></br>
+
+-   从n个不同元素中取出m(m≤n）个元素的所有排列的个数，叫做从n个不同元素中取出m个元素的排列数，用符号 $A_n^m$表示。</br></br>
+
+<h6 style="text-align: center">
+
+$A_n^m = \frac{n!}{(n-m)!} = n(n-1)(n-2)...(n-m+1)$
+
+</h6>
+
+## 组合(Combination)
+
+</br></br>
+
+<h3 style="text-align: center">
+
+</br></br> </br></br>
+
+掷硬币三次，2次数字朝上的可能有几种？
+
+</h3>
+
+## 组合(Combination)
+
+![](images/image-124036223.png){fig-align="center"}
+
+<h6 style="text-align: center">
+
+(注："0"表示花，"1"表示数字)</br></br> $3$
+
+</h6>
+
+## 组合(Combination)
+
+</br></br>
+
+-   从给定个数的元素中仅仅取出指定个数的元素，不考虑排序;</br></br>
+
+-   从n个不同元素中，任取m(m≤n）个元素并成一组，叫做从n个不同元素中取出m个元素的一个组合;</br></br>
+
+-   从n个不同元素中取出m(m≤n）个元素的所有组合的个数，叫做从n个不同元素中取出m个元素的组合数。用符号 $C_n^m$ 表示。</br></br>
+
+<h6 style="text-align: center">
+
+$C_n^m = \frac{n!}{(n-m)!m!} = \frac{n(n-1)(n-2)...(n-m+1)}{m(m-1)(m-2)...1}$
+
+</h6>
+
+## 
+
+</br></br>
+
+<h3 style="text-align: center">
+
+</br></br> </br></br>
+
+我们抛出的硬币公平吗？也就是说，抛出硬币时，数字朝上的可能性是多少？
+
+::: {.fragment .fade-in}
+-   让我们无限次掷硬币
+:::
+
+</h3>
+
+## 
+
+![](images/%E5%9B%BE%E7%89%871.gif){fig-align="center"}
+
+## 频率(Frequency)&概率(Probablity)
+
+</br></br>
+
+### 频率(Frequency)
+
+</br></br>
+
+-   实验过程中事件发生的次数，除以实验的总次数，一般记为$f$。</br></br>
+
+### 概率(Probablity)
+
+</br></br>
+
+-   对一个事件发生的可能性有多大，或一个命题是真的可能性有多大的数字描述，一般记为$p$。
+
+## 频率(Frequency)&概率(Probablity)
+
+</br></br>
+
+-   假定我们掷硬币n次，数字朝上的次数为$n_1$次，则数字朝上的频率为：$f(数字) = \frac{n_1}{n}$;</br></br>
+
+-   当我们掷硬币的行为重复无数次，频率就接近于概率：$\lim_{n \to +\infty} f(数字) = \frac{n_1}{n} = p(数字)$
+
+## 频率(Frequency)&概率(Probablity)
+
+</br></br>
+
+许多数学家都进行过这项实验：
+
+|                      | **n** | $n_H$ | **f**  |
+|----------------------|-------|-------|--------|
+| 德摩根(De Morgan)    | 2048  | 1061  | 0.5181 |
+| 蒲丰(Buffon)         | 4040  | 2048  | 0.5069 |
+| 皮尔逊(Karl Pearson) | 24000 | 12012 | 0.5005 |
+
+</br></br>
+
+<h3 style="text-align: center">
+
+频率接近于0.5
+
+</h3>
+
+## 概率的性质
+
+</br></br>
+
+-   $p(\Omega) = 1$</br></br>
+
+-   $0 \le p(A) \le 1$</br></br>
+
+-   $p(A+B) = p(A)+p(B)-p(A \cap B)$
+
+## 独立事件(Independent event)
+
+</br></br>
+
+-   如果两个事件A和B是独立的</br></br>
+
+<h3 style="text-align: center">
+
+$p(A and B) = p(A \cap B) = p(A)p(B)$</br></br>
+
+$p(A or B) = p(A \cup B) = p(A) + p(B) - p(A \cap B)$
+
+</h3>
+
+## 互不相容事件(Mutually exclusive event)
+
+</br></br>
+
+-   如果两个事件A和B是互不相容的</br></br>
+
+<h3 style="text-align: center">
+
+$p(A and B) = p(A \cap B) = 0$</br></br>
+
+$p(A or B) = p(A \cup B) = p(A) + p(B) - p(A \cap B)$
+
+$= p(A)+p(B)-0 = p(A)+p(B)$
+
+</h3>
+
+## 概率的加法法则(Addition rules in probability)
+
+</br></br>
+
+-   若A和B为独立事件</br></br>
+
+<h3 style="text-align: center">
+
+$p(A)+p(B) = p(A \cup B)-p(A \cap B)$
+
+</h3>
+
+-   若A和B为互不相容事件</br></br>
+
+<h3 style="text-align: center">
+
+$p(A)+p(B) = p(A \cup B)$
+
+</h3>
+
+## 概率的乘法法则(Multiplication rules in probability)
+
+</br></br>
+
+-   若A和B为独立事件，A和B同时发生的概率为</br></br>
+
+<h3 style="text-align: center">
+
+$p(A \cap B) = p(A)p(B)$
+
+</h3>
+
+-   若A和B彼此不独立，A和B同时发生的概率为</br></br>
+
+<h3 style="text-align: center">
+
+$p(A \cup B) = p(A)p(B|A)$
+
+</h3>
+
+> p(B\|A) 意为在B发生的情况下，A发生的概率
+
+## 条件概率(Conditional probability)
+
+</br></br>
+
+-   若两个事件彼此不独立，在一个事件已经发生的情况下，对另一个事件发生的概率的衡量。</br></br>
+
+-   如果感兴趣的事件是A，而事件B已知或假定已经发生，"给定B的A的条件概率"，或 "B条件下A的概率"，通常写为：</br></br>
+
+<h3 style="text-align: center">
+
+$p(A | B) = \frac{p(A \cap B)}{p(B)}$
+
+</h3>
+
+## 贝叶斯定理(Bayes' theorem)
+
+</br></br>
+
+::: columns
+::: {.column width="50%"}
+-   $p(B|A) = \frac{p(A \cap B)}{p(A)}$</br></br>
+
+-   $p(A|B) = \frac{p(A \cap B)}{p(B)}$</br></br>
+
+-   $\to p(A|B) = \frac{p(A|B)p(A)}{p(B)}$</br></br>
+:::
+
+::: {.column width="50%"}
+![](images/image-868441116.png)
+:::
+:::
+
+# 模型(Model)
+
+![](images/image-121590485.png){fig-align="center"}
+
+## 
+
+</br></br>
+
+不同的模型可以用来解释相同的现象</br></br>
+
+*The manner in which mathematical theories are applied **does not depend on** preconceived ideas; it is a purposeful technique depending on, and changing with, **experience**.* </br></br>
+
+## 
+
+![](images/image-1069206290.png){fig-align="center"}
+
+## 
+
+</br></br>
+
+<h3 style="text-align: center">
+
+</br></br> </br></br> 你的选择是什么？
+
+</h3>
+
+## 
+
+![](images/image-1201995671.png){fig-align="center"}
+
+## 
+
+</br></br>
+
+<h3 style="text-align: center">
+
+</br></br> </br></br> 你的选择是什么？
+
+</h3>
+
+## 
+
+<h3 style="text-align: center">
+
+::: {.fragment .fade-in}
+你可以将此结论拓展到总体吗？</br></br>
+:::
+
+::: {.fragment .fade-in}
+你可以解释这个结果吗？</br></br>
+:::
+
+::: {.fragment .fade-in}
+模型可以帮助我们进行解释吗？</br></br>
+:::
+
+</h3>
+
+## 
+
+::: columns
+::: {.column width="50%"}
+### 模型1：Rational model
+
+</br></br> - 理性经济人假设</br></br>
+
+-   决策者基于每个选项的期望值进行决策
+
+### 模型2：Prospect theory
+
+</br></br> - 有限理性假设</br></br>
+
+-   决策者厌恶损失，偏好风险
+:::
+
+::: {.column width="50%"}
+![](images/image-1712468283.png)
+:::
+:::
+
+## 
+
+</br></br>
+
+<h3 style="text-align: center">
+
+</br></br> </br></br> 你还知道那些模型（不限于心理学）？
+
+</h3>
+
+## 
+
+![](images/image-2104116327.png){fig-align="center"}
+
+<h6 style="text-align: center">
+
+</br></br> </br></br> 这是某一行星移动的轨迹，你能尝试解释它吗</br></br> （图片来源：Proceedings of the Royal Society of London）
+
+</h6>
+
+## 
+
+![](images/image-885251574.png){fig-align="center"}
+
+<h3 style="text-align: center">
+
+</br></br> </br></br> 日心说(Heliocentrism) vs 地心说(Geocentrism)
+
+</h3>
+
+## 
+
+<h3 style="text-align: center">
+
+</br></br> </br></br> 哪一个模型是正确的呢？日心说(Heliocentrism) 或 地心说(Geocentrism)</br></br>
+
+</h3>
+
+::: {.fragment .fade-in}
+日心说和地心说都假设行星的运动轨迹是圆周，但是实际上行星的运动轨迹是椭圆，所以两个模型都存在问题 </br></br>
+:::
+
+## 开普勒三大定律
+
+::: columns
+::: {.column width="50%"}
+-轨道定律(The Law of Ellipses) -面积定律(The Law of Equal Areas) -周期定律(The Law of Harmonies)
+:::
+
+::: {.column width="50%"}
+![](images/image-373030439.png)
+:::
+:::
+
+## 万有引力定理
+
+![](images/image-107999554.png){fig-align="center"}
+
+1846年，天文学家发现了海王星，它是围绕我们太阳运行的第八颗行星。
+
+这一发现是基于对其预测位置的数学计算，而这一预测是由天王星的轨道上观察到的扰动造成的，使用的是万有引力定律。
+
+## 
+
+<h3 style="text-align: center">
+
+</br></br> </br></br>
+
+万有引力定律是正确的模型吗?
+
+</h3>
+
+## 
+
+![](images/image-1866853416.png){fig-align="center"}
+
+# 研究中的统计(Statistics)
+
+![](images/image-1588685546.png){fig-align="center"}
+
+## 研究的基本流程
+
+![](images/image-2028815256.png){fig-align="center"}
+
+<center>(Munafò et al., 2017. Nat Hum Behav)</center>
+
+## 研究设计
+
+### 描述性研究(Descriptive Research)
+
+### 相关性研究(Relational or Correlational Research)
+
+### 实验研究(Causal or Experimental Research)
+
+## 描述性研究
+
+![](images/image-433155870.png){fig-align="center"}
+
+-   描绘已经存在的、在一个群体或人群中的情况;</br></br>
+
+-   不是为了测量效果，而只是为了描述效果。
+
+## 相关性研究
+
+![](images/image-302627814.png){fig-align="center"}
+
+-   调查两个或多个变量之间的联系;</br></br>
+
+-   被比较的变量一般已经存在于群体或人群中。
+
+## 实验研究
+
+![](images/image-1619273941.png){fig-align="center"}
+
+-   调查一个或多个变量对一个或多个结果变量的影响;</br></br>
+
+-   确定一个变量是否导致另一个变量发生或变化。
+
+## 问题
+
+<h3 style="text-align: center">
+
+</br></br> </br></br>
+
+哪一种研究更常见于心理学研究？为什么？
+
+</h3>
+
+## 
+
+<h3 style="text-align: center">
+
+</br></br> </br></br>
+
+你可以预测你能记住多少东西吗？
+
+</h3>
+
+## 搜集资料 (Collection)
+
+### 测量
+
+#### 操作性定义
+
+#### 样本的代表性
+
+##### - 简单随机抽样
+
+##### - 系统抽样
+
+##### - 分层抽样
+
+##### - 分组抽样
+
+### 变量
+
+#### 常数和变量
+
+#### 自变量和因变量
+
+#### 连续变量和离散变量
+
+## 操作性定义(Operational definition)
+
+-   理论定义与操作定义
+
+-   模拟或代表一个概念或理论定义，也被称为构造(construct)。
+
+-   描述定义该概念的操作（程序、行动或过程），要有足够的具体性，以便其他调查者可以复制他们的研究。
+
+-   用具体的、可公开的准备或验证测试的过程来定义系统状态。
+
+## 简单随机抽样
+
+![](images/image-334564034.png){fig-align="center"} -每个个体的选择完全是偶然的，总体中的每个个体被选中的机会或概率是相等;</br></br>
+
+-获得随机样本的一种方法是给总体中的每个个体一个编号，然后用一个随机数字表来决定包括哪些人。
+
+## 系统抽样
+
+![](images/image-2033740051.png){fig-align="center"}
+
+-从抽样框架中按照规律间隔选择个体;</br></br>
+
+-间隔的选择是为了确保足够的样本量;</br></br>
+
+-如果你需要从一个大小为x的总体中抽取n个样本，你应该选择每x/n个个体作为样本。 \## 分层抽样 ![](images/image-874807997.png){fig-align="center"}
+
+-将总体划分为具有类似特征的子群体（或层级）;</br></br>
+
+-当我们测量值在不同的子群体之间有所不同，并且我们想确保所有子群体的代表性时，就会使用这种方法;</br></br>
+
+-然后从每个层级中抽取合适的样本量来获得研究样本。
+
+## 分组抽样
+
+![](images/image-1643270489.png){fig-align="center"}
+
+![](images/image-441376414.png){fig-align="center"}
+
+## 
+
+<h3 style="text-align: center">
+
+</br></br> </br></br>
+
+什么是记忆？记忆该怎样测量？
+
+</h3>
+
+![](images/image-608646591.png){fig-align="center"}
+
+
+![](images/image-1107343863.png){fig-align="center"}
+
+
+![](images/image-1856831248.png){fig-align="center"}
+
+
+![](images/image-1599409127.png){fig-align="center"}
+
