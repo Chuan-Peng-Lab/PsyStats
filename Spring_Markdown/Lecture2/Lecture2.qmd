@@ -7,7 +7,7 @@ format:
     css: ["theme/theme.css"]
     theme: simple
 editor: visual
-fontsize: 20pt
+fontsize: 24pt
 ---
 
 ## 
@@ -72,8 +72,11 @@ Hu Chuan-Peng
 ## 
 
 ![](images/image-1294083371.png){fig-align="center"}
-<h6 style="text-align: center">
+
+<h6 style="text-align: center; font-size: 18px;">
+
 (William Feller (1968). An introduction to probability theory and its applications. Chapter 1)
+
 </h6>
 
 ## 
@@ -90,11 +93,13 @@ Hu Chuan-Peng
 
     *technique depending on, and changing with,* **experience.**
 
-
-
-
 ## 日常生活中的现象
+</br></br>
 
+- 在选举期间，政治调查机构会进行各种调查，以了解选民的意见和偏好。</br></br>
+- 在医学研究中，进行临床试验检验一个新药是否比现有药物更有效。</br></br>
+- 在股票市场中，投资者可以使用股票价格图来了解市场趋势和预测股票价格的变化。</br></br>
+- 在疫苗试验中，研究人员可能会随机选择一些参与者，以接受实验药物或安慰剂。</br></br>
 
 
 # 概率(Probablity)
@@ -121,9 +126,20 @@ Hu Chuan-Peng
 
 -   **偶然性(Uncertainty)**: 在每一次试验(trial)之前，结果都无法事前确定;</br></br>
 
--   **规律性(Regularity)**: 相同条件下进行多次重复试验(trial)，实验(experiment)的结果会呈现出统计规律.</br></br>
+-   **规律性(Regularity)**: 相同条件下进行多次重复试验(trial)，实验(experiment)的结果会呈现出统计规律.</br></br> \> 多次抛硬币，每次的结果是正面朝上还是反面朝上是未知的。但是进行10,000次，大约有一半的次数是正面朝上。
 
 ## 
+
+-   在新冠疫情中，感染新冠病毒的情况就是一个典型的**随机现象**。</br></br>
+
+    -   在同样的条件下，不同的人可能会表现出不同的感染情况。例如，某些人可能会因为免疫系统较强而不易感染，而另一些人则可能因为免疫系统较弱而更容易感染。**（偶然性）**</br></br>
+
+    -   同一片地区，不同的人在相同的条件下感染了新冠病毒，他们的症状相似。**（规律性）**</br></br>
+
+## 
+
+<img src="images/4.png" style="width: 100px; height: 100px; position: absolute; right: 0;"/>
+
 
 </br></br>
 
@@ -131,15 +147,19 @@ Hu Chuan-Peng
 
 </br></br> </br></br>
 
-你可以列出实验(experiment)的所有结果吗？ </br></br>
+开始抛10次硬币，你可以列出实验(experiment)的所有结果吗？ </br></br> 记录下每次抛硬币的结果。</br></br> \> 正面：数字，反面：花
 
 </h3>
 
 ## 样本空间(Sample space, $\Omega$)
 
 -   随机实验(experiment)的所有可能结果构成的集合(set);</br></br>
+
 -   $p(\Omega)$ = 1;</br></br>
--   E.g. 当你掷一枚硬币，$\Omega$={数字，花}
+
+-   E.g.1. 当你掷一枚硬币，$\Omega$={正面，反面}</br></br> \> 正面：数字，反面：花
+
+-   E.g.2.在新冠疫情的情境中，我们可以将样本空间定义为所有可能感染新冠病毒的人群集合，包括已经感染、未感染但易感染等人群。</br></br>
 
 ## 
 
@@ -156,6 +176,8 @@ Hu Chuan-Peng
 ## 事件(Event)
 
 -   实验(experiment)结果的集合(样本空间的一个子集(subset));</br></br>
+    -   一个事件A表示硬币落在正面，用A = {正面} 来表示。</br></br>
+    -   在新冠疫情中，一个事件可以是指所有感染新冠病毒的人群，或是所有在某一时间点内接种了疫苗的人群。</br></br>
 
 <h3 style="text-align: left">
 
@@ -165,6 +187,8 @@ Hu Chuan-Peng
 
 -   在样本空间中只包含一个结果的事件;</br></br>
 -   任何两个基本事件是互斥的;</br></br>
+    -   硬币落在正面或反面的情况，可以用 {正面} 和 {反面} 来表示。</br></br>
+    -   某个人是否感染了新冠病毒，或是某个人是否在某一时间点内接种了疫苗。</br></br>
 
 <h3 style="text-align: left">
 
@@ -174,7 +198,10 @@ Hu Chuan-Peng
 
 -   在样本空间中包含一个以上结果的事件;</br></br>
 
--   任何复合事件都可以表示为若干个基本事件的和。
+-   任何复合事件都可以表示为若干个基本事件的和。</br></br>
+
+    -   在某一时间点内既接种了疫苗又感染了新冠病毒的人群。</br></br>
+    -   如果要求抛硬币两次，每次都落在正面的概率，则可以定义一个复合事件B，表示两次抛硬币的结果都是正面。用B = {正面,正面} 来表示。</br></br>
 
 ## 
 
@@ -303,7 +330,7 @@ $C_n^m = \frac{n!}{(n-m)!m!} = \frac{n(n-1)(n-2)...(n-m+1)}{m(m-1)(m-2)...1}$
 ## 
 
 </br></br>
-
+<img src="images/4.png" style="width: 100px; height: 100px; position: absolute; right: 0;"/>
 <h3 style="text-align: center">
 
 </br></br> </br></br>
@@ -311,14 +338,13 @@ $C_n^m = \frac{n!}{(n-m)!m!} = \frac{n(n-1)(n-2)...(n-m+1)}{m(m-1)(m-2)...1}$
 我们抛出的硬币公平吗？也就是说，抛出硬币时，数字朝上的可能性是多少？
 
 ::: {.fragment .fade-in}
+-   让我们掷硬币20次
 -   让我们无限次掷硬币
 :::
 
 </h3>
 
-## 
 
-![](images/%E5%9B%BE%E7%89%871.gif){fig-align="center"}
 
 ## 频率(Frequency)&概率(Probablity)
 
@@ -382,9 +408,9 @@ $C_n^m = \frac{n!}{(n-m)!m!} = \frac{n(n-1)(n-2)...(n-m+1)}{m(m-1)(m-2)...1}$
 
 <h3 style="text-align: center">
 
-$p(A and B) = p(A \cap B) = p(A)p(B)$</br></br>
+$p(A\,and\,B) = p(A \cap B) = p(A)p(B)$</br></br>
 
-$p(A or B) = p(A \cup B) = p(A) + p(B) - p(A \cap B)$
+$p(A\,or\,B) = p(A \cup B) = p(A) + p(B) - p(A \cap B)$
 
 </h3>
 
@@ -396,9 +422,9 @@ $p(A or B) = p(A \cup B) = p(A) + p(B) - p(A \cap B)$
 
 <h3 style="text-align: center">
 
-$p(A and B) = p(A \cap B) = 0$</br></br>
+$p(A\,and\,B) = p(A \cap B) = 0$</br></br>
 
-$p(A or B) = p(A \cup B) = p(A) + p(B) - p(A \cap B)$
+$p(A\,or\,B) = p(A \cup B) = p(A) + p(B) - p(A \cap B)$
 
 $= p(A)+p(B)-0 = p(A)+p(B)$
 
@@ -646,11 +672,13 @@ $p(A | B) = \frac{p(A \cap B)}{p(B)}$
 
 ## 研究设计
 
-### 描述性研究(Descriptive Research)
+### </br></br>
 
-### 相关性研究(Relational or Correlational Research)
+### 描述性研究(Descriptive Research)</br></br>
 
-### 实验研究(Causal or Experimental Research)
+### 相关性研究(Relational or Correlational Research)</br></br>
+
+### 实验研究(Causal or Experimental Research)</br></br>
 
 ## 描述性研究
 
@@ -700,13 +728,13 @@ $p(A | B) = \frac{p(A \cap B)}{p(B)}$
 
 ## 操作性定义(Operational definition)
 
--   理论定义与操作定义
+-   理论定义与操作定义。</br></br>
 
--   模拟或代表一个概念或理论定义，也被称为构造(construct)。
+-   模拟或代表一个概念或理论定义，也被称为构造(construct)。</br></br>
 
--   描述定义该概念的操作（程序、行动或过程），要有足够的具体性，以便其他调查者可以复制他们的研究。
+-   描述定义该概念的操作（程序、行动或过程），要有足够的具体性，以便其他调查者可以复制他们的研究。</br></br>
 
--   用具体的、可公开的准备或验证测试的过程来定义系统状态。
+-   用具体的、可公开的准备或验证测试的过程来定义系统状态。</br></br>
 
 ## 简单随机抽样(Simple random sampling)
 
@@ -724,43 +752,38 @@ $p(A | B) = \frac{p(A \cap B)}{p(B)}$
 
 -   间隔的选择是为了确保足够的样本量;</br></br>
 
--   如果你需要从一个大小为x的总体中抽取n个样本，你应该选择每x/n个个体作为样本。 \## 分层抽样 ![](images/image-874807997.png){fig-align="center"}
-
--   将总体划分为具有类似特征的子群体（或层级）;</br></br>
-
--   当我们测量值在不同的子群体之间有所不同，并且我们想确保所有子群体的代表性时，就会使用这种方法;</br></br>
-
--   然后从每个层级中抽取合适的样本量来获得研究样本。
+-   如果你需要从一个大小为x的总体中抽取n个样本，你应该选择每x/n个个体作为样本。 
 
 ## 分层抽样(Stratified sampling)
 
 ![](images/image-767791512.png){fig-align="center"}
 
-- 总体被划分为具有类似特征的层级。
+-   当我们测量值在不同的子群体之间有所不同，并且我们想确保所有子群体的代表性时，就会使用这种方法;</br></br>
 
-- 样本在不同的层级中存在差异。
+-   总体被划分为具有类似特征的层级。</br></br>
+-   然后从每个层级中抽取合适的样本量来获得研究样本。</br></br>
+-   样本在不同的层级中存在差异。</br></br>
+-   为了确保样本的代表性，每个层级中抽取合适的样本量来获得研究样本。</br></br>
 
-- 为了确保样本的代表性，每个层级中抽取合适的样本量来获得研究样本。
-
-## 分组抽样
+## 分组抽样(Clustered sampling)
 
 ![](images/image-1643270489.png){fig-align="center"}
 
--   以总体的子组作为抽样单位，而不是单个个体。
+-   以总体的子组作为抽样单位，而不是单个个体。</br></br>
 
--   人群被分为亚组，称为集群，这些亚组是随机选择纳入研究的。
+-   人群被分为亚组，称为集群，这些亚组是随机选择纳入研究的。</br></br>
 
--   在单阶段整群抽样方法中 ，将所选整群的所有成员纳入研究。
+-   在单阶段整群抽样方法中 ，将所选整群的所有成员纳入研究。</br></br>
 
--   在两阶段整群抽样中，从每一群中随机选择一个个体纳入研究。
+-   在两阶段整群抽样中，从每一群中随机选择一个个体纳入研究。</br></br>
 
 ## 非概率抽样方法(Non-Probability Sampling Methods)
 
--   配额抽样(Quota sampling)
+-   配额抽样(Quota sampling)</br></br>
 
--   判断性或目的性抽样(Judgement /or Purposive Sampling)
+-   判断性或目的性抽样(Judgement /or Purposive Sampling)</br></br>
 
--   雪球抽样(Snowball sampling)
+-   雪球抽样(Snowball sampling)</br></br>
 
 ![](images/image-441376414.png){fig-align="center"}
 
@@ -790,15 +813,15 @@ $p(A | B) = \frac{p(A \cap B)}{p(B)}$
 
 ## 抽样偏倚(Bias in sampling)
 
--   在选择样本时,应该考虑5个重要的潜在偏差来源,而不考虑使用的方法。
+-   在选择样本时,应该考虑5个重要的潜在偏差来源,而不考虑使用的方法。</br></br>
 
-    -   偏离了预先商定的抽样规则[^1]
+    -   偏离了预先商定的抽样规则[^1]</br></br>
 
-    -   遗漏了难以接触到的人群中的个体[^2]
+    -   遗漏了难以接触到的人群中的个体[^2]</br></br>
 
-    -   将被选中的人替换成其他人，比如在难以联系上他们的时候[^3]
+    -   将被选中的人替换成其他人，比如在难以联系上他们的时候[^3]</br></br>
 
-    -   回复率很低[^4]
+    -   回复率很低[^4]</br></br>
 
     -   过时的名单被用作样本框架（例如，如果它不包括最近搬到某个地区的人）。[^5]
 
@@ -816,55 +839,59 @@ $p(A | B) = \frac{p(A \cap B)}{p(B)}$
 
 -   常量与变量
 
-    -   Constant and variable
+    -   Constant and variable</br></br>
 
 -   自变量和因变量
 
-    -   Independent variable and dependent variable
+    -   Independent variable and dependent variable</br></br>
 
 -   连续变量和离散变量
 
-    -   Continuous variable and discrete variable \##
+    -   Continuous variable and discrete variable 
+##
 
 -   常量 (Constant)
 
-    -   在整个实验过程中保持不变的变量，而其他变量可能发生变化。
+    -   在整个实验过程中保持不变的变量，而其他变量可能发生变化。</br></br>
 
 -   变量(Variable)
 
-    -   任何可以采取不同值的特征，如身高、年龄、温度或考试分数。
+    -   任何可以采取不同值的特征，如身高、年龄、温度或考试分数。</br></br> 
+    
+::: {.fragment .fade-in}
 
-        **Constant and variable vary with research question and design**
+**Constant and variable vary with research question and design**
 
-        **同一个变量在不同研究中角色可能会变化**
+**同一个变量在不同研究中角色可能会变化** 
+:::
 
 ## 变量(Variable)
 
--   自变量(Independent variable )
+-   自变量(Independent variable )</br></br>
 
-    -   自变量是导致变化的原因
+    -   自变量是导致变化的原因</br></br>
 
-    -   它的值与研究中的其他变量无关
+    -   它的值与研究中的其他变量无关</br></br>
 
--   因变量(Dependent variable)
+-   因变量(Dependent variable)</br></br>
 
-    -   因变量是变化的结果
+    -   因变量是变化的结果</br></br>
 
-    -   其数值取决于自变量的变化
+    -   其数值取决于自变量的变化</br></br>
 
 ## 变量(Variable)
 
 -   连续变量(Continuous variable)
 
-    -   一个变量可以有无限多的可能值
+    -   一个变量可以有无限多的可能值</br></br>
 
 -   离散变量(Discrete variable)
 
-    -   一个变量只能取有限数量的值
+    -   一个变量只能取有限数量的值</br></br>
 
-    -   所有的定性变量都是离散的，有些定量变量是离散的
+    -   所有的定性变量都是离散的，有些定量变量是离散的</br></br>
 
-    -   有时，一个具有足够离散值的变量在实际应用中可能被认为是连续的
+    -   有时，一个具有足够离散值的变量在实际应用中可能被认为是连续的</br></br>
 
 ## 
 
@@ -888,19 +915,19 @@ $p(A | B) = \frac{p(A \cap B)}{p(B)}$
 
 ## 统计分析与推断 (Analyze)
 
--   模型(Model )
+-   模型(Model)</br></br>
 
-    -   采用何种模型，为什么?
+    -   采用何种模型，为什么?</br></br>
 
--   结果(Results--a bunch of numbers))
+-   结果(Results--a bunch of numbers)</br></br>
 
-    -   结果是有效的吗?
+    -   结果是有效的吗?</br></br>
 
--   推断(Inference--binary or quantitative estimate))
+-   推断(Inference--binary or quantitative estimate)</br></br>
 
-    -   可以从数字中推断出什么?
+    -   可以从数字中推断出什么?</br></br>
 
--   做出决策(Decision-making)
+-   做出决策(Decision-making)</br></br>
 
 ## 
 
@@ -918,13 +945,21 @@ $p(A | B) = \frac{p(A \cap B)}{p(B)}$
 
 ![](images/image-1107343863.png){fig-align="center"}
 
+<h3 style="text-align: center">
+
 艾宾浩斯遗忘曲线(The Ebbinghaus Forgetting Curve)
+
+</h3>
 
 ## 
 
 ![](images%5Cimage-123.png){fig-align="center"}
 
+<h3 style="text-align: center">
+
 系列位置曲线(The serial position curve)
+
+</h3>
 
 ## 
 
@@ -946,13 +981,14 @@ $p(A | B) = \frac{p(A \cap B)}{p(B)}$
 
 ![](images/image-1599409127.png){fig-align="center"}
 
-
 ## 总结(Summary)
+
 </br></br>
+<h3 style="text-align: left; font-size: 32px;">
 
-- 概率</br></br>
+-   概率</br></br>
 
-- 模型</br></br>
+-   模型</br></br>
 
-- 统计</br></br>
-
+-   统计</br></br>
+</h3>

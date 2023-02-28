@@ -380,9 +380,9 @@
 <img data-src="images/image-1227697380.png" width="580" class="r-stretch quarto-figure-center"></section>
 <section id="section-2" class="slide level2">
 <h2></h2>
-<img data-src="images/image-1294083371.png" data-fig-align="center">
-<h6 style="text-align: center">
-(William Feller (1968). An introduction to probability theory and its applications. Chapter 1)
+
+<img data-src="images/image-1294083371.png" class="r-stretch quarto-figure-center"><h6 style="text-align: center; font-size: 18px;">
+<p>(William Feller (1968). An introduction to probability theory and its applications. Chapter 1)</p>
 </h6>
 </section>
 <section id="section-3" class="slide level2">
@@ -396,6 +396,16 @@
 <p><em>The</em> <em>manner in which mathematical theories are applied</em></p>
 <p><strong>does not depend on</strong> <em>preconceived ideas; it is a purposeful</em></p>
 <p><em>technique depending on, and changing with,</em> <strong>experience.</strong></p></li>
+</ul>
+</section>
+<section id="日常生活中的现象" class="slide level2">
+<h2>日常生活中的现象</h2>
+<p><br><br></p>
+<ul>
+<li>在选举期间，政治调查机构会进行各种调查，以了解选民的意见和偏好。<br><br></li>
+<li>在医学研究中，进行临床试验检验一个新药是否比现有药物更有效。<br><br></li>
+<li>在股票市场中，投资者可以使用股票价格图来了解市场趋势和预测股票价格的变化。<br><br></li>
+<li>在疫苗试验中，研究人员可能会随机选择一些参与者，以接受实验药物或安慰剂。<br><br></li>
 </ul>
 </section></section>
 <section>
@@ -420,26 +430,38 @@
 <ul>
 <li><p>在一定条件下，出现的可能结果不止一个，事前<strong>不能</strong>确切知道哪一个结果一定会出现，但<strong>大量重复试验(trial)</strong>中其结果又具有统计规律的现象;<br><br></p></li>
 <li><p><strong>偶然性(Uncertainty)</strong>: 在每一次试验(trial)之前，结果都无法事前确定;<br><br></p></li>
-<li><p><strong>规律性(Regularity)</strong>: 相同条件下进行多次重复试验(trial)，实验(experiment)的结果会呈现出统计规律.<br><br></p></li>
+<li><p><strong>规律性(Regularity)</strong>: 相同条件下进行多次重复试验(trial)，实验(experiment)的结果会呈现出统计规律.<br><br> &gt; 多次抛硬币，每次的结果是正面朝上还是反面朝上是未知的。但是进行10,000次，大约有一半的次数是正面朝上。</p></li>
 </ul>
 </section>
 <section id="section-6" class="slide level2">
 <h2></h2>
+<ul>
+<li><p>在新冠疫情中，感染新冠病毒的情况就是一个典型的<strong>随机现象</strong>。<br><br></p>
+<ul>
+<li><p>在同样的条件下，不同的人可能会表现出不同的感染情况。例如，某些人可能会因为免疫系统较强而不易感染，而另一些人则可能因为免疫系统较弱而更容易感染。<strong>（偶然性）</strong><br><br></p></li>
+<li><p>同一片地区，不同的人在相同的条件下感染了新冠病毒，他们的症状相似。<strong>（规律性）</strong><br><br></p></li>
+</ul></li>
+</ul>
+</section>
+<section id="section-7" class="slide level2">
+<h2></h2>
+<p><img src="images/4.png" style="width: 100px; height: 100px; position: absolute; right: 0;"></p>
 <p><br><br></p>
 <h3 style="text-align: center">
 <p><br><br> <br><br></p>
-<p>你可以列出实验(experiment)的所有结果吗？ <br><br></p>
+<p>开始抛10次硬币，你可以列出实验(experiment)的所有结果吗？ <br><br> 记录下每次抛硬币的结果。<br><br> &gt; 正面：数字，反面：花</p>
 </h3>
 </section>
 <section id="样本空间sample-space-omega" class="slide level2">
 <h2>样本空间(Sample space, <span class="math inline">\(\Omega\)</span>)</h2>
 <ul>
-<li>随机实验(experiment)的所有可能结果构成的集合(set);<br><br></li>
-<li><span class="math inline">\(p(\Omega)\)</span> = 1;<br><br></li>
-<li>E.g. 当你掷一枚硬币，<span class="math inline">\(\Omega\)</span>={数字，花}</li>
+<li><p>随机实验(experiment)的所有可能结果构成的集合(set);<br><br></p></li>
+<li><p><span class="math inline">\(p(\Omega)\)</span> = 1;<br><br></p></li>
+<li><p>E.g.1. 当你掷一枚硬币，<span class="math inline">\(\Omega\)</span>={正面，反面}<br><br> &gt; 正面：数字，反面：花</p></li>
+<li><p>E.g.2.在新冠疫情的情境中，我们可以将样本空间定义为所有可能感染新冠病毒的人群集合，包括已经感染、未感染但易感染等人群。<br><br></p></li>
 </ul>
 </section>
-<section id="section-7" class="slide level2">
+<section id="section-8" class="slide level2">
 <h2></h2>
 <p><br><br></p>
 <h3 style="text-align: center">
@@ -450,24 +472,36 @@
 <section id="事件event" class="slide level2">
 <h2>事件(Event)</h2>
 <ul>
-<li>实验(experiment)结果的集合(样本空间的一个子集(subset));<br><br></li>
+<li>实验(experiment)结果的集合(样本空间的一个子集(subset));<br><br>
+<ul>
+<li>一个事件A表示硬币落在正面，用A = {正面} 来表示。<br><br></li>
+<li>在新冠疫情中，一个事件可以是指所有感染新冠病毒的人群，或是所有在某一时间点内接种了疫苗的人群。<br><br></li>
+</ul></li>
 </ul>
 <h3 style="text-align: left">
 <p>基本事件(Elementary event)</p>
 </h3>
 <ul>
 <li>在样本空间中只包含一个结果的事件;<br><br></li>
-<li>任何两个基本事件是互斥的;<br><br></li>
+<li>任何两个基本事件是互斥的;<br><br>
+<ul>
+<li>硬币落在正面或反面的情况，可以用 {正面} 和 {反面} 来表示。<br><br></li>
+<li>某个人是否感染了新冠病毒，或是某个人是否在某一时间点内接种了疫苗。<br><br></li>
+</ul></li>
 </ul>
 <h3 style="text-align: left">
 <p>复合事件(Compound event)</p>
 </h3>
 <ul>
 <li><p>在样本空间中包含一个以上结果的事件;<br><br></p></li>
-<li><p>任何复合事件都可以表示为若干个基本事件的和。</p></li>
+<li><p>任何复合事件都可以表示为若干个基本事件的和。<br><br></p>
+<ul>
+<li>在某一时间点内既接种了疫苗又感染了新冠病毒的人群。<br><br></li>
+<li>如果要求抛硬币两次，每次都落在正面的概率，则可以定义一个复合事件B，表示两次抛硬币的结果都是正面。用B = {正面,正面} 来表示。<br><br></li>
+</ul></li>
 </ul>
 </section>
-<section id="section-8" class="slide level2">
+<section id="section-9" class="slide level2">
 <h2></h2>
 <p><br><br></p>
 <h3 style="text-align: center">
@@ -475,7 +509,7 @@
 <p>当你掷硬币一次，基本事件是什么呢？ <br><br></p>
 </h3>
 </section>
-<section id="section-9" class="slide level2">
+<section id="section-10" class="slide level2">
 <h2></h2>
 <p><br><br></p>
 <h3 style="text-align: center">
@@ -483,7 +517,7 @@
 <p>当你掷硬币两次，基本事件是什么呢？ <br><br></p>
 </h3>
 </section>
-<section id="section-10" class="slide level2">
+<section id="section-11" class="slide level2">
 <h2></h2>
 <p><br><br></p>
 <h3 style="text-align: center">
@@ -491,7 +525,7 @@
 <p>当你掷硬币三次，基本事件是什么呢？ <br><br></p>
 </h3>
 </section>
-<section id="section-11" class="slide level2">
+<section id="section-12" class="slide level2">
 <h2></h2>
 
 <img data-src="images/image-124036223.png" class="r-stretch quarto-figure-center"><h6 style="text-align: center">
@@ -553,23 +587,20 @@
 <p><span class="math inline">\(C_n^m = \frac{n!}{(n-m)!m!} = \frac{n(n-1)(n-2)...(n-m+1)}{m(m-1)(m-2)...1}\)</span></p>
 </h6>
 </section>
-<section id="section-12" class="slide level2">
+<section id="section-13" class="slide level2">
 <h2></h2>
-<p><br><br></p>
+<br><br> <img src="images/4.png" style="width: 100px; height: 100px; position: absolute; right: 0;">
 <h3 style="text-align: center">
 <p><br><br> <br><br></p>
 <p>我们抛出的硬币公平吗？也就是说，抛出硬币时，数字朝上的可能性是多少？</p>
 <div class="fragment fade-in">
 <ul>
+<li>让我们掷硬币20次</li>
 <li>让我们无限次掷硬币</li>
 </ul>
 </div>
 </h3>
 </section>
-<section id="section-13" class="slide level2">
-<h2></h2>
-
-<img data-src="images/%E5%9B%BE%E7%89%871.gif" class="r-stretch quarto-figure-center"></section>
 <section id="频率frequency概率probablity" class="slide level2">
 <h2>频率(Frequency)&amp;概率(Probablity)</h2>
 <p><br><br></p>
@@ -647,8 +678,8 @@
 <li>如果两个事件A和B是独立的<br><br></li>
 </ul>
 <h3 style="text-align: center">
-<p><span class="math inline">\(p(A and B) = p(A \cap B) = p(A)p(B)\)</span><br><br></p>
-<p><span class="math inline">\(p(A or B) = p(A \cup B) = p(A) + p(B) - p(A \cap B)\)</span></p>
+<p><span class="math inline">\(p(A\,and\,B) = p(A \cap B) = p(A)p(B)\)</span><br><br></p>
+<p><span class="math inline">\(p(A\,or\,B) = p(A \cup B) = p(A) + p(B) - p(A \cap B)\)</span></p>
 </h3>
 </section>
 <section id="互不相容事件mutually-exclusive-event" class="slide level2">
@@ -658,8 +689,8 @@
 <li>如果两个事件A和B是互不相容的<br><br></li>
 </ul>
 <h3 style="text-align: center">
-<p><span class="math inline">\(p(A and B) = p(A \cap B) = 0\)</span><br><br></p>
-<p><span class="math inline">\(p(A or B) = p(A \cup B) = p(A) + p(B) - p(A \cap B)\)</span></p>
+<p><span class="math inline">\(p(A\,and\,B) = p(A \cap B) = 0\)</span><br><br></p>
+<p><span class="math inline">\(p(A\,or\,B) = p(A \cup B) = p(A) + p(B) - p(A \cap B)\)</span></p>
 <p><span class="math inline">\(= p(A)+p(B)-0 = p(A)+p(B)\)</span></p>
 </h3>
 </section>
@@ -861,9 +892,10 @@
 </section>
 <section id="研究设计" class="slide level2">
 <h2>研究设计</h2>
-<h3 id="描述性研究descriptive-research">描述性研究(Descriptive Research)</h3>
-<h3 id="相关性研究relational-or-correlational-research">相关性研究(Relational or Correlational Research)</h3>
-<h3 id="实验研究causal-or-experimental-research">实验研究(Causal or Experimental Research)</h3>
+<h3 id="section-27"><br><br></h3>
+<h3 id="描述性研究descriptive-research">描述性研究(Descriptive Research)<br><br></h3>
+<h3 id="相关性研究relational-or-correlational-research">相关性研究(Relational or Correlational Research)<br><br></h3>
+<h3 id="实验研究causal-or-experimental-research">实验研究(Causal or Experimental Research)<br><br></h3>
 </section>
 <section id="描述性研究" class="slide level2">
 <h2>描述性研究</h2>
@@ -896,7 +928,7 @@
 <p>哪一种研究更常见于心理学研究？为什么？</p>
 </h3>
 </section>
-<section id="section-27" class="slide level2">
+<section id="section-28" class="slide level2">
 <h2></h2>
 <h3 style="text-align: center">
 <p><br><br> <br><br></p>
@@ -909,10 +941,10 @@
 <section id="操作性定义operational-definition" class="slide level2">
 <h2>操作性定义(Operational definition)</h2>
 <ul>
-<li><p>理论定义与操作定义</p></li>
-<li><p>模拟或代表一个概念或理论定义，也被称为构造(construct)。</p></li>
-<li><p>描述定义该概念的操作（程序、行动或过程），要有足够的具体性，以便其他调查者可以复制他们的研究。</p></li>
-<li><p>用具体的、可公开的准备或验证测试的过程来定义系统状态。</p></li>
+<li><p>理论定义与操作定义。<br><br></p></li>
+<li><p>模拟或代表一个概念或理论定义，也被称为构造(construct)。<br><br></p></li>
+<li><p>描述定义该概念的操作（程序、行动或过程），要有足够的具体性，以便其他调查者可以复制他们的研究。<br><br></p></li>
+<li><p>用具体的、可公开的准备或验证测试的过程来定义系统状态。<br><br></p></li>
 </ul>
 </section>
 <section id="简单随机抽样simple-random-sampling" class="slide level2">
@@ -925,49 +957,44 @@
 </section>
 <section id="系统抽样systematic-sampling" class="slide level2">
 <h2>系统抽样(Systematic sampling)</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/image-2033740051.png"></p>
-</figure>
-</div>
-<ul>
+
+<img data-src="images/image-2033740051.png" class="r-stretch quarto-figure-center"><ul>
 <li><p>从抽样框架中按照规律间隔选择个体;<br><br></p></li>
 <li><p>间隔的选择是为了确保足够的样本量;<br><br></p></li>
-<li><p>如果你需要从一个大小为x的总体中抽取n个样本，你应该选择每x/n个个体作为样本。 ## 分层抽样 <img data-src="images/image-874807997.png" data-fig-align="center"></p></li>
-<li><p>将总体划分为具有类似特征的子群体（或层级）;<br><br></p></li>
-<li><p>当我们测量值在不同的子群体之间有所不同，并且我们想确保所有子群体的代表性时，就会使用这种方法;<br><br></p></li>
-<li><p>然后从每个层级中抽取合适的样本量来获得研究样本。</p></li>
+<li><p>如果你需要从一个大小为x的总体中抽取n个样本，你应该选择每x/n个个体作为样本。</p></li>
 </ul>
 </section>
 <section id="分层抽样stratified-sampling" class="slide level2">
 <h2>分层抽样(Stratified sampling)</h2>
 
 <img data-src="images/image-767791512.png" class="r-stretch quarto-figure-center"><ul>
-<li><p>总体被划分为具有类似特征的层级。</p></li>
-<li><p>样本在不同的层级中存在差异。</p></li>
-<li><p>为了确保样本的代表性，每个层级中抽取合适的样本量来获得研究样本。</p></li>
+<li><p>当我们测量值在不同的子群体之间有所不同，并且我们想确保所有子群体的代表性时，就会使用这种方法;<br><br></p></li>
+<li><p>总体被划分为具有类似特征的层级。<br><br></p></li>
+<li><p>然后从每个层级中抽取合适的样本量来获得研究样本。<br><br></p></li>
+<li><p>样本在不同的层级中存在差异。<br><br></p></li>
+<li><p>为了确保样本的代表性，每个层级中抽取合适的样本量来获得研究样本。<br><br></p></li>
 </ul>
 </section>
-<section id="分组抽样" class="slide level2">
-<h2>分组抽样</h2>
+<section id="分组抽样clustered-sampling" class="slide level2">
+<h2>分组抽样(Clustered sampling)</h2>
 
 <img data-src="images/image-1643270489.png" class="r-stretch quarto-figure-center"><ul>
-<li><p>以总体的子组作为抽样单位，而不是单个个体。</p></li>
-<li><p>人群被分为亚组，称为集群，这些亚组是随机选择纳入研究的。</p></li>
-<li><p>在单阶段整群抽样方法中 ，将所选整群的所有成员纳入研究。</p></li>
-<li><p>在两阶段整群抽样中，从每一群中随机选择一个个体纳入研究。</p></li>
+<li><p>以总体的子组作为抽样单位，而不是单个个体。<br><br></p></li>
+<li><p>人群被分为亚组，称为集群，这些亚组是随机选择纳入研究的。<br><br></p></li>
+<li><p>在单阶段整群抽样方法中 ，将所选整群的所有成员纳入研究。<br><br></p></li>
+<li><p>在两阶段整群抽样中，从每一群中随机选择一个个体纳入研究。<br><br></p></li>
 </ul>
 </section>
 <section id="非概率抽样方法non-probability-sampling-methods" class="slide level2">
 <h2>非概率抽样方法(Non-Probability Sampling Methods)</h2>
 <ul>
-<li><p>配额抽样(Quota sampling)</p></li>
-<li><p>判断性或目的性抽样(Judgement /or Purposive Sampling)</p></li>
-<li><p>雪球抽样(Snowball sampling)</p></li>
+<li><p>配额抽样(Quota sampling)<br><br></p></li>
+<li><p>判断性或目的性抽样(Judgement /or Purposive Sampling)<br><br></p></li>
+<li><p>雪球抽样(Snowball sampling)<br><br></p></li>
 </ul>
 
 <img data-src="images/image-441376414.png" class="r-stretch quarto-figure-center"></section>
-<section id="section-28" class="slide level2">
+<section id="section-29" class="slide level2">
 <h2></h2>
 <p><br><br></p>
 <h3 style="text-align: center">
@@ -975,7 +1002,7 @@
 <p>什么是记忆？记忆该怎样测量？</p>
 </h3>
 </section>
-<section id="section-29" class="slide level2">
+<section id="section-30" class="slide level2">
 <h2></h2>
 <p><br><br></p>
 <h3 style="text-align: center">
@@ -986,12 +1013,12 @@
 <section id="抽样偏倚bias-in-sampling" class="slide level2">
 <h2>抽样偏倚(Bias in sampling)</h2>
 <ul>
-<li><p>在选择样本时,应该考虑5个重要的潜在偏差来源,而不考虑使用的方法。</p>
+<li><p>在选择样本时,应该考虑5个重要的潜在偏差来源,而不考虑使用的方法。<br><br></p>
 <ul>
-<li><p>偏离了预先商定的抽样规则<sup>1</sup></p></li>
-<li><p>遗漏了难以接触到的人群中的个体<sup>2</sup></p></li>
-<li><p>将被选中的人替换成其他人，比如在难以联系上他们的时候<sup>3</sup></p></li>
-<li><p>回复率很低<sup>4</sup></p></li>
+<li><p>偏离了预先商定的抽样规则<sup>1</sup><br><br></p></li>
+<li><p>遗漏了难以接触到的人群中的个体<sup>2</sup><br><br></p></li>
+<li><p>将被选中的人替换成其他人，比如在难以联系上他们的时候<sup>3</sup><br><br></p></li>
+<li><p>回复率很低<sup>4</sup><br><br></p></li>
 <li><p>过时的名单被用作样本框架（例如，如果它不包括最近搬到某个地区的人）。<sup>5</sup></p></li>
 </ul></li>
 </ul>
@@ -1001,11 +1028,11 @@
 <ul>
 <li><p>常量与变量</p>
 <ul>
-<li>Constant and variable</li>
+<li>Constant and variable<br><br></li>
 </ul></li>
 <li><p>自变量和因变量</p>
 <ul>
-<li>Independent variable and dependent variable</li>
+<li>Independent variable and dependent variable<br><br></li>
 </ul></li>
 <li><p>连续变量和离散变量</p>
 <ul>
@@ -1013,28 +1040,30 @@
 </ul></li>
 <li><p>常量 (Constant)</p>
 <ul>
-<li>在整个实验过程中保持不变的变量，而其他变量可能发生变化。</li>
+<li>在整个实验过程中保持不变的变量，而其他变量可能发生变化。<br><br></li>
 </ul></li>
 <li><p>变量(Variable)</p>
 <ul>
-<li><p>任何可以采取不同值的特征，如身高、年龄、温度或考试分数。</p>
-<p><strong>Constant and variable vary with research question and design</strong></p>
-<p><strong>同一个变量在不同研究中角色可能会变化</strong></p></li>
+<li>任何可以采取不同值的特征，如身高、年龄、温度或考试分数。<br><br></li>
 </ul></li>
 </ul>
+<div class="fragment fade-in">
+<p><strong>Constant and variable vary with research question and design</strong></p>
+<p><strong>同一个变量在不同研究中角色可能会变化</strong></p>
+</div>
 </section>
 <section id="变量variable-1" class="slide level2">
 <h2>变量(Variable)</h2>
 <ul>
-<li><p>自变量(Independent variable )</p>
+<li><p>自变量(Independent variable )<br><br></p>
 <ul>
-<li><p>自变量是导致变化的原因</p></li>
-<li><p>它的值与研究中的其他变量无关</p></li>
+<li><p>自变量是导致变化的原因<br><br></p></li>
+<li><p>它的值与研究中的其他变量无关<br><br></p></li>
 </ul></li>
-<li><p>因变量(Dependent variable)</p>
+<li><p>因变量(Dependent variable)<br><br></p>
 <ul>
-<li><p>因变量是变化的结果</p></li>
-<li><p>其数值取决于自变量的变化</p></li>
+<li><p>因变量是变化的结果<br><br></p></li>
+<li><p>其数值取决于自变量的变化<br><br></p></li>
 </ul></li>
 </ul>
 </section>
@@ -1043,17 +1072,17 @@
 <ul>
 <li><p>连续变量(Continuous variable)</p>
 <ul>
-<li>一个变量可以有无限多的可能值</li>
+<li>一个变量可以有无限多的可能值<br><br></li>
 </ul></li>
 <li><p>离散变量(Discrete variable)</p>
 <ul>
-<li><p>一个变量只能取有限数量的值</p></li>
-<li><p>所有的定性变量都是离散的，有些定量变量是离散的</p></li>
-<li><p>有时，一个具有足够离散值的变量在实际应用中可能被认为是连续的</p></li>
+<li><p>一个变量只能取有限数量的值<br><br></p></li>
+<li><p>所有的定性变量都是离散的，有些定量变量是离散的<br><br></p></li>
+<li><p>有时，一个具有足够离散值的变量在实际应用中可能被认为是连续的<br><br></p></li>
 </ul></li>
 </ul>
 </section>
-<section id="section-30" class="slide level2">
+<section id="section-31" class="slide level2">
 <h2></h2>
 <p><br><br></p>
 <h3 style="text-align: center">
@@ -1072,22 +1101,22 @@ The Ebbinghaus Forgetting Curve
 <section id="统计分析与推断-analyze" class="slide level2">
 <h2>统计分析与推断 (Analyze)</h2>
 <ul>
-<li><p>模型(Model )</p>
+<li><p>模型(Model)<br><br></p>
 <ul>
-<li>采用何种模型，为什么?</li>
+<li>采用何种模型，为什么?<br><br></li>
 </ul></li>
-<li><p>结果(Results–a bunch of numbers))</p>
+<li><p>结果(Results–a bunch of numbers)<br><br></p>
 <ul>
-<li>结果是有效的吗?</li>
+<li>结果是有效的吗?<br><br></li>
 </ul></li>
-<li><p>推断(Inference–binary or quantitative estimate))</p>
+<li><p>推断(Inference–binary or quantitative estimate)<br><br></p>
 <ul>
-<li>可以从数字中推断出什么?</li>
+<li>可以从数字中推断出什么?<br><br></li>
 </ul></li>
-<li><p>做出决策(Decision-making)</p></li>
+<li><p>做出决策(Decision-making)<br><br></p></li>
 </ul>
 </section>
-<section id="section-31" class="slide level2">
+<section id="section-32" class="slide level2">
 <h2></h2>
 <p><br><br></p>
 <h3 style="text-align: center">
@@ -1095,17 +1124,21 @@ The Ebbinghaus Forgetting Curve
 <p>以下哪种模型是正确的？</p>
 </h3>
 </section>
-<section id="section-32" class="slide level2">
-<h2></h2>
-
-<img data-src="images/image-1107343863.png" class="r-stretch quarto-figure-center"><p>艾宾浩斯遗忘曲线(The Ebbinghaus Forgetting Curve)</p>
-</section>
 <section id="section-33" class="slide level2">
 <h2></h2>
 
-<img data-src="images%5Cimage-123.png" class="r-stretch quarto-figure-center"><p>系列位置曲线(The serial position curve)</p>
+<img data-src="images/image-1107343863.png" class="r-stretch quarto-figure-center"><h3 style="text-align: center">
+<p>艾宾浩斯遗忘曲线(The Ebbinghaus Forgetting Curve)</p>
+</h3>
 </section>
 <section id="section-34" class="slide level2">
+<h2></h2>
+
+<img data-src="images%5Cimage-123.png" class="r-stretch quarto-figure-center"><h3 style="text-align: center">
+<p>系列位置曲线(The serial position curve)</p>
+</h3>
+</section>
+<section id="section-35" class="slide level2">
 <h2></h2>
 <p><br><br></p>
 <h3 style="text-align: center">
@@ -1113,22 +1146,24 @@ The Ebbinghaus Forgetting Curve
 <p>如何解释结果？</p>
 </h3>
 </section>
-<section id="section-35" class="slide level2">
+<section id="section-36" class="slide level2">
 <h2></h2>
 
 <img data-src="images/image-1856831248.png" class="r-stretch quarto-figure-center"></section>
-<section id="section-36" class="slide level2">
+<section id="section-37" class="slide level2">
 <h2></h2>
 
 <img data-src="images/image-1599409127.png" class="r-stretch quarto-figure-center"></section>
 <section id="总结summary" class="slide level2">
 <h2>总结(Summary)</h2>
-<p><br><br></p>
+<br><br>
+<h3 style="text-align: left; font-size: 32px;">
 <ul>
 <li><p>概率<br><br></p></li>
 <li><p>模型<br><br></p></li>
 <li><p>统计<br><br></p></li>
 </ul>
+</h3>
 
 <img src="images/image-393370223.png" class="slide-logo r-stretch"><div class="footer footer-default">
 
