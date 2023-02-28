@@ -79,6 +79,16 @@ Hu Chuan-Peng
 
 ![](images/image-2128019921.png){fig-align="center"}
 
+-   Application:
+
+    -   Different models can describe the same empirical situation.
+
+    *The* *manner in which mathematical theories are applied*
+
+    **does not depend on** *preconceived ideas; it is a purposeful*
+
+    *technique depending on, and changing with,* **experience.**
+
 # 概率(Probablity)
 
 ## 
@@ -120,9 +130,7 @@ Hu Chuan-Peng
 ## 样本空间(Sample space, $\Omega$)
 
 -   随机实验(experiment)的所有可能结果构成的集合(set);</br></br>
-
 -   $p(\Omega)$ = 1;</br></br>
-
 -   E.g. 当你掷一枚硬币，$\Omega$={数字，花}
 
 ## 
@@ -714,35 +722,57 @@ $p(A | B) = \frac{p(A \cap B)}{p(B)}$
 
 -   用具体的、可公开的准备或验证测试的过程来定义系统状态。
 
-## 简单随机抽样
+## 简单随机抽样(Simple random sampling)
 
-![](images/image-334564034.png){fig-align="center"} -每个个体的选择完全是偶然的，总体中的每个个体被选中的机会或概率是相等;</br></br>
+![](images/image-334564034.png){fig-align="center"}
 
--获得随机样本的一种方法是给总体中的每个个体一个编号，然后用一个随机数字表来决定包括哪些人。
+-   每个个体的选择完全是偶然的，总体中的每个个体被选中的机会或概率是相等;</br></br>
 
-## 系统抽样
+-   获得随机样本的一种方法是给总体中的每个个体一个编号，然后用一个随机数字表来决定包括哪些人。
+
+## 系统抽样(Systematic sampling)
 
 ![](images/image-2033740051.png){fig-align="center"}
 
--从抽样框架中按照规律间隔选择个体;</br></br>
+-   从抽样框架中按照规律间隔选择个体;</br></br>
 
--间隔的选择是为了确保足够的样本量;</br></br>
+-   间隔的选择是为了确保足够的样本量;</br></br>
 
--如果你需要从一个大小为x的总体中抽取n个样本，你应该选择每x/n个个体作为样本。 \## 分层抽样 ![](images/image-874807997.png){fig-align="center"}
+-   如果你需要从一个大小为x的总体中抽取n个样本，你应该选择每x/n个个体作为样本。 \## 分层抽样 ![](images/image-874807997.png){fig-align="center"}
 
--将总体划分为具有类似特征的子群体（或层级）;</br></br>
+-   将总体划分为具有类似特征的子群体（或层级）;</br></br>
 
--当我们测量值在不同的子群体之间有所不同，并且我们想确保所有子群体的代表性时，就会使用这种方法;</br></br>
+-   当我们测量值在不同的子群体之间有所不同，并且我们想确保所有子群体的代表性时，就会使用这种方法;</br></br>
 
--然后从每个层级中抽取合适的样本量来获得研究样本。
+-   然后从每个层级中抽取合适的样本量来获得研究样本。
 
-## 分组抽样
+## 分组抽样(Stratified sampling)
 
 ![](images/image-1643270489.png){fig-align="center"}
+
+-   以总体的子组作为抽样单位，而不是单个个体。
+
+-   人群被分为亚组，称为集群，这些亚组是随机选择纳入研究的。
+
+-   在单阶段整群抽样方法中 ，将所选整群的所有成员纳入研究。
+
+-   在两阶段整群抽样中，从每一群中随机选择一个个体纳入研究。
+
+------------------------------------------------------------------------
+
+## 非概率抽样方法(Non-Probability Sampling Methods)
+
+-   配额抽样(Quota sampling)
+
+-   判断性或目的性抽样(Judgement /or Purposive Sampling)
+
+-   雪球抽样(Snowball sampling)
 
 ![](images/image-441376414.png){fig-align="center"}
 
 ## 
+
+</br></br>
 
 <h3 style="text-align: center">
 
@@ -752,14 +782,181 @@ $p(A | B) = \frac{p(A \cap B)}{p(B)}$
 
 </h3>
 
+## 
+
+</br></br>
+
+<h3 style="text-align: center">
+
+</br></br> </br></br>
+
+艾宾浩斯所使用的抽样方法以及样本是什么？
+
+</h3>
+
+------------------------------------------------------------------------
+
+## 抽样偏倚(Bias in sampling)
+
+-   在选择样本时,应该考虑5个重要的潜在偏差来源,而不考虑使用的方法。
+
+    -   偏离了预先商定的抽样规则[^1]
+
+    -   遗漏了难以接触到的人群中的个体[^2]
+
+    -   将被选中的人替换成其他人，比如在难以联系上他们的时候[^3]
+
+    -   回复率很低[^4]
+
+    -   过时的名单被用作样本框架（例如，如果它不包括最近搬到某个地区的人）。[^5]
+
+[^1]: Any pre-agreed sampling rules are deviated from
+
+[^2]: People in hard-to-reach groups are omitted
+
+[^3]: Selected individuals are replaced with others, for example if they are difficult to contact
+
+[^4]: There are low response rates
+
+[^5]: An out-of-date list is used as the sample frame (for example, if it excludes people who have recently moved to an area)
+
+## 变量(Variable)
+
+-   常量与变量
+
+    -   Constant and variable
+
+-   自变量和因变量
+
+    -   Independent variable and dependent variable
+
+-   连续变量和离散变量
+
+    -   Continuous variable and discrete variable
+---
+
+-   常量 (Constant)
+
+    -   在整个实验过程中保持不变的变量，而其他变量可能发生变化。
+
+-   变量(Variable)
+
+    -   任何可以采取不同值的特征，如身高、年龄、温度或考试分数。
+
+        **Constant and variable vary with research question and design**
+
+        **同一个变量在不同研究中角色可能会变化**
+
+------------------------------------------------------------------------
+
+-   自变量(Independent variable )
+
+    -   自变量是导致变化的原因
+
+    -   它的值与研究中的其他变量无关
+
+-   因变量(Dependent variable)
+
+    -   因变量是变化的结果
+
+    -   其数值取决于自变量的变化
+
+------------------------------------------------------------------------
+
+-   连续变量(Continuous variable)
+
+    -   一个变量可以有无限多的可能值
+
+-   离散变量(Discrete variable)
+
+    -   一个变量只能取有限数量的值
+
+    -   所有的定性变量都是离散的，有些定量变量是离散的
+
+    -   有时，一个具有足够离散值的变量在实际应用中可能被认为是连续的
+
+## 
+
+</br></br>
+
+<h3 style="text-align: center">
+
+</br></br> </br></br>
+
+记住的音节个数是什么变量？
+
+</h3>
+
+## 
+
+</br></br>
+
+<h3 style="text-align: center">
+
+</br></br> </br></br>
+
+-   预处理 (Preprocessing)
+    -   数据可视化(Data visualization)
+
+</h3>
+
+------------------------------------------------------------------------
+
 ![](images/image-608646591.png){fig-align="center"}
 
+The Ebbinghaus Forgetting Curve
+
+------------------------------------------------------------------------
+
+## 统计分析与推断 (Analyze)
+
+-   模型(Model )
+
+    -   采用何种模型，为什么?
+
+-   结果(Results--a bunch of numbers))
+
+    -   结果是有效的吗?
+
+-   推断(Inference--binary or quantitative estimate))
+
+    -   可以从数字中推断出什么?
+
+-   做出决策(Decision-making) 
+---
+##   
+
+</br></br>
+
+<h3 style="text-align: center">
+
+</br></br> </br></br>
+
+    以下哪种模型是正确的？
+
+</h3>
+---
 
 ![](images/image-1107343863.png){fig-align="center"}
 
+艾宾浩斯遗忘曲线(The Ebbinghaus Forgetting Curve)
+
+![](images%5Cimage-123.png){fig-align="center"}
+
+系列位置曲线(The serial position curve)
+
+## 
+
+</br></br>
+
+<h3 style="text-align: center">
+
+</br></br> </br></br>
+
+如何解释结果？
+
+</h3>
 
 ![](images/image-1856831248.png){fig-align="center"}
 
-
 ![](images/image-1599409127.png){fig-align="center"}
-
