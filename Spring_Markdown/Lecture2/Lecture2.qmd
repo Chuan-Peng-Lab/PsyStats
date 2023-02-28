@@ -234,7 +234,7 @@ $2*2*2=8$
 
 <h6 style="text-align: center">
 
-$P_3^2 = 3*2=6$
+$A_3^2 = 3*2=6$
 
 </h6>
 
@@ -690,28 +690,6 @@ $p(A | B) = \frac{p(A \cap B)}{p(B)}$
 
 ## 搜集资料 (Collection)
 
-### 测量
-
-#### 操作性定义
-
-#### 样本的代表性
-
-##### - 简单随机抽样
-
-##### - 系统抽样
-
-##### - 分层抽样
-
-##### - 分组抽样
-
-### 变量
-
-#### 常数和变量
-
-#### 自变量和因变量
-
-#### 连续变量和离散变量
-
 ## 操作性定义(Operational definition)
 
 -   理论定义与操作定义
@@ -746,7 +724,17 @@ $p(A | B) = \frac{p(A \cap B)}{p(B)}$
 
 -   然后从每个层级中抽取合适的样本量来获得研究样本。
 
-## 分组抽样(Stratified sampling)
+## 分层抽样(Stratified sampling)
+
+![](images/image-767791512.png){fig-align="center"}
+
+- 总体被划分为具有类似特征的层级。
+
+- 样本在不同的层级中存在差异。
+
+- 为了确保样本的代表性，每个层级中抽取合适的样本量来获得研究样本。
+
+## 分组抽样
 
 ![](images/image-1643270489.png){fig-align="center"}
 
@@ -757,8 +745,6 @@ $p(A | B) = \frac{p(A \cap B)}{p(B)}$
 -   在单阶段整群抽样方法中 ，将所选整群的所有成员纳入研究。
 
 -   在两阶段整群抽样中，从每一群中随机选择一个个体纳入研究。
-
-------------------------------------------------------------------------
 
 ## 非概率抽样方法(Non-Probability Sampling Methods)
 
@@ -793,8 +779,6 @@ $p(A | B) = \frac{p(A \cap B)}{p(B)}$
 艾宾浩斯所使用的抽样方法以及样本是什么？
 
 </h3>
-
-------------------------------------------------------------------------
 
 ## 抽样偏倚(Bias in sampling)
 
@@ -832,8 +816,7 @@ $p(A | B) = \frac{p(A \cap B)}{p(B)}$
 
 -   连续变量和离散变量
 
-    -   Continuous variable and discrete variable
----
+    -   Continuous variable and discrete variable \##
 
 -   常量 (Constant)
 
@@ -847,7 +830,7 @@ $p(A | B) = \frac{p(A \cap B)}{p(B)}$
 
         **同一个变量在不同研究中角色可能会变化**
 
-------------------------------------------------------------------------
+## 变量(Variable)
 
 -   自变量(Independent variable )
 
@@ -861,7 +844,7 @@ $p(A | B) = \frac{p(A \cap B)}{p(B)}$
 
     -   其数值取决于自变量的变化
 
-------------------------------------------------------------------------
+## 变量(Variable)
 
 -   连续变量(Continuous variable)
 
@@ -887,26 +870,13 @@ $p(A | B) = \frac{p(A \cap B)}{p(B)}$
 
 </h3>
 
-## 
+## 预处理 (Preprocessing)
 
-</br></br>
-
-<h3 style="text-align: center">
-
-</br></br> </br></br>
-
--   预处理 (Preprocessing)
-    -   数据可视化(Data visualization)
-
-</h3>
-
-------------------------------------------------------------------------
+### 数据可视化(Data visualization)
 
 ![](images/image-608646591.png){fig-align="center"}
 
-The Ebbinghaus Forgetting Curve
-
-------------------------------------------------------------------------
+<center>The Ebbinghaus Forgetting Curve</center>
 
 ## 统计分析与推断 (Analyze)
 
@@ -922,9 +892,9 @@ The Ebbinghaus Forgetting Curve
 
     -   可以从数字中推断出什么?
 
--   做出决策(Decision-making) 
----
-##   
+-   做出决策(Decision-making)
+
+## 
 
 </br></br>
 
@@ -932,14 +902,17 @@ The Ebbinghaus Forgetting Curve
 
 </br></br> </br></br>
 
-    以下哪种模型是正确的？
+以下哪种模型是正确的？
 
 </h3>
----
+
+## 
 
 ![](images/image-1107343863.png){fig-align="center"}
 
 艾宾浩斯遗忘曲线(The Ebbinghaus Forgetting Curve)
+
+## 
 
 ![](images%5Cimage-123.png){fig-align="center"}
 
@@ -957,6 +930,21 @@ The Ebbinghaus Forgetting Curve
 
 </h3>
 
+## 
+
 ![](images/image-1856831248.png){fig-align="center"}
 
+## 
+
 ![](images/image-1599409127.png){fig-align="center"}
+
+
+## 总结(Summary)
+</br></br>
+
+- 概率</br></br>
+
+- 模型</br></br>
+
+- 统计</br></br>
+
