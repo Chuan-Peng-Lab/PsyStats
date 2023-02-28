@@ -72,8 +72,9 @@ Hu Chuan-Peng
 ## 
 
 ![](images/image-1294083371.png){fig-align="center"}
-
-<center>(William Feller (1968). An introduction to probability theory and its applications. Chapter 1)</center>
+<h6 style="text-align: center">
+(William Feller (1968). An introduction to probability theory and its applications. Chapter 1)
+</h6>
 
 ## 
 
@@ -88,6 +89,13 @@ Hu Chuan-Peng
     **does not depend on** *preconceived ideas; it is a purposeful*
 
     *technique depending on, and changing with,* **experience.**
+
+
+
+
+## 日常生活中的现象
+
+
 
 # 概率(Probablity)
 
