@@ -94,13 +94,13 @@ Hu Chuan-Peng
     *technique depending on, and changing with,* **experience.**
 
 ## 日常生活中的现象
+
 </br></br>
 
-- 在选举期间，政治调查机构会进行各种调查，以了解选民的意见和偏好。</br></br>
-- 在医学研究中，进行临床试验检验一个新药是否比现有药物更有效。</br></br>
-- 在股票市场中，投资者可以使用股票价格图来了解市场趋势和预测股票价格的变化。</br></br>
-- 在疫苗试验中，研究人员可能会随机选择一些参与者，以接受实验药物或安慰剂。</br></br>
-
+-   在选举期间，政治调查机构会进行各种调查，以了解选民的意见和偏好。</br></br>
+-   在医学研究中，进行临床试验检验一个新药是否比现有药物更有效。</br></br>
+-   在股票市场中，投资者可以使用股票价格图来了解市场趋势和预测股票价格的变化。</br></br>
+-   在疫苗试验中，研究人员可能会随机选择一些参与者，以接受实验药物或安慰剂。</br></br>
 
 # 概率(Probablity)
 
@@ -139,7 +139,6 @@ Hu Chuan-Peng
 ## 
 
 <img src="images/4.png" style="width: 100px; height: 100px; position: absolute; right: 0;"/>
-
 
 </br></br>
 
@@ -329,8 +328,8 @@ $C_n^m = \frac{n!}{(n-m)!m!} = \frac{n(n-1)(n-2)...(n-m+1)}{m(m-1)(m-2)...1}$
 
 ## 
 
-</br></br>
-<img src="images/4.png" style="width: 100px; height: 100px; position: absolute; right: 0;"/>
+</br></br> <img src="images/4.png" style="width: 100px; height: 100px; position: absolute; right: 0;"/>
+
 <h3 style="text-align: center">
 
 </br></br> </br></br>
@@ -343,8 +342,6 @@ $C_n^m = \frac{n!}{(n-m)!m!} = \frac{n(n-1)(n-2)...(n-m+1)}{m(m-1)(m-2)...1}$
 :::
 
 </h3>
-
-
 
 ## 频率(Frequency)&概率(Probablity)
 
@@ -482,7 +479,7 @@ $p(A \cup B) = p(A)p(B|A)$
 
 <h3 style="text-align: center">
 
-$p(A | B) = \frac{p(A \cap B)}{p(B)}$
+$p(A | B) = {p(A \cap B)}/{p(B)}$
 
 </h3>
 
@@ -752,7 +749,7 @@ $p(A | B) = \frac{p(A \cap B)}{p(B)}$
 
 -   间隔的选择是为了确保足够的样本量;</br></br>
 
--   如果你需要从一个大小为x的总体中抽取n个样本，你应该选择每x/n个个体作为样本。 
+-   如果你需要从一个大小为x的总体中抽取n个样本，你应该选择每x/n个个体作为样本。
 
 ## 分层抽样(Stratified sampling)
 
@@ -761,8 +758,11 @@ $p(A | B) = \frac{p(A \cap B)}{p(B)}$
 -   当我们测量值在不同的子群体之间有所不同，并且我们想确保所有子群体的代表性时，就会使用这种方法;</br></br>
 
 -   总体被划分为具有类似特征的层级。</br></br>
+
 -   然后从每个层级中抽取合适的样本量来获得研究样本。</br></br>
+
 -   样本在不同的层级中存在差异。</br></br>
+
 -   为了确保样本的代表性，每个层级中抽取合适的样本量来获得研究样本。</br></br>
 
 ## 分组抽样(Clustered sampling)
@@ -847,8 +847,7 @@ $p(A | B) = \frac{p(A \cap B)}{p(B)}$
 
 -   连续变量和离散变量
 
-    -   Continuous variable and discrete variable 
-##
+    -   Continuous variable and discrete variable \##
 
 -   常量 (Constant)
 
@@ -856,13 +855,12 @@ $p(A | B) = \frac{p(A \cap B)}{p(B)}$
 
 -   变量(Variable)
 
-    -   任何可以采取不同值的特征，如身高、年龄、温度或考试分数。</br></br> 
-    
-::: {.fragment .fade-in}
+    -   任何可以采取不同值的特征，如身高、年龄、温度或考试分数。</br></br>
 
+::: {.fragment .fade-in}
 **Constant and variable vary with research question and design**
 
-**同一个变量在不同研究中角色可能会变化** 
+**同一个变量在不同研究中角色可能会变化**
 :::
 
 ## 变量(Variable)
@@ -984,6 +982,7 @@ $p(A | B) = \frac{p(A \cap B)}{p(B)}$
 ## 总结(Summary)
 
 </br></br>
+
 <h3 style="text-align: left; font-size: 32px;">
 
 -   概率</br></br>
@@ -991,4 +990,5 @@ $p(A | B) = \frac{p(A \cap B)}{p(B)}$
 -   模型</br></br>
 
 -   统计</br></br>
+
 </h3>
