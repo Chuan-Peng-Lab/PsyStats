@@ -101,8 +101,8 @@ Hu Chuan-Peng
 -   在医学研究中，进行临床试验检验一个新药是否比现有药物更有效。</br></br>
 -   在股票市场中，投资者可以使用股票价格图来了解市场趋势和预测股票价格的变化。</br></br>
 -   在疫苗试验中，研究人员可能会随机选择一些参与者，以接受实验药物或安慰剂。</br></br>
-- 人们在经济决策中更喜欢短期回报还是长期回报？</br></br>
-- 宇宙中的天体运行有迹可循吗？</br></br>
+-   人们在经济决策中更喜欢短期回报还是长期回报？</br></br>
+-   宇宙中的天体运行有迹可循吗？</br></br>
 
 # 概率(Probablity)
 
@@ -148,7 +148,7 @@ Hu Chuan-Peng
 
 </br></br> </br></br>
 
-开始抛10次硬币，你可以列出实验(experiment)的所有结果吗？ </br></br> 记录下每次抛硬币的结果。</br></br> 
+开始抛10次硬币，你可以列出实验(experiment)的所有结果吗？ </br></br> 记录下每次抛硬币的结果。</br></br>
 
 > 正面：数字，反面：花
 
@@ -165,7 +165,6 @@ Hu Chuan-Peng
 -   E.g.2.在新冠疫情的情境中，我们可以将样本空间定义为所有可能感染新冠病毒的人群集合，包括已经感染、未感染但易感染等人群。</br></br>
 
 ## 
-
 
 <h3 style="text-align: center">
 
@@ -562,17 +561,17 @@ $p(A | B) = {p(A \cap B)}/{p(B)}$
 ::: {.column width="50%"}
 ### 模型1：Rational model
 
-</br></br> 
+</br></br>
 
-- 理性经济人假设</br></br>
+-   理性经济人假设</br></br>
 
 -   决策者基于每个选项的期望值进行决策
 
 ### 模型2：Prospect theory
 
-</br></br> 
+</br></br>
 
-- 有限理性假设</br></br>
+-   有限理性假设</br></br>
 
 -   决策者厌恶损失，偏好风险
 :::
@@ -628,8 +627,7 @@ $p(A | B) = {p(A \cap B)}/{p(B)}$
 
 ::: columns
 ::: {.column width="50%"}
-</br></br>
--轨道定律(The Law of Ellipses) </br></br>
+</br></br> -轨道定律(The Law of Ellipses) </br></br>
 
 -面积定律(The Law of Equal Areas) </br></br>
 
@@ -851,7 +849,7 @@ $p(A | B) = {p(A \cap B)}/{p(B)}$
 
     -   Continuous variable and discrete variable \##
 
-##
+## 
 
 -   常量 (Constant)
 
