@@ -1,4 +1,4 @@
-# This is a private repo for stats101 @NNUPsy
+# This is a repo for stats101 @NNUPsy
 
 Instructor: Hu Chuan-Peng (PhD)
 
@@ -31,4 +31,6 @@ Teaching assistants: Liu, Yi-Kang; Sun, Shu-Ting
 
 * [Spring_File]
 * [Spring_Markdown]
+- lecture 1
+- lecture 2
 * [Spring_PPT]

@@ -489,7 +489,7 @@ $p(A | B) = {p(A \cap B)}/{p(B)}$
 
 -   $p(A|B) = \frac{p(A \cap B)}{p(B)}$</br></br>
 
--   $\to p(A|B) = \frac{p(A|B)p(A)}{p(B)}$</br></br>
+-   $\to p(A|B) = \frac{p(B|A)p(A)}{p(B)}$</br></br>
 :::
 
 ::: {.column width="50%"}

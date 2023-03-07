@@ -1,0 +1,571 @@
+---
+format: 
+  revealjs:
+    slide-number: true
+    logo: images/image-393370223.png
+    scrollable: true 
+    #css: 
+    theme: theme.scss
+editor: visual
+fontsize: 24pt
+---
+
+## 
+
+</br></br>
+
+<h1 style="text-align: center">
+
+03 - Data and visualization
+
+</h1>
+
+</br></br>
+
+<h3 style="text-align: center">
+
+Hu Chuan-Peng
+
+</h3>
+
+</br></br>
+
+<h3 style="text-align: center">
+
+2023-03-08
+
+</h3>
+
+</br></br>
+
+# Review
+
+</br></br>
+
+<h3 style="text-align: left; font-size: 32px; ">
+
+-   概率</br></br>
+
+-   模型</br></br>
+
+-   统计</br></br>
+
+</h3>
+
+## 
+
+![](images/image-121590485.png){fig-align="center"}
+
+## 
+
+![](images/image-2028815256.png){fig-align="center"}
+
+# 数据(Data)
+
+## 
+
+![](images/image-1024862256.png){fig-align="center"}
+
+<center>一分钟内产生的数据量</center>
+
+<center>(图片来源：Twitter @OffciallyChadd)</center>
+
+## 心理学中的数据
+
+![](images/image-1551101807.png){fig-align="center"}
+
+![](images/image-673215890.png){fig-align="center"}
+
+![](images/image-2037709593.png){fig-align="center"}
+
+<center>(图片来源：行上行下公众号)</center>
+
+## 生物学中的数据
+
+![](images/image-833130433.png){fig-align="center"}
+
+![](images/image-1173093657.png){fig-align="center"}
+
+![](images/image-371534276.png){fig-align="center"}
+
+<center>(图片来源：行上行下公众号)</center>
+
+## 数据类型
+
+![](images/image-489618333.png){fig-align="center"}
+
+![](images/image-1838848460.png){fig-align="center"}
+
+<center>(https://online.maryville.edu/online-bachelors-degrees/human-development-and-family-studies/resources/stages-of-human-development/ )</center>
+
+### 性别
+
+-   (qualitative)Label
+-   Categorization
+-   Arithmetic computation does not make sense \### 年龄
+-   Theoretically, has equal intervals
+-   Ratios of differences can be expressed
+
+## 四种数据类型
+
+![](images/image-169354741.png){fig-align="center"}
+
+-   数据(data) $\gets$ 测量(measure)
+
+-   测量必须具备两个要素：参照点和单位
+
+-   参照点是计算事物的量的起始点，它包括两种类型：绝对零点和相对零点
+
+-   单位是测量的基本要求。理想的单位需要具备两个条件：
+
+    -   
+
+        -   一是有确定的意义，不同的人有相同的意义解释；
+
+    -   
+
+        -   二是最好有相等的价值
+
+## 
+
+![](images/image-1262994520.png){fig-align="center"}
+
+<center>火星气候探测者号事故</center>
+
+<center>飞行器：公制单位</center>
+
+<center>地面操作：英制单位</center>
+
+<center>(https://www.simscale.com/blog/2017/12/nasa-mars-climate-orbiter-metric/ )</center>
+
+## 
+
+|            | 称名    | 顺序    | 等距    | 等比    |
+|------------|---------|---------|---------|---------|
+| 不相等单位 | $\surd$ | $\surd$ |         |         |
+| 相等单位   |         |         | $\surd$ | $\surd$ |
+| 相对零点   | $\surd$ | $\surd$ | $\surd$ |         |
+| 绝对零点   |         |         |         | $\surd$ |
+|            |         |         |         |         |
+
+## 
+
+|                | 称名    | 顺序    | 等距    | 等比    |
+|----------------|---------|---------|---------|---------|
+| 分类或标签变量 | $\surd$ | $\surd$ | $\surd$ | $\surd$ |
+| 按顺序排列     |         | $\surd$ | $\surd$ | $\surd$ |
+| 等距           |         |         | $\surd$ | $\surd$ |
+| 有意义的零点   |         |         |         | $\surd$ |
+|                |         |         |         |         |
+
+## 称名数据
+
+::: {layout-ncol="2"}
+### 
+
+![](images/image-322218404.png){fig-align="center" width="600"}
+
+### 
+
+![](images/image-798296047.png){fig-align="center" width="600"}
+
+### 
+
+![](images/image-63445630.png){fig-align="center" width="300"}
+
+### 
+
+![](images/image-427862891.png){fig-align="center" width="600"}
+:::
+
+## 
+
+::: columns
+::: {.column width="50%"}
+-   Qualitative labels
+-   Classification
+-   Different values are not comparable
+-   No form of arithmetic computation (+, −, ×, ÷)
+-   Mathematical operators : =, ≠
+:::
+
+::: {.column width="50%"}
+![](images/image-9375285.png){fig-align="center"}
+:::
+:::
+
+## 
+
+![](images/image-1171426489.png){fig-align="center"}
+
+<center>(https://careerfoundry.com/en/blog/data-analytics/data-levels-of-measurement/ )</center>
+
+## 顺序数据
+
+::: columns
+::: {.column width="50%"}
+![](images/image-1141409806.png){fig-align="center"}
+
+<center>(https://www.eol.cn/shuju/paiming/202106/t20210609_2120264.shtml )</center>
+:::
+
+::: {.column width="50%"}
+![](images/image-389757964.png){fig-align="center"}
+:::
+:::
+
+## 
+
+::: columns
+::: {.column width="50%"}
+-   Ordinal scale
+-   Rank order
+-   Qualitative data
+-   Different values are comparable
+-   No form of arithmetic computation (+, −, ×, ÷)
+-   Mathematical operators : \> , \<
+:::
+
+::: {.column width="50%"}
+![](images/image-285066119.png){fig-align="center"}
+
+<center>(https://www.questionpro.com/blog/ordinal-data/ )</center>
+:::
+:::
+
+:::
+
+## 
+
+![](images/image-593536494.png){fig-align="center"}
+
+![](images/image-1781496498.png){fig-align="center"}
+
+![](images/image-927534587.png){fig-align="center"}
+
+![](images/image-1220990762.png){fig-align="center"}
+
+## 等距数据
+
+![](images/image-1047897987.png)
+
+<center>(https://www.researchgate.net/figure/Illustration-of-how-the-averaging-of-ordinal-data-can-lead-to-mistaken-inferences-In_fig1_230875321 )</center>
+
+## 
+
+![](images/image-230542582.png)
+
+<center>
+
+(https://www.brainzilla.com/blog/faq/iq-faq/ )\</center\>
+
+## 
+
+::: columns
+::: {.column width="50%"}
+-   Numerical scale
+-   Equal intervals
+-   Mathematical operators : +, −
+-   No true zero
+    -   (e.g. A temperature of zero degrees Fahrenheit doesn't mean there is "no temperature" to be measured)
+:::
+
+::: {.column width="50%"}
+![](images/image-1367018995.png){fig-align="center"}
+
+![](images/image-358570181.png){fig-align="center"}
+
+<center>(https://www.chi2innovations.com/blog/discover-data-blog-series/interval-data/ )</center>
+:::
+:::
+
+## 
+
+![](images/image-681177049.png){fig-align="center"}
+
+## 等比数据
+
+![](images/image-343749971.png){fig-align="center"}
+
+![](images/image-365664594.png){fig-align="center"}
+
+![](images/image-508406079.png){fig-align="center"}
+
+## 
+
+::: columns
+::: {.column width="50%"}
+-   Ratio scale
+-   Equal intervals
+-   Mathematical operators : +, −,×, ÷
+-   Ratios of differences can be expressed
+-   True zero (e.g. If you have a population count of zero people, this means there are no people.)
+:::
+
+::: {.column width="50%"}
+![](images/image-1124523812.png){fig-align="center"}
+
+![](images/image-1092759705.png){fig-align="center"}
+:::
+:::
+
+## 
+
+![](images/image-1213001876.png){fig-align="center"}
+
+![](images/image-786437454.png){fig-align="center"}
+
+![](images/image-1422514788.png){fig-align="center"}
+
+![](images/image-163757799.png){fig-align="center"}
+
+## 不同数据类型对应着不同的统计方法
+
+![](images/image-1069046980.png)
+
+<center>(McElreath. (2016). Statistical Rethinking: A Bayesian Course with Examples in R and Stan.（pp.2） )</center>
+
+## 
+
+| 数据类型 | 统计方法                                           |
+|----------|----------------------------------------------------|
+| 称名数据 | 百分比、次数、众数和卡方检验                       |
+| 顺序数据 | 中位数、百分位数、等级相关系数和肯德尔和谐系数     |
+| 等距数据 | 平均数、标准差、积差相关、等级相关以及t检验和F检验 |
+| 等比数据 | 几何平均数、变异系数以及等距量表可以使用的方法     |
+
+## 计算机中的数据
+
+::: columns
+::: {.column width="50%"}
+Python - Int（整型） - Long（长整型） - Float（浮点型） - Complex（复数） - String（字符串） - Boolean（布尔值）
+:::
+
+::: {.column width="50%"}
+R - Numeric （数值型） - Integer（整型） - Complex（复数型） - Character(字符型） - Logical（逻辑型）
+:::
+:::
+
+## 
+
+![](images/image-1883917451.png){fig-align="center"}
+
+# 可视化(Visualization)
+
+## 心理学数据的可视化
+
+![](images/image-2114287202.png){fig-align="center"}
+
+<center>(https://www.jianshu.com/p/4282343a3c55)</center>
+
+## 
+
+![](images/image-2101746101.png){fig-align="center"}
+
+<center>(https://book.douban.com/author/191817/)</center>
+
+## 
+
+![](images/image-311729775.png){fig-align="center"}
+
+<center>(https://www.zhihu.com/question/53211109)</center>
+
+## 如何可视化心理学数据
+
+## 
+
+![](images/image-1521420138.png){fig-align="center"}
+
+<center>1885年，艾宾浩斯绘制遗忘曲线</center>
+
+<center>(https://www.mianfeiwendang.com/doc/4833445a7711a3fd7ba0ba26/2)</center>
+
+## 
+
+![](images/image-923258622.png){fig-align="center"}
+
+<center>1963年，雷蒙德 · 卡特尔(Raymond Cattell)提出流体智力和晶体智力。</center>
+
+<center>(https://zhidao.baidu.com/question/525935236.html)</center>
+
+## 
+
+![](images/image-1412624754.png){fig-align="center"}
+
+<center>(https://zhidao.baidu.com/question/525935236.html)</center>
+
+## 
+
+![](images/image-1254354259.png){fig-align="center"}
+
+<center>(https://zhuanlan.zhihu.com/p/27592339)</center>
+
+## 可视化简史(The brief history of visualization)
+
+## 17世纪前：萌芽
+
+![](images/image-87994679.png){fig-align="center"}
+
+<center>Ptolemy's map （托勒密世界地图）is the first use of longitudinal（经度） and latitudinal（纬度） lines as well as specifying terrestrial locations by celestial observations.</center>
+
+## 17世纪：可视化思想的开端
+
+17 世纪最重要的问题之一是与物理测量有关的问题------时间、距离和空间。与之伴随的现代科学的萌芽也被用于天文学、测量、地图制作、导航和领土扩张。
+
+## 
+
+![](images/image-2003970672.png){fig-align="center"}
+
+In 1644, Michael van Langren (迈克尔·范·兰格伦) created the first (known) graph of statistical data, showing the wide range of estimates of the distance in longitude （经度距离）between Toledo （托莱多）and Rome（罗马）.
+
+<center>(https://en.wikipedia.org/wiki/Michael_van_Langren)</center>
+
+## 
+
+![](images/image-27380711.png){fig-align="center"}
+
+In 1662, John Graunt (约翰·格朗特) established demography（人口学）。
+
+<center>(http://www.woshipm.com/data-analysis/4259622.html)</center>
+
+## 18世纪：图形符号
+
+![](images/image-967621012.png){fig-align="center"}
+
+<center>苏格兰与欧洲和新世界各个地区的贸易平衡</center>
+
+<center>(http://www.woshipm.com/data-analysis/4259622.html)</center>
+
+1786年和1801年，Playfair发明了三种基本形式的统计图--时间序列线图、条形图和饼图。
+
+## 1800-1849：现代数据图形的开端
+
+![](images/image-686751590.png){fig-align="center"}
+
+## 1850-1899：数据图形的黄金时代
+
+![](images/image-1200198317.png){fig-align="center"}
+
+##
+
+![](images/image-2049886505.png){fig-align="center"}
+
+##
+
+![](images/image-349266258.png){fig-align="center"}
+
+## 1900-1949：现代启蒙
+
+![](images/image-123888851.png){fig-align="center"}
+
+## 1950-1974：数据可视化的重生
+
+![](images/image-668608872.png){fig-align="center"}
+
+## 1975-1987：多维数据可视化
+
+![](images/image-2003279278.png){fig-align="center"}
+
+## 1987-2004：交互可视化
+
+![](images/image-2136746846.png){fig-align="center"}
+
+## 2004- ：可视分析学
+
+![](images/image-1203174558.png){fig-align="center"}
+
+## 可视化工具
+
+## JASP
+
+![](images/image-1919476884.png){fig-align="center"}
+
+## SPSS
+
+![](images/image-518160726.png){fig-align="center"}
+
+## PYTHON
+
+![](images/image-556595194.png){fig-align="center"}
+
+## MATLAB
+
+![](images/image-1271418701.png){fig-align="center"}
+
+## R
+
+![](images/image-1832353837.png){fig-align="center"}
+
+## 可视化带来的一些问题
+
+![](images/image-810520824.png){fig-align="center"}
+
+##
+
+![](images/image-1020763994.png){fig-align="center"}
+
+##
+
+![](images/image-1904890873.png){fig-align="center"}
+
+##
+
+![](images/image-2140294756.png){fig-align="center"}
+
+## 常见的可视化形式
+
+## 表
+
+## 图
+
+##
+
+![](images/image-308670008.png){fig-align="center"}
+
+##
+
+![](images/image-2026124073.png){fig-align="center"}
+
+##
+
+![](images/image-1667713042.png){fig-align="center"}
+
+##
+
+![](images/image-269043223.png){fig-align="center"}
+
+##
+
+![](images/image-1709851180.png){fig-align="center"}
+
+##
+
+![](images/image-1472931651.png){fig-align="center"}
+
+##
+
+![](images/image-1962545036.png){fig-align="center"}
+
+##
+
+![](images/image-1324597722.png){fig-align="center"}
+
+##
+
+![](images/image-284921941.png){fig-align="center"}
+
+##
+
+![](images/image-299709599.png){fig-align="center"}
+
+##
+
+![](images/image-1235475600.png){fig-align="center"}
+
+##
+
+![](images/image-457090438.png){fig-align="center"}
+
+# R中的数据可视化(visualization in R)
+
+# 总结(Summary)
