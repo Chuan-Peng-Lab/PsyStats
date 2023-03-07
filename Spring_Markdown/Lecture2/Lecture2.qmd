@@ -4,8 +4,8 @@ format:
     slide-number: true
     logo: images/image-393370223.png
     scrollable: true # Allow in-slide scrolling
-    css: ["theme/theme.css"]
-    theme: simple
+   
+    theme: theme.scss
 editor: visual
 fontsize: 24pt
 ---
