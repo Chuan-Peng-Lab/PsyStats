@@ -803,6 +803,7 @@ $p(A | B) = {p(A \cap B)}/{p(B)}$
   - 反应变量是指研究过程中被试的反应或内外变化，也叫因变量。
   
   - 如被试规定时间内记住的字母数
+
 ::: {.fragment .fade-in}
 **Constant and variable vary with research question and design**
 
@@ -821,7 +822,7 @@ $p(A | B) = {p(A \cap B)}/{p(B)}$
 
 </h3>
 
-#### 操作性定义(Operational definition)
+## 操作性定义(Operational definition)
 
 -   理论定义与操作定义。</br></br>
 
@@ -840,9 +841,11 @@ $p(A | B) = {p(A \cap B)}/{p(B)}$
 - 顺序数据
 - 等距数据
 - 等比数据
+
 ::: {.fragment .fade-in}
 不同的数据类型对应不同的统计方法
 :::
+
 ##
 </br></br>
 <center>在设计完实验之后，我们需要搜集数据，这涉及到不同的抽样方法</center>
@@ -896,13 +899,38 @@ $p(A | B) = {p(A \cap B)}/{p(B)}$
 -   雪球抽样(Snowball sampling)</br></br>
 
 ![](images/image-441376414.png){fig-align="center"}
+## 抽样偏倚(Bias in sampling)
+
+-   在选择样本时,应该考虑5个重要的潜在偏差来源,而不考虑使用的方法。
+
+    -   偏离了预先商定的抽样规则[^1]
+
+    -   遗漏了难以接触到的人群中的个体[^2]
+
+    -   将被选中的人替换成其他人，比如在难以联系上他们的时候[^3]
+
+    -   回复率很低[^4]
+
+    -   过时的名单被用作样本框架（例如，如果它不包括最近搬到某个地区的人）。[^5]
+
+[^1]: Any pre-agreed sampling rules are deviated from
+
+[^2]: People in hard-to-reach groups are omitted
+
+[^3]: Selected individuals are replaced with others, for example if they are difficult to contact
+
+[^4]: There are low response rates
+
+[^5]: An out-of-date list is used as the sample frame (for example, if it excludes people who have recently moved to an area)
 
 
 ## 预处理 (Preprocessing)
 
+</br></br>
+
 <center>搜集数据之后我们需要对数据进行处理并进行统计分析</center>
 
-### 数据可视化(Data visualization)
+## 数据可视化(Data visualization)
 
 ![](images/image-608646591.png){fig-align="center"}
 
@@ -1001,33 +1029,19 @@ $p(A | B) = {p(A \cap B)}/{p(B)}$
 
 </br></br> </br></br>
 
-还有那些因素会造成系统误差？
+还有那些因素会造成误差？
 
 </h3>
 
-## 抽样偏倚(Bias in sampling)
+## 变异来源
 
--   在选择样本时,应该考虑5个重要的潜在偏差来源,而不考虑使用的方法。
+- 心理学的理论与假设用言语进行表述，但是统计推断却依赖数字</br></br>
 
-    -   偏离了预先商定的抽样规则[^1]
+- 除了被试个体差异带来的的随机误差，刺激、实验者、环境、任务设置也会带来变异</br></br>
 
-    -   遗漏了难以接触到的人群中的个体[^2]
+- 研究者要么寻找途径控制这种变异，要么无视变异的存在
 
-    -   将被选中的人替换成其他人，比如在难以联系上他们的时候[^3]
-
-    -   回复率很低[^4]
-
-    -   过时的名单被用作样本框架（例如，如果它不包括最近搬到某个地区的人）。[^5]
-
-[^1]: Any pre-agreed sampling rules are deviated from
-
-[^2]: People in hard-to-reach groups are omitted
-
-[^3]: Selected individuals are replaced with others, for example if they are difficult to contact
-
-[^4]: There are low response rates
-
-[^5]: An out-of-date list is used as the sample frame (for example, if it excludes people who have recently moved to an area)
+> (Tal Yarkoni, 2020)
 
 ## 总结(Summary)
 
