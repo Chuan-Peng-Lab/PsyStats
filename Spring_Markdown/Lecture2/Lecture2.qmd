@@ -725,9 +725,103 @@ $p(A | B) = {p(A \cap B)}/{p(B)}$
 
 </h3>
 
-## 搜集资料 (Collection)
 
-## 操作性定义(Operational definition)
+
+## 
+
+</br></br>
+
+<h3 style="text-align: center">
+
+</br></br> </br></br>
+
+如何设计实验来对记忆进行研究
+
+</h3>
+
+
+## 
+
+-   常量 (Constant)
+
+    -   在整个实验过程中保持不变的变量，而其他变量可能发生变化。</br></br>
+
+-   变量(Variable)
+
+    -   任何可以采取不同值的特征</br></br>
+
+## 
+
+-   自变量(Independent variable )</br></br>
+
+    -   自变量是导致变化的原因</br></br>
+
+    -   它的值与研究中的其他变量无关</br></br>
+    
+    - 如果我们想要研究哪些因素会影响记忆，这些因素就是我们实验的自变量。如被试的性别、年龄、成绩等。
+
+-   因变量(Dependent variable)</br></br>
+
+    -   因变量是变化的结果</br></br>
+
+    -   其数值取决于自变量的变化</br></br>
+    
+    - 在该研究中，我们可以用规定时间内记住的字母数、回忆相同字母数所需要的时间来反映结果的变化。
+
+## 
+
+-   连续变量(Continuous variable)
+
+    -   一个变量可以有无限多的可能值</br></br>
+  
+    -   如被试的年龄、成绩
+
+-   离散变量(Discrete variable)
+
+    -   一个变量只能取有限数量的值</br></br>
+
+    -   所有的定性变量都是离散的，有些定量变量是离散的</br></br>
+
+    -   有时，一个具有足够离散值的变量在实际应用中可能被认为是连续的</br></br>
+    
+    -   如被试的性别、种族
+
+
+## 
+- 刺激变量
+
+  - 作用于被试的外部环境的刺激，也叫环境变量，是研究者感兴趣的或注意到的对被试的心理或行为可能产生影响的外在条件或因素。
+  
+  - 如被试所在的环境   
+
+- 机体变量
+  - 机体变量是指可能对被试的心理或行为产生影响的被试自身的特征或身心状态。
+  
+  - 如被试的疲劳程度
+
+- 反应变量
+  - 反应变量是指研究过程中被试的反应或内外变化，也叫因变量。
+  
+  - 如被试规定时间内记住的字母数
+::: {.fragment .fade-in}
+**Constant and variable vary with research question and design**
+
+**同一个变量在不同研究中角色可能会变化**
+:::
+
+## 
+
+</br></br>
+
+<h3 style="text-align: center">
+
+</br></br> </br></br>
+
+什么是记忆？记忆该怎样测量？
+
+</h3>
+
+#### 操作性定义(Operational definition)
 
 -   理论定义与操作定义。</br></br>
 
@@ -736,6 +830,22 @@ $p(A | B) = {p(A \cap B)}/{p(B)}$
 -   描述定义该概念的操作（程序、行动或过程），要有足够的具体性，以便其他调查者可以复制他们的研究。</br></br>
 
 -   用具体的、可公开的准备或验证测试的过程来定义系统状态。</br></br>
+
+- 如我们将记忆的效果定义为规定时间内记住的字母数
+
+## 数据类型
+
+- 根据操作化定义的不同，我们测量得到的数据类型也发生了变化
+- 称名数据
+- 顺序数据
+- 等距数据
+- 等比数据
+::: {.fragment .fade-in}
+不同的数据类型对应不同的统计方法
+:::
+##
+</br></br>
+<center>在设计完实验之后，我们需要搜集数据，这涉及到不同的抽样方法</center>
 
 ## 简单随机抽样(Simple random sampling)
 
@@ -787,125 +897,10 @@ $p(A | B) = {p(A \cap B)}/{p(B)}$
 
 ![](images/image-441376414.png){fig-align="center"}
 
-## 
-
-</br></br>
-
-<h3 style="text-align: center">
-
-</br></br> </br></br>
-
-什么是记忆？记忆该怎样测量？
-
-</h3>
-
-## 
-
-</br></br>
-
-<h3 style="text-align: center">
-
-</br></br> </br></br>
-
-艾宾浩斯所使用的抽样方法以及样本是什么？
-
-</h3>
-
-## 抽样偏倚(Bias in sampling)
-
--   在选择样本时,应该考虑5个重要的潜在偏差来源,而不考虑使用的方法。
-
-    -   偏离了预先商定的抽样规则[^1]
-
-    -   遗漏了难以接触到的人群中的个体[^2]
-
-    -   将被选中的人替换成其他人，比如在难以联系上他们的时候[^3]
-
-    -   回复率很低[^4]
-
-    -   过时的名单被用作样本框架（例如，如果它不包括最近搬到某个地区的人）。[^5]
-
-[^1]: Any pre-agreed sampling rules are deviated from
-
-[^2]: People in hard-to-reach groups are omitted
-
-[^3]: Selected individuals are replaced with others, for example if they are difficult to contact
-
-[^4]: There are low response rates
-
-[^5]: An out-of-date list is used as the sample frame (for example, if it excludes people who have recently moved to an area)
-
-## 变量(Variable)
-
--   常量与变量
-
-    -   Constant and variable</br></br>
-
--   自变量和因变量
-
-    -   Independent variable and dependent variable</br></br>
-
--   连续变量和离散变量
-
-    -   Continuous variable and discrete variable \##
-
-## 
-
--   常量 (Constant)
-
-    -   在整个实验过程中保持不变的变量，而其他变量可能发生变化。</br></br>
-
--   变量(Variable)
-
-    -   任何可以采取不同值的特征，如身高、年龄、温度或考试分数。</br></br>
-
-::: {.fragment .fade-in}
-**Constant and variable vary with research question and design**
-
-**同一个变量在不同研究中角色可能会变化**
-:::
-
-## 变量(Variable)
-
--   自变量(Independent variable )</br></br>
-
-    -   自变量是导致变化的原因</br></br>
-
-    -   它的值与研究中的其他变量无关</br></br>
-
--   因变量(Dependent variable)</br></br>
-
-    -   因变量是变化的结果</br></br>
-
-    -   其数值取决于自变量的变化</br></br>
-
-## 变量(Variable)
-
--   连续变量(Continuous variable)
-
-    -   一个变量可以有无限多的可能值</br></br>
-
--   离散变量(Discrete variable)
-
-    -   一个变量只能取有限数量的值</br></br>
-
-    -   所有的定性变量都是离散的，有些定量变量是离散的</br></br>
-
-    -   有时，一个具有足够离散值的变量在实际应用中可能被认为是连续的</br></br>
-
-## 
-
-</br></br>
-
-<h3 style="text-align: center">
-
-</br></br> </br></br>
-
-记住的音节个数是什么变量？
-
-</h3>
 
 ## 预处理 (Preprocessing)
+
+<center>搜集数据之后我们需要对数据进行处理并进行统计分析</center>
 
 ### 数据可视化(Data visualization)
 
@@ -943,6 +938,28 @@ $p(A | B) = {p(A \cap B)}/{p(B)}$
 
 ## 
 
+![](images/image-1856831248.png){fig-align="center"}
+<center>工作记忆模型</center>
+
+## 
+
+![](images/image-1599409127.png){fig-align="center"}
+<center>前瞻记忆和回溯记忆</center>
+
+## 
+
+</br></br>
+
+<h3 style="text-align: center">
+
+</br></br> </br></br>
+
+如何解释结果？
+
+</h3>
+
+## 
+
 ![](images/image-1107343863.png){fig-align="center"}
 
 <h3 style="text-align: center">
@@ -961,6 +978,21 @@ $p(A | B) = {p(A \cap B)}/{p(B)}$
 
 </h3>
 
+
+
+## 结果存在误差
+
+- 随机误差
+  - 随机误差也称为偶然误差和不定误差，是由于在测定过程中一系列有关因素微小的随机波动而形成的具有相互抵偿性的误差。 </br></br>
+  - 其产生的原因是分析过程中种种不稳定随机因素的影响,如室温、相对湿度和气压等环境条件的不稳定,分析人员操作的微小差异以及仪器的不稳定等。</br></br>
+  - 随机误差难以控制，但在多次测量中会相互抵消。</br></br>
+
+- 系统误差
+  - 系统误差，是由于测量方法本身所造成的误差。 </br></br>
+  - 这种误差是无法消除的，只有彻底改变测量方法本身才可能消除。 </br></br>
+  - 在记忆研究中，著名的艾宾浩斯曲线由于只测量了艾宾浩斯本人，所以可能存在系统误差
+
+
 ## 
 
 </br></br>
@@ -969,17 +1001,33 @@ $p(A | B) = {p(A \cap B)}/{p(B)}$
 
 </br></br> </br></br>
 
-如何解释结果？
+还有那些因素会造成系统误差？
 
 </h3>
 
-## 
+## 抽样偏倚(Bias in sampling)
 
-![](images/image-1856831248.png){fig-align="center"}
+-   在选择样本时,应该考虑5个重要的潜在偏差来源,而不考虑使用的方法。
 
-## 
+    -   偏离了预先商定的抽样规则[^1]
 
-![](images/image-1599409127.png){fig-align="center"}
+    -   遗漏了难以接触到的人群中的个体[^2]
+
+    -   将被选中的人替换成其他人，比如在难以联系上他们的时候[^3]
+
+    -   回复率很低[^4]
+
+    -   过时的名单被用作样本框架（例如，如果它不包括最近搬到某个地区的人）。[^5]
+
+[^1]: Any pre-agreed sampling rules are deviated from
+
+[^2]: People in hard-to-reach groups are omitted
+
+[^3]: Selected individuals are replaced with others, for example if they are difficult to contact
+
+[^4]: There are low response rates
+
+[^5]: An out-of-date list is used as the sample frame (for example, if it excludes people who have recently moved to an area)
 
 ## 总结(Summary)
 
