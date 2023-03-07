@@ -98,13 +98,21 @@ Hu Chuan-Peng
 
 <center>(https://online.maryville.edu/online-bachelors-degrees/human-development-and-family-studies/resources/stages-of-human-development/ )</center>
 
-### 性别
+## 性别
 
--   (qualitative)Label
--   Categorization
--   Arithmetic computation does not make sense \### 年龄
--   Theoretically, has equal intervals
--   Ratios of differences can be expressed
+-   定性标签
+    -   Qualitative Label
+-   分类
+    -   Categorization
+-   算术计算没有意义
+    -   Arithmetic computation does not make sense
+
+## 年龄
+
+-   理论上，等距
+    -   Theoretically, has equal intervals
+-   差异可以用比率以表示出来
+    -   Ratios of differences can be expressed
 
 ## 四种数据类型
 
@@ -118,13 +126,9 @@ Hu Chuan-Peng
 
 -   单位是测量的基本要求。理想的单位需要具备两个条件：
 
-    -   
+    -   一是有确定的意义，不同的人有相同的意义解释；
 
-        -   一是有确定的意义，不同的人有相同的意义解释；
-
-    -   
-
-        -   二是最好有相等的价值
+    -   二是最好有相等的价值
 
 ## 
 
@@ -182,11 +186,25 @@ Hu Chuan-Peng
 
 ::: columns
 ::: {.column width="50%"}
--   Qualitative labels
--   Classification
--   Different values are not comparable
--   No form of arithmetic computation (+, −, ×, ÷)
--   Mathematical operators : =, ≠
+-   定性
+
+    -   Qualitative labels
+
+-   分类
+
+    -   Classification
+
+-   数据不具有可比性
+
+    -   Different values are not comparable
+
+-   无法进行加减乘除运算
+
+    -   No form of arithmetic computation (+, −, ×, ÷)
+
+-   只能进行是否相等的判断
+
+    -   Mathematical operators : =, ≠
 :::
 
 ::: {.column width="50%"}
@@ -218,12 +236,29 @@ Hu Chuan-Peng
 
 ::: columns
 ::: {.column width="50%"}
--   Ordinal scale
--   Rank order
--   Qualitative data
--   Different values are comparable
--   No form of arithmetic computation (+, −, ×, ÷)
--   Mathematical operators : \> , \<
+-   顺序数据
+
+    -   Ordinal scale
+
+-   秩次顺序
+
+    -   Rank order
+
+-   定性数据
+
+    -   Qualitative data
+
+-   数值具有可比性
+
+    -   Different values are comparable
+
+-   不能加减乘除运行
+
+    -   No form of arithmetic computation (+, −, ×, ÷)
+
+-   可以比较大小
+
+    -   Mathematical operators : \> , \<
 :::
 
 ::: {.column width="50%"}
@@ -259,15 +294,29 @@ Hu Chuan-Peng
 
 (https://www.brainzilla.com/blog/faq/iq-faq/ )\</center\>
 
-## 
+## 等距数据
 
 ::: columns
 ::: {.column width="50%"}
--   Numerical scale
--   Equal intervals
--   Mathematical operators : +, −
--   No true zero
-    -   (e.g. A temperature of zero degrees Fahrenheit doesn't mean there is "no temperature" to be measured)
+-   定量数据
+
+    -   Numerical scale
+
+-   数值间等距
+
+    -   Equal intervals
+
+-   可进行加减运算
+
+    -   Mathematical operators : +, −
+
+-   没有绝对零点
+
+    -   No true zero
+
+        (e.g. A temperature of zero degrees Fahrenheit doesn't mean there is "no temperature" to be measured)
+
+<!-- -->
 :::
 
 ::: {.column width="50%"}
@@ -291,15 +340,33 @@ Hu Chuan-Peng
 
 ![](images/image-508406079.png){fig-align="center"}
 
-## 
+## 等比数据
 
 ::: columns
 ::: {.column width="50%"}
--   Ratio scale
--   Equal intervals
--   Mathematical operators : +, −,×, ÷
--   Ratios of differences can be expressed
--   True zero (e.g. If you have a population count of zero people, this means there are no people.)
+-   比率量表
+
+    -   Ratio scale
+
+-   数值间等距
+
+    -   Equal intervals
+
+-   可以加减乘除运算
+
+    -   Mathematical operators : +, −,×, ÷
+
+-   <div>
+
+    比值可解释
+
+    </div>
+
+    -   Ratios of differences can be expressed
+
+-   具有绝对零点
+
+    -   True zero (e.g. If you have a population count of zero people, this means there are no people.)
 :::
 
 ::: {.column width="50%"}
@@ -338,11 +405,33 @@ Hu Chuan-Peng
 
 ::: columns
 ::: {.column width="50%"}
-Python - Int（整型） - Long（长整型） - Float（浮点型） - Complex（复数） - String（字符串） - Boolean（布尔值）
+Python
+
+- Int（整型）
+
+ - Long（长整型）
+
+ - Float（浮点型）
+
+- Complex（复数）
+
+- String（字符串）
+
+- Boolean（布尔值）
 :::
 
 ::: {.column width="50%"}
-R - Numeric （数值型） - Integer（整型） - Complex（复数型） - Character(字符型） - Logical（逻辑型）
+R
+
+ - Numeric （数值型）
+
+ - Integer（整型）
+
+ - Complex（复数型）
+
+- Character(字符型）
+
+- Logical（逻辑型）
 :::
 :::
 
@@ -446,11 +535,11 @@ In 1662, John Graunt (约翰·格朗特) established demography（人口学）�
 
 ![](images/image-1200198317.png){fig-align="center"}
 
-##
+## 
 
 ![](images/image-2049886505.png){fig-align="center"}
 
-##
+## 
 
 ![](images/image-349266258.png){fig-align="center"}
 
@@ -500,15 +589,15 @@ In 1662, John Graunt (约翰·格朗特) established demography（人口学）�
 
 ![](images/image-810520824.png){fig-align="center"}
 
-##
+## 
 
 ![](images/image-1020763994.png){fig-align="center"}
 
-##
+## 
 
 ![](images/image-1904890873.png){fig-align="center"}
 
-##
+## 
 
 ![](images/image-2140294756.png){fig-align="center"}
 
@@ -516,56 +605,225 @@ In 1662, John Graunt (约翰·格朗特) established demography（人口学）�
 
 ## 表
 
+## 频数分布（Frequency Distribution）
+
+-   事件或值出现的次数。
+-   一个列出项目并显示项目出现次数的表。
+-   用英文字母"f"表示频率。
+
+## 频数分布（Frequency Distribution）
+
+## 累积频数分布(Cumulative frequency distribution)
+
+-   频率的总和，分布在不同的类别上。
+-   数据和总数以表的形式表示，其中频率按类区间分布。
+
+## 累积相对频数分布(Cumulative relative frequency distribution)
+
+-   相对频率是项目总数的分数或比例。
+
+-   累积相对频率分布是一组数据的表格汇总，显示小于或等于每个类别的上限类别的项目的相对频率。
+
+## 百分位数(Percentiles)
+
+-   以百分比计算，表明被测量或评价的人或事物在总体的位置。
+
 ## 图
 
-##
+## Bar graph（条形图）
+
+-   以垂直或水平矩形条的形式对分组数据进行图形表示，这些矩形条的长度相当于对数据的测量，这种图形称为柱状图或柱状图。
+-   所绘制的条形具有均匀的宽度，可变量表示在其中一个坐标轴上。
+-   另外，变量的度量在其坐标轴上表示。
+
+## 
 
 ![](images/image-308670008.png){fig-align="center"}
 
-##
+## 
 
-![](images/image-2026124073.png){fig-align="center"}
+![](images/image-2026124073.png){fig-align="center"} \## Histogram（直方图）
 
-##
+-   一种具有连续类的分组频率分布的图形表示。
+-   它是一个面积图，可以定义为一组矩形，带有类边界之间的间隔，面积与相应类中的频率成比例。
+
+## 
 
 ![](images/image-1667713042.png){fig-align="center"}
 
-##
+## 
 
 ![](images/image-269043223.png){fig-align="center"}
 
-##
+## Frequency polygon（频数折线图）
 
-![](images/image-1709851180.png){fig-align="center"}
+-   频率多边形几乎与直方图相同。
+-   频率多边形是一种表示定量数据及其频率的可视化实体方法。
 
-##
+## 
+
+## 
+
+## 
 
 ![](images/image-1472931651.png){fig-align="center"}
 
-##
+## 
+
+## Cumulative frequency polygon（累积频数折线图）
+
+-   一种表示分组数值数据的图，其中累计频率按类的上界绘制，
+-   结果点由直线段连接形成一个多边形。
+-   多边形开始于x轴上的点，对应于最低类的最低类边界。
 
 ![](images/image-1962545036.png){fig-align="center"}
 
-##
+## 
+
+## Boxplot（箱型图）
+
+-   用区间标度来总结一组数据的方法称为箱型图。
+-   我们使用5个汇总(最小值、Q1 (First Quartile)、中位数、Q3(third Quartile)和最大值)以标准化方式显示数据分布。
 
 ![](images/image-1324597722.png){fig-align="center"}
 
-##
+## 
 
 ![](images/image-284921941.png){fig-align="center"}
 
-##
+## 
+
+## Violin Plot（小提琴图）
+
+-   小提琴曲线图使用密度曲线描绘一个或多个组的数字数据分布。
+-   每条曲线的宽度与每个区域数据点的近似频率相对应。
+-   密度常伴有重叠的图表类型，如箱线图，以提供额外的信息。
 
 ![](images/image-299709599.png){fig-align="center"}
 
-##
+## 
 
 ![](images/image-1235475600.png){fig-align="center"}
 
-##
+## 
 
 ![](images/image-457090438.png){fig-align="center"}
 
 # R中的数据可视化(visualization in R)
 
+## 频数分布（Frequency Distribution）
+
+```{r}
+# 导入数据集
+data(mtcars)
+
+# 画频数分布图
+hist(mtcars$mpg, breaks = 10, main = "Miles per Gallon", xlab = "MPG", xaxt = "n", col="lightblue")
+axis(side = 1, at = pretty(mtcars$mpg, n = 10), labels = paste0(pretty(mtcars$mpg, n = 10)), las = 1)
+
+
+
+```
+
+## 累积频数分布(Cumulative frequency distribution)
+
+```{r}
+
+# 导入数据集
+data(mtcars)
+
+# 计算累计频率分布
+ecdf_mpg <- ecdf(mtcars$mpg)
+
+# 绘制累计频率分布图
+plot(ecdf_mpg, main = "Cumulative Frequency Distribution of MPG", xlab = "MPG", ylab = "Cumulative Frequency", lwd = 2, col="lightblue")
+```
+
+## 累积相对频数分布(Cumulative relative frequency distribution)
+
+```{r}
+# 计算累计相对频率分布
+ecdf_mpg <- ecdf(mtcars$mpg)
+n <- length(mtcars$mpg)
+cumrelfreq_mpg <- ecdf_mpg(mtcars$mpg) * n / n
+
+# 绘制累计相对频率分布图
+plot(cumrelfreq_mpg, main = "Cumulative Relative Frequency Distribution of MPG", xlab = "MPG", ylab = "Cumulative Relative Frequency", lwd = 2, col="lightblue")
+```
+
+## Bar graph（条形图）
+
+```{r}
+# 计算频数
+mpg_freq <- table(mtcars$mpg)
+
+# 绘制柱状图
+barplot(mpg_freq, main = "Bar Graph of MPG", xlab = "MPG", ylab = "Frequency", col = "lightblue")
+```
+
+## 直方图（Histogram）
+
+```{r}
+# 绘制直方图
+hist(mtcars$mpg, breaks = seq(10, 35, by = 3), main = "Histogram of MPG", xlab = "MPG", ylab = "Frequency", col = "lightpink")
+```
+
+## 频数折线图（Frequency polygon）
+
+```{r}
+# 计算频数
+mpg_freq <- table(mtcars$mpg)
+
+# 绘制频数折线图
+plot(mpg_freq, type = "l", main = "Line Graph of MPG Frequencies", xlab = "MPG", ylab = "Frequency", col = "lightblue")
+```
+
+## 累积频数折线图（Cumulative frequency polygon）
+
+```{r}
+# 计算累积频数
+mpg_cumfreq <- cumsum(mpg_freq)
+
+# 绘制累积频数折线图
+plot(mpg_cumfreq, type = "l", main = "Line Graph of Cumulative Frequencies", xlab = "MPG", ylab = "Cumulative Frequency", col = "lightblue")
+```
+
+## 箱型图（Boxplot）
+
+```{r}
+# 绘制箱型图
+boxplot(mtcars$mpg, main = "Boxplot of MPG", ylab = "MPG", col = "lightblue")
+```
+
+## 小提琴图（Violin Plot）
+
+```{r}
+# 导入 ggplot2 包
+library(ggplot2)
+
+# 绘制小提琴图
+# 导入 ggplot2 包
+library(ggplot2)
+
+# 绘制小提琴图
+ggplot(mtcars, aes(x = factor(vs, levels=c(0, 1)), y = mpg, fill = factor(am))) +
+  geom_violin(trim = FALSE) +
+  scale_fill_manual(values = c("lightpink", "lightblue"), name = "变速器（Transmission）", labels = c("手动（Manual）", "自动（Automatic）")) +
+  labs(x = "发动机", y = "燃油经济性 (MPG)", fill = "变速器") +
+  scale_x_discrete(labels=c("V型发动机", "直列发动机"))+
+  theme_classic() +
+  theme(text = element_text(size = 14))   # 设置中文字体和字号
+
+
+
+```
+
 # 总结(Summary)
+
+-   四种数据类型
+
+-   可视化简史
+
+-   数据可视化
+
+-   如何可视化
