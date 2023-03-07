@@ -595,23 +595,54 @@ R
 
 ## JASP
 
-![](images/image-1919476884.png){fig-align="center"}
+![](images/image-1919476884.png){fig-align="center"}</br>
+
+<h3 style="text-align: center; font-size: 24px;">
+
+   JASP是SPSS的一个免费、开源的替代方案，它允许你在一个用户友好的环境中执行简单和复杂的分析。
+   
+</h3></br>
 
 ## SPSS
 
-![](images/image-518160726.png){fig-align="center"}
+![](images/image-518160726.png){fig-align="center"}</br>
+<h3 style="text-align: center; font-size: 24px;">
+
+  在由Norman H. Nie, Dale H. Bent和C. Hadlai Hull开发后，第一版SPSS在1968年作为社会科学统计软件包发布了。
+  
+</h3></br>
 
 ## PYTHON
 
-![](images/image-556595194.png){fig-align="center"}
+![](images/image-556595194.png){fig-align="center"}</br>
+
+<h3 style="text-align: center; font-size: 24px;">
+
+   Python是由Centrum Wiskunde & Informatica (CWI)的Guido van          Rossum在20世纪80年代末构想的。Python是一种用途广泛的编程语言。
+   
+</h3></br>
 
 ## MATLAB
 
-![](images/image-1271418701.png){fig-align="center"}
+![](images/image-1271418701.png){fig-align="center"}</br>
+
+<h3 style="text-align: center; font-size: 24px;">
+
+   MATLAB是由数学家和计算机程序员Cleve Moler在20世纪60年代发明的。
+   在一开始(版本1.0之前)，MATLAB“不是一种编程语言;这是一个简单的交互式矩阵计算器。
+
+</h3></br>
+
 
 ## R
 
-![](images/image-1832353837.png){fig-align="center"}
+![](images/image-1832353837.png){fig-align="center"}</br>
+
+<h3 style="text-align: center; font-size: 24px;">
+
+   R是S编程语言与Scheme的词法作用域语义相结合的开源实现的语言，Scheme是为统计分析设计的，该语言是一种解释语言   ，其代码可以在没有编译器的情况下直接运行。
+   
+</h3></br>
 
 ## 可视化带来的一些问题
 
@@ -629,7 +660,57 @@ R
 
 ![](images/DataSaurus%20Dozen.gif){fig-align="center"}
 
+## 
+
+![](images/beauty.png){fig-align="center"}
+
+> 论文引用率与人们认为配图的美丽程度之间的关系 </br> （Chujun Lin, Mark Thornton，2021）
+
 ## 常见的可视化形式
+
+<br></br>
+
+![](images/NYT_1.png){fig-align="center"}
+
+<h3 style="text-align: center; font-size: 24px;">
+
+家庭经济计划
+
+</h3>
+
+<br></br>
+
+![](images/NYT_10.png){fig-align="center"}
+
+<h3 style="text-align: center; font-size: 24px;">
+
+美国女性的生育率变化
+
+</h3>
+
+<br></br>
+
+![](images/USA_5.png){fig-align="center"}
+
+<h3 style="text-align: center; font-size: 24px;">
+
+运动员收入
+
+</h3>
+
+<br></br>
+
+![](images/USA_7.png){fig-align="center"}
+
+<h3 style="text-align: center; font-size: 24px;">
+
+中国火箭的大小
+
+</h3>
+
+</br>
+
+> （Chujun Lin, Mark Thornton，2021）
 
 ## 频数分布（Frequency Distribution）
 
@@ -653,6 +734,7 @@ R
 -   累积相对频率分布是一组数据的表格汇总，显示小于或等于每个类别的上限类别的项目的相对频率。
 
 ## 
+
 ![](images/image-1077001192.png){fig-align="center"}
 
 ## 百分位数(Percentiles)
@@ -660,8 +742,6 @@ R
 -   以百分比计算，表明被测量或评价的人或事物在总体的位置。
 
 ![](images/image-366302810.png){fig-align="center"}
-
-
 
 ## Bar graph（条形图）
 
@@ -675,7 +755,7 @@ R
 
 ## 
 
-![](images/image-2026124073.png){fig-align="center"} 
+![](images/image-2026124073.png){fig-align="center"}
 
 ## Histogram（直方图）
 
@@ -694,8 +774,6 @@ R
 
 -   频率多边形几乎与直方图相同。
 -   频率多边形是一种表示定量数据及其频率的可视化实体方法。
-
- 
 
 ## 
 
@@ -785,6 +863,7 @@ plot(cumrelfreq_mpg, main = "Cumulative Relative Frequency Distribution of MPG",
 ```
 
 ## Bar graph（条形图）
+
 ```{r}
 # 计算频数
 mpg_freq <- table(mtcars$mpg)
