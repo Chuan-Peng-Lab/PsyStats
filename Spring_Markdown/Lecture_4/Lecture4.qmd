@@ -67,8 +67,12 @@ Hu Chuan-Peng
 ```{r}
 library(tidyverse)
 library(ggplot2)
+library(ggpubr)
 penguin_rawdata <- read.csv("Lecture4_files/penguin_rawdata.csv")%>%
                   filter(selfcontrol>0)
+
+penguin_rawdata$sex <- factor(penguin_rawdata$sex)
+penguin_rawdata <- penguin_rawdata[penguin_rawdata$sex %in% c(1, 2), ]
 ```
 
 ![](images/image-1290173772.png){fig-align="center"}
@@ -290,7 +294,30 @@ ggplot(rv,
 ## 
 
 ```{r}
-boxplot(penguin_rawdata$selfcontrol, main = "Boxplot of Self control", ylab = "Value", col = "lightblue")
+
+ boxplot(penguin_rawdata$selfcontrol, main = "Boxplot of Self control", ylab = "Value", col = "lightblue")
+ggplot(penguin_rawdata,aes(x = sex, y = selfcontrol,fill = sex))+
+  ggdist::stat_halfeye(adjust=.5,width=.3,.width=0,justification=-.3)+
+  geom_boxplot(width=.1,outlier.shape = NA)+
+  gghalves::geom_half_point(side="1",range_scale = .4,alpha=.5)+
+  scale_fill_manual(values = c("lightblue", "lightpink"))+
+  theme_bw()
+ 
+
+ggplot(penguin_rawdata, aes(x = sex, y = selfcontrol,fill = sex)) +
+  geom_boxplot(varwidth = TRUE, alpha = 0.7) + # vary boxes width according to n obs.
+  geom_jitter(alpha = 0.15, width = 0.2) + # adds random noise and limit its width
+ # divide into 2 panels
+  scale_fill_manual(values = c("lightblue", "lightpink")) +
+  scale_y_continuous() +
+  scale_x_discrete()+
+  labs(title = "Self Control by Sex", x = "Sex", y = "Self Control")+
+  theme_bw()
+ 
+
+ggviolin(penguin_rawdata, "sex", "selfcontrol", color = "sex",
+ palette = c("lightblue", "lightpink"), add = c("boxplot", "mean_sd"))
+  
 ```
 
 ## 众数(Mode)
@@ -460,7 +487,7 @@ Q: Why is the term 'average' misunderstood by most people?
 
 Most people think that 'average' means 'normal', or 'most common', but it actually means the mathematical mean.
 
-# 差异量数
+# 差异量数</br>
 
 -   数据绕平均值变化的程度
 
@@ -498,9 +525,36 @@ Most people think that 'average' means 'normal', or 'most common', but it actual
 
 -   $𝑄_1$ : 1st quartile or 25th percentile
 
+## 四分位距的计算（Calculation of IQR）
+
+-   Even-numbered data set
+
+-   ![](images/IQR1.png){fig-align="center"}
+
+-   Odd-numbered data set
+
+![](images/IQR2.png){fig-align="center"}
+
+-   $IQR = 𝑄_3−𝑄_1 = 81 – 57 = 24$
+
+<!-- -->
+
+-   Inclusive method
+-   ![](images/IQR3.png){fig-align="center"}
+-   $$𝑄_1= (57+61)/2=59$$
+-   $$𝑄_3= (77+81)/2=79$$
+-   $$IQR = 𝑄_3−𝑄_1
+         = 79 – 59 = 20$$
+
+## 四分位距（IQR）
+
+-   在箱线图中，箱的宽度显示了四分位距。更小的宽度意味着更少的分散，而更大的宽度意味着更多的分散。
+
+-   ![](images/image-759625968.png){fig-align="center"}
+
 ## 
 
-![](images/image-759625968.png){fig-align="center"}
+![](images/IQR4.png){fig-align="center"}
 
 ## 
 
@@ -532,7 +586,7 @@ boxplot(penguin_rawdata$selfcontrol, main = "Boxplot of Self control", ylab = "V
 
 -   variance, $\sigma^2 = \frac{\sum(X-\mu)^2}{N}$
 
--   standard deviation, \$\sigma =\sqrt(\frac{(x-\mu)^2}{N}) \$
+-   standard deviation, $$\sigma =\sqrt(\frac{(x-\mu)^2}{N}) $$
 
 ## 
 
@@ -559,13 +613,35 @@ ggplot(df, aes(x = value,
 
 -   百分位数（percentile）是统计学中常用的概念，表示在一个数据集中，某个特定百分比的数据位于该数据集的哪个位置。
 
--   计算百分位数的方法是：首先将数据集按照大小进行排序，然后确定要计算的百分位数p（例如，p=75表示计算第75个百分位数），然后找到排名为np/100的数据，如果np/100不是整数，则将其向上取整，并将其作为第np个百分位数的位置，即第np个百分位数为该位置对应的数据值。
+-   计算百分位数的方法是：首先将数据集按照大小进行排序，然后确定要计算的百分位数p（例如，p=75表示计算第75个百分位数），然后找到排名为np/100的数据，如果np/100不是整数，则将其向上取整，并将其作为第np个百分位数的位置，即第np个百分位数为该位置对应的数据值。</br>
+
+## 百分位数的计算
+
+$$𝑃_𝑝= 𝐿_𝑝 + (𝑃/100  × 𝑁−𝐹_𝑏)/𝑓_𝑝 ×𝑖$$ $$ 𝐿_𝑝：百分位数所在组的精确下限$$ $$𝐹_𝑏：小于𝐿_𝑝的累计次数$$ $$ 𝑓_𝑝：百分位数所在组的次数$$ $$𝑖 : 组距$$ $$𝑁 : 总次数$$
+
+## 百分位数的计算 
+$$𝑃_𝑝= 𝑈_𝑝 - ((1− 𝑃/100)  × 𝑁−𝐹_𝑎)/𝑓_𝑝 ×𝑖$$ $$U_𝑝 ：百分位数所在组的精确上限$$ $$𝐹_𝑎  ：大于𝑈_𝑝的累计次数$$ $$𝑓_𝑝：百分位数所在组的次数$$ $$𝑖 : 组距$$
+
+$$𝑁 : 总次数$$
 
 ## 百分等级
 
 -   百分等级（percentile rank）是一个数值在其所在数据集合中的位置百分比。例如，如果某个数值的百分等级为80%，则说明在与该数值相同大小的数据集合中，该数值排名位于前20%。
 
 计算百分等级的方法是：首先将数据集按照大小进行排序，然后找到该数值在数据集中的位置，即排名为n，然后计算该数值的百分等级为n/N，其中N是数据集的大小。
+
+## 百分等级的计算 
+
+$$𝑃𝑅=  (𝐹_b  + (𝑋 − 𝐿_𝑝)/𝑖  ×𝑓_𝑝)/𝑁$$ $$𝐿_𝑝：百分位数所在组的精确下限$$ $$𝐹_𝑏：小于𝐿_𝑝的累计次数$$ $$L_𝑝：百分位数所在组的次数$$ $$𝑖 : 组距$$ $$𝑁 : 总次数$$
+
+## 百分等级的计算
+
+$$𝑃𝑅= [1−(𝐹_𝑎  + (𝑈_𝑃  − 𝑋)/𝑖  ×𝑓_𝑝)/𝑁]×100$$ 
+$$𝑈_𝑝 ：百分位数所在组的精确上限$$ 
+$$𝐹_𝑎  ：大于𝑈_𝑝的累计次数$$
+$$f_𝑝：百分位数所在组的次数$$ 
+$$𝑖 : 组距$$ 
+$$𝑁 : 总次数$$
 
 ## 
 
@@ -575,4 +651,22 @@ ggplot(df, aes(x = value,
 
 ![](images/image-2004687837.png){fig-align="center"}
 
-## 集中量数、离散量数和可视化
+## 总结
+
+-   **集中量数**
+
+-   **离散量数**
+
+## R的安装
+
+-   **R 下载**
+
+    -   官网：<https://www.r-project.org/>
+
+-   **Rtools下载**
+
+    -   https://cran.r-project.org/bin/windows/Rtools/
+
+-   **Rstudio 下载**
+
+    -   [https://www.rstudio.com](https://www.rstudio.com/)
