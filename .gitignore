@@ -9,6 +9,7 @@
 *.Rhistory
 /test
 /idea
+/
 
-Stats101_2022
+/Stats101_2022
 .Rproj.user
