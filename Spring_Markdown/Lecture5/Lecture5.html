@@ -329,8 +329,10 @@
 <p><br><br></p>
 <h1 style="text-align: center">
 <p>05 - 从观测数据到参数模型</p>
-<p>——以离散变量概率分布为例</p>
 </h1>
+<h2 style="text-align: center">
+<p>——以离散变量概率分布为例</p>
+</h2>
 <p><br><br></p>
 <h3 style="text-align: center">
 <p>Hu Chuan-Peng</p>
@@ -396,9 +398,9 @@
 </center>
 </section></section>
 <section>
-<section id="伯努利试验bernoulli-trial" class="title-slide slide level1 center">
-<h1>伯努利试验（Bernoulli trial）</h1>
-
+<section id="伯努利试验" class="title-slide slide level1 center">
+<h1>伯努利试验</h1>
+<p>（Bernoulli trial）</p>
 </section>
 <section id="section-1" class="slide level2">
 <h2></h2>
@@ -415,7 +417,7 @@
 </div>
 </div>
 </section>
-<section id="伯努利试验" class="slide level2">
+<section id="伯努利试验-1" class="slide level2">
 <h2>伯努利试验</h2>
 <ul>
 <li>同样的条件下重复地、相互独立地进行的一种随机试验。<br></li>
@@ -1504,7 +1506,7 @@
 <h2></h2>
 
 <img data-src="Lecture5_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
-<section id="伯努利试验-1" class="slide level2">
+<section id="伯努利试验-2" class="slide level2">
 <h2>伯努利试验：</h2>
 <ul>
 <li>事件的结果的取值是离散的，{0，1}<br></li>
@@ -1519,11 +1521,11 @@
 <ul>
 <li>e.g.&nbsp;两点分布：一次试验，事件 A 出现概率为<span class="math inline">\(p\)</span> ,事件 A 不出现概率为<span class="math inline">\(q = 1 - p\)</span>, 以 X 记一次试验中 A 出现的次数，X 的取值为 0,1 两个值。<br></li>
 </ul></li>
-<li>离散变量X的可能取值为<span class="math inline">\(𝑋_1 ,𝑋_2, 𝑋_3,…, 𝑋_𝑖\)</span>，这种取值（可一一列出）离散间断的变量称为离散随机变量
+<li>离散变量X的可能取值为<span class="math inline">\(x_1 ,x_2, x_3,…, x_𝑖\)</span>，这种取值（可一一列出）离散间断的变量称为离散随机变量
 <ul>
 <li>e.g.&nbsp;伯努利试验：一次伯努利试验中，抛10次硬币，记”正面朝上”为事件A，以X记一次试验中A出现的次数，X的可能取值为0,1,2,3,4…,10。</li>
 </ul></li>
-<li>离散型随机变量𝑋的概率函数或概率分布<span class="math inline">\(P ( 𝑋 = 𝑋_𝑖 ) = 𝑃_𝑖 ( 𝑖 =1 , 2,…,n)\)</span></li>
+<li>离散型随机变量𝑋的概率函数或概率分布<span class="math inline">\(P ( 𝑋 = x_i ) = p_i (i =1 , 2,…,n)\)</span></li>
 </ul>
 </section>
 <section id="小练习" class="slide level2">
@@ -1537,24 +1539,38 @@
 </section>
 <section id="示例" class="slide level2">
 <h2>示例</h2>
-<p>盒子里共有5个球，3个红球与2个白球，任取2个球，抽到白球的个数及其概率<br> - n = 2, <br> - k = {0, 1, 2}, <br> - <span class="math inline">\(P(X=白球) = 2/5\)</span> <br></p>
+<p>盒子里共有5个球，3个红球与2个白球，任取2个球，抽到白球的个数及其概率<br> - n = 2, <br></p>
+<ul>
+<li><p>k = {0, 1, 2}, <br></p></li>
+<li><p><span class="math inline">\(P(X=白球) = 2/5\)</span> <br></p></li>
+</ul>
 </section>
 <section id="section-12" class="slide level2">
 <h2></h2>
 <p>假设某专业每年统计课及格率为85%，今年该专业共有60名学生，随机从中抽5名学生，其中包含至少一名不及格学生的情况及其概率分别为多少？<br></p>
 <ul>
-<li>n = <br></li>
-<li>k = {} <br></li>
-<li>p = <br></li>
+<li><p>n = <br></p></li>
+<li><p>k = {} <br></p></li>
+<li><p>p = <br></p></li>
 </ul>
 </section>
 <section id="section-13" class="slide level2">
 <h2></h2>
-<p>实验中，某学生的正确击中率为90%，5次实验反应中正确次数及概率的可能情况 <br> - n = <br> - k = {} <br> - p = <br></p>
+<p>实验中，某学生的正确击中率为90%，5次实验反应中正确次数及概率的可能情况 <br></p>
+<ul>
+<li><p>n = <br></p></li>
+<li><p>k = {} <br></p></li>
+<li><p>p = <br></p></li>
+</ul>
 </section>
 <section id="section-14" class="slide level2">
 <h2></h2>
-<p>某游戏抽中顶级卡的概率为5%，抽卡1000次可能出现的情况<br> - n = <br> - k = {} <br> - p = <br></p>
+<p>某游戏抽中顶级卡的概率为5%，抽卡1000次可能出现的情况<br></p>
+<ul>
+<li><p>n = <br></p></li>
+<li><p>k = {} <br></p></li>
+<li><p>p = <br></p></li>
+</ul>
 </section>
 <section id="二项分布binomial-distribution" class="slide level2">
 <h2>二项分布(Binomial Distribution)</h2>
@@ -1577,16 +1593,16 @@
 </section>
 <section id="二项分布binomial-distribution-2" class="slide level2">
 <h2>二项分布(Binomial Distribution)</h2>
-<p>在n个独立的伯努利试验中获得k次成功的概率由概率质量函数给出:</p>
+<p>在n个独立的伯努利试验中获得k次成功的概率由概率函数给出:</p>
 <p><span class="math display">\[P(X=k )=𝐶_𝑛^𝑘 𝑝^𝑘 𝑞^{𝑛−𝑘}= 𝐶_𝑛^𝑘 𝑝^𝑘 (1−𝑝)^{𝑛−𝑘}\]</span></p>
 <p><span class="math display">\[𝐶_𝑛^𝑘= 𝑛!/𝑘!(𝑛−𝑘)! \]</span></p>
-<blockquote>
-<p>（邓铸老师书上的写法）</p>
-</blockquote>
+<center>
+（邓铸老师书上的写法）
+</center>
 <p><span class="math display">\[𝑏(𝑘; 𝑛,𝑝)=( _𝑘^𝑛)𝑝^𝑘 𝑞^{𝑛−𝑘}\]</span></p>
-<blockquote>
-<p>(概率论及其应用——威廉费勒/William Feller）</p>
-</blockquote>
+<center>
+(概率论及其应用——威廉费勒/William Feller）
+</center>
 </section>
 <section id="二项分布binomial-distribution-3" class="slide level2">
 <h2>二项分布(Binomial Distribution)</h2>
@@ -1642,11 +1658,11 @@
 <li>计算0到 10次正面朝上概率</li>
 </ul>
 </section>
-<section id="用r模拟101001000次试验结果" class="slide level2">
-<h2>用R模拟10,100,1000次试验结果</h2>
+<section id="用r模拟10-100-1000次试验结果" class="slide level2">
+<h2>用R模拟10, 100, 1000次试验结果</h2>
 </section>
-<section id="p-0.5n-10重复10次" class="slide level2">
-<h2>P = 0.5,n = 10,重复10次</h2>
+<section id="p-0.5-n-10-重复10次" class="slide level2">
+<h2>P = 0.5, n = 10, 重复10次</h2>
 <div class="cell" data-p="0.5" data-n="10" data-nexp="10">
 
 <div class="cell-output cell-output-stdout">
@@ -1657,8 +1673,8 @@
 </div>
 </div>
 <img data-src="Lecture5_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section>
-<section id="p-0.5n-10重复100次" class="slide level2">
-<h2>P = 0.5,n = 10,重复100次</h2>
+<section id="p-0.5-n-10-重复100次" class="slide level2">
+<h2>P = 0.5, n = 10, 重复100次</h2>
 <div class="cell" data-p="0.5" data-n="10" data-nexp="100">
 
 <div class="cell-output cell-output-stdout">
@@ -1669,8 +1685,8 @@
 </div>
 </div>
 <img data-src="Lecture5_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"></section>
-<section id="p-0.5n-10重复1000次" class="slide level2">
-<h2>P = 0.5,n = 10,重复1000次</h2>
+<section id="p-0.5-n-10-重复1000次" class="slide level2">
+<h2>P = 0.5, n = 10, 重复1000次</h2>
 <div class="cell" data-p="0.5" data-n="10" data-nexp="100">
 
 <div class="cell-output cell-output-stdout">
@@ -1691,11 +1707,11 @@
 <li><p>事件A出现次数所属分布的标准差：<span class="math inline">\(𝜎 = √(𝑛𝑝𝑞 )\)</span></p></li>
 </ul>
 </section>
-<section id="假设进行10次100次1000次试验的结果" class="slide level2">
-<h2>假设进行10次，100次，1000次试验的结果</h2>
+<section id="假设进行10次-100次-1000次试验的结果" class="slide level2">
+<h2>假设进行10次, 100次, 1000次试验的结果</h2>
 </section>
-<section id="p0.3n-10重复10次" class="slide level2">
-<h2>p=0.3,n = 10,重复10次</h2>
+<section id="p0.3-n-10-重复10次" class="slide level2">
+<h2>p=0.3, n = 10, 重复10次</h2>
 <div class="cell" data-p="0.3" data-n="10" data-nexp="100">
 
 <div class="cell-output cell-output-stdout">
@@ -1706,8 +1722,8 @@
 </div>
 </div>
 <img data-src="Lecture5_files/figure-revealjs/unnamed-chunk-11-1.png" width="960" class="r-stretch"></section>
-<section id="n-10重复100次" class="slide level2">
-<h2>n = 10,重复100次</h2>
+<section id="n-10-重复100次" class="slide level2">
+<h2>n = 10, 重复100次</h2>
 <div class="cell" data-p="0.3" data-n="10" data-nexp="100">
 
 <div class="cell-output cell-output-stdout">
@@ -1718,8 +1734,8 @@
 </div>
 </div>
 <img data-src="Lecture5_files/figure-revealjs/unnamed-chunk-12-1.png" width="960" class="r-stretch"></section>
-<section id="n-10重复1000次" class="slide level2">
-<h2>n = 10,重复1000次</h2>
+<section id="n-10-重复1000次" class="slide level2">
+<h2>n = 10, 重复1000次</h2>
 <div class="cell" data-p="0.3" data-n="10" data-nexp="100">
 
 <div class="cell-output cell-output-stdout">
@@ -1739,7 +1755,7 @@
 </section>
 <section id="section-17" class="slide level2">
 <h2></h2>
-<p>甲流在某地区的传染率约为20%，如果该地区约10万人口。<br> 请问感染甲流的人大概有多少？</p>
+<p>甲流在某地区的患病率约为20%，如果该地区约10万人口。<br> 请问感染甲流的人大概有多少？</p>
 </section>
 <section id="section-18" class="slide level2">
 <h2></h2>
@@ -1747,8 +1763,9 @@
 </section>
 <section id="小结" class="slide level2">
 <h2>小结</h2>
-<p><br><br> - 模型是对世界的简化，在这些实例中，复杂的问题情景可以简化为简单的二项分布模型；<br></p>
+<p><br><br></p>
 <ul>
+<li><p>模型是对世界的简化，在这些实例中，复杂的问题情景可以简化为简单的二项分布模型；<br></p></li>
 <li><p>在已知模型参数的情况下，预测结果可以通过理论预测给出；<br></p></li>
 <li><p>当抽样次数接近无穷大时，观测结果近似于预测结果。</p></li>
 </ul>
@@ -1757,7 +1774,7 @@
 <h2></h2>
 <ul>
 <li><p>当你知道10次试验的结果时，你能判断硬币是公平的还是不公平的(p = 0.5)吗?</p></li>
-<li><p>换言之，根据试验结果，能否判断产生该事件背后的二项分布的概率？</p></li>
+<li><p>换言之，根据试验结果，能否判断产生该事件背后的二项分布的参数？</p></li>
 </ul>
 </section>
 <section id="模型" class="slide level2">
@@ -1775,16 +1792,16 @@
 <h2>似然</h2>
 <table style="width:100%;">
 <colgroup>
-<col style="width: 22%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 8%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1817,39 +1834,35 @@
 </table>
 
 <img data-src="Lecture5_files/figure-revealjs/unnamed-chunk-14-1.png" width="960" class="r-stretch"></section>
-<section id="生成模型generative-model" class="slide level2">
-<h2>生成模型（Generative model）</h2>
+<section id="生成过程generative-process" class="slide level2">
+<h2>生成过程（Generative process）</h2>
 
-<img data-src="./images/Generativemodel1.png" class="r-stretch"></section>
-<section id="section-20" class="slide level2">
-<h2></h2>
+<img data-src="images/image-1563364806.png" class="r-stretch"></section>
+<section id="生成过程generative-process-1" class="slide level2">
+<h2>生成过程（Generative process）</h2>
 
-<img data-src="./images/Generativemodel2.png" class="r-stretch"></section>
-<section id="n-10重复10次" class="slide level2">
-<h2>n =10,重复10次</h2>
+<img data-src="images/image-1295519998.png" class="r-stretch"></section>
+<section id="逆向推理过程inverse-inference-process" class="slide level2">
+<h2>逆向推理过程（Inverse inference process）</h2>
+
+<img data-src="images/image-951402064.png" class="r-stretch"></section>
+<section id="逆向推理过程inverse-inference-process-1" class="slide level2">
+<h2>逆向推理过程（Inverse inference process）</h2>
 </section>
-<section id="判别模型discriminative-model" class="slide level2">
-<h2>判别模型（Discriminative model）</h2>
-
-<img data-src="./images/Discriminativemodel1.png" class="r-stretch"></section>
-<section id="判别模型discriminative-model-1" class="slide level2">
-<h2>判别模型（Discriminative model）</h2>
-
-<img data-src="./images/Discriminativemodel2.png" class="r-stretch"></section>
-<section id="section-21" class="slide level2">
-<h2></h2>
+<section id="section-20" class="slide level2">
+<h2><img data-src="images/image-1616587818.png"></h2>
 <table style="width:100%;">
 <colgroup>
-<col style="width: 28%">
-<col style="width: 7%">
-<col style="width: 7%">
-<col style="width: 7%">
-<col style="width: 7%">
-<col style="width: 7%">
-<col style="width: 7%">
-<col style="width: 7%">
-<col style="width: 7%">
-<col style="width: 7%">
+<col style="width: 13%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1880,22 +1893,26 @@
 </tr>
 </tbody>
 </table>
-
-<img data-src="Lecture5_files/figure-revealjs/unnamed-chunk-15-1.png" width="960" class="r-stretch"></section>
-<section id="section-22" class="slide level2">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="Lecture5_files/figure-revealjs/unnamed-chunk-15-1.png" width="960"></p>
+</div>
+</div>
+</section>
+<section id="section-21" class="slide level2">
 <h2></h2>
 <table style="width:100%;">
 <colgroup>
-<col style="width: 29%">
-<col style="width: 7%">
-<col style="width: 7%">
-<col style="width: 7%">
-<col style="width: 7%">
-<col style="width: 7%">
-<col style="width: 7%">
-<col style="width: 7%">
-<col style="width: 7%">
-<col style="width: 7%">
+<col style="width: 13%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
 </colgroup>
 <thead>
 <tr class="header">
