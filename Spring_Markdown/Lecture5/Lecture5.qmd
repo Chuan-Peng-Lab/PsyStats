@@ -78,15 +78,14 @@ Hu Chuan-Peng
 
 # 伯努利试验（Bernoulli trial）
 
-
-##
+## 
 
 </br></br></br></br></br>
 
 <center>一次试验掷10次硬币，正面朝上的次数是多少？</center>
 
+## 
 
-##
 ```{r}
 library(ggplot2)
 library(tidyverse)
@@ -104,8 +103,6 @@ x = bernoulli(10,0.5)
 x
 ```
 
-
-
 ## 伯努利试验
 
 -   同样的条件下重复地、相互独立地进行的一种随机试验。</br>
@@ -119,12 +116,14 @@ x
 -   每次试验只有两种结果，记为𝐴与𝐴̅</br>
 -   每次试验条件相同，所以𝑃(𝐴)=𝑝 , 𝑃(𝐴̅ )=𝑞</br>
 
-##
+## 
+
 </br></br></br></br></br>
 
 <center>每人掷10次硬币，5人独立试验的一种可能结果</center>
 
 ## 
+
 ```{r}
 result <- data.frame()  # 创建一个空的 dataframe
 n <- 10
@@ -139,6 +138,7 @@ result$heads <- rowSums(result[,1:n])
 result$tails <- n-result$heads
 result
 ```
+
 ```{r}
 ggplot(result, aes(x = heads)) + 
   geom_histogram(binwidth = 1, color = "black", fill = "white") + 
@@ -148,13 +148,14 @@ ggplot(result, aes(x = heads)) +
   theme_bw()
 ```
 
+## 
 
-##
 </br></br></br></br></br>
 
 <center>每人掷10次硬币，10人独立试验的一种可能结果</center>
 
 ## 
+
 ```{r}
 result <- data.frame()  # 创建一个空的 dataframe
 n <- 10
@@ -169,6 +170,7 @@ result$heads <- rowSums(result[,1:n])
 result$tails <- n-result$heads
 result
 ```
+
 ```{r}
 ggplot(result, aes(x = heads)) + 
   geom_histogram(binwidth = 1, color = "black", fill = "white") + 
@@ -178,12 +180,14 @@ ggplot(result, aes(x = heads)) +
   theme_bw()
 ```
 
-##
+## 
+
 </br></br></br></br></br>
 
 <center>每人掷10次硬币，1000人独立试验的一种可能结果</center>
 
 ## 
+
 ```{r}
 result <- data.frame()  # 创建一个空的 dataframe
 n <- 10
@@ -198,6 +202,7 @@ result$heads <- rowSums(result[,1:n])
 result$tails <- n-result$heads
 result
 ```
+
 ```{r}
 ggplot(result, aes(x = heads)) + 
   geom_histogram(binwidth = 1, color = "black", fill = "white") + 
@@ -211,54 +216,377 @@ ggplot(result, aes(x = heads)) +
 
 -   事件的结果的取值是离散的，{0，1}</br>
 -   事件 A 出现概率为 $p$, 事件 A 不出现概率为 $q = 1 - p$。</br>
--   n次试验中，事件A出现$k (k < n) $次的可能性是有规律的</br>
+-   n次试验中，事件A出现\$k (k \< n) \$次的可能性是有规律的</br>
 
 ## 离散随机变量：
-- 其可能的取值是间断的，有时只有有限的几个变量值结果{0，1}
-  - e.g. 两点分布：一次试验，事件 A 出现概率为$ p$ ,事件 A 不出现概率为
- $ q = 1 - p$, 以 X 记一次试验中 A 出现的次数，X 的取值为 0,1 两个值。</br>
-- 离散变量X的可能取值为$𝑋_1 ,𝑋_2, 𝑋_3,…, 𝑋_𝑖$，这种取值（可一一列出）离散间断的变量称为离散随机变量
-  - e.g. 伯努利实验：一次伯努利实验中，抛10次硬币，记“正面朝上”为事件A，以X记一次试验中A出现的次数，X的可能取值为0,1,2,3,4...,10。
-- 离散型随机变量𝑋的概率函数或概率分布$P ( 𝑋 = 𝑋_𝑖 ) = 𝑃_𝑖 ( 𝑖 =1 , 2,…,n)$   
 
-
-## 离散随机变量
-- 假设某专业每年统计课及格率为85%，今年该专业共有60名学生，随机从中抽5名学生，其中包含至少一名不及格学生的情况及其概率分别为多少？</br>
-- 盒子里共有5个球，3个红球与2个白球，任取2个球，抽到白球的个数及其概率</br>
-- 实验中，某学生的正确击中率为90%，5次实验反应中正确次数及概率的可能情况</br>
-- 某游戏抽中顶级卡的概率为5%，抽卡1000次可能出现的情况</br>
+-   其可能的取值是间断的，有时只有有限的几个变量值结果{0，1}
+    -   e.g. 两点分布：一次试验，事件 A 出现概率为\$ p\$ ,事件 A 不出现概率为 \$ q = 1 - p\$, 以 X 记一次试验中 A 出现的次数，X 的取值为 0,1 两个值。</br>
+-   离散变量X的可能取值为$𝑋_1 ,𝑋_2, 𝑋_3,…, 𝑋_𝑖$，这种取值（可一一列出）离散间断的变量称为离散随机变量
+    -   e.g. 伯努利实验：一次伯努利实验中，抛10次硬币，记"正面朝上"为事件A，以X记一次试验中A出现的次数，X的可能取值为0,1,2,3,4...,10。
+-   离散型随机变量𝑋的概率函数或概率分布$P ( 𝑋 = 𝑋_𝑖 ) = 𝑃_𝑖 ( 𝑖 =1 , 2,…,n)$
 
 ## 离散随机变量
- 盒子里共有5个球，3个红球与2个白球，任取2个球，抽到白球的个数及其概率</br>
-- n = 2, </br>
-- k = {0, 1, 2}, </br>
-- $P(X=白球) = 2/5$ </br>
+
+-   假设某专业每年统计课及格率为85%，今年该专业共有60名学生，随机从中抽5名学生，其中包含至少一名不及格学生的情况及其概率分别为多少？</br>
+-   盒子里共有5个球，3个红球与2个白球，任取2个球，抽到白球的个数及其概率</br>
+-   实验中，某学生的正确击中率为90%，5次实验反应中正确次数及概率的可能情况</br>
+-   某游戏抽中顶级卡的概率为5%，抽卡1000次可能出现的情况</br>
 
 ## 离散随机变量
+
+盒子里共有5个球，3个红球与2个白球，任取2个球，抽到白球的个数及其概率</br> - n = 2, </br> - k = {0, 1, 2}, </br> - $P(X=白球) = 2/5$ </br>
+
+## 离散随机变量
+
 假设某专业每年统计课及格率为85%，今年该专业共有60名学生，随机从中抽5名学生，其中包含至少一名不及格学生的情况及其概率分别为多少？
-- n = 
-- k = {}
-- p = 
+
+-   n =
+
+\- k = {}
+
+\- p =
 
 ## 离散随机变量
-实验中，某学生的正确击中率为90%，5次实验反应中正确次数及概率的可能情况
-- n = 
-- k = {}
-- p = 
+
+实验中，某学生的正确击中率为90%，5次实验反应中正确次数及概率的可能情况 - n = - k = {} - p =
 
 ## 二项分布(Binomial Distribution)
-- n次独立重复的伯努利试验的概率分布服从二项分布</br>
-- 每次试验中事件A发生的概率为p</br>
-- X表示n重伯努利试验中事件A发生的次数，则X的可能取值为0，1，…，n,</br>
-- 对每一个k（0 ≤ k ≤ n）,事件{X = k}即为“n次试验中事件A恰好发生k次”，随机变量X的离散概率分布即为二项分布。</br>
+
+-   n次独立重复的伯努利试验的概率分布服从二项分布</br>
+-   每次试验中事件A发生的概率为p</br>
+-   X表示n重伯努利试验中事件A发生的次数，则X的可能取值为0，1，...，n,</br>
+-   对每一个k（0 ≤ k ≤ n）,事件{X = k}即为"n次试验中事件A恰好发生k次"，随机变量X的离散概率分布即为二项分布。</br>
 
 ## 二项分布(Binomial Distribution)
-- 一般来说，如果随机变量 X 遵循参数 $n \in N$ 和 $p \in [0,1]$, 写作 X ~ B(n, p). 
-  - X ~ binomial(n, p)
-  - （随机变量X服从以n, p为参数的二项分布）
 
+-   一般来说，如果随机变量 X 遵循参数 $n \in N$ 和 $p \in [0,1]$, 写作 X \~ B(n, p).
+    -   X \~ binomial(n, p)
+    -   （随机变量X服从以n, p为参数的二项分布）
+
+## 二项分布(Binomial Distribution)
+
+在n个独立的伯努利试验中获得k次成功的概率由概率质量函数给出:
+
+1.  $$ 𝑃 (X=k )=𝐶_𝑛^𝑘 𝑝^𝑘 𝑞^(𝑛−𝑘)= 𝐶_𝑛^𝑘 𝑝^𝑘 (1−𝑝)^(𝑛−𝑘)  ； 𝐶_𝑛^𝑘= 𝑛!/𝑘!(𝑛−𝑘)! $$
+
+> （邓铸老师书上的写法）
+
+2.  $$𝑏(𝑘; 𝑛,𝑝)=( _𝑘^𝑛)𝑝^𝑘 𝑞^(𝑛−𝑘)$$
+
+> (概率论及其应用------威廉费勒/William Feller）
+
+## 二项分布(Binomial Distribution)
+
+$X ~ binomial(n, p)$
+
+（随机变量X服从以n, p为参数的二项分布）
+
+$𝑃 (X=k )=𝐶_𝑛^𝑘 𝑝^𝑘 𝑞^(𝑛−𝑘)= 𝐶_𝑛^𝑘 𝑝^𝑘 (1−𝑝)^(𝑛−𝑘) , 𝐶_𝑛^𝑘= 𝑛!/𝑘!(𝑛−𝑘)!$
+
+e.g.小明与小刚掷骰子，点数大者赢，比赛为三局两胜制度，小明三次掷出点数5，此时小刚恰好取胜两场的概率为：
+
+$𝑃 (X=2 )=𝐶_3^2 （1/6）×（1−1/6）^(3−2)$
+
+## 
+
+::: columns
+::: {.column width="50%"}
+-   一次试验，掷10次硬币
+
+    -   Toss a coin 10 times<br><br>
+
+-   重复10次试验
+
+    -   Toss a coin 10 times and repeat the procedure for 10 times<br>
+
+-   所有可能的"头" 朝上的概率分布情况
+
+    -   The possible probability distributions of "heads"<br>
+:::
+
+::: {.column width="50%"}
+-   伯努利试验
+
+    -   (Bernoulli trial)<br><br>
+
+-   n重伯努利试验
+
+    -   (n-fold bernoulli trials)<br><br>
+
+-   二项分布<br>
+
+    -   （Binomial distribution）<br>
+:::
+:::
+
+## 二项分布(Binomial distribution)
+
+-   $$𝑃 (𝑋=𝑘 |𝑛,𝑝)=𝐶_𝑛^𝑘 𝑝^𝑘 𝑞^(𝑛−𝑘)= 𝐶_𝑛^𝑘 𝑝^𝑘 (1−𝑝)^(𝑛−𝑘) , 𝐶_𝑛^𝑘= 𝑛!/𝑘!(𝑛−𝑘)! $$
+
+<br><br>
+
+-   计算0到 10次正面朝上概率
+
+## 用R模拟10,100,1000次试验结果
+
+## P = 0.5,n = 10,重复10次
+
+```{r ,P = 0.5,n = 10,重复10次}
+result <- data.frame()  # 创建一个空的 dataframe
+n <- 10
+p <- 0.5
+nexp <- 10
+for(i in c(1:nexp)){
+  temp_df <- data.frame(t(matrix(bernoulli(n, p))))
+  result <- bind_rows(result, temp_df)  # 将当前迭代的结果添加到总结果 dataframe 中
+}
+
+result$heads <- rowSums(result[,1:n])
+result$tails <- n-result$heads
+prob <-  
+result
+
+ggplot(result, aes(x = heads)) + 
+  geom_histogram(binwidth = 1, color = "black", fill = "white") + 
+  labs(title = "Histogram of Sum of Bernoulli Trials", 
+       x = "Sum of Bernoulli Trials", 
+       y = "Count")+
+  theme_bw()
+
+```
+
+## P = 0.5,n = 10,重复100次
+
+```{r ,P = 0.5,n = 10,重复100次}
+result <- data.frame()  # 创建一个空的 dataframe
+n <- 10
+p <- 0.5
+nexp <- 100
+for(i in c(1:nexp)){
+  temp_df <- data.frame(t(matrix(bernoulli(n, p))))
+  result <- bind_rows(result, temp_df)  # 将当前迭代的结果添加到总结果 dataframe 中
+}
+
+result$heads <- rowSums(result[,1:n])
+result$tails <- n-result$heads
+prob <-  
+result
+
+ggplot(result, aes(x = heads)) + 
+  geom_histogram(binwidth = 1, color = "black", fill = "white") + 
+  labs(title = "Histogram of Sum of Bernoulli Trials", 
+       x = "Sum of Bernoulli Trials", 
+       y = "Count")+
+  theme_bw()
+
+
+```
+
+## P = 0.5,n = 10,重复1000次
+
+```{r ,P = 0.5,n = 10,重复1000次}
+result <- data.frame()  # 创建一个空的 dataframe
+n <- 10
+p <- 0.5
+nexp <- 1000
+for(i in c(1:nexp)){
+  temp_df <- data.frame(t(matrix(bernoulli(n, p))))
+  result <- bind_rows(result, temp_df)  # 将当前迭代的结果添加到总结果 dataframe 中
+}
+
+result$heads <- rowSums(result[,1:n])
+result$tails <- n-result$heads
+prob <-  
+result
+
+ggplot(result, aes(x = heads)) + 
+  geom_histogram(binwidth = 1, color = "black", fill = "white") + 
+  labs(title = "Histogram of Sum of Bernoulli Trials", 
+       x = "Sum of Bernoulli Trials", 
+       y = "Count")+
+  theme_bw()
+
+
+```
+
+## 掷10次硬币，预期"头"朝上的次数
+
+## 
+
+```{r ,P = 0.5,n = 10,重复10次}
+
+
+
+Mean = 4.8
+Std = 1.75
+```
+
+## 
+
+```{r ,P = 0.5,n = 10,重复100次}
+
+
+
+Mean = 4.8
+Std = 1.75
+```
+
+## 
+
+```{r ,P = 0.5,n = 10,重复1000次}
+
+
+
+Mean = 4.8
+Std = 1.75
+```
+
+## 
+
+-   已知一次试验中的每次尝试中事件A
+
+-   发生的概率p，共进行n次独立重复的伯努利试验
+
+-   事件A在一次试验中出现k次，事件A在n次试验中出现次数的平均数$（𝑘_1+𝑘_2+𝑘_3+...+𝑘_𝑛/𝑛)$
+
+-   当n → ∞，p ≠ q，np ≥5且nq≥5，事件A在n次试验中出现次数的平均数：\$𝜇 = np \$
+
+-   事件A出现次数所属分布的标准差：$𝜎 = √(𝑛𝑝𝑞 )$
+
+## 
+
+-   当你知道10次试验的结果时，你能判断硬币是公平的还是不公平的(p = 0.5)吗?
+
+-   换言之，根据试验结果，能否判断产生该事件背后的二项分布的概率？
+
+## 假设进行10次，100次，1000次试验的结果
+
+## n = 10,重复10次
+
+```{r ,P = 0.3,n = 10,重复10次}
+
+
+
+
+```
+
+## n = 10,重复100次
+
+```{r ,P = 0.3,n = 10,重复100次}
+
+
+
+
+```
+
+## n = 10,重复1000次
+
+```{r ,P = 0.3,n = 10,重复1000次}
+
+
+
+
+```
+
+-   观测频率/实际概率P = 0.3
+
+## 确定概率为0.5，进行10次，100次，1000次试验的结果
+
+## p= 0.5,n = 10,重复10次
+
+```{r ,P = 0.5,n = 10,重复10次}
+
+
+
+
+```
+
+## p= 0.5,n = 10,重复100次
+
+```{r ,P = 0.5,n = 10,重复100次}
+
+
+
+
+```
+
+## p= 0.5,n = 10,重复1000次
+
+```{r ,P = 0.5,n = 10,重复1000次}
+
+
+
+
+```
+
+## 小明对知识的掌握程度是80%，现在小明即将完成一份练习对知识进行测试，该练习共20题。<br>
+
+## 小明大概能正确答对多少题？
+
+## 
+
+```{r ,P = 0.8,n = 20}
+
+## label_y:Probability(X=x),label_x:x
+
+
+
+
+```
+
+## 小刚对知识的掌握程度是60%，如果小刚完成这份题量为20的练习。<br>
+
+## 小刚大概能正确答对多少题？
+
+## 
+
+```{r ,P = 0.6,n = 20}
+
+## label_y:Probability(X=x),label_x:x
+
+
+
+
+```
+
+## 如果该练习题量为50题，小明对知识的掌握程度是为80%，则他可能正确答对多少题？
+
+## 
+
+```{r ,P = 0.8,n = 50}
+
+## label_y:Probability(X=x),label_x:x
+
+
+
+
+```
+
+## 如果该练习题量为50题，小刚对知识的掌握程度是60%，则他可能正确答对多少题？
+
+```{r ,P = 0.6,n = 50}
+
+## label_y:Probability(X=x),label_x:x
+
+
+
+
+```
+
+## 模型
+
+-   数值上的等式
+-   $L (θ ∣x ) =p (X = x | θ ) :$
+    -   Likelihood(似然）
+    -   Given the data X， the probability that θ is true.
 
 ## 似然
+
+| p                          | **0.1**   | **0.2**   | **0.3**   | **0.4**   | **0.5**   | **0.6**   | **0.7**   | **0.8**   | **0.9**   |
+|----------------------------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
+| **P(*k* = 3 \| *n*, *p*)** | **0.057** | **0.201** | **0.267** | **0.214** | **0.117** | **0.042** | **0.009** | **0.001** | **0.000** |
+
 ```{r}
 # 定义似然函数
 likelihood <- function(p) {
@@ -281,3 +609,103 @@ ggplot(df, aes(x = p, y = likelihood)) +
   theme_bw()
 ```
 
+## 
+
+```{r 9个直方图}
+#label——y:prob,x:x
+
+
+```
+
+## 生成模型（Generative model）
+
+![](./images/Generativemodel1.png)
+
+## 
+
+![](./images/Generativemodel2.png)
+
+## n =10,重复10次
+
+```{r n =10,重复10次}
+# 9个直方图,Y:prob,X=x
+# P = 0.3
+# P = 0.5
+# P = 0.7
+```
+
+## 判别模型（Discriminative model）
+
+![](./images/Discriminativemodel1.png) \## 判别模型（Discriminative model）
+
+![](./images/Discriminativemodel2.png)
+
+## 
+
+| p                                      | **0.1**   | **0.2**   | **0.3**   | **0.4**   | **0.5**   | **0.6**   | **0.7**   | **0.8**   | **0.9**   |
+|----------------------------------------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
+| **P(*k* = 3 \| *n*, *p*)**<br>(n = 10) | **0.057** | **0.201** | **0.267** | **0.214** | **0.117** | **0.042** | **0.009** | **0.001** | **0.000** |
+
+```{r ,P (k = 3 | n, p),n = 10}
+likelihood <- function(p) {
+  choose(10, 3) * p^3 * (1-p)^7
+}
+
+# 在0到1的范围内生成100个等距的概率值，并计算每个概率值的似然值
+p_values <- seq(0, 1, length.out = 100)
+likelihood_values <- sapply(p_values, likelihood)
+
+# 将概率值和似然值组成数据框
+df <- data.frame(p = p_values, likelihood = likelihood_values)
+
+# 绘制似然函数折线图
+ggplot(df, aes(x = p, y = likelihood)) +
+  geom_line() +
+  xlab("p") +
+  ylab("Likelihood") +
+  ggtitle("Likelihood Function for p with r = 3 and n = 10")+
+  theme_bw()
+
+```
+
+## 
+
+| p                                       | **0.1**   | **0.2**   | **0.3**   | **0.4**   | **0.5**   | **0.6**   | **0.7**   | **0.8**   | **0.9**   |
+|-----------------------------------------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
+| **P(*k* = 3 \| *n*, *p*)**<br>(n = 100) | **0.000** | **0.005** | **0.087** | **0.010** | **0.000** | **0.000** | **0.000** | **0.000** | **0.000** |
+
+```{r,P (k = 30 | n, p),n = 100}
+likelihood <- function(p) {
+  choose(100, 30) * p^3 * (1-p)^7
+}
+
+# 在0到1的范围内生成100个等距的概率值，并计算每个概率值的似然值
+p_values <- seq(0, 1, length.out = 100)
+likelihood_values <- sapply(p_values, likelihood)
+
+# 将概率值和似然值组成数据框
+df <- data.frame(p = p_values, likelihood = likelihood_values)
+
+# 绘制似然函数折线图
+ggplot(df, aes(x = p, y = likelihood)) +
+  geom_line() +
+  xlab("p") +
+  ylab("Likelihood") +
+  ggtitle("Likelihood Function for p with r = 30 and n = 100")+
+  theme_bw()
+
+```
+
+## 本章小结（Summary）
+
+-   伯努利试验（Bernoulli trial）
+
+-   离散随机变量(Discrete random variable)
+
+-   二项分布（Binomial Distribution）
+
+-   模型（Models）
+
+    -   生成模型（Generative model）
+
+    -   判别模型（Discriminative model）
