@@ -1,0 +1,1189 @@
+---
+format: 
+  revealjs:
+    slide-number: true
+    logo: images/image-393370223.png
+    scrollable: true 
+    theme: theme.scss
+editor: visual
+fontsize: 24pt
+---
+
+</br></br>
+
+<h1 style="text-align: center">
+
+06 - 连续变量概率分布
+
+</h1>
+
+<h2 style="text-align: center">
+
+------以正态分布为例
+
+</h2>
+
+</br></br>
+
+<h3 style="text-align: center">
+
+Hu Chuan-Peng
+
+</h3>
+
+<h3 style="text-align: center">
+
+2023-03-29
+
+</h3>
+
+</br></br>
+
+## Review
+
+</br></br>
+
+-   伯努利试验
+-   二项分布
+-   似然
+-   模型
+
+## 概率与似然
+
+疑问： 1. 伯努利试验中的重复次数和 b(k; n,p)中的关系; 2. 贝叶斯公式中的似然和似然之间的关系; 3. 似然在何种情况下和概率是等价的
+
+## 二项分布(Binomial distribution)
+
+</br></br>
+
+-   已知伯努利试验中事件A 发生的概率p, 共进行n次独立重复的伯努利试验
+-   在n 次试验中事件A出现k次数的概率: $b(k; n, p)$
+-   在n 次试验中事件A出现所有可能次数的概率分布:$X \sim b(n, p)$
+-   当$n \rightarrow \infty$, $p \neq q$, $np \geq 5$ 且 $nq \geq 5$ 时，事件A在n次试验中出现次数的平均数:$\mu = np$
+-   事件A出现次数所属分布的标准差：$\sigma = \sqrt{npq}$
+
+## 
+
+```{r}
+library(ggplot2)
+# 检查包是否已安装
+if (!requireNamespace("patchwork", quietly = TRUE)) {
+  # 如果未安装，则安装包
+  install.packages("patchwork")
+}
+
+# 加载 patchwork 包
+library(patchwork)
+# 定义参数
+p <- 0.8
+n <- c(10, 50, 100)
+num_sims <- 1000
+
+# 创建数据框
+data <- data.frame(x = numeric(), 
+                   n = factor())
+
+for (i in n) {
+  sim_data <- data.frame(x = rbinom(num_sims, i, p), 
+                         n = factor(rep(i, num_sims)))
+  data <- rbind(data, sim_data)
+}
+
+# 绘制直方图
+ggplot(data, 
+       aes(x = x, fill = n)) +
+  geom_histogram(alpha = 0.5, 
+                 aes(y = ..density..),
+                 color = 'black',
+                 binwidth = 1, 
+                 position = "identity") +
+  scale_fill_manual(values = c("#00BFFF", "#FFA500", "#008000")) +
+  labs(x = "成功次数", 
+       y = "密度", 
+       fill = "n") +
+  facet_wrap(~n, 
+             ncol = 3, 
+             scales = "free_x") +
+  theme_minimal()
+
+
+```
+
+## 
+
+如果有 n 排钉子，n+1个槽，钉子每次下落都有两种可能的方向，则它落入第k个槽的概率。
+
+$p = ?$
+
+## 
+
+![](images/image-982349310.png){fig-align="center"}
+
+<center>$p = C_{n}^k(1/2)^k(1/2)^{n-k}$</center>
+
+## 高尔顿钉板(Galton board)
+
+![](images/R-C.gif){fig-align="center"}
+
+## 
+
+![](images/image-1814309069.png){fig-align="center"}
+
+## 
+
+<center>直观图像上，二项分布的极限分布（$n \rightarrow \infty$）是一种对称钟形分布，那么真实数据上也是如此吗？</center>
+
+## n = 10, 100, 1000
+
+```{r}
+# 定义参数
+p <- 0.5
+n <- 100
+num_sims <- c(10,100,1000)
+
+# 创建数据框
+data <- data.frame(x = numeric(), 
+                   n = factor(),
+                   num_sims = factor())
+
+for (i in num_sims) {
+  sim_data <- data.frame(x = rbinom(i, n, p), 
+                         n = factor(rep(n, i)),
+                         num_sims = factor(rep(i, i)))
+  data <- rbind(data, sim_data)
+}
+
+# 绘制直方图
+ggplot(data, 
+       aes(x = x, fill = num_sims)) +
+  geom_histogram(alpha = 0.5, 
+                 aes(y = ..density..),
+                 color = 'black',
+                 binwidth = 1, 
+                 position = "identity") +
+  scale_fill_manual(values = c("#00BFFF", "#FFA500", "#008000")) +
+  labs(x = "成功次数", 
+       y = "密度", 
+       fill = "num_sims") +
+  facet_wrap(~num_sims, 
+             ncol = 3, 
+             scales = "free_x") +
+  theme_minimal()
+
+
+```
+
+## 
+
+<center>继续增加掷硬币的次数，情况又会如何？</center>
+
+## 重复次数为1000, 10000, 100000
+
+```{r}
+# 定义参数
+p <- 0.5
+n <- 100
+num_sims <- c(1000,10000,100000)
+
+# 创建数据框
+data <- data.frame(x = numeric(), 
+                   n = factor(),
+                   num_sims = factor())
+
+for (i in num_sims) {
+  sim_data <- data.frame(x = rbinom(i, n, p), 
+                         n = factor(rep(n, i)),
+                         num_sims = factor(rep(i, i)))
+  data <- rbind(data, sim_data)
+}
+
+# 绘制直方图
+ggplot(data, 
+       aes(x = x, fill = num_sims)) +
+  geom_histogram(alpha = 0.5, 
+                 aes(y = ..density..),
+                 color = 'black',
+                 binwidth = 1, 
+                 position = "identity") +
+  scale_fill_manual(values = c("#00BFFF", "#FFA500", "#008000")) +
+  labs(x = "成功次数", 
+       y = "密度", 
+       fill = "num_sims") +
+  facet_wrap(~num_sims, 
+             ncol = 3, 
+             scales = "free_x") +
+  theme_minimal()
+
+
+```
+
+## 
+
+```{r}
+library(tidyverse)
+# 对数据框按照num_sims进行分组，并计算每组的均值和标准差
+result <- data %>% 
+  group_by(num_sims) %>% 
+  summarize(mean_x = mean(x), sd_x = sd(x))
+
+# 输出结果
+print(result)
+```
+
+n增大,平均值趋近于$\mu = np$, 标准差趋近于$\sigma = \sqrt(npq)$
+
+## 
+
+<center>掷100000次硬币，求硬币正面朝上次数为5\~10次时的概率？</center>
+
+## 
+
+掷1000次硬币，硬币正面朝上次数为500 ～ 510次时的概率：
+
+$$ P = \sum_{i=10}^{500} \binom{1000}{i} \left(\frac{1}{2}\right)^{1000} $$
+
+## 
+
+```{r}
+# 定义参数
+p <- 0.5
+n <- 1000
+num_sims <- 10000
+
+# 创建数据框
+data <- data.frame(x = numeric(), 
+                   n = factor(),
+                   num_sims = factor())
+
+for (i in num_sims) {
+  sim_data <- data.frame(x = rbinom(i, n, p), 
+                         n = factor(rep(n, i)),
+                         num_sims = factor(rep(i, i)))
+  data <- rbind(data, sim_data)
+}
+
+# 绘制直方图
+ggplot(data, 
+       aes(x = x, fill = num_sims)) +
+  geom_histogram(alpha = 0.5, 
+                 aes(y = ..density..),
+                 color = 'pink',
+                 binwidth = 1, 
+                 position = "identity") +
+  labs(x = "成功次数", 
+       y = "密度", 
+       fill = "num_sims")  +
+  geom_vline(xintercept = c(500, 510), color = c("purple", "blue"), linetype = c(1, 1))+
+  theme_minimal()
+
+
+```
+
+## 概率质量函数(Probability mass function, PMF)
+
+概率质量函数是用来描述离散型随机变量的概率分布的函数，它指定了随机变量取某个值的概率。
+
+在概率质量函数中，离散随机变量的概率由概率质量函数的值表示。
+
+## 
+
+在该例子中，每一个条形图的高度表示该事件出现的概率
+
+```{r}
+# 定义参数
+p <- 0.5
+n <- 10
+num_sims <- 10000
+
+# 创建数据框
+data <- data.frame(x = numeric(), 
+                   n = factor(),
+                   num_sims = factor())
+
+for (i in num_sims) {
+  sim_data <- data.frame(x = rbinom(i, n, p), 
+                         n = factor(rep(n, i)),
+                         num_sims = factor(rep(i, i)))
+  data <- rbind(data, sim_data)
+}
+
+# 绘制直方图
+ggplot(data, 
+       aes(x = x)) +
+  geom_histogram(alpha = 0.5, 
+                 aes(y = ..density..),
+                 color = 'black',
+                 fill = 'pink',
+                 binwidth = 1, 
+                 position = "identity") +
+  labs(x = "成功次数", 
+       y = "密度", 
+       fill = "num_sims")  +
+  scale_x_continuous(breaks = seq(0, n, 1))+
+  theme_minimal()
+
+
+```
+
+## 
+
+![](images/v2-6f8feebb10e06e7f963088592997bca4_720w.gif){fig-align="center"}
+
+$n \rightarrow \infty$，离散二项分布近似看作连续，此时应该如何表示概率？
+
+## 
+
+```{r}
+# 定义参数
+p <- 0.5
+n <- 1000
+num_sims <- 10000
+
+# 创建数据框
+data <- data.frame(x = numeric(), 
+                   n = factor(),
+                   num_sims = factor())
+
+for (i in num_sims) {
+  sim_data <- data.frame(x = rbinom(i, n, p), 
+                         n = factor(rep(n, i)),
+                         num_sims = factor(rep(i, i)))
+  data <- rbind(data, sim_data)
+}
+
+# 绘制直方图和密度曲线
+ggplot(data, 
+       aes(x = x)) +
+  geom_density(color = 'pink',fill = 'pink') +
+  labs(x = "成功次数", 
+       y = "密度", 
+       fill = "num_sims",
+       color = "num_sims") +
+  geom_vline(xintercept = c(500, 510), color = c("purple", "blue"), linetype = c(1, 1)) +
+  theme_minimal()
+
+```
+
+# 连续变量的概率密度函数(Probability density function)
+
+## 连续变量(Continuous Variable)
+
+-   在一定区间内可以任意取值的变量叫连续变量，其数值是连续不断的，相邻两个数值可作无限分割，即可取无限个数值。
+
+## 
+
+<center>回忆数据类型，哪种数据可作为连续变量</center>
+
+## 
+
+```{r}
+# 定义参数
+p <- 0.5
+n <- 1000
+num_sims <- 10000
+
+# 创建数据框
+data <- data.frame(x = numeric(), 
+                   n = factor(),
+                   num_sims = factor())
+
+for (i in num_sims) {
+  sim_data <- data.frame(x = rbinom(i, n, p), 
+                         n = factor(rep(n, i)),
+                         num_sims = factor(rep(i, i)))
+  data <- rbind(data, sim_data)
+}
+
+# 绘制直方图和密度曲线
+ggplot(data, 
+       aes(x = x)) +
+  geom_histogram(alpha = 0.5, 
+           aes(y = ..density..),
+           color = 'pink',
+           binwidth = 1, 
+           position = "identity") +
+  geom_density(color = 'pink') +
+  labs(x = "成功次数", 
+       y = "密度", 
+       fill = "num_sims",
+       color = "num_sims") +
+  geom_vline(xintercept = c(500, 510), color = c("purple", "blue"), linetype = c(1, 1)) +
+  theme_minimal()
+
+```
+
+## 连续变量
+
+<center>假设$n \rightarrow \infty$, 离散频率分布图可以近似看作连续变量频率分布图</center>
+
+$$ \downarrow $$
+
+<center>n足够大，直方条形面积可近似看作一条曲线与x轴围成</center>
+
+$$ \downarrow $$
+
+<center>掷1000次硬币，硬币正面朝上次数为500 ～ 510次时的概率？</center>
+
+$$ \downarrow $$
+
+<center>求一段区间内的概率</center>
+
+## 连续变量
+
+<center>概率</center>
+
+$$ \downarrow $$
+
+<center>曲线面积。落在各个不同的点处的概率是不相等的，就像一个实心物体，有些点附近的密度大，有些点附近的密度小</center>
+
+$$ \downarrow $$
+
+<center>采用一种函数表达曲线。曲线描述某一区间的概率大小分布情况</center>
+
+$$ \downarrow $$
+
+<center>概率密度函数</center>
+
+## 连续变量
+
+<center>掷1000次硬币，硬币正面朝上次数为500 ～ 510次时的概率？</center>
+
+$$ \downarrow $$ $$ p(X|500 \le x \le 510) = \int_{500}^{510}f(x)dx $$
+
+## 连续变量的概率密度函数(Probability density function, PDF)
+
+概率可解释为随机变量所落在区间内的面积与整个曲线和𝑥轴围成面积大小的比值:
+
+$$\frac{区间(a, b)内的曲线下面积}{f(x)与x轴所包围的总面积}$$
+
+![](images/image-230433091.png){fig-align="center"}
+
+## 连续变量的概率密度函数(Probability density function, PDF)
+
+概率密度函数可解释为随机变量落在一个区间内的概率与这个区间大小的比值在区间大小趋向于0时的极限:
+
+$$lim_{区间大小 \rightarrow 0}\frac{落在这个区间内的概率}{区间大小}$$
+
+![](images/image-1058082608.png){fig-align="center"}
+
+## 概率
+
+$$p(\Omega) = 1(所有可能事件之和的概率)$$
+
+$$0 \le p(A) \le 1(随机事件的概率)$$
+
+$$p(A + B) = P(A) + P(B) - P(A \cap B)(两个随机事件概率之和)$$
+
+## 连续变量的概率密度函数
+
+如果随机变量x的分布函数的曲线𝑓(𝑥)与𝑥轴围成的面积等于1，则称曲线𝑓(𝑥)为连续变量x的概率密度函数
+
+$$p(x|x \in R) = \int f(x)dx = 1$$
+
+## 连续变量的概率
+
+𝑓(𝑥)的大小反映随机变量在x附近取值的可能性大小，称为概率密度。f(x)本身不代表概率，只是速度的变化率
+
+```{r}
+# 定义参数
+p <- 0.5
+n <- 1000
+num_sims <- 10000
+
+# 创建数据框
+data <- data.frame(x = numeric(), 
+                   n = factor(),
+                   num_sims = factor())
+
+for (i in num_sims) {
+  sim_data <- data.frame(x = rbinom(i, n, p), 
+                         n = factor(rep(n, i)),
+                         num_sims = factor(rep(i, i)))
+  data <- rbind(data, sim_data)
+}
+
+# 绘制直方图和密度曲线
+ggplot(data, 
+       aes(x = x)) +
+  geom_density(color = 'pink',fill = 'pink') +
+  labs(x = "成功次数", 
+       y = "密度", 
+       fill = "num_sims",
+       color = "num_sims") +
+  geom_vline(xintercept = c(500), color = c("purple"), linetype = c(1)) +
+  theme_minimal()
+
+```
+
+## 连续变量的概率
+
+连续随机变量的概率指的是x处于一个确定的取值范围内的概率，如区间(500,510)
+
+```{r}
+# 定义参数
+p <- 0.5
+n <- 1000
+num_sims <- 10000
+
+# 创建数据框
+data <- data.frame(x = numeric(), 
+                   n = factor(),
+                   num_sims = factor())
+
+for (i in num_sims) {
+  sim_data <- data.frame(x = rbinom(i, n, p), 
+                         n = factor(rep(n, i)),
+                         num_sims = factor(rep(i, i)))
+  data <- rbind(data, sim_data)
+}
+
+# 绘制直方图和密度曲线
+ggplot(data, 
+       aes(x = x)) +
+  geom_density(color = 'pink',fill = 'pink') +
+  labs(x = "成功次数", 
+       y = "密度", 
+       fill = "num_sims",
+       color = "num_sims") +
+  geom_vline(xintercept = c(500,510), color = c("purple","blue"), linetype = c(1,1)) +
+  theme_minimal()
+
+```
+
+## 概率质量函数与概率密度函数
+
+```{r}
+
+
+
+# 定义参数
+p <- 0.5
+n <- 1000
+num_sims <- 10000
+
+# 创建数据框
+data <- data.frame(x = numeric(), 
+                   n = factor(),
+                   num_sims = factor())
+
+for (i in num_sims) {
+  sim_data <- data.frame(x = rbinom(i, n, p), 
+                         n = factor(rep(n, i)),
+                         num_sims = factor(rep(i, i)))
+  data <- rbind(data, sim_data)
+}
+
+# 绘制直方图和密度曲线
+histogram <- ggplot(data, aes(x = x)) +
+  geom_histogram(alpha = 0.5, 
+                 aes(y = ..density..),
+                 color = 'pink',
+                 binwidth = 1, 
+                 position = "identity") +
+  labs(x = "成功次数", 
+       y = "密度", 
+       fill = "num_sims",
+       color = "num_sims") +
+  geom_vline(xintercept = c(500, 510), 
+             color = c("purple", "blue"), 
+             linetype = c(1, 1)) +
+  theme_minimal()
+
+density <- ggplot(data, aes(x = x)) +
+  geom_density(color = 'pink', 
+               fill = 'pink') +
+  labs(x = "成功次数", 
+       y = "密度", 
+       fill = "num_sims",
+       color = "num_sims") +
+  geom_vline(xintercept = c(500, 510), 
+             color = c("purple", "blue"), 
+             linetype = c(1, 1)) +
+  theme_minimal()
+
+# 拼接图形
+histogram + density
+
+```
+
+## 概率质量函数与概率密度函数
+
+在概率质量函数中，某事件发生的概率表示为该事件对应的y值之和 在概率质量函数中，某事件发生的概率表示为该事件对应的曲线下面积
+
+由于概率质量函数中条形图宽度为1，高度为y值，概率值可以近似看作面积，由此，当x的数值由离散变为连续时，概率质量函数就成了概率密度函数
+
+$$f(x|x \in [a,b]) = lim_{x \rightarrow 0}\sum_{a}^{b-a} p(x)=\int_{a}^{b} f(x)dx$$
+
+## 连续变量的概率密度函数
+
+$$单个取值的概率为0: f(x) \rightarrow 0$$
+
+$$曲线包围下的所有可能的总概率：\int_{- \infty}^{+ \infty}f(x)dx=1$$
+
+$$概率分布函数(一段区间的概率)：$$
+
+$$F(y) = p(x \le y) = \int_{- \infty}^{y} f(x)dx$$
+
+$$p(x_1<x<x_2) = \int_{x_1}^{x_2} f(x)dx = F(x_2)-F(x_1)$$
+
+## 连续变量的概率密度函数
+
+$$p(a<𝑋<𝑏)=𝑓(𝑥)曲线下在a 和b之间的面积: \int_{a}^{b} f(x)dx$$
+
+```{r}
+# 定义参数
+p <- 0.5
+n <- 1000
+num_sims <- 10000
+
+# 创建数据框
+data <- data.frame(x = numeric(), 
+                   n = factor(),
+                   num_sims = factor())
+
+for (i in num_sims) {
+  sim_data <- data.frame(x = rbinom(i, n, p), 
+                         n = factor(rep(n, i)),
+                         num_sims = factor(rep(i, i)))
+  data <- rbind(data, sim_data)
+}
+
+# 计算密度曲线
+density_data <- density(data$x)
+
+# 绘制直方图和密度曲线
+ggplot(data, aes(x = x)) +
+  geom_density(color = 'pink', fill = 'pink') +
+  labs(x = "成功次数", 
+       y = "密度", 
+       fill = "num_sims",
+       color = "num_sims") +
+  geom_vline(xintercept = c(500, 510), color = c("purple", "blue"), linetype = c(1, 1)) +
+  geom_area(data = subset(as.data.frame(density_data[c("x", "y")]), x >= 500 & x <= 510),
+            aes(x = x, y = y), fill = "yellow", alpha = 0.2) +
+  theme_minimal()
+```
+
+## 连续变量的概率密度函数
+
+$$p(𝑋< a)=𝑓(𝑥)曲线下在a 左边的面积: \int_{- \infty}^{a} f(x)dx$$
+
+```{r}
+# 定义参数
+p <- 0.5
+n <- 1000
+num_sims <- 10000
+
+# 创建数据框
+data <- data.frame(x = numeric(), 
+                   n = factor(),
+                   num_sims = factor())
+
+for (i in num_sims) {
+  sim_data <- data.frame(x = rbinom(i, n, p), 
+                         n = factor(rep(n, i)),
+                         num_sims = factor(rep(i, i)))
+  data <- rbind(data, sim_data)
+}
+
+# 计算密度曲线
+density_data <- density(data$x)
+
+# 绘制直方图和密度曲线
+ggplot(data, aes(x = x)) +
+  geom_density(color = 'pink', fill = 'pink') +
+  labs(x = "成功次数", 
+       y = "密度", 
+       fill = "num_sims",
+       color = "num_sims") +
+  geom_vline(xintercept = c(500, 510), color = c("purple", "blue"), linetype = c(1, 1)) +
+  geom_area(data = subset(as.data.frame(density_data[c("x", "y")]), x <= 500),
+            aes(x = x, y = y), fill = "yellow", alpha = 0.2) +
+  theme_minimal()
+```
+
+## 连续变量的概率密度函数
+
+$$p(𝑋< a)=𝑓(𝑥)曲线下在a 右边的面积: \int_{b}^{+ \infty} f(x)dx$$
+
+```{r}
+# 定义参数
+p <- 0.5
+n <- 1000
+num_sims <- 10000
+
+# 创建数据框
+data <- data.frame(x = numeric(), 
+                   n = factor(),
+                   num_sims = factor())
+
+for (i in num_sims) {
+  sim_data <- data.frame(x = rbinom(i, n, p), 
+                         n = factor(rep(n, i)),
+                         num_sims = factor(rep(i, i)))
+  data <- rbind(data, sim_data)
+}
+
+# 计算密度曲线
+density_data <- density(data$x)
+
+# 绘制直方图和密度曲线
+ggplot(data, aes(x = x)) +
+  geom_density(color = 'pink', fill = 'pink') +
+  labs(x = "成功次数", 
+       y = "密度", 
+       fill = "num_sims",
+       color = "num_sims") +
+  geom_vline(xintercept = c(500, 510), color = c("purple", "blue"), linetype = c(1, 1)) +
+  geom_area(data = subset(as.data.frame(density_data[c("x", "y")]), x >= 510),
+            aes(x = x, y = y), fill = "yellow", alpha = 0.2) +
+  theme_minimal()
+```
+
+# 正态分布
+
+![](images/image-895074899.png){fig-align="center"}
+
+$$这种n \rightarrow \infty, p = 0.5 时的二项分布被称为"正态分布"$$ $$且平均数\mu = np, 标准差\sigma = \sqrt{npq} $$
+
+# 正态分布
+
+::: {style="display:flex;"}
+<!-- 左侧栏 -->
+
+::: {style="flex:1;"}
+![](images/image-1377553870.png){fig-align="center"}
+:::
+
+<!-- 右侧栏 -->
+
+::: {style="flex:1;"}
+![](images/image-538364189.png){fig-align="center"}
+:::
+:::
+
+<center>德国马克和纪念币上的高斯头像和正态分布曲线</center>
+
+## 正态分布
+
+![](images/image-857461983.png){fig-align="center"}
+
+$$f(x|\mu,\sigma^2) = \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}$$
+
+$$X \sim N(\mu, \sigma^2)$$
+
+## 正态分布的特性
+
+![](images/image-1945853121.png){fig-align="center"}
+
+-   正态分布曲线位于x轴上方，形式对称;</br>
+-   正态分布的平均数、中位数、众数相等
+
+## 正态分布的特性
+
+![](images/image-1643802945.png){fig-align="center"}
+
+-   正态分布曲线下的面积为1，左右对称，经过$x = \mu$处曲线将面积平分为两份，各0.5。
+
+## 正态分布的特性
+
+![](images/image-1907375558.png){fig-align="center"}
+
+-   曲线从最高点（x =𝜎）向左右延伸，拐点位于正负1个标准差处。曲线两端向x轴无限靠拢，但永不相交，意味着概率不会为0。
+
+## 
+
+$$\mu=0,0.5,1, \sigma=1$$
+
+```{r}
+
+# 生成一组数据
+x <- seq(-4, 4, length = 100)
+y1 <- dnorm(x, mean = 0, sd = 1)
+y2 <- dnorm(x, mean = 0.5, sd = 1)
+y3 <- dnorm(x, mean = 1, sd = 1)
+
+# 将数据转化为数据框
+df <- data.frame(x, y1, y2, y3)
+
+# 绘制三条正态分布曲线
+ggplot(df) + 
+  geom_line(aes(x, y1), color = "#56B4E9", size = 1) +
+  geom_line(aes(x, y2), color = "#E69F00", size = 1) +
+  geom_line(aes(x, y3), color = "#A6D96A", size = 1) +
+  labs(title = "", x = "x", y = "密度") +
+  geom_vline(xintercept = c(0,0.5,1), linetype = "dashed", color = c("#56B4E9","#E69F00","#A6D96A")) +
+
+  annotate("text", x = 2.5, y = 0.5, label = "mean = 0", color = "#56B4E9") +
+  annotate("text", x = 2.5, y = 0.4, label = "mean = 0.5", color = "#E69F00") +
+  annotate("text", x = 2.5, y = 0.3, label = "mean = 1", color = "#A6D96A") +
+
+  scale_x_continuous(breaks = seq(-4, 4, 1))+
+
+      
+  theme_minimal()
+
+```
+
+## 
+
+$$\mu=0, \sigma=1,2,3$$
+
+```{r}
+
+# 生成一组数据
+x <- seq(-4, 4, length = 100)
+y1 <- dnorm(x, mean = 0, sd = 1)
+y2 <- dnorm(x, mean = 0, sd = 2)
+y3 <- dnorm(x, mean = 0, sd = 3)
+
+# 将数据转化为数据框
+df <- data.frame(x, y1, y2, y3)
+
+# 绘制三条正态分布曲线
+ggplot(df) + 
+  geom_line(aes(x, y1), color = "#56B4E9", size = 1) +
+  geom_line(aes(x, y2), color = "#E69F00", size = 1) +
+  geom_line(aes(x, y3), color = "#A6D96A", size = 1) +
+  annotate("text", x = 0.8, y = 0.5, label = "sd = 1", color = "#56B4E9") +
+  annotate("text", x = 1.5, y = 0.2, label = "sd = 2", color = "#E69F00") +
+  annotate("text", x = 2.5, y = 0.05, label = "sd = 3", color = "#A6D96A") +
+  labs(title = "", x = "x", y = "密度") +
+  scale_x_continuous(breaks = seq(-4, 4, 1))+
+  theme_minimal()
+
+```
+
+## 
+
+```{r}
+
+# 生成一组数据
+x <- seq(-4, 4, length = 100)
+y1 <- dnorm(x, mean = 0, sd = 1)
+y2 <- dnorm(x, mean = 0, sd = 2)
+y3 <- dnorm(x, mean = 0, sd = 3)
+
+# 将数据转化为数据框
+df <- data.frame(x, y1, y2, y3)
+
+# 绘制三条正态分布曲线
+ggplot(df) + 
+  geom_line(aes(x, y1), color = "#56B4E9", size = 1) +
+  geom_line(aes(x, y2), color = "#E69F00", size = 1) +
+  geom_line(aes(x, y3), color = "#A6D96A", size = 1) +
+  annotate("text", x = 0.8, y = 0.5, label = "sd = 1", color = "#56B4E9") +
+  annotate("text", x = 1.5, y = 0.2, label = "sd = 2", color = "#E69F00") +
+  annotate("text", x = 2.5, y = 0.05, label = "sd = 3", color = "#A6D96A") +
+  labs(title = "", x = "x", y = "密度") +
+  scale_x_continuous(breaks = seq(-4, 4, 1))+
+  theme_minimal()
+
+
+```
+
+## 
+
+正态分布为一族分布，曲线形态由随机变量的平均数$\mu$与标准差$\sigma$决定唯一的分布。平均数$\mu$决定曲线的位置，标准差$\sigma$决定曲线的形态。$\sigma$越大，曲线越低，越宽阔，$\sigma$越小，曲线越高，越狭窄。
+
+![](images/image-659008621.png){fig-align="center"}
+
+## 
+
+::: {style="display:flex;"}
+<!-- 左侧栏 -->
+
+::: {style="flex:1;"}
+概率密度函数
+
+![](images/image-1412098053.png){fig-align="center"}
+:::
+
+<!-- 右侧栏 -->
+
+::: {style="flex:1;"}
+累积概率密度函数
+
+![](images/image-335538368.png){fig-align="center"}
+:::
+:::
+
+## 
+
+::: {style="display:flex;"}
+<!-- 左侧栏 -->
+
+::: {style="flex:1;"}
+概率密度函数
+
+![](images/image-2123136011.png){fig-align="center"}
+:::
+
+<!-- 右侧栏 -->
+
+::: {style="flex:1;"}
+概率质量函数
+
+![](images/image-264138036.png){fig-align="center"}
+:::
+:::
+
+# 正态分布的应用
+
+## 误差分布(Error distribution)
+
+-   如果有n排钉子，n+1个槽，钉子每次下落都有两种可能的方向，则它落入第k个槽的概率; </br>
+-   最开始中心位置是真值μ (e.g., 0)，每遇到一个障碍，钉子会完全随机向左或右改变方向，将这个转向当作随机误差
+
+![](images/image-415768531.png){fig-align="center"}
+
+## 
+
+![](images/image-1883697869.png){fig-align="center"}
+
+## 
+
+![](images/image-18468979.png){fig-align="center"}
+
+## 正态分布
+
+```{r}
+# 设置样本大小和模拟次数
+sample_size <- 50
+n_sims <- 10000
+
+# 抽取样本，计算平均值，并存储结果
+results <- NULL
+for(i in 1:n_sims){
+  sample <- rnorm(sample_size, 0, 1) # 从二项分布中抽取样本
+  sample_mean <- mean(sample) # 计算样本平均值
+  results <- c(results, sample_mean) # 存储结果
+}
+results <- data.frame(results)
+
+# 绘制直方图
+ggplot(results, 
+       aes(x = results)) +
+  geom_histogram(alpha = 0.5, 
+                 aes(y = ..density..),
+                 color = 'black',
+                 bins = 30,
+                 fill = 'pink',
+                 #binwidth = 1, 
+                 position = "identity") +
+  labs(x = "x", 
+       y = "密度") +
+  theme_minimal()
+
+
+```
+
+## 
+
+是否其他分布中也存在这种极限分布接近正态分布的情况？
+
+## 二项分布
+
+```{r}
+# 设置样本大小和模拟次数
+sample_size <- 1000
+
+results <- data.frame(results = rbinom(sample_size, 10, 0.5))
+
+# 绘制直方图
+ggplot(results, 
+       aes(x = results)) +
+  geom_histogram(alpha = 0.5, 
+                 aes(y = ..density..),
+                 color = 'black',
+                 bins = 30,
+                 fill = 'orange',
+                 #binwidth = 1, 
+                 position = "identity") +
+  labs(x = "x", 
+       y = "密度") +
+  theme_minimal()
+```
+
+## 
+
+```{r}
+# 设置样本大小和模拟次数
+sample_size <- 50
+n_sims <- 10000
+
+# 抽取样本，计算平均值，并存储结果
+results <- NULL
+for(i in 1:n_sims){
+  sample <- rbinom(sample_size, 10, 0.5) # 从二项分布中抽取样本
+  sample_mean <- mean(sample) # 计算样本平均值
+  results <- c(results, sample_mean) # 存储结果
+}
+results <- data.frame(results)
+
+# 绘制直方图
+ggplot(results, 
+       aes(x = results)) +
+  geom_histogram(alpha = 0.5, 
+                 aes(y = ..density..),
+                 color = 'black',
+                 bins = 30,
+                 fill = 'pink',
+                 #binwidth = 1, 
+                 position = "identity") +
+  labs(x = "x", 
+       y = "密度") +
+  theme_minimal()
+
+
+```
+
+## 泊松分布
+
+```{r}
+# 设置样本大小和模拟次数
+sample_size <- 1000
+
+results <- data.frame(results = rpois(sample_size, 1))
+
+# 绘制直方图
+ggplot(results, 
+       aes(x = results)) +
+  geom_histogram(alpha = 0.5, 
+                 aes(y = ..density..),
+                 color = 'black',
+                 bins = 30,
+                 fill = 'orange',
+                 #binwidth = 1, 
+                 position = "identity") +
+  labs(x = "x", 
+       y = "密度") +
+  theme_minimal()
+```
+
+## 
+
+```{r}
+# 设置样本大小和模拟次数
+sample_size <- 50
+n_sims <- 10000
+
+# 抽取样本，计算平均值，并存储结果
+results <- NULL
+for(i in 1:n_sims){
+  sample <- rpois(sample_size, 1) # 从二项分布中抽取样本
+  sample_mean <- mean(sample) # 计算样本平均值
+  results <- c(results, sample_mean) # 存储结果
+}
+results <- data.frame(results)
+
+# 绘制直方图
+ggplot(results, 
+       aes(x = results)) +
+  geom_histogram(alpha = 0.5, 
+                 aes(y = ..density..),
+                 color = 'black',
+                 bins = 30,
+                 fill = 'pink',
+                 #binwidth = 1, 
+                 position = "identity") +
+  labs(x = "x", 
+       y = "密度") +
+  theme_minimal()
+
+
+```
+
+## gamma分布
+
+```{r}
+# 设置样本大小和模拟次数
+sample_size <- 1000
+
+results <- data.frame(results = rgamma(sample_size, 1,1))
+
+# 绘制直方图
+ggplot(results, 
+       aes(x = results)) +
+  geom_histogram(alpha = 0.5, 
+                 aes(y = ..density..),
+                 color = 'black',
+                 bins = 30,
+                 fill = 'orange',
+                 #binwidth = 1, 
+                 position = "identity") +
+  labs(x = "x", 
+       y = "密度") +
+  theme_minimal()
+```
+
+## 
+
+```{r}
+# 设置样本大小和模拟次数
+sample_size <- 50
+n_sims <- 10000
+
+# 抽取样本，计算平均值，并存储结果
+results <- NULL
+for(i in 1:n_sims){
+  sample <- rgamma(sample_size, 1,1) # 从二项分布中抽取样本
+  sample_mean <- mean(sample) # 计算样本平均值
+  results <- c(results, sample_mean) # 存储结果
+}
+results <- data.frame(results)
+
+# 绘制直方图
+ggplot(results, 
+       aes(x = results)) +
+  geom_histogram(alpha = 0.5, 
+                 aes(y = ..density..),
+                 color = 'black',
+                 bins = 30,
+                 fill = 'pink',
+                 #binwidth = 1, 
+                 position = "identity") +
+  labs(x = "x", 
+       y = "密度") +
+  theme_minimal()
+```
+
+## 中心极限定理(Central Limit Theorem)
+
+不管原始分布是何种形式，样本均值的分布都接近于正态分布。
+
+样本均值抽样分布的数字特征。
+
+$$\mu_{\bar{x}} = \frac{\sum^{n}_{i=1}\bar{x}_i}{n}$$
+
+$$\sigma_{\bar{x}} = \sqrt{\frac{\sum^{n}_{i=1}(\bar{x}_i-\mu_{\bar{x}})^2}{n}}$$
+
+## 中心极限定理
+
+![](images/image-1418886282.png){fig-align="center"}
+
+## 
+
+![](images/image-233804438.png){fig-align="center"}
+
+<center>某分布的随机变量之和的分布也符合中心极限定理</center>
+
+<center>(Zhang, （2022），Psychological Methods)</center>
+
+## 
+
+![](images/image-548252915.png){fig-align="center"}
+
+<center>但是中心极限定理的使用（样本均值，样本之和）与原始数据分布形态有关，根据不同原始分布形态，所需分布样本量也不同</center>
+
+<center>(Zhang, （2022），Psychological Methods)</center>
+
+## 正态分布应用
+
+- 当总体分布未知，不断进行抽样，样本量$n \rightarrow \infty$时，可将抽样分布看作正态</br>
+
+- 抽样误差的分布形态为正态分布</br>
+
+- 影响遗传的各个因素的影响可以表达为正态分布，多个大小不一 的正态分布相加后仍为正态分布</br>
+
+- 依据总体的均值与标准差，进行产品质量控制</br>
