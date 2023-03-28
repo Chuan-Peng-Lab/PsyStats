@@ -353,30 +353,71 @@
 </ul>
 </section>
 <section id="概率与似然" class="slide level2">
-<h2>概率与似然</h2>
-<p>疑问： 1. 伯努利试验中的重复次数和 b(k; n,p)中的关系; 2. 贝叶斯公式中的似然和似然之间的关系; 3. 似然在何种情况下和概率是等价的</p>
+<h2>概率与似然<br><br></h2>
+<p><strong>疑问</strong>：<br><br> 1. 伯努利试验中的重复次数和 b(k; n,p)中的关系;<br><br></p>
+<ol start="2" type="1">
+<li><p>贝叶斯公式中的似然和上节课提到的似然之间的关系;<br><br></p></li>
+<li><p>似然在何种情况下和概率是等价的<br><br></p></li>
+</ol>
+</section>
+<section id="伯努利试验中的重复次数和-bk-np中的关系" class="slide level2">
+<h2>伯努利试验中的重复次数和 b(k; n,p)中的关系<br><br></h2>
+<ul>
+<li><p>重复次数<span class="math inline">\(\ne\)</span> b(k; n,p)中的n<br><br></p></li>
+<li><p>b(k; n,p)是一个理想的概率模型，不受现实发生的次数的影响<br><br></p></li>
+<li><p>当重复次数<span class="math inline">\(\rightarrow \infty\)</span>时，频率<span class="math inline">\(\rightarrow \infty\)</span>，统计规律可以用概率模型进行解释。但重复次数并不会影响二项分布的概率模型。</p></li>
+</ul>
+</section>
+<section id="section" class="slide level2">
+<h2></h2>
+<p><strong>理想的二项分布，n=10，p=0.5</strong></p>
+
+<img data-src="Lecture6_files/figure-revealjs/unnamed-chunk-1-1.png" width="960" class="r-stretch"></section>
+<section id="section-1" class="slide level2">
+<h2></h2>
+<p><strong>当重复次数越来越多，越接近理想的二项分布</strong></p>
+
+<img data-src="Lecture6_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section>
+<section id="贝叶斯公式中的似然和上节课提到的似然之间的关系" class="slide level2">
+<h2>贝叶斯公式中的似然和上节课提到的似然之间的关系<br><br></h2>
+<p><span class="math display">\[p(\theta|X) = \frac{P(X|\theta)p(\theta)}{p(X)}\]</span><br><br></p>
+<p>似然是贝叶斯学派和频率学派共有的概念，上节课更多地是从频率学派的视角来看待这一概念。</p>
+<p>频率学派认为概率是客观的，世界存在一个真值，该值可以通过最大似然法来估计出来。</p>
+<p>而在贝叶斯学派的观念里，概率是主观的，事件发生的可能性不仅取决于我们观察到的证据，即似然，还取决于我们对该事件本身的先验观念。</p>
+<p>似然在两者之间的差别仅体现在理念上，在数学上是等价的。</p>
+</section>
+<section id="似然在何种情况下和概率是等价的" class="slide level2">
+<h2>似然在何种情况下和概率是等价的</h2>
+
+<img data-src="images/fig1.png" class="r-stretch quarto-figure-center"><ul>
+<li>图中可以看出为何似然之和不为1，而概率之和为1，似然之和取决于<span class="math inline">\(\theta\)</span>的参数空间</li>
+<li>当似然和概率表示同一个事件发生的可能性时，两者是等价的</li>
+<li>当表示为似然函数或概率函数时，两者是不等价的。</li>
+</ul>
 </section>
 <section id="二项分布binomial-distribution" class="slide level2">
 <h2>二项分布(Binomial distribution)</h2>
 <p><br><br></p>
 <ul>
-<li>已知伯努利试验中事件A 发生的概率p, 共进行n次独立重复的伯努利试验</li>
-<li>在n 次试验中事件A出现k次数的概率: <span class="math inline">\(b(k; n, p)\)</span></li>
-<li>在n 次试验中事件A出现所有可能次数的概率分布:<span class="math inline">\(X \sim b(n, p)\)</span></li>
-<li>当<span class="math inline">\(n \rightarrow \infty\)</span>, <span class="math inline">\(p \neq q\)</span>, <span class="math inline">\(np \geq 5\)</span> 且 <span class="math inline">\(nq \geq 5\)</span> 时，事件A在n次试验中出现次数的平均数:<span class="math inline">\(\mu = np\)</span></li>
-<li>事件A出现次数所属分布的标准差：<span class="math inline">\(\sigma = \sqrt{npq}\)</span></li>
+<li>已知伯努利试验中事件A 发生的概率p, 共进行n次独立重复的伯努利试验。</li>
+<li>在n 次试验中事件A出现k次数的概率: <span class="math inline">\(b(k; n, p)\)</span>。</li>
+<li>在n 次试验中事件A出现所有可能次数的概率分布: <span class="math inline">\(X \sim b(n, p)\)</span>。</li>
+<li>当 <span class="math inline">\(n \rightarrow \infty\)</span>, <span class="math inline">\(p \neq q\)</span>, <span class="math inline">\(np \geq 5\)</span> 且 <span class="math inline">\(nq \geq 5\)</span> 时，事件A在n次试验中出现次数的平均数: <span class="math inline">\(\mu = np\)</span>。</li>
+<li>事件A出现次数所属分布的标准差：<span class="math inline">\(\sigma = \sqrt{npq}\)</span>。</li>
 </ul>
 </section>
-<section id="section" class="slide level2">
+<section id="section-2" class="slide level2">
 <h2></h2>
 
-<img data-src="Lecture6_files/figure-revealjs/unnamed-chunk-1-1.png" width="960" class="r-stretch"></section>
-<section id="section-1" class="slide level2">
-<h2></h2>
-<p>如果有 n 排钉子，n+1个槽，钉子每次下落都有两种可能的方向，则它落入第k个槽的概率。</p>
-<p><span class="math inline">\(p = ?\)</span></p>
+<img data-src="Lecture6_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section>
+<section id="section-3" class="slide level2">
+<h2><br><br><br><br></h2>
+<p>如果有 n 排钉子，n+1个槽，钉子每次下落都有两种可能的方向，则它落入第k个槽的概率为多少？<br><br><br><br></p>
+<center>
+<span class="math inline">\(p = ?\)</span>
+</center>
 </section>
-<section id="section-2" class="slide level2">
+<section id="section-4" class="slide level2">
 <h2></h2>
 
 <img data-src="images/image-982349310.png" class="r-stretch quarto-figure-center"><center>
@@ -384,104 +425,115 @@
 </center>
 </section>
 <section id="高尔顿钉板galton-board" class="slide level2">
-<h2>高尔顿钉板(Galton board)</h2>
+<h2>高尔顿钉板(Galton board)<br><br></h2>
+<ul>
+<li>高尔顿钉板演示图<br></li>
+</ul>
 
 <img data-src="images/R-C.gif" class="r-stretch quarto-figure-center"></section>
-<section id="section-3" class="slide level2">
-<h2></h2>
+<section id="高尔顿钉板galton-board-1" class="slide level2">
+<h2>高尔顿钉板(Galton board)</h2>
 
 <img data-src="images/image-1814309069.png" class="r-stretch quarto-figure-center"></section>
-<section id="section-4" class="slide level2">
+<section id="section-5" class="slide level2">
 <h2></h2>
+<p><br><br><br><br><br><br></p>
 <center>
-直观图像上，二项分布的极限分布（<span class="math inline">\(n \rightarrow \infty\)</span>）是一种对称钟形分布，那么真实数据上也是如此吗？
+<p><strong>直观图像上，二项分布的极限分布（</strong><span class="math inline">\(n \rightarrow \infty\)</span>）是一种对称钟形分布，<br></p>
+那么真实数据上也是如此吗？
 </center>
 </section>
 <section id="n-10-100-1000" class="slide level2">
 <h2>n = 10, 100, 1000</h2>
 
-<img data-src="Lecture6_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section>
-<section id="section-5" class="slide level2">
+<img data-src="Lecture6_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"><center>
+观察这三幅图，你发现什么变化？
+</center>
+</section>
+<section id="section-6" class="slide level2">
 <h2></h2>
+<p><br><br><br><br></p>
 <center>
-继续增加掷硬币的次数，情况又会如何？
+<strong>继续增加掷硬币的次数，情况又会如何？</strong>
 </center>
 </section>
 <section id="重复次数为1000-10000-100000" class="slide level2">
 <h2>重复次数为1000, 10000, 100000</h2>
 
-<img data-src="Lecture6_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section>
-<section id="section-6" class="slide level2">
+<img data-src="Lecture6_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"></section>
+<section id="section-7" class="slide level2">
 <h2></h2>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 3
   num_sims mean_x  sd_x
   &lt;fct&gt;     &lt;dbl&gt; &lt;dbl&gt;
-1 1000       50.0  4.83
-2 10000      50.0  5.06
-3 1e+05      50.0  5.02</code></pre>
+1 1000       50.0  5.00
+2 10000      50.0  5.03
+3 1e+05      50.0  5.01</code></pre>
 </div>
 </div>
-<p>n增大,平均值趋近于<span class="math inline">\(\mu = np\)</span>, 标准差趋近于<span class="math inline">\(\sigma = \sqrt(npq)\)</span></p>
-</section>
-<section id="section-7" class="slide level2">
-<h2></h2>
-<center>
-掷100000次硬币，求硬币正面朝上次数为5~10次时的概率？
-</center>
+<p><br><br><br><br> <strong>n增大,平均值趋近于</strong><span class="math inline">\(\mu = np\)</span>, 标准差趋近于<span class="math inline">\(\sigma = \sqrt(npq)\)</span></p>
 </section>
 <section id="section-8" class="slide level2">
 <h2></h2>
-<p>掷1000次硬币，硬币正面朝上次数为500 ～ 510次时的概率：</p>
-<p><span class="math display">\[ P = \sum_{i=10}^{500} \binom{1000}{i} \left(\frac{1}{2}\right)^{1000} \]</span></p>
+<p><br><br><br><br></p>
+<center>
+<strong>掷100000次硬币，求硬币正面朝上次数为5~10次时的概率？</strong>
+</center>
 </section>
 <section id="section-9" class="slide level2">
 <h2></h2>
+<p><br><br><br><br></p>
+<p>掷1000次硬币，硬币正面朝上次数为500 ～ 510次时的概率：<br><br></p>
+<p><span class="math display">\[ P = \sum_{i=10}^{500} \binom{1000}{i} \left(\frac{1}{2}\right)^{1000} \]</span></p>
+</section>
+<section id="重复10000次" class="slide level2">
+<h2>重复10000次</h2>
 
-<img data-src="Lecture6_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"></section>
+<img data-src="Lecture6_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
 <section id="概率质量函数probability-mass-function-pmf" class="slide level2">
-<h2>概率质量函数(Probability mass function, PMF)</h2>
-<p>概率质量函数是用来描述离散型随机变量的概率分布的函数，它指定了随机变量取某个值的概率。</p>
+<h2>概率质量函数(Probability mass function, PMF)<br><br></h2>
+<p>概率质量函数是用来描述离散型随机变量的概率分布的函数，它指定了随机变量取某个值的概率。<br><br></p>
 <p>在概率质量函数中，离散随机变量的概率由概率质量函数的值表示。</p>
 </section>
 <section id="section-10" class="slide level2">
 <h2></h2>
 <p>在该例子中，每一个条形图的高度表示该事件出现的概率</p>
 
-<img data-src="Lecture6_files/figure-revealjs/unnamed-chunk-6-1.png" width="960" class="r-stretch"></section>
+<img data-src="Lecture6_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section>
 <section id="section-11" class="slide level2">
 <h2></h2>
 
-<img data-src="images/v2-6f8feebb10e06e7f963088592997bca4_720w.gif" class="r-stretch quarto-figure-center"><p><span class="math inline">\(n \rightarrow \infty\)</span>，离散二项分布近似看作连续，此时应该如何表示概率？</p>
+<img data-src="images/v2-6f8feebb10e06e7f963088592997bca4_720w.gif" class="r-stretch quarto-figure-center"><p><br><br></p>
+<p><span class="math inline">\(n \rightarrow \infty\)</span>，离散二项分布近似看作连续，此时应该如何表示概率？</p>
 </section>
 <section id="section-12" class="slide level2">
 <h2></h2>
 
-<img data-src="Lecture6_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
-<section>
-<section id="连续变量的概率密度函数probability-density-function" class="title-slide slide level1 center">
-<h1>连续变量的概率密度函数(Probability density function)</h1>
-
+<img data-src="Lecture6_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"></section>
+<section id="连续变量的概率密度函数probability-density-function" class="slide level2">
+<h2><br><br><br><br><br><br>连续变量的概率密度函数(Probability density function)</h2>
 </section>
 <section id="连续变量continuous-variable" class="slide level2">
-<h2>连续变量(Continuous Variable)</h2>
+<h2>连续变量(Continuous Variable)<br><br><br><br></h2>
 <ul>
 <li>在一定区间内可以任意取值的变量叫连续变量，其数值是连续不断的，相邻两个数值可作无限分割，即可取无限个数值。</li>
 </ul>
 </section>
 <section id="section-13" class="slide level2">
 <h2></h2>
+<p><br><br><br><br></p>
 <center>
-回忆数据类型，哪种数据可作为连续变量
+<strong>回忆数据类型，哪种数据可作为连续变量</strong>
 </center>
 </section>
 <section id="section-14" class="slide level2">
 <h2></h2>
 
-<img data-src="Lecture6_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section>
+<img data-src="Lecture6_files/figure-revealjs/unnamed-chunk-10-1.png" width="960" class="r-stretch"></section>
 <section id="连续变量" class="slide level2">
-<h2>连续变量</h2>
+<h2>连续变量<br><br></h2>
 <center>
 假设<span class="math inline">\(n \rightarrow \infty\)</span>, 离散频率分布图可以近似看作连续变量频率分布图
 </center>
@@ -517,57 +569,57 @@ n足够大，直方条形面积可近似看作一条曲线与x轴围成
 </center>
 </section>
 <section id="连续变量-2" class="slide level2">
-<h2>连续变量</h2>
+<h2>连续变量<br><br><br><br></h2>
 <center>
 掷1000次硬币，硬币正面朝上次数为500 ～ 510次时的概率？
 </center>
 <p><span class="math display">\[ \downarrow \]</span> <span class="math display">\[ p(X|500 \le x \le 510) = \int_{500}^{510}f(x)dx \]</span></p>
 </section>
 <section id="连续变量的概率密度函数probability-density-function-pdf" class="slide level2">
-<h2>连续变量的概率密度函数(Probability density function, PDF)</h2>
+<h2>连续变量的概率密度函数(Probability density function, PDF)<br><br></h2>
 <p>概率可解释为随机变量所落在区间内的面积与整个曲线和𝑥轴围成面积大小的比值:</p>
 <p><span class="math display">\[\frac{区间(a, b)内的曲线下面积}{f(x)与x轴所包围的总面积}\]</span></p>
 
 <img data-src="images/image-230433091.png" class="r-stretch quarto-figure-center"></section>
 <section id="连续变量的概率密度函数probability-density-function-pdf-1" class="slide level2">
-<h2>连续变量的概率密度函数(Probability density function, PDF)</h2>
+<h2>连续变量的概率密度函数(Probability density function, PDF)<br><br></h2>
 <p>概率密度函数可解释为随机变量落在一个区间内的概率与这个区间大小的比值在区间大小趋向于0时的极限:</p>
 <p><span class="math display">\[lim_{区间大小 \rightarrow 0}\frac{落在这个区间内的概率}{区间大小}\]</span></p>
 
 <img data-src="images/image-1058082608.png" class="r-stretch quarto-figure-center"></section>
 <section id="概率" class="slide level2">
-<h2>概率</h2>
+<h2>概率<br><br></h2>
 <p><span class="math display">\[p(\Omega) = 1(所有可能事件之和的概率)\]</span></p>
 <p><span class="math display">\[0 \le p(A) \le 1(随机事件的概率)\]</span></p>
 <p><span class="math display">\[p(A + B) = P(A) + P(B) - P(A \cap B)(两个随机事件概率之和)\]</span></p>
 </section>
 <section id="连续变量的概率密度函数" class="slide level2">
-<h2>连续变量的概率密度函数</h2>
+<h2>连续变量的概率密度函数<br><br></h2>
 <p>如果随机变量x的分布函数的曲线𝑓(𝑥)与𝑥轴围成的面积等于1，则称曲线𝑓(𝑥)为连续变量x的概率密度函数</p>
 <p><span class="math display">\[p(x|x \in R) = \int f(x)dx = 1\]</span></p>
 </section>
 <section id="连续变量的概率" class="slide level2">
-<h2>连续变量的概率</h2>
+<h2>连续变量的概率<br><br></h2>
 <p>𝑓(𝑥)的大小反映随机变量在x附近取值的可能性大小，称为概率密度。f(x)本身不代表概率，只是速度的变化率</p>
 
-<img data-src="Lecture6_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"></section>
+<img data-src="Lecture6_files/figure-revealjs/unnamed-chunk-11-1.png" width="960" class="r-stretch"></section>
 <section id="连续变量的概率-1" class="slide level2">
-<h2>连续变量的概率</h2>
+<h2>连续变量的概率<br><br></h2>
 <p>连续随机变量的概率指的是x处于一个确定的取值范围内的概率，如区间(500,510)</p>
 
-<img data-src="Lecture6_files/figure-revealjs/unnamed-chunk-10-1.png" width="960" class="r-stretch"></section>
+<img data-src="Lecture6_files/figure-revealjs/unnamed-chunk-12-1.png" width="960" class="r-stretch"></section>
 <section id="概率质量函数与概率密度函数" class="slide level2">
 <h2>概率质量函数与概率密度函数</h2>
 
-<img data-src="Lecture6_files/figure-revealjs/unnamed-chunk-11-1.png" width="960" class="r-stretch"></section>
+<img data-src="Lecture6_files/figure-revealjs/unnamed-chunk-13-1.png" width="960" class="r-stretch"></section>
 <section id="概率质量函数与概率密度函数-1" class="slide level2">
-<h2>概率质量函数与概率密度函数</h2>
-<p>在概率质量函数中，某事件发生的概率表示为该事件对应的y值之和 在概率质量函数中，某事件发生的概率表示为该事件对应的曲线下面积</p>
+<h2>概率质量函数与概率密度函数<br><br></h2>
+<p>在概率质量函数中，某事件发生的概率表示为该事件对应的y值之和。<br><br> 在概率质量函数中，某事件发生的概率表示为该事件对应的曲线下面积。<br><br></p>
 <p>由于概率质量函数中条形图宽度为1，高度为y值，概率值可以近似看作面积，由此，当x的数值由离散变为连续时，概率质量函数就成了概率密度函数</p>
 <p><span class="math display">\[f(x|x \in [a,b]) = lim_{x \rightarrow 0}\sum_{a}^{b-a} p(x)=\int_{a}^{b} f(x)dx\]</span></p>
 </section>
 <section id="连续变量的概率密度函数-1" class="slide level2">
-<h2>连续变量的概率密度函数</h2>
+<h2>连续变量的概率密度函数<br><br></h2>
 <p><span class="math display">\[单个取值的概率为0: f(x) \rightarrow 0\]</span></p>
 <p><span class="math display">\[曲线包围下的所有可能的总概率：\int_{- \infty}^{+ \infty}f(x)dx=1\]</span></p>
 <p><span class="math display">\[概率分布函数(一段区间的概率)：\]</span></p>
@@ -578,17 +630,17 @@ n足够大，直方条形面积可近似看作一条曲线与x轴围成
 <h2>连续变量的概率密度函数</h2>
 <p><span class="math display">\[p(a&lt;𝑋&lt;𝑏)=𝑓(𝑥)曲线下在a 和b之间的面积: \int_{a}^{b} f(x)dx\]</span></p>
 
-<img data-src="Lecture6_files/figure-revealjs/unnamed-chunk-12-1.png" width="960" class="r-stretch"></section>
+<img data-src="Lecture6_files/figure-revealjs/unnamed-chunk-14-1.png" width="960" class="r-stretch"></section>
 <section id="连续变量的概率密度函数-3" class="slide level2">
 <h2>连续变量的概率密度函数</h2>
 <p><span class="math display">\[p(𝑋&lt; a)=𝑓(𝑥)曲线下在a 左边的面积: \int_{- \infty}^{a} f(x)dx\]</span></p>
 
-<img data-src="Lecture6_files/figure-revealjs/unnamed-chunk-13-1.png" width="960" class="r-stretch"></section>
+<img data-src="Lecture6_files/figure-revealjs/unnamed-chunk-15-1.png" width="960" class="r-stretch"></section>
 <section id="连续变量的概率密度函数-4" class="slide level2">
 <h2>连续变量的概率密度函数</h2>
 <p><span class="math display">\[p(𝑋&lt; a)=𝑓(𝑥)曲线下在a 右边的面积: \int_{b}^{+ \infty} f(x)dx\]</span></p>
 
-<img data-src="Lecture6_files/figure-revealjs/unnamed-chunk-14-1.png" width="960" class="r-stretch"></section></section>
+<img data-src="Lecture6_files/figure-revealjs/unnamed-chunk-16-1.png" width="960" class="r-stretch"></section>
 <section id="正态分布" class="title-slide slide level1 center">
 <h1>正态分布</h1>
 
@@ -629,10 +681,12 @@ n足够大，直方条形面积可近似看作一条曲线与x轴围成
 <section id="正态分布的特性" class="slide level2">
 <h2>正态分布的特性</h2>
 
-<img data-src="images/image-1945853121.png" class="r-stretch quarto-figure-center"><ul>
-<li>正态分布曲线位于x轴上方，形式对称;<br></li>
-<li>正态分布的平均数、中位数、众数相等</li>
-</ul>
+<img data-src="images/image-1945853121.png" class="r-stretch quarto-figure-center"><center>
+<ul>
+<li><p>正态分布曲线位于x轴上方，形式对称;<br></p></li>
+<li><p>正态分布的平均数、中位数、众数相等</p>
+</li></ul></center>
+
 </section>
 <section id="正态分布的特性-1" class="slide level2">
 <h2>正态分布的特性</h2>
@@ -650,18 +704,19 @@ n足够大，直方条形面积可近似看作一条曲线与x轴围成
 </section>
 <section id="section-15" class="slide level2">
 <h2></h2>
-<p><span class="math display">\[\mu=0,0.5,1, \sigma=1\]</span></p>
+<p>改变<span class="math inline">\(\mu\)</span>值，保持相同的$ $<br> <span class="math display">\[\mu=0, 0.5, 1,  \sigma=1\]</span></p>
 
-<img data-src="Lecture6_files/figure-revealjs/unnamed-chunk-15-1.png" width="960" class="r-stretch"></section>
+<img data-src="Lecture6_files/figure-revealjs/unnamed-chunk-17-1.png" width="960" class="r-stretch"></section>
 <section id="section-16" class="slide level2">
 <h2></h2>
+<p>保持相同的<span class="math inline">\(\mu\)</span>值，改变$ $<br></p>
 <p><span class="math display">\[\mu=0, \sigma=1,2,3\]</span></p>
 
-<img data-src="Lecture6_files/figure-revealjs/unnamed-chunk-16-1.png" width="960" class="r-stretch"></section>
+<img data-src="Lecture6_files/figure-revealjs/unnamed-chunk-18-1.png" width="960" class="r-stretch"></section>
 <section id="section-17" class="slide level2">
 <h2></h2>
 
-<img data-src="Lecture6_files/figure-revealjs/unnamed-chunk-17-1.png" width="960" class="r-stretch"></section>
+<img data-src="Lecture6_files/figure-revealjs/unnamed-chunk-19-1.png" width="960" class="r-stretch"></section>
 <section id="section-18" class="slide level2">
 <h2></h2>
 <p>正态分布为一族分布，曲线形态由随机变量的平均数<span class="math inline">\(\mu\)</span>与标准差<span class="math inline">\(\sigma\)</span>决定唯一的分布。平均数<span class="math inline">\(\mu\)</span>决定曲线的位置，标准差<span class="math inline">\(\sigma\)</span>决定曲线的形态。<span class="math inline">\(\sigma\)</span>越大，曲线越低，越宽阔，<span class="math inline">\(\sigma\)</span>越小，曲线越高，越狭窄。</p>
@@ -722,27 +777,171 @@ n足够大，直方条形面积可近似看作一条曲线与x轴围成
 <h2>误差分布(Error distribution)</h2>
 <ul>
 <li>如果有n排钉子，n+1个槽，钉子每次下落都有两种可能的方向，则它落入第k个槽的概率; <br></li>
-<li>最开始中心位置是真值μ (e.g., 0)，每遇到一个障碍，钉子会完全随机向左或右改变方向，将这个转向当作随机误差</li>
+<li>最开始中心位置是<strong>真值μ</strong> (e.g., 0)，每遇到一个障碍，钉子会完全随机向左或右改变方向，将这个转向当作<strong>随机误差</strong>。</li>
 </ul>
 
 <img data-src="images/image-415768531.png" class="r-stretch quarto-figure-center"></section>
 <section id="section-21" class="slide level2">
 <h2></h2>
-</section>
+
+<img data-src="images/image-1883697869.png" class="r-stretch quarto-figure-center"></section>
 <section id="section-22" class="slide level2">
 <h2></h2>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/image-1883697869.png"></p>
-</figure>
+
+<img data-src="images/image-18468979.png" class="r-stretch quarto-figure-center"></section>
+<section id="正态分布-3" class="slide level2">
+<h2>正态分布</h2>
+<p>根据高尔顿板的结果，发现二项分布的极限分布为正态分布。</p>
+
+<img data-src="Lecture6_files/figure-revealjs/unnamed-chunk-20-1.png" width="960" class="r-stretch"></section>
+<section id="section-23" class="slide level2">
+<h2></h2>
+<p><br><br> <br><br></p>
+<center>
+<p><strong>是否其他分布中也存在这种极限分布接近正态分布的情况？</strong></p>
+</center>
+</section>
+<section id="二项分布" class="slide level2">
+<h2>二项分布<br><br></h2>
+<p>掷硬币10次，重复此过程1000次</p>
+
+<img data-src="Lecture6_files/figure-revealjs/unnamed-chunk-21-1.png" width="960" class="r-stretch"></section>
+<section id="section-24" class="slide level2">
+<h2></h2>
+<p><br><br></p>
+<p>掷硬币50次，重复此过程10000次</p>
+
+<img data-src="Lecture6_files/figure-revealjs/unnamed-chunk-22-1.png" width="960" class="r-stretch"></section>
+<section id="均匀分布" class="slide level2">
+<h2>均匀分布<br><br></h2>
+<ul>
+<li><p>Uniform distribution (均匀分布）</p></li>
+<li><p>X ~ U（a, 𝑏），a = 1, 𝑏 = 10</p></li>
+<li><p>从刻度为1到10的一条直线上抽取一个点，（有放回，抽样本n = 100）抽取100次</p></li>
+<li><p>直线上每个点被抽中的概率相等</p></li>
+</ul>
+</section>
+<section id="均匀分布-1" class="slide level2">
+<h2>均匀分布<br><br></h2>
+<ul>
+<li>从刻度为1到10的一条直线上抽取一个点，（有放回，抽样本n = 100）抽取100次。</li>
+</ul>
+
+<img data-src="images/image-uniform.png" class="r-stretch quarto-figure-center"></section>
+<section id="section-25" class="slide level2">
+<h2></h2>
+<p>样本均值抽样分布的数字特征： <span class="math display">\[\mu_{\bar{x}} = \frac{\sum\limits_{i=1}^{n} \bar{x}_i}{n}
+\]</span></p>
+<p><span class="math display">\[\sigma_{\bar{x}} = \sqrt{\frac{\sum_{i=1}^{n}(x_i - \mu_{\bar{x}})^2}{n}}
+\]</span></p>
+</section>
+<section id="section-26" class="slide level2">
+<h2></h2>
+<ul>
+<li>从刻度为1到10的一条直线上抽取一个点，（有放回，抽样本n = 100）抽取100次</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="Lecture6_files/figure-revealjs/unnamed-chunk-23-1.png" width="960"></p>
 </div>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/image-18468979.png"></p>
-</figure>
+<div class="cell-output-display">
+<p><img data-src="Lecture6_files/figure-revealjs/unnamed-chunk-23-2.png" width="960"></p>
 </div>
-<p><img src="images/image-393370223.png" class="slide-logo"></p>
-<div class="footer footer-default">
+</div>
+</section>
+<section id="section-27" class="slide level2">
+<h2></h2>
+<p>从刻度为1到10的一条直线上抽取一个点，（有放回，抽样本n = 100）抽取1000次，10000次，100000次</p>
+
+<img data-src="Lecture6_files/figure-revealjs/unnamed-chunk-24-1.png" width="960" class="r-stretch"></section>
+<section id="泊松分布" class="slide level2">
+<h2>泊松分布<br><br></h2>
+<p>泊松分布是一种离散概率分布，用于描述在一定时间或空间内，某个事件发生的次数。一个常见的例子是在一段时间内某个地区发生的交通事故数量。假设在某个地区，每天平均发生5起交通事故，那么我们可以使用泊松分布来计算在某一天内发生0、1、2、3等不同数量的交通事故的概率。</p>
+</section>
+<section id="泊松分布-1" class="slide level2">
+<h2>泊松分布<br><br></h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>    x        prob
+1   0 0.006737947
+2   1 0.033689735
+3   2 0.084224337
+4   3 0.140373896
+5   4 0.175467370
+6   5 0.175467370
+7   6 0.146222808
+8   7 0.104444863
+9   8 0.065278039
+10  9 0.036265577
+11 10 0.018132789</code></pre>
+</div>
+</div>
+</section>
+<section id="泊松分布-2" class="slide level2">
+<h2>泊松分布<br><br></h2>
+
+<img data-src="Lecture6_files/figure-revealjs/unnamed-chunk-26-1.png" width="960" class="r-stretch"></section>
+<section id="section-28" class="slide level2">
+<h2></h2>
+
+<img data-src="Lecture6_files/figure-revealjs/unnamed-chunk-27-1.png" width="960" class="r-stretch"></section>
+<section id="gamma分布" class="slide level2">
+<h2>gamma分布</h2>
+<p><br><br></p>
+<ul>
+<li><p>Gamma分布是一种连续概率分布，通常用于描述正值的随机变量的分布。<br><br></p></li>
+<li><p>在信用评分中，我们可以使用Gamma分布来描述违约概率的分布。假设我们有一个样本，其中每个人的违约概率都服从Gamma分布，我们可以使用这个分布来计算整个样本的违约概率分布。</p></li>
+</ul>
+</section>
+<section id="gamma分布-1" class="slide level2">
+<h2>gamma分布</h2>
+
+<img data-src="Lecture6_files/figure-revealjs/unnamed-chunk-28-1.png" width="960" class="r-stretch"></section>
+<section id="section-29" class="slide level2">
+<h2></h2>
+
+<img data-src="Lecture6_files/figure-revealjs/unnamed-chunk-29-1.png" width="960" class="r-stretch"></section>
+<section id="中心极限定理central-limit-theorem" class="slide level2">
+<h2>中心极限定理(Central Limit Theorem)</h2>
+<p>不管原始分布是何种形式，样本均值的分布都接近于正态分布。</p>
+<p>样本均值抽样分布的数字特征。</p>
+<p><span class="math display">\[\mu_{\bar{x}} = \frac{\sum^{n}_{i=1}\bar{x}_i}{n}\]</span></p>
+<p><span class="math display">\[\sigma_{\bar{x}} = \sqrt{\frac{\sum^{n}_{i=1}(\bar{x}_i-\mu_{\bar{x}})^2}{n}}\]</span></p>
+</section>
+<section id="中心极限定理" class="slide level2">
+<h2>中心极限定理<br><br></h2>
+
+<img data-src="images/image-1418886282.png" class="r-stretch quarto-figure-center"></section>
+<section id="section-30" class="slide level2">
+<h2></h2>
+
+<img data-src="images/image-233804438.png" class="r-stretch quarto-figure-center"><center>
+某分布的随机变量之和的分布也符合中心极限定理
+</center>
+<center>
+(Zhang, （2022），Psychological Methods)
+</center>
+</section>
+<section id="section-31" class="slide level2">
+<h2></h2>
+
+<img data-src="images/image-548252915.png" class="r-stretch quarto-figure-center"><center>
+但是中心极限定理的使用（样本均值，样本之和）与原始数据分布形态有关，根据不同原始分布形态，所需分布样本量也不同
+</center>
+<center>
+(Zhang, （2022），Psychological Methods)
+</center>
+</section>
+<section id="正态分布应用" class="slide level2">
+<h2>正态分布应用<br><br></h2>
+<ul>
+<li><p>当总体分布未知，不断进行抽样，样本量<span class="math inline">\(n \rightarrow \infty\)</span>时，可将抽样分布看作正态。<br></p></li>
+<li><p>抽样误差的分布形态为正态分布。<br></p></li>
+<li><p>影响遗传的各个因素的影响可以表达为正态分布，多个大小不一 的正态分布相加后仍为正态分布。<br></p></li>
+<li><p>依据总体的均值与标准差，进行产品质量控制。<br></p></li>
+</ul>
+
+<img src="images/image-393370223.png" class="slide-logo r-stretch"><div class="footer footer-default">
 
 </div>
 </section></section>
