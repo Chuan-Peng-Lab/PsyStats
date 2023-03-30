@@ -4,6 +4,7 @@
 ~$*
 */~$*
 
+*.RData
 */*.RData
 */*.tmp
 *.Rhistory

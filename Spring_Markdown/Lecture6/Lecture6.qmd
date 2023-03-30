@@ -54,7 +54,7 @@ Hu Chuan-Peng
 
 2.  贝叶斯公式中的似然和上节课提到的似然之间的关系;<br></br>
 
-3.  似然在何种情况下和概率是等价的<br></br>
+3.  似然与概率？<br></br>
 
 ## 伯努利试验中的重复次数和 b(k; n,p)中的关系<br></br>
 
@@ -69,15 +69,17 @@ Hu Chuan-Peng
 **理想的二项分布，n=10，p=0.5**
 
 ```{r}
-library(ggplot2)
-# 检查包是否已安装
-if (!requireNamespace("patchwork", quietly = TRUE)) {
+
+# 检查是否已安装 pacman
+if (!requireNamespace("pacman", quietly = TRUE)) {
   # 如果未安装，则安装包
-  install.packages("patchwork")
+  install.packages("pacman")
 }
 
-# 加载 patchwork 包
-library(patchwork)
+# load patchwork and tidyverse using pacman::p_load
+pacman::p_load("tidyverse", "patchwork")
+
+# library(patchwork)
 # 生成一组数据
 x <- 1:10
 y1 <- dbinom(x, size = 10, prob = 0.5)
@@ -230,9 +232,13 @@ ggplot(data,
 
 <br></br><br></br><br></br>
 
-<center>**直观图像上，二项分布的极限分布（**$n \rightarrow \infty$）是一种对称钟形分布，<br>
+<center>
 
-那么真实数据上也是如此吗？</center>
+**直观图像上，二项分布的极限分布（**$n \rightarrow \infty$）是一种对称钟形分布，<br>
+
+那么真实数据上也是如此吗？
+
+</center>
 
 ## n = 10, 100, 1000
 
@@ -1115,11 +1121,7 @@ ggplot(results,
 
 <br></br> <br></br>
 
-<center>
-
-**是否其他分布中也存在这种极限分布接近正态分布的情况？**
-
-</center>
+<center>**是否其他分布中也存在这种极限分布接近正态分布的情况？**</center>
 
 ## 二项分布<br></br>
 
