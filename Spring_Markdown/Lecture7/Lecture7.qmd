@@ -1,0 +1,114 @@
+---
+format: 
+  revealjs:
+    slide-number: true
+    logo: images/image-393370223.png
+    scrollable: true 
+    theme: theme.scss
+editor: visual
+fontsize: 24pt
+---
+
+</br></br>
+
+<h1 style="text-align: center">
+
+07 - 标准分数
+
+</h1>
+
+<h2 style="text-align: center">
+
+(Standard scores)
+
+</h2>
+
+</br></br>
+
+<h3 style="text-align: center">
+
+Hu Chuan-Peng
+
+</h3>
+
+<h3 style="text-align: center">
+
+2023-04-12
+
+</h3>
+
+</br></br>
+
+------------------------------------------------------------------------
+
+## review
+
+------------------------------------------------------------------------
+
+# 正态分布与概率
+
+------------------------------------------------------------------------
+```{r}
+# 检查是否已安装 pacman
+if (!requireNamespace("pacman", quietly = TRUE)) {
+  # 如果未安装，则安装包
+  install.packages("pacman")
+}
+
+# load patchwork and tidyverse using pacman::p_load
+pacman::p_load("tidyverse", "patchwork", "ggplot2")
+```
+```{r}
+# 生成一组数据
+x <- seq(0, 20, length = 100)
+y1 <- dnorm(x, mean = 10, sd = 2)
+
+# 将数据转化为数据框
+df <- data.frame(x, y1)
+
+# 绘制三条正态分布曲线
+ggplot(df) + 
+  geom_line(aes(x, y1), 
+            color = "#56B4E9", 
+            size = 1) +
+  labs(title = "", 
+       x = "x", 
+       y = "密度") +
+  scale_x_continuous(breaks = seq(0, 20, 1))+
+  theme_minimal()
+
+```
+
+
+$$X \sim N(\mu,\sigma^2)$$ <center>正态分布曲线下，标准差与概率(面积)有一定的数量关</center>
+--------------------------------------------------
+```{r}
+# 生成一组数据
+x <- seq(0, 20, length = 100)
+y1 <- dnorm(x, mean = 10, sd = 2)
+
+# 将数据转化为数据框
+df <- data.frame(x, y1)
+
+# 绘制三条正态分布曲线
+ggplot(df) + 
+  geom_line(aes(x, y1), 
+            color = "#56B4E9", 
+            size = 1) +
+  geom_area(data = subset(df, x >= 10),
+            aes(x = x, y = y1),  
+            fill = "#56B4E9", 
+            alpha = 0.2) +
+  annotate("text", 
+           x = 11.5, 
+           y = 0.1, 
+           label = "50%", 
+           color = "black") +
+  labs(title = "", 
+       x = "x", 
+       y = "密度") +
+  scale_x_continuous(breaks = seq(0, 20, 1))+
+  theme_minimal()
+
+```
+$$X \sim N(10,2^2)$$
