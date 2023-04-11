@@ -43,6 +43,11 @@ Hu Chuan-Peng
 
 ## review
 
+-   连续变量的概率密度函数(Probability density function )
+-   正态分布 (Normal distribution)
+-   其他概率密度函数 (Other probability density functions)
+-   正态分布的应用 (Application of normal distribution)
+
 ------------------------------------------------------------------------
 
 # 正态分布与概率
@@ -80,7 +85,7 @@ ggplot(df) +
 ```
 
 
-$$X \sim N(\mu,\sigma^2)$$ <center>正态分布曲线下，标准差与概率(面积)有一定的数量关</center>
+$$X \sim N(\mu,\sigma^2)$$ <center>正态分布曲线下，标准差与概率(面积)有一定的数量关系</center>
 --------------------------------------------------
 ```{r}
 # 生成一组数据
@@ -112,3 +117,637 @@ ggplot(df) +
 
 ```
 $$X \sim N(10,2^2)$$
+
+```{r}
+# 生成一组数据
+x <- seq(0, 20, length = 100)
+y1 <- dnorm(x, mean = 10, sd = 2)
+
+# 将数据转化为数据框
+df <- data.frame(x, y1)
+
+# 绘制三条正态分布曲线
+ggplot(df) + 
+  geom_line(aes(x, y1), 
+            color = "#56B4E9", 
+            size = 1) +
+  geom_area(data = subset(df, x <= 10),
+            aes(x = x, y = y1),  
+            fill = "#56B4E9", 
+            alpha = 0.2) +
+  annotate("text", 
+           x = 8.5, 
+           y = 0.05, 
+           label = "50%", 
+           color = "black") +
+  labs(title = "", 
+       x = "x", 
+       y = "密度") +
+  scale_x_continuous(breaks = seq(0, 20, 1))+
+  theme_minimal()
+
+```
+
+## 
+
+```{r}
+# 生成一组数据
+x <- seq(0, 20, length = 100)
+y1 <- dnorm(x, mean = 10, sd = 2)
+
+# 将数据转化为数据框
+df <- data.frame(x, y1)
+
+# 绘制三条正态分布曲线
+ggplot(df) + 
+  geom_line(aes(x, y1), 
+            color = "#56B4E9", 
+            size = 1) +
+  geom_area(data = subset(df, 8<x &x< 10),
+            aes(x = x, y = y1),  
+            fill = "#56B4E9", 
+            alpha = 0.2) +
+  annotate("text", 
+           x = 8.75, 
+           y = 0.05, 
+           label = "34%", 
+           color = "black") +
+  annotate("segment", x = 0, xend = 8, y = 0.12, yend = 0.12, linetype = "dashed") +
+  annotate("segment", x = 0, xend = 10, y = 0.2, yend = 0.2, linetype = "dashed") +
+  annotate("text", x = 8.75, y = 0.12, label = "0.12", color = "black") +
+  annotate("text", x = 10.75, y = 0.2, label = "0.2", color = "black") +
+  labs(title = "", 
+       x = "x", 
+       y = "密度") +
+  scale_x_continuous(breaks = seq(0, 20, 1))+
+  theme_minimal()
+
+```
+
+
+```{r}
+# 生成一组数据
+x <- seq(0, 20, length = 100)
+y1 <- dnorm(x, mean = 10, sd = 2)
+
+# 将数据转化为数据框
+df <- data.frame(x, y1)
+
+# 绘制三条正态分布曲线
+ggplot(df) + 
+  geom_line(aes(x, y1), 
+            color = "#56B4E9", 
+            size = 1) +
+  geom_area(data = subset(df, 10<x &x< 12),
+            aes(x = x, y = y1),  
+            fill = "#56B4E9", 
+            alpha = 0.2) +
+  annotate("text", 
+           x = 11.5, 
+           y = 0.05, 
+           label = "34%", 
+           color = "black") +
+  annotate("segment", x = 0, xend = 12, y = 0.12, yend = 0.12, linetype = "dashed") +
+  annotate("segment", x = 0, xend = 10, y = 0.2, yend = 0.2, linetype = "dashed") +
+  annotate("text", x = 12.75, y = 0.12, label = "0.12", color = "black") +
+  annotate("text", x = 10.75, y = 0.2, label = "0.2", color = "black") +
+  labs(title = "", 
+       x = "x", 
+       y = "密度") +
+  scale_x_continuous(breaks = seq(0, 20, 1))+
+  theme_minimal()
+
+```
+##   
+
+
+```{r}
+# 生成一组数据
+x <- seq(0, 20, length = 100)
+y1 <- dnorm(x, mean = 10, sd = 2)
+
+# 将数据转化为数据框
+df <- data.frame(x, y1)
+
+# 绘制三条正态分布曲线
+ggplot(df) + 
+  geom_line(aes(x, y1), 
+            color = "#56B4E9", 
+            size = 1) +
+  geom_area(data = subset(df, 6<=x &x<= 8),
+            aes(x = x, y = y1),  
+            fill = "#56B4E9", 
+            alpha = 0.2) +
+  annotate("text", 
+           x = 7.75, 
+           y = 0.02, 
+           label = "14%", 
+           color = "black") +
+  annotate("segment", x = 0, xend = 6, y = 0.03, yend = 0.03, linetype = "dashed") +
+  annotate("segment", x = 0, xend =8, y = 0.12, yend = 0.12, linetype = "dashed") +
+  annotate("text", x = 6.75, y = 0.03, label = "0.03", color = "black") +
+  annotate("text", x = 8.75, y = 0.12, label = "0.12", color = "black") +
+  labs(title = "", 
+       x = "x", 
+       y = "密度") +
+  scale_x_continuous(breaks = seq(0, 20, 1))+
+  theme_minimal()
+
+```
+##  
+
+
+```{r}
+
+# 生成一组数据
+x <- seq(0, 20, length = 100)
+y1 <- dnorm(x, mean = 10, sd = 2)
+
+# 将数据转化为数据框
+df <- data.frame(x, y1)
+
+# 绘制三条正态分布曲线
+ggplot(df) + 
+  geom_line(aes(x, y1), 
+            color = "#56B4E9", 
+            size = 1) +
+  geom_area(data = subset(df, 12<=x &x<=14),
+            aes(x = x, y = y1),  
+            fill = "#56B4E9", 
+            alpha = 0.2) +
+  annotate("text", 
+           x = 12.75, 
+           y = 0.02, 
+           label = "14%", 
+           color = "black") +
+  annotate("segment", x = 0, xend = 14, y = 0.03, yend = 0.03, linetype = "dashed") +
+  annotate("segment", x = 0, xend =12, y = 0.12, yend = 0.12, linetype = "dashed") +
+  annotate("text", x = 14.75, y = 0.03, label = "0.03", color = "black") +
+  annotate("text", x = 12.75, y = 0.12, label = "0.12", color = "black") +
+  labs(title = "", 
+       x = "x", 
+       y = "密度") +
+  scale_x_continuous(breaks = seq(0, 20, 1))+
+  theme_minimal()
+
+```
+##  
+
+<br>
+
+<br>
+
+**创建任意正态分布，以σ 为单位，选取与μ相差固定单位的点，观察该点与μ间的概率在不同正态分布下是否一致?**
+
+## 
+![](.\images\p19.jpg)
+
+##  
+
+![](.\images\p17.jpg)
+
+## 
+
+![](.\images\p18.jpg)
+
+
+## 标准正态分布(Standardized Distribution )
+
+
+```{r}
+# 生成一组数据
+x <- seq(-4, 4, length = 100)
+y <- dnorm(x, mean = 0, sd = 1)
+
+# 将数据转化为数据框
+df <- data.frame(x, y)
+
+# 绘制三条正态分布曲线
+ggplot(df) + 
+  geom_line(aes(x, y), 
+            color = "#56B4E9", 
+            size = 1) +scale_x_continuous(breaks = seq(-4, 4, 1))+
+  labs(title = "标准正态分布", 
+       x = "x", 
+       y = "密度") +
+  theme_minimal()
+
+```
+
+-   标准正态分布是μ = 0, σ = 1的正态分布。通常写作N (0, 1)。
+
+
+##  
+
+```{r}
+# 生成一组数据
+x2 <- seq(-4, 4, length = 100)
+y2 <- dnorm(x, mean = 0, sd = 1)
+
+# 将数据转化为数据框
+df <- data.frame(x, y)
+
+# 绘制三条正态分布曲线
+ggplot(df) + 
+  geom_line(aes(x, y), 
+            color = "#56B4E9", 
+            size = 1) +
+  geom_area(data = subset(df, -1<=x &x<=1),
+            aes(x = x, y = y),  
+            fill = "#56B4E9", 
+            alpha = 0.2) +
+  annotate("text", 
+           x = 0, 
+           y = 0.1, 
+           label = "68%", 
+           color = "black") +
+  annotate("segment", x = -3, xend = 1, y = 0.24, yend = 0.24, linetype = "dashed") +
+  annotate("text", x = -3.5, y = 0.24, label = "0.24", color = "black") +
+  labs(title = "", 
+       x = "x", 
+       y = "密度") +
+  scale_x_continuous(breaks = seq(-4, 4, 1))+
+  theme_minimal()
+
+```
+
+## 
+
+```{r}
+
+# 生成一组数据
+x <- seq(-4, 4, length = 100)
+y <- dnorm(x, mean = 0, sd = 1)
+
+# 将数据转化为数据框
+df <- data.frame(x, y)
+# 绘制三条正态分布曲线
+ggplot(df) + 
+  geom_line(aes(x, y), 
+            color = "#56B4E9", 
+            size = 1) +
+  geom_area(data = subset(df, -2<=x &x<=2),
+            aes(x = x, y = y),  
+            fill = "#56B4E9", 
+            alpha = 0.2) +
+  annotate("text", 
+           x = 0, 
+           y = 0.1, 
+           label = "95%", 
+           color = "black") +
+  annotate("segment", x = -3, xend = 2, y = 0.05, yend = 0.05, linetype = "dashed") +
+  annotate("text", x = -3.5, y = 0.05, label = "0.05", color = "black") +
+  labs(title = "", 
+       x = "x", 
+       y = "密度") +
+  scale_x_continuous(breaks = seq(-4, 4, 1))+
+  theme_minimal()
+
+```
+
+## 标准正态分布(Standardized Distribution )
+
+<br>
+
+<br>
+
+-   把所有x值转换为z值→ z分数的分布（z-Score Distribution）
+
+## 标准正态分布的性质
+
+-   由原始数据经 μ和σ转换的标准分数/Z分数组成的分布
+-   均值为0
+-   标准差为1
+-   形态与原始分布相似但不同，不改变原始分数在原分布中的位置
+-   使不同形态的正态分布具有可比性
+
+# Z分数(Z-scores)
+
+## 
+
+![](.\images\p14.jpg)
+
+## Z分数
+
+<center>![](.\images\p13.jpg)</center>
+
+
+## Z分数
+
+
+-   $$ z = \frac{x-\mu}{\sigma} $$
+
+
+<br>
+
+
+-   Z分数（z-score）:又叫标准分数，表示变量到均值的距离是多少个标准差，是在在符合正态分布的情况下，衡量不同事件的标准化方法。
+
+## 标准正态分布表（Z - table ）<br>
+
+![](.\images\p12.jpg)
+<br>
+
+-   详见《心理统计学与SPSS应用》P399
+
+
+## Z分数
+![](.\images\p11.jpg)
+
+## Z分数
+
+-   Z分数：$(X- μ)/ σ$
+
+-   概率密度(y)：某一Z分数对应的曲线纵坐标高度。
+
+-   概率值(P)：不同Z分数点与平均数之间的曲线下的面积
+
+
+
+## 概率密度(y)&概率(p) density & probability 
+
+
+```{r}
+# 生成一组数据
+x <- seq(-4, 4, length.out = 1000)
+y1 <- dnorm(x, mean = 0, sd = 1)
+y2 <- pnorm(x, mean = 0, sd = 1)
+
+# 将数据转化为数据框
+df <- data.frame(x, y1, y2)
+ggplot(df) + 
+  # 绘制概率密度函数图
+  geom_line(aes(x, y1), 
+            color = "#56B4E9", 
+            size = 1) +
+  labs(title = "标准正态分布的概率密度函数(Probability density function, pdf)
+", 
+       x = "x", 
+       y = "密度") +
+  theme_minimal()
+```
+```{r}
+x <- seq(-4, 4, length.out = 1000)
+y1 <- dnorm(x, mean = 0, sd = 1)
+y2 <- pnorm(x, mean = 0, sd = 1)
+ggplot(df) +
+geom_line(aes(x, y2), 
+            color = "#E69F00", 
+            size = 1) +
+  labs(title = "标准正态分布的累积分布函数(Cumulative distribution function, cdf)
+", 
+       x = "x", 
+       y = "F(x)") +
+  theme_minimal()
+
+```
+
+```{r}
+
+# 生成一组数据
+x <- seq(-4, 4, length.out = 1000)
+y1 <- dnorm(x, mean = 0, sd = 1)
+y2 <- pnorm(x, mean = 0, sd = 1)
+
+# 将数据转化为数据框
+df <- data.frame(x, y1, y2)
+
+# 绘制概率密度函数图和累积分布函数图
+ggplot(df) + 
+  # 绘制概率密度函数图
+  geom_line(aes(x, y1), 
+            color = "#56B4E9", 
+            size = 1) +
+  
+  # 绘制累积分布函数图
+  geom_line(aes(x, y2), 
+            color = "#E69F00", 
+            size = 1) +
+  labs(title = "标准正态分布的概率密度与累积分布函数", 
+       x = "x", 
+       y = "F(x)") +
+  theme_minimal() +
+  # 将两个子图组合在一起
+  facet_wrap(~ ., ncol = 2)
+```
+
+
+## 
+
+![](.\images\p15.jpg)
+
+-   概率:事件发生的可能性
+-   概率密度：概率的变化率
+-   X ~ N (0, 1)
+
+##  
+![](.\images\p16.jpg)
+
+
+## Z分数的性质
+
+<br>
+
+-   跨原始分布比较个体在原分布中的位置
+-   Z分数代表原始分数远离分布平均数的距离
+-   Z分数可正可负，正负号不说明Z分数的大小，“+”号代表原始分数高于平均数，“-”号代表原始分数小于平均数
+
+##  
+
+![](.\images\p10.jpg)
+
+## 
+
+判断从某一标准正态分布中抽样时，某一数据落在1~1.96𝜎间的概率大小，并选择答案<br>
+
+ <center>
+ 
+ A. 0.112<br>
+  
+  B. 0.134<br>
+  
+  C. 0.152<br>
+  
+</center>
+  
+# Z分数的应用
+
+## 我们为什么需要Z分数？
+
+
+## 
+
+-   某同学的数学成绩为85分，班级数学平均成绩为80分，标准差为3分；语文成绩为80分，班级语文平均成绩为78分，标准差为1分，试比较该同学的数学成绩和语文成绩。
+
+|  | **均值** | **标准差** | **成绩** | **Z分数** |
+| :----: | :--------: | :----------: |:----:|:--:|
+| 数学 | 80 | 3 | 85 | ？ |
+| 语文 | 78 | 1 | 80 | ？ |
+
+## 
+
+![](.\images\p9.jpg)
+
+## 区间估计
+
+-   报考某学院某专业的人数有600人，成绩服从正态分布，平均分为65分，标准差为15，如果计划选取120人进入复试，那么复试分数线应该是多少？
+
+<br>
+<br>
+
+$$𝜇 = 65, 
+𝜎 = 15, $$
+
+-   x value ——> # of values >= x is 120
+
+<br>
+
+<center>![](.\images\p8.jpg)</center>
+
+Proportion ：<br>
+
+$𝑃=  120/600=0.20$ <br>
+
+Location :<br>
+
+$𝑃^′=0.50−0.20=0.30$<br>
+
+查表 ：<br>
+
+$𝑍=0.84$<br>
+
+$𝑋= 𝜇+𝑍\cdot𝜎=65+0.84×15=77.6$
+
+
+
+## 区间估计
+
+-    某数学竞赛的平均分为52，标准差为15，此次竞赛按分数高低评选一、二、三等奖的获奖人数占10%，15%，20%，小明得分为72，那么小明这次能获奖吗？
+
+<br>
+
+Location :<br>
+
+𝑍=(𝑋−𝜇)/𝜎=(72−52)/15=1.33
+
+<br>
+
+查表:<br>
+$$ 𝑃=0.4082$$<br>
+
+$$𝑃^′=0.50+0.4082=0.9082$$<br>
+
+-   小明分数进入前10%
+
+
+## 分数转换
+
+-   IQ (韦克斯勒智力量表 )<br>
+
+<center>![](.\images\p7.jpg)</center>
+
+<br>
+
+  -   离差智商法：IQ = 100 + 15Z
+  
+  -   转换后分数意义更明显
+
+
+
+## 比较不同尺度下的分数
+
+-   假设学生A在SAT考试中得了1800分，学生B在ACT考试中得了24分。哪个学生的表现更好?<br>
+
+
+<br>
+
+|  | **SAT** | **ACT** | 
+| :----: | :--------: | :----------: |
+| Mean | 1500 | 21 | 
+| Standard deviation | 300 | 5| 
+
+
+<br>
+
+
+-   $Student A: 𝑍=(𝑋−𝜇)/𝜎=(1800−1500)/300=1$
+-   $Student B : 𝑍=(𝑋−𝜇)/𝜎=(24−21)/5=0.6$
+
+
+
+## 三标准差原则
+
+-   简单判断正态分布总体中的离群值 
+-   判断总体是否正态 
+
+<center>![](.\images\p5.png)<center>
+
+
+## 医疗诊断
+
+![](.\images\p4.jpg)
+
+-   贫血诊断：一般以血红白量低于正常参考值下限的95%为诊断标准
+
+
+
+
+## 生成过程
+
+![](.\images\p20.jpg)
+
+
+
+## 为什么选择Z分数<br>
+
+<br>
+
+
+-   以标准差为单位表示一个具体分数到平均数的距离或离差
+-   反应一个分数距离平均数的相对标准距离
+-   比较几个来自不同正态分布的观测值在各自数据分布中相对位置的高低
+-   查阅标准正态分布表来得知平均数与标准分数之间的面积，进而得知原始分数在数据集合中的百分等级
+
+
+## 质量控制<br>
+
+
+-   假设某厂今日生产出1000万个口罩，随机抽样3次，每次抽样10000进行检测，使用3σ原则辨别这批口罩是否合格。<br>
+
+
+-   （μ - 3σ, μ + 3σ)的概率为0.9974； 3σ原则下，允许出现的最高的不合格率为0.26%。<br>
+
+
+-   第一次有5个不合格；第二次有3个不合格；第三次有4个不合格。<br>
+
+-   第一次不合格率为0.05%；第二次不合格率为0.03%；第三次不合格率为0.04%（假设口罩质量可以用标准正态分数表示），总体合格吗？
+
+
+
+##
+
+![](.\images\p2.jpg)
+![](.\images\p3.jpg)
+
+## 为什么Z分数在心理学中似乎应用不用多？
+
+
+## 为什么Z分数在心理学中似乎应用不用多？
+
+<center>![](.\images\p1.jpg)</center>
+
+## 小结<br>
+
+-   正态分布
+  (Normal Distribution and probability)<br>
+  
+-   Z分数
+  (Z-scores)<br>
+  
+-   Z分数的应用
+  (Application of Z-scores)
+
+
+
+
+

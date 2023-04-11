@@ -344,6 +344,12 @@
 </section>
 <section id="review" class="slide level2">
 <h2>review</h2>
+<ul>
+<li>连续变量的概率密度函数(Probability density function )</li>
+<li>正态分布 (Normal distribution)</li>
+<li>其他概率密度函数 (Other probability density functions)</li>
+<li>正态分布的应用 (Application of normal distribution)</li>
+</ul>
 </section>
 <section class="slide level2">
 
@@ -358,17 +364,387 @@
 <div class="cell">
 
 </div>
+
+<img data-src="Lecture7_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"><span class="math display">\[X \sim N(\mu,\sigma^2)\]</span>
+<center>
+正态分布曲线下，标准差与概率(面积)有一定的数量关系
+</center>
+</section>
+<section class="slide level2">
+
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="Lecture7_files/figure-revealjs/unnamed-chunk-2-1.png" width="960"></p>
+<p><img data-src="Lecture7_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
 </div>
 </div>
-<span class="math display">\[X \sim N(\mu,\sigma^2)\]</span>
+<p><span class="math display">\[X \sim N(10,2^2)\]</span></p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="Lecture7_files/figure-revealjs/unnamed-chunk-4-1.png" width="960"></p>
+</div>
+</div>
+</section>
+<section id="section" class="slide level2">
+<h2></h2>
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="Lecture7_files/figure-revealjs/unnamed-chunk-5-1.png" width="960"></p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="Lecture7_files/figure-revealjs/unnamed-chunk-6-1.png" width="960"></p>
+</div>
+</div>
+</section>
+<section id="section-1" class="slide level2">
+<h2></h2>
+
+<img data-src="Lecture7_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
+<section id="section-2" class="slide level2">
+<h2></h2>
+
+<img data-src="Lecture7_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section>
+<section id="section-3" class="slide level2">
+<h2></h2>
+<p><br></p>
+<p><br></p>
+<p><strong>创建任意正态分布，以σ 为单位，选取与μ相差固定单位的点，观察该点与μ间的概率在不同正态分布下是否一致?</strong></p>
+</section>
+<section id="section-4" class="slide level2">
+<h2></h2>
+
+<img data-src=".\images\p19.jpg" class="r-stretch"></section>
+<section id="section-5" class="slide level2">
+<h2></h2>
+
+<img data-src=".\images\p17.jpg" class="r-stretch"></section>
+<section id="section-6" class="slide level2">
+<h2></h2>
+
+<img data-src=".\images\p18.jpg" class="r-stretch"></section>
+<section id="标准正态分布standardized-distribution" class="slide level2">
+<h2>标准正态分布(Standardized Distribution )</h2>
+
+<img data-src="Lecture7_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"><ul>
+<li>标准正态分布是μ = 0, σ = 1的正态分布。通常写作N (0, 1)。</li>
+</ul>
+</section>
+<section id="section-7" class="slide level2">
+<h2></h2>
+
+<img data-src="Lecture7_files/figure-revealjs/unnamed-chunk-10-1.png" width="960" class="r-stretch"></section>
+<section id="section-8" class="slide level2">
+<h2></h2>
+
+<img data-src="Lecture7_files/figure-revealjs/unnamed-chunk-11-1.png" width="960" class="r-stretch"></section>
+<section id="标准正态分布standardized-distribution-1" class="slide level2">
+<h2>标准正态分布(Standardized Distribution )</h2>
+<p><br></p>
+<p><br></p>
+<ul>
+<li>把所有x值转换为z值→ z分数的分布（z-Score Distribution）</li>
+</ul>
+</section>
+<section id="标准正态分布的性质" class="slide level2">
+<h2>标准正态分布的性质</h2>
+<ul>
+<li>由原始数据经 μ和σ转换的标准分数/Z分数组成的分布</li>
+<li>均值为0</li>
+<li>标准差为1</li>
+<li>形态与原始分布相似但不同，不改变原始分数在原分布中的位置</li>
+<li>使不同形态的正态分布具有可比性</li>
+</ul>
+</section></section>
+<section>
+<section id="z分数z-scores" class="title-slide slide level1 center">
+<h1>Z分数(Z-scores)</h1>
+
+</section>
+<section id="section-9" class="slide level2">
+<h2></h2>
+
+<img data-src=".\images\p14.jpg" class="r-stretch"></section>
+<section id="z分数" class="slide level2">
+<h2>Z分数</h2>
 <center>
-正态分布曲线下，标准差与概率(面积)有一定的数量关
+<img data-src=".\images\p13.jpg">
 </center>
-<p><img src="images/image-393370223.png" class="slide-logo"></p>
-<div class="footer footer-default">
+</section>
+<section id="z分数-1" class="slide level2">
+<h2>Z分数</h2>
+<ul>
+<li><span class="math display">\[ z = \frac{x-\mu}{\sigma} \]</span></li>
+</ul>
+<p><br></p>
+<ul>
+<li>Z分数（z-score）:又叫标准分数，表示变量到均值的距离是多少个标准差，是在在符合正态分布的情况下，衡量不同事件的标准化方法。</li>
+</ul>
+</section>
+<section id="标准正态分布表z---table" class="slide level2">
+<h2>标准正态分布表（Z - table ）<br></h2>
+<p><img data-src=".\images\p12.jpg"> <br></p>
+<ul>
+<li>详见《心理统计学与SPSS应用》P399</li>
+</ul>
+</section>
+<section id="z分数-2" class="slide level2">
+<h2>Z分数</h2>
+
+<img data-src=".\images\p11.jpg" class="r-stretch"></section>
+<section id="z分数-3" class="slide level2">
+<h2>Z分数</h2>
+<ul>
+<li><p>Z分数：<span class="math inline">\((X- μ)/ σ\)</span></p></li>
+<li><p>概率密度(y)：某一Z分数对应的曲线纵坐标高度。</p></li>
+<li><p>概率值(P)：不同Z分数点与平均数之间的曲线下的面积</p></li>
+</ul>
+</section>
+<section id="概率密度y概率p-density-probability" class="slide level2">
+<h2>概率密度(y)&amp;概率(p) density &amp; probability</h2>
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="Lecture7_files/figure-revealjs/unnamed-chunk-12-1.png" width="960"></p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="Lecture7_files/figure-revealjs/unnamed-chunk-13-1.png" width="960"></p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="Lecture7_files/figure-revealjs/unnamed-chunk-14-1.png" width="960"></p>
+</div>
+</div>
+</section>
+<section id="section-10" class="slide level2">
+<h2></h2>
+
+<img data-src=".\images\p15.jpg" class="r-stretch"><ul>
+<li>概率:事件发生的可能性</li>
+<li>概率密度：概率的变化率</li>
+<li>X ~ N (0, 1)</li>
+</ul>
+</section>
+<section id="section-11" class="slide level2">
+<h2></h2>
+
+<img data-src=".\images\p16.jpg" class="r-stretch"></section>
+<section id="z分数的性质" class="slide level2">
+<h2>Z分数的性质</h2>
+<p><br></p>
+<ul>
+<li>跨原始分布比较个体在原分布中的位置</li>
+<li>Z分数代表原始分数远离分布平均数的距离</li>
+<li>Z分数可正可负，正负号不说明Z分数的大小，“+”号代表原始分数高于平均数，“-”号代表原始分数小于平均数</li>
+</ul>
+</section>
+<section id="section-12" class="slide level2">
+<h2></h2>
+
+<img data-src=".\images\p10.jpg" class="r-stretch"></section>
+<section id="section-13" class="slide level2">
+<h2></h2>
+<p>判断从某一标准正态分布中抽样时，某一数据落在1~1.96𝜎间的概率大小，并选择答案<br></p>
+<center>
+<p>A. 0.112<br></p>
+<p>B. 0.134<br></p>
+<p>C. 0.152<br></p>
+</center>
+</section></section>
+<section>
+<section id="z分数的应用" class="title-slide slide level1 center">
+<h1>Z分数的应用</h1>
+
+</section>
+<section id="我们为什么需要z分数" class="slide level2">
+<h2>我们为什么需要Z分数？</h2>
+</section>
+<section id="section-14" class="slide level2">
+<h2></h2>
+<ul>
+<li>某同学的数学成绩为85分，班级数学平均成绩为80分，标准差为3分；语文成绩为80分，班级语文平均成绩为78分，标准差为1分，试比较该同学的数学成绩和语文成绩。</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><strong>均值</strong></th>
+<th style="text-align: center;"><strong>标准差</strong></th>
+<th style="text-align: center;"><strong>成绩</strong></th>
+<th style="text-align: center;"><strong>Z分数</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">数学</td>
+<td style="text-align: center;">80</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">85</td>
+<td style="text-align: center;">？</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">语文</td>
+<td style="text-align: center;">78</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">80</td>
+<td style="text-align: center;">？</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="section-15" class="slide level2">
+<h2></h2>
+
+<img data-src=".\images\p9.jpg" class="r-stretch"></section>
+<section id="区间估计" class="slide level2">
+<h2>区间估计</h2>
+<ul>
+<li>报考某学院某专业的人数有600人，成绩服从正态分布，平均分为65分，标准差为15，如果计划选取120人进入复试，那么复试分数线应该是多少？</li>
+</ul>
+<p><br> <br></p>
+<p><span class="math display">\[𝜇 = 65,
+𝜎 = 15, \]</span></p>
+<ul>
+<li>x value ——&gt; # of values &gt;= x is 120</li>
+</ul>
+<p><br></p>
+<center>
+<img data-src=".\images\p8.jpg">
+</center>
+<p>Proportion ：<br></p>
+<p><span class="math inline">\(𝑃= 120/600=0.20\)</span> <br></p>
+<p>Location :<br></p>
+<p><span class="math inline">\(𝑃^′=0.50−0.20=0.30\)</span><br></p>
+<p>查表 ：<br></p>
+<p><span class="math inline">\(𝑍=0.84\)</span><br></p>
+<p><span class="math inline">\(𝑋= 𝜇+𝑍\cdot𝜎=65+0.84×15=77.6\)</span></p>
+</section>
+<section id="区间估计-1" class="slide level2">
+<h2>区间估计</h2>
+<ul>
+<li>某数学竞赛的平均分为52，标准差为15，此次竞赛按分数高低评选一、二、三等奖的获奖人数占10%，15%，20%，小明得分为72，那么小明这次能获奖吗？</li>
+</ul>
+<p><br></p>
+<p>Location :<br></p>
+<p>𝑍=(𝑋−𝜇)/𝜎=(72−52)/15=1.33</p>
+<p><br></p>
+<p>查表:<br> <span class="math display">\[ 𝑃=0.4082\]</span><br></p>
+<p><span class="math display">\[𝑃^′=0.50+0.4082=0.9082\]</span><br></p>
+<ul>
+<li>小明分数进入前10%</li>
+</ul>
+</section>
+<section id="分数转换" class="slide level2">
+<h2>分数转换</h2>
+<ul>
+<li>IQ (韦克斯勒智力量表 )<br></li>
+</ul>
+<center>
+<img data-src=".\images\p7.jpg">
+</center>
+<p><br></p>
+<ul>
+<li><p>离差智商法：IQ = 100 + 15Z</p></li>
+<li><p>转换后分数意义更明显</p></li>
+</ul>
+</section>
+<section id="比较不同尺度下的分数" class="slide level2">
+<h2>比较不同尺度下的分数</h2>
+<ul>
+<li>假设学生A在SAT考试中得了1800分，学生B在ACT考试中得了24分。哪个学生的表现更好?<br></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><strong>SAT</strong></th>
+<th style="text-align: center;"><strong>ACT</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Mean</td>
+<td style="text-align: center;">1500</td>
+<td style="text-align: center;">21</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Standard deviation</td>
+<td style="text-align: center;">300</td>
+<td style="text-align: center;">5</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<ul>
+<li><span class="math inline">\(Student A: 𝑍=(𝑋−𝜇)/𝜎=(1800−1500)/300=1\)</span></li>
+<li><span class="math inline">\(Student B : 𝑍=(𝑋−𝜇)/𝜎=(24−21)/5=0.6\)</span></li>
+</ul>
+</section>
+<section id="三标准差原则" class="slide level2">
+<h2>三标准差原则</h2>
+<ul>
+<li>简单判断正态分布总体中的离群值</li>
+<li>判断总体是否正态</li>
+</ul>
+<center>
+<img data-src=".\images\p5.png">
+<center>
+</center></center></section>
+<section id="医疗诊断" class="slide level2">
+<h2>医疗诊断</h2>
+
+<img data-src=".\images\p4.jpg" class="r-stretch"><ul>
+<li>贫血诊断：一般以血红白量低于正常参考值下限的95%为诊断标准</li>
+</ul>
+</section>
+<section id="生成过程" class="slide level2">
+<h2>生成过程</h2>
+
+<img data-src=".\images\p20.jpg" class="r-stretch"></section>
+<section id="为什么选择z分数" class="slide level2">
+<h2>为什么选择Z分数<br></h2>
+<p><br></p>
+<ul>
+<li>以标准差为单位表示一个具体分数到平均数的距离或离差</li>
+<li>反应一个分数距离平均数的相对标准距离</li>
+<li>比较几个来自不同正态分布的观测值在各自数据分布中相对位置的高低</li>
+<li>查阅标准正态分布表来得知平均数与标准分数之间的面积，进而得知原始分数在数据集合中的百分等级</li>
+</ul>
+</section>
+<section id="质量控制" class="slide level2">
+<h2>质量控制<br></h2>
+<ul>
+<li><p>假设某厂今日生产出1000万个口罩，随机抽样3次，每次抽样10000进行检测，使用3σ原则辨别这批口罩是否合格。<br></p></li>
+<li><p>（μ - 3σ, μ + 3σ)的概率为0.9974； 3σ原则下，允许出现的最高的不合格率为0.26%。<br></p></li>
+<li><p>第一次有5个不合格；第二次有3个不合格；第三次有4个不合格。<br></p></li>
+<li><p>第一次不合格率为0.05%；第二次不合格率为0.03%；第三次不合格率为0.04%（假设口罩质量可以用标准正态分数表示），总体合格吗？</p></li>
+</ul>
+</section>
+<section id="section-16" class="slide level2">
+<h2></h2>
+<p><img data-src=".\images\p2.jpg"> <img data-src=".\images\p3.jpg"></p>
+</section>
+<section id="为什么z分数在心理学中似乎应用不用多" class="slide level2">
+<h2>为什么Z分数在心理学中似乎应用不用多？</h2>
+</section>
+<section id="为什么z分数在心理学中似乎应用不用多-1" class="slide level2">
+<h2>为什么Z分数在心理学中似乎应用不用多？</h2>
+<center>
+<img data-src=".\images\p1.jpg">
+</center>
+</section>
+<section id="小结" class="slide level2">
+<h2>小结<br></h2>
+<ul>
+<li><p>正态分布 (Normal Distribution and probability)<br></p></li>
+<li><p>Z分数 (Z-scores)<br></p></li>
+<li><p>Z分数的应用 (Application of Z-scores)</p></li>
+</ul>
+
+<img src="images/image-393370223.png" class="slide-logo r-stretch"><div class="footer footer-default">
 
 </div>
 </section></section>
