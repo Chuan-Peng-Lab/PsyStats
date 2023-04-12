@@ -52,7 +52,7 @@ Hu Chuan-Peng
 
 # 如何用R生成模型？
 
-```{r}
+```{r initialization}
 # 检查是否已安装 pacman
 if (!requireNamespace("pacman", quietly = TRUE)) {
   # 如果未安装，则安装包
@@ -89,11 +89,11 @@ gen_binom_data <- function(n, size, prob) {
                    stat = "count") +  # 设定直方不叠加
     scale_x_discrete(limits = factor(0:size),  # 设定 X 轴刻度标签范围
                      breaks = c(0:size)) +  # 设定 X 轴刻度标签数量
-    theme_minimal()  # 设定主题样式
+    theme_classic()  # 设定主题样式
 }
 
 # 调用 gen_binom_data 函数，生成试验次数为 10，成功概率为 0.5 的二项分布数据，并绘制直方图
-gen_binom_data(n = 1000, size = 10, prob = 0.5)
+gen_binom_data(n = 10000, size = 100, prob = 0.3)
 ```
 
 ----------------------------------------
@@ -115,12 +115,13 @@ gen_norm_data <- function(n, mean, sd) {
                    alpha = 0.5,
                    fill = '#56B4E9' ) +
     geom_density() +
-    theme_minimal()
+    theme_classic()
 }
 
 # 调用 gen_norm_data 函数，生成均值为 10，标准差为 1 的正态分布数据集，并绘制直方图和密度图
-gen_norm_data(n = 1000, mean = 10, sd = 1)
+gen_norm_data(n = 100000, mean = 10, sd = 1)
 ```
+
 ----------------------------------------
 
 ## 小练习
@@ -128,6 +129,7 @@ gen_norm_data(n = 1000, mean = 10, sd = 1)
 改变参数，创建不同的数据观察其分布形态
 
 ------------------------------------------------------------------------
+
 
 # 正态分布与概率
 
@@ -150,7 +152,7 @@ ggplot(df) +
        x = "x", 
        y = "密度") +
   scale_x_continuous(breaks = seq(0, 20, 1))+
-  theme_minimal()
+  theme_classic()
 
 ```
 
