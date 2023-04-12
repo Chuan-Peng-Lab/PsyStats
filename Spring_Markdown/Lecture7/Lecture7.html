@@ -27,6 +27,70 @@
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
     }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="Lecture7_files/libs/revealjs/dist/theme/quarto.css" id="theme">
   <link href="Lecture7_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -355,17 +419,85 @@
 
 </section>
 <section>
+<section id="如何用r生成模型" class="title-slide slide level1 center">
+<h1>如何用R生成模型？</h1>
+<div class="cell">
+
+</div>
+</section>
+<section class="slide level2">
+
+<p>用R生成二项分布数据</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># 定义一个名为 gen_binom_data 的函数，用于生成二项分布数据集</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="co"># 输入参数：n 为生成数据的数量，size 为试验次数，prob 为成功概率</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a>gen_binom_data <span class="ot">&lt;-</span> <span class="cf">function</span>(n, size, prob) {</span>
+<span id="cb1-4"><a href="#cb1-4"></a>  <span class="co"># 生成 n 个二项分布数据，size 为试验次数，prob 为成功概率</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a>  x <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="at">n =</span> n, <span class="at">size =</span> size, <span class="at">prob =</span> prob)</span>
+<span id="cb1-6"><a href="#cb1-6"></a>  </span>
+<span id="cb1-7"><a href="#cb1-7"></a>  <span class="co"># 将数据转化为数据框形式</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a>  x <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(x)</span>
+<span id="cb1-9"><a href="#cb1-9"></a>  </span>
+<span id="cb1-10"><a href="#cb1-10"></a>  <span class="co"># 使用ggplot绘制直方图和密度图</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> x, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> x)) <span class="sc">+</span></span>
+<span id="cb1-12"><a href="#cb1-12"></a>    <span class="fu">geom_histogram</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">y =</span> ..count..),  <span class="co"># 绘制直方图，并将y轴单位改为概率</span></span>
+<span id="cb1-13"><a href="#cb1-13"></a>                   <span class="at">alpha =</span> <span class="fl">0.5</span>,</span>
+<span id="cb1-14"><a href="#cb1-14"></a>                   <span class="at">fill =</span> <span class="st">'#56B4E9'</span>,</span>
+<span id="cb1-15"><a href="#cb1-15"></a>                   <span class="at">binwidth =</span> <span class="dv">1</span>,  <span class="co"># 设定每个直方的宽度为 1</span></span>
+<span id="cb1-16"><a href="#cb1-16"></a>                   <span class="at">position =</span> <span class="st">"identity"</span>,</span>
+<span id="cb1-17"><a href="#cb1-17"></a>                   <span class="at">stat =</span> <span class="st">"count"</span>) <span class="sc">+</span>  <span class="co"># 设定直方不叠加</span></span>
+<span id="cb1-18"><a href="#cb1-18"></a>    <span class="fu">scale_x_discrete</span>(<span class="at">limits =</span> <span class="fu">factor</span>(<span class="dv">0</span><span class="sc">:</span>size),  <span class="co"># 设定 X 轴刻度标签范围</span></span>
+<span id="cb1-19"><a href="#cb1-19"></a>                     <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span><span class="sc">:</span>size)) <span class="sc">+</span>  <span class="co"># 设定 X 轴刻度标签数量</span></span>
+<span id="cb1-20"><a href="#cb1-20"></a>    <span class="fu">theme_minimal</span>()  <span class="co"># 设定主题样式</span></span>
+<span id="cb1-21"><a href="#cb1-21"></a>}</span>
+<span id="cb1-22"><a href="#cb1-22"></a></span>
+<span id="cb1-23"><a href="#cb1-23"></a><span class="co"># 调用 gen_binom_data 函数，生成试验次数为 10，成功概率为 0.5 的二项分布数据，并绘制直方图</span></span>
+<span id="cb1-24"><a href="#cb1-24"></a><span class="fu">gen_binom_data</span>(<span class="at">n =</span> <span class="dv">1000</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="Lecture7_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section>
+<section class="slide level2">
+
+<p>用R生成正态分布数据</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># 定义一个名为 gen_norm_data 的函数，用于生成正态分布数据集</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="co"># 输入参数：n 为生成数据的数量，mean 为正态分布的均值，sd 为正态分布的标准差</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a>gen_norm_data <span class="ot">&lt;-</span> <span class="cf">function</span>(n, mean, sd) {</span>
+<span id="cb2-4"><a href="#cb2-4"></a>  <span class="co"># 生成 n 个正态分布数据，均值为 mean，标准差为 sd</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a>  x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> n, <span class="at">mean =</span> mean, <span class="at">sd =</span> sd)</span>
+<span id="cb2-6"><a href="#cb2-6"></a>  <span class="co"># 将数据转化为数据框形式</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a>  x <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(x)</span>
+<span id="cb2-8"><a href="#cb2-8"></a>  <span class="co"># 使用 ggplot 绘制直方图和密度图</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> x,</span>
+<span id="cb2-10"><a href="#cb2-10"></a>         <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x=</span>x)) <span class="sc">+</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a>    <span class="fu">geom_histogram</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">y =</span> ..density..),</span>
+<span id="cb2-12"><a href="#cb2-12"></a>                   <span class="at">alpha =</span> <span class="fl">0.5</span>,</span>
+<span id="cb2-13"><a href="#cb2-13"></a>                   <span class="at">fill =</span> <span class="st">'#56B4E9'</span> ) <span class="sc">+</span></span>
+<span id="cb2-14"><a href="#cb2-14"></a>    <span class="fu">geom_density</span>() <span class="sc">+</span></span>
+<span id="cb2-15"><a href="#cb2-15"></a>    <span class="fu">theme_minimal</span>()</span>
+<span id="cb2-16"><a href="#cb2-16"></a>}</span>
+<span id="cb2-17"><a href="#cb2-17"></a></span>
+<span id="cb2-18"><a href="#cb2-18"></a><span class="co"># 调用 gen_norm_data 函数，生成均值为 10，标准差为 1 的正态分布数据集，并绘制直方图和密度图</span></span>
+<span id="cb2-19"><a href="#cb2-19"></a><span class="fu">gen_norm_data</span>(<span class="at">n =</span> <span class="dv">1000</span>, <span class="at">mean =</span> <span class="dv">10</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="Lecture7_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section>
+<section id="小练习" class="slide level2">
+<h2>小练习</h2>
+<p>改变参数，创建不同的数据观察其分布形态</p>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
 <section id="正态分布与概率" class="title-slide slide level1 center">
 <h1>正态分布与概率</h1>
 
 </section>
 <section class="slide level2">
 
-<div class="cell">
 
-</div>
-
-<img data-src="Lecture7_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"><span class="math display">\[X \sim N(\mu,\sigma^2)\]</span>
+<img data-src="Lecture7_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"><span class="math display">\[X \sim N(\mu,\sigma^2)\]</span>
 <center>
 正态分布曲线下，标准差与概率(面积)有一定的数量关系
 </center>
@@ -374,13 +506,13 @@
 
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="Lecture7_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
+<p><img data-src="Lecture7_files/figure-revealjs/unnamed-chunk-5-1.png" width="960"></p>
 </div>
 </div>
 <p><span class="math display">\[X \sim N(10,2^2)\]</span></p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="Lecture7_files/figure-revealjs/unnamed-chunk-4-1.png" width="960"></p>
+<p><img data-src="Lecture7_files/figure-revealjs/unnamed-chunk-6-1.png" width="960"></p>
 </div>
 </div>
 </section>
@@ -388,28 +520,62 @@
 <h2></h2>
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="Lecture7_files/figure-revealjs/unnamed-chunk-5-1.png" width="960"></p>
+<p><img data-src="Lecture7_files/figure-revealjs/unnamed-chunk-7-1.png" width="960"></p>
 </div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="Lecture7_files/figure-revealjs/unnamed-chunk-6-1.png" width="960"></p>
+<p><img data-src="Lecture7_files/figure-revealjs/unnamed-chunk-8-1.png" width="960"></p>
 </div>
 </div>
 </section>
 <section id="section-1" class="slide level2">
 <h2></h2>
 
-<img data-src="Lecture7_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
+<img data-src="Lecture7_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"></section>
 <section id="section-2" class="slide level2">
 <h2></h2>
 
-<img data-src="Lecture7_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section>
+<img data-src="Lecture7_files/figure-revealjs/unnamed-chunk-10-1.png" width="960" class="r-stretch"></section>
 <section id="section-3" class="slide level2">
 <h2></h2>
 <p><br></p>
 <p><br></p>
 <p><strong>创建任意正态分布，以σ 为单位，选取与μ相差固定单位的点，观察该点与μ间的概率在不同正态分布下是否一致?</strong></p>
+</section>
+<section id="小练习-1" class="slide level2">
+<h2>小练习</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">#定义一个名为 tran_data_standard_norm的函数，用于对正态分布数据进行标准化处理</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="co">#输入参数：n 为生成数据的数量，mean 为正态分布的均值，sd为正态分布的标准差</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a>tran_data_standard_norm <span class="ot">&lt;-</span> <span class="cf">function</span>(n,mean,sd){ </span>
+<span id="cb3-4"><a href="#cb3-4"></a>  <span class="co">#生成 n 个正态分布数据，均值为 mean，标准差为 sd</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a>  x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n=</span>n,<span class="at">mean=</span>mean,<span class="at">sd =</span> sd)</span>
+<span id="cb3-6"><a href="#cb3-6"></a>  <span class="co"># 将数据标准化，使其符合标准正态分布</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a>  x <span class="ot">&lt;-</span> (x<span class="sc">-</span><span class="fu">mean</span>(x))<span class="sc">/</span><span class="fu">sd</span>(x)</span>
+<span id="cb3-8"><a href="#cb3-8"></a>  <span class="co"># 将数据转化为数据框形式</span></span>
+<span id="cb3-9"><a href="#cb3-9"></a>  x <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(x)</span>
+<span id="cb3-10"><a href="#cb3-10"></a>  <span class="co"># 使用 ggplot 绘制直方图和密度图</span></span>
+<span id="cb3-11"><a href="#cb3-11"></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> x,</span>
+<span id="cb3-12"><a href="#cb3-12"></a>         <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x=</span>x)) <span class="sc">+</span></span>
+<span id="cb3-13"><a href="#cb3-13"></a>         <span class="fu">geom_histogram</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">y =</span> ..density..),</span>
+<span id="cb3-14"><a href="#cb3-14"></a>                         <span class="at">alpha =</span> <span class="fl">0.5</span>,</span>
+<span id="cb3-15"><a href="#cb3-15"></a>                         <span class="at">fill =</span> <span class="st">'#56B4E9'</span> ) <span class="sc">+</span></span>
+<span id="cb3-16"><a href="#cb3-16"></a>         <span class="fu">geom_density</span>() <span class="sc">+</span></span>
+<span id="cb3-17"><a href="#cb3-17"></a>         <span class="fu">theme_minimal</span>()</span>
+<span id="cb3-18"><a href="#cb3-18"></a>}</span>
+<span id="cb3-19"><a href="#cb3-19"></a><span class="co"># 调用 tran_data_standard_norm 函数，生成均值为 5，标准差为 10 的标准正态分布数据集，并绘制直方图和密度图</span></span>
+<span id="cb3-20"><a href="#cb3-20"></a><span class="fu">tran_data_standard_norm</span>(<span class="at">n=</span><span class="dv">1000</span>,<span class="at">mean=</span><span class="dv">5</span>,<span class="at">sd=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img data-src="Lecture7_files/figure-revealjs/unnamed-chunk-11-1.png" width="960"></p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="Lecture7_files/figure-revealjs/unnamed-chunk-12-1.png" width="960"></p>
+</div>
+</div>
+<p>在x轴一致的情况下, 左图为N(10,4), 右图为N(5,9)，为了便于展示，在下图中对坐标轴进行缩放。</p>
 </section>
 <section id="section-4" class="slide level2">
 <h2></h2>
@@ -426,18 +592,18 @@
 <section id="标准正态分布standardized-distribution" class="slide level2">
 <h2>标准正态分布(Standardized Distribution )</h2>
 
-<img data-src="Lecture7_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"><ul>
+<img data-src="Lecture7_files/figure-revealjs/unnamed-chunk-13-1.png" width="960" class="r-stretch"><ul>
 <li>标准正态分布是μ = 0, σ = 1的正态分布。通常写作N (0, 1)。</li>
 </ul>
 </section>
 <section id="section-7" class="slide level2">
 <h2></h2>
 
-<img data-src="Lecture7_files/figure-revealjs/unnamed-chunk-10-1.png" width="960" class="r-stretch"></section>
+<img data-src="Lecture7_files/figure-revealjs/unnamed-chunk-14-1.png" width="960" class="r-stretch"></section>
 <section id="section-8" class="slide level2">
 <h2></h2>
 
-<img data-src="Lecture7_files/figure-revealjs/unnamed-chunk-11-1.png" width="960" class="r-stretch"></section>
+<img data-src="Lecture7_files/figure-revealjs/unnamed-chunk-15-1.png" width="960" class="r-stretch"></section>
 <section id="标准正态分布standardized-distribution-1" class="slide level2">
 <h2>标准正态分布(Standardized Distribution )</h2>
 <p><br></p>
@@ -504,17 +670,17 @@
 <h2>概率密度(y)&amp;概率(p) density &amp; probability</h2>
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="Lecture7_files/figure-revealjs/unnamed-chunk-12-1.png" width="960"></p>
+<p><img data-src="Lecture7_files/figure-revealjs/unnamed-chunk-16-1.png" width="960"></p>
 </div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="Lecture7_files/figure-revealjs/unnamed-chunk-13-1.png" width="960"></p>
+<p><img data-src="Lecture7_files/figure-revealjs/unnamed-chunk-17-1.png" width="960"></p>
 </div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="Lecture7_files/figure-revealjs/unnamed-chunk-14-1.png" width="960"></p>
+<p><img data-src="Lecture7_files/figure-revealjs/unnamed-chunk-18-1.png" width="960"></p>
 </div>
 </div>
 </section>
@@ -544,8 +710,8 @@
 <h2></h2>
 
 <img data-src=".\images\p10.jpg" class="r-stretch"></section>
-<section id="section-13" class="slide level2">
-<h2></h2>
+<section id="小练习-2" class="slide level2">
+<h2>小练习</h2>
 <p>判断从某一标准正态分布中抽样时，某一数据落在1~1.96𝜎间的概率大小，并选择答案<br></p>
 <center>
 <p>A. 0.112<br></p>
@@ -561,7 +727,7 @@
 <section id="我们为什么需要z分数" class="slide level2">
 <h2>我们为什么需要Z分数？</h2>
 </section>
-<section id="section-14" class="slide level2">
+<section id="section-13" class="slide level2">
 <h2></h2>
 <ul>
 <li>某同学的数学成绩为85分，班级数学平均成绩为80分，标准差为3分；语文成绩为80分，班级语文平均成绩为78分，标准差为1分，试比较该同学的数学成绩和语文成绩。</li>
@@ -594,7 +760,7 @@
 </tbody>
 </table>
 </section>
-<section id="section-15" class="slide level2">
+<section id="section-14" class="slide level2">
 <h2></h2>
 
 <img data-src=".\images\p9.jpg" class="r-stretch"></section>
@@ -723,7 +889,7 @@
 <li><p>第一次不合格率为0.05%；第二次不合格率为0.03%；第三次不合格率为0.04%（假设口罩质量可以用标准正态分数表示），总体合格吗？</p></li>
 </ul>
 </section>
-<section id="section-16" class="slide level2">
+<section id="section-15" class="slide level2">
 <h2></h2>
 <p><img data-src=".\images\p2.jpg"> <img data-src=".\images\p3.jpg"></p>
 </section>
