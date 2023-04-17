@@ -387,8 +387,7 @@ ggplot(data,
                  position = "identity") +
   labs(x = "成功次数", 
        y = "密度", 
-       fill = "num_sims")  +
-  geom_vline(xintercept = c(500, 510), color = c("purple", "red"), linetype = c(1, 1))+
+       fill = "num_sims")  
   scale_x_continuous(breaks = c(460, 500, 510, 540)) +
   theme_minimal()
 
