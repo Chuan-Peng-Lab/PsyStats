@@ -378,15 +378,15 @@
 <h3 id="参数">参数：</h3>
 <ul>
 <li><p>参数是指总体的某种未知特征值，如总体均值、总体方差等；</p></li>
-<li><h2 id="参数通常用希腊字母表示例如总体均值用-mu-表示总体方差用-sigma2-表示">参数通常用希腊字母表示，例如总体均值用 <span class="math inline">\(\mu\)</span> 表示，总体方差用 <span class="math inline">\(\sigma^2\)</span> 表示。</h2></li>
+<li><p>参数通常用希腊字母表示，例如总体均值用 <span class="math inline">\(\mu\)</span> 表示，总体方差用 <span class="math inline">\(\sigma^2\)</span> 表示。</p></li>
 </ul>
 </section>
 <section id="统计量与参数的例子" class="slide level2">
 <h2>统计量与参数的例子</h2>
 <table>
 <colgroup>
-<col style="width: 63%">
-<col style="width: 36%">
+<col style="width: 59%">
+<col style="width: 40%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -413,16 +413,11 @@
 <section id="统计量与参数的符号表示" class="slide level2">
 <h2>统计量与参数的符号表示</h2>
 <table>
-<colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 50%">
-</colgroup>
 <thead>
 <tr class="header">
-<th>统计指标</th>
-<th>统计量</th>
-<th>参数</th>
+<th><strong>统计指标</strong></th>
+<th><strong>统计量</strong></th>
+<th><strong>参数</strong></th>
 </tr>
 </thead>
 <tbody>
@@ -439,7 +434,17 @@
 <tr class="odd">
 <td>方差</td>
 <td><span class="math inline">\(s^2\)</span></td>
-<td>$ ^2 <span class="math inline">\(| |相关系数|\)</span>r<span class="math inline">\(|\)</span><span class="math inline">\(| |回归系数|\)</span>b<span class="math inline">\(|\)</span>$</td>
+<td><span class="math display">\[ \sigma^2 \]</span></td>
+</tr>
+<tr class="even">
+<td>相关系数</td>
+<td><span class="math inline">\(r\)</span></td>
+<td><span class="math inline">\(\rho\)</span></td>
+</tr>
+<tr class="odd">
+<td>回归系数</td>
+<td><span class="math inline">\(b\)</span></td>
+<td><span class="math inline">\(\beta\)</span></td>
 </tr>
 </tbody>
 </table>
@@ -490,7 +495,7 @@
 <img data-src="images/image-1418886282.png" class="r-stretch quarto-figure-center"></section>
 <section class="slide level2">
 
-<p>从X~N(100,15)抽取样100个样本，重复这个过程10000次形成的抽样分布</p>
+<p>从X~N(100,15^2)抽取样100个样本，重复这个过程10000次形成的抽样分布</p>
 
 <img data-src="images/image-1794546565.png" class="r-stretch quarto-figure-center"></section>
 <section class="slide level2">
@@ -563,8 +568,451 @@
 <h2>参数估计 (Parameter estimation)</h2>
 <ul>
 <li><p>待估参数：在参数估计中要估计的能够总体参数，可以是平均数，方差或者其他参数，可统一用𝜃来表示。<br></p></li>
-<li><p>估计量：用来估计参数的样本统计量，如平均数，中位数，标准差，可统一用𝜃&nbsp;̂来表示。<br></p></li>
+<li><p>估计量：用来估计参数的样本统计量，如平均数，中位数，标准差，可统一用<span class="math inline">\(\hat{\theta}\)</span>来表示。<br></p></li>
 <li><p>参数估计：设总体参数𝜃，根据总体的一个随机样本（𝑋_1,𝑋_2, 𝑋_3 ,…, 𝑋_n ）计算出统计量<span class="math inline">\(\hat{\theta}\)</span>s ，当作估计量，利用其去估计总体参数。参数估计有两种方式，即点估计与区间估计。</p></li>
+</ul>
+</section>
+<section id="模型" class="slide level2">
+<h2>模型</h2>
+<p><img data-src="images/image1.png" data-fig-align="center"> <img data-src="images/image2.png" data-fig-align="center"></p>
+</section>
+<section id="section-1" class="slide level2">
+<h2></h2>
+<p>X ~ N (μ, <span class="math inline">\(𝜎^2\)</span>)</p>
+<p><br></p>
+<p><span class="math inline">\(L(\theta \mid X) = \prod_{k=1}^n P(X_k \mid \theta)\)</span></p>
+<p><br></p>
+<p><span class="math inline">\(L(\mu, \sigma^2 \mid X) = \prod_{k=1}^n P(X_k \mid \mu, \sigma^2)\)</span></p>
+</section>
+<section id="section-2" class="slide level2">
+<h2></h2>
+<p>数值上的等式L (θ ∣x ) =p (X = x | θ ) :</p>
+<ul>
+<li><p>Likelihood(似然）</p></li>
+<li><p>给定数据 X， θ 成立的概率。</p></li>
+</ul>
+</section>
+<section id="section-3" class="slide level2">
+<h2></h2>
+<table>
+<colgroup>
+<col style="width: 23%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>p</th>
+<th>0.1</th>
+<th>0.2</th>
+<th>0.3</th>
+<th>0.4</th>
+<th>0.5</th>
+<th>0.6</th>
+<th>0.7</th>
+<th>0.8</th>
+<th>0.9</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><em>P</em> (<em>k</em> = 3 | <em>n</em>, <em>p</em>)<br>(n = 10)</td>
+<td>0.057</td>
+<td>0.201</td>
+<td>0.267</td>
+<td>0.214</td>
+<td>0.117</td>
+<td>0.042</td>
+<td>0.009</td>
+<td>0.001</td>
+<td>0.000</td>
+</tr>
+</tbody>
+</table>
+
+<img data-src="images/image3.png" class="r-stretch quarto-figure-center"></section>
+<section id="section-4" class="slide level2">
+<h2></h2>
+
+<img data-src="images/image4.png" class="r-stretch quarto-figure-center"></section>
+<section id="section-5" class="slide level2">
+<h2></h2>
+<p><span class="math inline">\(Log L (μ | X, σ^2)\)</span></p>
+
+<img data-src="images/image5.png" class="r-stretch quarto-figure-center"></section>
+<section id="section-6" class="slide level2">
+<h2></h2>
+<p><span class="math inline">\(Log L(σ|X, μ)\)</span></p>
+
+<img data-src="images/image6.png" class="r-stretch quarto-figure-center"></section>
+<section id="section-7" class="slide level2">
+<h2></h2>
+<p>𝑥̅是 𝜇 的最佳估计值。</p>
+<p><span class="math inline">\(s_{n-1}\)</span> 是𝜎的最佳估计值。</p>
+</section>
+<section id="section-8" class="slide level2">
+<h2></h2>
+
+<img data-src="images/image7.png" class="r-stretch quarto-figure-center"></section>
+<section id="section-9" class="slide level2">
+<h2></h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/image8.png"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/image9.png"></p>
+</figure>
+</div>
+</section>
+<section id="section-10" class="slide level2">
+<h2></h2>
+
+<img data-src="images/image10.png" class="r-stretch quarto-figure-center"></section>
+<section id="思考" class="slide level2">
+<h2>思考</h2>
+<p><br><br></p>
+<p><span style="font-size:48px">当总体分布情况未知，我们应该怎么处理？</span></p>
+</section>
+<section id="section-11" class="slide level2">
+<h2></h2>
+
+<img data-src="images/image11.png" class="r-stretch quarto-figure-center"></section></section>
+<section id="点估计和区间估计point-estimation-interval-estimation" class="title-slide slide level1 center">
+<h1>点估计和区间估计(Point estimation &amp; interval estimation)</h1>
+
+</section>
+
+<section>
+<section id="点估计point-estimation" class="title-slide slide level1 center">
+<h1>点估计（Point estimation）</h1>
+
+</section>
+<section id="点估计point-estimation-1" class="slide level2">
+<h2>点估计（Point estimation）</h2>
+<ul>
+<li>利用样本统计量作为相应总体参数的估计值，样本统计量 <span class="math inline">\(\hat{\theta}\)</span> 是总体参数 𝜃 的点估计。</li>
+<li>用一个特定样本对总体未知参数所做的估计，仅为所有可能估计值中的一个点。</li>
+</ul>
+</section></section>
+<section>
+<section id="section-12" class="title-slide slide level1 center">
+<h1></h1>
+<p><span style="font-size:48px">如何选取总体参数𝜃的估计量<span class="math inline">\(\hat{\theta}\)</span>?</span></p>
+</section>
+<section id="极大似然法maximum-likelihood-estimate" class="slide level2">
+<h2>极大似然法（Maximum Likelihood Estimate）</h2>
+<ul>
+<li>总体二项分布， X ~ B (𝑛, 𝑝)</li>
+<li>求总体 𝑃 的最佳估计量。</li>
+</ul>
+<table>
+<colgroup>
+<col style="width: 23%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>p</th>
+<th>0.1</th>
+<th>0.2</th>
+<th>0.3</th>
+<th>0.4</th>
+<th>0.5</th>
+<th>0.6</th>
+<th>0.7</th>
+<th>0.8</th>
+<th>0.9</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><em>P</em> (<em>k</em> = 3 | <em>n</em>, <em>p</em>)<br>(n = 10)</td>
+<td>0.057</td>
+<td>0.201</td>
+<td>0.267</td>
+<td>0.214</td>
+<td>0.117</td>
+<td>0.042</td>
+<td>0.009</td>
+<td>0.001</td>
+<td>0.000</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="section-13" class="slide level2">
+<h2></h2>
+<ul>
+<li>总体二项分布， X ~ B (𝑛, 𝑝)</li>
+</ul>
+
+<img data-src="images/image12.png" class="r-stretch quarto-figure-center"></section>
+<section id="section-14" class="slide level2">
+<h2></h2>
+<ul>
+<li>总体正态分布， X ~ N (μ , <span class="math inline">\(σ^2\)</span>)</li>
+<li>求总体 μ 的最佳估计量</li>
+</ul>
+
+<img data-src="images/image13.png" class="r-stretch quarto-figure-center"></section>
+<section id="section-15" class="slide level2">
+<h2></h2>
+<ul>
+<li>总体正态分布， X ~ N (μ , <span class="math inline">\(σ^2\)</span>)</li>
+<li>求总体 σ 的最佳估计量</li>
+</ul>
+
+<img data-src="images/image14.png" class="r-stretch quarto-figure-center"></section>
+<section id="section-16" class="slide level2">
+<h2></h2>
+<p><span style="font-size:48px">如何比较各估计量 <span class="math inline">\(\hat{\theta}\)</span> ，选取最佳估计量？</span></p>
+</section>
+<section id="点估计的特性-properties" class="slide level2">
+<h2>点估计的特性 (Properties)</h2>
+<ul>
+<li><p>无偏性:</p>
+<ul>
+<li><span class="math inline">\(\hat{\theta}\)</span> = <span class="math inline">\(\hat{\theta}\)</span> (<span class="math inline">\(𝑋_1,𝑋_2,..,𝑋_𝑛\)</span>)是随机变量，每次抽样估计值与真值间误差为 <span class="math inline">\(\hat{\theta}\)</span> - <span class="math inline">\(\theta\)</span>，如果作为估计量的统计量，其抽样分布的平均数实际上等于待估参数时，那么这个估计量就是待估参数的无偏估计量，即𝐸(<span class="math inline">\(\hat{\theta}\)</span>̂)=<span class="math inline">\({\theta}\)</span> ,也就是𝐸(<span class="math inline">\(\hat{\theta}\)</span> - 𝜃) =0，则称<span class="math inline">\(\hat{\theta}\)</span> 为 𝜃 的无偏估计量。</li>
+</ul></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/image15.png"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/image16.png"></p>
+</figure>
+</div>
+<ul>
+<li>抽样估计值间离散程度为 <span class="math inline">\({\theta}^2_{\hat{\sigma}} = \frac{1}{n} \sum(\hat{\theta}i - \mu_{\theta})^2\)</span></li>
+</ul>
+</section>
+<section id="点估计的特性-properties-1" class="slide level2">
+<h2>点估计的特性 (Properties)</h2>
+<ul>
+<li><p>有效性 :</p>
+<ul>
+<li>如果某一参数的一个无偏估计量的方差与该参数的所有其他无偏估计量相比为最小，那么该估计量就可称为最有效估计量或最佳无偏估计量。如果<span class="math inline">\({\sigma}_{\hat{\theta}_1}\)</span>&lt;<span class="math inline">\({\sigma}_{\hat{\theta}_2}\)</span>，则称<span class="math inline">\({\sigma}_{\hat{\theta}_1}\)</span>比<span class="math inline">\({\sigma}_{\hat{\theta}_2}\)</span>为更有效的估计量。</li>
+</ul></li>
+</ul>
+
+<img data-src="images/image17.png" class="r-stretch quarto-figure-center"></section>
+<section id="点估计的特性-properties-2" class="slide level2">
+<h2>点估计的特性 (Properties)</h2>
+<ul>
+<li><p>一致性：</p>
+<ul>
+<li><p>当样本容量逐渐增大时，这个估计量就越来越接近总体参数。即当设</p>
+<p><span class="math inline">\(\hat{\theta}\)</span>为待估参数 𝜃 的无偏估计量，若𝑛→ ∞，<span class="math inline">\(\hat{\theta}\)</span>收敛于 𝜃 即<span class="math inline">\(\lim_{n \to \infty} \hat{\theta}\)</span> =𝜃,可称<span class="math inline">\(\hat{\theta}\)</span>为𝜃的一致估计量。 𝑛越大，<span class="math inline">\(𝜎_\hat{\theta}\)</span> 越小</p></li>
+</ul></li>
+</ul>
+
+<img data-src="images/image18.png" class="r-stretch quarto-figure-center"></section>
+<section id="section-17" class="slide level2">
+<h2></h2>
+<ul>
+<li><p>充分性：</p>
+<ul>
+<li>如果一个估计量充分地利用了样本提供的所有与待估参数有关的信息，那么该估计量就被称为充分估计量。 例如，样本平均数就是总体平均数的充分估计量，因为样本所有的观察值（<span class="math inline">\(𝑋_1,𝑋_2, 𝑋_3 ,…, 𝑋_n\)</span>）都要参加样本平均数的计算。相比之下，样本中位数就不是一个充分的估计量，因为它的计算过程中没有利用到所有的观察值。</li>
+</ul></li>
+</ul>
+</section>
+<section id="局限性-limitations-of-point-estimation" class="slide level2">
+<h2>局限性 (Limitations of point estimation)</h2>
+<ul>
+<li>1.用样本的估计量的某个取值直接作为总体参数的估计值。</li>
+<li>2.无法给出估计值接近总体参数程度的信息。</li>
+<li>重复抽样情况下，点估计的均值可能等于总体真值，但抽出的一个随机样本所得到的的估计值很可能不同于总体真值。</li>
+<li>一个点估计量的可靠性由抽样标准误衡量，具体的单一点估计值无法提供可靠性。</li>
+</ul>
+</section></section>
+<section>
+<section id="区间估计interval-estimation" class="title-slide slide level1 center">
+<h1>区间估计（Interval estimation）</h1>
+
+</section>
+<section id="区间估计" class="slide level2">
+<h2>区间估计</h2>
+<ul>
+<li>区间估计是从点估计值和抽样标准误差出发，以点估计值<span class="math inline">\(\hat{\theta}\)</span>为基础,按给定的概率值建立可能包含待估计参数的区间，并提供总体参数值” θ “落入该区间内的概率。</li>
+</ul>
+</section>
+<section id="section-18" class="slide level2">
+<h2></h2>
+<ul>
+<li><p>置信度 / 置信水平(confidence level）</p>
+<ul>
+<li><p>构造置信区间时，给定的概率值 𝛼 代表估计时犯错误的概率（即总体参数不在置信区间的概率), 是一个小概率，一般取”0.05”或” 0.01 ” 。</p></li>
+<li><p>1− 𝛼 ，被称为置信度或置信水平(confidence level），指总体参数值 θ 落在样本统计值所构造的置信区间内的概率。置信度越大，需要的置信区间就越大。</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="section-19" class="slide level2">
+<h2></h2>
+<ul>
+<li><p>置信区间 (confidence interval ) :</p>
+<ul>
+<li>以点估计值 <span class="math inline">\(\hat{\theta}\)</span> 为基础建立起来的可能包含待估计参数的区间称为置信区间（confidence interval），而置信区间{<span class="math inline">\(\hat{\theta}_1\)</span>,<span class="math inline">\(\hat{\theta}_2\)</span>}是指在某一置信水平下，样本统计值与总体参数值间误差范围。置信区间越大，置信水平越高。 若进行100次抽样，每次样本容量为 n，利用1− 𝛼 构造100个置信区间，则有接近100(1- 𝛼)% 个估计的置信区间包含总体参数θ ，（即以100(1- 𝛼)% 的概率包含θ ）。</li>
+</ul></li>
+</ul>
+</section>
+<section id="section-20" class="slide level2">
+<h2></h2>
+<ul>
+<li>划定置信区间的两个数值分别称为置信下限<span class="math inline">\(\hat{\theta}_1\)</span>(lower confidence limit , lcl）和置信上限<span class="math inline">\(\hat{\theta}_2\)</span> (upper confidence limit , ucl)。</li>
+</ul>
+
+<img data-src="images/image19.png" class="r-stretch quarto-figure-center"></section>
+<section id="区间估计interval-estimation-1" class="slide level2">
+<h2>区间估计(Interval estimation)</h2>
+
+<img data-src="images/image20.png" class="r-stretch quarto-figure-center"></section>
+<section id="区间估计interval-estimation-2" class="slide level2">
+<h2>区间估计(Interval estimation)</h2>
+
+<img data-src="images/image21.png" class="r-stretch quarto-figure-center"></section>
+<section id="区间估计interval-estimation-3" class="slide level2">
+<h2>区间估计(Interval estimation)</h2>
+
+<img data-src="images/image22.png" class="r-stretch quarto-figure-center"><center>
+Interpreting Confidence intervals (rpsychologist.com)
+</center>
+</section>
+<section id="小练习" class="slide level2">
+<h2>小练习：</h2>
+<p><br><br></p>
+<p><span style="font-size:48px">随意改变置信度 (confidence level) 和样本容量n</span></p>
+</section>
+<section id="section-21" class="slide level2">
+<h2></h2>
+<p><span style="font-size:48px">总体正态且总体方差已知时的区间估计</span></p>
+</section>
+<section id="区间估计interval-estimation-4" class="slide level2">
+<h2>区间估计(Interval estimation)</h2>
+<ul>
+<li>设一正态分布总体𝑋 ~ 𝑁 (𝜇,𝜎^2) 取 1-𝛼 = 0.87</li>
+</ul>
+
+<img data-src="images/image23.png" class="r-stretch quarto-figure-center"></section>
+<section id="区间估计interval-estimation-5" class="slide level2">
+<h2>区间估计(Interval estimation)</h2>
+
+<img data-src="images/image24.png" class="r-stretch quarto-figure-center"></section>
+<section id="section-22" class="slide level2">
+<h2></h2>
+
+<img data-src="images/image25.png" class="r-stretch quarto-figure-center"></section>
+<section id="区间估计interval-estimation-6" class="slide level2">
+<h2>区间估计(Interval estimation)</h2>
+<ul>
+<li><p>总体正态且总体方差已知时的区间估计</p></li>
+<li><p>样本统计量的标准误𝑆𝐸=𝜎/√𝑛</p>
+<ul>
+<li><p><span class="math inline">\(Z = \frac{\bar{X} - \mu}{\frac{\sigma}{\sqrt{n}}}\)</span></p></li>
+<li><p><span class="math inline">\(P\left(\bar{X} - Z_{\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}} &lt; \mu &lt; \bar{X} + Z_{\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}\right) = 1 - \alpha\)</span></p></li>
+</ul></li>
+</ul>
+</section></section>
+<section>
+<section id="section-23" class="title-slide slide level1 center">
+<h1></h1>
+<p><span style="font-size:48px">总体正态但总体方差未知时的区间估计</span></p>
+</section>
+<section id="section-24" class="slide level2">
+<h2></h2>
+
+<img data-src="images/image26.png" class="r-stretch quarto-figure-center"></section>
+<section id="区间估计interval-estimation-7" class="slide level2">
+<h2>区间估计(Interval estimation)</h2>
+<ul>
+<li><p>样本量足够大</p></li>
+<li><p>用样本标准差<span class="math inline">\(𝑆_{n-1}\)</span>作为总体参数𝜎的估计值</p></li>
+<li><p>标准误𝑆𝐸=<span class="math inline">\(\frac{S_{n-1}}{\sqrt{n}}\)</span></p>
+<ul>
+<li><span class="math inline">\(P\left(\bar{X} - Z_{\frac{\alpha}{2}} \frac{S_{n-1}}{\sqrt{n}} &lt; \mu &lt; \bar{X} + Z_{\frac{\alpha}{2}} \frac{S_{n-1}}{\sqrt{n}}\right) = 1 - \alpha\)</span></li>
+</ul></li>
+</ul>
+</section></section>
+<section>
+<section id="section-25" class="title-slide slide level1 center">
+<h1></h1>
+<p><span style="font-size:48px">总体非正态的区间估计</span></p>
+</section>
+<section id="section-26" class="slide level2">
+<h2></h2>
+
+<img data-src="images/image27.png" class="r-stretch quarto-figure-center"></section>
+<section id="区间估计interval-estimation-8" class="slide level2">
+<h2>区间估计(Interval estimation)</h2>
+<ul>
+<li><p>总体非正态但总体方差已知时的区间估计</p></li>
+<li><p>样本量足够大</p></li>
+<li><p>样本统计量的标准误𝑆𝐸=𝜎/√𝑛</p>
+<ul>
+<li><span class="math inline">\(P\left(\bar{X} - Z_{\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}} &lt; \mu &lt; \bar{X} + Z_{\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}\right) = 1 - \alpha\)</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="区间估计interval-estimation-9" class="slide level2">
+<h2>区间估计(Interval estimation)</h2>
+<ul>
+<li><p>总体非正态且总体方差未知时的区间估计</p></li>
+<li><p>样本量足够大</p></li>
+<li><p>用样本标准差<span class="math inline">\(𝑆_{n-1}\)</span>作为总体参数𝜎的估计值</p></li>
+<li><p>标准误𝑆𝐸=<span class="math inline">\(\frac{S_{n-1}}{\sqrt{n}}\)</span></p>
+<ul>
+<li><span class="math inline">\(P\left(\bar{X} - Z_{\frac{\alpha}{2}} \frac{S_{n-1}}{\sqrt{n}} &lt; \mu &lt; \bar{X} + Z_{\frac{\alpha}{2}} \frac{S_{n-1}}{\sqrt{n}}\right) = 1 - \alpha\)</span></li>
+</ul></li>
+</ul>
+</section></section>
+<section>
+<section id="反思" class="title-slide slide level1 center">
+<h1>反思</h1>
+<p><br><br></p>
+<p><span style="font-size:36px">总体非正态的情况下，采用的是其他的统计量（非平均数）估计总体，其他模型存在相应的参数，这个参数是否还能被称为方差？如果不能，又该如何描述这个参数？</span></p>
+</section>
+<section id="本章小结summary" class="slide level2">
+<h2>本章小结(Summary)</h2>
+<ul>
+<li><p>抽样分布</p>
+<ul>
+<li><p>统计量与参数</p></li>
+<li><p>平均数的抽样分布</p></li>
+</ul></li>
+<li><p>点估计</p>
+<ul>
+<li><p>极大似然法</p></li>
+<li><p>点估计的特性</p></li>
+<li><p>点估计的局限</p></li>
+</ul></li>
+<li><p>区间估计</p>
+<ul>
+<li>置信区间</li>
+<li>置信度</li>
+<li>总体正态与方差已知情况下的区间估计</li>
+<li>总体正态但方差未知情况下的区间估计</li>
+<li>总体非正态情况下的区间估计</li>
+</ul></li>
 </ul>
 
 <img src="images/image-393370223.png" class="slide-logo r-stretch"><div class="footer footer-default">
