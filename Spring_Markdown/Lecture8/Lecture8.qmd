@@ -246,6 +246,43 @@ p1+p2+p3
 
 ------------------------------------------------------------------------
 
+```{r}
+# 设定参数
+mu <- 100 # 总体均值
+sigma <- 15 # 总体标准差
+reps <- 1000 # 重复次数
+
+# 不同样本大小的向量
+sample_sizes <- c(100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 2500)
+
+# 模拟抽样并存储结果
+set.seed(123) # 设定随机数种子，保证可重复性
+sample_means_list <- lapply(sample_sizes, function(n) {
+  sample_means <- replicate(reps, mean(rnorm(n, mean = mu, sd = sigma)))
+  sample_means_df <- data.frame(sample_means, sample_size = paste0("n = ", n))
+  return(sample_means_df)
+})
+sample_means_df <- do.call(rbind, sample_means_list)
+
+# 绘制直方图
+ggplot(sample_means_df, aes(x = sample_means, color = sample_size)) +
+  geom_density(position = "dodge") +
+  scale_fill_discrete(name = "Sample Size") +
+  xlab("Sample Mean") + ylab("Frequency") +
+  ggtitle("Sampling Distribution of Sample Means by Sample Size")+
+  theme_minimal()
+
+```
+
+
+
+
+
+
+
+
+------------------------------------------------------------------------
+
 ![](images/image-1474373716.png){fig-align="center"}
 
 ------------------------------------------------------------------------
@@ -316,9 +353,17 @@ p1+p2+p3
 
 -   参数估计：设总体参数𝜃，根据总体的一个随机样本（𝑋_1,𝑋_2, 𝑋_3 ,..., 𝑋_n ）计算出统计量$\hat{\theta}$s ，当作估计量，利用其去估计总体参数。参数估计有两种方式，即点估计与区间估计。
 
+------------------------------------------------------------------------
+
 ## 模型
 
-![](images/image1.png){fig-align="center"} ![](images/image2.png){fig-align="center"}
+![](images/image1.png){fig-align="center"}
+
+-----------------------------------------------------------------------
+
+![](images/image2.png){fig-align="center"}
+
+------------------------------------------------------------------------
 
 ## 
 
@@ -377,6 +422,8 @@ $s_{n-1}$ 是𝜎的最佳估计值。
 ## 
 
 ![](images/image8.png){fig-align="center"}
+
+------------------------------------------------------------------------
 
 ![](images/image9.png){fig-align="center"}
 
