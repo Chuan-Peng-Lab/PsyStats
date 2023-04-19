@@ -13,13 +13,13 @@ fontsize: 24pt
 
 <h1 style="text-align: center">
 
-08 - 参数估计 1
+08 - 抽样分布与参数估计(1)
 
 </h1>
 
 <h2 style="text-align: center">
 
-(Parameter estimation 1)
+(Sampling Distribution & Parameter Estimation 1)
 
 </h2>
 
@@ -41,7 +41,7 @@ Hu Chuan-Peng
 
 ------------------------------------------------------------------------
 
-## review
+## 回顾(review)
 
 </br>
 
@@ -50,6 +50,20 @@ Hu Chuan-Peng
 -   z分布</br>
 
 -   z分数的应用</br>
+
+------------------------------------------------------------------------
+
+## 回顾(review)
+
+</br>
+
+-   事件(events) </br>
+
+-   频率(frequency) </br>
+
+-   概率(probability) </br>
+
+-   模型(model)/概率分布(probability distribution) </br>
 
 ------------------------------------------------------------------------
 
@@ -71,7 +85,7 @@ Hu Chuan-Peng
 
 ------------------------------------------------------------------------
 
-## 统计量(Statistics)&参数(Parameters)
+## 统计量(Statistics) & 参数(Parameters)
 
 </br>
 
@@ -105,7 +119,7 @@ Hu Chuan-Peng
 |--------------|------------|----------------|
 | 平均数       | $\bar{x}$  | $\mu$          |
 | 标准差       | $s$        | $\sigma$       |
-| 方差         | $s^2$      | $$ \sigma^2 $$ |
+| 方差         | $s^2$      | $\sigma^2$     |
 | 相关系数     | $r$        | $\rho$         |
 | 回归系数     | $b$        | $\beta$        |
 
@@ -141,7 +155,7 @@ Hu Chuan-Peng
 
 ## 
 
-从X\~N(100,15)抽取样100个样本形成的样本分布
+从$X \sim N(100,15)$抽取样100个样本形成的样本分布
 
 ```{r}
 # 检查是否已安装 pacman
@@ -168,21 +182,20 @@ p1 <- ggplot(df) +
   labs(title = "总体", 
        x = "x", 
        y = "密度") +
-  scale_x_continuous(breaks = seq(60, 140, 20))+
-  theme_minimal()
+  scale_x_continuous(breaks = seq(50, 150, 20))+
+  theme_classic()
 # 生成100个满足正态分布的数据点
 x2 <- data.frame(x = rnorm(n = 100, mean = 100, sd = 15)) 
 
 p2 <- ggplot(x2, aes(x = x)) +
   geom_histogram() + 
-  labs(title = "样本（n=100）", 
+  labs(title = "n=100", 
        x = "x", 
        y = "计数") + 
-  scale_x_continuous(breaks = seq(60, 140, 20)) +
-  theme_minimal()
+  scale_x_continuous(breaks = seq(50, 150, 20)) +
+  theme_classic()
 
-
-
+# patch the figures
 p1+p2
 ```
 
@@ -190,7 +203,7 @@ p1+p2
 
 ------------------------------------------------------------------------
 
-从X\~N(100,15)抽取样10, 30, 50个样本形成的样本分布
+从$X \sim N(100,15)$抽取样10, 30, 50个样本形成的样本分布
 
 ```{r}
 # 生成100个满足正态分布的数据点
@@ -198,31 +211,34 @@ x1 <- data.frame(x = rnorm(n = 10, mean = 100, sd = 15))
 
 p1 <- ggplot(x1, aes(x = x)) +
   geom_histogram() + 
-  labs(title = "样本（n=100）", 
+  labs(title = "N = 10", 
        x = "x", 
        y = "计数") + 
-  scale_x_continuous(breaks = seq(60, 140, 20)) +
-  theme_minimal()
+  scale_x_continuous(breaks = seq(30, 170, 20),
+                     limits = c(50, 150)) +
+  theme_classic()
 # 生成100个满足正态分布的数据点
 x2 <- data.frame(x = rnorm(n = 30, mean = 100, sd = 15)) 
 
 p2 <- ggplot(x2, aes(x = x)) +
   geom_histogram() + 
-  labs(title = "样本（n=100）", 
+  labs(title = "N = 30", 
        x = "x", 
        y = "计数") + 
-  scale_x_continuous(breaks = seq(60, 140, 20)) +
-  theme_minimal()
+  scale_x_continuous(breaks = seq(30, 170, 20),
+                     limits = c(50, 150)) +
+  theme_classic()
 # 生成100个满足正态分布的数据点
 x3 <- data.frame(x = rnorm(n = 50, mean = 100, sd = 15)) 
 
 p3 <- ggplot(x3, aes(x = x)) +
   geom_histogram() + 
-  labs(title = "样本（n=100）", 
+  labs(title = "N = 100", 
        x = "x", 
        y = "计数") + 
-  scale_x_continuous(breaks = seq(60, 140, 20)) +
-  theme_minimal()
+  scale_x_continuous(breaks = seq(30, 170, 20),
+                     limits = c(50, 150)) +
+  theme_classic()
 
 
 p1+p2+p3
@@ -240,7 +256,7 @@ p1+p2+p3
 
 ------------------------------------------------------------------------
 
-从X\~N(100,15\^2)抽取样100个样本，重复这个过程10000次形成的抽样分布
+从$X \sim N(100, 15^2)$抽取样100个样本，重复这个过程10000次形成的抽样分布
 
 ![](images/image-1794546565.png){fig-align="center"}
 
@@ -273,13 +289,6 @@ ggplot(sample_means_df, aes(x = sample_means, color = sample_size)) +
   theme_minimal()
 
 ```
-
-
-
-
-
-
-
 
 ------------------------------------------------------------------------
 
@@ -351,7 +360,7 @@ ggplot(sample_means_df, aes(x = sample_means, color = sample_size)) +
 
 -   估计量：用来估计参数的样本统计量，如平均数，中位数，标准差，可统一用$\hat{\theta}$来表示。</br>
 
--   参数估计：设总体参数𝜃，根据总体的一个随机样本（𝑋_1,𝑋_2, 𝑋_3 ,..., 𝑋_n ）计算出统计量$\hat{\theta}$s ，当作估计量，利用其去估计总体参数。参数估计有两种方式，即点估计与区间估计。
+-   参数估计：设总体参数$\theta$，根据总体的一个随机样本（$𝑋_1$,$𝑋_2$, $𝑋_3$,..., $𝑋_n$）计算出统计量$\hat{\theta}$s ，当作估计量，利用其去估计总体参数。参数估计有两种方式，即点估计与区间估计。
 
 ------------------------------------------------------------------------
 
@@ -359,7 +368,7 @@ ggplot(sample_means_df, aes(x = sample_means, color = sample_size)) +
 
 ![](images/image1.png){fig-align="center"}
 
------------------------------------------------------------------------
+------------------------------------------------------------------------
 
 ![](images/image2.png){fig-align="center"}
 
@@ -367,7 +376,7 @@ ggplot(sample_means_df, aes(x = sample_means, color = sample_size)) +
 
 ## 
 
-X \~ N (μ, $𝜎^2$)
+$X \sim N (\mu, \sigma^2)$
 
 <br>
 
@@ -379,7 +388,7 @@ $L(\mu, \sigma^2 \mid X) = \prod_{k=1}^n P(X_k \mid \mu, \sigma^2)$
 
 ## 
 
-数值上的等式L (θ ∣x ) =p (X = x \| θ ) :
+数值上的等式$L(\theta∣x ) =p (X=x | \theta) $:
 
 -   Likelihood(似然）
 
@@ -388,7 +397,7 @@ $L(\mu, \sigma^2 \mid X) = \prod_{k=1}^n P(X_k \mid \mu, \sigma^2)$
 ## 
 
 | p                                       | 0.1   | 0.2   | 0.3   | 0.4   | 0.5   | 0.6   | 0.7   | 0.8   | 0.9   |
-|----------------------|--------|--------|--------|--------|--------|--------|--------|--------|--------|
+|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|
 | *P* (*k* = 3 \| *n*, *p*)<br />(n = 10) | 0.057 | 0.201 | 0.267 | 0.214 | 0.117 | 0.042 | 0.009 | 0.001 | 0.000 |
 
 ![](images/image3.png){fig-align="center"}
@@ -435,7 +444,6 @@ $s_{n-1}$ 是𝜎的最佳估计值。
 
 <br><br>
 
-
 [当总体分布情况未知，我们应该怎么处理？]{style="font-size:48px"}
 
 ## 
@@ -453,40 +461,40 @@ $s_{n-1}$ 是𝜎的最佳估计值。
 
 # 
 
-<span style="font-size:48px">如何选取总体参数𝜃的估计量$\hat{\theta}$?</span>
+[如何选取总体参数$\theta$的估计量$\hat{\theta}$?]{style="font-size:48px"}
 
 ## 极大似然法（Maximum Likelihood Estimate）
 
--   总体二项分布， X \~ B (𝑛, 𝑝)
--   求总体 𝑃 的最佳估计量。
+-   总体二项分布， $X \sim B(n, p)$
+-   求总体参数$p$的最佳估计量。
 
 | p                                       | 0.1   | 0.2   | 0.3   | 0.4   | 0.5   | 0.6   | 0.7   | 0.8   | 0.9   |
-|----------------------|--------|--------|--------|--------|--------|--------|--------|--------|--------|
+|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|
 | *P* (*k* = 3 \| *n*, *p*)<br />(n = 10) | 0.057 | 0.201 | 0.267 | 0.214 | 0.117 | 0.042 | 0.009 | 0.001 | 0.000 |
 
 ## 
 
--   总体二项分布， X \~ B (𝑛, 𝑝)
+-   总体二项分布，$X \sim B(n, p)$
 
 ![](images/image12.png){fig-align="center"}
 
 ## 
 
--   总体正态分布， X \~ N (μ , $σ^2$)
--   求总体 μ 的最佳估计量
+-   总体正态分布，$X \sim N (\mu, \sigma^2)$
+-   求总体 $\mu$ 的最佳估计量
 
 ![](images/image13.png){fig-align="center"}
 
 ## 
 
--   总体正态分布， X \~ N (μ , $σ^2$)
--   求总体 σ 的最佳估计量
+-   总体正态分布， $X \sim N (\mu, \sigma^2)$
+-   求总体 $\sigma$ 的最佳估计量
 
 ![](images/image14.png){fig-align="center"}
 
 ## 
 
-<span style="font-size:48px">如何比较各估计量 $\hat{\theta}$ ，选取最佳估计量？</span>
+[如何比较各估计量 $\hat{\theta}$ ，选取最佳估计量？]{style="font-size:48px"}
 
 ## 点估计的特性 (Properties)
 
@@ -575,15 +583,15 @@ $s_{n-1}$ 是𝜎的最佳估计值。
 
 <br></br>
 
- <span style="font-size:48px">随意改变置信度 (confidence level) 和样本容量n</span>
+[随意改变置信度 (confidence level) 和样本容量n]{style="font-size:48px"}
 
 ## 
 
-<span style="font-size:48px">总体正态且总体方差已知时的区间估计</span>
+[总体正态且总体方差已知时的区间估计]{style="font-size:48px"}
 
 ## 区间估计(Interval estimation)
 
--   设一正态分布总体𝑋 \~ 𝑁 (𝜇,𝜎\^2) 取 1-𝛼 = 0.87
+-   设一正态分布总体$𝑋 \sim 𝑁(\mu, \sigma^{2})$ 取 $1- \alpha = 0.87$
 
 ![](images/image23.png){fig-align="center"}
 
@@ -599,7 +607,7 @@ $s_{n-1}$ 是𝜎的最佳估计值。
 
 -   总体正态且总体方差已知时的区间估计
 
--   样本统计量的标准误𝑆𝐸=𝜎/√𝑛
+-   样本统计量的标准误 $SE = \frac {\sigma}{\sqrt{n}}$
 
     -   $Z = \frac{\bar{X} - \mu}{\frac{\sigma}{\sqrt{n}}}$
 
@@ -607,7 +615,7 @@ $s_{n-1}$ 是𝜎的最佳估计值。
 
 # 
 
-<span style="font-size:48px">总体正态但总体方差未知时的区间估计</span>
+[总体正态但总体方差未知时的区间估计]{style="font-size:48px"}
 
 ## 
 
@@ -617,7 +625,7 @@ $s_{n-1}$ 是𝜎的最佳估计值。
 
 -   样本量足够大
 
--   用样本标准差$𝑆_{n-1}$作为总体参数𝜎的估计值
+-   用样本标准差$𝑆_{n-1}$作为总体参数$\sigma$的估计值
 
 -   标准误𝑆𝐸=$\frac{S_{n-1}}{\sqrt{n}}$
 
@@ -625,7 +633,7 @@ $s_{n-1}$ 是𝜎的最佳估计值。
 
 # 
 
-<span style="font-size:48px">总体非正态的区间估计</span>
+[总体非正态的区间估计]{style="font-size:48px"}
 
 ## 
 
@@ -637,7 +645,7 @@ $s_{n-1}$ 是𝜎的最佳估计值。
 
 -   样本量足够大
 
--   样本统计量的标准误𝑆𝐸=𝜎/√𝑛
+-   样本统计量的标准误$SE = \frac {\sigma} {\sqrt{𝑛}}$
 
     -   $P\left(\bar{X} - Z_{\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}} < \mu < \bar{X} + Z_{\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}\right) = 1 - \alpha$
 
@@ -657,7 +665,7 @@ $s_{n-1}$ 是𝜎的最佳估计值。
 
 <br></br>
 
-<span style="font-size:36px">总体非正态的情况下，采用的是其他的统计量（非平均数）估计总体，其他模型存在相应的参数，这个参数是否还能被称为方差？如果不能，又该如何描述这个参数？</span>
+[总体非正态的情况下，采用的是其他的统计量（非平均数）估计总体，其他模型存在相应的参数，这个参数是否还能被称为方差？如果不能，又该如何描述这个参数？]{style="font-size:36px"}
 
 ## 本章小结(Summary)
 

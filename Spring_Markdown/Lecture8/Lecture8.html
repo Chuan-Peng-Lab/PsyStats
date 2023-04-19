@@ -7,7 +7,7 @@
 <link href="Lecture8_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="Lecture8_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="Lecture8_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.2.269">
+  <meta name="generator" content="quarto-1.2.335">
 
   <title>lecture8</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -328,10 +328,10 @@
 
 <p><br><br></p>
 <h1 style="text-align: center">
-<p>08 - 参数估计 1</p>
+<p>08 - 抽样分布与参数估计(1)</p>
 </h1>
 <h2 style="text-align: center">
-<p>(Parameter estimation 1)</p>
+<p>(Sampling Distribution &amp; Parameter Estimation 1)</p>
 </h2>
 <p><br><br></p>
 <h3 style="text-align: center">
@@ -342,13 +342,23 @@
 </h3>
 <p><br><br></p>
 </section>
-<section id="review" class="slide level2">
-<h2>review</h2>
+<section id="回顾review" class="slide level2">
+<h2>回顾(review)</h2>
 <p><br></p>
 <ul>
 <li><p>正态分布<br></p></li>
 <li><p>z分布<br></p></li>
 <li><p>z分数的应用<br></p></li>
+</ul>
+</section>
+<section id="回顾review-1" class="slide level2">
+<h2>回顾(review)</h2>
+<p><br></p>
+<ul>
+<li><p>事件(events) <br></p></li>
+<li><p>频率(frequency) <br></p></li>
+<li><p>概率(probability) <br></p></li>
+<li><p>模型(model)/概率分布(probability distribution) <br></p></li>
 </ul>
 </section>
 <section id="抽样分布sampling-distribution" class="slide level2">
@@ -367,8 +377,8 @@
 
 
 <img data-src="images/image-581973007.png" class="r-stretch quarto-figure-center"></section>
-<section id="统计量statistics参数parameters" class="slide level2">
-<h2>统计量(Statistics)&amp;参数(Parameters)</h2>
+<section id="统计量statistics-参数parameters" class="slide level2">
+<h2>统计量(Statistics) &amp; 参数(Parameters)</h2>
 <p><br></p>
 <h3 id="统计量">统计量：</h3>
 <ul>
@@ -434,7 +444,7 @@
 <tr class="odd">
 <td>方差</td>
 <td><span class="math inline">\(s^2\)</span></td>
-<td><span class="math display">\[ \sigma^2 \]</span></td>
+<td><span class="math inline">\(\sigma^2\)</span></td>
 </tr>
 <tr class="even">
 <td>相关系数</td>
@@ -475,7 +485,7 @@
 </section>
 <section id="section" class="slide level2">
 <h2></h2>
-<p>从X~N(100,15)抽取样100个样本形成的样本分布</p>
+<p>从<span class="math inline">\(X \sim N(100,15)\)</span>抽取样100个样本形成的样本分布</p>
 <div class="cell">
 
 </div>
@@ -484,7 +494,7 @@
 </section>
 <section class="slide level2">
 
-<p>从X~N(100,15)抽取样10, 30, 50个样本形成的样本分布</p>
+<p>从<span class="math inline">\(X \sim N(100,15)\)</span>抽取样10, 30, 50个样本形成的样本分布</p>
 
 <img data-src="Lecture8_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"><p>当样本量很小时，分布形状和总体分布相差很大</p>
 </section>
@@ -495,7 +505,7 @@
 <img data-src="images/image-1418886282.png" class="r-stretch quarto-figure-center"></section>
 <section class="slide level2">
 
-<p>从X~N(100,15^2)抽取样100个样本，重复这个过程10000次形成的抽样分布</p>
+<p>从<span class="math inline">\(X \sim N(100, 15^2)\)</span>抽取样100个样本，重复这个过程10000次形成的抽样分布</p>
 
 <img data-src="images/image-1794546565.png" class="r-stretch quarto-figure-center"></section>
 <section class="slide level2">
@@ -573,7 +583,7 @@
 <ul>
 <li><p>待估参数：在参数估计中要估计的能够总体参数，可以是平均数，方差或者其他参数，可统一用𝜃来表示。<br></p></li>
 <li><p>估计量：用来估计参数的样本统计量，如平均数，中位数，标准差，可统一用<span class="math inline">\(\hat{\theta}\)</span>来表示。<br></p></li>
-<li><p>参数估计：设总体参数𝜃，根据总体的一个随机样本（𝑋_1,𝑋_2, 𝑋_3 ,…, 𝑋_n ）计算出统计量<span class="math inline">\(\hat{\theta}\)</span>s ，当作估计量，利用其去估计总体参数。参数估计有两种方式，即点估计与区间估计。</p></li>
+<li><p>参数估计：设总体参数<span class="math inline">\(\theta\)</span>，根据总体的一个随机样本（<span class="math inline">\(𝑋_1\)</span>,<span class="math inline">\(𝑋_2\)</span>, <span class="math inline">\(𝑋_3\)</span>,…, <span class="math inline">\(𝑋_n\)</span>）计算出统计量<span class="math inline">\(\hat{\theta}\)</span>s ，当作估计量，利用其去估计总体参数。参数估计有两种方式，即点估计与区间估计。</p></li>
 </ul>
 </section>
 <section id="模型" class="slide level2">
@@ -586,7 +596,7 @@
 <img data-src="images/image2.png" class="r-stretch quarto-figure-center"></section>
 <section id="section-1" class="slide level2">
 <h2></h2>
-<p>X ~ N (μ, <span class="math inline">\(𝜎^2\)</span>)</p>
+<p><span class="math inline">\(X \sim N (\mu, \sigma^2)\)</span></p>
 <p><br></p>
 <p><span class="math inline">\(L(\theta \mid X) = \prod_{k=1}^n P(X_k \mid \theta)\)</span></p>
 <p><br></p>
@@ -594,30 +604,31 @@
 </section>
 <section id="section-2" class="slide level2">
 <h2></h2>
-<p>数值上的等式L (θ ∣x ) =p (X = x | θ ) :</p>
+<p>数值上的等式<span class="math inline">\(L(\theta | x) = p(X = x | \theta)\)</span>:</p>
 <ul>
-<li><p>Likelihood(似然）</p></li>
-<li><p>给定数据 X， θ 成立的概率。</p></li>
+<li><p>Likelihood (似然）</p></li>
+<li><p>给定数据 <span class="math inline">\(X\)</span>， <span class="math inline">\(\theta\)</span>成立的概率。</p></li>
 </ul>
 </section>
 <section id="section-3" class="slide level2">
 <h2></h2>
-<table>
+<p>P = P(<em>k</em> = 3 | <em>n</em>, <em>p</em>)(n = 10) <br></p>
+<table style="width:100%;">
 <colgroup>
-<col style="width: 23%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 8%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
 </colgroup>
 <thead>
 <tr class="header">
-<th>p</th>
+<th><em>p</em></th>
 <th>0.1</th>
 <th>0.2</th>
 <th>0.3</th>
@@ -631,7 +642,7 @@
 </thead>
 <tbody>
 <tr class="odd">
-<td><em>P</em> (<em>k</em> = 3 | <em>n</em>, <em>p</em>)<br>(n = 10)</td>
+<td><em>P</em></td>
 <td>0.057</td>
 <td>0.201</td>
 <td>0.267</td>
@@ -652,18 +663,18 @@
 <img data-src="images/image4.png" class="r-stretch quarto-figure-center"></section>
 <section id="section-5" class="slide level2">
 <h2></h2>
-<p><span class="math inline">\(Log L (μ | X, σ^2)\)</span></p>
+<p><span class="math inline">\(Log L (\mu | X, \theta^2)\)</span></p>
 
 <img data-src="images/image5.png" class="r-stretch quarto-figure-center"></section>
 <section id="section-6" class="slide level2">
 <h2></h2>
-<p><span class="math inline">\(Log L(σ|X, μ)\)</span></p>
+<p><span class="math inline">\(Log L(\theta|X, \mu)\)</span></p>
 
 <img data-src="images/image6.png" class="r-stretch quarto-figure-center"></section>
 <section id="section-7" class="slide level2">
 <h2></h2>
-<p>𝑥̅是 𝜇 的最佳估计值。</p>
-<p><span class="math inline">\(s_{n-1}\)</span> 是𝜎的最佳估计值。</p>
+<p><span class="math inline">\(\bar{x}\)</span>是 <span class="math inline">\(\mu\)</span> 的最佳估计值。</p>
+<p><span class="math inline">\(s_{n-1}\)</span> 是 <span class="math inline">\(\theta\)</span> 的最佳估计值。</p>
 </section>
 <section id="section-8" class="slide level2">
 <h2></h2>
@@ -710,26 +721,26 @@
 <section>
 <section id="section-12" class="title-slide slide level1 center">
 <h1></h1>
-<p><span style="font-size:48px">如何选取总体参数𝜃的估计量<span class="math inline">\(\hat{\theta}\)</span>?</span></p>
+<p><span style="font-size:48px">如何选取总体参数<span class="math inline">\(\theta\)</span>的估计量<span class="math inline">\(\hat{\theta}\)</span>?</span></p>
 </section>
 <section id="极大似然法maximum-likelihood-estimate" class="slide level2">
 <h2>极大似然法（Maximum Likelihood Estimate）</h2>
 <ul>
-<li>总体二项分布， X ~ B (𝑛, 𝑝)</li>
-<li>求总体 𝑃 的最佳估计量。</li>
+<li>总体二项分布， <span class="math inline">\(X \sim B(n, p)\)</span></li>
+<li>求总体参数<span class="math inline">\(p\)</span>的最佳估计量。</li>
 </ul>
-<table>
+<table style="width:100%;">
 <colgroup>
-<col style="width: 23%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 8%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -764,23 +775,23 @@
 <section id="section-13" class="slide level2">
 <h2></h2>
 <ul>
-<li>总体二项分布， X ~ B (𝑛, 𝑝)</li>
+<li>总体二项分布，<span class="math inline">\(X \sim B(n, p)\)</span></li>
 </ul>
 
 <img data-src="images/image12.png" class="r-stretch quarto-figure-center"></section>
 <section id="section-14" class="slide level2">
 <h2></h2>
 <ul>
-<li>总体正态分布， X ~ N (μ , <span class="math inline">\(σ^2\)</span>)</li>
-<li>求总体 μ 的最佳估计量</li>
+<li>总体正态分布，<span class="math inline">\(X \sim N (\mu, \sigma^2)\)</span></li>
+<li>求总体 <span class="math inline">\(\mu\)</span> 的最佳估计量</li>
 </ul>
 
 <img data-src="images/image13.png" class="r-stretch quarto-figure-center"></section>
 <section id="section-15" class="slide level2">
 <h2></h2>
 <ul>
-<li>总体正态分布， X ~ N (μ , <span class="math inline">\(σ^2\)</span>)</li>
-<li>求总体 σ 的最佳估计量</li>
+<li>总体正态分布， <span class="math inline">\(X \sim N (\mu, \sigma^2)\)</span></li>
+<li>求总体 <span class="math inline">\(\sigma\)</span> 的最佳估计量</li>
 </ul>
 
 <img data-src="images/image14.png" class="r-stretch quarto-figure-center"></section>
@@ -913,7 +924,7 @@ Interpreting Confidence intervals (rpsychologist.com)
 <section id="区间估计interval-estimation-4" class="slide level2">
 <h2>区间估计(Interval estimation)</h2>
 <ul>
-<li>设一正态分布总体𝑋 ~ 𝑁 (𝜇,𝜎^2) 取 1-𝛼 = 0.87</li>
+<li>设一正态分布总体<span class="math inline">\(𝑋 \sim 𝑁(\mu, \sigma^{2})\)</span> 取 <span class="math inline">\(1- \alpha = 0.87\)</span></li>
 </ul>
 
 <img data-src="images/image23.png" class="r-stretch quarto-figure-center"></section>
@@ -929,7 +940,7 @@ Interpreting Confidence intervals (rpsychologist.com)
 <h2>区间估计(Interval estimation)</h2>
 <ul>
 <li><p>总体正态且总体方差已知时的区间估计</p></li>
-<li><p>样本统计量的标准误𝑆𝐸=𝜎/√𝑛</p>
+<li><p>样本统计量的标准误 <span class="math inline">\(SE = \frac {\sigma}{\sqrt{n}}\)</span></p>
 <ul>
 <li><p><span class="math inline">\(Z = \frac{\bar{X} - \mu}{\frac{\sigma}{\sqrt{n}}}\)</span></p></li>
 <li><p><span class="math inline">\(P\left(\bar{X} - Z_{\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}} &lt; \mu &lt; \bar{X} + Z_{\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}\right) = 1 - \alpha\)</span></p></li>
@@ -949,7 +960,7 @@ Interpreting Confidence intervals (rpsychologist.com)
 <h2>区间估计(Interval estimation)</h2>
 <ul>
 <li><p>样本量足够大</p></li>
-<li><p>用样本标准差<span class="math inline">\(𝑆_{n-1}\)</span>作为总体参数𝜎的估计值</p></li>
+<li><p>用样本标准差<span class="math inline">\(𝑆_{n-1}\)</span>作为总体参数<span class="math inline">\(\sigma\)</span>的估计值</p></li>
 <li><p>标准误𝑆𝐸=<span class="math inline">\(\frac{S_{n-1}}{\sqrt{n}}\)</span></p>
 <ul>
 <li><span class="math inline">\(P\left(\bar{X} - Z_{\frac{\alpha}{2}} \frac{S_{n-1}}{\sqrt{n}} &lt; \mu &lt; \bar{X} + Z_{\frac{\alpha}{2}} \frac{S_{n-1}}{\sqrt{n}}\right) = 1 - \alpha\)</span></li>
@@ -970,7 +981,7 @@ Interpreting Confidence intervals (rpsychologist.com)
 <ul>
 <li><p>总体非正态但总体方差已知时的区间估计</p></li>
 <li><p>样本量足够大</p></li>
-<li><p>样本统计量的标准误𝑆𝐸=𝜎/√𝑛</p>
+<li><p>样本统计量的标准误<span class="math inline">\(SE = \frac {\sigma} {\sqrt{𝑛}}\)</span></p>
 <ul>
 <li><span class="math inline">\(P\left(\bar{X} - Z_{\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}} &lt; \mu &lt; \bar{X} + Z_{\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}\right) = 1 - \alpha\)</span></li>
 </ul></li>
