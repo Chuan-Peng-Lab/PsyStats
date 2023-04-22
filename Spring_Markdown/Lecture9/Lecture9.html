@@ -27,6 +27,70 @@
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
     }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="Lecture9_files/libs/revealjs/dist/theme/quarto.css" id="theme">
   <link href="Lecture9_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -370,7 +434,7 @@
 <li>某研究者对某假定为正态分布的参数<span class="math inline">\(\mu\)</span>感兴趣并进行了一次实验，估计<span class="math inline">\(\mu\)</span>的93%置信区间为<span class="math inline">\([\hat{\mu}_1\)</span>,<span class="math inline">\(\hat{\mu}_2]\)</span>(即置信度为93%)，则以下结论正确的是
 <ul>
 <li>A. 重复一次实验，<span class="math inline">\(\mu\)</span>落在区间<span class="math inline">\([\hat{\mu}_1\)</span>,<span class="math inline">\(\hat{\mu}_2]\)</span> 之内的概率为93%</li>
-<li>B. 重复一次实验，<span class="math inline">\(\mu\)</span>落在区间<span class="math inline">\([\hat{\mu}_1\)</span>,<span class="math inline">\(\hat{\mu}_2]\)</span> }之外的概率为 7%</li>
+<li>B. 重复一次实验，<span class="math inline">\(\mu\)</span>落在区间<span class="math inline">\([\hat{\mu}_1\)</span>,<span class="math inline">\(\hat{\mu}_2]\)</span> 之外的概率为 7%</li>
 <li>C. 无数次重复实验并估计93%的置信区间<span class="math inline">\([\hat{\mu}_1\)</span>,<span class="math inline">\(\hat{\mu}_2]\)</span>，有93%的置信区间包含<span class="math inline">\(\mu\)</span></li>
 <li>D. 区间(<span class="math inline">\(\hat{\mu}_1\)</span>,<span class="math inline">\(\hat{\mu}_2\)</span>)随着置信度增加而变宽，但与实验样本大小无关</li>
 </ul></li>
@@ -391,8 +455,9 @@
 <section id="区间估计interval-estimation-1" class="slide level2">
 <h2>区间估计(Interval estimation)</h2>
 <p><br><br></p>
+<p>置信区间(confidence interval, CI)</p>
 <ul>
-<li><p>以点估计值<span class="math inline">\(\hat{\theta}\)</span>为基础建立起来的可能包含待估计参数的区间称为置信区间（confidence interval），而置信区间[<span class="math inline">\(\hat{\theta}_1)\)</span>,<span class="math inline">\(\hat{\theta}_2\)</span>]是指在某一置信水平下，样本统计值与总体参数值间误差范围。<br></p></li>
+<li><p>以点估计值<span class="math inline">\(\hat{\theta}\)</span>为基础建立起来的可能包含待估计参数的区间称为置信区间（confidence interval），而置信区间[<span class="math inline">\(\hat{\theta}_1\)</span>,<span class="math inline">\(\hat{\theta}_2\)</span>]是指在某一置信水平下，样本统计值与总体参数值间误差范围。<br></p></li>
 <li><p>若进行100次抽样，每次样本容量为 n，利用<span class="math inline">\(1−\alpha\)</span> 构造100个置信区间，则有接近<span class="math inline">\(100(1-\alpha\)</span>)% 个估计的置信区间包含总体参数<span class="math inline">\(\theta\)</span> ，（即以<span class="math inline">\(100(1- \alpha\)</span>)% 的概率包含<span class="math inline">\(\theta\)</span> ）。</p></li>
 </ul>
 </section>
@@ -520,7 +585,428 @@ n <span class="math inline">\(\rightarrow \infty\)</span>,无论原始总体分�
 <ul>
 <li><p>估计总体的方差<span class="math inline">\(\sigma^2\)</span>时所使用的统计量是样本的方差，须用到样本平均数<span class="math inline">\(\bar{X}\)</span>来计算。<br></p></li>
 <li><p>在抽样完成后，大小为n的样本中只要n-1个数确定了，第n个数的值就只有一个取值，能使样本满足均值为<span class="math inline">\(\bar{X}\)</span>。即样本中只有n-1个数可以自由变化，只要确定了这n-1个数，方差也就确定了。<br></p></li>
-<li><p>平均数<span class="math inline">\(\bar{X}\)</span>̅就相当于一个限制条件，由于加了这个限制条件，样本方差的自由度为n-1。</p></li>
+<li><p>平均数<span class="math inline">\(\bar{X}\)</span>就相当于一个限制条件，由于加了这个限制条件，样本方差的自由度为n-1。</p></li>
+</ul>
+</section>
+<section id="section-10" class="slide level2">
+<h2></h2>
+
+<img data-src="images/image-2120342143.png" class="r-stretch quarto-figure-center"><p><span class="math display">\[n=6\]</span><br></p>
+<center>
+样本分布比正态分布更离散
+</center>
+</section>
+<section id="t分布-2" class="slide level2">
+<h2>t分布</h2>
+<p><br></p>
+<ul>
+<li><p>当数据遵循钟形曲线并且总体方差未知时，数据的分布为t分布<br></p></li>
+<li><p>t分布的方差基于数据的自由度</p></li>
+</ul>
+</section>
+<section id="t分数" class="slide level2">
+<h2>t分数</h2>
+<p><br></p>
+<ul>
+<li><p><span class="math inline">\(t(df)\)</span></p></li>
+<li><p>t分数等于偏离t分布的平均值的标准差的数量</p></li>
+</ul>
+<p><span class="math display">\[t = \frac{\bar{X}-\mu}{s_{\bar{X}}} =  \frac{\bar{X}-\mu}{\frac{s}{\sqrt{n}}} \]</span> <span class="math display">\[df = n-1\]</span></p>
+</section>
+<section id="section-11" class="slide level2">
+<h2></h2>
+
+<img data-src="images/image-1085647376.png" class="r-stretch quarto-figure-center"></section>
+<section id="section-12" class="slide level2">
+<h2></h2>
+
+<img data-src="images/image-885211155.png" class="r-stretch quarto-figure-center"><p><span class="math display">\[n=45\]</span></p>
+</section>
+<section id="section-13" class="slide level2">
+<h2></h2>
+<p><span class="math display">\[f(t)=\frac{\Gamma(\frac{v+1}{2})}{\sqrt{v\pi}\Gamma(\frac{v}{2})}(1+\frac{t^2}{v})^{\frac{-(v+1)}{2}}\]</span></p>
+
+<img data-src="images/image-917184545.png" class="r-stretch quarto-figure-center"></section>
+<section id="t分布-vs-正态分布" class="slide level2">
+<h2>t分布 vs 正态分布</h2>
+<p>共同点<br></p>
+<ul>
+<li><p>t分布有平滑的形状<br></p></li>
+<li><p>t分布是对称的。如果沿着平均值折叠，每一边都是相同的<br></p></li>
+<li><p>t分布均值为0</p></li>
+</ul>
+</section>
+<section id="t分布-vs-正态分布-1" class="slide level2">
+<h2>t分布 vs 正态分布</h2>
+<p>不同点<br></p>
+<ul>
+<li><p>t分布受样本大小的影响<br></p></li>
+<li><p>随着样本容量增加，t分布逐渐接近正态分布<br></p></li>
+<li><p>正态分布假定一致总体方差已知<br></p></li>
+<li><p>t分布可用于小样本和总体方差未知的情况</p></li>
+</ul>
+</section>
+<section id="section-14" class="slide level2">
+<h2></h2>
+<p><br><br><br><br></p>
+<center>
+调节不同参数，绘制不同的t分布，观察其形态变化
+</center>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># 生成一个自由度为10的t分布</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>x <span class="ot">&lt;-</span> <span class="fu">rt</span>(<span class="dv">1000</span>, <span class="at">df =</span> <span class="dv">10</span>)</span>
+<span id="cb1-3"><a href="#cb1-3"></a></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="co"># 绘制t分布的概率密度函数</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="fu">plot</span>(<span class="fu">seq</span>(<span class="sc">-</span><span class="dv">4</span>, <span class="dv">4</span>, <span class="at">length =</span> <span class="dv">100</span>), <span class="fu">dt</span>(<span class="fu">seq</span>(<span class="sc">-</span><span class="dv">4</span>, <span class="dv">4</span>, <span class="at">length =</span> <span class="dv">100</span>), <span class="at">df =</span> <span class="dv">10</span>), </span>
+<span id="cb1-6"><a href="#cb1-6"></a>     <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">xlab =</span> <span class="st">"x"</span>, <span class="at">ylab =</span> <span class="st">"Probability Density"</span>, </span>
+<span id="cb1-7"><a href="#cb1-7"></a>     <span class="at">main =</span> <span class="st">"t Distribution with df = 10"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="Lecture9_files/figure-revealjs/unnamed-chunk-1-1.png" width="960" class="r-stretch"></section>
+<section id="section-15" class="slide level2">
+<h2></h2>
+<p><br><br><br><br></p>
+<center>
+<h2>
+总体平均数的区间估计
+</h2>
+</center>
+</section>
+<section id="section-16" class="slide level2">
+<h2></h2>
+
+<img data-src="images/image-639430564.png" class="r-stretch quarto-figure-center"></section>
+<section id="section-17" class="slide level2">
+<h2></h2>
+
+<img data-src="images/image-1646018272.png" class="r-stretch quarto-figure-center"></section>
+<section id="section-18" class="slide level2">
+<h2></h2>
+
+<img data-src="images/image-1640563786.png" class="r-stretch quarto-figure-center"></section>
+<section id="section-19" class="slide level2">
+<h2></h2>
+
+<img data-src="images/image-1694253773.png" class="r-stretch quarto-figure-center"></section>
+<section id="section-20" class="slide level2">
+<h2></h2>
+
+<img data-src="images/image-557073223.png" class="r-stretch quarto-figure-center"></section>
+<section id="section-21" class="slide level2">
+<h2></h2>
+
+<img data-src="images/image-1774112600.png" class="r-stretch quarto-figure-center"></section>
+<section id="section-22" class="slide level2">
+<h2></h2>
+
+<img data-src="images/image-1580845356.png" class="r-stretch quarto-figure-center"></section>
+<section id="section-23" class="slide level2">
+<h2></h2>
+
+<img data-src="images/image-1825186229.png" class="r-stretch quarto-figure-center"></section>
+<section id="section-24" class="slide level2">
+<h2></h2>
+
+<img data-src="images/image-1225348855.png" class="r-stretch quarto-figure-center"></section>
+<section id="总体正态分布总体方差已知" class="slide level2">
+<h2>总体正态分布，总体方差已知</h2>
+<p><br></p>
+<ul>
+<li><p>总体正态且总体方差已知时的区间估计</p></li>
+<li><p>样本统计量的标准误<span class="math inline">\(SE = \frac{\sigma}{\sqrt{n}}\)</span></p></li>
+</ul>
+</section>
+<section id="section-25" class="slide level2">
+<h2></h2>
+
+<img data-src="images/image-1290639569.png" class="r-stretch quarto-figure-center"></section>
+<section id="section-26" class="slide level2">
+<h2></h2>
+
+<img data-src="images/image-1124938893.png" class="r-stretch quarto-figure-center"></section>
+<section id="总体正态分布总体方差已知-1" class="slide level2">
+<h2>总体正态分布，总体方差已知</h2>
+<ul>
+<li><p>总体正态且总体方差已知时的区间估计</p></li>
+<li><p>样本统计量的标准误<span class="math inline">\(SE = \frac{\sigma}{\sqrt{n}}\)</span></p></li>
+</ul>
+<p><span class="math display">\[Z = \frac{\bar{X}-\mu}{\frac{\sigma}{\sqrt{n}}}\]</span></p>
+<p><span class="math display">\[P(\bar{X}-Z_{\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}}&lt;\mu&lt;\bar{X}+Z_{\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}})=1-\alpha\]</span></p>
+</section>
+<section id="总体正态分布总体方差未知" class="slide level2">
+<h2>总体正态分布，总体方差未知</h2>
+<p><br></p>
+<ul>
+<li><p>样本量足够大</p></li>
+<li><p>用样本标准差<span class="math inline">\(S_{n-1}\)</span>作为总体参数<span class="math inline">\(\sigma\)</span>的估计值</p></li>
+<li><p>标准误<span class="math inline">\(SE = \frac{s_{n-1}}{\sqrt{n}}\)</span></p></li>
+</ul>
+<p><span class="math display">\[P(\bar{X}-Z_{\frac{\alpha}{2}}\frac{s_{n-1}}{\sqrt{n}}&lt;\mu&lt;\bar{X}+Z_{\frac{\alpha}{2}}\frac{s_{n-1}}{\sqrt{n}})=1-\alpha\]</span></p>
+</section>
+<section id="总体非正态分布总体方差已知" class="slide level2">
+<h2>总体非正态分布，总体方差已知</h2>
+<p><br></p>
+<ul>
+<li><p>样本量足够大</p></li>
+<li><p>用样本统计量的标准误<span class="math inline">\(SE = \frac{\sigma}{\sqrt{n}}\)</span></p></li>
+</ul>
+<p><span class="math display">\[P(\bar{X}-Z_{\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}}&lt;\mu&lt;\bar{X}+Z_{\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}})=1-\alpha\]</span></p>
+</section>
+<section id="总体非正态分布总体方差未知" class="slide level2">
+<h2>总体非正态分布，总体方差未知</h2>
+<p><br></p>
+<ul>
+<li><p>样本量足够大</p></li>
+<li><p>用样本标准差<span class="math inline">\(S_{n-1}\)</span>作为总体参数<span class="math inline">\(\sigma\)</span>的估计值</p></li>
+<li><p>标准误<span class="math inline">\(SE = \frac{s_{n-1}}{\sqrt{n}}\)</span></p></li>
+</ul>
+<p><span class="math display">\[P(\bar{X}-Z_{\frac{\alpha}{2}}\frac{s_{n-1}}{\sqrt{n}}&lt;\mu&lt;\bar{X}+Z_{\frac{\alpha}{2}}\frac{s_{n-1}}{\sqrt{n}})=1-\alpha\]</span></p>
+</section>
+<section id="总体正态分布总体方差未知-1" class="slide level2">
+<h2>总体正态分布，总体方差未知</h2>
+<p><br></p>
+<ul>
+<li><p>小样本</p></li>
+<li><p>用样本标准差<span class="math inline">\(s_{n-1}\)</span>作为总体参数<span class="math inline">\(\sigma\)</span>的估计值</p></li>
+<li><p>标准误<span class="math inline">\(SE = \frac{s_{n-1}}{\sqrt{n}}\)</span></p></li>
+</ul>
+<p><span class="math display">\[P(\bar{X}-t_{\frac{\alpha}{2}}\frac{s_{n-1}}{\sqrt{n}}&lt;\mu&lt;\bar{X}+t_{\frac{\alpha}{2}}\frac{s_{n-1}}{\sqrt{n}})=1-\alpha\]</span></p>
+</section>
+<section id="section-27" class="slide level2">
+<h2></h2>
+<p><br><br><br><br></p>
+<center>
+<p>从某小学三年级随机抽取12名学生，其阅读能力得分为28，32，36，22，34，30，33，25，31，33，29，26。<br></p>
+<p>假定小学三年级学生的阅读能力是正态分布，试估计该校三年级学生阅读能力总体平均数95％和99％的置信区间。</p>
+</center>
+</section></section>
+<section>
+<section id="样本标准差和方差的抽样分布" class="title-slide slide level1 center">
+<h1>样本标准差和方差的抽样分布？</h1>
+
+</section>
+<section id="样本标准差的抽样分布" class="slide level2">
+<h2>样本标准差的抽样分布</h2>
+
+<img data-src="images/image-1867564992.png" class="r-stretch quarto-figure-center"></section>
+<section id="section-28" class="slide level2">
+<h2></h2>
+
+<img data-src="images/image-1167759315.png" class="r-stretch quarto-figure-center"></section>
+<section id="section-29" class="slide level2">
+<h2></h2>
+
+<img data-src="images/image-1540575457.png" class="r-stretch quarto-figure-center"></section>
+<section id="section-30" class="slide level2">
+<h2></h2>
+
+<img data-src="images/image-1937647065.png" class="r-stretch quarto-figure-center"></section>
+<section id="section-31" class="slide level2">
+<h2></h2>
+
+<img data-src="images/image-619118872.png" class="r-stretch quarto-figure-center"></section>
+<section id="section-32" class="slide level2">
+<h2></h2>
+
+<img data-src="images/image-1957364549.png" class="r-stretch quarto-figure-center"></section>
+<section id="方差的抽样分布" class="slide level2">
+<h2>方差的抽样分布</h2>
+
+<img data-src="images/image-2062229332.png" class="r-stretch quarto-figure-center"></section>
+<section id="section-33" class="slide level2">
+<h2></h2>
+
+<img data-src="images/image-1722682065.png" class="r-stretch quarto-figure-center"></section>
+<section id="section-34" class="slide level2">
+<h2></h2>
+
+<img data-src="images/image-2120249795.png" class="r-stretch quarto-figure-center"></section>
+<section id="section-35" class="slide level2">
+<h2></h2>
+
+<img data-src="images/image-1466186142.png" class="r-stretch quarto-figure-center"></section>
+<section id="section-36" class="slide level2">
+<h2></h2>
+
+<img data-src="images/image-258878540.png" class="r-stretch quarto-figure-center"></section>
+<section id="section-37" class="slide level2">
+<h2></h2>
+
+<img data-src="images/image-1739151230.png" class="r-stretch quarto-figure-center"></section>
+<section id="section-38" class="slide level2">
+<h2></h2>
+<p><br><br><br><br></p>
+<center>
+<h2>
+当样本量足够大时，样本标准差和方差的抽样分布为正态分布或渐进正态分布
+</h2>
+</center>
+</section>
+<section id="section-39" class="slide level2">
+<h2></h2>
+
+<img data-src="images/image-356215291.png" class="r-stretch quarto-figure-center"></section>
+<section id="section-40" class="slide level2">
+<h2></h2>
+
+<img data-src="images/image-456306899.png" class="r-stretch quarto-figure-center"></section>
+<section id="section-41" class="slide level2">
+<h2></h2>
+<p><br><br><br><br></p>
+<center>
+<h2>
+当样本量较小时，样本标准差和方差的抽样分布不服从正态分布或渐进正态分布
+</h2>
+</center>
+</section>
+<section id="section-42" class="slide level2">
+<h2></h2>
+<p><br><br><br><br></p>
+<center>
+<h2>
+<p>当样本量较小时，样本标准差和方差的抽样分布不服从正态分布或渐进正态分布<br></p>
+<p>对于这种非正态分布，我们该如何处理呢？</p>
+</h2>
+</center>
+</section></section>
+<section>
+<section id="卡方分布" class="title-slide slide level1 center">
+<h1>卡方分布</h1>
+
+</section>
+<section id="section-43" class="slide level2">
+<h2></h2>
+
+<img data-src="images/image-300512063.png" class="r-stretch quarto-figure-center"></section>
+<section id="section-44" class="slide level2">
+<h2></h2>
+
+<img data-src="images/image-1610257321.png" class="r-stretch quarto-figure-center"></section>
+<section id="section-45" class="slide level2">
+<h2></h2>
+
+<img data-src="images/image-1605021474.png" class="r-stretch quarto-figure-center"></section>
+<section id="卡方分布-1" class="slide level2">
+<h2>卡方分布</h2>
+
+<img data-src="images/image-844093795.png" class="r-stretch quarto-figure-center"></section>
+<section id="section-46" class="slide level2">
+<h2></h2>
+<p><br></p>
+<ul>
+<li><p>总体正态<span class="math inline">\(X \sim N(\mu,\sigma^2)\)</span> <br></p></li>
+<li><p><span class="math inline">\(Z = \frac{X_i-\mu}{\sigma}\)</span> <br></p></li>
+<li><p><span class="math inline">\(Z \sim N(0,1)\)</span> <br></p></li>
+<li><p><span class="math inline">\(\sum^{n}_{i=1}Z^2 \sim \chi^2(n)\)</span> <br></p></li>
+<li><p>即<span class="math inline">\(\sum^{n}_{i=1}(\frac{X_i-\mu}{\sigma})^2 \sim \chi^2(n)\)</span> <br></p></li>
+<li><p>n为自由度</p></li>
+</ul>
+</section>
+<section id="卡方分布的特点" class="slide level2">
+<h2>卡方分布的特点</h2>
+<ul>
+<li><p><span class="math inline">\(\chi^2\)</span>值都是正值 <br></p></li>
+<li><p><span class="math inline">\(\chi^2\)</span>分布呈正偏态，右端无限延伸，但不与基线相交 <br></p></li>
+<li><p><span class="math inline">\(\chi^2\)</span>分布随自由度变化形成一族分布，自由度越小，越偏斜；自由度越大，分布形态趋于对称，自由度趋于无穷大时，呈正态分布 <br></p></li>
+<li><p><span class="math inline">\(\chi^2\)</span>的可加性：几个相互独立的<span class="math inline">\(\chi^2\)</span>变量的和仍服从<span class="math inline">\(\chi^2\)</span>分布</p></li>
+</ul>
+</section>
+<section id="section-47" class="slide level2">
+<h2></h2>
+
+<img data-src="images/image-902068399.png" class="r-stretch quarto-figure-center"></section>
+<section id="section-48" class="slide level2">
+<h2></h2>
+<p>调节不同参数，绘制不同的卡方分布，观察其形态变化</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># 生成一个自由度为5的卡方分布</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>x <span class="ot">&lt;-</span> <span class="fu">rchisq</span>(<span class="dv">1000</span>, <span class="at">df =</span> <span class="dv">5</span>)</span>
+<span id="cb2-3"><a href="#cb2-3"></a></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="co"># 绘制卡方分布的概率密度函数</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="fu">plot</span>(<span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">20</span>, <span class="at">length =</span> <span class="dv">100</span>), <span class="fu">dchisq</span>(<span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">20</span>, <span class="at">length =</span> <span class="dv">100</span>), <span class="at">df =</span> <span class="dv">5</span>), </span>
+<span id="cb2-6"><a href="#cb2-6"></a>     <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">xlab =</span> <span class="st">"x"</span>, <span class="at">ylab =</span> <span class="st">"Probability Density"</span>, </span>
+<span id="cb2-7"><a href="#cb2-7"></a>     <span class="at">main =</span> <span class="st">"Chi-Square Distribution with df = 5"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="Lecture9_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section></section>
+<section>
+<section id="f分布" class="title-slide slide level1 center">
+<h1>F分布</h1>
+
+<img data-src="images/image-1958213605.png" class="r-stretch quarto-figure-center"></section>
+<section id="section-49" class="slide level2">
+<h2></h2>
+
+<img data-src="images/image-1738752076.png" class="r-stretch quarto-figure-center"></section>
+<section id="section-50" class="slide level2">
+<h2></h2>
+
+<img data-src="images/image-617407087.png" class="r-stretch quarto-figure-center"></section>
+<section id="section-51" class="slide level2">
+<h2></h2>
+<p><br></p>
+<ul>
+<li>设随机变量<span class="math inline">\(X \sim \chi_m^2,Y \sim \chi_n^2\)</span>,且X与Y独立，则称</li>
+</ul>
+<p><span class="math inline">\(F = \frac{\frac{X}{m}}{\frac{Y}{n}}\)</span> 为自由度分别是 m 和 n 的F 变量，其分布称为 m 和 n 的F 分布，记为<span class="math inline">\(F \sim F_{m,n}\)</span></p>
+<ul>
+<li><p><span class="math inline">\(\frac{(n-1)s^2}{\sigma^2} \sim \chi^2(n-1)\)</span></p></li>
+<li><p><span class="math inline">\(\frac{\frac{s_1^2}{\sigma_1^2}}{\frac{s_2^2}{\sigma_2^2}} \sim F(n_1-1,n_2-1)\)</span></p></li>
+</ul>
+</section>
+<section id="f分布的特点" class="slide level2">
+<h2>F分布的特点</h2>
+<p><br></p>
+<ul>
+<li><p>非对称分布 <br></p></li>
+<li><p>F 分布有两个参数，对应的是两个自由度。<br></p></li>
+<li><p>总体均值<span class="math inline">\(E(F) = \frac{n_2}{n_2-2},其中n_2&gt;2\)</span></p></li>
+<li><p>方差<span class="math inline">\(D(F) = \frac{2n_2^2(n_1+n_2-2)}{n_1(n_2-2)^2(n_2-4)},其中n_2&gt;4\)</span></p></li>
+<li><p><span class="math inline">\(X \sim F(n_1,n_2), \frac{1}{X} \sim F(n_2, n_1)\)</span></p></li>
+<li><p><span class="math inline">\(X \sim t(n), X^2 \sim F(1,n)\)</span></p></li>
+</ul>
+</section>
+<section id="section-52" class="slide level2">
+<h2></h2>
+
+<img data-src="images/image-1137240832.png" class="r-stretch quarto-figure-center"></section>
+<section id="section-53" class="slide level2">
+<h2></h2>
+<p>调节不同参数，绘制不同的F分布，观察其形态变化</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">4</span>, <span class="at">length =</span> <span class="dv">100</span>)</span>
+<span id="cb3-2"><a href="#cb3-2"></a>y1 <span class="ot">&lt;-</span> <span class="fu">df</span>(x, <span class="at">df1 =</span> <span class="dv">5</span>, <span class="at">df2 =</span> <span class="dv">10</span>)</span>
+<span id="cb3-3"><a href="#cb3-3"></a></span>
+<span id="cb3-4"><a href="#cb3-4"></a></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="co"># 绘制F分布的概率密度函数</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="fu">plot</span>(x, y1, <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">xlab =</span> <span class="st">"x"</span>, <span class="at">ylab =</span> <span class="st">"Probability Density"</span>, </span>
+<span id="cb3-7"><a href="#cb3-7"></a>     <span class="at">main =</span> <span class="st">"F Distribution with df1 = 5 and df2 = 10"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="Lecture9_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section>
+<section id="section-54" class="slide level2">
+<h2></h2>
+
+<img data-src="images/image-1308904529.png" class="r-stretch quarto-figure-center"></section>
+<section id="总结" class="slide level2">
+<h2>总结</h2>
+<ul>
+<li><p>样本平均数的抽样分布<br></p>
+<ul>
+<li>t分布 <br></li>
+</ul></li>
+<li><p>样本方差和标准差的抽样分布<br></p>
+<ul>
+<li><p><span class="math inline">\(\chi^2\)</span>分布 <br></p></li>
+<li><p>F分布 <br></p></li>
+</ul></li>
+<li><p>区间估计的基本步骤<br></p>
+<ul>
+<li><p>总体平均数 <br></p></li>
+<li><p>总体方差 <br></p></li>
+<li><p>两总体方差之比 <br></p></li>
+<li><p>两总体均值之差</p></li>
+</ul></li>
 </ul>
 
 <img src="images/image-393370223.png" class="slide-logo r-stretch"><div class="footer footer-default">
@@ -738,6 +1224,44 @@ n <span class="math inline">\(\rightarrow \infty\)</span>,无论原始总体分�
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

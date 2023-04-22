@@ -59,7 +59,7 @@ Hu Chuan-Peng
 
 -   某研究者对某假定为正态分布的参数$\mu$感兴趣并进行了一次实验，估计$\mu$的93%置信区间为$[\hat{\mu}_1$,$\hat{\mu}_2]$(即置信度为93%)，则以下结论正确的是
     -   A. 重复一次实验，$\mu$落在区间$[\hat{\mu}_1$,$\hat{\mu}_2]$ 之内的概率为93%
-    -   B. 重复一次实验，$\mu$落在区间$[\hat{\mu}_1$,$\hat{\mu}_2]$ }之外的概率为 7%
+    -   B. 重复一次实验，$\mu$落在区间$[\hat{\mu}_1$,$\hat{\mu}_2]$ 之外的概率为 7%
     -   C. 无数次重复实验并估计93%的置信区间$[\hat{\mu}_1$,$\hat{\mu}_2]$，有93%的置信区间包含$\mu$
     -   D. 区间($\hat{\mu}_1$,$\hat{\mu}_2$)随着置信度增加而变宽，但与实验样本大小无关
 
@@ -75,7 +75,9 @@ Hu Chuan-Peng
 
 </br></br>
 
--   以点估计值$\hat{\theta}$为基础建立起来的可能包含待估计参数的区间称为置信区间（confidence interval），而置信区间\[$\hat{\theta}_1)$,$\hat{\theta}_2$\]是指在某一置信水平下，样本统计值与总体参数值间误差范围。</br>
+置信区间(confidence interval, CI)
+
+-   以点估计值$\hat{\theta}$为基础建立起来的可能包含待估计参数的区间称为置信区间（confidence interval），而置信区间\[$\hat{\theta}_1$,$\hat{\theta}_2$\]是指在某一置信水平下，样本统计值与总体参数值间误差范围。</br>
 
 -   若进行100次抽样，每次样本容量为 n，利用$1−\alpha$ 构造100个置信区间，则有接近$100(1-\alpha$)% 个估计的置信区间包含总体参数$\theta$ ，（即以$100(1- \alpha$)% 的概率包含$\theta$ ）。
 
@@ -281,6 +283,25 @@ $$f(t)=\frac{\Gamma(\frac{v+1}{2})}{\sqrt{v\pi}\Gamma(\frac{v}{2})}(1+\frac{t^2}
 
 </br></br></br></br>
 
+<center>调节不同参数，绘制不同的t分布，观察其形态变化</center>
+
+```{r echo=TRUE}
+# 生成一个自由度为10的t分布
+x <- rt(1000, df = 10)
+
+# 绘制t分布的概率密度函数
+plot(seq(-4, 4, length = 100), dt(seq(-4, 4, length = 100), df = 10), 
+     type = "l", xlab = "x", ylab = "Probability Density", 
+     main = "t Distribution with df = 10")
+
+
+
+```
+
+## 
+
+</br></br></br></br>
+
 <center>
 
 <h2>总体平均数的区间估计</h2>
@@ -355,11 +376,13 @@ $$P(\bar{X}-Z_{\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}}<\mu<\bar{X}+Z_{\frac{\al
 
 -   样本量足够大
 
--   用样本标准差S\_{n-1}作为总体参数$\sigma$的估计值
+-   用样本标准差$S_{n-1}$作为总体参数$\sigma$的估计值
 
 -   标准误$SE = \frac{s_{n-1}}{\sqrt{n}}$
 
-$$P(\bar{X}-Z_{\frac{\alpha}{2}}\frac{s_{n-1}}{\sqrt{n}}<\mu<\bar{X}+Z_{\frac{\alpha}{2}}\frac{s_{n-1}}{\sqrt{n}})=1-\alpha$$ \## 总体非正态分布，总体方差已知
+$$P(\bar{X}-Z_{\frac{\alpha}{2}}\frac{s_{n-1}}{\sqrt{n}}<\mu<\bar{X}+Z_{\frac{\alpha}{2}}\frac{s_{n-1}}{\sqrt{n}})=1-\alpha$$
+
+## 总体非正态分布，总体方差已知
 
 </br>
 
@@ -375,7 +398,7 @@ $$P(\bar{X}-Z_{\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}}<\mu<\bar{X}+Z_{\frac{\al
 
 -   样本量足够大
 
--   用样本标准差S\_{n-1}作为总体参数$\sigma$的估计值
+-   用样本标准差$S_{n-1}$作为总体参数$\sigma$的估计值
 
 -   标准误$SE = \frac{s_{n-1}}{\sqrt{n}}$
 
@@ -397,7 +420,13 @@ $$P(\bar{X}-t_{\frac{\alpha}{2}}\frac{s_{n-1}}{\sqrt{n}}<\mu<\bar{X}+t_{\frac{\a
 
 </br></br></br></br>
 
-<center>从某小学三年级随机抽取12名学生，其阅读能力得分为28，32，36，22，34，30，33，25，31，33，29，26。假定小学三年级学生的阅读能力是正态分布，试估计该校三年级学生阅读能力总体平均数95％和99％的置信区间。</center>
+<center>
+
+从某小学三年级随机抽取12名学生，其阅读能力得分为28，32，36，22，34，30，33，25，31，33，29，26。<br>
+
+假定小学三年级学生的阅读能力是正态分布，试估计该校三年级学生阅读能力总体平均数95％和99％的置信区间。
+
+</center>
 
 # 样本标准差和方差的抽样分布？
 
@@ -541,6 +570,22 @@ $$P(\bar{X}-t_{\frac{\alpha}{2}}\frac{s_{n-1}}{\sqrt{n}}<\mu<\bar{X}+t_{\frac{\a
 
 ![](images/image-902068399.png){fig-align="center"}
 
+## 
+
+调节不同参数，绘制不同的卡方分布，观察其形态变化
+
+```{r echo=TRUE}
+# 生成一个自由度为5的卡方分布
+x <- rchisq(1000, df = 5)
+
+# 绘制卡方分布的概率密度函数
+plot(seq(0, 20, length = 100), dchisq(seq(0, 20, length = 100), df = 5), 
+     type = "l", xlab = "x", ylab = "Probability Density", 
+     main = "Chi-Square Distribution with df = 5")
+
+
+```
+
 # F分布
 
 ![](images/image-1958213605.png){fig-align="center"}
@@ -557,9 +602,9 @@ $$P(\bar{X}-t_{\frac{\alpha}{2}}\frac{s_{n-1}}{\sqrt{n}}<\mu<\bar{X}+t_{\frac{\a
 
 </br>
 
--   设随机变量\$X \sim \chi\_m\^2,Y \sim \chi\_n\^2,且X与Y独立，则称
+-   设随机变量$X \sim \chi_m^2,Y \sim \chi_n^2$,且X与Y独立，则称
 
-$F = \frac{\frac{x}{m}}{\frac{Y}{n}}$ 为自由度分别是 m 和 n 的F 变量，其分布称为 m 和 n 的F 分布，记为$F \sim F_{m,n}$
+$F = \frac{\frac{X}{m}}{\frac{Y}{n}}$ 为自由度分别是 m 和 n 的F 变量，其分布称为 m 和 n 的F 分布，记为$F \sim F_{m,n}$
 
 -   $\frac{(n-1)s^2}{\sigma^2} \sim \chi^2(n-1)$
 
@@ -577,37 +622,54 @@ $F = \frac{\frac{x}{m}}{\frac{Y}{n}}$ 为自由度分别是 m 和 n 的F 变量�
 
 -   方差$D(F) = \frac{2n_2^2(n_1+n_2-2)}{n_1(n_2-2)^2(n_2-4)},其中n_2>4$
 
--   $X \sim F(n_1,n_2), \frac{1}{X} ~ F(n_2, n_1)$
+-   $X \sim F(n_1,n_2), \frac{1}{X} \sim F(n_2, n_1)$
 
--   $X \sim t(n), X \sim F(1,n)$
+-   $X \sim t(n), X^2 \sim F(1,n)$
 
 ## 
 
 ![](images/image-1137240832.png){fig-align="center"}
 
-##
+## 
+
+调节不同参数，绘制不同的F分布，观察其形态变化
+
+```{r echo=TRUE}
+
+x <- seq(0, 4, length = 100)
+y1 <- df(x, df1 = 5, df2 = 10)
+
+
+# 绘制F分布的概率密度函数
+plot(x, y1, type = "l", xlab = "x", ylab = "Probability Density", 
+     main = "F Distribution with df1 = 5 and df2 = 10")
+
+
+
+```
+
+## 
 
 ![](images/image-1308904529.png){fig-align="center"}
 
 ## 总结
 
-- 样本平均数的抽样分布</br>
-      
-      - t分布</br>
-      
-- 样本方差和标准差的抽样分布</br>
-      
-      - $\chi^2$分布</br>
-      
-      - F分布</br>
-      
-- 区间估计的基本步骤</br>
-      
-      - 总体平均数</br>
-      
-      - 总体方差</br>
-      
-      - 两总体方差之比</br>
-      
-      - 两总体均值之差
+-   样本平均数的抽样分布</br>
 
+    -   t分布 </br>
+
+-   样本方差和标准差的抽样分布</br>
+
+    -   $\chi^2$分布 </br>
+
+    -   F分布 </br>
+
+-   区间估计的基本步骤</br>
+
+    -   总体平均数 </br>
+
+    -   总体方差 </br>
+
+    -   两总体方差之比 </br>
+
+    -   两总体均值之差
