@@ -1,0 +1,613 @@
+---
+format: 
+  revealjs:
+    slide-number: true
+    logo: images/image-393370223.png
+    scrollable: true 
+    theme: theme.scss
+editor: visual
+fontsize: 24pt
+---
+
+</br></br>
+
+<h1 style="text-align: center">
+
+08 - 抽样分布与参数估计(2)
+
+</h1>
+
+<h2 style="text-align: center">
+
+(Sampling Distribution & Parameter Estimation 1)
+
+</h2>
+
+</br></br>
+
+<h3 style="text-align: center">
+
+Hu Chuan-Peng
+
+</h3>
+
+<h3 style="text-align: center">
+
+2023-04-19
+
+</h3>
+
+</br></br>
+
+## 回顾(review)
+
+</br>
+
+-   抽样分布</br>
+    -   统计量与参数</br>
+    -   平均数的抽样分布</br>
+-   点估计</br>
+    -   点估计的特性</br>
+    -   点估计的局限</br>
+-   区间估计</br>
+    -   置信区间
+    -   置信度
+
+## 回顾(review)
+
+</br>
+
+-   某研究者对某假定为正态分布的参数$\mu$感兴趣并进行了一次实验，估计$\mu$的93%置信区间为$[\hat{\mu}_1$,$\hat{\mu}_2]$(即置信度为93%)，则以下结论正确的是
+    -   A. 重复一次实验，$\mu$落在区间$[\hat{\mu}_1$,$\hat{\mu}_2]$ 之内的概率为93%
+    -   B. 重复一次实验，$\mu$落在区间$[\hat{\mu}_1$,$\hat{\mu}_2]$ }之外的概率为 7%
+    -   C. 无数次重复实验并估计93%的置信区间$[\hat{\mu}_1$,$\hat{\mu}_2]$，有93%的置信区间包含$\mu$
+    -   D. 区间($\hat{\mu}_1$,$\hat{\mu}_2$)随着置信度增加而变宽，但与实验样本大小无关
+
+# 样本平均数的区间估计
+
+## 区间估计(Interval estimation)
+
+</br></br>
+
+-   区间估计是从**点估计值**和**抽样标准误差**出发，以点估计值$\hat{\theta}$为基础，按给定的概率值建立可能包含待估计参数的区间，并提供总体参数值$\theta$落入该区间内的概率。
+
+## 区间估计(Interval estimation)
+
+</br></br>
+
+-   以点估计值$\hat{\theta}$为基础建立起来的可能包含待估计参数的区间称为置信区间（confidence interval），而置信区间\[$\hat{\theta}_1)$,$\hat{\theta}_2$\]是指在某一置信水平下，样本统计值与总体参数值间误差范围。</br>
+
+-   若进行100次抽样，每次样本容量为 n，利用$1−\alpha$ 构造100个置信区间，则有接近$100(1-\alpha$)% 个估计的置信区间包含总体参数$\theta$ ，（即以$100(1- \alpha$)% 的概率包含$\theta$ ）。
+
+## 区间估计(Interval estimation)
+
+![](images/image-1789230174.png){fig-align="center"}
+
+## 区间估计(Interval estimation)
+
+![](images/image-1236563367.png){fig-align="center"}
+
+## 
+
+</br></br></br></br>
+
+<center>
+
+<h2>回顾：中心极限定理</h2>
+
+</center>
+
+## 中心极值定理
+
+![](images/image-1052247866.png){fig-align="center"}
+
+$$\bar{X} =\frac{X_1+X_2+...+X_n}{n} $$
+
+<center>n $\rightarrow \infty$,无论原始总体分布形态是何种分布，平均数的抽样分布近似正态分布</center>
+
+## 
+
+![](images/image-1179897954.png){fig-align="center"}
+
+## 
+
+</br></br></br></br>
+
+<center>
+
+<h2>当总体服从正态分布且样本量为大样本的情况下，样本平均数的抽样分布服从正态分布或渐进正态分布</h2>
+
+</center>
+
+## 
+
+![](images/image-1176377469.png){fig-align="center"}
+
+## 
+
+</br></br></br></br>
+
+<center>
+
+<h2>当总体未知且样本量为大样本的情况下，样本平均数的抽样分布服从正态分布或渐进正态分布</h2>
+
+</center>
+
+## 
+
+![](images/image-246819613.png){fig-align="center"}
+
+## 
+
+</br></br></br></br>
+
+<center>
+
+<h2>当总体服从正态分布且样本量为小样本的情况下，样本平均数的抽样分布服从t分布</h2>
+
+</center>
+
+## 
+
+![](images/image-792711118.png){fig-align="center"}
+
+## 
+
+</br></br></br></br>
+
+<center>
+
+<h2>当总体未知且样本量为小样本的情况下，样本平均数的抽样分布未知</h2>
+
+</center>
+
+## 
+
+![](images/image-144052562.png){fig-align="center"}
+
+# t分布
+
+## t分布
+
+$$f(t)=\frac{\Gamma(\frac{v+1}{2})}{\sqrt{v\pi}\Gamma(\frac{v}{2})}(1+\frac{t^2}{v})^{\frac{-(v+1)}{2}},v为自由度$$
+
+![](images/image-917184545.png){fig-align="center"}
+
+## t分布的历史
+
+</br>
+
+-   麦芽浆准备发酵的时候，工人们需要得到测量清楚某个给定的瓶中有多少酵母，以便决定用多少液体，它们提取一定量的液体，计量他们所看到的酵母细胞数。这种测量有多精确？</br>
+
+-   由于酵母是活的，而细胞不断地分裂和繁殖，真正存在的是单位液体中酵母细胞的概率分布。
+
+## t分布的历史
+
+</br>
+
+-   戈塞特检验了数据，确定酵母细胞的数量可以用是一种只有 1个参数的特殊分布。</br>
+
+-   戈塞特取出一小组数据，算出平均值和标准差估计值，再将二者相除，并将结果绘在图纸上。</br>
+
+-   两个参数估计值的比率有一个可以制表的概率分布，不管数据从哪里来，或者标准差的真实值是多少，计算这两个样本估计值的比率，你就可以得到一个已知的分布。
+
+## 自由度(Degree of freedom, df)
+
+</br>
+
+-   定义一：总体参数估计量中变量值独立自由变化的个数。</br>
+
+-   定义二：自由度是样本容量n减去独立限制因素的个数。</br>
+
+-   定义三：将容量为n的样本的n个随机变量构造成一个随机向量，那么这个向量可以看成是n维空间的一个点，每有一个独立约束条件，则向量的自由维度减1。( Fisher, R )</br>
+
+-   若存在两个变量 a,b,且条件是a+b=1,此时其中一个数 a 已知,另一个数 (b = 1 - a)会依赖 a 的值变化而变化，则这组数的自由度df 为1。
+
+## 自由度(Degree of freedom, df)
+
+</br>
+
+-   估计总体的方差$\sigma^2$时所使用的统计量是样本的方差，须用到样本平均数$\bar{X}$来计算。</br>
+
+-   在抽样完成后，大小为n的样本中只要n-1个数确定了，第n个数的值就只有一个取值，能使样本满足均值为$\bar{X}$。即样本中只有n-1个数可以自由变化，只要确定了这n-1个数，方差也就确定了。</br>
+
+-   平均数$\bar{X}$就相当于一个限制条件，由于加了这个限制条件，样本方差的自由度为n-1。
+
+## 
+
+![](images/image-2120342143.png){fig-align="center"}
+
+$$n=6$$</br>
+
+<center>样本分布比正态分布更离散</center>
+
+## t分布
+
+</br>
+
+-   当数据遵循钟形曲线并且总体方差未知时，数据的分布为t分布</br>
+
+-   t分布的方差基于数据的自由度
+
+## t分数
+
+</br>
+
+-   $t(df)$
+
+-   t分数等于偏离t分布的平均值的标准差的数量
+
+$$t = \frac{\bar{X}-\mu}{s_{\bar{X}}} =  \frac{\bar{X}-\mu}{\frac{s}{\sqrt{n}}} $$ $$df = n-1$$
+
+## 
+
+![](images/image-1085647376.png){fig-align="center"}
+
+## 
+
+![](images/image-885211155.png){fig-align="center"}
+
+$$n=45$$
+
+## 
+
+$$f(t)=\frac{\Gamma(\frac{v+1}{2})}{\sqrt{v\pi}\Gamma(\frac{v}{2})}(1+\frac{t^2}{v})^{\frac{-(v+1)}{2}}$$
+
+![](images/image-917184545.png){fig-align="center"}
+
+## t分布 vs 正态分布
+
+共同点</br>
+
+-   t分布有平滑的形状</br>
+
+-   t分布是对称的。如果沿着平均值折叠，每一边都是相同的</br>
+
+-   t分布均值为0
+
+## t分布 vs 正态分布
+
+不同点</br>
+
+-   t分布受样本大小的影响</br>
+
+-   随着样本容量增加，t分布逐渐接近正态分布</br>
+
+-   正态分布假定一致总体方差已知</br>
+
+-   t分布可用于小样本和总体方差未知的情况
+
+## 
+
+</br></br></br></br>
+
+<center>
+
+<h2>总体平均数的区间估计</h2>
+
+</center>
+
+## 
+
+![](images/image-639430564.png){fig-align="center"}
+
+## 
+
+![](images/image-1646018272.png){fig-align="center"}
+
+## 
+
+![](images/image-1640563786.png){fig-align="center"}
+
+## 
+
+![](images/image-1694253773.png){fig-align="center"}
+
+## 
+
+![](images/image-557073223.png){fig-align="center"}
+
+## 
+
+![](images/image-1774112600.png){fig-align="center"}
+
+## 
+
+![](images/image-1580845356.png){fig-align="center"}
+
+## 
+
+![](images/image-1825186229.png){fig-align="center"}
+
+## 
+
+![](images/image-1225348855.png){fig-align="center"}
+
+## 总体正态分布，总体方差已知
+
+</br>
+
+-   总体正态且总体方差已知时的区间估计
+
+-   样本统计量的标准误$SE = \frac{\sigma}{\sqrt{n}}$
+
+## 
+
+![](images/image-1290639569.png){fig-align="center"}
+
+## 
+
+![](images/image-1124938893.png){fig-align="center"}
+
+## 总体正态分布，总体方差已知
+
+-   总体正态且总体方差已知时的区间估计
+
+-   样本统计量的标准误$SE = \frac{\sigma}{\sqrt{n}}$
+
+$$Z = \frac{\bar{X}-\mu}{\frac{\sigma}{\sqrt{n}}}$$
+
+$$P(\bar{X}-Z_{\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}}<\mu<\bar{X}+Z_{\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}})=1-\alpha$$
+
+## 总体正态分布，总体方差未知
+
+</br>
+
+-   样本量足够大
+
+-   用样本标准差S\_{n-1}作为总体参数$\sigma$的估计值
+
+-   标准误$SE = \frac{s_{n-1}}{\sqrt{n}}$
+
+$$P(\bar{X}-Z_{\frac{\alpha}{2}}\frac{s_{n-1}}{\sqrt{n}}<\mu<\bar{X}+Z_{\frac{\alpha}{2}}\frac{s_{n-1}}{\sqrt{n}})=1-\alpha$$ \## 总体非正态分布，总体方差已知
+
+</br>
+
+-   样本量足够大
+
+-   用样本统计量的标准误$SE = \frac{\sigma}{\sqrt{n}}$
+
+$$P(\bar{X}-Z_{\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}}<\mu<\bar{X}+Z_{\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}})=1-\alpha$$
+
+## 总体非正态分布，总体方差未知
+
+</br>
+
+-   样本量足够大
+
+-   用样本标准差S\_{n-1}作为总体参数$\sigma$的估计值
+
+-   标准误$SE = \frac{s_{n-1}}{\sqrt{n}}$
+
+$$P(\bar{X}-Z_{\frac{\alpha}{2}}\frac{s_{n-1}}{\sqrt{n}}<\mu<\bar{X}+Z_{\frac{\alpha}{2}}\frac{s_{n-1}}{\sqrt{n}})=1-\alpha$$
+
+## 总体正态分布，总体方差未知
+
+</br>
+
+-   小样本
+
+-   用样本标准差$s_{n-1}$作为总体参数$\sigma$的估计值
+
+-   标准误$SE = \frac{s_{n-1}}{\sqrt{n}}$
+
+$$P(\bar{X}-t_{\frac{\alpha}{2}}\frac{s_{n-1}}{\sqrt{n}}<\mu<\bar{X}+t_{\frac{\alpha}{2}}\frac{s_{n-1}}{\sqrt{n}})=1-\alpha$$
+
+## 
+
+</br></br></br></br>
+
+<center>从某小学三年级随机抽取12名学生，其阅读能力得分为28，32，36，22，34，30，33，25，31，33，29，26。假定小学三年级学生的阅读能力是正态分布，试估计该校三年级学生阅读能力总体平均数95％和99％的置信区间。</center>
+
+# 样本标准差和方差的抽样分布？
+
+## 样本标准差的抽样分布
+
+![](images/image-1867564992.png){fig-align="center"}
+
+## 
+
+![](images/image-1167759315.png){fig-align="center"}
+
+## 
+
+![](images/image-1540575457.png){fig-align="center"}
+
+## 
+
+![](images/image-1937647065.png){fig-align="center"}
+
+## 
+
+![](images/image-619118872.png){fig-align="center"}
+
+## 
+
+![](images/image-1957364549.png){fig-align="center"}
+
+## 方差的抽样分布
+
+![](images/image-2062229332.png){fig-align="center"}
+
+## 
+
+![](images/image-1722682065.png){fig-align="center"}
+
+## 
+
+![](images/image-2120249795.png){fig-align="center"}
+
+## 
+
+![](images/image-1466186142.png){fig-align="center"}
+
+## 
+
+![](images/image-258878540.png){fig-align="center"}
+
+## 
+
+![](images/image-1739151230.png){fig-align="center"}
+
+## 
+
+</br></br></br></br>
+
+<center>
+
+<h2>当样本量足够大时，样本标准差和方差的抽样分布为正态分布或渐进正态分布</h2>
+
+</center>
+
+## 
+
+![](images/image-356215291.png){fig-align="center"}
+
+## 
+
+![](images/image-456306899.png){fig-align="center"}
+
+## 
+
+</br></br></br></br>
+
+<center>
+
+<h2>当样本量较小时，样本标准差和方差的抽样分布不服从正态分布或渐进正态分布</h2>
+
+</center>
+
+## 
+
+</br></br></br></br>
+
+<center>
+
+<h2>
+
+当样本量较小时，样本标准差和方差的抽样分布不服从正态分布或渐进正态分布</br>
+
+对于这种非正态分布，我们该如何处理呢？
+
+</h2>
+
+</center>
+
+# 卡方分布
+
+## 
+
+![](images/image-300512063.png){fig-align="center"}
+
+## 
+
+![](images/image-1610257321.png){fig-align="center"}
+
+## 
+
+![](images/image-1605021474.png){fig-align="center"}
+
+## 卡方分布
+
+![](images/image-844093795.png){fig-align="center"}
+
+## 
+
+</br>
+
+-   总体正态$X \sim N(\mu,\sigma^2)$ </br>
+
+-   $Z = \frac{X_i-\mu}{\sigma}$ </br>
+
+-   $Z \sim N(0,1)$ </br>
+
+-   $\sum^{n}_{i=1}Z^2 \sim \chi^2(n)$ </br>
+
+-   即$\sum^{n}_{i=1}(\frac{X_i-\mu}{\sigma})^2 \sim \chi^2(n)$ </br>
+
+-   n为自由度
+
+## 卡方分布的特点
+
+-   $\chi^2$值都是正值 </br>
+
+-   $\chi^2$分布呈正偏态，右端无限延伸，但不与基线相交 </br>
+
+-   $\chi^2$分布随自由度变化形成一族分布，自由度越小，越偏斜；自由度越大，分布形态趋于对称，自由度趋于无穷大时，呈正态分布 </br>
+
+-   $\chi^2$的可加性：几个相互独立的$\chi^2$变量的和仍服从$\chi^2$分布
+
+## 
+
+![](images/image-902068399.png){fig-align="center"}
+
+# F分布
+
+![](images/image-1958213605.png){fig-align="center"}
+
+## 
+
+![](images/image-1738752076.png){fig-align="center"}
+
+## 
+
+![](images/image-617407087.png){fig-align="center"}
+
+## 
+
+</br>
+
+-   设随机变量\$X \sim \chi\_m\^2,Y \sim \chi\_n\^2,且X与Y独立，则称
+
+$F = \frac{\frac{x}{m}}{\frac{Y}{n}}$ 为自由度分别是 m 和 n 的F 变量，其分布称为 m 和 n 的F 分布，记为$F \sim F_{m,n}$
+
+-   $\frac{(n-1)s^2}{\sigma^2} \sim \chi^2(n-1)$
+
+-   $\frac{\frac{s_1^2}{\sigma_1^2}}{\frac{s_2^2}{\sigma_2^2}} \sim F(n_1-1,n_2-1)$
+
+## F分布的特点
+
+</br>
+
+-   非对称分布 </br>
+
+-   F 分布有两个参数，对应的是两个自由度。</br>
+
+-   总体均值$E(F) = \frac{n_2}{n_2-2},其中n_2>2$
+
+-   方差$D(F) = \frac{2n_2^2(n_1+n_2-2)}{n_1(n_2-2)^2(n_2-4)},其中n_2>4$
+
+-   $X \sim F(n_1,n_2), \frac{1}{X} ~ F(n_2, n_1)$
+
+-   $X \sim t(n), X \sim F(1,n)$
+
+## 
+
+![](images/image-1137240832.png){fig-align="center"}
+
+##
+
+![](images/image-1308904529.png){fig-align="center"}
+
+## 总结
+
+- 样本平均数的抽样分布</br>
+      
+      - t分布</br>
+      
+- 样本方差和标准差的抽样分布</br>
+      
+      - $\chi^2$分布</br>
+      
+      - F分布</br>
+      
+- 区间估计的基本步骤</br>
+      
+      - 总体平均数</br>
+      
+      - 总体方差</br>
+      
+      - 两总体方差之比</br>
+      
+      - 两总体均值之差
+
