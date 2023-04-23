@@ -7,7 +7,7 @@
 <link href="Lecture9_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="Lecture9_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="Lecture9_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.2.269">
+  <meta name="generator" content="quarto-1.2.335">
 
   <title>lecture9</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -392,17 +392,17 @@
 
 <p><br><br></p>
 <h1 style="text-align: center">
-<p>08 - 抽样分布与参数估计(2)</p>
+<p>09 - 抽样分布与参数估计(2)</p>
 </h1>
 <h2 style="text-align: center">
-<p>(Sampling Distribution &amp; Parameter Estimation 1)</p>
+<p>(Sampling Distribution &amp; Parameter Estimation 2)</p>
 </h2>
 <p><br><br></p>
 <h3 style="text-align: center">
 <p>Hu Chuan-Peng</p>
 </h3>
 <h3 style="text-align: center">
-<p>2023-04-19</p>
+<p>2023-04-23</p>
 </h3>
 <p><br><br></p>
 </section>
@@ -433,10 +433,10 @@
 <ul>
 <li>某研究者对某假定为正态分布的参数<span class="math inline">\(\mu\)</span>感兴趣并进行了一次实验，估计<span class="math inline">\(\mu\)</span>的93%置信区间为<span class="math inline">\([\hat{\mu}_1\)</span>,<span class="math inline">\(\hat{\mu}_2]\)</span>(即置信度为93%)，则以下结论正确的是
 <ul>
-<li>A. 重复一次实验，<span class="math inline">\(\mu\)</span>落在区间<span class="math inline">\([\hat{\mu}_1\)</span>,<span class="math inline">\(\hat{\mu}_2]\)</span> 之内的概率为93%</li>
-<li>B. 重复一次实验，<span class="math inline">\(\mu\)</span>落在区间<span class="math inline">\([\hat{\mu}_1\)</span>,<span class="math inline">\(\hat{\mu}_2]\)</span> 之外的概率为 7%</li>
-<li>C. 无数次重复实验并估计93%的置信区间<span class="math inline">\([\hat{\mu}_1\)</span>,<span class="math inline">\(\hat{\mu}_2]\)</span>，有93%的置信区间包含<span class="math inline">\(\mu\)</span></li>
-<li>D. 区间(<span class="math inline">\(\hat{\mu}_1\)</span>,<span class="math inline">\(\hat{\mu}_2\)</span>)随着置信度增加而变宽，但与实验样本大小无关</li>
+<li>A. 重复一次实验，<span class="math inline">\(\mu\)</span>落在区间[<span class="math inline">\(\hat{\mu}_1\)</span>, <span class="math inline">\(\hat{\mu}_2\)</span>] 之内的概率为93%</li>
+<li>B. 重复一次实验，<span class="math inline">\(\mu\)</span>落在区间[<span class="math inline">\(\hat{\mu}_1\)</span>, <span class="math inline">\(\hat{\mu}_2\)</span>] 之外的概率为 7%</li>
+<li>C. 无数次重复实验并估计93%的置信区间[<span class="math inline">\(\hat{\mu}_1\)</span>, <span class="math inline">\(\hat{\mu}_2\)</span>]，有93%的置信区间包含<span class="math inline">\(\mu\)</span></li>
+<li>D. 区间(<span class="math inline">\(\hat{\mu}_1\)</span>, <span class="math inline">\(\hat{\mu}_2\)</span>)随着置信度增加而变宽，但与实验样本大小无关</li>
 </ul></li>
 </ul>
 </section>
@@ -544,29 +544,29 @@ n <span class="math inline">\(\rightarrow \infty\)</span>,无论原始总体分�
 <img data-src="images/image-144052562.png" class="r-stretch quarto-figure-center"></section></section>
 <section>
 <section id="t分布" class="title-slide slide level1 center">
-<h1>t分布</h1>
+<h1><em>t</em>分布</h1>
 
 </section>
 <section id="t分布-1" class="slide level2">
-<h2>t分布</h2>
+<h2><em>t</em>分布</h2>
 <p><span class="math display">\[f(t)=\frac{\Gamma(\frac{v+1}{2})}{\sqrt{v\pi}\Gamma(\frac{v}{2})}(1+\frac{t^2}{v})^{\frac{-(v+1)}{2}},v为自由度\]</span></p>
 
 <img data-src="images/image-917184545.png" class="r-stretch quarto-figure-center"></section>
 <section id="t分布的历史" class="slide level2">
-<h2>t分布的历史</h2>
+<h2><em>t</em>分布的历史</h2>
 <p><br></p>
 <ul>
-<li><p>麦芽浆准备发酵的时候，工人们需要得到测量清楚某个给定的瓶中有多少酵母，以便决定用多少液体，它们提取一定量的液体，计量他们所看到的酵母细胞数。这种测量有多精确？<br></p></li>
-<li><p>由于酵母是活的，而细胞不断地分裂和繁殖，真正存在的是单位液体中酵母细胞的概率分布。</p></li>
+<li><p>Guinness 黑啤酿造中如何进行质量控制？<br></p></li>
+<li><p>需要使用少量的实验来对大规模的黑啤量产过程。</p></li>
 </ul>
 </section>
 <section id="t分布的历史-1" class="slide level2">
-<h2>t分布的历史</h2>
+<h2><em>t</em>分布的历史</h2>
 <p><br></p>
 <ul>
-<li><p>戈塞特检验了数据，确定酵母细胞的数量可以用是一种只有 1个参数的特殊分布。<br></p></li>
-<li><p>戈塞特取出一小组数据，算出平均值和标准差估计值，再将二者相除，并将结果绘在图纸上。<br></p></li>
-<li><p>两个参数估计值的比率有一个可以制表的概率分布，不管数据从哪里来，或者标准差的真实值是多少，计算这两个样本估计值的比率，你就可以得到一个已知的分布。</p></li>
+<li><p>戈塞特(William Sealy Gosset) XXX。<br></p></li>
+<li><p>XXX。<br></p></li>
+<li><p>XXX。</p></li>
 </ul>
 </section>
 <section id="自由度degree-of-freedom-df" class="slide level2">
@@ -597,7 +597,7 @@ n <span class="math inline">\(\rightarrow \infty\)</span>,无论原始总体分�
 </center>
 </section>
 <section id="t分布-2" class="slide level2">
-<h2>t分布</h2>
+<h2><em>t</em>分布</h2>
 <p><br></p>
 <ul>
 <li><p>当数据遵循钟形曲线并且总体方差未知时，数据的分布为t分布<br></p></li>
@@ -628,7 +628,7 @@ n <span class="math inline">\(\rightarrow \infty\)</span>,无论原始总体分�
 
 <img data-src="images/image-917184545.png" class="r-stretch quarto-figure-center"></section>
 <section id="t分布-vs-正态分布" class="slide level2">
-<h2>t分布 vs 正态分布</h2>
+<h2><em>t</em>分布 vs 正态分布</h2>
 <p>共同点<br></p>
 <ul>
 <li><p>t分布有平滑的形状<br></p></li>
@@ -637,7 +637,7 @@ n <span class="math inline">\(\rightarrow \infty\)</span>,无论原始总体分�
 </ul>
 </section>
 <section id="t分布-vs-正态分布-1" class="slide level2">
-<h2>t分布 vs 正态分布</h2>
+<h2><em>t</em>分布 vs 正态分布</h2>
 <p>不同点<br></p>
 <ul>
 <li><p>t分布受样本大小的影响<br></p></li>
