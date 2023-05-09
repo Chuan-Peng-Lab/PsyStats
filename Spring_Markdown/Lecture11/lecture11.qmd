@@ -63,7 +63,7 @@ Hu Chuan-Peng
 
 -   
 
-    2.  根据虚无假设𝐻_0所提供的前提条件，选择合适的统计模型；
+    2.  根据虚无假设$𝐻_0$所提供的前提条件，选择合适的统计模型；
 
 -   
 
@@ -109,14 +109,13 @@ Hu Chuan-Peng
 
     4.  基于H0所设定的统计模型，计算检验统计量的值。 $\sigma_{\bar{X}} = \sigma_0/\sqrt{n} = 15/\sqrt{36} = 2.5, \quad Z = (\bar{X} - \mu_0)/\sigma_{\bar{X}} = (105 - 100)/2.5 = 2$
 
-![](images/image2.png){fig-align="center"} 
+![](images/image2.png){fig-align="center"}
 
-
-##
+## 
 
 -   5.做出决策。 单侧检验的临界点 $𝑍_{0.05}=1.645， 𝑍 = 2 > 𝑍_0.05，$
 
-在α = 0.05显著性水平上拒绝虚无假设，即 𝜇_𝑋 ̅>𝜇_0。
+在α = 0.05显著性水平上拒绝虚无假设，即 𝜇_𝑋 ̅\>𝜇_0。
 
 # 1 p 值及其计算
 
@@ -208,7 +207,7 @@ Hu Chuan-Peng
 
 ## p 值
 
--   \$p-value :𝑝=𝑃(𝑑𝑎𝑡𝑎\| 𝐻_0) \$
+-   $p-value :𝑝=𝑃(𝑑𝑎𝑡𝑎| 𝐻_0)$
 
 -   𝑝 = 𝑃(该女士正确判断8杯奶茶或以上 \|"假设该女士完全没有分辨能力") = 0.0547
 
@@ -228,13 +227,15 @@ Hu Chuan-Peng
 
 -   否定域：
 
-    -   在假设检验中，根据𝐻_0建立的概率分布模型，由显著性水平α结合这些概率分布模型确定数轴上某些区间，检验统计量在其中出现的概率小于或等于α，则称这些区间为否定域。
+    -   在假设检验中，根据$𝐻_0$建立的概率分布模型，由显著性水平α结合这些概率分布模型确定数轴上某些区间，检验统计量在其中出现的概率小于或等于α，则称这些区间为否定域。
 
     -   否定域的界限为临界值。
 
 ## 
 
 ![](images/image6.png){fig-align="center"}
+
+## 
 
 ![](images/image5.png){fig-align="center"}
 
@@ -257,27 +258,27 @@ Hu Chuan-Peng
 
 -   "假设原假设为真，我得到当前结果的概率是多少？"
 
-    -   $𝑝=𝑃(𝑑𝑎𝑡𝑎 | 𝐻_0) $
+    -   $p=𝑃(data|𝐻_0)$
 
-    -   𝑝=𝑃(该女士正确判断8杯及以上|"假设该女士完全没有分辨能力")
+    -   𝑝=𝑃(该女士正确判断8杯及以上\|"假设该女士完全没有分辨能力")
 
 -   "基于当前结果，原假设为真的概率是多少？"
 
     -   we can't get : $𝑃(𝐻_0 |𝑑𝑎𝑡𝑎)$
 
-        -   𝑃 ("该女士完全没有分辨能力" | 该女士正确判断8杯及以上)
+        -   𝑃 ("该女士完全没有分辨能力" \| 该女士正确判断8杯及以上)
 
 ## p 值
 
--   We can get : $𝑝=𝑃(𝑑𝑎𝑡𝑎| 𝐻_0) $
+-   We can get : $𝑝=𝑃(𝑑𝑎𝑡𝑎| 𝐻_0)$
 
-    -   𝑝=𝑃(该女士正确判断8杯及以上|"假设该女士完全没有分辨能力")
+    -   𝑝=𝑃(该女士正确判断8杯及以上\|"假设该女士完全没有分辨能力")
 
--   we can't get : $𝑃(𝐻_0 |𝑑𝑎𝑡𝑎) $
+-   we can't get : $𝑃(𝐻_0 |𝑑𝑎𝑡𝑎)$
 
-    -   𝑃 ("该女士完全没有分辨能力"| 该女士正确判断8杯及以上)
+    -   𝑃 ("该女士完全没有分辨能力"\| 该女士正确判断8杯及以上)
 
--   $𝑃(𝑑𝑎𝑡𝑎| 𝐻_0)≠ 𝑃(𝐻_0|𝑑𝑎𝑡𝑎) $
+-   $𝑃(𝑑𝑎𝑡𝑎| 𝐻_0)≠ 𝑃(𝐻_0|𝑑𝑎𝑡𝑎)$
 
 ## p 值的计算
 
@@ -325,13 +326,93 @@ Hu Chuan-Peng
 
 # p 值分布直方图
 
-## 
+## 模拟(p值分布是如何产生的)
 
-![](images/image11.png){fig-align="center"}
+```{r}
+# load tidyverse using pacman::p_load
+pacman::p_load("tidyverse")
+```
+### 抽样分布
+```{r}
+# 设定参数
+mu <- 100 # 总体均值
+sigma <- 15 # 总体标准差
 
-## 
 
-![](images/image12.png){fig-align="center"}
+# 设置样本大小和模拟次数
+sample_size <- 50
+n_sims <- 10000
+
+# 抽取样本，计算平均值，并存储结果
+results <- NULL
+for(i in 1:n_sims){
+  sample <- rnorm(sample_size, mu, sigma) # 从二项分布中抽取样本
+  sample_mean <- mean(sample) # 计算样本平均值
+  results <- c(results, sample_mean) # 存储结果
+}
+results <- data.frame(results)
+
+# 绘制直方图
+ggplot(results, 
+       aes(x = results)) +
+  geom_histogram(alpha = 0.5, 
+                 aes(y = ..density..),
+                 color = 'black',
+                 bins = 30,
+                 fill = 'pink',
+                 #binwidth = 1, 
+                 position = "identity") +
+  labs(x = "x", 
+       y = "密度") +
+  theme_minimal()
+```
+# z值分布
+```{r}
+results$results <- (results$results - mean(results$results))/sd(results$results)
+# 绘制直方图
+ggplot(results, 
+       aes(x = results)) +
+  geom_histogram(alpha = 0.5, 
+                 aes(y = ..density..),
+                 color = 'black',
+                 bins = 30,
+                 fill = 'pink',
+                 #binwidth = 1, 
+                 position = "identity") +
+  labs(x = "x", 
+       y = "密度") +
+  geom_vline(xintercept = -1.96, linetype = "dashed") +
+  geom_vline(xintercept = 1.96, linetype = "dashed")+
+  theme_minimal()
+```
+
+
+# p值分布(双侧0.05)
+
+注：由于坐标轴中，0表示[-0.025-0.025],1表示[0.975-1.025]，但p值分布的范围为0-1，所以两侧bin的density小只是图示原因，实际p值近似均匀分布
+```{r}
+p_values <-  pnorm(results$results, mean = 0, sd = 1)
+ggplot(data.frame(p_values), aes(x = p_values)) + 
+  geom_histogram(aes(y = ..density..),binwidth = 0.05, fill = "pink", color = 'black',alpha = 0.5,) + 
+  labs(title = "P-value Distribution", x = "P-value", y = "Density")+
+  geom_vline(xintercept = 0.025, linetype = "dashed") +
+  geom_vline(xintercept = 0.975, linetype = "dashed") +
+  theme_minimal()
+```
+# p值分布(单侧0.05)
+
+```{r}
+p_values <-  pnorm(results$results, mean = 0, sd = 1)
+ggplot(data.frame(p_values), aes(x = p_values)) + 
+  geom_histogram(aes(y = ..density..),binwidth = 0.05, fill = "pink", color = 'black',alpha = 0.5,) + 
+  labs(title = "P-value Distribution", x = "P-value", y = "Density")+
+  geom_vline(xintercept = 0.05, linetype = "dashed") +
+  theme_minimal()
+```
+
+
+
+
 
 ## 
 
@@ -502,7 +583,7 @@ Hu Chuan-Peng
 -   
 
     | **Survey**                          | **Most recent time period\*** | **No. of. articles w/ errors** | **Total No. of articles** |
-    |-------------------------------------|-------------------------------|--------------------------------|---------------------------|
+    |--------------------|------------------|------------------|------------------|
     | **Schatz P, et** **al** **(2005).** | **2001-2004**                 | **81**                         | **170**                   |
     | **Fidler F, at al (2006).**         | **2005**                      | **42**                         | **100**                   |
     | **Hoekstra R, (2006).**             | **2002-2004**                 | **145**                        | **259**                   |
@@ -598,13 +679,265 @@ Hu Chuan-Peng
 
 ![](images/image28.png){fig-align="center"}
 
+## 模拟(p-hacking的例子)
+
+收集到50个被试时进行分析，若p>0.05,则继续搜集
+```{r}
+# 设定参数
+mu <- 100 # 总体均值
+sigma <- 15 # 总体标准差
+
+
+# 设置样本大小和模拟次数
+sample_size <- 50
+n_sims <- 50000
+
+# 抽取样本，计算平均值，并存储结果
+results <- NULL
+for(i in 1:n_sims){
+  sample <- rnorm(sample_size, mu, sigma) # 从二项分布中抽取样本
+  sample_mean <- mean(sample) # 计算样本平均值
+  results <- c(results, sample_mean) # 存储结果
+}
+results <- data.frame(results)
+
+
+p_values <-  pnorm(results$results, mean = mean(results$results), sd = sd(results$results))
+results$p_value <- p_values
+results1 <- filter(results,p_value <=0.05)
+ggplot(data.frame(p_values), aes(x = p_values)) + 
+  geom_histogram(aes(y = ..density..),binwidth = 0.01, fill = "pink", color = 'black',alpha = 0.5,) + 
+  labs(title = "P-value Distribution", x = "P-value", y = "Density")+
+  geom_vline(xintercept = 0.05, linetype = "dashed") +
+  theme_minimal()
+```
+##
+
+收集到100个被试的情况，p<0.05的占比增大
+```{r}
+# 设定参数
+mu <- 100 # 总体均值
+sigma <- 15 # 总体标准差
+
+
+# 设置样本大小和模拟次数
+sample_size <- 100
+n_sims <- 50000-nrow(results1) 
+
+# 抽取样本，计算平均值，并存储结果
+results <- NULL
+for(i in 1:n_sims){
+  sample <- rnorm(sample_size, mu, sigma) # 从二项分布中抽取样本
+  sample_mean <- mean(sample) # 计算样本平均值
+  results <- c(results, sample_mean) # 存储结果
+}
+results <- data.frame(results)
+
+
+p_values <-  pnorm(results$results, mean = mean(results$results), sd = sd(results$results))
+results$p_value <- p_values
+results <- rbind(results,results1)
+
+p_values <- results$p_value
+
+
+ggplot(data.frame(p_values), aes(x = p_values)) + 
+  geom_histogram(aes(y = ..density..),binwidth = 0.01, fill = "pink", color = 'black',alpha = 0.5,) + 
+  labs(title = "P-value Distribution", x = "P-value", y = "Density")+
+  geom_vline(xintercept = 0.05, linetype = "dashed") +
+  theme_minimal()
+
+```
+
 ## 
 
--   在实验开始之前，确定你大约需要进行几次分析（比如打算收集50人数据，准备在10人、20人、30人、40人和50人时各分析一次，哪次显著了就停止），根据分析的次数，来确定α的阈限取多少（如果是5次的话，大约就需要定为0.0158）。根据模拟的数据来看，如果进行5次分析仍然使用0.05作为阈限的话，一类错误会变高
+-   在实验开始之前，确定你大约需要进行几次分析（比如打算收集50人数据，准备在10人、20人、30人、40人和50人时各分析一次，哪次显著了就停止），根据分析的次数，来确定α的阈限取多少。
 
-## 
 
--   在实验开始之前，确定你大约需要进行几位分析（比如打算收集50人数据，准备在10人、20人、30人、40人和50人时各分析一次，哪次显著了就停止），根据分析的次数，来确定α的阈限取多少（如果是5次的话，大约就需要定为0.0158）。根据模拟的数据来看，如果进行5次分析仍然使用0.05作为阈限的话，一类错误会变高
+## 模拟(p-hacking的例子)
+
+在搜集到10人时分析
+```{r}
+# 设定参数
+mu <- 100 # 总体均值
+sigma <- 15 # 总体标准差
+
+
+# 设置样本大小和模拟次数
+sample_size <- 10
+n_sims <- 50000
+
+# 抽取样本，计算平均值，并存储结果
+results <- NULL
+for(i in 1:n_sims){
+  sample <- rnorm(sample_size, mu, sigma) # 从二项分布中抽取样本
+  sample_mean <- mean(sample) # 计算样本平均值
+  results <- c(results, sample_mean) # 存储结果
+}
+results <- data.frame(results)
+
+
+p_values <-  pnorm(results$results, mean = mean(results$results), sd = sd(results$results))
+results$p_value <- p_values
+results1 <- filter(results,p_value <=0.05)
+ggplot(data.frame(p_values), aes(x = p_values)) + 
+  geom_histogram(aes(y = ..density..),binwidth = 0.01, fill = "pink", color = 'black',alpha = 0.5,) + 
+  labs(title = "P-value Distribution", x = "P-value", y = "Density")+
+  geom_vline(xintercept = 0.05, linetype = "dashed") +
+  theme_minimal()
+```
+##
+
+在搜集到20人时分析,此时p<0.05的占比为9.64%
+```{r}
+# 设定参数
+mu <- 100 # 总体均值
+sigma <- 15 # 总体标准差
+
+
+# 设置样本大小和模拟次数
+sample_size <- 20
+n_sims <- 50000-nrow(results1) 
+
+# 抽取样本，计算平均值，并存储结果
+results <- NULL
+for(i in 1:n_sims){
+  sample <- rnorm(sample_size, mu, sigma) # 从二项分布中抽取样本
+  sample_mean <- mean(sample) # 计算样本平均值
+  results <- c(results, sample_mean) # 存储结果
+}
+results <- data.frame(results)
+
+
+p_values <-  pnorm(results$results, mean = mean(results$results), sd = sd(results$results))
+results$p_value <- p_values
+results <- rbind(results,results1)
+
+p_values <- results$p_value
+results2 <- filter(results,p_value <=0.05)
+
+ggplot(data.frame(p_values), aes(x = p_values)) + 
+  geom_histogram(aes(y = ..density..),binwidth = 0.01, fill = "pink", color = 'black',alpha = 0.5,) + 
+  labs(title = "P-value Distribution", x = "P-value", y = "Density")+
+  geom_vline(xintercept = 0.05, linetype = "dashed") +
+  theme_minimal()
+```
+##
+
+在搜集到30人时分析,此时p<0.05的占比为14.12%
+```{r}
+# 设定参数
+mu <- 100 # 总体均值
+sigma <- 15 # 总体标准差
+
+
+# 设置样本大小和模拟次数
+sample_size <- 30
+n_sims <- 50000-nrow(results2) 
+
+# 抽取样本，计算平均值，并存储结果
+results <- NULL
+for(i in 1:n_sims){
+  sample <- rnorm(sample_size, mu, sigma) # 从二项分布中抽取样本
+  sample_mean <- mean(sample) # 计算样本平均值
+  results <- c(results, sample_mean) # 存储结果
+}
+results <- data.frame(results)
+
+
+p_values <-  pnorm(results$results, mean = mean(results$results), sd = sd(results$results))
+results$p_value <- p_values
+results <- rbind(results,results2)
+
+p_values <- results$p_value
+results3 <- filter(results,p_value <=0.05)
+
+ggplot(data.frame(p_values), aes(x = p_values)) + 
+  geom_histogram(aes(y = ..density..),binwidth = 0.01, fill = "pink", color = 'black',alpha = 0.5,) + 
+  labs(title = "P-value Distribution", x = "P-value", y = "Density")+
+  geom_vline(xintercept = 0.05, linetype = "dashed") +
+  theme_minimal()
+```
+##
+
+在搜集到40人时分析,此时p<0.05的占比为18.48%,
+
+```{r}
+# 设定参数
+mu <- 100 # 总体均值
+sigma <- 15 # 总体标准差
+
+
+# 设置样本大小和模拟次数
+sample_size <- 40
+n_sims <- 50000-nrow(results3) 
+
+# 抽取样本，计算平均值，并存储结果
+results <- NULL
+for(i in 1:n_sims){
+  sample <- rnorm(sample_size, mu, sigma) # 从二项分布中抽取样本
+  sample_mean <- mean(sample) # 计算样本平均值
+  results <- c(results, sample_mean) # 存储结果
+}
+results <- data.frame(results)
+
+
+p_values <-  pnorm(results$results, mean = mean(results$results), sd = sd(results$results))
+results$p_value <- p_values
+results <- rbind(results,results3)
+
+p_values <- results$p_value
+results4 <- filter(results,p_value <=0.05)
+
+ggplot(data.frame(p_values), aes(x = p_values)) + 
+  geom_histogram(aes(y = ..density..),binwidth = 0.01, fill = "pink", color = 'black',alpha = 0.5,) + 
+  labs(title = "P-value Distribution", x = "P-value", y = "Density")+
+  geom_vline(xintercept = 0.05, linetype = "dashed") +
+  theme_minimal()
+```
+##
+
+ - 在搜集到50人时分析,此时p<0.05的占比为22.05%
+
+ - 根据模拟的数据来看，如果进行5次分析仍然使用0.05作为阈限的话，一类错误会变高
+ 
+ - $\alpha$ 应为0.01158 
+
+
+```{r}
+# 设定参数
+mu <- 100 # 总体均值
+sigma <- 15 # 总体标准差
+
+
+# 设置样本大小和模拟次数
+sample_size <- 50
+n_sims <- 50000-nrow(results4) 
+
+# 抽取样本，计算平均值，并存储结果
+results <- NULL
+for(i in 1:n_sims){
+  sample <- rnorm(sample_size, mu, sigma) # 从二项分布中抽取样本
+  sample_mean <- mean(sample) # 计算样本平均值
+  results <- c(results, sample_mean) # 存储结果
+}
+results <- data.frame(results)
+
+
+p_values <-  pnorm(results$results, mean = mean(results$results), sd = sd(results$results))
+results$p_value <- p_values
+results <- rbind(results,results4)
+
+p_values <- results$p_value
+results5 <- filter(results,p_value <=0.05)
+
+ggplot(data.frame(p_values), aes(x = p_values)) + 
+  geom_histogram(aes(y = ..density..),binwidth = 0.01, fill = "pink", color = 'black',alpha = 0.5,) + 
+  labs(title = "P-value Distribution", x = "P-value", y = "Density")+
+  geom_vline(xintercept = 0.05, linetype = "dashed") +
+  theme_minimal()
+```
+
 
 ## 
 
