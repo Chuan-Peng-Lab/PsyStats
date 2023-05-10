@@ -7,7 +7,7 @@
 <link href="lecture11_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="lecture11_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="lecture11_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.2.269">
+  <meta name="generator" content="quarto-1.2.335">
 
   <title>lecture11</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -331,7 +331,7 @@
 <p>11 - 假设检验(2)</p>
 </h1>
 <h2 style="text-align: center">
-<p>(Hypothesis testing 2)</p>
+<p>(Hypothesis testing 2: Understand <em>p</em>-value)</p>
 </h2>
 <p><br><br></p>
 <h3 style="text-align: center">
@@ -347,16 +347,12 @@
 <p><br></p>
 <ul>
 <li><p>置信区间与假设检验(Confidence interval and hypothesis testing)</p></li>
-<li><p>假设检验原理(Hypothesis testing principle)</p></li>
-<li><p>零假设与备择假设(Null Hypothesisand alternative hypothesis)</p></li>
-<li><p>双侧检验与单侧检验(two-sided and one-sided test)</p></li>
-<li><p>假设检验的基本步骤(basic steps)</p></li>
+<li><p>假设检验原理(how hypothesis testing works)</p></li>
 </ul>
 </section>
 <section id="假设检验的步骤" class="slide level2">
-<h2>假设检验的步骤</h2>
+<h2>假设检验的步骤:</h2>
 <ul>
-<li><p>假设检验步骤</p></li>
 <li><ol type="1">
 <li>提出假设；</li>
 </ol></li>
@@ -409,8 +405,9 @@
 <h2></h2>
 <ul>
 <li><ol start="4" type="1">
-<li>基于H0所设定的统计模型，计算检验统计量的值。 <span class="math inline">\(\sigma_{\bar{X}} = \sigma_0/\sqrt{n} = 15/\sqrt{36} = 2.5, \quad Z = (\bar{X} - \mu_0)/\sigma_{\bar{X}} = (105 - 100)/2.5 = 2\)</span></li>
-</ol></li>
+<li>基于H0所设定的统计模型，计算检验统计量的值。 <span class="math inline">\(\sigma_{\bar{X}} = \sigma_0/\sqrt{n} = 15/\sqrt{36} = 2.5\)</span>,</li>
+</ol>
+<span class="math inline">\(\quad Z = (\bar{X} - \mu_0)/\sigma_{\bar{X}} = (105 - 100)/2.5 = 2\)</span></li>
 </ul>
 
 <img data-src="images/image2.png" class="r-stretch quarto-figure-center"></section>
@@ -419,11 +416,11 @@
 <ul>
 <li>5.做出决策。 单侧检验的临界点 <span class="math inline">\(𝑍_{0.05}=1.645， 𝑍 = 2 &gt; 𝑍_0.05，\)</span></li>
 </ul>
-<p>在α = 0.05显著性水平上拒绝虚无假设，即 𝜇_𝑋&nbsp;̅&gt;𝜇_0。</p>
+<p>在α = 0.05显著性水平上拒绝虚无假设，即 <span class="math inline">\(\mu_{\bar{x}} &gt; \mu_0\)</span>。</p>
 </section>
 <section>
 <section id="p-值及其计算" class="title-slide slide level1 center">
-<h1>1 p 值及其计算</h1>
+<h1>1. <em>p</em> 值及其计算</h1>
 
 </section>
 <section id="基本步骤-1" class="slide level2">
@@ -431,7 +428,7 @@
 <ul>
 <li><p>Case 1:</p></li>
 <li><p>正态分布</p></li>
-<li><p>Starndard error (SE) : <span class="math inline">\(\sigma_{\bar{X}} = \sigma_0/\sqrt{n} = 15/\sqrt{36} = 2.5, \quad Z = (\bar{X} - \mu_0)/\sigma_{\bar{X}} = (105 - 100)/2.5 = 2\)</span></p></li>
+<li><p>Standard error (SE) : <span class="math inline">\(\sigma_{\bar{X}} = \sigma_0/\sqrt{n} = 15/\sqrt{36} = 2.5, \quad Z = (\bar{X} - \mu_0)/\sigma_{\bar{X}} = (105 - 100)/2.5 = 2\)</span></p></li>
 </ul>
 
 <img data-src="images/image2.png" class="r-stretch quarto-figure-center"></section>
@@ -486,10 +483,10 @@
 <h2></h2>
 <ul>
 <li><ol start="3" type="1">
-<li>规定显著性水平α</li>
+<li>规定显著性水平<span class="math inline">\(\alpha\)</span></li>
 </ol>
 <ul>
-<li>α = 0.05，则如果该女士正确判断?杯奶茶后，可以拒绝<span class="math inline">\(H_0\)</span></li>
+<li><span class="math inline">\(\alpha\)</span> = 0.05，则如果该女士正确判断?杯奶茶后，可以拒绝<span class="math inline">\(H_0\)</span></li>
 </ul></li>
 </ul>
 </section>
@@ -518,13 +515,13 @@
 <li>做出决策。</li>
 </ol>
 <ul>
-<li><p>𝛼 = 0.05</p></li>
+<li><p><span class="math inline">\(\alpha\)</span> = 0.05</p></li>
 <li><p>P (x &gt;= 8 | n = 10, p = .5) = 0.0547</p></li>
 </ul></li>
 </ul>
 </section>
 <section id="p-值" class="slide level2">
-<h2>p 值</h2>
+<h2><em>p</em> 值</h2>
 <ul>
 <li><p><span class="math inline">\(p-value :𝑝=𝑃(𝑑𝑎𝑡𝑎| 𝐻_0)\)</span></p></li>
 <li><p>𝑝 = 𝑃(该女士正确判断8杯奶茶或以上 |“假设该女士完全没有分辨能力”) = 0.0547</p></li>
@@ -587,15 +584,15 @@
 </table>
 </section>
 <section id="p-值-1" class="slide level2">
-<h2>p 值</h2>
+<h2><em>p</em> 值</h2>
 <ul>
-<li><p>p值衡量观察到的结果是否可归因于偶然。</p></li>
+<li><p><em>p</em>值衡量观察到的结果是否可归因于偶然。</p></li>
 <li><p>不能给出期望的答案:假设是正确的概率是多少?</p></li>
 <li><p>这些可能性取决于结果有多强，最重要的是，首先取决于假设的合理性。</p></li>
 </ul>
 </section>
 <section id="p-值-2" class="slide level2">
-<h2>p 值</h2>
+<h2><em>p</em> 值</h2>
 <ul>
 <li><p>“假设原假设为真，我得到当前结果的概率是多少？”</p>
 <ul>
@@ -612,7 +609,7 @@
 </ul>
 </section>
 <section id="p-值-3" class="slide level2">
-<h2>p 值</h2>
+<h2><em>p</em> 值</h2>
 <ul>
 <li><p>We can get : <span class="math inline">\(𝑝=𝑃(𝑑𝑎𝑡𝑎| 𝐻_0)\)</span></p>
 <ul>
@@ -626,7 +623,7 @@
 </ul>
 </section>
 <section id="p-值的计算" class="slide level2">
-<h2>p 值的计算</h2>
+<h2><em>p</em> 值的计算</h2>
 <ul>
 <li><p>正态分布</p></li>
 <li><p>左侧检验的P值为检验统计量X 小于样本统计值C 的概率：</p>
@@ -640,7 +637,7 @@
 </ul>
 </section>
 <section id="p-值的计算-1" class="slide level2">
-<h2>p 值的计算</h2>
+<h2><em>p</em> 值的计算</h2>
 <ul>
 <li><p>正态分布</p>
 <ul>
@@ -681,11 +678,11 @@
 <img data-src="images/image10.png" class="r-stretch quarto-figure-center"></section></section>
 <section>
 <section id="p-值分布直方图" class="title-slide slide level1 center">
-<h1>p 值分布直方图</h1>
+<h1><em>p</em> 值分布直方图</h1>
 
 </section>
 <section id="模拟p值分布是如何产生的" class="slide level2">
-<h2>模拟(p值分布是如何产生的)</h2>
+<h2>模拟(<em>p</em>值分布是如何产生的)</h2>
 <div class="cell">
 
 </div>
@@ -698,7 +695,7 @@
 <img data-src="lecture11_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section>
 
 <section id="p值分布双侧0.05" class="title-slide slide level1 center">
-<h1>p值分布(双侧0.05)</h1>
+<h1><em>p</em>值分布(双侧0.05)</h1>
 <p>注：由于坐标轴中，0表示[-0.025-0.025],1表示[0.975-1.025]，但p值分布的范围为0-1，所以两侧bin的density小只是图示原因，实际p值近似均匀分布</p>
 
 <img data-src="lecture11_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"></section>
@@ -746,8 +743,8 @@
 <li>Nuzzo,2001,Nature</li>
 </ul>
 </section>
-<section id="p-值的使用" class="slide level2">
-<h2>p 值的使用</h2>
+<section id="p值的使用" class="slide level2">
+<h2><em>p</em>值的使用</h2>
 
 <img data-src="images/image15.png" class="r-stretch quarto-figure-center"><ul>
 <li>Masicampo,2012,The Quarterly Journal of Experimental Psychology</li>
@@ -777,7 +774,7 @@
 <section id="section-30" class="slide level2">
 <h2></h2>
 <ul>
-<li>Chavalarias等人基于超过1200万篇MEDLINE摘要和80万篇PubMed Central（PMC）全文（包含摘要）的自动文本挖掘，系统阐述了过去25年（1990-2015年）生物医学文献中的p 值变化。</li>
+<li>Chavalarias等人基于超过1200万篇MEDLINE摘要和80万篇PubMed Central（PMC）全文（包含摘要）的自动文本挖掘，系统阐述了过去25年（1990-2015年）生物医学文献中的<em>p</em> 值变化。</li>
 </ul>
 
 <img data-src="images/image19.png" class="r-stretch quarto-figure-center"><ul>
@@ -794,7 +791,7 @@
 <section id="课堂练习" class="slide level2">
 <h2>课堂练习</h2>
 <ul>
-<li><p>南京某创造力培训班声称他们培训非常有效，对经过培训后的36个6岁幼儿平均创造力潜质进行测量。经过计算p = 0.01, 以下是 6 个关于上述情境的 p 值的推断，请判断正误:</p></li>
+<li><p>南京某创造力培训班声称他们培训非常有效，对经过培训后的36个6岁幼儿平均创造力潜质进行测量。经过计算<em>p</em> = 0.01, 以下是 6 个关于上述情境的 <em>p</em> 值的推断，请判断正误:</p></li>
 <li><p>A.你完全证否了零假设;</p></li>
 <li><p>B.你发现了零假设为真的概率;</p></li>
 <li><p>C.你完全证明实验假设;</p></li>
@@ -805,7 +802,7 @@
 </section></section>
 <section>
 <section id="p-值的误用" class="title-slide slide level1 center">
-<h1>2 p 值的误用</h1>
+<h1>2. <em>p</em> 值的误用</h1>
 
 </section>
 <section id="fallacy-1" class="slide level2">
@@ -826,8 +823,8 @@
 <li><p>D.你可推断出实验假设为真的概率;</p></li>
 <li><p>E.你可以得知, 你拒绝零假设时犯错的概率;</p>
 <ul>
-<li>p值的计算前提是假设零假设为真，但是它不是假设成立的合理概率。</li>
-<li>p值只是表明数据符合零假设代表统计模型的程度。因此， p = 0.01表明数据与统计模型(包括所检验假设)预测的数据不太接近。</li>
+<li><em>p</em>值的计算前提是假设零假设为真，但是它不是假设成立的合理概率。</li>
+<li><em>p</em>值只是表明数据符合零假设代表统计模型的程度。因此，<em>p</em> = 0.01表明数据与统计模型(包括所检验假设)预测的数据不太接近。</li>
 </ul></li>
 </ul>
 </section>
@@ -837,7 +834,7 @@
 <li><p>F.如果重复多次实验, 99%实验结果显著。</p></li>
 <li><p>“Replication delusion”: one minus the p-value describes the probability of replication.</p></li>
 <li><p>如果人们认为统计显著性是能够区分H0为真与H1为真的阈值，则继而认为统计显着的结果更容易被复制。</p></li>
-<li><p>事实上，统计显著性仅是对统计检验结果是否符合H0模型程度的量化，而无法对产生数据的模型进行真正的解释，也无从预测重复实验的概率。</p></li>
+<li><p>事实上，统计显著性仅是对统计检验结果是否符合<span class="math inline">\(H_0\)</span>模型程度的量化，而无法对产生数据的模型进行真正的解释，也无从预测重复实验的概率。</p></li>
 </ul>
 </section>
 <section id="fallacy-3-1" class="slide level2">
@@ -846,7 +843,7 @@
 <li><p>F.如果重复多次实验, 99%实验结果显著。</p>
 <ul>
 <li><p>“Replication delusion”: one minus the p-value describes the probability of replication.</p></li>
-<li><p>p 值对样本大小和潜在效应大小以及实验和分析中出现的自然随机变化很敏感。即使重复实验，完全随机误差也会导致 p 值变化几个数量级。</p></li>
+<li><p><em>p</em> 值对样本大小和潜在效应大小以及实验和分析中出现的自然随机变化很敏感。即使重复实验，完全随机误差也会导致 <em>p</em> 值变化几个数量级。</p></li>
 </ul></li>
 </ul>
 </section>
@@ -861,7 +858,7 @@
 <h2></h2>
 
 <img data-src="images/image22.png" class="r-stretch quarto-figure-center"><ul>
-<li>Lyu, X., … , Hu, C-P. 2021, Journal of Pacific Rim Psychology</li>
+<li>Lyu, X.-K., Xu, Y., Zhao, X.-F., Zuo, X.-N., &amp; Hu, C.-P. (2020). Beyond psychology: Prevalence of p value and confidence interval misinterpretation across different fields. <em>Journal of Pacific Rim Psychology, 14</em>. https://doi.org/10.1017/prp.2019.28</li>
 </ul>
 </section>
 <section id="section-34" class="slide level2">
@@ -901,7 +898,7 @@
 <ul>
 <li><p>A non-significant p-value indicates no effect between the treatment and control.</p></li>
 <li><p>这种错误的理解被称为无效谬误。</p></li>
-<li><p>统计上不显著的结果（通常定义为大于0.05的p 值）仅表明数据在零假设模型下并不”奇怪”。对于零假设本身是否为真并未提供任何信息。</p></li>
+<li><p>统计上不显著的结果（通常定义为大于0.05的<em>p</em>值）仅表明数据在零假设模型下并不”奇怪”。对于零假设本身是否为真并未提供任何信息。</p></li>
 </ul>
 </section>
 <section id="fallacy-4-1" class="slide level2">
@@ -910,7 +907,7 @@
 <li><p>A non-significant p-value indicates no effect between the treatment and control.</p></li>
 <li><table>
 <colgroup>
-<col style="width: 27%">
+<col style="width: 26%">
 <col style="width: 24%">
 <col style="width: 24%">
 <col style="width: 24%">
@@ -955,7 +952,7 @@
 <section id="错误产生的原因" class="slide level2">
 <h2>错误产生的原因</h2>
 <ul>
-<li><p>p 值计算关键预设是原假设为真。较小的 p 值仅表明观察到的数据与原假设不太兼容。这可能出于三个原因：</p>
+<li><p><em>p</em> 值计算关键预设是原假设为真。较小的 <em>p</em>值仅表明观察到的数据与原假设不太兼容。这可能出于三个原因：</p>
 <ul>
 <li><p>原假设是错误的；</p></li>
 <li><p>在数据中观察到很大的随机抽样误差；</p></li>
@@ -967,35 +964,35 @@
 <section id="错误产生的原因-1" class="slide level2">
 <h2>错误产生的原因</h2>
 <ul>
-<li><p>即使由于原假设为假而生成了一个小的 p 值，这并不总是具有实际意义。</p></li>
+<li><p>即使由于原假设为假而生成了一个小的 <em>p</em>值，这并不总是具有实际意义。</p></li>
 <li><p>统计显著性是对测试结果的解释，并未对产生数据的模型进行任何的探索。</p></li>
 </ul>
 </section>
 <section id="错误产生的原因-2" class="slide level2">
 <h2>错误产生的原因</h2>
 <ul>
-<li><p>具有统计学意义的 p 值可能具有较高的误报风险。</p></li>
-<li><p>p 值可能对数据中的随机误差敏感。</p></li>
-<li><p>这些随机误差很容易导致p值超过统计显著性阈值。此外，如果非随机误差存在于数据生成过程中并且未在模型中明确说明，则它们将影响 p 值。</p></li>
+<li><p>具有统计学意义的 <em>p</em>值可能具有较高的误报风险。</p></li>
+<li><p><em>p</em>值可能对数据中的随机误差敏感。</p></li>
+<li><p>这些随机误差很容易导致<em>p</em>值超过统计显著性阈值。此外，如果非随机误差存在于数据生成过程中并且未在模型中明确说明，则它们将影响 <em>p</em> 值。</p></li>
 </ul>
 </section>
 <section id="美国统计学会关于p-值的6个原则" class="slide level2">
-<h2>美国统计学会关于p 值的6个原则</h2>
+<h2>美国统计学会关于<em>p</em> 值的6个原则</h2>
 <ul>
 <li><ol type="1">
 <li>P-values can indicate how incompatible the data are with a specified statistical model .</li>
 </ol>
 <ul>
-<li>(p 值可以表明数据与某个特定统计模型之间不相容程度。)</li>
+<li>(<em>p</em> 值可以表明数据与某个特定统计模型之间不相容程度。)</li>
 </ul></li>
 <li><ol start="2" type="1">
 <li>P-values do not measure the probability that the studied hypothesis is true, or the probability that the data were produced by random chance alone.</li>
 </ol>
 <ul>
-<li>(p 值不能衡量研究假设为真的概率, 也不能衡量数据仅 由随机因素造成的概率。)</li>
+<li>(<em>p</em> 值不能衡量研究假设为真的概率, 也不能衡量数据仅 由随机因素造成的概率。)</li>
 </ul>
 <blockquote>
-<p>Ronald L. Wasserstein &amp; Nicole A. Lazar&nbsp;(2016)&nbsp;The American Statistician</p>
+<p>Ronald L. Wasserstein &amp; Nicole A. Lazar (2016) The American Statistician</p>
 </blockquote></li>
 </ul>
 </section>
@@ -1006,7 +1003,7 @@
 <li>Scientific conclusions and business or policy decisions should not be based only on whether a p-value passes a specific threshold.</li>
 </ol>
 <ul>
-<li>(科学结论、商业或政策上的决策, 不应仅取决于 p 值是否达到了某个特定的阈值。)</li>
+<li>(科学结论、商业或政策上的决策, 不应仅取决于 <em>p</em> 值是否达到了某个特定的阈值。)</li>
 </ul></li>
 <li><ol start="4" type="1">
 <li>Proper inference requires full reporting and transparency .</li>
@@ -1019,7 +1016,7 @@
 <li>A p-value, or statistical significance, does not measure the size of an effect or the importance of a result.</li>
 </ol>
 <ul>
-<li>(p 值或统计显著性并不能用来衡量效应的大小和结果的重要性。 )</li>
+<li>(<em>p</em> 值或统计显著性并不能用来衡量效应的大小和结果的重要性。 )</li>
 </ul></li>
 <li><ol start="6" type="1">
 <li>By itself, a p-value does not provide a good measure of evidence regarding a model or hypothesis.</li>
@@ -1031,14 +1028,14 @@
 </section></section>
 <section>
 <section id="误用p-值的危害" class="title-slide slide level1 center">
-<h1>3 误用p 值的危害</h1>
+<h1>3. 误用<em>p</em> 值的危害</h1>
 
 </section>
 <section id="p-hacking" class="slide level2">
 <h2>P-hacking</h2>
 <ul>
 <li><p>Simonsohn, “P-hacking is trying multiple things until you get the desired result”.</p></li>
-<li><p>“p 值操纵就是不断地把数据量加倍，直到获得自己想要的结果。”这种行为甚至是下意识的。作者去掉了其中一种条件下的数据，使总体的P值小于0.05。“或者”她是个p值操纵者，总是一边收集数据一边看数据好不好。”</p></li>
+<li><p>“<em>p</em> 值操纵就是不断地把数据量加倍，直到获得自己想要的结果。”这种行为甚至是下意识的。作者去掉了其中一种条件下的数据，使总体的<em>p</em>值小于0.05。“或者”她是个p值操纵者，总是一边收集数据一边看数据好不好。”</p></li>
 </ul>
 <blockquote>
 <p>https://www.npr.org/sections/13.7/2014/06/02/318212713/science-trust-and-psychology-in-crisis</p>
@@ -1047,24 +1044,24 @@
 <section id="section-41" class="slide level2">
 <h2></h2>
 <ul>
-<li>假定虚无假设为真的条件下，预计收集100个被试，在50个被试时分析一次，100个被试时分析一次。进行50000次模拟，各个p值出现的频次分析，可以看出在p 刚刚小于0.05时的比例偏高。</li>
+<li>假定虚无假设为真的条件下，预计收集100个被试，在50个被试时分析一次，100个被试时分析一次。进行50000次模拟，各个<em>p</em>值出现的频次分析，可以看出在<em>p</em>刚刚小于0.05时的比例偏高。</li>
 </ul>
 </section>
 <section id="section-42" class="slide level2">
 <h2></h2>
 <ul>
-<li>假定虚无假设为真的条件下，预计收集100个被试，在50个被试时分析一次，100个被试时分析一次。进行50000次模拟，各个p 值出现的频次分析，可以看出在p 刚刚小于0.05时的比例偏高。</li>
+<li>假定虚无假设为真的条件下，预计收集100个被试，在50个被试时分析一次，100个被试时分析一次。进行50000次模拟，各个<em>p</em> 值出现的频次分析，可以看出在p 刚刚小于0.05时的比例偏高。</li>
 </ul>
 
 <img data-src="images/image28.png" class="r-stretch quarto-figure-center"></section>
 <section id="模拟p-hacking的例子" class="slide level2">
-<h2>模拟(p-hacking的例子)</h2>
-<p>收集到50个被试时进行分析，若p&gt;0.05,则继续搜集</p>
+<h2>模拟(<em>p</em>-hacking的例子)</h2>
+<p>收集到50个被试时进行分析，若<em>p</em> &gt; 0.05,则继续搜集。</p>
 
 <img data-src="lecture11_files/figure-revealjs/unnamed-chunk-6-1.png" width="960" class="r-stretch"></section>
 <section id="section-43" class="slide level2">
 <h2></h2>
-<p>收集到100个被试的情况，p&lt;0.05的占比增大</p>
+<p>收集到100个被试的情况，<em>p</em> &lt; 0.05的占比增大</p>
 
 <img data-src="lecture11_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
 <section id="section-44" class="slide level2">
@@ -1074,18 +1071,18 @@
 </ul>
 </section>
 <section id="模拟p-hacking的例子-1" class="slide level2">
-<h2>模拟(p-hacking的例子)</h2>
+<h2>模拟(<em>p</em>-hacking的例子)</h2>
 <p>在搜集到10人时分析</p>
 
 <img data-src="lecture11_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section>
 <section id="section-45" class="slide level2">
 <h2></h2>
-<p>在搜集到20人时分析,此时p&lt;0.05的占比为9.64%</p>
+<p>在搜集到20人时分析,此时<em>p</em> &lt; 0.05的占比为9.64%</p>
 
 <img data-src="lecture11_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"></section>
 <section id="section-46" class="slide level2">
 <h2></h2>
-<p>在搜集到30人时分析,此时p&lt;0.05的占比为14.12%</p>
+<p>在搜集到30人时分析,此时<em>p</em> &lt; 0.05的占比为14.12%</p>
 
 <img data-src="lecture11_files/figure-revealjs/unnamed-chunk-10-1.png" width="960" class="r-stretch"></section>
 <section id="section-47" class="slide level2">
@@ -1133,7 +1130,7 @@
 <h2></h2>
 
 <img data-src="images/image32.png" class="r-stretch quarto-figure-center"><ul>
-<li>胡传鹏等，2016，心理科学进展</li>
+<li>胡传鹏等，2016，《心理科学进展》</li>
 </ul>
 </section>
 <section id="section-53" class="slide level2">
@@ -1146,19 +1143,19 @@
 <section id="小结" class="slide level2">
 <h2>小结</h2>
 <ul>
-<li><p>p 值及其计算</p>
+<li><p><em>p</em>值及其计算</p>
 <ul>
-<li><p>p 值的定义（条件概率）</p></li>
-<li><p>p 值的计算</p></li>
-<li><p>p 值的分布</p></li>
+<li><p><em>p</em>值的定义（条件概率）</p></li>
+<li><p><em>p</em>值的计算</p></li>
+<li><p><em>p</em>值的分布</p></li>
 </ul></li>
-<li><p>p 值的误用</p>
+<li><p><em>p</em>值的误用</p>
 <ul>
-<li><p>对p 值的误解</p></li>
+<li><p>对<em>p</em>值的误解</p></li>
 <li><p>误解产生的原因</p></li>
-<li><p>如何正确解读p 值</p></li>
+<li><p>如何正确解读<em>p</em>值</p></li>
 </ul></li>
-<li><p>误用p 值的危害</p>
+<li><p>误用<em>p</em>值的危害</p>
 <ul>
 <li><p>P-hacking</p></li>
 <li><p>可重复危机</p></li>
