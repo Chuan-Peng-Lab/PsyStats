@@ -1,0 +1,230 @@
+---
+format: 
+  revealjs:
+    slide-number: true
+    logo: images/image-393370223.png
+    scrollable: true 
+    theme: theme.scss
+editor: visual
+fontsize: 24pt
+---
+
+</br></br>
+
+<h1 style="text-align: center">
+
+11 - 假设检验(3)
+
+</h1>
+
+<h2 style="text-align: center">
+
+(Hypothesis testing 2: Understand *p*-value)
+
+</h2>
+
+</br></br>
+
+<h3 style="text-align: center">
+
+Hu Chuan-Peng
+
+</h3>
+
+<h3 style="text-align: center">
+
+2023-05-17
+
+</h3>
+
+</br></br>
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%872.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%873.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%874.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%875.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%876.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%877.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%878.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%879.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8710.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8711.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8712.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8713.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8714.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8715.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8716.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8717.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8718.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8719.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8720.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8721.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8722.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8723.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8724.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8725.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8726.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8727.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8728.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8729.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8730.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8731.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8732.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8733.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8734.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8735.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8736.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8737.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8738.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8739.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8740.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8741.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8742.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8743.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8744.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8745.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8746.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8747.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8748.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8749.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8750.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8751.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8752.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8753.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8754.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8755.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8756.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8757.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8758.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8759.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8760.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8761.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8762.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8763.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8764.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8765.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8766.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8767.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8768.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8769.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8770.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8771.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8772.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8773.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8774.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8775.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8776.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8777.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8778.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8779.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8780.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8781.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8782.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8783.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8784.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8785.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8786.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8787.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8788.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8789.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8790.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8791.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8792.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8793.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8794.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8795.PNG){fig-align="center"}
+
+## ![](images/%E5%B9%BB%E7%81%AF%E7%89%8796.PNG){fig-align="center"}
