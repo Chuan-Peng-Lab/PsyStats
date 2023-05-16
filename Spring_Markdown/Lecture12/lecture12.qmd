@@ -425,7 +425,9 @@ $1-\beta$： 统计功效/敏感性
 
 -   效应量(effect size)</br>
 
--   样本量(sample size)
+-   样本量(sample size)</br>
+
+-   显著性水平
 
 ## 效应量(effect size)
 
@@ -453,30 +455,100 @@ $\bar{x_1}$:组2的平均值</br>
 
 $s$:标准差
 
-## 
+## 样本量对统计功效的影响
 
 ![](images/image-565139348.png)
 
+## 
+
 ![](images/image-888060266.png)
+
+## 效应量对统计功效的影响
 
 ![](images/image-1873629172.png)
 
+## 
+
 ![](images/image-1082122293.png)
+
+## 样本量与效应量之间的关系
 
 ![](images/image-929831473.png)
 
+## 
+
 ![](images/image-2116041489.png)
+
+## 效应量和统计功效
 
 ![](images/image-709844165.png)
 
 https://rpsychologist.com/cohend/
 
+## 
+
 ![](images/image-550404073.png)
+
+## 样本量一定，效应量变化
 
 ![](images/image-354949951.png)
 
 https://rpsychologist.com/d3/nhst/
 
+## 效应量一定，样本量变化
+
 ![](images/image-919656965.png)
 
 https://rpsychologist.com/d3/nhst/
+
+## 小练习
+
+请大家在该网址动手实践(https://rpsychologist.com/d3/nhst/)，通过调整不同的参数，查看效应量，样本量，显著性水平三者之间的关系。
+
+# 应用
+
+## 确定样本量
+
+可以使用R的pwr包确定样本量
+```{r}
+# 设定初始参数
+alpha <- 0.05 # 显著性水平
+power <- 0.8 # 功效（1-β）, β为第二类错误率
+sd <- 2 # 标准差
+effect_size <- 1 # 效应大小
+
+# 进行功效分析并计算样本量
+library(pwr)
+pwr.t.test(d = effect_size, sig.level = alpha, power = power)
+
+
+```
+
+
+## 如何提高统计功效
+
+- 提高样本量
+
+- 提高效应量
+
+- 提高显著性水平
+
+- 减小测量误差
+
+- 使用单尾检验而不是双尾检验
+
+## 事后的统计功效分析是没有太大意义的
+
+</br></br>
+
+从平均数为100，标准差为15的总体中抽取样本量为36的样本，重复100000次，计算其全部样本的power
+
+![](images/image-1155301581.png)
+
+## 
+
+</br></br>
+
+从平均数为100，标准差为15的总体中抽取样本量为36的样本，重复100000次，选取p值小于0.05的样本，计算其power
+
+![](images/image-1699500077.png)
