@@ -1045,7 +1045,8 @@ Nuzzo,2001,Nature
 <p><br><br></p>
 <ul>
 <li><p>效应量(effect size)<br></p></li>
-<li><p>样本量(sample size)</p></li>
+<li><p>样本量(sample size)<br></p></li>
+<li><p>显著性水平</p></li>
 </ul>
 </section>
 <section id="效应量effect-size" class="slide level2">
@@ -1071,21 +1072,97 @@ Nuzzo,2001,Nature
 <p><span class="math inline">\(\bar{x_1}\)</span>:组2的平均值<br></p>
 <p><span class="math inline">\(s\)</span>:标准差</p>
 </section>
+<section id="样本量对统计功效的影响" class="slide level2">
+<h2>样本量对统计功效的影响</h2>
+
+<img data-src="images/image-565139348.png" class="r-stretch"></section>
 <section id="section-33" class="slide level2">
 <h2></h2>
-<p><img data-src="images/image-565139348.png"></p>
-<p><img data-src="images/image-888060266.png"></p>
-<p><img data-src="images/image-1873629172.png"></p>
-<p><img data-src="images/image-1082122293.png"></p>
-<p><img data-src="images/image-929831473.png"></p>
-<p><img data-src="images/image-2116041489.png"></p>
-<p><img data-src="images/image-709844165.png"></p>
-<p>https://rpsychologist.com/cohend/</p>
-<p><img data-src="images/image-550404073.png"></p>
-<p><img data-src="images/image-354949951.png"></p>
-<p>https://rpsychologist.com/d3/nhst/</p>
-<p><img data-src="images/image-919656965.png"></p>
-<p>https://rpsychologist.com/d3/nhst/</p>
+
+<img data-src="images/image-888060266.png" class="r-stretch"></section>
+<section id="效应量对统计功效的影响" class="slide level2">
+<h2>效应量对统计功效的影响</h2>
+
+<img data-src="images/image-1873629172.png" class="r-stretch"></section>
+<section id="section-34" class="slide level2">
+<h2></h2>
+
+<img data-src="images/image-1082122293.png" class="r-stretch"></section>
+<section id="样本量与效应量之间的关系" class="slide level2">
+<h2>样本量与效应量之间的关系</h2>
+
+<img data-src="images/image-929831473.png" class="r-stretch"></section>
+<section id="section-35" class="slide level2">
+<h2></h2>
+
+<img data-src="images/image-2116041489.png" class="r-stretch"></section>
+<section id="效应量和统计功效" class="slide level2">
+<h2>效应量和统计功效</h2>
+
+<img data-src="images/image-709844165.png" class="r-stretch"><p>https://rpsychologist.com/cohend/</p>
+</section>
+<section id="section-36" class="slide level2">
+<h2></h2>
+
+<img data-src="images/image-550404073.png" class="r-stretch"></section>
+<section id="样本量一定效应量变化" class="slide level2">
+<h2>样本量一定，效应量变化</h2>
+
+<img data-src="images/image-354949951.png" class="r-stretch"><p>https://rpsychologist.com/d3/nhst/</p>
+</section>
+<section id="效应量一定样本量变化" class="slide level2">
+<h2>效应量一定，样本量变化</h2>
+
+<img data-src="images/image-919656965.png" class="r-stretch"><p>https://rpsychologist.com/d3/nhst/</p>
+</section>
+<section id="小练习" class="slide level2">
+<h2>小练习</h2>
+<p>请大家在该网址动手实践(https://rpsychologist.com/d3/nhst/)，通过调整不同的参数，查看效应量，样本量，显著性水平三者之间的关系。</p>
+</section></section>
+<section>
+<section id="应用" class="title-slide slide level1 center">
+<h1>应用</h1>
+
+</section>
+<section id="确定样本量" class="slide level2">
+<h2>确定样本量</h2>
+<p>可以使用R的pwr包确定样本量</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+     Two-sample t test power calculation 
+
+              n = 16.71472
+              d = 1
+      sig.level = 0.05
+          power = 0.8
+    alternative = two.sided
+
+NOTE: n is number in *each* group</code></pre>
+</div>
+</div>
+</section>
+<section id="如何提高统计功效" class="slide level2">
+<h2>如何提高统计功效</h2>
+<ul>
+<li><p>提高样本量</p></li>
+<li><p>提高效应量</p></li>
+<li><p>提高显著性水平</p></li>
+<li><p>减小测量误差</p></li>
+<li><p>使用单尾检验而不是双尾检验</p></li>
+</ul>
+</section>
+<section id="事后的统计功效分析是没有太大意义的" class="slide level2">
+<h2>事后的统计功效分析是没有太大意义的</h2>
+<p><br><br></p>
+<p>从平均数为100，标准差为15的总体中抽取样本量为36的样本，重复100000次，计算其全部样本的power</p>
+
+<img data-src="images/image-1155301581.png" class="r-stretch"></section>
+<section id="section-37" class="slide level2">
+<h2></h2>
+<p><br><br></p>
+<p>从平均数为100，标准差为15的总体中抽取样本量为36的样本，重复100000次，选取p值小于0.05的样本，计算其power</p>
+<p><img data-src="images/image-1699500077.png"></p>
 <p><img src="images/image-393370223.png" class="slide-logo"></p>
 <div class="footer footer-default">
 
@@ -1302,6 +1379,44 @@ Nuzzo,2001,Nature
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
