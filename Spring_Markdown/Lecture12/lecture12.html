@@ -328,10 +328,10 @@
 
 <p><br><br></p>
 <h1 style="text-align: center">
-<p>11 - 假设检验(3)</p>
+<p>12 - 假设检验(3)</p>
 </h1>
 <h2 style="text-align: center">
-<p>(Hypothesis testing 2: Understand <em>p</em>-value)</p>
+<p>(Hypothesis testing 3: Two types of errors)</p>
 </h2>
 <p><br><br></p>
 <h3 style="text-align: center">
@@ -342,298 +342,590 @@
 </h3>
 <p><br><br></p>
 </section>
+<section id="review" class="slide level2">
+<h2>Review</h2>
+<p><br><br></p>
+<ul>
+<li><p><em>p</em>值及其计算;<br><br></p></li>
+<li><p><em>p</em>值的误用;<br><br></p></li>
+<li><p>误用<em>p</em>值的危害</p></li>
+</ul>
+</section>
+<section id="假设检验步骤" class="slide level2">
+<h2>假设检验步骤</h2>
+<p><br><br></p>
+<ul>
+<li><p>提出假设;<br><br></p></li>
+<li><p>根据虚无假设<span class="math inline">\(H_0\)</span>所提供的前提条件，选择合适的统计模型;<br><br></p></li>
+<li><p>规定显著性水平<span class="math inline">\(\alpha\)</span>;<br><br></p></li>
+<li><p>计算检验统计量的值;<br><br></p></li>
+<li><p>做出决策</p></li>
+</ul>
+</section>
+<section>
+<section id="nhst框架下的两类错误" class="title-slide slide level1 center">
+<h1>NHST框架下的两类错误</h1>
+
+</section>
 <section id="section" class="slide level2">
-<h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%871.PNG" data-fig-align="center"></h2>
+<h2></h2>
+<p><br><br></p>
+<p>南京某创造力培训班声称他们培训非常有效，在他们培训结束后36个6岁幼儿平均创造力潜质为105。假定正常的6岁幼儿的创造力潜质分数为100，标准差为15， 家长们想要了解该培训班是否真的有效，该如何决策？</p>
 </section>
 <section id="section-1" class="slide level2">
-<h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%872.PNG" data-fig-align="center"></h2>
-</section>
+<h2></h2>
+
+<img data-src="images/image-1948617480.png" class="r-stretch quarto-figure-center"></section>
 <section id="section-2" class="slide level2">
-<h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%873.PNG" data-fig-align="center"></h2>
+<h2></h2>
+<p><br><br></p>
+<p><span class="math inline">\(H_0\)</span>成立下，出现培训后的6岁幼儿这样”高”创造力潜质的概率<em>p</em><span class="math inline">\(&lt; \alpha\)</span>，不太可能在一次抽样中出现，所以我们拒绝<span class="math inline">\(H_0\)</span>。</p>
 </section>
 <section id="section-3" class="slide level2">
-<h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%874.PNG" data-fig-align="center"></h2>
+<h2></h2>
+<p><br><br></p>
+<ul>
+<li><p>研究假设/对立假设/备择假设(Alternative Hypothesis)</p>
+<ul>
+<li><p><span class="math inline">\(H_1\)</span>:与零假设相对立</p></li>
+<li><p>类似”总体参数之间有显著差异”或”总体分布不符合正态分布”</p></li>
+<li><p>在NHST框架下，零假设(<span class="math inline">\(H_0\)</span>)和备择假设(<span class="math inline">\(H_1\)</span>)是相互对立的，只有一个假设是正确的。</p></li>
+</ul></li>
+</ul>
 </section>
 <section id="section-4" class="slide level2">
-<h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%875.PNG" data-fig-align="center"></h2>
-</section>
+<h2></h2>
+<ul>
+<li><p>如果零假设是正确的，那么经过培训班培训后的6岁幼儿平均创造力潜质与正常幼儿没有差异</p></li>
+<li><p>即经过培训班培训后的6岁幼儿平均创造力潜质与正常幼儿属于同一个分布</p></li>
+</ul>
+
+<img data-src="images/image-409156073.png" class="r-stretch quarto-figure-center"></section>
 <section id="section-5" class="slide level2">
-<h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%876.PNG" data-fig-align="center"></h2>
-</section>
+<h2></h2>
+<ul>
+<li><p>如果备择假设是正确的，那么经过培训班培训后的6岁幼儿平均创造力潜质与正常幼儿存在差异</p></li>
+<li><p>即经过培训班培训后的6岁幼儿平均创造力潜质与正常幼儿不属于同一个分布</p></li>
+</ul>
+
+<img data-src="images/image-1440186196.png" class="r-stretch quarto-figure-center"></section>
 <section id="section-6" class="slide level2">
-<h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%877.PNG" data-fig-align="center"></h2>
+<h2></h2>
+<p><br><br><br></p>
+<center>
+我们做出决策时，一定能保证该决策是正确的吗？
+</center>
 </section>
+<section id="两类错误" class="slide level2">
+<h2>两类错误</h2>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th><span class="math inline">\(H_0\)</span>为真</th>
+<th><span class="math inline">\(H_1\)</span>为真</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>结果显著</td>
+<td>False positive(假阳性)</td>
+<td>True positive</td>
+</tr>
+<tr class="even">
+<td>结果不显著</td>
+<td>True negative</td>
+<td>False negative(假阴性)</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+
+<img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8716.PNG" class="r-stretch quarto-figure-center"></section>
 <section id="section-7" class="slide level2">
-<h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%878.PNG" data-fig-align="center"></h2>
+<h2></h2>
+<p>假设疾控中心在某地发现一例新冠肺炎感染者，现对该感染者的密接人群进行核酸检测。</p>
 </section>
 <section id="section-8" class="slide level2">
-<h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%879.PNG" data-fig-align="center"></h2>
-</section>
+<h2></h2>
+<ul>
+<li><p>密切人群中的感染情况：</p>
+<ul>
+<li>红色实体小人为疾控中心已知的感染者<br></li>
+<li>红色边框小人为疾控中心未知的感染者<br></li>
+<li>黑色边框小人为疾控中心未知的非感染者<br></li>
+</ul></li>
+</ul>
+
+<img data-src="images/image-421926042.png" class="r-stretch quarto-figure-center"></section>
 <section id="section-9" class="slide level2">
-<h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8710.PNG" data-fig-align="center"></h2>
-</section>
+<h2></h2>
+<ul>
+<li><p>假设我们开启上帝视角，知道该密接人群的真实情况</p>
+<ul>
+<li>红色边框小人为真实感染者<br></li>
+<li>黑色边框小人为真实非感染者<br></li>
+</ul></li>
+</ul>
+
+<img data-src="images/image-1121244084.png" class="r-stretch quarto-figure-center"></section>
 <section id="section-10" class="slide level2">
-<h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8711.PNG" data-fig-align="center"></h2>
-</section>
+<h2></h2>
+<ul>
+<li>在疾控中心视角，他们对该密接人群的状况是未知的，因此要进行核酸检测
+<ul>
+<li>蓝色边框小人表示在进行核酸检测前，疾控中心假定该人群没有人被感染</li>
+</ul></li>
+</ul>
+
+<img data-src="images/image-887213021.png" class="r-stretch quarto-figure-center"></section>
 <section id="section-11" class="slide level2">
-<h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8712.PNG" data-fig-align="center"></h2>
-</section>
+<h2></h2>
+<ul>
+<li>在疾控中心视角，他们要根据核酸检测的结果采取进一步措施
+<ul>
+<li>在进行核酸检测后，红色虚线边框小人结果为阳性，蓝色边框小人结果为阴性</li>
+</ul></li>
+</ul>
+
+<img data-src="images/image-625266086.png" class="r-stretch quarto-figure-center"></section>
 <section id="section-12" class="slide level2">
-<h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8713.PNG" data-fig-align="center"></h2>
+<h2></h2>
+<ul>
+<li>在上帝视角，我们知道疾控中心的检测结果出现了差错
+<ul>
+<li>红色方框为假阴性错误，蓝色方框为假阳性错误</li>
+</ul></li>
+</ul>
+
+<img data-src="images/image-435269648.png" class="r-stretch quarto-figure-center"></section>
+<section id="真实的两类错误发生概率是多大" class="slide level2">
+<h2>真实的两类错误发生概率是多大？</h2>
+<p><br><br></p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th><span class="math inline">\(H_0\)</span>为真</th>
+<th><span class="math inline">\(H_1\)</span>为真</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>结果显著</td>
+<td>False positive(假阳性)</td>
+<td>True positive</td>
+</tr>
+<tr class="even">
+<td>结果不显著</td>
+<td>True negative</td>
+<td>False negative(假阴性)</td>
+</tr>
+</tbody>
+</table>
+<p><br><br></p>
+<p><span class="math inline">\(H_0\)</span>为真的情况下，犯错误的概率为<span class="math inline">\(\alpha\)</span>,又称<strong>第一类错误</strong>或<strong>弃真错误</strong><br></p>
+<p><span class="math inline">\(H_1\)</span>为真的情况下，犯错误的概率为<span class="math inline">\(\beta\)</span>,又称<strong>第二类错误</strong>或<strong>取伪错误</strong></p>
 </section>
 <section id="section-13" class="slide level2">
-<h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8714.PNG" data-fig-align="center"></h2>
+<h2></h2>
+<p><br><br></p>
+<table>
+<colgroup>
+<col style="width: 25%">
+<col style="width: 37%">
+<col style="width: 37%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><span class="math inline">\(H_0\)</span>为真</th>
+<th><span class="math inline">\(H_1\)</span>为真</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>结果显著</td>
+<td>False positive(假阳性)(<span class="math inline">\(\alpha\)</span>)</td>
+<td>True positive(<span class="math inline">\(1-\beta\)</span>)</td>
+</tr>
+<tr class="even">
+<td>结果不显著</td>
+<td>True negative(<span class="math inline">\(1-\alpha\)</span>)</td>
+<td>False negative(假阴性)(<span class="math inline">\(\beta\)</span>)</td>
+</tr>
+</tbody>
+</table>
 </section>
+<section id="两类错误-1" class="slide level2">
+<h2>两类错误</h2>
+<p><br><br></p>
+<ul>
+<li><span class="math inline">\(H_0\)</span>为真
+<ul>
+<li>拒绝<span class="math inline">\(H_0\)</span>:<span class="math inline">\(\alpha\)</span> = P(拒绝<span class="math inline">\(H_0\)</span>| <span class="math inline">\(H_0\)</span>为真)</li>
+<li>不能拒绝<span class="math inline">\(H_0\)</span>:1-<span class="math inline">\(\alpha\)</span> = P(不能拒绝<span class="math inline">\(H_0\)</span>| <span class="math inline">\(H_0\)</span>为真)<br></li>
+</ul></li>
+</ul>
+<p><br><br></p>
+<ul>
+<li><span class="math inline">\(H_1\)</span>为真
+<ul>
+<li>不能拒绝<span class="math inline">\(H_0\)</span>:<span class="math inline">\(\beta\)</span> = P(不能拒绝<span class="math inline">\(H_0\)</span>| <span class="math inline">\(H_1\)</span>为真)</li>
+<li>拒绝<span class="math inline">\(H_0\)</span>:1-<span class="math inline">\(\beta\)</span> = P(拒绝<span class="math inline">\(H_0\)</span>| <span class="math inline">\(H_1\)</span>为真)</li>
+</ul></li>
+</ul>
+</section>
+<section id="检测中的假阳性与假阴性到底有多高" class="slide level2">
+<h2>检测中的假阳性与假阴性到底有多高？</h2>
+
+<img data-src="images/image-754605856.png" class="r-stretch quarto-figure-center"></section>
 <section id="section-14" class="slide level2">
-<h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8715.PNG" data-fig-align="center"></h2>
+<h2></h2>
+<p><br><br></p>
+<p>假设疾控中心发现某地有一例新冠肺炎感染者，某小区已封闭管理一个月，即将解封，现在疾控中心需要判断该小区是否存在疫情，他们做出正确决策或犯错误的概率是多少<br></p>
+<p><span class="math inline">\(H_0\)</span>:该感染者居住的小区不存在疫情</p>
+</section>
+<section id="两类错误出现的真实概率" class="slide level2">
+<h2>两类错误出现的真实概率</h2>
+<p><br><br></p>
+<p><span class="math display">\[\alpha=0.05,\beta=0.2\]</span></p>
+<table>
+<colgroup>
+<col style="width: 25%">
+<col style="width: 37%">
+<col style="width: 37%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><span class="math inline">\(H_0\)</span>为真(100%)</th>
+<th><span class="math inline">\(H_1\)</span>为真(0%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>拒绝<span class="math inline">\(H_0\)</span></td>
+<td><strong>第一类错误</strong>/<strong>弃真错误</strong>(？%)</td>
+<td>正确(？%)</td>
+</tr>
+<tr class="even">
+<td>不能拒绝<span class="math inline">\(H_0\)</span></td>
+<td>正确(？%)</td>
+<td><strong>第二类错误</strong>/<strong>取伪错误</strong>(？%)</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="section-15" class="slide level2">
-<h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8716.PNG" data-fig-align="center"></h2>
+<h2></h2>
+<p><br><br></p>
+<table>
+<colgroup>
+<col style="width: 25%">
+<col style="width: 37%">
+<col style="width: 37%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><span class="math inline">\(H_0\)</span>为真(100%)</th>
+<th><span class="math inline">\(H_1\)</span>为真(0%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>拒绝<span class="math inline">\(H_0\)</span></td>
+<td><strong>第一类错误</strong>/<strong>弃真错误</strong>(5%)</td>
+<td>正确(0%)</td>
+</tr>
+<tr class="even">
+<td>不能拒绝<span class="math inline">\(H_0\)</span></td>
+<td>正确(95%)</td>
+<td><strong>第二类错误</strong>/<strong>取伪错误</strong>(0%)</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="section-16" class="slide level2">
-<h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8717.PNG" data-fig-align="center"></h2>
+<h2></h2>
+<p><br><br></p>
+<p>假设疾控中心发现某地有一例新冠肺炎感染者，现在疾控中心需要判断该感染者的同事居住的小区是否存在疫情<br></p>
+<ul>
+<li><p><span class="math inline">\(H_0\)</span>:该感染者的同事居住的小区不存在疫情<br></p></li>
+<li><p><span class="math inline">\(H_1\)</span>:该感染者的同事居住的小区存在疫情<br></p></li>
+</ul>
+<p>如果该感染者的同事感染新冠的概率为50%，在此情况下，疾控中心做出正确决策或犯错误的概率是多少？</p>
 </section>
 <section id="section-17" class="slide level2">
-<h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8718.PNG" data-fig-align="center"></h2>
+<h2></h2>
+<p><br><br> <span class="math display">\[\alpha=0.05,\beta=0.2\]</span></p>
+<table>
+<colgroup>
+<col style="width: 25%">
+<col style="width: 37%">
+<col style="width: 37%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><span class="math inline">\(H_0\)</span>为真(50%)</th>
+<th><span class="math inline">\(H_1\)</span>为真(50%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>拒绝<span class="math inline">\(H_0\)</span></td>
+<td><strong>第一类错误</strong>/<strong>弃真错误</strong>(？%)</td>
+<td>正确(？%)</td>
+</tr>
+<tr class="even">
+<td>不能拒绝<span class="math inline">\(H_0\)</span></td>
+<td>正确(？%)</td>
+<td><strong>第二类错误</strong>/<strong>取伪错误</strong>(？%)</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="section-18" class="slide level2">
-<h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8719.PNG" data-fig-align="center"></h2>
+<h2></h2>
+<p><br><br></p>
+<p><span class="math display">\[\alpha=0.05,\beta=0.2\]</span></p>
+<table>
+<colgroup>
+<col style="width: 25%">
+<col style="width: 37%">
+<col style="width: 37%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><span class="math inline">\(H_0\)</span>为真(50%)</th>
+<th><span class="math inline">\(H_1\)</span>为真(50%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>拒绝<span class="math inline">\(H_0\)</span></td>
+<td><strong>第一类错误</strong>/<strong>弃真错误</strong>(2.5%)</td>
+<td>正确(40%)</td>
+</tr>
+<tr class="even">
+<td>不能拒绝<span class="math inline">\(H_0\)</span></td>
+<td>正确(47.5%)</td>
+<td><strong>第二类错误</strong>/<strong>取伪错误</strong>(10%)</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="section-19" class="slide level2">
-<h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8720.PNG" data-fig-align="center"></h2>
+<h2></h2>
 </section>
 <section id="section-20" class="slide level2">
-<h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8721.PNG" data-fig-align="center"></h2>
+<h2></h2>
 </section>
 <section id="section-21" class="slide level2">
-<h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8722.PNG" data-fig-align="center"></h2>
-</section>
-<section id="section-22" class="slide level2">
-<h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8723.PNG" data-fig-align="center"></h2>
-</section>
-<section id="section-23" class="slide level2">
-<h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8724.PNG" data-fig-align="center"></h2>
-</section>
-<section id="section-24" class="slide level2">
-<h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8725.PNG" data-fig-align="center"></h2>
-</section>
-<section id="section-25" class="slide level2">
-<h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8726.PNG" data-fig-align="center"></h2>
-</section>
-<section id="section-26" class="slide level2">
-<h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8727.PNG" data-fig-align="center"></h2>
-</section>
-<section id="section-27" class="slide level2">
-<h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8728.PNG" data-fig-align="center"></h2>
-</section>
-<section id="section-28" class="slide level2">
-<h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8729.PNG" data-fig-align="center"></h2>
-</section>
-<section id="section-29" class="slide level2">
-<h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8730.PNG" data-fig-align="center"></h2>
-</section>
-<section id="section-30" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8731.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-31" class="slide level2">
+<section id="section-22" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8732.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-32" class="slide level2">
+<section id="section-23" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8733.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-33" class="slide level2">
+<section id="section-24" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8734.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-34" class="slide level2">
+<section id="section-25" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8735.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-35" class="slide level2">
+<section id="section-26" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8736.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-36" class="slide level2">
+<section id="section-27" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8737.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-37" class="slide level2">
+<section id="section-28" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8738.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-38" class="slide level2">
+<section id="section-29" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8739.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-39" class="slide level2">
+<section id="section-30" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8740.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-40" class="slide level2">
+<section id="section-31" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8741.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-41" class="slide level2">
+<section id="section-32" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8742.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-42" class="slide level2">
+<section id="section-33" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8743.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-43" class="slide level2">
+<section id="section-34" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8744.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-44" class="slide level2">
+<section id="section-35" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8745.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-45" class="slide level2">
+<section id="section-36" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8746.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-46" class="slide level2">
+<section id="section-37" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8747.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-47" class="slide level2">
+<section id="section-38" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8748.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-48" class="slide level2">
+<section id="section-39" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8749.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-49" class="slide level2">
+<section id="section-40" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8750.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-50" class="slide level2">
+<section id="section-41" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8751.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-51" class="slide level2">
+<section id="section-42" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8752.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-52" class="slide level2">
+<section id="section-43" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8753.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-53" class="slide level2">
+<section id="section-44" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8754.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-54" class="slide level2">
+<section id="section-45" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8755.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-55" class="slide level2">
+<section id="section-46" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8756.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-56" class="slide level2">
+<section id="section-47" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8757.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-57" class="slide level2">
+<section id="section-48" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8758.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-58" class="slide level2">
+<section id="section-49" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8759.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-59" class="slide level2">
+<section id="section-50" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8760.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-60" class="slide level2">
+<section id="section-51" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8761.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-61" class="slide level2">
+<section id="section-52" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8762.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-62" class="slide level2">
+<section id="section-53" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8763.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-63" class="slide level2">
+<section id="section-54" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8764.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-64" class="slide level2">
+<section id="section-55" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8765.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-65" class="slide level2">
+<section id="section-56" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8766.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-66" class="slide level2">
+<section id="section-57" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8767.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-67" class="slide level2">
+<section id="section-58" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8768.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-68" class="slide level2">
+<section id="section-59" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8769.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-69" class="slide level2">
+<section id="section-60" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8770.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-70" class="slide level2">
+<section id="section-61" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8771.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-71" class="slide level2">
+<section id="section-62" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8772.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-72" class="slide level2">
+<section id="section-63" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8773.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-73" class="slide level2">
+<section id="section-64" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8774.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-74" class="slide level2">
+<section id="section-65" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8775.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-75" class="slide level2">
+<section id="section-66" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8776.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-76" class="slide level2">
+<section id="section-67" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8777.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-77" class="slide level2">
+<section id="section-68" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8778.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-78" class="slide level2">
+<section id="section-69" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8779.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-79" class="slide level2">
+<section id="section-70" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8780.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-80" class="slide level2">
+<section id="section-71" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8781.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-81" class="slide level2">
+<section id="section-72" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8782.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-82" class="slide level2">
+<section id="section-73" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8783.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-83" class="slide level2">
+<section id="section-74" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8784.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-84" class="slide level2">
+<section id="section-75" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8785.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-85" class="slide level2">
+<section id="section-76" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8786.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-86" class="slide level2">
+<section id="section-77" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8787.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-87" class="slide level2">
+<section id="section-78" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8788.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-88" class="slide level2">
+<section id="section-79" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8789.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-89" class="slide level2">
+<section id="section-80" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8790.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-90" class="slide level2">
+<section id="section-81" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8791.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-91" class="slide level2">
+<section id="section-82" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8792.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-92" class="slide level2">
+<section id="section-83" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8793.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-93" class="slide level2">
+<section id="section-84" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8794.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-94" class="slide level2">
+<section id="section-85" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8795.PNG" data-fig-align="center"></h2>
 </section>
-<section id="section-95" class="slide level2">
+<section id="section-86" class="slide level2">
 <h2><img data-src="images/%E5%B9%BB%E7%81%AF%E7%89%8796.PNG" data-fig-align="center"></h2>
 <p><img src="images/image-393370223.png" class="slide-logo"></p>
 <div class="footer footer-default">
 
 </div>
-</section>
+</section></section>
     </div>
   </div>
 
