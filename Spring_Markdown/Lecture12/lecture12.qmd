@@ -411,6 +411,8 @@ https://www.researchgate.net/figure/Statistical-hypothesis-testing-test-d-allowi
 
 ## 统计功效的意义
 
+</br></br>
+
 $1-\beta$： 统计功效/敏感性
 
 -   如果研究没有足够的统计功效，那么研究可能无法检测到真正的效果。这意味该研究很可能会浪费时间和金钱等资源，甚至从被试那里收集数据也可能是不道德的（尤其是在临床试验中）。
@@ -419,24 +421,62 @@ $1-\beta$： 统计功效/敏感性
 
 ## 影响统计功效的因素
 
--   效应量(effect size)
+</br></br>
+
+-   效应量(effect size)</br>
 
 -   样本量(sample size)
 
 ## 效应量(effect size)
 
+</br></br>
+
 -   独立于样本容量，表明变量间实际关联强度的测度值，它可以定量帮助研究者判断统计学意义上的显著性结果是否有实际效用或实际效用的强度
 
 ![](images/image-540556860.png){fig-align="center"}
 
-##
+## 
 
-- 效应量大小表明变量之间的差异或群体之间的差异有多大意义，可以反映一项研究结果的实际意义。
+-   效应量大小表明变量之间的差异或群体之间的差异有多大意义，可以反映一项研究结果的实际意义。
 
-- 大的效应大小意味着一项研究结果具有实际意义，而小的效应大小则表明实际应用有限。
+-   大的效应大小意味着一项研究结果具有实际意义，而小的效应大小则表明实际应用有限。
 
 ## 
 
+</br></br>
+
 Cohen's d它采用两个平均值之间的差异并以标准差单位表示，这就可以使不同量纲之间的效应相互比较。</br>
 
-$$$$
+$$d = \frac{\bar{x_1}-\bar{x_2}}{s}$$ $\bar{x_1}$:组1的平均值</br>
+
+$\bar{x_1}$:组2的平均值</br>
+
+$s$:标准差
+
+## 
+
+![](images/image-565139348.png)
+
+![](images/image-888060266.png)
+
+![](images/image-1873629172.png)
+
+![](images/image-1082122293.png)
+
+![](images/image-929831473.png)
+
+![](images/image-2116041489.png)
+
+![](images/image-709844165.png)
+
+https://rpsychologist.com/cohend/
+
+![](images/image-550404073.png)
+
+![](images/image-354949951.png)
+
+https://rpsychologist.com/d3/nhst/
+
+![](images/image-919656965.png)
+
+https://rpsychologist.com/d3/nhst/
