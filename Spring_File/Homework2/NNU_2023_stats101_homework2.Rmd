@@ -1,0 +1,55 @@
+---
+title: "stats101_NNU_2023_homework1"
+output: html_document
+date: "2023-04-13"
+---
+```{r}
+# 检查是否已经安装了pacman包，如果没有安装，则安装并加载
+if(!require(pacman)) install.packages("pacman")
+
+# 使用p_load函数安装并加载readr和here包
+pacman::p_load(readr, 
+               here,
+               tidyverse)
+
+# 将工作路径设置为当前文件所在的位置
+setwd(here())
+```
+
+```{r}
+# 使用read.csv函数和gzfile函数读取压缩的csv文件
+raw_data <- read.csv(gzfile("stroop.csv.gz"))
+```
+
+```{r}
+for (i in c(1:60)) {
+data <- raw_data %>%
+      filter(exp_stage == "test",
+             rt != -1) %>%
+      {.[.[["worker_id"]] %in% sample(unique(.[["worker_id"]]), size = 5), ]} %>%
+      group_by(worker_id) %>%
+      mutate(trial_ids = row_number()) %>%
+      {.[.[["trial_ids"]] %in% sample(unique(.[["trial_ids"]]), size = 20), ]} %>%
+      ungroup() %>%
+      select(condition,
+             correct,
+             key_press,
+             rt,
+             worker_id,
+             trial_ids) %>%
+      mutate(correct = as.factor(correct),
+             condition = case_when(condition=="incongruent"~0,
+                                   .default = 1),
+             subj_id = substr(worker_id, 
+                             nchar(worker_id)-1, 
+                             nchar(worker_id))) %>%
+      select(-worker_id)
+write.csv(data, paste("homework1_182202",
+                      sprintf("%02d", i), 
+                      ".csv", 
+                      sep = ""),
+                row.names = FALSE)
+}      
+```
+
+

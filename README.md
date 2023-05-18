@@ -25,10 +25,23 @@ Teaching assistants: Liu, Yi-Kang; Sun, Shu-Ting
 |  15  |        双样本t检验         |  15  |          bootstrap 与 simulation          |
 |  16  |        (补)线性代数        |  16  |                贝叶斯因子                 |
 
+## Pictures used in markdown can be found in the following links
+
+https://docs.google.com/presentation/d/154z0XQ36-C9MPTrCpykWw_lYcY3PDyuAPkjESmJDm-M/edit#slide=id.g244db949cad_0_60
+
 ## Table of contents
 
 -   [Spring_File]
 -   [Spring_Markdown]
 -   lecture 1
 -   lecture 2
--   [Spring_PPT]
+-   lecture 3
+-   lecture 4
+-   lecture 5
+-   lecture 6
+-   lecture 7
+-   lecture 8
+-   lecture 9
+-   lecture 10
+-   lecture 11
+-   lecture 12

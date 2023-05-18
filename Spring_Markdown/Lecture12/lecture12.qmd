@@ -514,14 +514,11 @@ https://rpsychologist.com/d3/nhst/
 # 设定初始参数
 alpha <- 0.05 # 显著性水平
 power <- 0.8 # 功效（1-β）, β为第二类错误率
-sd <- 2 # 标准差
 effect_size <- 1 # 效应大小
 
 # 进行功效分析并计算样本量
 library(pwr)
 pwr.t.test(d = effect_size, sig.level = alpha, power = power)
-
-
 ```
 
 
@@ -547,7 +544,6 @@ pwr.t.test(d = effect_size, sig.level = alpha, power = power)
 
 ## 
 
-</br></br>
 
 从平均数为100，标准差为15的总体中抽取样本量为36的样本，重复100000次，选取p值小于0.05的样本，计算其power
 
