@@ -10,46 +10,101 @@ if(!require(pacman)) install.packages("pacman")
 # 使用p_load函数安装并加载readr和here包
 pacman::p_load(readr, 
                here,
-               tidyverse)
+               tidyverse,
+               openxlsx)
 
 # 将工作路径设置为当前文件所在的位置
 setwd(here())
 ```
 
+# student list
 ```{r}
-# 使用read.csv函数和gzfile函数读取压缩的csv文件
-raw_data <- read.csv(gzfile("stroop.csv.gz"))
+stu_list <- strsplit('01200109
+18200124
+18200238
+18220201
+18220202
+18220203
+18220204
+18220205
+18220206
+18220207
+18220208
+18220209
+18220210
+18220211
+18220212
+18220213
+18220215
+18220218
+18220220
+18220221
+18220222
+18220223
+18220224
+18220225
+18220226
+18220227
+18220228
+18220229
+18220230
+18220231
+18220233
+18220234
+18220235
+18220236
+18220238
+18220239
+18220240
+18220241
+18222003
+18222004
+18222005
+18222006
+', "\n")[[1]]
 ```
 
+# item1
 ```{r}
-for (i in c(1:60)) {
-data <- raw_data %>%
-      filter(exp_stage == "test",
-             rt != -1) %>%
-      {.[.[["worker_id"]] %in% sample(unique(.[["worker_id"]]), size = 5), ]} %>%
-      group_by(worker_id) %>%
-      mutate(trial_ids = row_number()) %>%
-      {.[.[["trial_ids"]] %in% sample(unique(.[["trial_ids"]]), size = 20), ]} %>%
-      ungroup() %>%
-      select(condition,
-             correct,
-             key_press,
-             rt,
-             worker_id,
-             trial_ids) %>%
-      mutate(correct = as.factor(correct),
-             condition = case_when(condition=="incongruent"~0,
-                                   .default = 1),
-             subj_id = substr(worker_id, 
-                             nchar(worker_id)-1, 
-                             nchar(worker_id))) %>%
-      select(-worker_id)
-write.csv(data, paste("homework1_182202",
-                      sprintf("%02d", i), 
-                      ".csv", 
-                      sep = ""),
-                row.names = FALSE)
-}      
+mu <- rnorm(42,170,5)
+sigma <- rnorm(42,5,2)
+df1 <- data.frame(matrix(ncol = 26, nrow = 42))
+names(df1) <- c("Id",1:25)
+for (i in c(1:42)) {
+  mean <- mu[i] 
+  sd <- sigma[i]
+  rt <- rnorm(25,mean,sd)
+  id <- stu_list[i]
+  df1[i,][2:26] <- rt
+  df1[i,][1] <- id
+}
+df1[2:26] <- round(df1[2:26],2)
 ```
 
+# item2
+```{r}
+mu <- rnorm(42,110,5)
+sigma <- rnorm(42,10,3)
+df2 <- data.frame(matrix(ncol = 39, nrow = 42))
+names(df2) <- c("Id",1:38)
+for (i in c(1:42)) {
+  mean <- mu[i] 
+  sd <- sigma[i]
+  rt <- rnorm(38,mean,sd)
+  id <- stu_list[i]
+  df2[i,][2:39] <- rt
+  df2[i,][1] <- id
+}
+df2[2:39] <- round(df2[2:39],2)
+```
+
+# generate file
+```{r}
+wb <- createWorkbook()
+addWorksheet(wb, "Item1")
+addWorksheet(wb, "Item2")
+writeData(wb, "Item1", df1)
+writeData(wb, "Item2", df2)
+saveWorkbook(wb, file = "homework2.xlsx")
+```
 
