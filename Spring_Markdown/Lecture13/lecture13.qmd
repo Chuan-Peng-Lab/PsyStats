@@ -99,7 +99,7 @@ ggplot(df,aes(x=Score,
 
 ## 量化"一起变化"
 
-我们先从单个点(108,92)开始，其中Mean Score可以用$\bar{X}$,Mean Grade可以用$\bar{Y}$表示
+我们先从单个点(109,92)开始，其中Mean Score可以用$\bar{X}$,Mean Grade可以用$\bar{Y}$表示
 
 ```{r}
 ggplot(df,aes(x= Score,
@@ -119,7 +119,7 @@ ggplot(df,aes(x= Score,
                   hjust=0.8)+
   geom_text(aes(x=110, 
                  y=92, 
-                 label="(108,92)"),
+                 label="(109,92)"),
                   vjust=-2)+
   theme_classic()
   
@@ -127,7 +127,7 @@ ggplot(df,aes(x= Score,
 
 ## 
 
-点(108,92)到$\bar{X}$,$\bar{Y}$的距离可以分别表示为$X-\bar{X}$,$Y-\bar{Y}$,它们分别代表X和Y的**离均差**，对于单个点，我们可以用$(X-\bar{X})*(Y-\bar{Y})$量化单个点的变化程度
+点(109,92)到$\bar{X}$,$\bar{Y}$的距离可以分别表示为$X-\bar{X}$,$Y-\bar{Y}$,它们分别代表X和Y的**离均差**，对于单个点，我们可以用$(X-\bar{X})*(Y-\bar{Y})$量化单个点的变化程度
 
 ```{r}
 ggplot(df,aes(x= Score,
@@ -145,17 +145,17 @@ ggplot(df,aes(x= Score,
                  y=mean(Grade), 
                  label="Mean Grade"),
                   hjust=0.8)+
-  geom_text(aes(x=108, 
+  geom_text(aes(x=109, 
                  y=92, 
-                 label="(108,92)"),
+                 label="(109,92)"),
                   vjust=-2)+
-  geom_segment(aes(x = 108, 
+  geom_segment(aes(x = 109, 
                    y = 92, 
                    xend = mean(Score), 
                    yend = 92)) +
-  geom_segment(aes(x = 108, 
+  geom_segment(aes(x = 109, 
                    y = 92, 
-                   xend = 108, 
+                   xend = 109, 
                    yend = mean(Grade))) +
   theme_classic()
   
@@ -181,17 +181,17 @@ ggplot(df,aes(x= Score,
                  y=mean(Grade), 
                  label="Mean Grade"),
                   hjust=0.8)+
-  geom_text(aes(x=108, 
+  geom_text(aes(x=109, 
                  y=92, 
-                 label="(108,92)"),
+                 label="(109,92)"),
                   vjust=-2)+
-  geom_segment(aes(x = 108, 
+  geom_segment(aes(x = 109, 
                    y = 92, 
                    xend = mean(Score), 
                    yend = 92)) +
-  geom_segment(aes(x = 108, 
+  geom_segment(aes(x = 109, 
                    y = 92, 
-                   xend = 108, 
+                   xend = 109, 
                    yend = mean(Grade))) +
   # second point
   geom_text(aes(x=104, 
@@ -224,7 +224,7 @@ ggplot(df,aes(x= Score,
 
 ## 
 
-**离差积和**(Sum of product)$\sum(X-\bar{X})*(Y-\bar{Y})$在相当程度反映两个变量共同变化的程度
+**离差积和**(Sum of product)$\sum(X-\bar{X})*(Y-\bar{Y})$在相当程度上反映两个变量共同变化的程度
 
 当$\sum(X-\bar{X})*(Y-\bar{Y})>0时$
 
@@ -264,17 +264,17 @@ ggplot(df,aes(x= Score,
                  y=mean(Grade), 
                  label="Mean Grade"),
                   hjust=0.8)+
-  geom_text(aes(x=108, 
+  geom_text(aes(x=109, 
                  y=92, 
-                 label="(108,92)"),
+                 label="(109,92)"),
                   vjust=-2)+
-  geom_segment(aes(x = 108, 
+  geom_segment(aes(x = 109, 
                    y = 92, 
                    xend = mean(Score), 
                    yend = 92)) +
-  geom_segment(aes(x = 108, 
+  geom_segment(aes(x = 109, 
                    y = 92, 
-                   xend = 108, 
+                   xend = 109, 
                    yend = mean(Grade))) +
   # second point
   geom_text(aes(x=104, 
@@ -327,17 +327,17 @@ ggplot(df,aes(x= Score,
                  y=mean(Grade), 
                  label="Mean Grade"),
                   hjust=0.8)+
-  geom_text(aes(x=108, 
+  geom_text(aes(x=109, 
                  y=92, 
-                 label="(108,92)"),
+                 label="(109,92)"),
                   vjust=-2)+
-  geom_segment(aes(x = 108, 
+  geom_segment(aes(x = 109, 
                    y = 92, 
                    xend = mean(Score), 
                    yend = 92)) +
-  geom_segment(aes(x = 108, 
+  geom_segment(aes(x = 109, 
                    y = 92, 
-                   xend = 108, 
+                   xend = 109, 
                    yend = mean(Grade))) +
   # second point
   geom_text(aes(x=104, 
@@ -390,11 +390,13 @@ $$=\sum\frac{Z_X*Z_Y}{N}(总体)$$
 
 我们可以从另一个角度来理解**r**,$\sum(X-\bar{X})*(Y-\bar{Y})$表示X与Y共同变化的程度，$s_x*s_y$表示X与Y单独变化的程度
 
-$$r = \frac{\sum(X-\bar{X})*(Y-\bar{Y})}{n*s_{X}*s_{Y}}=\frac{\sum(X-\bar{X})*(Y-\bar{Y})}{\sqrt{(X-\bar{X})^2}*\sqrt{(Y-\bar{Y})^2}}$$
+$$r = \frac{\sum(X-\bar{X})*(Y-\bar{Y})}{n*s_{X}*s_{Y}}$$
 
-## 
+$$=\frac{\sum(X-\bar{X})*(Y-\bar{Y})}{\sqrt{\sum (X-\bar{X})^2}*\sqrt{\sum (Y-\bar{Y})^2}}$$
 
-相关系数(Correlation coefficient)
+## 相关系数(Correlation coefficient)
+
+</br></br></br>
 
 -   一个介于-1和1之间的数字，表示变量之间关系的强度和方向；</br></br>
 
@@ -402,7 +404,7 @@ $$r = \frac{\sum(X-\bar{X})*(Y-\bar{Y})}{n*s_{X}*s_{Y}}=\frac{\sum(X-\bar{X})*(Y
 
 ## 
 
-</br></br></br></br>
+</br></br>
 
 -   一般样本的相关系数用$r$表示，总体的相关系数用$\rho$表示。</br></br>
 
@@ -458,7 +460,7 @@ $$r = \frac{\sum(X-\bar{X})*(Y-\bar{Y})}{n*s_{X}*s_{Y}}=\frac{\sum(X-\bar{X})*(Y
 
 ## 在使用相关系数的时候需要注意什么
 
-</br></br></br>
+</br></br>
 
 -   相关系数是一个描述性统计，它总结了样本数据，但并不能进一步推断出关于总体的信息；</br></br>
 
@@ -470,144 +472,325 @@ $$r = \frac{\sum(X-\bar{X})*(Y-\bar{Y})}{n*s_{X}*s_{Y}}=\frac{\sum(X-\bar{X})*(Y
 
 ## 相关分析的历史
 
-![](http://www.analytictech.com/mb313/images/scatte1.gif){fig-align="center"}</br></br>
+![](http://www.analytictech.com/mb313/images/scatte1.gif){fig-align="center"}
 
-- 高尔顿的学生皮尔逊为了研究人类的遗传，采集了大量来自父亲和儿子身高的数据</br></br>
+-   高尔顿的学生皮尔逊为了研究人类的遗传，采集了大量来自父亲和儿子身高的数据</br></br>
 
-- x轴为父亲的身高(单位：英尺)</br></br>
+-   x轴为父亲的身高(单位：英尺)</br></br>
 
-- y轴为儿子的身高(单位：英尺)
+-   y轴为儿子的身高(单位：英尺)
 
 ## 皮尔逊积差相关(Pearson's product-moment coefficient)
 
 </br></br></br>
 
-- 前一节中介绍的相关系数就是皮尔逊相关系数；</br></br>
+-   前一节中介绍的相关系数就是皮尔逊相关系数；</br></br>
 
-- 皮尔逊积差相关描述两个连续变量之间的线性相关。
+-   皮尔逊积差相关描述两个连续变量之间的**线性**相关。
+
+## 线性与非线性
+
+</br></br></br>
+
+-   线性关系：变量之间的关系可以用直线进行表示；</br></br>
+
+-   非线性关系：变量之间的关系不能用直线表示，需要用曲线或者更复杂的图形进行表示。
+
+![](images/1684859838210.jpg){fig-align="center"}
 
 ## 皮尔逊积差相关的适用条件
 
+</br></br>
+
+-   成对的数据；</br></br>
+
+-   数据均来自正态分布的总体；</br></br>
+
+-   数据是等距、连续的；</br></br>
+
+-   两列变量之间的关系是线性的；</br></br>
+
+-   样本容量不宜太小，成对数据的数目至少不少于30对，否则缺乏代表性。
+
+##
+
+![](images/1684861930479.jpg){fig-align="center"}
+
+##
+
+![](images/1684862005642.jpg){fig-align="center"}
+
+##
+
+![](images/1684862056793.jpg){fig-align="center"}
+
+##
+
+![](images/1684862074324.jpg){fig-align="center"}
+
+## 
+
+</br></br>
+
+当我们想了解同学们的语文成绩与数学成绩水平在总体中的位置是否一致？
+
+## 
+
+![](images/1684862207007.jpg){fig-align="center"}
+
+## 斯皮尔曼等级相关(Spearman's rank correlation coefficient)
+
 </br></br></br>
 
-- 成对的数据；</br></br>
+-   斯皮尔曼等级相关是一个等级相关系数；</br></br>
 
-- 数据均来自正态分布的总体；</br></br>
-
-- 数据是等距、连续的；</br></br>
-
-- 两列变量之间的关系是线性的；</br></br>
-
-- 样本容量不宜太小，成对数据的数目至少不少于30对，否则缺乏代表性。
-
-## 斯皮尔曼等级相关(Spearman’s rank correlation coefficient)
-
-</br></br></br>
-
-- 斯皮尔曼等级相关是一个等级相关系数；</br></br>
-
-- 因为它使用每个变量的数据排名（例如，从最低到最高）而不是原始数据本身。
+-   因为它使用每个变量的数据排名（例如，从最低到最高）而不是原始数据本身。
 
 ## 斯皮尔曼等级相关的适用条件
 
 </br></br></br>
 
-- 两列具有等级变量性质的数据，主要解决称名和顺序数据的相关问题；</br></br>
+-   两列具有等级变量性质的数据，主要解决称名和顺序数据的相关问题；</br></br>
 
-- 两列变量具有线性关系；</br></br>
+-   两列变量具有线性关系；</br></br>
 
-- 对总体分布状态不做要求；</br></br>
+-   对总体分布状态不做要求；</br></br>
 
-- 等比和等距数据需要进行赋以等级顺序，才能处理。
-
+-   等比和等距数据需要进行赋以等级顺序，才能处理。
 
 ## 斯皮尔曼等级相关的计算
 
-</br></br></br>
-
-- 等级差数法：
+-   等级差数法：
 
 $$r_R = 1-\frac{6\sum(R_X-R_Y)^2}{N(N^2-1)}=1-\frac{6\sum D^2}{N(N^2-1)}$$
 
-- 等级序数法
+-   等级序数法
 
 $$r_R = \frac{3}{N-1}*[\frac{4\sum R_XR_Y}{N(N+1)}-(N+1)]$$
-- N为等级个数；</br></br>
 
-- D指二列成对变量的等级差数；</br></br> 
+-   N为等级个数；</br>
 
-- $R_X$与$R_Y$为两列变量各自排列的等级次数
+-   D指二列成对变量的等级差数；</br>
 
+-   $R_X$与$R_Y$为两列变量各自排列的等级次数
 
-##
+## 
 
-</br></br></br>
+![](images/1684862236272.jpg){fig-align="center"}
+
+## 
+
+![](images/1684861765700.jpg){fig-align="center"}
+
+</br></br>
 
 有相同等级时计算等级相关的方法:如果有相同等级时,可用它们所占等级位置的平均数作为它们的等级
 
 $$r_RC = \frac{\sum x^2+\sum y^2-\sum D^2}{2 \sqrt{\sum x^2} \sqrt{\sum y^2}}$$
+
 $$\sum x^2 = \frac{N^3-N}{12}-\sum C_X, \sum C_X = \sum \frac{n(n^2-1)}{12}$$
+
 $$\sum Y^2 = \frac{N^3-N}{12}-\sum C_Y, \sum C_Y = \sum \frac{n(n^2-1)}{12}$$
 
-## 肯德尔等级相关
+## 
 
-</br></br></br>
+![](images/1684861646921.jpg){fig-align="center"}
 
-- 多列变量间的等级相关系数;</br></br>
+## 
 
-- 计算肯德尔和谐系数，原始数据资料的获得一般采用等级评定法，即让K个被试（或称为评价者）对N件事物或N种作品进行等级评定，每个评价者都能对N件事物（或作品）的好坏、优劣、喜好、大小、高低等排出一个等级顺序;</br>
+![](images/1684861682476.jpg){fig-align="center"}
 
-- W系数是每一评价对象实际得到的等级总和的变异与被评价对象一致性程度最大时等级总和的变异的比值。
+</br></br>
 
-## 肯德尔等级相关的计算
+当变量多于两个时，我们该如何考察它们之间的相关关系？
+
+## 
+
+</br></br>
+
+例如该问题，在色彩搭配时，设计师想了解消费者对7种颜色的喜好是否一致，该怎么处理
+
+## 
+
+</br></br>
+
+方法一：设计师呈现7种颜色让消费者进行排序。
+
+## 肯德尔W系数
+
+</br></br>
+
+-   多列变量间的等级相关系数;</br></br>
+
+-   计算肯德尔和谐系数，原始数据资料的获得一般采用等级评定法，即让K个被试（或称为评价者）对N件事物或N种作品进行等级评定，每个评价者都能对N件事物（或作品）的好坏、优劣、喜好、大小、高低等排出一个等级顺序;</br></br>
+
+-   W系数是每一评价对象实际得到的等级总和的变异与被评价对象一致性程度最大时等级总和的变异的比值。
+
+## 肯德尔W系数
 
 $$W = \frac{12(\sum R^2_i-\frac{(R_i)^2}{N})}{k^2(N^3-N)}$$
 
 </br></br>
 
-- $R_i$ : 第i个评价对象在所有k个评价者所获评级之和;</br></br>
+-   $R_i$ : 第i个评价对象在所有k个评价者所获评级之和;</br></br>
 
-- N :评价对象的数量;</br></br>
+-   N :评价对象的数量;</br></br>
 
-- k :评价者数量
+-   k :评价者数量
 
-
-
-## Kendall U 
-
-</br></br></br>
-
-- 肯德尔U系数又称一致性系数，适用于对K个评价者的一致性进行统计分析;</br></br>
-
-- 它与肯德尔W系数所处理的问题相同，但所处理的资料的获得方法不同，计算结果也不同;</br></br>
-
-- 如果有N件事物，由K个评价者，将N件事物两两配对，形成了N(N-1)/2对，然后对每一对中两事物进行比较，优者记1，非优者记0。
-
-## Kendall U 的计算
-
-$$U = \frac{8(\sum r_{ij}^2-K\sum r_{ij})}{N(N-1)*K(K-1)}+1$$
-
+## 
 
 </br></br>
 
-- N : 被评价事物的数目;</br></br>
+方法二：设计师成对呈现7种颜色让消费者进行选择每对中所偏好的颜色。
 
-- K : 评价者的数目;</br></br>
+## 肯德尔U系数
 
-- $r_{ij}$ :对偶比较记录表中i>j(或i<j)格中的择优分数</br></br>
+</br></br>
+
+-   肯德尔U系数又称一致性系数，适用于对K个评价者的一致性进行统计分析;</br></br>
+
+-   它与肯德尔W系数所处理的问题相同，但所处理的资料的获得方法不同，计算结果也不同;</br></br>
+
+-   如果有N件事物，由K个评价者，将N件事物两两配对，形成了N(N-1)/2对，然后对每一对中两事物进行比较，优者记1，非优者记0。
+
+## 
+
+![](images/1684861304500.jpg){fig-align="center"}
+
+## 肯德尔U系数的计算
+
+$$U = \frac{8(\sum r_{ij}^2-K\sum r_{ij})}{N(N-1)*K(K-1)}+1$$
+
+-   N : 被评价事物的数目;</br>
+
+-   K : 评价者的数目;</br>
+
+-   $r_{ij}$ :对偶比较记录表中$i>j$(或$i<j$)格中的择优分数</br>
 
 取值范围
 
 $$-\frac{1}{K} \le U \le 1,K为奇数$$
 
 $$-\frac{1}{K-1} \le U \le 1,K为偶数$$
-## 相关分析系数之间的关系
-||两列变量|多列变量|总体呈正态分布||||
-||||||||
-||||||||
-||||||||
-||||||||
-|||||||$\surd$|
 
+## 
+
+![](images/1684861220971.jpg){fig-align="center"}
+
+## 相关分析系数之间的关系
+
+|                      | **两列变量** | **多列变量** | **总体呈正态分布** | **总体不做要求** | **等距数据** | **顺序数据** |
+|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
+| 皮尔逊积差相关系数   | $\surd$      |              | $\surd$            |                  | $\surd$      |              |
+| 斯皮尔曼等级相关系数 | $\surd$      |              |                    | $\surd$          |              | $\surd$      |
+| 肯德尔W系数          |              | $\surd$      |                    | $\surd$          |              | $\surd$      |
+| 肯德尔U系数          |              | $\surd$      |                    | $\surd$          |              | $\surd$      |
+
+# 应用
+
+## 假设检验
+
+</br></br>
+
+-   当我们想要了解同学们的语文成绩与数学成绩水平是否存在相关性？</br>
+
+-   $H_0$: 语文成绩与数学成绩没有相关性，$\rho = 0$</br>
+
+-   $H_0$: 语文成绩与数学成绩没有相关性，$\rho \ne 0$</br>
+
+-   r的样本标准误：$SE=\sqrt{\frac{1-r^2}{n-2}}$</br>
+
+-   t = $\frac{r-\rho_0}{\frac{\sqrt{1-r^2}}{n-2}}$</br>
+
+-   df = n-2
+
+## 
+
+</br></br>
+
+-   相关分析的结果报告：
+
+-   本研究数据显示...与...无显著相关，$r(n)=(\pm).xx ,p = .xx$
+
+-   本研究数据显示...与...存在显著相关，$r(n)=(\pm).xx ,p = .xx$,or $p<.xx$
+
+## 偏相关(Partial correlation)
+
+</br></br>
+
+-   偏相关/单纯相关;</br></br>
+
+-   在研究两个变量间的线性关系时控制可能对其产生影响的其他变量;</br></br>
+
+-   $r_{xy,z}=\frac{r_{xy}-r_{xz}*r_{yz}}{(1-r^2_{xz})(1-r^2_{yz})}$
+
+-   $r_{xy,z}$是控制了变量z的影响下计算的x,y之间的偏相关系数
+
+## 偏相关的假设检验
+
+-   $H_0$: : 总体相关系数等于0。</br></br>
+
+-   t = \\frac{r \sqrt{n-k-2}{\sqrt{1-r^2}} </br></br>
+
+-   df =n−k−2</br></br>
+
+-   n：观察样本的容量</br></br>
+
+-   k：被控制变量的数量 </br></br>
+
+## 线性相关与非线性相关
+
+</br></br>
+
+注意，本节课提到的内容仅局限于线性相关，在真实世界中还存在着大量的非线性相关的情况。</br></br>
+
+如著名的耶克斯-多得森定律（最佳动机水平）指出，动机强度与工作效率之间不是线性关系，而是呈倒U形的线性关系。
+
+![](images/d3067ce7ba163b1da406917dc7e989c.png){fig-align="center"}
+
+<center>https://zhuanlan.zhihu.com/p/80840690</center>
+
+## 
+
+![](images/DataSaurus%20Dozen.gif)
+
+## 相关与因果
+
+</br></br>
+
+-   事物之间的相互关系：</br></br>
+
+    -   因果关系，一种现象是原因，另一种现象是结果。</br></br>
+
+    -   共变关系，表面有联系的两种事物都与第三种事物有关。</br></br>
+
+    -   相关关系，两类现象在发展变化的方向与大小方面存在一定的联系，但不是前两种关系。
+
+![](images/7fe709d6c167304479d145ee69f5a15.png){fig-align="center"}
+
+## 相关系数在测量中的应用
+
+</br></br>
+
+-   效度：某心理学家新设计一个测量智力的测验，可以将其与已有标准智力测验的结果进行相关分析，高相关说明该新测验有效。</br></br>
+
+-   信度：心理学家新设计测量智力的测验，试图检验测验所包含题目的质量，将该测验中各题目间的得分进行相关分析，高相关证明该测验的题目所测量的心理品质具有一致性。
 
 ## Summary
+
+-   相关分析
+
+    -   相关的定义
+
+    -   相关系数
+
+-   常见的相关系数
+
+    -   皮尔逊积差相关
+
+    -   斯皮尔曼等级相关
+
+    -   肯德尔和谐系数
+
+-   相关分析的应用

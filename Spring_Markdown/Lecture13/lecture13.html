@@ -401,12 +401,12 @@
 </section>
 <section id="量化一起变化" class="slide level2">
 <h2>量化”一起变化”</h2>
-<p>我们先从单个点(108,92)开始，其中Mean Score可以用<span class="math inline">\(\bar{X}\)</span>,Mean Grade可以用<span class="math inline">\(\bar{Y}\)</span>表示</p>
+<p>我们先从单个点(109,92)开始，其中Mean Score可以用<span class="math inline">\(\bar{X}\)</span>,Mean Grade可以用<span class="math inline">\(\bar{Y}\)</span>表示</p>
 
 <img data-src="lecture13_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"></section>
 <section id="section-3" class="slide level2">
 <h2></h2>
-<p>点(108,92)到<span class="math inline">\(\bar{X}\)</span>,<span class="math inline">\(\bar{Y}\)</span>的距离可以分别表示为<span class="math inline">\(X-\bar{X}\)</span>,<span class="math inline">\(Y-\bar{Y}\)</span>,它们分别代表X和Y的<strong>离均差</strong>，对于单个点，我们可以用<span class="math inline">\((X-\bar{X})*(Y-\bar{Y})\)</span>量化单个点的变化程度</p>
+<p>点(109,92)到<span class="math inline">\(\bar{X}\)</span>,<span class="math inline">\(\bar{Y}\)</span>的距离可以分别表示为<span class="math inline">\(X-\bar{X}\)</span>,<span class="math inline">\(Y-\bar{Y}\)</span>,它们分别代表X和Y的<strong>离均差</strong>，对于单个点，我们可以用<span class="math inline">\((X-\bar{X})*(Y-\bar{Y})\)</span>量化单个点的变化程度</p>
 
 <img data-src="lecture13_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"></section>
 <section id="section-4" class="slide level2">
@@ -416,7 +416,7 @@
 <img data-src="lecture13_files/figure-revealjs/unnamed-chunk-6-1.png" width="960" class="r-stretch"></section>
 <section id="section-5" class="slide level2">
 <h2></h2>
-<p><strong>离差积和</strong>(Sum of product)<span class="math inline">\(\sum(X-\bar{X})*(Y-\bar{Y})\)</span>在相当程度反映两个变量共同变化的程度</p>
+<p><strong>离差积和</strong>(Sum of product)<span class="math inline">\(\sum(X-\bar{X})*(Y-\bar{Y})\)</span>在相当程度上反映两个变量共同变化的程度</p>
 <p>当<span class="math inline">\(\sum(X-\bar{X})*(Y-\bar{Y})&gt;0时\)</span></p>
 
 <img data-src="images/ce0fce3bdbf47a2cab02abecd44a157.png" class="r-stretch quarto-figure-center"></section>
@@ -458,19 +458,20 @@
 <section id="section-12" class="slide level2">
 <h2></h2>
 <p>我们可以从另一个角度来理解<strong>r</strong>,<span class="math inline">\(\sum(X-\bar{X})*(Y-\bar{Y})\)</span>表示X与Y共同变化的程度，<span class="math inline">\(s_x*s_y\)</span>表示X与Y单独变化的程度</p>
-<p><span class="math display">\[r = \frac{\sum(X-\bar{X})*(Y-\bar{Y})}{n*s_{X}*s_{Y}}=\frac{\sum(X-\bar{X})*(Y-\bar{Y})}{\sqrt{(X-\bar{X})^2}*\sqrt{(Y-\bar{Y})^2}}\]</span></p>
+<p><span class="math display">\[r = \frac{\sum(X-\bar{X})*(Y-\bar{Y})}{n*s_{X}*s_{Y}}\]</span></p>
+<p><span class="math display">\[=\frac{\sum(X-\bar{X})*(Y-\bar{Y})}{\sqrt{\sum (X-\bar{X})^2}*\sqrt{\sum (Y-\bar{Y})^2}}\]</span></p>
 </section>
-<section id="section-13" class="slide level2">
-<h2></h2>
-<p>相关系数(Correlation coefficient)</p>
+<section id="相关系数correlation-coefficient" class="slide level2">
+<h2>相关系数(Correlation coefficient)</h2>
+<p><br><br><br></p>
 <ul>
 <li><p>一个介于-1和1之间的数字，表示变量之间关系的强度和方向；<br><br></p></li>
 <li><p>反映变量之间相关关系密切程度的指标。</p></li>
 </ul>
 </section>
-<section id="section-14" class="slide level2">
+<section id="section-13" class="slide level2">
 <h2></h2>
-<p><br><br><br><br></p>
+<p><br><br></p>
 <ul>
 <li><p>一般样本的相关系数用<span class="math inline">\(r\)</span>表示，总体的相关系数用<span class="math inline">\(\rho\)</span>表示。<br><br></p>
 <ul>
@@ -592,7 +593,7 @@ https://en.wikipedia.org/wiki/Correlation
 </section>
 <section id="在使用相关系数的时候需要注意什么" class="slide level2">
 <h2>在使用相关系数的时候需要注意什么</h2>
-<p><br><br><br></p>
+<p><br><br></p>
 <ul>
 <li><p>相关系数是一个描述性统计，它总结了样本数据，但并不能进一步推断出关于总体的信息；<br><br></p></li>
 <li><p>相关分析受样本影响，小样本的相关系数不稳定；<br><br></p></li>
@@ -606,8 +607,8 @@ https://en.wikipedia.org/wiki/Correlation
 </section>
 <section id="相关分析的历史" class="slide level2">
 <h2>相关分析的历史</h2>
-<p><img data-src="http://www.analytictech.com/mb313/images/scatte1.gif" data-fig-align="center"><br><br></p>
-<ul>
+
+<img data-src="http://www.analytictech.com/mb313/images/scatte1.gif" class="r-stretch quarto-figure-center"><ul>
 <li><p>高尔顿的学生皮尔逊为了研究人类的遗传，采集了大量来自父亲和儿子身高的数据<br><br></p></li>
 <li><p>x轴为父亲的身高(单位：英尺)<br><br></p></li>
 <li><p>y轴为儿子的身高(单位：英尺)</p></li>
@@ -618,12 +619,21 @@ https://en.wikipedia.org/wiki/Correlation
 <p><br><br><br></p>
 <ul>
 <li><p>前一节中介绍的相关系数就是皮尔逊相关系数；<br><br></p></li>
-<li><p>皮尔逊积差相关描述两个连续变量之间的线性相关。</p></li>
+<li><p>皮尔逊积差相关描述两个连续变量之间的<strong>线性</strong>相关。</p></li>
 </ul>
 </section>
+<section id="线性与非线性" class="slide level2">
+<h2>线性与非线性</h2>
+<p><br><br><br></p>
+<ul>
+<li><p>线性关系：变量之间的关系可以用直线进行表示；<br><br></p></li>
+<li><p>非线性关系：变量之间的关系不能用直线表示，需要用曲线或者更复杂的图形进行表示。</p></li>
+</ul>
+
+<img data-src="images/1684859838210.jpg" class="r-stretch quarto-figure-center"></section>
 <section id="皮尔逊积差相关的适用条件" class="slide level2">
 <h2>皮尔逊积差相关的适用条件</h2>
-<p><br><br><br></p>
+<p><br><br></p>
 <ul>
 <li><p>成对的数据；<br><br></p></li>
 <li><p>数据均来自正态分布的总体；<br><br></p></li>
@@ -632,6 +642,31 @@ https://en.wikipedia.org/wiki/Correlation
 <li><p>样本容量不宜太小，成对数据的数目至少不少于30对，否则缺乏代表性。</p></li>
 </ul>
 </section>
+<section id="section-14" class="slide level2">
+<h2></h2>
+
+<img data-src="images/1684861930479.jpg" class="r-stretch quarto-figure-center"></section>
+<section id="section-15" class="slide level2">
+<h2></h2>
+
+<img data-src="images/1684862005642.jpg" class="r-stretch quarto-figure-center"></section>
+<section id="section-16" class="slide level2">
+<h2></h2>
+
+<img data-src="images/1684862056793.jpg" class="r-stretch quarto-figure-center"></section>
+<section id="section-17" class="slide level2">
+<h2></h2>
+
+<img data-src="images/1684862074324.jpg" class="r-stretch quarto-figure-center"></section>
+<section id="section-18" class="slide level2">
+<h2></h2>
+<p><br><br></p>
+<p>当我们想了解同学们的语文成绩与数学成绩水平在总体中的位置是否一致？</p>
+</section>
+<section id="section-19" class="slide level2">
+<h2></h2>
+
+<img data-src="images/1684862207007.jpg" class="r-stretch quarto-figure-center"></section>
 <section id="斯皮尔曼等级相关spearmans-rank-correlation-coefficient" class="slide level2">
 <h2>斯皮尔曼等级相关(Spearman’s rank correlation coefficient)</h2>
 <p><br><br><br></p>
@@ -652,7 +687,6 @@ https://en.wikipedia.org/wiki/Correlation
 </section>
 <section id="斯皮尔曼等级相关的计算" class="slide level2">
 <h2>斯皮尔曼等级相关的计算</h2>
-<p><br><br><br></p>
 <ul>
 <li>等级差数法：</li>
 </ul>
@@ -660,29 +694,57 @@ https://en.wikipedia.org/wiki/Correlation
 <ul>
 <li>等级序数法</li>
 </ul>
-<p><span class="math display">\[r_R = \frac{3}{N-1}*[\frac{4\sum R_XR_Y}{N(N+1)}-(N+1)]\]</span> - N为等级个数；<br><br></p>
+<p><span class="math display">\[r_R = \frac{3}{N-1}*[\frac{4\sum R_XR_Y}{N(N+1)}-(N+1)]\]</span></p>
 <ul>
-<li><p>D指二列成对变量的等级差数；<br><br></p></li>
+<li><p>N为等级个数；<br></p></li>
+<li><p>D指二列成对变量的等级差数；<br></p></li>
 <li><p><span class="math inline">\(R_X\)</span>与<span class="math inline">\(R_Y\)</span>为两列变量各自排列的等级次数</p></li>
 </ul>
 </section>
-<section id="section-15" class="slide level2">
+<section id="section-20" class="slide level2">
 <h2></h2>
-<p><br><br><br></p>
+
+<img data-src="images/1684862236272.jpg" class="r-stretch quarto-figure-center"></section>
+<section id="section-21" class="slide level2">
+<h2></h2>
+
+<img data-src="images/1684861765700.jpg" class="r-stretch quarto-figure-center"><p><br><br></p>
 <p>有相同等级时计算等级相关的方法:如果有相同等级时,可用它们所占等级位置的平均数作为它们的等级</p>
-<p><span class="math display">\[r_RC = \frac{\sum x^2+\sum y^2-\sum D^2}{2 \sqrt{\sum x^2} \sqrt{\sum y^2}}\]</span> <span class="math display">\[\sum x^2 = \frac{N^3-N}{12}-\sum C_X, \sum C_X = \sum \frac{n(n^2-1)}{12}\]</span> <span class="math display">\[\sum Y^2 = \frac{N^3-N}{12}-\sum C_Y, \sum C_Y = \sum \frac{n(n^2-1)}{12}\]</span></p>
+<p><span class="math display">\[r_RC = \frac{\sum x^2+\sum y^2-\sum D^2}{2 \sqrt{\sum x^2} \sqrt{\sum y^2}}\]</span></p>
+<p><span class="math display">\[\sum x^2 = \frac{N^3-N}{12}-\sum C_X, \sum C_X = \sum \frac{n(n^2-1)}{12}\]</span></p>
+<p><span class="math display">\[\sum Y^2 = \frac{N^3-N}{12}-\sum C_Y, \sum C_Y = \sum \frac{n(n^2-1)}{12}\]</span></p>
 </section>
-<section id="肯德尔等级相关" class="slide level2">
-<h2>肯德尔等级相关</h2>
-<p><br><br><br></p>
+<section id="section-22" class="slide level2">
+<h2></h2>
+
+<img data-src="images/1684861646921.jpg" class="r-stretch quarto-figure-center"></section>
+<section id="section-23" class="slide level2">
+<h2></h2>
+
+<img data-src="images/1684861682476.jpg" class="r-stretch quarto-figure-center"><p><br><br></p>
+<p>当变量多于两个时，我们该如何考察它们之间的相关关系？</p>
+</section>
+<section id="section-24" class="slide level2">
+<h2></h2>
+<p><br><br></p>
+<p>例如该问题，在色彩搭配时，设计师想了解消费者对7种颜色的喜好是否一致，该怎么处理</p>
+</section>
+<section id="section-25" class="slide level2">
+<h2></h2>
+<p><br><br></p>
+<p>方法一：设计师呈现7种颜色让消费者进行排序。</p>
+</section>
+<section id="肯德尔w系数" class="slide level2">
+<h2>肯德尔W系数</h2>
+<p><br><br></p>
 <ul>
 <li><p>多列变量间的等级相关系数;<br><br></p></li>
-<li><p>计算肯德尔和谐系数，原始数据资料的获得一般采用等级评定法，即让K个被试（或称为评价者）对N件事物或N种作品进行等级评定，每个评价者都能对N件事物（或作品）的好坏、优劣、喜好、大小、高低等排出一个等级顺序;<br></p></li>
+<li><p>计算肯德尔和谐系数，原始数据资料的获得一般采用等级评定法，即让K个被试（或称为评价者）对N件事物或N种作品进行等级评定，每个评价者都能对N件事物（或作品）的好坏、优劣、喜好、大小、高低等排出一个等级顺序;<br><br></p></li>
 <li><p>W系数是每一评价对象实际得到的等级总和的变异与被评价对象一致性程度最大时等级总和的变异的比值。</p></li>
 </ul>
 </section>
-<section id="肯德尔等级相关的计算" class="slide level2">
-<h2>肯德尔等级相关的计算</h2>
+<section id="肯德尔w系数-1" class="slide level2">
+<h2>肯德尔W系数</h2>
 <p><span class="math display">\[W = \frac{12(\sum R^2_i-\frac{(R_i)^2}{N})}{k^2(N^3-N)}\]</span></p>
 <p><br><br></p>
 <ul>
@@ -691,21 +753,200 @@ https://en.wikipedia.org/wiki/Correlation
 <li><p>k :评价者数量</p></li>
 </ul>
 </section>
-<section id="kendall-u" class="slide level2">
-<h2>Kendall U</h2>
-<p><br><br><br></p>
+<section id="section-26" class="slide level2">
+<h2></h2>
+<p><br><br></p>
+<p>方法二：设计师成对呈现7种颜色让消费者进行选择每对中所偏好的颜色。</p>
+</section>
+<section id="肯德尔u系数" class="slide level2">
+<h2>肯德尔U系数</h2>
+<p><br><br></p>
 <ul>
 <li><p>肯德尔U系数又称一致性系数，适用于对K个评价者的一致性进行统计分析;<br><br></p></li>
 <li><p>它与肯德尔W系数所处理的问题相同，但所处理的资料的获得方法不同，计算结果也不同;<br><br></p></li>
 <li><p>如果有N件事物，由K个评价者，将N件事物两两配对，形成了N(N-1)/2对，然后对每一对中两事物进行比较，优者记1，非优者记0。</p></li>
 </ul>
 </section>
-<section id="kendall-u-的计算" class="slide level2">
-<h2>Kendall U 的计算</h2>
-<p>$$</p>
+<section id="section-27" class="slide level2">
+<h2></h2>
+
+<img data-src="images/1684861304500.jpg" class="r-stretch quarto-figure-center"></section>
+<section id="肯德尔u系数的计算" class="slide level2">
+<h2>肯德尔U系数的计算</h2>
+<p><span class="math display">\[U = \frac{8(\sum r_{ij}^2-K\sum r_{ij})}{N(N-1)*K(K-1)}+1\]</span></p>
+<ul>
+<li><p>N : 被评价事物的数目;<br></p></li>
+<li><p>K : 评价者的数目;<br></p></li>
+<li><p><span class="math inline">\(r_{ij}\)</span> :对偶比较记录表中<span class="math inline">\(i&gt;j\)</span>(或<span class="math inline">\(i&lt;j\)</span>)格中的择优分数<br></p></li>
+</ul>
+<p>取值范围</p>
+<p><span class="math display">\[-\frac{1}{K} \le U \le 1,K为奇数\]</span></p>
+<p><span class="math display">\[-\frac{1}{K-1} \le U \le 1,K为偶数\]</span></p>
+</section>
+<section id="section-28" class="slide level2">
+<h2></h2>
+
+<img data-src="images/1684861220971.jpg" class="r-stretch quarto-figure-center"></section>
+<section id="相关分析系数之间的关系" class="slide level2">
+<h2>相关分析系数之间的关系</h2>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>两列变量</strong></th>
+<th><strong>多列变量</strong></th>
+<th><strong>总体呈正态分布</strong></th>
+<th><strong>总体不做要求</strong></th>
+<th><strong>等距数据</strong></th>
+<th><strong>顺序数据</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>皮尔逊积差相关系数</td>
+<td><span class="math inline">\(\surd\)</span></td>
+<td></td>
+<td><span class="math inline">\(\surd\)</span></td>
+<td></td>
+<td><span class="math inline">\(\surd\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>斯皮尔曼等级相关系数</td>
+<td><span class="math inline">\(\surd\)</span></td>
+<td></td>
+<td></td>
+<td><span class="math inline">\(\surd\)</span></td>
+<td></td>
+<td><span class="math inline">\(\surd\)</span></td>
+</tr>
+<tr class="odd">
+<td>肯德尔W系数</td>
+<td></td>
+<td><span class="math inline">\(\surd\)</span></td>
+<td></td>
+<td><span class="math inline">\(\surd\)</span></td>
+<td></td>
+<td><span class="math inline">\(\surd\)</span></td>
+</tr>
+<tr class="even">
+<td>肯德尔U系数</td>
+<td></td>
+<td><span class="math inline">\(\surd\)</span></td>
+<td></td>
+<td><span class="math inline">\(\surd\)</span></td>
+<td></td>
+<td><span class="math inline">\(\surd\)</span></td>
+</tr>
+</tbody>
+</table>
+</section></section>
+<section>
+<section id="应用" class="title-slide slide level1 center">
+<h1>应用</h1>
+
+</section>
+<section id="假设检验" class="slide level2">
+<h2>假设检验</h2>
+<p><br><br></p>
+<ul>
+<li><p>当我们想要了解同学们的语文成绩与数学成绩水平是否存在相关性？<br></p></li>
+<li><p><span class="math inline">\(H_0\)</span>: 语文成绩与数学成绩没有相关性，<span class="math inline">\(\rho = 0\)</span><br></p></li>
+<li><p><span class="math inline">\(H_0\)</span>: 语文成绩与数学成绩没有相关性，<span class="math inline">\(\rho \ne 0\)</span><br></p></li>
+<li><p>r的样本标准误：<span class="math inline">\(SE=\sqrt{\frac{1-r^2}{n-2}}\)</span><br></p></li>
+<li><p>t = <span class="math inline">\(\frac{r-\rho_0}{\frac{\sqrt{1-r^2}}{n-2}}\)</span><br></p></li>
+<li><p>df = n-2</p></li>
+</ul>
+</section>
+<section id="section-29" class="slide level2">
+<h2></h2>
+<p><br><br></p>
+<ul>
+<li><p>相关分析的结果报告：</p></li>
+<li><p>本研究数据显示…与…无显著相关，<span class="math inline">\(r(n)=(\pm).xx ,p = .xx\)</span></p></li>
+<li><p>本研究数据显示…与…存在显著相关，<span class="math inline">\(r(n)=(\pm).xx ,p = .xx\)</span>,or <span class="math inline">\(p&lt;.xx\)</span></p></li>
+</ul>
+</section>
+<section id="偏相关partial-correlation" class="slide level2">
+<h2>偏相关(Partial correlation)</h2>
+<p><br><br></p>
+<ul>
+<li><p>偏相关/单纯相关;<br><br></p></li>
+<li><p>在研究两个变量间的线性关系时控制可能对其产生影响的其他变量;<br><br></p></li>
+<li><p><span class="math inline">\(r_{xy,z}=\frac{r_{xy}-r_{xz}*r_{yz}}{(1-r^2_{xz})(1-r^2_{yz})}\)</span></p></li>
+<li><p><span class="math inline">\(r_{xy,z}\)</span>是控制了变量z的影响下计算的x,y之间的偏相关系数</p></li>
+</ul>
+</section>
+<section id="偏相关的假设检验" class="slide level2">
+<h2>偏相关的假设检验</h2>
+<ul>
+<li><p><span class="math inline">\(H_0\)</span>: : 总体相关系数等于0。<br><br></p></li>
+<li><p>t = \frac{r <br><br></p></li>
+<li><p>df =n−k−2<br><br></p></li>
+<li><p>n：观察样本的容量<br><br></p></li>
+<li><p>k：被控制变量的数量 <br><br></p></li>
+</ul>
+</section>
+<section id="线性相关与非线性相关" class="slide level2">
+<h2>线性相关与非线性相关</h2>
+<p><br><br></p>
+<p>注意，本节课提到的内容仅局限于线性相关，在真实世界中还存在着大量的非线性相关的情况。<br><br></p>
+<p>如著名的耶克斯-多得森定律（最佳动机水平）指出，动机强度与工作效率之间不是线性关系，而是呈倒U形的线性关系。</p>
+
+<img data-src="images/d3067ce7ba163b1da406917dc7e989c.png" class="r-stretch quarto-figure-center"><center>
+https://zhuanlan.zhihu.com/p/80840690
+</center>
+</section>
+<section id="section-30" class="slide level2">
+<h2></h2>
+
+<img data-src="images/DataSaurus%20Dozen.gif" class="r-stretch"></section>
+<section id="相关与因果" class="slide level2">
+<h2>相关与因果</h2>
+<p><br><br></p>
+<ul>
+<li><p>事物之间的相互关系：<br><br></p>
+<ul>
+<li><p>因果关系，一种现象是原因，另一种现象是结果。<br><br></p></li>
+<li><p>共变关系，表面有联系的两种事物都与第三种事物有关。<br><br></p></li>
+<li><p>相关关系，两类现象在发展变化的方向与大小方面存在一定的联系，但不是前两种关系。</p></li>
+</ul></li>
+</ul>
+
+<img data-src="images/7fe709d6c167304479d145ee69f5a15.png" class="r-stretch quarto-figure-center"></section>
+<section id="相关系数在测量中的应用" class="slide level2">
+<h2>相关系数在测量中的应用</h2>
+<p><br><br></p>
+<ul>
+<li><p>效度：某心理学家新设计一个测量智力的测验，可以将其与已有标准智力测验的结果进行相关分析，高相关说明该新测验有效。<br><br></p></li>
+<li><p>信度：心理学家新设计测量智力的测验，试图检验测验所包含题目的质量，将该测验中各题目间的得分进行相关分析，高相关证明该测验的题目所测量的心理品质具有一致性。</p></li>
+</ul>
 </section>
 <section id="summary" class="slide level2">
 <h2>Summary</h2>
+<ul>
+<li><p>相关分析</p>
+<ul>
+<li><p>相关的定义</p></li>
+<li><p>相关系数</p></li>
+</ul></li>
+<li><p>常见的相关系数</p>
+<ul>
+<li><p>皮尔逊积差相关</p></li>
+<li><p>斯皮尔曼等级相关</p></li>
+<li><p>肯德尔和谐系数</p></li>
+</ul></li>
+<li><p>相关分析的应用</p></li>
+</ul>
 
 <img src="images/image-393370223.png" class="slide-logo r-stretch"><div class="footer footer-default">
 
