@@ -599,18 +599,23 @@ R
 
 <h3 style="text-align: center; font-size: 24px;">
 
-   JASP是SPSS的一个免费、开源的替代方案，它允许你在一个用户友好的环境中执行简单和复杂的分析。
-   
-</h3></br>
+JASP是SPSS的一个免费、开源的替代方案，它允许你在一个用户友好的环境中执行简单和复杂的分析。
+
+</h3>
+
+</br>
 
 ## SPSS
 
 ![](images/image-518160726.png){fig-align="center"}</br>
+
 <h3 style="text-align: center; font-size: 24px;">
 
-  在由Norman H. Nie, Dale H. Bent和C. Hadlai Hull开发后，第一版SPSS在1968年作为社会科学统计软件包发布了。
-  
-</h3></br>
+在由Norman H. Nie, Dale H. Bent和C. Hadlai Hull开发后，第一版SPSS在1968年作为社会科学统计软件包发布了。
+
+</h3>
+
+</br>
 
 ## PYTHON
 
@@ -618,9 +623,11 @@ R
 
 <h3 style="text-align: center; font-size: 24px;">
 
-   Python是由Centrum Wiskunde & Informatica (CWI)的Guido van          Rossum在20世纪80年代末构想的。Python是一种用途广泛的编程语言。
-   
-</h3></br>
+Python是由Centrum Wiskunde & Informatica (CWI)的Guido van Rossum在20世纪80年代末构想的。Python是一种用途广泛的编程语言。
+
+</h3>
+
+</br>
 
 ## MATLAB
 
@@ -628,11 +635,11 @@ R
 
 <h3 style="text-align: center; font-size: 24px;">
 
-   MATLAB是由数学家和计算机程序员Cleve Moler在20世纪60年代发明的。
-   在一开始(版本1.0之前)，MATLAB“不是一种编程语言;这是一个简单的交互式矩阵计算器。
+MATLAB是由数学家和计算机程序员Cleve Moler在20世纪60年代发明的。 在一开始(版本1.0之前)，MATLAB"不是一种编程语言;这是一个简单的交互式矩阵计算器。
 
-</h3></br>
+</h3>
 
+</br>
 
 ## R
 
@@ -640,9 +647,11 @@ R
 
 <h3 style="text-align: center; font-size: 24px;">
 
-   R是S编程语言与Scheme的词法作用域语义相结合的开源实现的语言，Scheme是为统计分析设计的，该语言是一种解释语言   ，其代码可以在没有编译器的情况下直接运行。
-   
-</h3></br>
+R是S编程语言与Scheme的词法作用域语义相结合的开源实现的语言，Scheme是为统计分析设计的，该语言是一种解释语言 ，其代码可以在没有编译器的情况下直接运行。
+
+</h3>
+
+</br>
 
 ## 可视化带来的一些问题
 
