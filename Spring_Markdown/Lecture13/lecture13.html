@@ -319,7 +319,7 @@
     }
   </style>
   
-  <script src="lecture13_files/libs/htmlwidgets-1.6.1/htmlwidgets.js"></script>
+  <script src="lecture13_files/libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
   <link href="lecture13_files/libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
   <script src="lecture13_files/libs/datatables-binding-0.27/datatables.js"></script>
   <script src="lecture13_files/libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -830,15 +830,18 @@ Math-Chinese  0.90 [0.63, 0.98] &lt;.001 *** 10
 ────────────────────────────────────────────</code></pre>
 </div>
 </div>
-<img data-src="lecture13_files/figure-revealjs/unnamed-chunk-11-1.png" width="960" class="r-stretch"><p><br><br></p>
+<img data-src="lecture13_files/figure-revealjs/unnamed-chunk-11-1.png" width="960" class="r-stretch"></section>
+<section id="section-34" class="slide level2">
+<h2></h2>
+<p><br><br></p>
 <p>当变量多于两个时，我们该如何考察它们之间的相关关系？</p>
 </section>
-<section id="section-34" class="slide level2">
+<section id="section-35" class="slide level2">
 <h2></h2>
 <p><br><br></p>
 <p>例如该问题，在色彩搭配时，设计师想了解消费者对7种颜色的喜好是否一致，该怎么处理</p>
 </section>
-<section id="section-35" class="slide level2">
+<section id="section-36" class="slide level2">
 <h2></h2>
 <p><br><br></p>
 <p>方法一：设计师呈现7种颜色让消费者进行排序。</p>
@@ -863,7 +866,7 @@ Math-Chinese  0.90 [0.63, 0.98] &lt;.001 *** 10
 <li><p>k :评价者数量</p></li>
 </ul>
 </section>
-<section id="section-36" class="slide level2">
+<section id="section-37" class="slide level2">
 <h2></h2>
 <p><br><br></p>
 <p>方法二：设计师成对呈现7种颜色让消费者进行选择每对中所偏好的颜色。</p>
@@ -877,7 +880,7 @@ Math-Chinese  0.90 [0.63, 0.98] &lt;.001 *** 10
 <li><p>如果有N件事物，由K个评价者，将N件事物两两配对，形成了N(N-1)/2对，然后对每一对中两事物进行比较，优者记1，非优者记0。</p></li>
 </ul>
 </section>
-<section id="section-37" class="slide level2">
+<section id="section-38" class="slide level2">
 <h2></h2>
 
 <img data-src="images/1684861304500.jpg" class="r-stretch quarto-figure-center"></section>
@@ -893,21 +896,21 @@ Math-Chinese  0.90 [0.63, 0.98] &lt;.001 *** 10
 <p><span class="math display">\[-\frac{1}{K} \le U \le 1,K为奇数\]</span></p>
 <p><span class="math display">\[-\frac{1}{K-1} \le U \le 1,K为偶数\]</span></p>
 </section>
-<section id="section-38" class="slide level2">
+<section id="section-39" class="slide level2">
 <h2></h2>
 
 <img data-src="images/1684861220971.jpg" class="r-stretch quarto-figure-center"></section>
 <section id="相关分析系数之间的关系" class="slide level2">
 <h2>相关分析系数之间的关系</h2>
-<table style="width:100%;">
+<table>
 <colgroup>
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 14%">
+<col style="width: 18%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 17%">
+<col style="width: 15%">
+<col style="width: 12%">
+<col style="width: 12%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -971,13 +974,13 @@ Math-Chinese  0.90 [0.63, 0.98] &lt;.001 *** 10
 <ul>
 <li><p>当我们想要了解同学们的语文成绩与数学成绩水平是否存在相关性？<br></p></li>
 <li><p><span class="math inline">\(H_0\)</span>: 语文成绩与数学成绩没有相关性，<span class="math inline">\(\rho = 0\)</span><br></p></li>
-<li><p><span class="math inline">\(H_0\)</span>: 语文成绩与数学成绩没有相关性，<span class="math inline">\(\rho \ne 0\)</span><br></p></li>
+<li><p><span class="math inline">\(H_1\)</span>: 语文成绩与数学成绩有相关性，<span class="math inline">\(\rho \ne 0\)</span><br></p></li>
 <li><p><em>r</em>的样本标准误：<span class="math inline">\(SE=\sqrt{\frac{1-r^2}{n-2}}\)</span><br></p></li>
 <li><p><em>t</em> = <span class="math inline">\(\frac{r-\rho_0}{\frac{\sqrt{1-r^2}}{n-2}}\)</span><br></p></li>
 <li><p><em>df</em> = n-2</p></li>
 </ul>
 </section>
-<section id="section-39" class="slide level2">
+<section id="section-40" class="slide level2">
 <h2></h2>
 <p><br><br></p>
 <ul>
@@ -999,7 +1002,7 @@ Math-Chinese  0.90 [0.63, 0.98] &lt;.001 *** 10
 <section id="偏相关的假设检验" class="slide level2">
 <h2>偏相关的假设检验</h2>
 <ul>
-<li><p><span class="math inline">\(H_0\)</span>: : 总体相关系数等于0。<br><br></p></li>
+<li><p><span class="math inline">\(H_0\)</span>: 总体相关系数等于0。<br><br></p></li>
 <li><p><span class="math inline">\(t = \frac{r \sqrt{n-k-2}}{\sqrt{1-r^2}}\)</span> <br><br></p></li>
 <li><p><em>df</em> =n−k−2<br><br></p></li>
 <li><p><em>n</em>：观察样本的容量<br><br></p></li>
@@ -1016,7 +1019,7 @@ Math-Chinese  0.90 [0.63, 0.98] &lt;.001 *** 10
 https://zhuanlan.zhihu.com/p/80840690
 </center>
 </section>
-<section id="section-40" class="slide level2">
+<section id="section-41" class="slide level2">
 <h2></h2>
 
 <img data-src="images/DataSaurus%20Dozen.gif" class="r-stretch"></section>
