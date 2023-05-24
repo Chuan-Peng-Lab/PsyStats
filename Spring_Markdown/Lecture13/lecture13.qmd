@@ -57,7 +57,7 @@ Hu Chuan-Peng
 
 ```{r}
 # load tidyverse using pacman::p_load
-pacman::p_load("tidyverse","DT")
+pacman::p_load("tidyverse","DT","bruceR")
 ```
 
 ```{r}
@@ -444,6 +444,19 @@ $$=\frac{\sum(X-\bar{X})*(Y-\bar{Y})}{\sqrt{\sum (X-\bar{X})^2}*\sqrt{\sum (Y-\b
 
 <center>https://en.wikipedia.org/wiki/Correlation</center>
 
+## 
+
+</br></br>
+
+请尝试计算上述数据的相关系数大小(公式计算,数据见df.csv)
+
+## 在R中的计算
+
+```{r}
+#write_csv(df,'df.csv')
+Corr(df)
+```
+
 ## 相关系数的大小
 
 | Correlation coefficient | Correlation strength | Correlation type |
@@ -458,6 +471,40 @@ $$=\frac{\sum(X-\bar{X})*(Y-\bar{Y})}{\sqrt{\sum (X-\bar{X})^2}*\sqrt{\sum (Y-\b
 | $0.50 \sim 0.69$        | strong               | Positive         |
 | $0.70 \sim 1$           | Very strong          | Positive         |
 
+## 相关与变异
+
+由
+
+$$r =\frac{\sum(X-\bar{X})*(Y-\bar{Y})}{\sqrt{\sum (X-\bar{X})^2}*\sqrt{\sum (Y-\bar{Y})^2}}$$
+可以得出
+
+$$r^2 =\frac{(\sum(X-\bar{X})*(Y-\bar{Y}))^2}{\sum (X-\bar{X})^2*\sum (Y-\bar{Y})^2}$$
+
+
+##
+
+</br></br>
+
+-   决定系数 $r^2$:测量了一个变量的变异性中由另一个变量的变异性而决定的比例；</br></br>
+
+-   例如 $r = 0.8$，则有64%的Y变量的变异(方差)由X变量决定，反之亦然。
+
+## 
+
+</br></br>
+
+使用$1-r^2$，你会得到异化系数(Coefficient of alienation)。这是变量之间不共享的共同方差的比例，即变量之间无法解释的方差。</br>
+
+![](images/1684894848322.jpg){fig-align="center"}
+
+## 
+
+![](images/1684894887150.jpg){fig-align="center"}
+
+在https://rpsychologist.com/correlation/中可以更直观地观察到相关系数与变异之间的关系。
+
+##
+
 ## 在使用相关系数的时候需要注意什么
 
 </br></br>
@@ -467,6 +514,18 @@ $$=\frac{\sum(X-\bar{X})*(Y-\bar{Y})}{\sqrt{\sum (X-\bar{X})^2}*\sqrt{\sum (Y-\b
 -   相关分析受样本影响，小样本的相关系数不稳定；</br></br>
 
 -   相关系数是一个效果大小的衡量标准，它告诉你一个结果的实际意义。相关系数是无单位的，这使得我们可以直接比较研究之间的系数。
+
+## 
+
+-   相关结果受数据全距影响
+
+![](images/1684894531749.jpg){fig-align="center"}
+
+## 
+
+-   相关结果受数据极端值影响
+
+![](images/1684894498325(1).jpg){fig-align="center"}
 
 # 常见的相关系数
 
@@ -512,21 +571,37 @@ $$=\frac{\sum(X-\bar{X})*(Y-\bar{Y})}{\sqrt{\sum (X-\bar{X})^2}*\sqrt{\sum (Y-\b
 
 -   样本容量不宜太小，成对数据的数目至少不少于30对，否则缺乏代表性。
 
-##
+## 
 
 ![](images/1684861930479.jpg){fig-align="center"}
 
-##
+## 
+
+</br></br>
+
+请尝试计算上述数据的相关系数大小(公式计算,数据见df2.csv)
+
+## 
 
 ![](images/1684862005642.jpg){fig-align="center"}
 
-##
+## 
 
 ![](images/1684862056793.jpg){fig-align="center"}
 
-##
+## 
 
 ![](images/1684862074324.jpg){fig-align="center"}
+
+## 在R中的计算
+
+```{r}
+df2 <- data.frame(visual =c(177.5,167.4,116.7,130.9,199.1,198.3,225,212,180,171,144,138,191,171.5,147,172,195.5,190,206.7,153.2,217,179.2,242.2,212.8,171,241,176.1,165.4,201,145.5,163),
+                 Auditory = c(174.1,136.4,118.3,178.1,186.3,135.2,203,229,163,146.5,144.5,128,168,143,154.5,171,205.5,161.1,179.5,140.1,195.6,181.3,211.5,141.9,130.6,150,140,166.8,164.5,133.4,147))
+#write.csv(df2,'df2.csv')
+Corr(df2)
+
+```
 
 ## 
 
@@ -576,13 +651,19 @@ $$r_R = \frac{3}{N-1}*[\frac{4\sum R_XR_Y}{N(N+1)}-(N+1)]$$
 
 ## 
 
+</br></br>
+
+请尝试计算上述数据的相关系数大小(公式计算,数据见df3)
+
+## 
+
 ![](images/1684862236272.jpg){fig-align="center"}
 
 ## 
 
 ![](images/1684861765700.jpg){fig-align="center"}
 
-##
+## 
 
 </br></br>
 
@@ -602,6 +683,20 @@ $$\sum Y^2 = \frac{N^3-N}{12}-\sum C_Y, \sum C_Y = \sum \frac{n(n^2-1)}{12}$$
 
 ![](images/1684861682476.jpg){fig-align="center"}
 
+## 在R中的计算
+
+注意，在R中spearman相关系数在计算时并不考虑相同等级的情况，如果需要严格进行计算，可以使用自定义函数或搜索更合适的package
+
+```{r}
+df3 <- data.frame(Math =c(90,84,76,75,73,71,69,68,66,64),
+                 Chinese = c(95,99,90,89,92,80,73,83,69,70))
+#write.csv(df3,'df3.csv')
+Corr(df3,method = 'spearman')
+```
+
+
+##
+
 </br></br>
 
 当变量多于两个时，我们该如何考察它们之间的相关关系？
@@ -617,6 +712,8 @@ $$\sum Y^2 = \frac{N^3-N}{12}-\sum C_Y, \sum C_Y = \sum \frac{n(n^2-1)}{12}$$
 </br></br>
 
 方法一：设计师呈现7种颜色让消费者进行排序。
+
+![](images/1684894203277.jpg){fig-align="center"}
 
 ## 肯德尔W系数
 
@@ -703,7 +800,7 @@ $$-\frac{1}{K-1} \le U \le 1,K为偶数$$
 
 -   *r*的样本标准误：$SE=\sqrt{\frac{1-r^2}{n-2}}$</br>
 
--   *t *= $\frac{r-\rho_0}{\frac{\sqrt{1-r^2}}{n-2}}$</br>
+-   *t* = $\frac{r-\rho_0}{\frac{\sqrt{1-r^2}}{n-2}}$</br>
 
 -   *df* = n-2
 
@@ -735,7 +832,7 @@ $$-\frac{1}{K-1} \le U \le 1,K为偶数$$
 
 -   $t = \frac{r \sqrt{n-k-2}}{\sqrt{1-r^2}}$ </br></br>
 
--  *df* =n−k−2</br></br>
+-   *df* =n−k−2</br></br>
 
 -   *n*：观察样本的容量</br></br>
 

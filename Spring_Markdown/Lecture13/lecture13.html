@@ -532,6 +532,27 @@ https://en.wikipedia.org/wiki/Correlation
 https://en.wikipedia.org/wiki/Correlation
 </center>
 </section>
+<section id="section-14" class="slide level2">
+<h2></h2>
+<p><br><br></p>
+<p>请尝试计算上述数据的相关系数大小(公式计算,数据见df.csv)</p>
+</section>
+<section id="在r中的计算" class="slide level2">
+<h2>在R中的计算</h2>
+<div class="cell">
+
+<div class="cell-output cell-output-stdout">
+<pre><code>Correlation matrix is displayed in the RStudio `Plots` Pane.
+
+Pearson's r and 95% confidence intervals:
+─────────────────────────────────────────────
+                 r      [95% CI]     p      N
+─────────────────────────────────────────────
+Score-Grade  -0.16 [-0.46, 0.18]  .361     36
+─────────────────────────────────────────────</code></pre>
+</div>
+</div>
+<img data-src="lecture13_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"></section>
 <section id="相关系数的大小" class="slide level2">
 <h2>相关系数的大小</h2>
 <table>
@@ -591,6 +612,34 @@ https://en.wikipedia.org/wiki/Correlation
 </tbody>
 </table>
 </section>
+<section id="相关与变异" class="slide level2">
+<h2>相关与变异</h2>
+<p>由</p>
+<p><span class="math display">\[r =\frac{\sum(X-\bar{X})*(Y-\bar{Y})}{\sqrt{\sum (X-\bar{X})^2}*\sqrt{\sum (Y-\bar{Y})^2}}\]</span> 可以得出</p>
+<p><span class="math display">\[r^2 =\frac{(\sum(X-\bar{X})*(Y-\bar{Y}))^2}{\sum (X-\bar{X})^2*\sum (Y-\bar{Y})^2}\]</span></p>
+</section>
+<section id="section-15" class="slide level2">
+<h2></h2>
+<p><br><br></p>
+<ul>
+<li><p>决定系数 <span class="math inline">\(r^2\)</span>:测量了一个变量的变异性中由另一个变量的变异性而决定的比例；<br><br></p></li>
+<li><p>例如 <span class="math inline">\(r = 0.8\)</span>，则有64%的Y变量的变异(方差)由X变量决定，反之亦然。</p></li>
+</ul>
+</section>
+<section id="section-16" class="slide level2">
+<h2></h2>
+<p><br><br></p>
+<p>使用<span class="math inline">\(1-r^2\)</span>，你会得到异化系数(Coefficient of alienation)。这是变量之间不共享的共同方差的比例，即变量之间无法解释的方差。<br></p>
+
+<img data-src="images/1684894848322.jpg" class="r-stretch quarto-figure-center"></section>
+<section id="section-17" class="slide level2">
+<h2></h2>
+
+<img data-src="images/1684894887150.jpg" class="r-stretch quarto-figure-center"><p>在https://rpsychologist.com/correlation/中可以更直观地观察到相关系数与变异之间的关系。</p>
+</section>
+<section id="section-18" class="slide level2">
+<h2></h2>
+</section>
 <section id="在使用相关系数的时候需要注意什么" class="slide level2">
 <h2>在使用相关系数的时候需要注意什么</h2>
 <p><br><br></p>
@@ -599,7 +648,21 @@ https://en.wikipedia.org/wiki/Correlation
 <li><p>相关分析受样本影响，小样本的相关系数不稳定；<br><br></p></li>
 <li><p>相关系数是一个效果大小的衡量标准，它告诉你一个结果的实际意义。相关系数是无单位的，这使得我们可以直接比较研究之间的系数。</p></li>
 </ul>
-</section></section>
+</section>
+<section id="section-19" class="slide level2">
+<h2></h2>
+<ul>
+<li>相关结果受数据全距影响</li>
+</ul>
+
+<img data-src="images/1684894531749.jpg" class="r-stretch quarto-figure-center"></section>
+<section id="section-20" class="slide level2">
+<h2></h2>
+<ul>
+<li>相关结果受数据极端值影响</li>
+</ul>
+
+<img data-src="images/1684894498325(1).jpg" class="r-stretch quarto-figure-center"></section></section>
 <section>
 <section id="常见的相关系数" class="title-slide slide level1 center">
 <h1>常见的相关系数</h1>
@@ -642,28 +705,49 @@ https://en.wikipedia.org/wiki/Correlation
 <li><p>样本容量不宜太小，成对数据的数目至少不少于30对，否则缺乏代表性。</p></li>
 </ul>
 </section>
-<section id="section-14" class="slide level2">
+<section id="section-21" class="slide level2">
 <h2></h2>
 
 <img data-src="images/1684861930479.jpg" class="r-stretch quarto-figure-center"></section>
-<section id="section-15" class="slide level2">
+<section id="section-22" class="slide level2">
+<h2></h2>
+<p><br><br></p>
+<p>请尝试计算上述数据的相关系数大小(公式计算,数据见df2.csv)</p>
+</section>
+<section id="section-23" class="slide level2">
 <h2></h2>
 
 <img data-src="images/1684862005642.jpg" class="r-stretch quarto-figure-center"></section>
-<section id="section-16" class="slide level2">
+<section id="section-24" class="slide level2">
 <h2></h2>
 
 <img data-src="images/1684862056793.jpg" class="r-stretch quarto-figure-center"></section>
-<section id="section-17" class="slide level2">
+<section id="section-25" class="slide level2">
 <h2></h2>
 
 <img data-src="images/1684862074324.jpg" class="r-stretch quarto-figure-center"></section>
-<section id="section-18" class="slide level2">
+<section id="在r中的计算-1" class="slide level2">
+<h2>在R中的计算</h2>
+<div class="cell">
+
+<div class="cell-output cell-output-stdout">
+<pre><code>Correlation matrix is displayed in the RStudio `Plots` Pane.
+
+Pearson's r and 95% confidence intervals:
+───────────────────────────────────────────────
+                    r     [95% CI]     p      N
+───────────────────────────────────────────────
+visual-Auditory  0.59 [0.30, 0.78] &lt;.001 *** 31
+───────────────────────────────────────────────</code></pre>
+</div>
+</div>
+<img data-src="lecture13_files/figure-revealjs/unnamed-chunk-10-1.png" width="960" class="r-stretch"></section>
+<section id="section-26" class="slide level2">
 <h2></h2>
 <p><br><br></p>
 <p>当我们想了解同学们的语文成绩与数学成绩水平在总体中的位置是否一致？</p>
 </section>
-<section id="section-19" class="slide level2">
+<section id="section-27" class="slide level2">
 <h2></h2>
 
 <img data-src="images/1684862207007.jpg" class="r-stretch quarto-figure-center"></section>
@@ -701,39 +785,65 @@ https://en.wikipedia.org/wiki/Correlation
 <li><p><span class="math inline">\(R_X\)</span>与<span class="math inline">\(R_Y\)</span>为两列变量各自排列的等级次数</p></li>
 </ul>
 </section>
-<section id="section-20" class="slide level2">
+<section id="section-28" class="slide level2">
+<h2></h2>
+<p><br><br></p>
+<p>请尝试计算上述数据的相关系数大小(公式计算,数据见df3)</p>
+</section>
+<section id="section-29" class="slide level2">
 <h2></h2>
 
 <img data-src="images/1684862236272.jpg" class="r-stretch quarto-figure-center"></section>
-<section id="section-21" class="slide level2">
+<section id="section-30" class="slide level2">
 <h2></h2>
 
-<img data-src="images/1684861765700.jpg" class="r-stretch quarto-figure-center"><p><br><br></p>
+<img data-src="images/1684861765700.jpg" class="r-stretch quarto-figure-center"></section>
+<section id="section-31" class="slide level2">
+<h2></h2>
+<p><br><br></p>
 <p>有相同等级时计算等级相关的方法:如果有相同等级时,可用它们所占等级位置的平均数作为它们的等级</p>
 <p><span class="math display">\[r_RC = \frac{\sum x^2+\sum y^2-\sum D^2}{2 \sqrt{\sum x^2} \sqrt{\sum y^2}}\]</span></p>
 <p><span class="math display">\[\sum x^2 = \frac{N^3-N}{12}-\sum C_X, \sum C_X = \sum \frac{n(n^2-1)}{12}\]</span></p>
 <p><span class="math display">\[\sum Y^2 = \frac{N^3-N}{12}-\sum C_Y, \sum C_Y = \sum \frac{n(n^2-1)}{12}\]</span></p>
 </section>
-<section id="section-22" class="slide level2">
+<section id="section-32" class="slide level2">
 <h2></h2>
 
 <img data-src="images/1684861646921.jpg" class="r-stretch quarto-figure-center"></section>
-<section id="section-23" class="slide level2">
+<section id="section-33" class="slide level2">
 <h2></h2>
 
-<img data-src="images/1684861682476.jpg" class="r-stretch quarto-figure-center"><p><br><br></p>
+<img data-src="images/1684861682476.jpg" class="r-stretch quarto-figure-center"></section>
+<section id="在r中的计算-2" class="slide level2">
+<h2>在R中的计算</h2>
+<p>注意，在R中spearman相关系数在计算时并不考虑相同等级的情况，如果需要严格进行计算，可以使用自定义函数或搜索更合适的package</p>
+<div class="cell">
+
+<div class="cell-output cell-output-stdout">
+<pre><code>Correlation matrix is displayed in the RStudio `Plots` Pane.
+
+Spearman's r and 95% confidence intervals:
+────────────────────────────────────────────
+                 r     [95% CI]     p      N
+────────────────────────────────────────────
+Math-Chinese  0.90 [0.63, 0.98] &lt;.001 *** 10
+────────────────────────────────────────────</code></pre>
+</div>
+</div>
+<img data-src="lecture13_files/figure-revealjs/unnamed-chunk-11-1.png" width="960" class="r-stretch"><p><br><br></p>
 <p>当变量多于两个时，我们该如何考察它们之间的相关关系？</p>
 </section>
-<section id="section-24" class="slide level2">
+<section id="section-34" class="slide level2">
 <h2></h2>
 <p><br><br></p>
 <p>例如该问题，在色彩搭配时，设计师想了解消费者对7种颜色的喜好是否一致，该怎么处理</p>
 </section>
-<section id="section-25" class="slide level2">
+<section id="section-35" class="slide level2">
 <h2></h2>
 <p><br><br></p>
 <p>方法一：设计师呈现7种颜色让消费者进行排序。</p>
-</section>
+
+<img data-src="images/1684894203277.jpg" class="r-stretch quarto-figure-center"></section>
 <section id="肯德尔w系数" class="slide level2">
 <h2>肯德尔W系数</h2>
 <p><br><br></p>
@@ -753,7 +863,7 @@ https://en.wikipedia.org/wiki/Correlation
 <li><p>k :评价者数量</p></li>
 </ul>
 </section>
-<section id="section-26" class="slide level2">
+<section id="section-36" class="slide level2">
 <h2></h2>
 <p><br><br></p>
 <p>方法二：设计师成对呈现7种颜色让消费者进行选择每对中所偏好的颜色。</p>
@@ -767,7 +877,7 @@ https://en.wikipedia.org/wiki/Correlation
 <li><p>如果有N件事物，由K个评价者，将N件事物两两配对，形成了N(N-1)/2对，然后对每一对中两事物进行比较，优者记1，非优者记0。</p></li>
 </ul>
 </section>
-<section id="section-27" class="slide level2">
+<section id="section-37" class="slide level2">
 <h2></h2>
 
 <img data-src="images/1684861304500.jpg" class="r-stretch quarto-figure-center"></section>
@@ -783,7 +893,7 @@ https://en.wikipedia.org/wiki/Correlation
 <p><span class="math display">\[-\frac{1}{K} \le U \le 1,K为奇数\]</span></p>
 <p><span class="math display">\[-\frac{1}{K-1} \le U \le 1,K为偶数\]</span></p>
 </section>
-<section id="section-28" class="slide level2">
+<section id="section-38" class="slide level2">
 <h2></h2>
 
 <img data-src="images/1684861220971.jpg" class="r-stretch quarto-figure-center"></section>
@@ -862,12 +972,12 @@ https://en.wikipedia.org/wiki/Correlation
 <li><p>当我们想要了解同学们的语文成绩与数学成绩水平是否存在相关性？<br></p></li>
 <li><p><span class="math inline">\(H_0\)</span>: 语文成绩与数学成绩没有相关性，<span class="math inline">\(\rho = 0\)</span><br></p></li>
 <li><p><span class="math inline">\(H_0\)</span>: 语文成绩与数学成绩没有相关性，<span class="math inline">\(\rho \ne 0\)</span><br></p></li>
-<li><p>r的样本标准误：<span class="math inline">\(SE=\sqrt{\frac{1-r^2}{n-2}}\)</span><br></p></li>
-<li><p>t = <span class="math inline">\(\frac{r-\rho_0}{\frac{\sqrt{1-r^2}}{n-2}}\)</span><br></p></li>
-<li><p>df = n-2</p></li>
+<li><p><em>r</em>的样本标准误：<span class="math inline">\(SE=\sqrt{\frac{1-r^2}{n-2}}\)</span><br></p></li>
+<li><p><em>t</em> = <span class="math inline">\(\frac{r-\rho_0}{\frac{\sqrt{1-r^2}}{n-2}}\)</span><br></p></li>
+<li><p><em>df</em> = n-2</p></li>
 </ul>
 </section>
-<section id="section-29" class="slide level2">
+<section id="section-39" class="slide level2">
 <h2></h2>
 <p><br><br></p>
 <ul>
@@ -890,10 +1000,10 @@ https://en.wikipedia.org/wiki/Correlation
 <h2>偏相关的假设检验</h2>
 <ul>
 <li><p><span class="math inline">\(H_0\)</span>: : 总体相关系数等于0。<br><br></p></li>
-<li><p>t = \frac{r <br><br></p></li>
-<li><p>df =n−k−2<br><br></p></li>
-<li><p>n：观察样本的容量<br><br></p></li>
-<li><p>k：被控制变量的数量 <br><br></p></li>
+<li><p><span class="math inline">\(t = \frac{r \sqrt{n-k-2}}{\sqrt{1-r^2}}\)</span> <br><br></p></li>
+<li><p><em>df</em> =n−k−2<br><br></p></li>
+<li><p><em>n</em>：观察样本的容量<br><br></p></li>
+<li><p><em>k</em>：被控制变量的数量 <br><br></p></li>
 </ul>
 </section>
 <section id="线性相关与非线性相关" class="slide level2">
@@ -906,7 +1016,7 @@ https://en.wikipedia.org/wiki/Correlation
 https://zhuanlan.zhihu.com/p/80840690
 </center>
 </section>
-<section id="section-30" class="slide level2">
+<section id="section-40" class="slide level2">
 <h2></h2>
 
 <img data-src="images/DataSaurus%20Dozen.gif" class="r-stretch"></section>
