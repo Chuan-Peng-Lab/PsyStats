@@ -701,11 +701,11 @@ $$-\frac{1}{K-1} \le U \le 1,K为偶数$$
 
 -   $H_0$: 语文成绩与数学成绩没有相关性，$\rho \ne 0$</br>
 
--   r的样本标准误：$SE=\sqrt{\frac{1-r^2}{n-2}}$</br>
+-   *r*的样本标准误：$SE=\sqrt{\frac{1-r^2}{n-2}}$</br>
 
--   t = $\frac{r-\rho_0}{\frac{\sqrt{1-r^2}}{n-2}}$</br>
+-   *t *= $\frac{r-\rho_0}{\frac{\sqrt{1-r^2}}{n-2}}$</br>
 
--   df = n-2
+-   *df* = n-2
 
 ## 
 
@@ -735,11 +735,11 @@ $$-\frac{1}{K-1} \le U \le 1,K为偶数$$
 
 -   $t = \frac{r \sqrt{n-k-2}}{\sqrt{1-r^2}}$ </br></br>
 
--   df =n−k−2</br></br>
+-  *df* =n−k−2</br></br>
 
--   n：观察样本的容量</br></br>
+-   *n*：观察样本的容量</br></br>
 
--   k：被控制变量的数量 </br></br>
+-   *k*：被控制变量的数量 </br></br>
 
 ## 线性相关与非线性相关
 
