@@ -733,7 +733,7 @@ $$-\frac{1}{K-1} \le U \le 1,K为偶数$$
 
 -   $H_0$: : 总体相关系数等于0。</br></br>
 
--   t = \\frac{r \sqrt{n-k-2}{\sqrt{1-r^2}} </br></br>
+-   $t = \frac{r \sqrt{n-k-2}}{\sqrt{1-r^2}}$ </br></br>
 
 -   df =n−k−2</br></br>
 
