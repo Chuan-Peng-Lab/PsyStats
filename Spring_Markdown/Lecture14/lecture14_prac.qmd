@@ -1,0 +1,181 @@
+---
+format: 
+  revealjs:
+    slide-number: true
+    logo: images/image-393370223.png
+    scrollable: true 
+    theme: theme.scss
+editor: visual
+fontsize: 24pt
+---
+
+</br></br>
+
+<h1 style="text-align: center">
+
+14 - z检验&t检验(练习部分)
+
+</h1>
+
+<h2 style="text-align: center">
+
+(z-test & t-test)
+
+</h2>
+
+</br></br>
+
+<h3 style="text-align: center">
+
+Hu Chuan-Peng
+
+</h3>
+
+<h3 style="text-align: center">
+
+2023-05-31
+
+</h3>
+
+</br></br>
+
+
+```{r}
+pacman::p_load("tidyverse","DT","bruceR","here","ggridges")
+setwd(here())
+```
+
+
+## 示例
+
+现有两组儿童的智力水平，请比较两组儿童智力水平是否存在差异，数据见df，x为智力水平，y为演示用
+
+## 
+-   1.提出假设。</br></br>
+
+-   根据问题"两组儿童智力水平是否存在差异" ，提出相应的虚无假设$H_0$和研究假设$H_1$，选择使用双侧检验。</br></br>
+
+    -   $𝐻_0$：两组儿童智力水平不存在差异， $\mu_1 = \mu_2$ 。</br></br>
+
+    -   $𝐻_1$：两组儿童智力水平存在差异， $\mu_1 \ne \mu_2$ 。
+    
+```{r}
+df <- read.csv('df1.csv')
+
+datatable(df)
+```
+## 
+
+</br></br>
+
+-   
+
+    2.  根据虚无假设$H_0$，选择相应的统计模型。
+    
+    若选择t检验，可以用一下方法检验其正态性
+    
+
+```{r}
+ggplot(df, aes(x = x)) + 
+  geom_histogram(aes(y = ..density..), binwidth = 10, color = "black", fill = "lightblue") + 
+  geom_density(color = "red", size = 1) +
+  labs(title = "Histogram and Density Plot")+
+  theme_bw()
+```
+```{r}
+ggplot(df, aes(sample = x)) + 
+  stat_qq() + 
+  stat_qq_line() + 
+  labs(title = "QQ Plot")+
+  theme_bw()
+```
+```{r}
+shapiro.test(filter(df,group==1)$x)
+shapiro.test(filter(df,group==2)$x)
+```
+    
+    
+    
+
+## 
+
+</br></br>
+
+-   
+
+    3.  确定显著性水平$\alpha$，$\alpha$确定后，否定域也随之被确定了。
+    一般选择$\alpha=0.05$
+
+## 
+
+</br></br>
+
+-   
+
+    4.  基于$H_0$所设定的统计模型，计算检验统计量的值。
+
+##
+
+
+
+```{r}
+# 单样本t检验
+#bruceR::TTEST(df, "x", test.value=5)
+# 独立样本t检验
+bruceR::TTEST(df, y = "x", x="group", var.equal=TRUE)
+# 配对样本t检验
+#bruceR::TTEST(df, y=c("x", "y"), paired=TRUE)
+```
+
+##
+不同检验方法对应不同的代码
+```
+# 单样本t检验
+TTEST(df, "x", test.value=5)
+# 独立样本t检验验(请注意，使用此方法时，数据应为长数据，即一列表示自变量，一列表示因变量)
+TTEST(df, y = "x", x="group", var.equal=TRUE)
+# 配对样本t检验(请注意，使用此方法时，数据应为宽数据，即每列表示不同水平下的因变量)
+TTEST(df, y=c("x", "y"), paired=TRUE)
+
+```
+## 
+
+-   5.做出决策。</br></br>
+
+
+我们不能拒绝虚无假设：两组儿童智力存在差异。
+
+## 结果呈现(图)
+```{r}
+ggplot(df,
+       aes(x = factor(group), y = x, fill = factor(group))) +
+  geom_boxplot() +
+  theme_bw()
+```
+```{r}
+
+ggplot(df, aes(x = x, y = factor(group))) +
+  geom_density_ridges_gradient(aes(fill = factor(group)), 
+                                scale = 0.5, rel_min_height = 0.01) +
+  geom_jitter(aes(color = factor(group)), width = 0.2, height = 0.2) +
+  geom_boxplot(aes(fill = factor(group)), alpha = 0.5, width = 0.2) +
+  scale_fill_manual(values = c("#3366CC", "#DC3912")) +
+  scale_color_manual(values = c("#3366CC", "#DC3912")) +
+  guides(color = "none")+
+  coord_flip()+
+  theme_bw()
+
+
+
+```
+
+
+
+
+## 练习1(请同学们结合课件中假设检验过程和练习中R计算的方法，完成假设检验全过程)
+
+研究者想了解疲劳对心理警觉性的影响，选取两组被试，第一组被试24小时剥夺睡眠，第二组正常睡眠。测试其看到屏幕上亮点的成绩。请问两组被试是否存在差异?数据见df2。
+
+
+## 练习2
+为验证某心理治疗方法是否可以对神经性厌食症进行治疗，心理学家选取一批被试，在治疗前后分别称了体重。请问是否可以判断该治疗方法有效果？数据见df3。(注意，在配对样本的情况下，使用代码时要注意相应的数据格式)
