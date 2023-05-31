@@ -7,7 +7,7 @@ Teaching assistants: Liu, Yi-Kang; Sun, Shu-Ting
 ## Outlines(Still in adjustment)
 
 | 序号 |        春季学期内容        | 序号 |               秋季学期内容                |
-|:----:|:--------------------------:|:----:|:-----------------------------------------:|
+|:----------------:|:----------------:|:----------------:|:----------------:|
 |  1   | 统计学的历史与意义 (02-22) |  1   |            方差分析的基本原理             |
 |  2   |   概率与概率分布 (03-01)   |  2   |             完全随机方差分析              |
 |  3   |  数据与数据可视化 (03-08)  |  3   |       随机区组和重复测量的方差分析        |
@@ -28,6 +28,8 @@ Teaching assistants: Liu, Yi-Kang; Sun, Shu-Ting
 ## Pictures used in markdown can be found in the following links
 
 <https://docs.google.com/presentation/d/154z0XQ36-C9MPTrCpykWw_lYcY3PDyuAPkjESmJDm-M/edit#slide=id.g244db949cad_0_60>
+
+## 版本与许可(License)
 
 Shield: [![CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](http://creativecommons.org/licenses/by/4.0/)
 
