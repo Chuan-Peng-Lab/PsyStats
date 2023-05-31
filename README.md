@@ -1,8 +1,8 @@
-# This is a repo for stats101 @NNUPsy
+# Statistics for Psychology
 
-Instructor: Hu Chuan-Peng (PhD)
+Instructor: Hu Chuan-Peng (PhD), School of Psychology, Nanjing Normal University
 
-Teaching assistants: Liu, Yi-Kang; Sun, Shu-Ting
+Teaching assistants: Liu, Yi-Kang; Sun, Shu-Ting, School of Psychology, Nanjing Normal University
 
 ## 版权与许可(License)
 
@@ -11,7 +11,6 @@ Shield: [![CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgr
 This work is licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/).
 
 [![CC BY 4.0](https://i.creativecommons.org/l/by/4.0/88x31.png)](http://creativecommons.org/licenses/by/4.0/)
-
 
 如需要使用，请引用本网址作为出处。
 
