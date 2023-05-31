@@ -328,10 +328,10 @@
 
 <p><br><br></p>
 <h1 style="text-align: center">
-<p>14 - t检验</p>
+<p>14 - z检验&amp;t检验</p>
 </h1>
 <h2 style="text-align: center">
-<p>(t-test)</p>
+<p>(z-test &amp; t-test)</p>
 </h2>
 <p><br><br></p>
 <h3 style="text-align: center">
@@ -991,11 +991,89 @@ Stroop, J. R. (1935). Studies of interference in serial verbal reactions.&nbsp;J
 <p><br><br></p>
 <p>抽取的该地区7岁男童与女童身高相比，差异没有统计学意义<span class="math inline">\((Z = 1.51, p &gt; 0.05\)</span>, Cohen’s d = 0.36, 95% CI [-0.11, 0.83])。根据当前数据，我们无法推断该地区7岁男童与女童在总体身高上有差异。</p>
 </section></section>
+<section>
 <section id="配对样本的差异检验" class="title-slide slide level1 center">
 <h1>配对样本的差异检验</h1>
 
 </section>
+<section id="section-62" class="slide level2">
+<h2></h2>
+<p>某心理学家随机抽取了一小学36名刚入学的儿童进行韦氏智力测验(<span class="math inline">\(\sigma = 15\)</span>)，结果平均智商为110。一年后又对同组被试进行了重测，结果平均智商为115。已知两次智力测验结果的相关系数为r = 0.70。问：能否认为经过一年的教育及年龄增长，儿童的智商有了显著提高。</p>
+</section>
+<section id="section-63" class="slide level2">
+<h2></h2>
 
+<img data-src="images/1685498909941.jpg" class="r-stretch quarto-figure-center"></section>
+<section id="section-64" class="slide level2">
+<h2></h2>
+
+<img data-src="images/1685498935659.jpg" class="r-stretch quarto-figure-center"></section>
+<section id="section-65" class="slide level2">
+<h2></h2>
+<p><br><br></p>
+<ul>
+<li><p>1.提出假设。<br><br></p></li>
+<li><p>根据问题”经过一年的教育及年龄增长，儿童的智商是否存在提高” ，提出相应的虚无假设<span class="math inline">\(H_0\)</span>和研究假设<span class="math inline">\(H_1\)</span>，选择使用双侧检验。<br><br></p>
+<ul>
+<li><p><span class="math inline">\(𝐻_0\)</span>：经过一年的教育及年龄增长，儿童的智商没有明显变化， <span class="math inline">\(\mu_1 = \mu_2\)</span> 。<br><br></p></li>
+<li><p><span class="math inline">\(𝐻_1\)</span>：经过一年的教育及年龄增长，儿童的智商显著提高， <span class="math inline">\(\mu_1 &lt; \mu_2\)</span> 。</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="section-66" class="slide level2">
+<h2></h2>
+<p><br><br></p>
+<ul>
+<li><ol start="2" type="1">
+<li>根据虚无假设<span class="math inline">\(H_0\)</span>，选择相应的统计模型。<br><br></li>
+</ol>
+<ul>
+<li><p>我们假定儿童韦氏智力测验分数呈现正态分布，可使用z检验。<br><br></p></li>
+<li><p>在使用z 检验之前，需要检查数据是否满足z检验的预设。</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="section-67" class="slide level2">
+<h2></h2>
+<p><br><br></p>
+<ul>
+<li><ol start="3" type="1">
+<li>确定显著性水平<span class="math inline">\(\alpha\)</span>，<span class="math inline">\(\alpha\)</span>确定后，否定域也随之被确定了。<br><br></li>
+</ol>
+<ul>
+<li><p>指定<span class="math inline">\(\alpha = 0.01\)</span>（拒绝零假设犯错的可能性）。<br><br></p></li>
+<li><p>单侧检验”的临界点”<span class="math inline">\(Z_{0.01}=2.33\)</span></p></li>
+</ul></li>
+</ul>
+</section>
+<section id="section-68" class="slide level2">
+<h2></h2>
+<p><br><br></p>
+<ul>
+<li><ol start="4" type="1">
+<li>基于<span class="math inline">\(H_0\)</span>所设定的统计模型，计算检验统计量的值。</li>
+</ol>
+<ul>
+<li><span class="math inline">\(\sigma_{D_{\bar{X}}}=\sqrt{\frac{\sigma_1^2}{n}-2r\frac{\sigma_1}{n}\frac{\sigma_1}{n}+\frac{\sigma_2^2}{n}}\)</span></li>
+</ul>
+<p><span class="math inline">\(=\sqrt{\frac{\sigma_1^2}{\sqrt{n}^2}-2r\frac{\sigma_1}{n}\frac{\sigma_1}{n}+\frac{\sigma_2^2}{\sqrt{n}^2}}\)</span></p>
+<p><span class="math inline">\(=\frac{\sigma}{\sqrt{n}}\sqrt{2-2r}=1.936\)</span></p>
+<ul>
+<li><span class="math inline">\(Z = \frac{\bar{X_1}-\bar{X_2}}{\sigma_{D_{\bar{X}}}}\)</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="section-69" class="slide level2">
+<h2></h2>
+<ul>
+<li><p>5.做出决策。<br><br></p>
+<ul>
+<li><p>双侧检验的临界点<span class="math inline">\(t_{0.05/2}=1.984\)</span><br><br></p></li>
+<li><p><span class="math inline">\(t = 2.89&gt;t_{0.05/2}\)</span><br><br></p></li>
+<li><p>在<span class="math inline">\(\alpha = 0.05\)</span>显著性水平上可以拒绝虚无假设，即<span class="math inline">\(\mu_1 = \mu_2\)</span>。</p></li>
+</ul></li>
+</ul>
+</section></section>
 <section>
 <section id="零效应检验" class="title-slide slide level1 center">
 <h1>零效应检验</h1>
@@ -1005,7 +1083,7 @@ Stroop, J. R. (1935). Studies of interference in serial verbal reactions.&nbsp;J
 <h2>零效应检验</h2>
 <p>我们能接受虚无假设(该样本飞行员的视力和普通飞行员没有差异)吗？ <img data-src="images/1685492276931.jpg" data-fig-align="center"></p>
 </section>
-<section id="section-62" class="slide level2">
+<section id="section-70" class="slide level2">
 <h2></h2>
 <p><br><br></p>
 <ul>
@@ -1013,7 +1091,7 @@ Stroop, J. R. (1935). Studies of interference in serial verbal reactions.&nbsp;J
 <li><p>若该心理学家想证明这些飞行员之间视力不存在差异，他该怎么办？(通过什么方法可以接受虚无假设)</p></li>
 </ul>
 </section>
-<section id="section-63" class="slide level2">
+<section id="section-71" class="slide level2">
 <h2></h2>
 <p>在假设检验的框架下，假设表述如下：</p>
 <p><span class="math inline">\(𝐻_0\)</span>：该样本飞行员的视力和普通飞行员没有差异， <span class="math inline">\(d = 0\)</span>。</p>
@@ -1026,7 +1104,7 @@ Lakens, (2022). Improving Your Statistical Inferences. Chapter 9, https://doi.or
 许岳培, 陆春雷, …, 胡传鹏. (2022). 应用心理学
 </center>
 </section>
-<section id="section-64" class="slide level2">
+<section id="section-72" class="slide level2">
 <h2></h2>
 <p>实际上，研究者关心的效应量是否非常小，以至可以忽略。因此，可将虚无假设的效应量拓展为一个区间, 这种方法叫做最小效应量检验：</p>
 <p><span class="math inline">\(𝐻_0\)</span>：该样本飞行员的视力和普通飞行员没有差异， <span class="math inline">\(d = [-0.32, 0.32]\)</span>。</p>
@@ -1039,7 +1117,7 @@ Lakens, (2022). Improving Your Statistical Inferences. Chapter 9, https://doi.or
 许岳培, 陆春雷, …, 胡传鹏. (2022). 应用心理学
 </center>
 </section>
-<section id="section-65" class="slide level2">
+<section id="section-73" class="slide level2">
 <h2></h2>
 <p><br><br></p>
 <ul>
@@ -1048,12 +1126,12 @@ Lakens, (2022). Improving Your Statistical Inferences. Chapter 9, https://doi.or
 <li><p>目标效应量在SESOI内时，研究者可以认为效应量几乎为零，可以忽略不计。</p></li>
 </ul>
 </section>
-<section id="section-66" class="slide level2">
+<section id="section-74" class="slide level2">
 <h2></h2>
 <p><br><br></p>
 <p>等价检验则正好将最小效应量检验的<span class="math inline">\(𝐻_0\)</span> 与<span class="math inline">\(𝐻_1\)</span>所对应的效应区间对调， <span class="math inline">\(𝐻_1\)</span>在区间之内，而<span class="math inline">\(𝐻_0\)</span>在区间之外。</p>
 </section>
-<section id="section-67" class="slide level2">
+<section id="section-75" class="slide level2">
 <h2></h2>
 <p>在等价检验的框架下，虚无假设表述如下：</p>
 <p><span class="math inline">\(𝐻_0\)</span>：该样本飞行员的视力和普通飞行员存在差异， <span class="math inline">\(d &gt; 0.32 或 d &lt; -0.32\)</span>。</p>
@@ -1063,23 +1141,23 @@ Lakens, (2022). Improving Your Statistical Inferences. Chapter 9, https://doi.or
 许岳培, 陆春雷, …, 胡传鹏. (2022). 应用心理学
 </center>
 </section>
-<section id="section-68" class="slide level2">
+<section id="section-76" class="slide level2">
 <h2></h2>
 <p><br><br></p>
 <p>等价检验也可以通过基于参数估计的方法实现。频率统计框架 下，我们可以估计效应的值及其置信区间，然后根据效应量置信区间与 SESOI重合的比例进行推断。</p>
 </section>
-<section id="section-69" class="slide level2">
+<section id="section-77" class="slide level2">
 <h2></h2>
 <p><br><br></p>
 <p>对上述数据分别进行单样本t检验和等价检验，结果如下：</p>
 
 <img data-src="images/1685494613906.jpg" class="r-stretch quarto-figure-center"></section>
-<section id="section-70" class="slide level2">
+<section id="section-78" class="slide level2">
 <h2></h2>
 <p>对上述结果在原始分数上进行可视化：</p>
 
 <img data-src="images/1685494663926.jpg" class="r-stretch quarto-figure-center"></section>
-<section id="section-71" class="slide level2">
+<section id="section-79" class="slide level2">
 <h2></h2>
 <p><br><br></p>
 <ul>
@@ -1088,7 +1166,7 @@ Lakens, (2022). Improving Your Statistical Inferences. Chapter 9, https://doi.or
 <li><p>他的结果往往不一定是接受零效应，可能会出现既不能证明某个效应存在也不能证明某个效应不存在，是一个实验设计或者样本量存在问题。</p></li>
 </ul>
 </section>
-<section id="section-72" class="slide level2">
+<section id="section-80" class="slide level2">
 <h2></h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
