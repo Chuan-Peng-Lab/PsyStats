@@ -4,6 +4,17 @@ Instructor: Hu Chuan-Peng (PhD)
 
 Teaching assistants: Liu, Yi-Kang; Sun, Shu-Ting
 
+## 版权与许可(License)
+
+Shield: [![CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](http://creativecommons.org/licenses/by/4.0/)
+
+This work is licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/).
+
+[![CC BY 4.0](https://i.creativecommons.org/l/by/4.0/88x31.png)](http://creativecommons.org/licenses/by/4.0/)
+
+
+如需要使用，请引用本网址作为出处。
+
 ## Outlines(Still in adjustment)
 
 | 序号 |        春季学期内容        | 序号 |               秋季学期内容                |
@@ -28,11 +39,3 @@ Teaching assistants: Liu, Yi-Kang; Sun, Shu-Ting
 ## Pictures used in markdown can be found in the following links
 
 <https://docs.google.com/presentation/d/154z0XQ36-C9MPTrCpykWw_lYcY3PDyuAPkjESmJDm-M/edit#slide=id.g244db949cad_0_60>
-
-## 版本与许可(License)
-
-Shield: [![CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](http://creativecommons.org/licenses/by/4.0/)
-
-This work is licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/).
-
-[![CC BY 4.0](https://i.creativecommons.org/l/by/4.0/88x31.png)](http://creativecommons.org/licenses/by/4.0/)
