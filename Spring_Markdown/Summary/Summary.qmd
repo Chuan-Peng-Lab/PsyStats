@@ -993,7 +993,7 @@ $$r^2 =\frac{(\sum(X-\bar{X})*(Y-\bar{Y}))^2}{\sum (X-\bar{X})^2*\sum (Y-\bar{Y}
 
 # 14 - z检验&t检验
 
-##
+## 
 
 ![](images/1685439299495.jpg){fig-align="center"}
 
