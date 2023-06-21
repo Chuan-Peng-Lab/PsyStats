@@ -1,0 +1,1950 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="Summary_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Summary_files/libs/quarto-html/tabby.min.js"></script>
+<script src="Summary_files/libs/quarto-html/popper.min.js"></script>
+<script src="Summary_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="Summary_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Summary_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="Summary_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.2.475">
+
+  <title>summary</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="Summary_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="Summary_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="Summary_files/libs/revealjs/dist/theme/quarto.css" id="theme">
+  <link href="Summary_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="Summary_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="Summary_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="Summary_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-captioned.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-captioned) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-captioned.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-captioned .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-captioned .callout-caption  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-captioned.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-captioned.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-caption {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-caption {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-caption {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-captioned .callout-body > .callout-content > :last-child {
+    margin-bottom: 0.5rem;
+  }
+
+  .callout.callout-captioned .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-captioned) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-caption {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-caption {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-caption {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-caption {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-caption {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+
+<section class="slide level2">
+
+<p><br><br></p>
+<h1 style="text-align: center">
+<p>期末复习</p>
+</h1>
+<h2 style="text-align: center">
+</h2>
+<p><br><br></p>
+<h3 style="text-align: center">
+<p>Hu Chuan-Peng</p>
+</h3>
+<h3 style="text-align: center">
+<p>2023-06-21</p>
+</h3>
+<p><br><br></p>
+</section>
+<section id="section" class="slide level2">
+<h2></h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">序号</th>
+<th style="text-align: center;">春季学期内容</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">统计学的历史与意义</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">概率</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">数据与数据可视化</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">集中量数和离散量数</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">离散变量概率分布</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">正态分布</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">标准分数</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">参数估计1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">参数估计2</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">假设检验（Fish）</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">P值</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">两类错误</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">13</td>
+<td style="text-align: center;">相关和相关显著性</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">z检验和t检验</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section>
+<section id="统计学的历史与意义" class="title-slide slide level1 center">
+<h1>01 - 统计学的历史与意义</h1>
+
+</section>
+<section id="统计学在心理学中的应用" class="slide level2">
+<h2>统计学在心理学中的应用</h2>
+
+<img data-src="images/1686664529765.jpg" class="r-stretch quarto-figure-center"></section>
+<section id="心理统计概论" class="slide level2">
+<h2>心理统计概论</h2>
+
+<img data-src="images/1686664763178.jpg" class="r-stretch quarto-figure-center"></section></section>
+<section>
+<section id="概率" class="title-slide slide level1 center">
+<h1>02 - 概率</h1>
+
+</section>
+<section id="概率-1" class="slide level2">
+<h2>概率</h2>
+<ul>
+<li><p>随机现象<br></p></li>
+<li><p>样本空间<br></p></li>
+<li><p>随机事件(基本事件/复合事件)<br></p></li>
+<li><p>频率<br></p></li>
+<li><p>概率<br></p></li>
+</ul>
+</section>
+<section id="概率的性质" class="slide level2">
+<h2>概率的性质</h2>
+<p><br><br></p>
+<ul>
+<li><p><span class="math inline">\(p(\Omega) = 1\)</span><br><br></p></li>
+<li><p><span class="math inline">\(0 \le p(A) \le 1\)</span><br><br></p></li>
+<li><p><span class="math inline">\(p(A+B) = p(A)+p(B)-p(A \cap B)\)</span></p></li>
+</ul>
+</section>
+<section id="section-1" class="slide level2">
+<h2></h2>
+<ul>
+<li><p>独立事件<br></p></li>
+<li><p>互不相容事件<br></p></li>
+<li><p>概率的加法<br></p></li>
+<li><p>概率的乘法<br></p></li>
+</ul>
+</section>
+<section id="section-2" class="slide level2">
+<h2></h2>
+<ul>
+<li>条件概率<br></li>
+</ul>
+<p><span class="math display">\[p(A | B) = {p(A \cap B)}/{p(B)}\]</span></p>
+<ul>
+<li>贝叶斯定理<br></li>
+</ul>
+<p><span class="math display">\[p(A|B) = \frac{p(B|A)p(A)}{p(B)}\]</span></p>
+</section>
+<section id="模型" class="slide level2">
+<h2>模型</h2>
+
+<img data-src="images/image-858917210.png" class="r-stretch quarto-figure-center"><p>不同的模型可以用来解释相同的现象<br><br></p>
+</section>
+<section id="section-3" class="slide level2">
+<h2></h2>
+
+<img data-src="images/image-1866853416.png" class="r-stretch quarto-figure-center"></section>
+<section id="研究中的统计statistics" class="slide level2">
+<h2>研究中的统计(Statistics)</h2>
+
+<img data-src="images/image-1588685546.png" class="r-stretch quarto-figure-center"></section>
+<section id="研究的基本流程" class="slide level2">
+<h2>研究的基本流程</h2>
+
+<img data-src="images/image-2028815256.png" class="r-stretch quarto-figure-center"><center>
+(Munafò et al., 2017. Nat Hum Behav)
+</center>
+</section></section>
+<section>
+<section id="数据" class="title-slide slide level1 center">
+<h1>03 - 数据</h1>
+
+</section>
+<section id="数据-1" class="slide level2">
+<h2>数据</h2>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>称名</th>
+<th>顺序</th>
+<th>等距</th>
+<th>等比</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>不相等单位</td>
+<td><span class="math inline">\(\surd\)</span></td>
+<td><span class="math inline">\(\surd\)</span></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>相等单位</td>
+<td></td>
+<td></td>
+<td><span class="math inline">\(\surd\)</span></td>
+<td><span class="math inline">\(\surd\)</span></td>
+</tr>
+<tr class="odd">
+<td>相对零点</td>
+<td><span class="math inline">\(\surd\)</span></td>
+<td><span class="math inline">\(\surd\)</span></td>
+<td><span class="math inline">\(\surd\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>绝对零点</td>
+<td></td>
+<td></td>
+<td></td>
+<td><span class="math inline">\(\surd\)</span></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="section-4" class="slide level2">
+<h2></h2>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>称名</th>
+<th>顺序</th>
+<th>等距</th>
+<th>等比</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>分类或标签变量</td>
+<td><span class="math inline">\(\surd\)</span></td>
+<td><span class="math inline">\(\surd\)</span></td>
+<td><span class="math inline">\(\surd\)</span></td>
+<td><span class="math inline">\(\surd\)</span></td>
+</tr>
+<tr class="even">
+<td>按顺序排列</td>
+<td></td>
+<td><span class="math inline">\(\surd\)</span></td>
+<td><span class="math inline">\(\surd\)</span></td>
+<td><span class="math inline">\(\surd\)</span></td>
+</tr>
+<tr class="odd">
+<td>等距</td>
+<td></td>
+<td></td>
+<td><span class="math inline">\(\surd\)</span></td>
+<td><span class="math inline">\(\surd\)</span></td>
+</tr>
+<tr class="even">
+<td>有意义的零点</td>
+<td></td>
+<td></td>
+<td></td>
+<td><span class="math inline">\(\surd\)</span></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section></section>
+<section>
+<section id="集中量数和离散量数" class="title-slide slide level1 center">
+<h1>04 - 集中量数和离散量数</h1>
+
+</section>
+<section id="集中量数" class="slide level2">
+<h2>集中量数</h2>
+<p><br><br></p>
+<ul>
+<li><p>集中量数是用来描述一组数据分布集中趋势的指标；</p></li>
+<li><p>常见的集中量数有<strong>平均数</strong>、<strong>中位数</strong>、<strong>众数</strong>；</p></li>
+<li><p>集中量数并不提供关于个体值的信息；</p></li>
+<li><p>集中量数提供整个数据集的全面总结。</p></li>
+</ul>
+</section>
+<section id="期望值和平均值" class="slide level2">
+<h2>期望值和平均值</h2>
+<p><br><br></p>
+<ul>
+<li>期望值(Expectation)
+<ul>
+<li>一个随机变量或其任何给定函数的所有可能值的总和或积分，乘以该变量值的各自概率，一般用于表示总体。</li>
+<li><span class="math inline">\(E(X) = \int xp(x)dx\)</span> <br><br></li>
+</ul></li>
+<li>平均值(Mean)
+<ul>
+<li>所有数据之和再除以数据总数，一般用于表示个体。</li>
+<li><span class="math inline">\(\bar{X} = \frac{\sum x_i}{n}\)</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="不同类型的平均数" class="slide level2">
+<h2>不同类型的平均数</h2>
+<ul>
+<li><p>算术平均数(Arithmetic mean)<br></p>
+<ul>
+<li><p>算术平均数是指在一组数据中所有数据之和再除以数据的个数。它是统计学中最基本、最常用的一种平均指标，分为简单算术平均数、加权算术平均数。</p></li>
+<li><p><span class="math inline">\(\bar{X} = \frac{\sum x_i}{n}\)</span>(简单)</p></li>
+<li><p><span class="math inline">\(\bar{X} = \frac{\sum x_i*f_i}{\sum fi}，f代表权重\)</span>(加权)</p></li>
+</ul></li>
+<li><p>几何平均数(Geometric mean)<br></p>
+<ul>
+<li><p>n个变量值连乘积的n次方根，通常用于计算平均利率或发展速度。</p></li>
+<li><p><span class="math inline">\(\sqrt[N](X_1,X_2,X_3......X_N)\)</span></p></li>
+</ul></li>
+</ul>
+</section>
+<section id="算术平均数的特性" class="slide level2">
+<h2>算术平均数的特性</h2>
+<ul>
+<li><p><span class="math inline">\(\sum X = \bar{X}*n\)</span></p></li>
+<li><p><span class="math inline">\(\sum (X-\bar{X}) = 0\)</span></p></li>
+<li><p><span class="math inline">\(\frac{\sum (x \pm C)}{n} = \bar{X}\pm C\)</span></p></li>
+<li><p><span class="math inline">\(\frac{\sum(x * C)}{n} = \bar{X} * C\)</span></p></li>
+</ul>
+</section>
+<section id="算术平均数的优缺点" class="slide level2">
+<h2>算术平均数的优缺点</h2>
+<ul>
+<li><p>对数据的变化很敏感;</p></li>
+<li><p>确定性和唯一性;</p></li>
+<li><p>适用于进一步的代数计算;</p></li>
+<li><p>受抽样变化的影响较小</p></li>
+<li><p>容易受到极端值的影响</p></li>
+</ul>
+</section>
+<section id="中位数median" class="slide level2">
+<h2>中位数(Median)</h2>
+<ul>
+<li><p>中位数指的是一组数据按大小顺序排列后，处于中间位置的数。</p></li>
+<li><p>如果数据集有奇数个数，那么中位数就是这些数中间那个数；如果数据集有偶数个数，中位数就是中间两个数的平均数。</p></li>
+</ul>
+</section>
+<section id="中位数的优缺点" class="slide level2">
+<h2>中位数的优缺点</h2>
+<ul>
+<li><p>对数据变化的敏感度比平均值低</p></li>
+<li><p>不适合进一步的代数计算</p></li>
+<li><p>适用于顺序变量</p></li>
+</ul>
+</section>
+<section id="众数mode" class="slide level2">
+<h2>众数(Mode)</h2>
+<ul>
+<li><p>众数是指在一组数据中出现次数最多的数值，也可以说是数据集中的最常见的数值。</p></li>
+<li><p>假设以下是某个班级学生的考试成绩：85, 90, 75, 85, 92, 85, 89, 90, 92, 85, 其中，85出现的次数最多，因此85是这组数据的众数。</p></li>
+</ul>
+</section>
+<section id="众数的优缺点" class="slide level2">
+<h2>众数的优缺点</h2>
+<ul>
+<li><p>不能进一步进行代数运算</p></li>
+<li><p>对中心趋势能够快速而准确地估计</p></li>
+</ul>
+</section>
+<section id="平均数中位数众数之间的关系" class="slide level2">
+<h2>平均数、中位数、众数之间的关系</h2>
+<h6 style="text-align: center; font-size: 32px; ">
+<p>在正态分布中, 平均值、中位数、众数都是同一个值</p>
+</h6>
+</section>
+<section id="差异量数" class="slide level2">
+<h2>差异量数</h2>
+<ul>
+<li>数据绕平均值变化的程度</li>
+</ul>
+</section>
+<section id="全距range" class="slide level2">
+<h2>全距(range)</h2>
+<ul>
+<li><p>描述一组数据的离散程度的一项指标，它是数据中最大值和最小值之间的差值。全距可以帮助了解数据的变化范围和数据分布的广泛程度。</p></li>
+<li><p>range = 最大值 - 最小值</p></li>
+</ul>
+</section>
+<section id="全距的优缺点" class="slide level2">
+<h2>全距的优缺点</h2>
+<ul>
+<li><p>描绘出分布的全貌</p></li>
+<li><p>容易受到极端值的影响</p></li>
+</ul>
+</section>
+<section id="四分位距interquartile-range-iqr" class="slide level2">
+<h2>四分位距(Interquartile range, IQR)</h2>
+<ul>
+<li><p><span class="math inline">\(IQR = 𝑄_3−𝑄_1\)</span></p></li>
+<li><p>IQR : interquartile range</p></li>
+<li><p><span class="math inline">\(𝑄_3\)</span> : 3rd quartile or 75th percentile</p></li>
+<li><p><span class="math inline">\(𝑄_1\)</span> : 1st quartile or 25th percentile</p></li>
+</ul>
+</section>
+<section id="方差variance" class="slide level2">
+<h2>方差(variance)</h2>
+<ul>
+<li><p>方差衡量的是与平均值的差异性。</p></li>
+<li><p>方差的单位（单位平方）与原始值不同</p></li>
+</ul>
+</section>
+<section id="标准差standard-deviation" class="slide level2">
+<h2>标准差(Standard Deviation)</h2>
+<ul>
+<li><p>标准差是方差的平方根</p></li>
+<li><p>标准差的单位与原始数据相同</p></li>
+</ul>
+</section>
+<section id="标准差standard-deviation-1" class="slide level2">
+<h2>标准差(Standard Deviation)</h2>
+<ul>
+<li><p>sum square, <span class="math inline">\(SS =\sum (x - \mu)^2\)</span></p></li>
+<li><p>mean square, <span class="math inline">\(MS = SS/N\)</span></p></li>
+<li><p>variance, <span class="math inline">\(\sigma^2 = \frac{\sum(X-\mu)^2}{N}\)</span></p></li>
+<li><p>standard deviation, <span class="math display">\[\sigma =\sqrt(\frac{(x-\mu)^2}{N}) \]</span></p></li>
+</ul>
+</section>
+<section id="相对地位量数" class="slide level2">
+<h2>相对地位量数</h2>
+</section>
+<section id="百分位数" class="slide level2">
+<h2>百分位数</h2>
+<ul>
+<li><p>百分位数（percentile）是统计学中常用的概念，表示在一个数据集中，某个特定百分比的数据位于该数据集的哪个位置。</p></li>
+<li><p>计算百分位数的方法是：首先将数据集按照大小进行排序，然后确定要计算的百分位数p（例如，p=75表示计算第75个百分位数），然后找到排名为np/100的数据，如果np/100不是整数，则将其向上取整，并将其作为第np个百分位数的位置，即第np个百分位数为该位置对应的数据值。<br></p></li>
+</ul>
+</section>
+<section id="百分位数的计算" class="slide level2">
+<h2>百分位数的计算</h2>
+<p><span class="math display">\[𝑃_𝑝= 𝐿_𝑝 + (𝑃/100  × 𝑁−𝐹_𝑏)/𝑓_𝑝 ×𝑖\]</span> <span class="math display">\[ 𝐿_𝑝：百分位数所在组的精确下限\]</span> <span class="math display">\[𝐹_𝑏：小于𝐿_𝑝的累计次数\]</span> <span class="math display">\[ 𝑓_𝑝：百分位数所在组的次数\]</span> <span class="math display">\[𝑖 : 组距\]</span> <span class="math display">\[𝑁 : 总次数\]</span></p>
+</section>
+<section id="百分位数的计算-1" class="slide level2">
+<h2>百分位数的计算</h2>
+<p><span class="math display">\[𝑃_𝑝= 𝑈_𝑝 - ((1− 𝑃/100)  × 𝑁−𝐹_𝑎)/𝑓_𝑝 ×𝑖\]</span> <span class="math display">\[U_𝑝 ：百分位数所在组的精确上限\]</span> <span class="math display">\[𝐹_𝑎  ：大于𝑈_𝑝的累计次数\]</span> <span class="math display">\[𝑓_𝑝：百分位数所在组的次数\]</span> <span class="math display">\[𝑖 : 组距\]</span></p>
+<p><span class="math display">\[𝑁 : 总次数\]</span></p>
+</section>
+<section id="百分等级" class="slide level2">
+<h2>百分等级</h2>
+<ul>
+<li>百分等级（percentile rank）是一个数值在其所在数据集合中的位置百分比。例如，如果某个数值的百分等级为80%，则说明在与该数值相同大小的数据集合中，该数值排名位于前20%。</li>
+</ul>
+<p>计算百分等级的方法是：首先将数据集按照大小进行排序，然后找到该数值在数据集中的位置，即排名为n，然后计算该数值的百分等级为n/N，其中N是数据集的大小。</p>
+</section>
+<section id="百分等级的计算" class="slide level2">
+<h2>百分等级的计算</h2>
+<p><span class="math display">\[𝑃𝑅=  (𝐹_b  + (𝑋 − 𝐿_𝑝)/𝑖  ×𝑓_𝑝)/𝑁\]</span></p>
+<p><span class="math display">\[𝐿_𝑝：百分位数所在组的精确下限\]</span></p>
+<p><span class="math display">\[𝐹_𝑏：小于𝐿_𝑝的累计次数\]</span></p>
+<p><span class="math display">\[L_𝑝：百分位数所在组的次数\]</span></p>
+<p><span class="math display">\[𝑖 : 组距\]</span></p>
+<p><span class="math display">\[𝑁 : 总次数\]</span></p>
+</section>
+<section id="百分等级的计算-1" class="slide level2">
+<h2>百分等级的计算</h2>
+<p><span class="math display">\[𝑃𝑅= [1−(𝐹_𝑎  + (𝑈_𝑃  − 𝑋)/𝑖  ×𝑓_𝑝)/𝑁]×100\]</span></p>
+<p><span class="math display">\[𝑈_𝑝 ：百分位数所在组的精确上限\]</span> <span class="math display">\[𝐹_𝑎  ：大于𝑈_𝑝的累计次数\]</span> <span class="math display">\[f_𝑝：百分位数所在组的次数\]</span> <span class="math display">\[𝑖 : 组距\]</span> <span class="math display">\[𝑁 : 总次数\]</span> # 05 - 从观测数据到参数模型</p>
+</section>
+<section id="伯努利试验" class="slide level2">
+<h2>伯努利试验</h2>
+<ul>
+<li>同样的条件下重复地、相互独立地进行的一种随机试验。<br></li>
+<li>该随机试验只有两种可能结果：发生或者不发生。<br></li>
+<li>我们假设该项试验独立重复地进行了n次，那么就称这一系列重复独立的随机试验为n重伯努利试验(n-fold bernoulli trials)。</li>
+</ul>
+</section>
+<section id="满足条件" class="slide level2">
+<h2>满足条件：</h2>
+<ul>
+<li>事先规定了试验次数n<br></li>
+<li>各次试验相互独立，其结果相互独立<br></li>
+<li>每次试验只有两种结果，记为𝐴与𝐴̅<br></li>
+<li>每次试验条件相同，所以𝑃(𝐴)=𝑝 , 𝑃(𝐴̅ )=𝑞<br></li>
+</ul>
+</section>
+<section id="伯努利试验-1" class="slide level2">
+<h2>伯努利试验：</h2>
+<ul>
+<li>事件的结果的取值是离散的，{0，1}<br></li>
+<li>事件 A 出现概率为<span class="math inline">\(p\)</span>, 事件 A 不出现概率为<span class="math inline">\(q = 1 - p\)</span>。<br></li>
+<li>n次试验中，事件A出现 <span class="math inline">\(k (k &lt; n)\)</span>次的可能性是有规律的<br></li>
+</ul>
+</section>
+<section id="离散随机变量" class="slide level2">
+<h2>离散随机变量：</h2>
+<ul>
+<li>其可能的取值是间断的，有时只有有限的几个变量值结果{0，1}
+<ul>
+<li>e.g.&nbsp;两点分布：一次试验，事件 A 出现概率为<span class="math inline">\(p\)</span> ,事件 A 不出现概率为<span class="math inline">\(q = 1 - p\)</span>, 以 X 记一次试验中 A 出现的次数，X 的取值为 0,1 两个值。<br></li>
+</ul></li>
+<li>离散变量X的可能取值为<span class="math inline">\(x_1 ,x_2, x_3,…, x_𝑖\)</span>，这种取值（可一一列出）离散间断的变量称为离散随机变量
+<ul>
+<li>e.g.&nbsp;伯努利试验：一次伯努利试验中，抛10次硬币，记”正面朝上”为事件A，以X记一次试验中A出现的次数，X的可能取值为0,1,2,3,4…,10。</li>
+</ul></li>
+<li>离散型随机变量𝑋的概率函数或概率分布<span class="math inline">\(P ( 𝑋 = x_i ) = p_i (i =1 , 2,…,n)\)</span></li>
+</ul>
+</section>
+<section id="二项分布binomial-distribution" class="slide level2">
+<h2>二项分布(Binomial Distribution)</h2>
+<ul>
+<li>n次独立重复的伯努利试验的概率分布服从二项分布<br></li>
+<li>每次试验中事件A发生的概率为p<br></li>
+<li>X表示n重伯努利试验中事件A发生的次数，则X的可能取值为0，1，…，n,<br></li>
+<li>对每一个k（0 ≤ k ≤ n）,事件{X = k}即为”n次试验中事件A恰好发生k次”，随机变量X的离散概率分布即为二项分布。<br></li>
+</ul>
+</section>
+<section id="二项分布binomial-distribution-1" class="slide level2">
+<h2>二项分布(Binomial Distribution)</h2>
+<ul>
+<li>一般来说，如果随机变量 X 遵循参数 <span class="math inline">\(n \in N\)</span> 和 <span class="math inline">\(p \in [0,1]\)</span>, 写作 X ~ B(n, p).
+<ul>
+<li>X ~ binomial(n, p)</li>
+<li>（随机变量X服从以n, p为参数的二项分布）</li>
+</ul></li>
+</ul>
+</section>
+<section id="二项分布binomial-distribution-2" class="slide level2">
+<h2>二项分布(Binomial Distribution)</h2>
+<p>在n个独立的伯努利试验中获得k次成功的概率由概率函数给出:</p>
+<p><span class="math display">\[P(X=k )=𝐶_𝑛^𝑘 𝑝^𝑘 𝑞^{𝑛−𝑘}= 𝐶_𝑛^𝑘 𝑝^𝑘 (1−𝑝)^{𝑛−𝑘}\]</span></p>
+<p><span class="math display">\[𝐶_𝑛^𝑘= 𝑛!/𝑘!(𝑛−𝑘)! \]</span></p>
+<center>
+（邓铸老师书上的写法）
+</center>
+<p><span class="math display">\[𝑏(𝑘; 𝑛,𝑝)=( _𝑘^𝑛)𝑝^𝑘 𝑞^{𝑛−𝑘}\]</span></p>
+<center>
+(概率论及其应用——威廉费勒/William Feller）
+</center>
+</section>
+<section id="二项分布binomial-distribution-3" class="slide level2">
+<h2>二项分布(Binomial Distribution)</h2>
+<p><span class="math inline">\(X \sim binomial(n, p)\)</span></p>
+<p>（随机变量X服从以n, p为参数的二项分布）</p>
+<p><span class="math inline">\(𝑃 (X=k )=𝐶_𝑛^𝑘 𝑝^𝑘 𝑞^{𝑛−𝑘}= 𝐶_𝑛^𝑘 𝑝^𝑘 (1−𝑝)^{𝑛−𝑘} , 𝐶_𝑛^𝑘= 𝑛!/𝑘!(𝑛−𝑘)!\)</span></p>
+</section>
+<section id="section-5" class="slide level2">
+<h2></h2>
+<ul>
+<li><p>已知一次试验中的每次尝试中事件A</p></li>
+<li><p>发生的概率p，共进行n次独立重复的伯努利试验</p></li>
+<li><p>事件A在一次试验中出现k次，事件A在n次试验中出现次数的平均数<span class="math inline">\(（𝑘_1+𝑘_2+𝑘_3+...+𝑘_𝑛/𝑛)\)</span></p></li>
+<li><p>当n → ∞，p ≠ q，np ≥5且nq≥5，事件A在n次试验中出现次数的平均数：<span class="math inline">\(\mu = np\)</span></p></li>
+<li><p>事件A出现次数所属分布的标准差：<span class="math inline">\(\sigma = \sqrt{npq}\)</span></p></li>
+</ul>
+</section>
+<section id="模型生成过程generative-process" class="slide level2">
+<h2>模型生成过程（Generative process）</h2>
+
+<img data-src="images/image-1563364806.png" class="r-stretch quarto-figure-center"></section>
+<section id="模型逆向推理过程inverse-inference-process" class="slide level2">
+<h2>模型逆向推理过程（Inverse inference process）</h2>
+
+<img data-src="images/image-1616587818.png" class="r-stretch quarto-figure-center"></section></section>
+<section>
+<section id="连续变量概率分布" class="title-slide slide level1 center">
+<h1>06 - 连续变量概率分布</h1>
+
+</section>
+<section id="概率质量函数probability-mass-function-pmf" class="slide level2">
+<h2>概率质量函数(Probability mass function, PMF)</h2>
+<p>概率质量函数是用来描述离散型随机变量的概率分布的函数，它指定了随机变量取某个值的概率。<br><br></p>
+<p>在概率质量函数中，离散随机变量的概率由概率质量函数的值表示。</p>
+</section>
+<section id="连续变量continuous-variable" class="slide level2">
+<h2>连续变量(Continuous Variable)</h2>
+<ul>
+<li>在一定区间内可以任意取值的变量叫连续变量，其数值是连续不断的，相邻两个数值可作无限分割，即可取无限个数值。</li>
+</ul>
+</section>
+<section id="连续变量" class="slide level2">
+<h2>连续变量<br><br></h2>
+<center>
+假设<span class="math inline">\(n \rightarrow \infty\)</span>, 离散频率分布图可以近似看作连续变量频率分布图
+</center>
+<p><span class="math display">\[ \downarrow \]</span></p>
+<center>
+n足够大，直方条形面积可近似看作一条曲线与x轴围成
+</center>
+</section>
+<section id="连续变量的概率密度函数" class="slide level2">
+<h2>连续变量的概率密度函数</h2>
+<p>如果随机变量x的分布函数的曲线𝑓(𝑥)与𝑥轴围成的面积等于1，则称曲线𝑓(x)为连续变量x的概率密度函数</p>
+<p><span class="math display">\[p(x|x \in R) = \int f(x)dx = 1\]</span></p>
+</section>
+<section id="连续变量的概率" class="slide level2">
+<h2>连续变量的概率</h2>
+<p>𝑓(𝑥)的大小反映随机变量在x附近取值的可能性大小，称为概率密度。f(x)本身不代表概率，只是速度的变化率</p>
+</section>
+<section id="概率质量函数与概率密度函数" class="slide level2">
+<h2>概率质量函数与概率密度函数</h2>
+<p>在概率质量函数中，某事件发生的概率表示为该事件对应的y值之和。<br><br> 在概率质量函数中，某事件发生的概率表示为该事件对应的曲线下面积。<br><br></p>
+<p>由于概率质量函数中条形图宽度为1，高度为y值，概率值可以近似看作面积，由此，当x的数值由离散变为连续时，概率质量函数就成了概率密度函数</p>
+<p><span class="math display">\[f(x|x \in [a,b]) = lim_{x \rightarrow 0}\sum_{a}^{b-a} p(x)=\int_{a}^{b} f(x)dx\]</span></p>
+</section>
+<section id="连续变量的概率密度函数-1" class="slide level2">
+<h2>连续变量的概率密度函数</h2>
+<p><span class="math display">\[单个取值的概率为0: f(x) \rightarrow 0\]</span></p>
+<p><span class="math display">\[曲线包围下的所有可能的总概率：\int_{- \infty}^{+ \infty}f(x)dx=1\]</span></p>
+<p><span class="math display">\[概率分布函数(一段区间的概率)：\]</span></p>
+<p><span class="math display">\[F(y) = p(x \le y) = \int_{- \infty}^{y} f(x)dx\]</span></p>
+<p><span class="math display">\[p(x_1&lt;x&lt;x_2) = \int_{x_1}^{x_2} f(x)dx = F(x_2)-F(x_1)\]</span></p>
+</section>
+<section id="正态分布" class="slide level2">
+<h2>正态分布</h2>
+
+<img data-src="images/image-895074899.png" class="r-stretch quarto-figure-center"><p><span class="math display">\[这种n \rightarrow \infty, p = 0.5 时的二项分布被称为"正态分布"\]</span> <span class="math display">\[且平均数\mu = np, 标准差\sigma = \sqrt{npq} \]</span></p>
+</section>
+<section id="正态分布-1" class="slide level2">
+<h2>正态分布</h2>
+<p><span class="math display">\[f(x|\mu,\sigma^2) = \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}\]</span></p>
+<p><span class="math display">\[X \sim N(\mu, \sigma^2)\]</span></p>
+</section>
+<section id="正态分布的特性" class="slide level2">
+<h2>正态分布的特性</h2>
+<ul>
+<li><p>正态分布曲线位于x轴上方，形式对称;</p></li>
+<li><p>正态分布的平均数、中位数、众数相等</p></li>
+<li><p>正态分布曲线下的面积为1，左右对称，经过<span class="math inline">\(x = \mu\)</span>处曲线将面积平分为两份，各0.5。</p></li>
+<li><p>曲线从最高点（x =𝜎）向左右延伸，拐点位于正负1个标准差处。曲线两端向x轴无限靠拢，但永不相交，意味着概率不会为0。</p></li>
+</ul>
+</section>
+<section id="中心极限定理" class="slide level2">
+<h2>中心极限定理</h2>
+
+<img data-src="images/image-1418886282-01.png" class="r-stretch quarto-figure-center"><center>
+某分布的随机变量之和的分布也符合中心极限定理
+</center>
+<center>
+(Zhang, （2022），Psychological Methods)
+</center>
+</section></section>
+<section>
+<section id="标准分数" class="title-slide slide level1 center">
+<h1>07 - 标准分数</h1>
+
+</section>
+<section id="z分数" class="slide level2">
+<h2>Z分数</h2>
+<ul>
+<li><p>Z分数：<span class="math inline">\((X- μ)/ σ\)</span></p></li>
+<li><p>概率密度(y)：某一Z分数对应的曲线纵坐标高度。</p></li>
+<li><p>概率值(P)：不同Z分数点与平均数之间的曲线下的面积</p></li>
+</ul>
+</section>
+<section id="z分数的性质" class="slide level2">
+<h2>Z分数的性质</h2>
+<p><br></p>
+<ul>
+<li><p>跨原始分布比较个体在原分布中的位置</p></li>
+<li><p>Z分数代表原始分数远离分布平均数的距离</p></li>
+<li><p>Z分数可正可负，正负号不说明Z分数的大小，“+”号代表原始分数高于平均数，“-”号代表原始分数小于平均数</p></li>
+</ul>
+</section></section>
+<section>
+<section id="参数估计1" class="title-slide slide level1 center">
+<h1>08 - 参数估计1</h1>
+
+</section>
+<section id="抽样分布" class="slide level2">
+<h2>抽样分布</h2>
+<p><br></p>
+<ul>
+<li><p>一个统计量的抽样分布是指从大小为𝑛的随机样本中得出的该统计量的分布，被视为一个随机变量。<br></p></li>
+<li><p>它可以被认为是在给定的样本量下，从同一人群中抽取的所有可能的样本的统计量分布。<br></p></li>
+<li><p>样本统计量的概率分布，如果用字母 𝑋 指代某一统计量，抽样分布就是指 𝑋 的概率分布，即样本统计量的概率分布</p></li>
+</ul>
+</section>
+<section id="标准误" class="slide level2">
+<h2>标准误</h2>
+<ul>
+<li><p>抽样误差/标准误差/标准误：样本统计量的标准差，其反映了抽样过程中随机误差的大小，此类标准差反映的是样本统计量之间的差异性，也即称某种统计量抽样分布的标准差为该种统计量的标准误。<br></p></li>
+<li><p>标准误越小，表明抽样误差越小，用该样本统计量来估计或推断相应总体参数的可靠性就越高。如果使用的样本统计量为样本平均数，则称其为样本平均数的标准误(SEM)。<br></p></li>
+</ul>
+</section>
+<section id="参数估计-parameter-estimation" class="slide level2">
+<h2>参数估计 (Parameter estimation)</h2>
+<ul>
+<li><p>待估参数：在参数估计中要估计的能够总体参数，可以是平均数，方差或者其他参数，可统一用𝜃来表示。<br></p></li>
+<li><p>估计量：用来估计参数的样本统计量，如平均数，中位数，标准差，可统一用<span class="math inline">\(\hat{\theta}\)</span>来表示。<br></p></li>
+<li><p>参数估计：设总体参数<span class="math inline">\(\theta\)</span>，根据总体的一个随机样本（<span class="math inline">\(𝑋_1\)</span>,<span class="math inline">\(𝑋_2\)</span>, <span class="math inline">\(𝑋_3\)</span>,…, <span class="math inline">\(𝑋_n\)</span>）计算出统计量<span class="math inline">\(\hat{\theta}\)</span>s ，当作估计量，利用其去估计总体参数。参数估计有两种方式，即点估计与区间估计。</p></li>
+</ul>
+</section>
+<section id="点估计point-estimation" class="slide level2">
+<h2>点估计（Point estimation）</h2>
+<ul>
+<li>利用样本统计量作为相应总体参数的估计值，样本统计量 <span class="math inline">\(\hat{\theta}\)</span> 是总体参数 𝜃 的点估计。</li>
+<li>用一个特定样本对总体未知参数所做的估计，仅为所有可能估计值中的一个点。</li>
+</ul>
+</section>
+<section id="点估计的特性-properties" class="slide level2">
+<h2>点估计的特性 (Properties)</h2>
+<ul>
+<li><p>无偏性</p></li>
+<li><p>有效性</p></li>
+<li><p>一致性</p></li>
+<li><p>充分性</p></li>
+</ul>
+</section>
+<section id="局限性-limitations-of-point-estimation" class="slide level2">
+<h2>局限性 (Limitations of point estimation)</h2>
+<ul>
+<li><p>1.用样本的估计量的某个取值直接作为总体参数的估计值。</p></li>
+<li><p>2.无法给出估计值接近总体参数程度的信息。</p></li>
+</ul>
+</section>
+<section id="区间估计" class="slide level2">
+<h2>区间估计</h2>
+<ul>
+<li>区间估计是从点估计值和抽样标准误差出发，以点估计值<span class="math inline">\(\hat{\theta}\)</span>为基础,按给定的概率值建立可能包含待估计参数的区间，并提供总体参数值” θ “落入该区间内的概率。</li>
+</ul>
+</section>
+<section id="置信度-置信水平confidence-level" class="slide level2">
+<h2>置信度 / 置信水平(confidence level）</h2>
+<ul>
+<li><p>构造置信区间时，给定的概率值 𝛼 代表估计时犯错误的概率（即总体参数不在置信区间的概率), 是一个小概率，一般取”0.05”或” 0.01 ” 。</p></li>
+<li><p>1− 𝛼 ，被称为置信度或置信水平(confidence level），指总体参数值 θ 落在样本统计值所构造的置信区间内的概率。置信度越大，需要的置信区间就越大。</p></li>
+</ul>
+</section>
+<section id="置信区间-confidence-interval" class="slide level2">
+<h2>置信区间 (confidence interval ) :</h2>
+<ul>
+<li>以点估计值 <span class="math inline">\(\hat{\theta}\)</span> 为基础建立起来的可能包含待估计参数的区间称为置信区间（confidence interval），而置信区间{<span class="math inline">\(\hat{\theta}_1\)</span>,<span class="math inline">\(\hat{\theta}_2\)</span>}是指在某一置信水平下，样本统计值与总体参数值间误差范围。置信区间越大，置信水平越高。 若进行100次抽样，每次样本容量为 n，利用1− 𝛼 构造100个置信区间，则有接近100(1- 𝛼)% 个估计的置信区间包含总体参数θ ，（即以100(1- 𝛼)% 的概率包含θ ）。</li>
+</ul>
+</section></section>
+<section>
+<section id="参数估计2" class="title-slide slide level1 center">
+<h1>09 - 参数估计2</h1>
+
+</section>
+<section id="t分布" class="slide level2">
+<h2><em>t</em>分布</h2>
+
+<img data-src="images/image-917184545.png" class="r-stretch quarto-figure-center"><p><span class="math display">\[f(t)=\frac{\Gamma(\frac{v+1}{2})}{\sqrt{v\pi}\Gamma(\frac{v}{2})}(1+\frac{t^2}{v})^{\frac{-(v+1)}{2}},v为自由度\]</span></p>
+</section>
+<section id="自由度degree-of-freedom-df" class="slide level2">
+<h2>自由度(Degree of freedom, df)</h2>
+<p><br></p>
+<ul>
+<li><p>定义一：总体参数估计量中变量值独立自由变化的个数。<br></p></li>
+<li><p>定义二：自由度是样本容量n减去独立限制因素的个数。<br></p></li>
+<li><p>定义三：将容量为n的样本的n个随机变量构造成一个随机向量，那么这个向量可以看成是n维空间的一个点，每有一个独立约束条件，则向量的自由维度减1。( Fisher, R )<br></p></li>
+<li><p>若存在两个变量 a,b,且条件是a+b=1,此时其中一个数 a 已知,另一个数 (b = 1 - a)会依赖 a 的值变化而变化，则这组数的自由度df 为1。</p></li>
+</ul>
+</section>
+<section id="自由度degree-of-freedom-df-1" class="slide level2">
+<h2>自由度(Degree of freedom, df)</h2>
+<p><br></p>
+<ul>
+<li><p>估计总体的方差<span class="math inline">\(\sigma^2\)</span>时所使用的统计量是样本的方差，须用到样本平均数<span class="math inline">\(\bar{X}\)</span>来计算。<br></p></li>
+<li><p>在抽样完成后，大小为n的样本中只要n-1个数确定了，第n个数的值就只有一个取值，能使样本满足均值为<span class="math inline">\(\bar{X}\)</span>。即样本中只有n-1个数可以自由变化，只要确定了这n-1个数，方差也就确定了。<br></p></li>
+<li><p>平均数<span class="math inline">\(\bar{X}\)</span>就相当于一个限制条件，由于加了这个限制条件，样本方差的自由度为n-1。</p></li>
+</ul>
+</section>
+<section id="t分布-1" class="slide level2">
+<h2><em>t</em>分布</h2>
+<p><br></p>
+<ul>
+<li><p>当数据遵循钟形曲线并且总体方差未知时，数据的分布为t分布<br></p></li>
+<li><p>t分布的方差基于数据的自由度</p></li>
+</ul>
+</section>
+<section id="t分数" class="slide level2">
+<h2>t分数</h2>
+<p><br></p>
+<ul>
+<li><p><span class="math inline">\(t(df)\)</span></p></li>
+<li><p>t分数等于偏离t分布的平均值的标准差的数量</p></li>
+</ul>
+<p><span class="math display">\[t = \frac{\bar{X}-\mu}{s_{\bar{X}}} =  \frac{\bar{X}-\mu}{\frac{s}{\sqrt{n}}} \]</span> <span class="math display">\[df = n-1\]</span></p>
+</section>
+<section id="t分布-vs-正态分布" class="slide level2">
+<h2><em>t</em>分布 vs 正态分布</h2>
+<p>共同点<br></p>
+<ul>
+<li><p>t分布有平滑的形状<br></p></li>
+<li><p>t分布是对称的。如果沿着平均值折叠，每一边都是相同的<br></p></li>
+<li><p>t分布均值为0</p></li>
+</ul>
+</section>
+<section id="t分布-vs-正态分布-1" class="slide level2">
+<h2><em>t</em>分布 vs 正态分布</h2>
+<p>不同点<br></p>
+<ul>
+<li><p>t分布受样本大小的影响<br></p></li>
+<li><p>随着样本容量增加，t分布逐渐接近正态分布<br></p></li>
+<li><p>正态分布假定一致总体方差已知<br></p></li>
+<li><p>t分布可用于小样本和总体方差未知的情况</p></li>
+</ul>
+</section></section>
+<section>
+<section id="假设检验1" class="title-slide slide level1 center">
+<h1>10 - 假设检验1</h1>
+
+</section>
+<section id="假设检验hypothesis-testing" class="slide level2">
+<h2>假设检验(hypothesis testing)</h2>
+<ul>
+<li><p>假设检验(hypothesis testing)</p>
+<ul>
+<li>利用样本数据及其相互关系，检验关于总体参数或总体分布形态的某些假设是否合理，确定假设的可接受程度。</li>
+</ul></li>
+</ul>
+</section>
+<section id="假设-hypothesis" class="slide level2">
+<h2>假设 (Hypothesis)</h2>
+<ul>
+<li><p>根据已知理论或事实对研究对象做出的假定性说明。</p>
+<ul>
+<li><p>e.g.&nbsp;新药具有疗效。</p></li>
+<li><p>e.g.&nbsp;教学方法B比教学方法A更好。</p></li>
+<li><p>e.g.&nbsp;B标准化测试比A标准化测试更好。</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="零假设null-hypothesis" class="slide level2">
+<h2>零假设(Null Hypothesis)</h2>
+<ul>
+<li><p>虚无假设/无差假设/零假设(Null Hypothesis)</p>
+<ul>
+<li><p><span class="math inline">\(𝐻_0\)</span>: The observed difference is due to chance alone or two possibilities are the same.</p></li>
+<li><p>差异是由随机误差造成，零假设类似”总体参数之间没有显著差异”或”总体分布符合正态分布”。</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="section-6" class="slide level2">
+<h2></h2>
+<ul>
+<li><p>零假设是一个非常弱的假设。</p>
+<ul>
+<li><p>e.g.四月会下雨。</p></li>
+<li><p>我们可以轻易说这是真的。这件事真的发生，你也不会感到惊讶。你为了做出决策，需要做的不仅仅是检验零假设。</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="备择假设alternative-hypothesis" class="slide level2">
+<h2>备择假设(Alternative Hypothesis)</h2>
+<ul>
+<li><p>研究假设/对立假设/备择假设(Alternative Hypothesis)</p>
+<ul>
+<li><p><span class="math inline">\(𝐻_1\)</span>: 与零假设对立的假设。</p></li>
+<li><p>e.g.&nbsp;“总体参数之间有显著差异”或”总体分布不符合正态分布”</p></li>
+<li><p>零假设(<span class="math inline">\(𝐻_0\)</span>) and 备择假设 (<span class="math inline">\(𝐻_1\)</span>) 是互斥事件，只有一个可以为真。</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="section-7" class="slide level2">
+<h2></h2>
+<ul>
+<li><p>小概率原理：</p>
+<ul>
+<li>小概率事件：发生的概率很小的事件，一般认为”小概率事件在一次试验中实际不会发生”。</li>
+</ul></li>
+<li><p>假设检验的原理：</p>
+<ul>
+<li>带有概率性质的反证法，不是”百分百的反证法”，是有可能犯错误的，这种错误被规定在一个小概率范围内。</li>
+</ul></li>
+</ul>
+</section>
+<section id="section-8" class="slide level2">
+<h2></h2>
+<ul>
+<li><p>显著性水平：研究者所确定的小概率的最大限。</p></li>
+<li><p>否定域：在假设检验中，根据<span class="math inline">\(𝐻_0\)</span>建立的概率分布模型，由显著性水平α结合这些概率分布模型确定数轴上某些区间，检验统计量在其中出现的概率小于或等于α，则称这些区间为否定域。否定域的界限为临界值。</p></li>
+</ul>
+</section>
+<section id="双侧检验hypothesis-testing" class="slide level2">
+<h2>双侧检验(hypothesis testing)</h2>
+<ul>
+<li><p>否定域设置在抽样分布曲线数轴的两个尾部，检验统计量不论落入哪一半否定域，都可否定<span class="math inline">\(𝐻_0\)</span>，这种假设检验称为双侧检验。</p></li>
+<li><p>此时，虚无假设为<span class="math display">\[𝐻_0：𝜇_𝑋&nbsp;̅ =𝜇_0\]</span></p></li>
+<li><p>研究假设为<span class="math display">\[𝐻_1：𝜇_𝑋&nbsp;̅ ≠𝜇_0\]</span></p></li>
+</ul>
+
+<img data-src="images/image31.png" class="r-stretch quarto-figure-center"></section>
+<section id="单侧检验hypothesis-testing" class="slide level2">
+<h2>单侧检验(hypothesis testing)</h2>
+<ul>
+<li>否定域设置在抽样分布曲线数轴的单个尾部，检验统计量出现的小概率区域仅在抽样分布曲线数轴的尾端部，可否定<span class="math inline">\(𝐻_0\)</span>，这种假设检验称为单侧检验。</li>
+<li>此时，虚无假设为<span class="math display">\[𝐻_0：𝜇_𝑋&nbsp;̅ =𝜇_0\]</span></li>
+</ul>
+<p>研究假设为<span class="math display">\[𝐻_1：𝜇_𝑋&nbsp; &gt;𝜇_0或𝜇_𝑋&nbsp;̅ &lt;𝜇_0\]</span></p>
+
+<img data-src="images/image32.png" class="r-stretch quarto-figure-center"></section>
+<section id="假设检验基本步骤" class="slide level2">
+<h2>假设检验基本步骤</h2>
+<ul>
+<li><ol type="1">
+<li>提出假设。（确定假设分别是什么）；</li>
+</ol></li>
+<li><ol start="2" type="1">
+<li>根据虚无假设<span class="math inline">\(𝐻_0\)</span>所提供的前提条件，选择合适的统计模型；</li>
+</ol></li>
+<li><ol start="3" type="1">
+<li>规定显著性水平α；</li>
+</ol></li>
+<li><ol start="4" type="1">
+<li>计算检验统计量的值；</li>
+</ol></li>
+<li><ol start="5" type="1">
+<li>做出决策。</li>
+</ol></li>
+</ul>
+</section></section>
+<section>
+<section id="假设检验2" class="title-slide slide level1 center">
+<h1>11 - 假设检验2</h1>
+
+</section>
+<section id="p-值" class="slide level2">
+<h2><em>p</em> 值</h2>
+<ul>
+<li><p><em>p</em>值衡量观察到的结果是否可归因于偶然。</p></li>
+<li><p>不能给出期望的答案:假设是正确的概率是多少?</p></li>
+<li><p>这些可能性取决于结果有多强，最重要的是，首先取决于假设的合理性。</p></li>
+</ul>
+</section>
+<section id="种情况" class="slide level2">
+<h2>4 种情况</h2>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th><span class="math inline">\(H_0\)</span>为真</th>
+<th><span class="math inline">\(H_0\)</span>为假</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>不能拒绝<span class="math inline">\(H_0\)</span></td>
+<td>√</td>
+<td>×</td>
+</tr>
+<tr class="even">
+<td>拒绝<span class="math inline">\(H_0\)</span></td>
+<td>×</td>
+<td><strong>√</strong></td>
+</tr>
+</tbody>
+</table>
+</section></section>
+<section>
+<section id="假设检验3" class="title-slide slide level1 center">
+<h1>12 - 假设检验3</h1>
+
+</section>
+<section id="两类错误" class="slide level2">
+<h2>两类错误</h2>
+<p><br><br></p>
+<ul>
+<li>H<sub>0</sub>为真
+<ul>
+<li>拒绝H<sub>0</sub>:<span class="math inline">\(\alpha\)</span> = P(拒绝H<sub>0</sub>| H<sub>0</sub>为真)</li>
+<li>不能拒绝H<sub>0</sub>:1-<span class="math inline">\(\alpha\)</span> = P(不能拒绝H<sub>0</sub>| H<sub>0</sub>为真)<br></li>
+</ul></li>
+</ul>
+<p><br><br></p>
+<ul>
+<li>H<sub>1</sub>为真
+<ul>
+<li>不能拒绝H<sub>0</sub>:<span class="math inline">\(\beta\)</span> = P(不能拒绝H<sub>0</sub>| H<sub>1</sub>为真)</li>
+<li>拒绝H<sub>0</sub>:1-<span class="math inline">\(\beta\)</span> = P(拒绝H<sub>0</sub>| H<sub>1</sub>为真)</li>
+</ul></li>
+</ul>
+</section>
+<section id="两类错误出现的真实概率" class="slide level2">
+<h2>两类错误出现的真实概率</h2>
+<p><br><br></p>
+<p><span class="math display">\[\alpha=0.05,\beta=0.2\]</span></p>
+<table>
+<colgroup>
+<col style="width: 26%">
+<col style="width: 36%">
+<col style="width: 36%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>H<sub>0</sub>为真(100%)</th>
+<th>H<sub>1</sub>为真(0%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>拒绝H<sub>0</sub></td>
+<td><strong>第一类错误</strong>/<strong>弃真错误</strong>(？%)</td>
+<td>正确(？%)</td>
+</tr>
+<tr class="even">
+<td>不能拒绝H<sub>0</sub></td>
+<td>正确(？%)</td>
+<td><strong>第二类错误</strong>/<strong>取伪错误</strong>(？%)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="section-9" class="slide level2">
+<h2></h2>
+<p><br><br></p>
+<table>
+<colgroup>
+<col style="width: 26%">
+<col style="width: 36%">
+<col style="width: 36%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>H<sub>0</sub>为真(100%)</th>
+<th>H<sub>1</sub>为真(0%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>拒绝H<sub>0</sub></td>
+<td><strong>第一类错误</strong>/<strong>弃真错误</strong>(5%)</td>
+<td>正确(0%)</td>
+</tr>
+<tr class="even">
+<td>不能拒绝H<sub>0</sub></td>
+<td>正确(95%)</td>
+<td><strong>第二类错误</strong>/<strong>取伪错误</strong>(0%)</td>
+</tr>
+</tbody>
+</table>
+</section></section>
+<section>
+<section id="相关分析" class="title-slide slide level1 center">
+<h1>13 - 相关分析</h1>
+
+</section>
+<section id="相关分析-1" class="slide level2">
+<h2>相关分析</h2>
+<p><br><br></p>
+<ul>
+<li><p>相关性是指两个随机变量之间的任何统计关系，<strong>无论是否有因果关系</strong>；<br><br></p></li>
+<li><p>考察两组观测值之间联系的强度，联系的强度是指两组观测值在多大程度上是<strong>“一起变化”</strong>的</p></li>
+</ul>
+</section>
+<section id="section-10" class="slide level2">
+<h2></h2>
+<p><span class="math display">\[r = \frac{\sum(X-\bar{X})*(Y-\bar{Y})}{n*s_{X}*s_{Y}}\]</span></p>
+<p><span class="math display">\[=\frac{1}{n}*\sum\frac{(X-\bar{X})}{s_{X}}*\frac{(Y-\bar{Y})}{s_{Y}}\]</span></p>
+<p><span class="math display">\[=\sum\frac{Z_X*Z_Y}{N}(样本)\]</span></p>
+</section>
+<section id="section-11" class="slide level2">
+<h2></h2>
+<p><span class="math display">\[\rho = \frac{\sum(X-\bar{X})*(Y-\bar{Y})}{n*\sigma_{X}*\sigma_{Y}}\]</span></p>
+<p><span class="math display">\[=\frac{1}{n}*\sum\frac{(X-\bar{X})}{\sigma_{X}}*\frac{(Y-\bar{Y})}{\sigma_{Y}}\]</span></p>
+<p><span class="math display">\[=\sum\frac{Z_X*Z_Y}{N}(总体)\]</span></p>
+</section>
+<section id="section-12" class="slide level2">
+<h2></h2>
+<p>我们可以从另一个角度来理解<strong>r</strong>,<span class="math inline">\(\sum(X-\bar{X})*(Y-\bar{Y})\)</span>表示X与Y共同变化的程度，<span class="math inline">\(s_x*s_y\)</span>表示X与Y单独变化的程度</p>
+<p><span class="math display">\[r = \frac{\sum(X-\bar{X})*(Y-\bar{Y})}{n*s_{X}*s_{Y}}\]</span></p>
+<p><span class="math display">\[=\frac{\sum(X-\bar{X})*(Y-\bar{Y})}{\sqrt{\sum (X-\bar{X})^2}*\sqrt{\sum (Y-\bar{Y})^2}}\]</span></p>
+</section>
+<section id="相关系数correlation-coefficient" class="slide level2">
+<h2>相关系数(Correlation coefficient)</h2>
+<p><br><br><br></p>
+<ul>
+<li><p>一个介于-1和1之间的数字，表示变量之间关系的强度和方向；<br><br></p></li>
+<li><p>反映变量之间相关关系密切程度的指标。</p></li>
+</ul>
+</section>
+<section id="section-13" class="slide level2">
+<h2></h2>
+<p><br><br></p>
+<ul>
+<li><p>一般样本的相关系数用<span class="math inline">\(r\)</span>表示，总体的相关系数用<span class="math inline">\(\rho\)</span>表示。<br><br></p>
+<ul>
+<li><p>相关系数的取值： <span class="math inline">\(-1 ≤ r ≤ 1\)</span>;<br><br></p></li>
+<li><p>相关系数 <span class="math inline">\(r = 1\)</span>表示完全正相关,<span class="math inline">\(r = -1\)</span>表示完全负相关，<span class="math inline">\(r = 0\)</span>表示完全独立，零相关或无相关;<br><br></p></li>
+<li><p>相关系数不是由相等单位度量而来的，因此只能比较大小，不能做任何加、减、乘、除运算。;</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="正相关positive-correlation" class="slide level2">
+<h2>正相关(Positive correlation)</h2>
+<p>两个变量在数值上的变化方向一致，一个变量由大而小变化，另一个变量由大而小变化。</p>
+</section>
+<section id="负相关negative-correlation" class="slide level2">
+<h2>负相关(Negative correlation)</h2>
+<p>两个变量在数值上的变化方向相反，一个变量由大而小变化，另一个变量却由小而大变化。</p>
+</section>
+<section id="零相关naughtzero-correlation" class="slide level2">
+<h2>零相关(Naught/zero correlation)</h2>
+<p>两个变量之间的关系零散，无法找到联系，各现象间表现为互相独立。</p>
+</section>
+<section id="相关与变异" class="slide level2">
+<h2>相关与变异</h2>
+<p>由</p>
+<p><span class="math display">\[r =\frac{\sum(X-\bar{X})*(Y-\bar{Y})}{\sqrt{\sum (X-\bar{X})^2}*\sqrt{\sum (Y-\bar{Y})^2}}\]</span> 可以得出</p>
+<p><span class="math display">\[r^2 =\frac{(\sum(X-\bar{X})*(Y-\bar{Y}))^2}{\sum (X-\bar{X})^2*\sum (Y-\bar{Y})^2}\]</span></p>
+</section>
+<section id="section-14" class="slide level2">
+<h2></h2>
+<p><br><br></p>
+<ul>
+<li><p>决定系数 <span class="math inline">\(r^2\)</span>:测量了一个变量的变异性中由另一个变量的变异性而决定的比例；<br><br></p></li>
+<li><p>例如 <span class="math inline">\(r = 0.8\)</span>，则有64%的Y变量的变异(方差)由X变量决定，反之亦然。</p></li>
+</ul>
+</section>
+<section id="section-15" class="slide level2">
+<h2></h2>
+<p><br><br></p>
+<p>使用<span class="math inline">\(1-r^2\)</span>，你会得到异化系数(Coefficient of alienation)。这是变量之间不共享的共同方差的比例，即变量之间无法解释的方差。<br></p>
+</section>
+<section id="section-16" class="slide level2">
+<h2></h2>
+<ul>
+<li><p>相关结果受数据全距影响</p></li>
+<li><p>相关结果受数据极端值影响</p></li>
+</ul>
+</section>
+<section id="皮尔逊积差相关pearsons-product-moment-coefficient" class="slide level2">
+<h2>皮尔逊积差相关(Pearson’s product-moment coefficient)</h2>
+<p><br><br><br></p>
+<ul>
+<li><p>相关系数就是皮尔逊相关系数；<br><br></p></li>
+<li><p>皮尔逊积差相关描述两个连续变量之间的<strong>线性</strong>相关。</p></li>
+</ul>
+</section>
+<section id="线性与非线性" class="slide level2">
+<h2>线性与非线性</h2>
+<p><br><br><br></p>
+<ul>
+<li><p>线性关系：变量之间的关系可以用直线进行表示；<br><br></p></li>
+<li><p>非线性关系：变量之间的关系不能用直线表示，需要用曲线或者更复杂的图形进行表示。</p></li>
+</ul>
+</section>
+<section id="皮尔逊积差相关的适用条件" class="slide level2">
+<h2>皮尔逊积差相关的适用条件</h2>
+<p><br><br></p>
+<ul>
+<li><p>成对的数据；<br><br></p></li>
+<li><p>数据均来自正态分布的总体；<br><br></p></li>
+<li><p>数据是等距、连续的；<br><br></p></li>
+<li><p>两列变量之间的关系是线性的；<br><br></p></li>
+<li><p>样本容量不宜太小，成对数据的数目至少不少于30对，否则缺乏代表性。</p></li>
+</ul>
+</section>
+<section id="斯皮尔曼等级相关spearmans-rank-correlation-coefficient" class="slide level2">
+<h2>斯皮尔曼等级相关(Spearman’s rank correlation coefficient)</h2>
+<p><br><br><br></p>
+<ul>
+<li><p>斯皮尔曼等级相关是一个等级相关系数；<br><br></p></li>
+<li><p>因为它使用每个变量的数据排名（例如，从最低到最高）而不是原始数据本身。</p></li>
+</ul>
+</section>
+<section id="斯皮尔曼等级相关的适用条件" class="slide level2">
+<h2>斯皮尔曼等级相关的适用条件</h2>
+<p><br><br><br></p>
+<ul>
+<li><p>两列具有等级变量性质的数据，主要解决称名和顺序数据的相关问题；<br><br></p></li>
+<li><p>两列变量具有线性关系；<br><br></p></li>
+<li><p>对总体分布状态不做要求；<br><br></p></li>
+<li><p>等比和等距数据需要进行赋以等级顺序，才能处理。</p></li>
+</ul>
+</section>
+<section id="肯德尔w系数" class="slide level2">
+<h2>肯德尔W系数</h2>
+<p><br><br></p>
+<ul>
+<li><p>多列变量间的等级相关系数;<br><br></p></li>
+<li><p>计算肯德尔和谐系数，原始数据资料的获得一般采用等级评定法，即让K个被试（或称为评价者）对N件事物或N种作品进行等级评定，每个评价者都能对N件事物（或作品）的好坏、优劣、喜好、大小、高低等排出一个等级顺序;<br><br></p></li>
+<li><p>W系数是每一评价对象实际得到的等级总和的变异与被评价对象一致性程度最大时等级总和的变异的比值。</p></li>
+</ul>
+</section>
+<section id="肯德尔u系数" class="slide level2">
+<h2>肯德尔U系数</h2>
+<p><br><br></p>
+<ul>
+<li><p>肯德尔U系数又称一致性系数，适用于对K个评价者的一致性进行统计分析;<br><br></p></li>
+<li><p>它与肯德尔W系数所处理的问题相同，但所处理的资料的获得方法不同，计算结果也不同;<br><br></p></li>
+<li><p>如果有N件事物，由K个评价者，将N件事物两两配对，形成了N(N-1)/2对，然后对每一对中两事物进行比较，优者记1，非优者记0。</p></li>
+</ul>
+</section>
+<section id="相关分析系数之间的关系" class="slide level2">
+<h2>相关分析系数之间的关系</h2>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>两列变量</strong></th>
+<th><strong>多列变量</strong></th>
+<th><strong>总体呈正态分布</strong></th>
+<th><strong>总体不做要求</strong></th>
+<th><strong>等距数据</strong></th>
+<th><strong>顺序数据</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>皮尔逊积差相关系数</td>
+<td><span class="math inline">\(\surd\)</span></td>
+<td></td>
+<td><span class="math inline">\(\surd\)</span></td>
+<td></td>
+<td><span class="math inline">\(\surd\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>斯皮尔曼等级相关系数</td>
+<td><span class="math inline">\(\surd\)</span></td>
+<td></td>
+<td></td>
+<td><span class="math inline">\(\surd\)</span></td>
+<td></td>
+<td><span class="math inline">\(\surd\)</span></td>
+</tr>
+<tr class="odd">
+<td>肯德尔W系数</td>
+<td></td>
+<td><span class="math inline">\(\surd\)</span></td>
+<td></td>
+<td><span class="math inline">\(\surd\)</span></td>
+<td></td>
+<td><span class="math inline">\(\surd\)</span></td>
+</tr>
+<tr class="even">
+<td>肯德尔U系数</td>
+<td></td>
+<td><span class="math inline">\(\surd\)</span></td>
+<td></td>
+<td><span class="math inline">\(\surd\)</span></td>
+<td></td>
+<td><span class="math inline">\(\surd\)</span></td>
+</tr>
+</tbody>
+</table>
+</section></section>
+<section>
+<section id="z检验t检验" class="title-slide slide level1 center">
+<h1>14 - z检验&amp;t检验</h1>
+
+</section>
+<section id="section-17" class="slide level2">
+<h2></h2>
+
+<img data-src="images/1685439299495.jpg" class="r-stretch quarto-figure-center"></section>
+<section id="z检验的预设assumptions" class="slide level2">
+<h2>z检验的预设(assumptions)</h2>
+<p><br><br></p>
+<ul>
+<li><p>总体为正态分布<br><br></p></li>
+<li><p>样本量大于30<br><br></p></li>
+<li><p>样本平均数的抽样分布为正态分布</p></li>
+</ul>
+</section>
+<section id="t-检验的预设为" class="slide level2">
+<h2>t 检验的预设为：</h2>
+<p><br><br></p>
+<ul>
+<li><p>总体为正态分布<br><br></p></li>
+<li><p>样本平均数的抽样分布为t分布</p></li>
+</ul>
+</section>
+<section id="例题请见第14课课件" class="slide level2">
+<h2>例题请见第14课课件</h2>
+
+<img src="images/image-393370223.png" class="slide-logo r-stretch"><div class="footer footer-default">
+
+</div>
+</section></section>
+    </div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="Summary_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="Summary_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="Summary_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="Summary_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="Summary_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="Summary_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="Summary_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="Summary_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="Summary_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="Summary_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'smaller': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        target: function(trigger) {
+          return trigger.previousElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      });
+      function tippyHover(el, contentFn) {
+        const config = {
+          allowHTML: true,
+          content: contentFn,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'quarto-reveal',
+          placement: 'bottom-start'
+        };
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          return note.innerHTML;
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>

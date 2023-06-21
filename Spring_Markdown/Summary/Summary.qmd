@@ -19,7 +19,7 @@ fontsize: 24pt
 
 <h2 style="text-align: center">
 
-(z-test & t-test)
+
 
 </h2>
 
@@ -33,7 +33,7 @@ Hu Chuan-Peng
 
 <h3 style="text-align: center">
 
-2023-06-13
+2023-06-21
 
 </h3>
 
@@ -578,17 +578,17 @@ $$X \sim N(\mu, \sigma^2)$$
 
 ## 置信度 / 置信水平(confidence level）
 
-```         
+     
 -   构造置信区间时，给定的概率值 𝛼 代表估计时犯错误的概率（即总体参数不在置信区间的概率), 是一个小概率，一般取"0.05"或" 0.01 " 。
 
 -   1− 𝛼 ，被称为置信度或置信水平(confidence level），指总体参数值 θ 落在样本统计值所构造的置信区间内的概率。置信度越大，需要的置信区间就越大。
-```
+
 
 ## 置信区间 (confidence interval ) :
 
-```         
+      
 -   以点估计值 $\hat{\theta}$ 为基础建立起来的可能包含待估计参数的区间称为置信区间（confidence interval），而置信区间{$\hat{\theta}_1$,$\hat{\theta}_2$}是指在某一置信水平下，样本统计值与总体参数值间误差范围。置信区间越大，置信水平越高。 若进行100次抽样，每次样本容量为 n，利用1− 𝛼 构造100个置信区间，则有接近100(1- 𝛼)% 个估计的置信区间包含总体参数θ ，（即以100(1- 𝛼)% 的概率包含θ ）。
-```
+
 
 # 09 - 参数估计2
 
@@ -678,9 +678,7 @@ $$t = \frac{\bar{X}-\mu}{s_{\bar{X}}} =  \frac{\bar{X}-\mu}{\frac{s}{\sqrt{n}}} 
 
     -   e.g. B标准化测试比A标准化测试更好。
 
-## 
 
-![](images/image27.png){fig-align="center"}
 
 ## 零假设(Null Hypothesis)
 
