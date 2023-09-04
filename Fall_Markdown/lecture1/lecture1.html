@@ -364,7 +364,27 @@
 <section id="section" class="slide level2">
 <h2></h2>
 
-<img data-src="images/1687313428266.jpg" class="r-stretch quarto-figure-center"></section>
+<img data-src="images/1693827735180.jpg" class="r-stretch quarto-figure-center"></section>
+<section id="section-1" class="slide level2">
+<h2></h2>
+
+<img data-src="images/1693827775347.jpg" class="r-stretch quarto-figure-center"></section>
+<section id="section-2" class="slide level2">
+<h2></h2>
+
+<img data-src="images/1693827792296.jpg" class="r-stretch quarto-figure-center"></section>
+<section id="section-3" class="slide level2">
+<h2></h2>
+
+<img data-src="images/1693827818109.jpg" class="r-stretch quarto-figure-center"></section>
+<section id="section-4" class="slide level2">
+<h2></h2>
+
+<img data-src="images/1693827843035.jpg" class="r-stretch quarto-figure-center"></section>
+<section id="section-5" class="slide level2">
+<h2></h2>
+
+<img data-src="images/1693827921825.jpg" class="r-stretch quarto-figure-center"></section>
 <section id="统计学在心理学中的应用" class="slide level2">
 <h2>统计学在心理学中的应用</h2>
 
@@ -453,7 +473,7 @@
 </tbody>
 </table>
 </section>
-<section id="section-1" class="slide level2">
+<section id="section-6" class="slide level2">
 <h2></h2>
 <table>
 <thead>
@@ -629,7 +649,7 @@
 </tbody>
 </table>
 </section>
-<section id="section-2" class="slide level2">
+<section id="section-7" class="slide level2">
 <h2></h2>
 <p><br><br></p>
 <table>
@@ -684,7 +704,7 @@
 </tbody>
 </table>
 </section>
-<section id="section-3" class="slide level2">
+<section id="section-8" class="slide level2">
 <h2></h2>
 <p><br><br></p>
 <p><span class="math inline">\(\alpha=0.05,1-\beta=0.8\)</span></p>
@@ -804,104 +824,140 @@
 <li><p>如果我们想要比较三种对比度，分别是对比度高、中、低的情况，我们还可以使用该方法吗？</p></li>
 </ul>
 </section>
-<section id="section-4" class="slide level2">
+<section id="section-9" class="slide level2">
 <h2></h2>
 <p>如果我们使用<em>t</em>检验分别对三组情况进行检验</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>
-One-Sample t-test
+Independent-Samples t-test
 
-Hypothesis: two-sided (μ ≠ 0)
+Hypothesis: two-sided (μ2 - μ1 ≠ 0)
 
 Descriptives:
-────────────────────────
- Variable  N Mean (S.D.)
-────────────────────────
-      rt1 30 0.42 (0.11)
-      rt2 30 0.53 (0.13)
-────────────────────────
+────────────────────────────────────────
+ Variable    Factor Level  N Mean (S.D.)
+────────────────────────────────────────
+       rt condition   rt1 30 0.40 (0.10)
+       rt condition   rt2 30 0.51 (0.13)
+────────────────────────────────────────
+
+Levene’s test for homogeneity of variance:
+───────────────────────────────────────────────────────
+                           Levene’s F df1 df2     p    
+───────────────────────────────────────────────────────
+rt: condition (rt2 - rt1)        1.60   1  58  .212    
+───────────────────────────────────────────────────────
+Note: H0 = equal variance (homoscedasticity).
+If significant (violation of the assumption),
+then you should better set `var.equal=FALSE`.
 
 Results of t-test:
-──────────────────────────────────────────────────────────────────────────────────
-                    t df     p     Difference [95% CI] Cohen’s d [95% CI]     BF10
-──────────────────────────────────────────────────────────────────────────────────
-rt1: (rt1 - 0)  20.78 29 &lt;.001 ***   0.42 [0.38, 0.46]  3.79 [3.42, 4.17] 7.49e+15
-rt2: (rt2 - 0)  22.50 29 &lt;.001 ***   0.53 [0.48, 0.57]  4.11 [3.73, 4.48] 6.05e+16
-──────────────────────────────────────────────────────────────────────────────────</code></pre>
+────────────────────────────────────────────────────────────────────────────────────────────
+                              t df     p     Difference [95% CI] Cohen’s d [95% CI]     BF10
+────────────────────────────────────────────────────────────────────────────────────────────
+rt: condition (rt2 - rt1)  3.62 58 &lt;.001 ***   0.11 [0.05, 0.17]  0.93 [0.42, 1.45] 4.59e+01
+────────────────────────────────────────────────────────────────────────────────────────────</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "rt1" "rt2"</code></pre>
 </div>
 </div>
 </section>
-<section id="section-5" class="slide level2">
+<section id="section-10" class="slide level2">
 <h2></h2>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>
-One-Sample t-test
+Independent-Samples t-test
 
-Hypothesis: two-sided (μ ≠ 0)
+Hypothesis: two-sided (μ2 - μ1 ≠ 0)
 
 Descriptives:
-────────────────────────
- Variable  N Mean (S.D.)
-────────────────────────
-      rt1 30 0.42 (0.11)
-      rt3 30 0.57 (0.13)
-────────────────────────
+────────────────────────────────────────
+ Variable    Factor Level  N Mean (S.D.)
+────────────────────────────────────────
+       rt condition   rt1 30 0.40 (0.10)
+       rt condition   rt3 30 0.66 (0.11)
+────────────────────────────────────────
+
+Levene’s test for homogeneity of variance:
+───────────────────────────────────────────────────────
+                           Levene’s F df1 df2     p    
+───────────────────────────────────────────────────────
+rt: condition (rt3 - rt1)        0.51   1  58  .478    
+───────────────────────────────────────────────────────
+Note: H0 = equal variance (homoscedasticity).
+If significant (violation of the assumption),
+then you should better set `var.equal=FALSE`.
 
 Results of t-test:
-──────────────────────────────────────────────────────────────────────────────────
-                    t df     p     Difference [95% CI] Cohen’s d [95% CI]     BF10
-──────────────────────────────────────────────────────────────────────────────────
-rt1: (rt1 - 0)  20.78 29 &lt;.001 ***   0.42 [0.38, 0.46]  3.79 [3.42, 4.17] 7.49e+15
-rt3: (rt3 - 0)  23.47 29 &lt;.001 ***   0.57 [0.52, 0.62]  4.29 [3.91, 4.66] 1.86e+17
-──────────────────────────────────────────────────────────────────────────────────</code></pre>
+────────────────────────────────────────────────────────────────────────────────────────────
+                              t df     p     Difference [95% CI] Cohen’s d [95% CI]     BF10
+────────────────────────────────────────────────────────────────────────────────────────────
+rt: condition (rt3 - rt1)  9.48 58 &lt;.001 ***   0.26 [0.20, 0.31]  2.45 [1.93, 2.97] 2.31e+10
+────────────────────────────────────────────────────────────────────────────────────────────</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "rt1" "rt3"</code></pre>
 </div>
 </div>
 </section>
-<section id="section-6" class="slide level2">
+<section id="section-11" class="slide level2">
 <h2></h2>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>
-One-Sample t-test
+Independent-Samples t-test
 
-Hypothesis: two-sided (μ ≠ 0)
+Hypothesis: two-sided (μ2 - μ1 ≠ 0)
 
 Descriptives:
-────────────────────────
- Variable  N Mean (S.D.)
-────────────────────────
-      rt2 30 0.53 (0.13)
-      rt3 30 0.57 (0.13)
-────────────────────────
+────────────────────────────────────────
+ Variable    Factor Level  N Mean (S.D.)
+────────────────────────────────────────
+       rt condition   rt2 30 0.51 (0.13)
+       rt condition   rt3 30 0.66 (0.11)
+────────────────────────────────────────
+
+Levene’s test for homogeneity of variance:
+───────────────────────────────────────────────────────
+                           Levene’s F df1 df2     p    
+───────────────────────────────────────────────────────
+rt: condition (rt3 - rt2)        0.42   1  58  .521    
+───────────────────────────────────────────────────────
+Note: H0 = equal variance (homoscedasticity).
+If significant (violation of the assumption),
+then you should better set `var.equal=FALSE`.
 
 Results of t-test:
-──────────────────────────────────────────────────────────────────────────────────
-                    t df     p     Difference [95% CI] Cohen’s d [95% CI]     BF10
-──────────────────────────────────────────────────────────────────────────────────
-rt2: (rt2 - 0)  22.50 29 &lt;.001 ***   0.53 [0.48, 0.57]  4.11 [3.73, 4.48] 6.05e+16
-rt3: (rt3 - 0)  23.47 29 &lt;.001 ***   0.57 [0.52, 0.62]  4.29 [3.91, 4.66] 1.86e+17
-──────────────────────────────────────────────────────────────────────────────────</code></pre>
+────────────────────────────────────────────────────────────────────────────────────────────
+                              t df     p     Difference [95% CI] Cohen’s d [95% CI]     BF10
+────────────────────────────────────────────────────────────────────────────────────────────
+rt: condition (rt3 - rt2)  4.92 58 &lt;.001 ***   0.15 [0.09, 0.21]  1.27 [0.75, 1.79] 2.19e+03
+────────────────────────────────────────────────────────────────────────────────────────────</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "rt2" "rt3"</code></pre>
 </div>
 </div>
 </section>
-<section id="section-7" class="slide level2">
+<section id="section-12" class="slide level2">
 <h2></h2>
 <p>这样的做法存在什么问题（从<em>p</em>值的角度）？</p>
 
 <img data-src="images/1693716873875.jpg" class="r-stretch quarto-figure-center"></section>
-<section id="section-8" class="slide level2">
+<section id="section-13" class="slide level2">
 <h2></h2>
 <p>两两比较之后犯错误的<span class="math inline">\(\alpha\)</span>概率是多少呢？</p>
 
 <img data-src="images/1693719033924.jpg" class="r-stretch quarto-figure-center"></section>
-<section id="section-9" class="slide level2">
+<section id="section-14" class="slide level2">
 <h2></h2>
 <p><span class="math inline">\(p(犯错误的概率)=1-(1-0.05)^3 \approx 0.143\)</span></p>
 
 <img data-src="images/1693719966829.jpg" class="r-stretch quarto-figure-center"></section>
-<section id="section-10" class="slide level2">
+<section id="section-15" class="slide level2">
 <h2></h2>
 
 <img data-src="images/1693721199880.jpg" class="r-stretch"><p>两两比较后，犯<span class="math inline">\(\alpha\)</span>错误的概率大大增加，那么有什么方法能够降低犯错误的风险呢？</p>
@@ -917,7 +973,7 @@ rt3: (rt3 - 0)  23.47 29 &lt;.001 ***   0.57 [0.52, 0.62]  4.29 [3.91, 4.66] 1.8
 <p><span class="math display">\[\downarrow \]</span></p>
 <p><span class="math display">\[s^2 = \frac{SS}{df}\]</span></p>
 </section>
-<section id="section-11" class="slide level2">
+<section id="section-16" class="slide level2">
 <h2></h2>
 <p><span class="math display">\[SS = \sum(X_i-\bar{X})^2\]</span></p>
 
@@ -930,7 +986,7 @@ rt3: (rt3 - 0)  23.47 29 &lt;.001 ***   0.57 [0.52, 0.62]  4.29 [3.91, 4.66] 1.8
 <h2>方差蕴含的信息</h2>
 
 <img data-src="images/1693725854362.jpg" class="r-stretch quarto-figure-center"></section>
-<section id="section-12" class="slide level2">
+<section id="section-17" class="slide level2">
 <h2></h2>
 
 <img data-src="images/1693726026872.jpg" class="r-stretch quarto-figure-center"></section>
@@ -939,36 +995,36 @@ rt3: (rt3 - 0)  23.47 29 &lt;.001 ***   0.57 [0.52, 0.62]  4.29 [3.91, 4.66] 1.8
 <p>方差（或变异）的可分解性是指总的离差平方和可以分解为几个不同来源的平方和。</p>
 <p>总平方和可以分解为组内平方和和组间平方和。</p>
 </section>
-<section id="section-13" class="slide level2">
+<section id="section-18" class="slide level2">
 <h2></h2>
 
 <img data-src="images/1693726127491.jpg" class="r-stretch quarto-figure-center"></section>
-<section id="section-14" class="slide level2">
+<section id="section-19" class="slide level2">
 <h2></h2>
 <p><span class="math display">\[ (X_i-\bar{X})^2 = (X_i-\bar{X_b})^2 + (\bar{X_b}-\bar{X})^2\]</span> <span class="math display">\[(\bar{X}总平均值，\bar{X_b}组平均值)\]</span> <span class="math display">\[\downarrow\]</span> <span class="math display">\[ \sum (X_i-\bar{X})^2 = \sum (X_i-\bar{X_b})^2 + \sum(\bar{X_b}-\bar{X})^2\]</span> <span class="math display">\[\downarrow\]</span> <span class="math display">\[SS_T = SS_W + SS_B\]</span> <span class="math display">\[(SS_T总平方和，SS_W组内平方和 ，SS_B组间平方和)\]</span> 注：具体的公式推导可以参考课本</p>
 </section>
-<section id="section-15" class="slide level2">
+<section id="section-20" class="slide level2">
 <h2></h2>
 <p>若想要对三个地区人群的主观幸福感进行比较，我们可以怎么样进行处理呢？</p>
 <p><span class="math inline">\(H_0\)</span> : 三个地区人群的主观幸福感没有差异</p>
 <p><span class="math inline">\(H_1\)</span> : 三个地区人群的主观幸福感存在差异</p>
 </section>
-<section id="section-16" class="slide level2">
+<section id="section-21" class="slide level2">
 <h2></h2>
 <p>假定H0为真，则各组之间不存在差异,<span class="math inline">\(\bar{X_b} \rightarrow \bar{X}\)</span></p>
 <p><span class="math display">\[ \sum(X_i - \bar{X_b})^2 = \sum(X_i - \bar{X})^2\]</span> <span class="math display">\[\sum(\bar{X_b}-\bar{X})^2 = 0\]</span> <span class="math display">\[\sum(X_i - \bar{X})^2 = \sum(X_i - \bar{X_b})^2 +\sum(\bar{X_b}-\bar{X})^2 =  \sum(X_i - \bar{X_b})^2\]</span></p>
 <p><span class="math display">\[SS_T = SS_W + SS_B\]</span> <span class="math display">\[SS_W = SS_T\]</span></p>
 <p><span class="math display">\[SS_B = 0 \]</span></p>
 </section>
-<section id="section-17" class="slide level2">
+<section id="section-22" class="slide level2">
 <h2></h2>
 
 <img data-src="images/1693730578954.jpg" class="r-stretch quarto-figure-center"></section>
-<section id="section-18" class="slide level2">
+<section id="section-23" class="slide level2">
 <h2></h2>
 
 <img data-src="images/1693730651413.jpg" class="r-stretch quarto-figure-center"></section>
-<section id="section-19" class="slide level2">
+<section id="section-24" class="slide level2">
 <h2></h2>
 <p>假定<span class="math inline">\(H_1\)</span>为真，则各组之间存在差异</p>
 <p><span class="math display">\[SS_B &gt;&gt; SS_W\]</span> <span class="math display">\[\downarrow\]</span> <span class="math display">\[\frac{MS_B}{MS_W}\]</span> <span class="math display">\[\downarrow\]</span> <span class="math display">\[+\infty\]</span></p>
