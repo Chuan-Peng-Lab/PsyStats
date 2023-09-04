@@ -39,10 +39,10 @@ Hu Chuan-Peng
 
 # 本次课内容
 
-- 上学期内容回顾
-- 课程形式调整
-- 本学期内容简介
-- 从*t*-test到ANOVA
+-   上学期内容回顾
+-   课程形式调整
+-   本学期内容简介
+-   从*t*-test到ANOVA
 
 ## 学期回顾
 
@@ -67,7 +67,27 @@ print(paste("班级平均分为", round(mean(grade$x),2),"班级分数标准差�
 
 ## 
 
-![](images/1687313428266.jpg){fig-align="center"}
+![](images/1693827735180.jpg){fig-align="center"}
+
+##
+
+![](images/1693827775347.jpg){fig-align="center"}
+
+##
+
+![](images/1693827792296.jpg){fig-align="center"}
+
+##
+
+![](images/1693827818109.jpg){fig-align="center"}
+
+##
+
+![](images/1693827843035.jpg){fig-align="center"}
+
+##
+
+![](images/1693827921825.jpg){fig-align="center"}
 
 ## 统计学在心理学中的应用
 
@@ -244,9 +264,9 @@ $\alpha=0.05,1-\beta=0.8$
 
 ## 教学形式的变化
 
-- 增加随机分组（持续一学期，小组成员角色随机）
-- 小作业随机抽取小组进行报告
-- 大作业的报告人在报告时进行随机抽取
+-   增加随机分组（持续一学期，小组成员角色随机）
+-   小作业随机抽取小组进行报告
+-   大作业的报告人在报告时进行随机抽取
 
 ## 教学计划
 
@@ -289,25 +309,43 @@ p_load('tidyverse','bruceR')
 ```
 
 ```{r}
-df = data.frame(rt1 = rnorm(n = 30, mean = 0.4,sd = 0.1),
-                rt2 = rnorm(n = 30, mean = 0.5,sd = 0.15),
-                rt3 = rnorm(n = 30, mean = 0.6,sd = 0.12))
+df <- data.frame(rt1 = rnorm(n = 30, mean = 0.4,sd = 0.1),
+                rt2 = rnorm(n = 30, mean = 0.5,sd = 0.12),
+                rt3 = rnorm(n = 30, mean = 0.6,sd = 0.12))%>% 
+  as.data.frame()
+df_long <- df %>% 
+  pivot_longer(cols = c('rt1','rt2','rt3'), 
+               names_to = "condition", 
+               values_to = "rt")%>% 
+  mutate(condition = as.factor(condition))
 ```
 
 ```{r}
-bruceR::TTEST(df, y=c("rt1", "rt2"), paired = FALSE)
+df1 <- df_long%>%
+  filter(condition!='rt3')
+df1$condition <- factor(df1$condition, levels = c("rt1", "rt2"))
+bruceR::TTEST(df1, y = "rt","condition")
+levels(df1$condition)
 ```
 
 ## 
 
 ```{r}
-bruceR::TTEST(df, y=c("rt1", "rt3"), paired = FALSE)
+df2 <- df_long%>%
+  filter(condition!='rt2')
+df2$condition <- factor(df2$condition, levels = c("rt1", "rt3"))
+bruceR::TTEST(df2, y = "rt","condition")
+levels(df2$condition)
 ```
 
 ## 
 
 ```{r}
-bruceR::TTEST(df, y=c("rt2", "rt3"), paired = FALSE)
+df3 <- df_long%>%
+  filter(condition!='rt1')
+df3$condition <- factor(df3$condition, levels = c("rt2", "rt3"))
+bruceR::TTEST(df3, y = "rt","condition")
+levels(df3$condition)
 ```
 
 ## 
