@@ -329,7 +329,7 @@
 
 <p><br><br></p>
 <h1 style="text-align: center">
-<p>1 ANOVA Ⅰ</p>
+<p>1 ANOVA (Ⅰ)</p>
 </h1>
 <h2 style="text-align: center">
 </h2>
@@ -342,12 +342,22 @@
 </h3>
 <p><br><br></p>
 </section>
+<section>
+<section id="本次课内容" class="title-slide slide level1 center">
+<h1>本次课内容</h1>
+<ul>
+<li>上学期内容回顾</li>
+<li>课程形式调整</li>
+<li>本学期内容简介</li>
+<li>从<em>t</em>-test到ANOVA</li>
+</ul>
+</section>
 <section id="学期回顾" class="slide level2">
 <h2>学期回顾</h2>
 <div class="cell">
 
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "班级平均分为 86.2820512820513 班级分数标准差为 7.50420484917313"</code></pre>
+<pre><code>[1] "班级平均分为 86.28 班级分数标准差为 7.5"</code></pre>
 </div>
 </div>
 <img data-src="lecture1_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section>
@@ -531,7 +541,7 @@
 <h2>假设检验基本步骤</h2>
 <ol type="1">
 <li><p>提出假设。（确定假设分别是什么）；</p></li>
-<li><p>根据虚无假设$𝐻_0$所提供的前提条件，选择合适的统计模型；</p></li>
+<li><p>根据虚无假设<span class="math inline">\(𝐻_0\)</span>所提供的前提条件，选择合适的统计模型；</p></li>
 <li><p>规定显著性水平α；</p></li>
 <li><p>计算检验统计量的值；</p></li>
 <li><p>做出决策。</p></li>
@@ -545,8 +555,8 @@
 <li><p>这些可能性取决于结果有多强，最重要的是，首先取决于假设的合理性。</p></li>
 </ul>
 </section>
-<section id="种情况" class="slide level2">
-<h2>4 种情况</h2>
+<section id="两类错误" class="slide level2">
+<h2>两类错误</h2>
 <table>
 <thead>
 <tr class="header">
@@ -569,9 +579,9 @@
 </tbody>
 </table>
 </section>
-<section id="两类错误" class="slide level2">
+<section id="两类错误-1" class="slide level2">
 <h2>两类错误</h2>
-<p><br><br></p>
+<p><br></p>
 <ul>
 <li>H<sub>0</sub>为真
 <ul>
@@ -579,7 +589,7 @@
 <li>不能拒绝H<sub>0</sub>:1-<span class="math inline">\(\alpha\)</span> = P(不能拒绝H<sub>0</sub>| H<sub>0</sub>为真)<br></li>
 </ul></li>
 </ul>
-<p><br><br></p>
+<p><br></p>
 <ul>
 <li>H<sub>1</sub>为真
 <ul>
@@ -588,8 +598,8 @@
 </ul></li>
 </ul>
 </section>
-<section id="两类错误出现的真实概率" class="slide level2">
-<h2>两类错误出现的真实概率</h2>
+<section id="不同前提下两类错误的概率" class="slide level2">
+<h2>不同前提下两类错误的概率</h2>
 <p><br><br></p>
 <p><span class="math display">\[\alpha=0.05,\beta=0.2\]</span></p>
 <table>
@@ -700,6 +710,14 @@
 </tbody>
 </table>
 </section>
+<section id="教学形式的变化" class="slide level2">
+<h2>教学形式的变化</h2>
+<ul>
+<li>增加随机分组（持续一学期，小组成员角色随机）</li>
+<li>小作业随机抽取小组进行报告</li>
+<li>大作业的报告人在报告时进行随机抽取</li>
+</ul>
+</section>
 <section id="教学计划" class="slide level2">
 <h2>教学计划</h2>
 <table>
@@ -779,7 +797,7 @@
 <p>注：课程安排会根据实际情况进行适当调整</p>
 </section>
 <section id="从t-test到anova" class="slide level2">
-<h2>从t-test到ANOVA</h2>
+<h2>从<em>t</em>-test到ANOVA</h2>
 <p>简单反应时是指人类对于某个特定刺激的判断和反应所需的时间，通常指的是从刺激出现到反应行为开始的时间间隔。这种反应时通常用于评估人类的注意力、反应能力和处理速度等认知能力。而物理刺激的属性会对简单反应时造成影响。其中，对比度是指图像中亮度变化的程度。较高的对比度表示图像中有较大的亮度差异，而较低的对比度表示图像中亮度差异较小。研究者想要研究对比度的变化是否会影响被试的简单反应时，他们搜集了30名被试在两种对比度条件下的简单反应时表现。</p>
 <ul>
 <li><p>我们应该选用什么方法比较两种条件下是否存在差异？</p></li>
@@ -788,7 +806,7 @@
 </section>
 <section id="section-4" class="slide level2">
 <h2></h2>
-<p>如果我们使用<strong>t</strong>检验分别对三组情况进行检验</p>
+<p>如果我们使用<em>t</em>检验分别对三组情况进行检验</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -800,16 +818,16 @@ Descriptives:
 ────────────────────────
  Variable  N Mean (S.D.)
 ────────────────────────
-      rt1 30 0.40 (0.09)
-      rt2 30 0.50 (0.16)
+      rt1 30 0.42 (0.11)
+      rt2 30 0.53 (0.13)
 ────────────────────────
 
 Results of t-test:
 ──────────────────────────────────────────────────────────────────────────────────
                     t df     p     Difference [95% CI] Cohen’s d [95% CI]     BF10
 ──────────────────────────────────────────────────────────────────────────────────
-rt1: (rt1 - 0)  24.17 29 &lt;.001 ***   0.40 [0.36, 0.43]  4.41 [4.04, 4.79] 4.05e+17
-rt2: (rt2 - 0)  16.91 29 &lt;.001 ***   0.50 [0.44, 0.56]  3.09 [2.71, 3.46] 3.66e+13
+rt1: (rt1 - 0)  20.78 29 &lt;.001 ***   0.42 [0.38, 0.46]  3.79 [3.42, 4.17] 7.49e+15
+rt2: (rt2 - 0)  22.50 29 &lt;.001 ***   0.53 [0.48, 0.57]  4.11 [3.73, 4.48] 6.05e+16
 ──────────────────────────────────────────────────────────────────────────────────</code></pre>
 </div>
 </div>
@@ -827,16 +845,16 @@ Descriptives:
 ────────────────────────
  Variable  N Mean (S.D.)
 ────────────────────────
-      rt1 30 0.40 (0.09)
-      rt3 30 0.58 (0.11)
+      rt1 30 0.42 (0.11)
+      rt3 30 0.57 (0.13)
 ────────────────────────
 
 Results of t-test:
 ──────────────────────────────────────────────────────────────────────────────────
                     t df     p     Difference [95% CI] Cohen’s d [95% CI]     BF10
 ──────────────────────────────────────────────────────────────────────────────────
-rt1: (rt1 - 0)  24.17 29 &lt;.001 ***   0.40 [0.36, 0.43]  4.41 [4.04, 4.79] 4.05e+17
-rt3: (rt3 - 0)  28.67 29 &lt;.001 ***   0.58 [0.54, 0.62]  5.23 [4.86, 5.61] 3.94e+19
+rt1: (rt1 - 0)  20.78 29 &lt;.001 ***   0.42 [0.38, 0.46]  3.79 [3.42, 4.17] 7.49e+15
+rt3: (rt3 - 0)  23.47 29 &lt;.001 ***   0.57 [0.52, 0.62]  4.29 [3.91, 4.66] 1.86e+17
 ──────────────────────────────────────────────────────────────────────────────────</code></pre>
 </div>
 </div>
@@ -854,23 +872,23 @@ Descriptives:
 ────────────────────────
  Variable  N Mean (S.D.)
 ────────────────────────
-      rt2 30 0.50 (0.16)
-      rt3 30 0.58 (0.11)
+      rt2 30 0.53 (0.13)
+      rt3 30 0.57 (0.13)
 ────────────────────────
 
 Results of t-test:
 ──────────────────────────────────────────────────────────────────────────────────
                     t df     p     Difference [95% CI] Cohen’s d [95% CI]     BF10
 ──────────────────────────────────────────────────────────────────────────────────
-rt2: (rt2 - 0)  16.91 29 &lt;.001 ***   0.50 [0.44, 0.56]  3.09 [2.71, 3.46] 3.66e+13
-rt3: (rt3 - 0)  28.67 29 &lt;.001 ***   0.58 [0.54, 0.62]  5.23 [4.86, 5.61] 3.94e+19
+rt2: (rt2 - 0)  22.50 29 &lt;.001 ***   0.53 [0.48, 0.57]  4.11 [3.73, 4.48] 6.05e+16
+rt3: (rt3 - 0)  23.47 29 &lt;.001 ***   0.57 [0.52, 0.62]  4.29 [3.91, 4.66] 1.86e+17
 ──────────────────────────────────────────────────────────────────────────────────</code></pre>
 </div>
 </div>
 </section>
 <section id="section-7" class="slide level2">
 <h2></h2>
-<p>请同学们思考，这样的做法存在什么问题（从p值的角度）</p>
+<p>这样的做法存在什么问题（从<em>p</em>值的角度）？</p>
 
 <img data-src="images/1693716873875.jpg" class="r-stretch quarto-figure-center"></section>
 <section id="section-8" class="slide level2">
@@ -894,8 +912,8 @@ rt3: (rt3 - 0)  28.67 29 &lt;.001 ***   0.58 [0.54, 0.62]  5.23 [4.86, 5.61] 3.9
 </section>
 <section id="方差" class="slide level2">
 <h2>方差</h2>
-<p><span class="math display">\[s^2 = \frac{\sum(X_i-\bar{X})^2}{df}\]</span> <span class="math inline">\(s^2\)</span>:方差、均方差，也可表示为MS</p>
-<p><span class="math display">\[SS = \sum(X_i-\bar{X})^2\]</span> SS:离差平方和</p>
+<p><span class="math display">\[s^2 = \frac{\sum(X_i-\bar{X})^2}{df}\]</span> <span class="math inline">\(s^2\)</span>: 方差、均方差，也可表示为MS</p>
+<p><span class="math display">\[SS = \sum(X_i-\bar{X})^2\]</span> SS: 离差平方和</p>
 <p><span class="math display">\[\downarrow \]</span></p>
 <p><span class="math display">\[s^2 = \frac{SS}{df}\]</span></p>
 </section>
@@ -956,14 +974,14 @@ rt3: (rt3 - 0)  28.67 29 &lt;.001 ***   0.58 [0.54, 0.62]  5.23 [4.86, 5.61] 3.9
 <p><span class="math display">\[SS_B &gt;&gt; SS_W\]</span> <span class="math display">\[\downarrow\]</span> <span class="math display">\[\frac{MS_B}{MS_W}\]</span> <span class="math display">\[\downarrow\]</span> <span class="math display">\[+\infty\]</span></p>
 </section>
 <section id="f值" class="slide level2">
-<h2>F值</h2>
+<h2><em>F</em>值</h2>
 <p><span class="math display">\[F = \frac{MS_B}{MS_W}\]</span></p>
-<p>当H0为真时，F值服从一个广为人知的概率分布。为了纪念R.A.Fisher，这个分布称为F分布。</p>
+<p>当<span class="math inline">\(H_0\)</span>为真时，<em>F</em>值服从一个广为人知的概率分布。为了纪念R.A.Fisher，这个分布称为<em>F</em>分布。</p>
 
-<img data-src="images/1693640116508.jpg" class="r-stretch quarto-figure-center"><p>(F分布，自由度为(2,27))</p>
+<img data-src="images/1693640116508.jpg" class="r-stretch quarto-figure-center"><p>(<em>F</em>分布，自由度为(2,27))</p>
 </section>
 <section id="f分布" class="slide level2">
-<h2>F分布</h2>
+<h2><em>F</em>分布</h2>
 
 <img data-src="images/1693639407293.jpg" class="r-stretch quarto-figure-center"><p>前提条件：</p>
 <ol type="1">
@@ -983,7 +1001,7 @@ rt3: (rt3 - 0)  28.67 29 &lt;.001 ***   0.58 [0.54, 0.62]  5.23 [4.86, 5.61] 3.9
 </ol>
 </section>
 <section id="f检验" class="slide level2">
-<h2>F检验</h2>
+<h2><em>F</em>检验</h2>
 <ul>
 <li><p>总变异自由度：<span class="math inline">\(df_t = nk-1\)</span></p></li>
 <li><p>每组组内自由度：n-1</p></li>
@@ -993,10 +1011,10 @@ rt3: (rt3 - 0)  28.67 29 &lt;.001 ***   0.58 [0.54, 0.62]  5.23 [4.86, 5.61] 3.9
 <p><span class="math display">\[F =\frac{MS_B}{MS_W} =\frac{\frac{SS_{b}}{df_{b}}}{\frac{SS_{w}}{df_{w}}}\]</span></p>
 </section>
 <section id="t检验和f检验" class="slide level2">
-<h2>t检验和F检验</h2>
+<h2><em>t</em>检验和<em>F</em>检验</h2>
 <ul>
 <li><p><span class="math inline">\(t = \frac{\bar{X}-\mu}{\frac{\sigma_{X}}{\sqrt{n-1}}} = \frac{组1均值 - 组2均值}{标准差}\)</span></p></li>
-<li><p>只有两组样本大小一致的数据的F检验</p>
+<li><p>只有两组样本大小一致的数据的<em>F</em>检验</p>
 <ul>
 <li>$ F = = (魅族均值 - 总均值)^2/方差$</li>
 </ul></li>
@@ -1015,7 +1033,7 @@ rt3: (rt3 - 0)  28.67 29 &lt;.001 ***   0.58 [0.54, 0.62]  5.23 [4.86, 5.61] 3.9
 <tbody>
 <tr class="odd">
 <td>两组数据比较</td>
-<td>两组以上数据的比较</td>
+<td>两组及以上数据的比较</td>
 </tr>
 <tr class="even">
 <td>样本所属总体服从正态或近似正态分布</td>
@@ -1030,8 +1048,8 @@ rt3: (rt3 - 0)  28.67 29 &lt;.001 ***   0.58 [0.54, 0.62]  5.23 [4.86, 5.61] 3.9
 <td>变异可加</td>
 </tr>
 <tr class="odd">
-<td>统计值服从t分布</td>
-<td>统计值服从F分布</td>
+<td>统计值服从<em>t</em>分布</td>
+<td>统计值服从<em>F</em>分布</td>
 </tr>
 </tbody>
 </table>
@@ -1040,14 +1058,15 @@ rt3: (rt3 - 0)  28.67 29 &lt;.001 ***   0.58 [0.54, 0.62]  5.23 [4.86, 5.61] 3.9
 <h2>总结</h2>
 <ul>
 <li><p>学期回顾</p></li>
+<li><p>教学形式</p></li>
 <li><p>教学计划</p></li>
-<li><p>从t-test到ANOVA</p></li>
+<li><p>从<em>t</em>-test到ANOVA</p></li>
 </ul>
 
 <img src="images/image-393370223.png" class="slide-logo r-stretch"><div class="footer footer-default">
 
 </div>
-</section>
+</section></section>
     </div>
   </div>
 
