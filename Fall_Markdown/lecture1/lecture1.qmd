@@ -494,7 +494,7 @@ $$F =\frac{MS_B}{MS_W} =\frac{\frac{SS_{b}}{df_{b}}}{\frac{SS_{w}}{df_{w}}}$$
 
 -   只有两组样本大小一致的数据的*F*检验
 
-    -   \$ F = \frac{\frac{SS_{b}}{df_{b}}}{\frac{SS_{w}}{df_{w}}} = \sum (魅族均值 - 总均值)\^2/方差\$
+    - $F = \frac{\frac{SS_{b}}{df_{b}}}{\frac{SS_{w}}{df_{w}}} = \sum (每组均值 - 总均值)^2/方差$
 
 -   $F = t^2$
 
