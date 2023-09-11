@@ -376,7 +376,7 @@
 <img data-src="images\image-3.png" class="r-stretch quarto-figure-center"></section>
 <section id="f值" class="slide level2">
 <h2><em>F</em>值<br><br></h2>
-<p><span class="math display">\[F=\frac{MS_B}{MS_W}\]</span> <br> 当H<sub>0</sub>为真时，<em>F</em>值服从一个广为人知的概率分布。为了纪念R.A.Fisher，这个分布称为<em>F</em>分布。<br></p>
+<p><span class="math display">\[F=\frac{MS_B}{MS_W}\]</span> <br> 当 <span class="math inline">\(H_0\)</span>为真时，<em>F</em>值服从一个广为人知的概率分布。为了纪念R.A.Fisher，这个分布称为<em>F</em>分布。<br></p>
 
 <img data-src="images\image-4.png" class="r-stretch quarto-figure-center"></section>
 <section id="f分布" class="slide level2">
@@ -570,8 +570,19 @@
 </tbody>
 </table>
 </section>
+<<<<<<< HEAD
 <section id="单因素完全随机设计方差分析结果" class="slide level2">
 <h2>单因素完全随机设计方差分析结果<br></h2>
+=======
+<section class="slide level2">
+
+<h3 id="r-code">R code:</h3>
+<pre><code>data &lt;- read.csv("data/example2.1.csv")
+
+results &lt;- bruceR::MANOVA(data=data, dv="variable", between=c("region"))
+</code></pre>
+<h3 id="output">Output:</h3>
+>>>>>>> c96bcd9e18d2fc2cb79dc7324ee2e90dcfe1f203
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -609,14 +620,6 @@ Levene’s Test for Homogeneity of Variance:
 ──────────────────────────────────────────
 DV: variable       1.274   2  27  .296    
 ──────────────────────────────────────────</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>$anova_table
-Anova Table (Type III tests)
-
-Response: variable
-       num Df den Df     MSE      F      ges Pr(&gt;F)
-region      2     27 0.41448 0.3663 0.026418 0.6967</code></pre>
 </div>
 </div>
 </section>
@@ -1115,13 +1118,23 @@ DV: RT       0.217   2  15  .807
 <ol start="2" type="1">
 <li>统计前提检验<br></li>
 </ol>
+<<<<<<< HEAD
 <p>2.1 正态性检验<br><br> ::: {.cell} ::: {.cell-output .cell-output-stdout}</p>
+=======
+<p>2.1 正态性检验<br><br></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+>>>>>>> c96bcd9e18d2fc2cb79dc7324ee2e90dcfe1f203
 <pre><code>
     Shapiro-Wilk normality test
 
 data:  data[data$A == 1, ]$RT
 W = 0.94988, p-value = 0.7393</code></pre>
+<<<<<<< HEAD
 <p>:::</p>
+=======
+</div>
+>>>>>>> c96bcd9e18d2fc2cb79dc7324ee2e90dcfe1f203
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Shapiro-Wilk normality test
@@ -1136,11 +1149,18 @@ W = 0.94988, p-value = 0.7393</code></pre>
 data:  data[data$A == 3, ]$RT
 W = 0.95529, p-value = 0.7828</code></pre>
 </div>
+<<<<<<< HEAD
 <p>:::</p>
 </section>
 <section class="slide level2">
 
 <p>2.1 正态性检验–QQ图</p>
+=======
+</div>
+</section>
+<section id="section-2" class="slide level2">
+<h2></h2>
+>>>>>>> c96bcd9e18d2fc2cb79dc7324ee2e90dcfe1f203
 
 <img data-src="lecture2_files/figure-revealjs/unnamed-chunk-13-1.png" width="960" class="r-stretch"></section>
 <section id="单因素方差分析-4" class="slide level2">

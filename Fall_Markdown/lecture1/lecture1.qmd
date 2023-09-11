@@ -47,8 +47,9 @@ Hu Chuan-Peng
 ## 学期回顾
 
 ```{r}
-library(pacman)
-p_load('tidyverse')
+if (!requireNamespace("pacman", quietly = TRUE)) {
+  install.packages("pacman") }   # install pacman if not installed yet, it will be used for loading packages
+pacman::p_load('tidyverse')
 ```
 
 ```{r}
