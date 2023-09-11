@@ -462,13 +462,13 @@
 <img data-src="images\image-3.jpg" class="r-stretch quarto-figure-center"></section>
 <section id="单因素完全随机设计的方差分析表" class="slide level2">
 <h2>单因素完全随机设计的方差分析表<br><br></h2>
-<table>
+<table style="width:100%;">
 <colgroup>
-<col style="width: 18%">
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 29%">
-<col style="width: 20%">
+<col style="width: 19%">
+<col style="width: 19%">
+<col style="width: 19%">
+<col style="width: 23%">
+<col style="width: 19%">
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -573,475 +573,50 @@
 <section class="slide level2">
 
 <div class="cell">
-<div class="cell-output-display">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+====== ANOVA (Between-Subjects Design) ======
 
-<div id="vatqzpfolf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#vatqzpfolf table {
-  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+Descriptives:
+───────────────────────────
+ "region"   Mean    S.D.  n
+───────────────────────────
+  region1 -0.154 (0.546) 10
+  region2 -0.056 (0.745) 10
+  region3  0.091 (0.625) 10
+───────────────────────────
+Total sample size: N = 30
 
-#vatqzpfolf thead, #vatqzpfolf tbody, #vatqzpfolf tfoot, #vatqzpfolf tr, #vatqzpfolf td, #vatqzpfolf th {
-  border-style: none;
-}
+ANOVA Table:
+Dependent variable(s):      variable
+Between-subjects factor(s): region
+Within-subjects factor(s):  –
+Covariate(s):               –
+────────────────────────────────────────────────────────────────────
+           MS   MSE df1 df2     F     p     η²p [90% CI of η²p]  η²G
+────────────────────────────────────────────────────────────────────
+region  0.152 0.414   2  27 0.366  .697       .026 [.000, .139] .026
+────────────────────────────────────────────────────────────────────
+MSE = mean square error (the residual variance of the linear model)
+η²p = partial eta-squared = SS / (SS + SSE) = F * df1 / (F * df1 + df2)
+ω²p = partial omega-squared = (F - 1) * df1 / (F * df1 + df2 + 1)
+η²G = generalized eta-squared (see Olejnik &amp; Algina, 2003)
+Cohen’s f² = η²p / (1 - η²p)
 
-#vatqzpfolf p {
-  margin: 0;
-  padding: 0;
-}
-
-#vatqzpfolf .gt_table {
-  display: table;
-  border-collapse: collapse;
-  line-height: normal;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 24px;
-  font-weight: normal;
-  font-style: normal;
-  background-color: #FFFFFF;
-  width: auto;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #A8A8A8;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #A8A8A8;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-}
-
-#vatqzpfolf .gt_caption {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-#vatqzpfolf .gt_title {
-  color: #333333;
-  font-size: 125%;
-  font-weight: initial;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-#vatqzpfolf .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  font-weight: initial;
-  padding-top: 3px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-#vatqzpfolf .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#vatqzpfolf .gt_bottom_border {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#vatqzpfolf .gt_col_headings {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#vatqzpfolf .gt_col_heading {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 26px;
-  font-weight: normal;
-  text-transform: inherit;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow-x: hidden;
-}
-
-#vatqzpfolf .gt_column_spanner_outer {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 26px;
-  font-weight: normal;
-  text-transform: inherit;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-#vatqzpfolf .gt_column_spanner_outer:first-child {
-  padding-left: 0;
-}
-
-#vatqzpfolf .gt_column_spanner_outer:last-child {
-  padding-right: 0;
-}
-
-#vatqzpfolf .gt_column_spanner {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  overflow-x: hidden;
-  display: inline-block;
-  width: 100%;
-}
-
-#vatqzpfolf .gt_spanner_row {
-  border-bottom-style: hidden;
-}
-
-#vatqzpfolf .gt_group_heading {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  text-align: left;
-}
-
-#vatqzpfolf .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: middle;
-}
-
-#vatqzpfolf .gt_from_md > :first-child {
-  margin-top: 0;
-}
-
-#vatqzpfolf .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
-
-#vatqzpfolf .gt_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
-
-#vatqzpfolf .gt_stub {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#vatqzpfolf .gt_stub_row_group {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-  vertical-align: top;
-}
-
-#vatqzpfolf .gt_row_group_first td {
-  border-top-width: 2px;
-}
-
-#vatqzpfolf .gt_row_group_first th {
-  border-top-width: 2px;
-}
-
-#vatqzpfolf .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#vatqzpfolf .gt_first_summary_row {
-  border-top-style: solid;
-  border-top-color: #D3D3D3;
-}
-
-#vatqzpfolf .gt_first_summary_row.thick {
-  border-top-width: 2px;
-}
-
-#vatqzpfolf .gt_last_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#vatqzpfolf .gt_grand_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#vatqzpfolf .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #D3D3D3;
-}
-
-#vatqzpfolf .gt_last_grand_summary_row_top {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: double;
-  border-bottom-width: 6px;
-  border-bottom-color: #D3D3D3;
-}
-
-#vatqzpfolf .gt_striped {
-  background-color: rgba(128, 128, 128, 0.05);
-}
-
-#vatqzpfolf .gt_table_body {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#vatqzpfolf .gt_footnotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#vatqzpfolf .gt_footnote {
-  margin: 0px;
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#vatqzpfolf .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#vatqzpfolf .gt_sourcenote {
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#vatqzpfolf .gt_left {
-  text-align: left;
-}
-
-#vatqzpfolf .gt_center {
-  text-align: center;
-}
-
-#vatqzpfolf .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-#vatqzpfolf .gt_font_normal {
-  font-weight: normal;
-}
-
-#vatqzpfolf .gt_font_bold {
-  font-weight: bold;
-}
-
-#vatqzpfolf .gt_font_italic {
-  font-style: italic;
-}
-
-#vatqzpfolf .gt_super {
-  font-size: 65%;
-}
-
-#vatqzpfolf .gt_footnote_marks {
-  font-size: 75%;
-  vertical-align: 0.4em;
-  position: initial;
-}
-
-#vatqzpfolf .gt_asterisk {
-  font-size: 100%;
-  vertical-align: 0;
-}
-
-#vatqzpfolf .gt_indent_1 {
-  text-indent: 5px;
-}
-
-#vatqzpfolf .gt_indent_2 {
-  text-indent: 10px;
-}
-
-#vatqzpfolf .gt_indent_3 {
-  text-indent: 15px;
-}
-
-#vatqzpfolf .gt_indent_4 {
-  text-indent: 20px;
-}
-
-#vatqzpfolf .gt_indent_5 {
-  text-indent: 25px;
-}
-</style>
-<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-  <thead>
-    
-    <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Df">Df</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Sum Sq">Sum Sq</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Mean Sq">Mean Sq</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="F value">F value</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Pr(&amp;gt;F)">Pr(&gt;F)</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td headers="Df" class="gt_row gt_right">2</td>
-<td headers="Sum Sq" class="gt_row gt_right">0.304</td>
-<td headers="Mean Sq" class="gt_row gt_right">0.152</td>
-<td headers="F value" class="gt_row gt_right">0.366</td>
-<td headers="Pr(>F)" class="gt_row gt_right">0.697</td></tr>
-    <tr><td headers="Df" class="gt_row gt_right">27</td>
-<td headers="Sum Sq" class="gt_row gt_right">11.191</td>
-<td headers="Mean Sq" class="gt_row gt_right">0.414</td>
-<td headers="F value" class="gt_row gt_right">NA</td>
-<td headers="Pr(>F)" class="gt_row gt_right">NA</td></tr>
-  </tbody>
-  
-  
-</table>
+Levene’s Test for Homogeneity of Variance:
+──────────────────────────────────────────
+              Levene’s F df1 df2     p    
+──────────────────────────────────────────
+DV: variable       1.274   2  27  .296    
+──────────────────────────────────────────</code></pre>
 </div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$anova_table
+Anova Table (Type III tests)
+
+Response: variable
+       num Df den Df     MSE      F      ges Pr(&gt;F)
+region      2     27 0.41448 0.3663 0.026418 0.6967</code></pre>
 </div>
 </div>
 </section>
@@ -1133,10 +708,10 @@
 <table>
 <colgroup>
 <col style="width: 18%">
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 31%">
-<col style="width: 17%">
+<col style="width: 18%">
+<col style="width: 18%">
+<col style="width: 24%">
+<col style="width: 18%">
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -1200,8 +775,7 @@
 </section>
 <section class="slide level2">
 
-
-<img data-src="images\image-5.jpg" class="r-stretch quarto-figure-center"></section></section>
+</section></section>
 <section>
 <section id="被试间方差分析应用" class="title-slide slide level1 center">
 <h1>2 被试间方差分析应用</h1>
@@ -1252,18 +826,26 @@
 <p>某一因素的主效应，指不考虑其他因素以及交互作用时，该因素对因变量的效应。</p>
 <p><br><br></p>
 
-<img data-src="images\image-12.png" class="r-stretch quarto-figure-center"></section>
+<img data-src="lecture2_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"></section>
 <section id="交互效应interaction-effect" class="slide level2">
 <h2>交互效应(interaction effect)<br><br></h2>
 <p>一因素对因变量的效应，依赖于另一因素，则两因素间存在交互作用。<br><br></p>
 <p><br><br></p>
 
-<img data-src="images\image-13.png" class="r-stretch quarto-figure-center"></section>
+<img data-src="lecture2_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"></section>
+<section id="section" class="slide level2">
+<h2></h2>
+
+<img data-src="lecture2_files/figure-revealjs/unnamed-chunk-6-1.png" width="960" class="r-stretch"></section>
 <section id="简单效应simple-effect" class="slide level2">
 <h2>简单效应(simple effect) <br><br></h2>
 <p>在某一因素的不同水平条件下，检验另一因素对于因变量的效应，称为简单效应检验。<br><br></p>
 
-<img data-src="images\image-14.png" class="r-stretch quarto-figure-center"></section>
+<img data-src="lecture2_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
+<section id="section-1" class="slide level2">
+<h2></h2>
+
+<img data-src="lecture2_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section>
 <section id="多因素方差分析步骤" class="slide level2">
 <h2>多因素方差分析步骤 <br><br></h2>
 <ol type="1">
@@ -1275,8 +857,137 @@
 <section id="事后检验" class="slide level2">
 <h2>事后检验 <br><br></h2>
 <p>如果方差分析的结果是多组平均数之间差异显著，这时需要做进一步比较，确定在哪些实验处理组之间存在显著差异、而哪些实验处理组之间不存在显著差异，这就是事后检验（post hoc test）。这个统计分析过程也被称为事后多重比较（multiple comparison procedures）。 <br><br></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+====== ANOVA (Between-Subjects Design) ======
 
-<img data-src="images\image-4.jpg" class="r-stretch quarto-figure-center"></section></section>
+Descriptives:
+────────────────────────────────────
+ "gender" "region"   Mean    S.D.  n
+────────────────────────────────────
+  gender1  region1 -0.154 (0.546) 10
+  gender1  region2 -0.056 (0.745) 10
+  gender1  region3  0.091 (0.625) 10
+  gender2  region1 -0.407 (0.644) 10
+  gender2  region2 -0.141 (0.600) 10
+  gender2  region3 -0.449 (0.585) 10
+────────────────────────────────────
+Total sample size: N = 60
+
+ANOVA Table:
+Dependent variable(s):      variable
+Between-subjects factor(s): gender, region
+Within-subjects factor(s):  –
+Covariate(s):               –
+─────────────────────────────────────────────────────────────────────────────
+                    MS   MSE df1 df2     F     p     η²p [90% CI of η²p]  η²G
+─────────────────────────────────────────────────────────────────────────────
+gender           1.285 0.393   1  54 3.267  .076 .     .057 [.000, .182] .057
+region           0.166 0.393   2  54 0.422  .658       .015 [.000, .081] .015
+gender * region  0.265 0.393   2  54 0.672  .515       .024 [.000, .104] .024
+─────────────────────────────────────────────────────────────────────────────
+MSE = mean square error (the residual variance of the linear model)
+η²p = partial eta-squared = SS / (SS + SSE) = F * df1 / (F * df1 + df2)
+ω²p = partial omega-squared = (F - 1) * df1 / (F * df1 + df2 + 1)
+η²G = generalized eta-squared (see Olejnik &amp; Algina, 2003)
+Cohen’s f² = η²p / (1 - η²p)
+
+Levene’s Test for Homogeneity of Variance:
+──────────────────────────────────────────
+              Levene’s F df1 df2     p    
+──────────────────────────────────────────
+DV: variable       0.704   5  54  .623    
+──────────────────────────────────────────
+
+------ EMMEANS (effect = "gender") ------
+
+Joint Tests of "gender":
+────────────────────────────────────────────────────────────
+ Effect "region" df1 df2     F     p     η²p [90% CI of η²p]
+────────────────────────────────────────────────────────────
+ gender  region1   1  54 0.812  .371       .015 [.000, .107]
+ gender  region2   1  54 0.092  .762       .002 [.000, .056]
+ gender  region3   1  54 3.707  .059 .     .064 [.000, .193]
+────────────────────────────────────────────────────────────
+Note. Simple effects of repeated measures with 3 or more levels
+are different from the results obtained with SPSS MANOVA syntax.
+
+Estimated Marginal Means of "gender":
+──────────────────────────────────────────────────
+ "gender" "region"   Mean [95% CI of Mean]    S.E.
+──────────────────────────────────────────────────
+  gender1  region1 -0.154 [-0.552,  0.244] (0.198)
+  gender2  region1 -0.407 [-0.805, -0.009] (0.198)
+  gender1  region2 -0.056 [-0.454,  0.342] (0.198)
+  gender2  region2 -0.141 [-0.539,  0.256] (0.198)
+  gender1  region3  0.091 [-0.307,  0.488] (0.198)
+  gender2  region3 -0.449 [-0.847, -0.052] (0.198)
+──────────────────────────────────────────────────
+
+Pairwise Comparisons of "gender":
+────────────────────────────────────────────────────────────────────────────────────────
+          Contrast "region" Estimate    S.E. df      t     p     Cohen’s d [95% CI of d]
+────────────────────────────────────────────────────────────────────────────────────────
+ gender2 - gender1  region1   -0.253 (0.281) 54 -0.901  .371      -0.403 [-1.300, 0.494]
+ gender2 - gender1  region2   -0.085 (0.281) 54 -0.304  .762      -0.136 [-1.032, 0.761]
+ gender2 - gender1  region3   -0.540 (0.281) 54 -1.925  .059 .    -0.861 [-1.758, 0.036]
+────────────────────────────────────────────────────────────────────────────────────────
+Pooled SD for computing Cohen’s d: 0.627
+No need to adjust p values.
+
+Disclaimer:
+By default, pooled SD is Root Mean Square Error (RMSE).
+There is much disagreement on how to compute Cohen’s d.
+You are completely responsible for setting `sd.pooled`.
+You might also use `effectsize::t_to_d()` to compute d.
+
+------ EMMEANS (effect = "region") ------
+
+Joint Tests of "region":
+────────────────────────────────────────────────────────────
+ Effect "gender" df1 df2     F     p     η²p [90% CI of η²p]
+────────────────────────────────────────────────────────────
+ region  gender1   2  54 0.386  .682       .014 [.000, .077]
+ region  gender2   2  54 0.709  .497       .026 [.000, .107]
+────────────────────────────────────────────────────────────
+Note. Simple effects of repeated measures with 3 or more levels
+are different from the results obtained with SPSS MANOVA syntax.
+
+Estimated Marginal Means of "region":
+──────────────────────────────────────────────────
+ "region" "gender"   Mean [95% CI of Mean]    S.E.
+──────────────────────────────────────────────────
+  region1  gender1 -0.154 [-0.552,  0.244] (0.198)
+  region2  gender1 -0.056 [-0.454,  0.342] (0.198)
+  region3  gender1  0.091 [-0.307,  0.488] (0.198)
+  region1  gender2 -0.407 [-0.805, -0.009] (0.198)
+  region2  gender2 -0.141 [-0.539,  0.256] (0.198)
+  region3  gender2 -0.449 [-0.847, -0.052] (0.198)
+──────────────────────────────────────────────────
+
+Pairwise Comparisons of "region":
+────────────────────────────────────────────────────────────────────────────────────────
+          Contrast "gender" Estimate    S.E. df      t     p     Cohen’s d [95% CI of d]
+────────────────────────────────────────────────────────────────────────────────────────
+ region2 - region1  gender1    0.098 (0.281) 54  0.350 1.000       0.156 [-0.949, 1.261]
+ region3 - region1  gender1    0.245 (0.281) 54  0.873 1.000       0.390 [-0.715, 1.495]
+ region3 - region2  gender1    0.147 (0.281) 54  0.523 1.000       0.234 [-0.871, 1.339]
+ region2 - region1  gender2    0.266 (0.281) 54  0.947 1.000       0.424 [-0.681, 1.529]
+ region3 - region1  gender2   -0.042 (0.281) 54 -0.151 1.000      -0.068 [-1.173, 1.037]
+ region3 - region2  gender2   -0.308 (0.281) 54 -1.098  .831      -0.491 [-1.596, 0.614]
+────────────────────────────────────────────────────────────────────────────────────────
+Pooled SD for computing Cohen’s d: 0.627
+P-value adjustment: Bonferroni method for 3 tests.
+
+Disclaimer:
+By default, pooled SD is Root Mean Square Error (RMSE).
+There is much disagreement on how to compute Cohen’s d.
+You are completely responsible for setting `sd.pooled`.
+You might also use `effectsize::t_to_d()` to compute d.</code></pre>
+</div>
+</div>
+</section></section>
 <section>
 <section id="被试间方差分析流程" class="title-slide slide level1 center">
 <h1>3 被试间方差分析流程</h1>
@@ -1284,15 +995,53 @@
 </section>
 <section id="单因素方差分析" class="slide level2">
 <h2>单因素方差分析 <br><br></h2>
-<p>例6-1.某研究者将同一班级的18名男生分为3组，每组被试在A1，A2，A3三种不同的激励气氛下，将一重物举至肩部以上，记录被试所坚持的时间。 （见书P153，exp3.csv）</p>
+<p>例6-1.某研究者将同一班级的18名男生分为3组，每组被试在A1，A2，A3三种不同的激励气氛下，将一重物举至肩部以上，记录被试所坚持的时间。 （见书P153，exp2.3.csv）</p>
 </section>
 <section id="单因素方差分析-1" class="slide level2">
 <h2>单因素方差分析 <br><br></h2>
 <ol type="1">
 <li>描述统计 <br></li>
 </ol>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+====== ANOVA (Between-Subjects Design) ======
 
-<img data-src="images\image-22.png" class="r-stretch quarto-figure-center"></section>
+Descriptives:
+─────────────────────
+ "A"   Mean    S.D. n
+─────────────────────
+  A1 10.000 (2.366) 6
+  A2 13.000 (2.366) 6
+  A3 19.000 (2.191) 6
+─────────────────────
+Total sample size: N = 18
+
+ANOVA Table:
+Dependent variable(s):      RT
+Between-subjects factor(s): A
+Within-subjects factor(s):  –
+Covariate(s):               –
+──────────────────────────────────────────────────────────────────
+        MS   MSE df1 df2      F     p     η²p [90% CI of η²p]  η²G
+──────────────────────────────────────────────────────────────────
+A  126.000 5.333   2  15 23.625 &lt;.001 ***   .759 [.524, .854] .759
+──────────────────────────────────────────────────────────────────
+MSE = mean square error (the residual variance of the linear model)
+η²p = partial eta-squared = SS / (SS + SSE) = F * df1 / (F * df1 + df2)
+ω²p = partial omega-squared = (F - 1) * df1 / (F * df1 + df2 + 1)
+η²G = generalized eta-squared (see Olejnik &amp; Algina, 2003)
+Cohen’s f² = η²p / (1 - η²p)
+
+Levene’s Test for Homogeneity of Variance:
+────────────────────────────────────
+        Levene’s F df1 df2     p    
+────────────────────────────────────
+DV: RT       0.217   2  15  .807    
+────────────────────────────────────</code></pre>
+</div>
+</div>
+</section>
 <section id="单因素方差分析-2" class="slide level2">
 <h2>单因素方差分析 <br><br></h2>
 <ol type="1">
@@ -1329,23 +1078,23 @@
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="sfxitcixei" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#sfxitcixei table {
+<div id="vpvrdpmtdc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#vpvrdpmtdc table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#sfxitcixei thead, #sfxitcixei tbody, #sfxitcixei tfoot, #sfxitcixei tr, #sfxitcixei td, #sfxitcixei th {
+#vpvrdpmtdc thead, #vpvrdpmtdc tbody, #vpvrdpmtdc tfoot, #vpvrdpmtdc tr, #vpvrdpmtdc td, #vpvrdpmtdc th {
   border-style: none;
 }
 
-#sfxitcixei p {
+#vpvrdpmtdc p {
   margin: 0;
   padding: 0;
 }
 
-#sfxitcixei .gt_table {
+#vpvrdpmtdc .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1371,12 +1120,12 @@
   border-left-color: #D3D3D3;
 }
 
-#sfxitcixei .gt_caption {
+#vpvrdpmtdc .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#sfxitcixei .gt_title {
+#vpvrdpmtdc .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1388,7 +1137,7 @@
   border-bottom-width: 0;
 }
 
-#sfxitcixei .gt_subtitle {
+#vpvrdpmtdc .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1400,7 +1149,7 @@
   border-top-width: 0;
 }
 
-#sfxitcixei .gt_heading {
+#vpvrdpmtdc .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1412,13 +1161,13 @@
   border-right-color: #D3D3D3;
 }
 
-#sfxitcixei .gt_bottom_border {
+#vpvrdpmtdc .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#sfxitcixei .gt_col_headings {
+#vpvrdpmtdc .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1433,7 +1182,7 @@
   border-right-color: #D3D3D3;
 }
 
-#sfxitcixei .gt_col_heading {
+#vpvrdpmtdc .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 26px;
@@ -1453,7 +1202,7 @@
   overflow-x: hidden;
 }
 
-#sfxitcixei .gt_column_spanner_outer {
+#vpvrdpmtdc .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 26px;
@@ -1465,15 +1214,15 @@
   padding-right: 4px;
 }
 
-#sfxitcixei .gt_column_spanner_outer:first-child {
+#vpvrdpmtdc .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#sfxitcixei .gt_column_spanner_outer:last-child {
+#vpvrdpmtdc .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#sfxitcixei .gt_column_spanner {
+#vpvrdpmtdc .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1485,11 +1234,11 @@
   width: 100%;
 }
 
-#sfxitcixei .gt_spanner_row {
+#vpvrdpmtdc .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#sfxitcixei .gt_group_heading {
+#vpvrdpmtdc .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1515,7 +1264,7 @@
   text-align: left;
 }
 
-#sfxitcixei .gt_empty_group_heading {
+#vpvrdpmtdc .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1530,15 +1279,15 @@
   vertical-align: middle;
 }
 
-#sfxitcixei .gt_from_md > :first-child {
+#vpvrdpmtdc .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#sfxitcixei .gt_from_md > :last-child {
+#vpvrdpmtdc .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#sfxitcixei .gt_row {
+#vpvrdpmtdc .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1557,7 +1306,7 @@
   overflow-x: hidden;
 }
 
-#sfxitcixei .gt_stub {
+#vpvrdpmtdc .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1570,7 +1319,7 @@
   padding-right: 5px;
 }
 
-#sfxitcixei .gt_stub_row_group {
+#vpvrdpmtdc .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1584,15 +1333,15 @@
   vertical-align: top;
 }
 
-#sfxitcixei .gt_row_group_first td {
+#vpvrdpmtdc .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#sfxitcixei .gt_row_group_first th {
+#vpvrdpmtdc .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#sfxitcixei .gt_summary_row {
+#vpvrdpmtdc .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1602,16 +1351,16 @@
   padding-right: 5px;
 }
 
-#sfxitcixei .gt_first_summary_row {
+#vpvrdpmtdc .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#sfxitcixei .gt_first_summary_row.thick {
+#vpvrdpmtdc .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#sfxitcixei .gt_last_summary_row {
+#vpvrdpmtdc .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1621,7 +1370,7 @@
   border-bottom-color: #D3D3D3;
 }
 
-#sfxitcixei .gt_grand_summary_row {
+#vpvrdpmtdc .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1631,7 +1380,7 @@
   padding-right: 5px;
 }
 
-#sfxitcixei .gt_first_grand_summary_row {
+#vpvrdpmtdc .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1641,7 +1390,7 @@
   border-top-color: #D3D3D3;
 }
 
-#sfxitcixei .gt_last_grand_summary_row_top {
+#vpvrdpmtdc .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1651,11 +1400,11 @@
   border-bottom-color: #D3D3D3;
 }
 
-#sfxitcixei .gt_striped {
+#vpvrdpmtdc .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#sfxitcixei .gt_table_body {
+#vpvrdpmtdc .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1664,7 +1413,7 @@
   border-bottom-color: #D3D3D3;
 }
 
-#sfxitcixei .gt_footnotes {
+#vpvrdpmtdc .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1678,7 +1427,7 @@
   border-right-color: #D3D3D3;
 }
 
-#sfxitcixei .gt_footnote {
+#vpvrdpmtdc .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1687,7 +1436,7 @@
   padding-right: 5px;
 }
 
-#sfxitcixei .gt_sourcenotes {
+#vpvrdpmtdc .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1701,7 +1450,7 @@
   border-right-color: #D3D3D3;
 }
 
-#sfxitcixei .gt_sourcenote {
+#vpvrdpmtdc .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1709,63 +1458,63 @@
   padding-right: 5px;
 }
 
-#sfxitcixei .gt_left {
+#vpvrdpmtdc .gt_left {
   text-align: left;
 }
 
-#sfxitcixei .gt_center {
+#vpvrdpmtdc .gt_center {
   text-align: center;
 }
 
-#sfxitcixei .gt_right {
+#vpvrdpmtdc .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#sfxitcixei .gt_font_normal {
+#vpvrdpmtdc .gt_font_normal {
   font-weight: normal;
 }
 
-#sfxitcixei .gt_font_bold {
+#vpvrdpmtdc .gt_font_bold {
   font-weight: bold;
 }
 
-#sfxitcixei .gt_font_italic {
+#vpvrdpmtdc .gt_font_italic {
   font-style: italic;
 }
 
-#sfxitcixei .gt_super {
+#vpvrdpmtdc .gt_super {
   font-size: 65%;
 }
 
-#sfxitcixei .gt_footnote_marks {
+#vpvrdpmtdc .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#sfxitcixei .gt_asterisk {
+#vpvrdpmtdc .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#sfxitcixei .gt_indent_1 {
+#vpvrdpmtdc .gt_indent_1 {
   text-indent: 5px;
 }
 
-#sfxitcixei .gt_indent_2 {
+#vpvrdpmtdc .gt_indent_2 {
   text-indent: 10px;
 }
 
-#sfxitcixei .gt_indent_3 {
+#vpvrdpmtdc .gt_indent_3 {
   text-indent: 15px;
 }
 
-#sfxitcixei .gt_indent_4 {
+#vpvrdpmtdc .gt_indent_4 {
   text-indent: 20px;
 }
 
-#sfxitcixei .gt_indent_5 {
+#vpvrdpmtdc .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1808,7 +1557,7 @@
 <img data-src="images\image-18.png" class="r-stretch quarto-figure-center"></section>
 <section id="两因素完全随机的方差分析" class="slide level2">
 <h2>两因素完全随机的方差分析 <br><br></h2>
-<p>例6-8.假设某研究者想考察缪勒错觉受箭头方向和角度的影响，测量被试对长度估计的误差量时考虑箭头方向A，分为向外（A1），向内（A2），箭头角度（B）则设置为15°（B1），45°（B2），75°（B3）3个水平，构成6种实验条件，从某学校文学院抽取30名男生，等分为6组，每组5人接受一种实验处理。（P书179，exp4.csv）</p>
+<p>例6-8.假设某研究者想考察缪勒错觉受箭头方向和角度的影响，测量被试对长度估计的误差量时考虑箭头方向A，分为向外（A1），向内（A2），箭头角度（B）则设置为15°（B1），45°（B2），75°（B3）3个水平，构成6种实验条件，从某学校文学院抽取30名男生，等分为6组，每组5人接受一种实验处理。（P书179，exp2.4.csv）</p>
 </section>
 <section id="两因素完全随机的方差分析-1" class="slide level2">
 <h2>两因素完全随机的方差分析<br><br></h2>
@@ -1861,13 +1610,15 @@
 <ol start="4" type="1">
 <li>事后多重比较</li>
 </ol>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images\image-28.png"></p>
-</figure>
-</div>
-<p><img src="images/image-393370223.png" class="slide-logo"></p>
-<div class="footer footer-default">
+
+<img data-src="images\image-28.png" class="r-stretch quarto-figure-center"></section>
+<section id="总结" class="slide level2">
+<h2>总结</h2>
+<p>（1）被试间方差分析原理</p>
+<p>（2）被试间方差分析应用</p>
+<p>（3）被试间方差分析流程</p>
+
+<img src="images/image-393370223.png" class="slide-logo r-stretch"><div class="footer footer-default">
 
 </div>
 </section></section>
