@@ -67,7 +67,7 @@ Hu Chuan-Peng
 
 ## *F*值</br></br>
 
-$$F=\frac{MS_B}{MS_W}$$ </br> 当H~0~为真时，*F*值服从一个广为人知的概率分布。为了纪念R.A.Fisher，这个分布称为*F*分布。</br>
+$$F=\frac{MS_B}{MS_W}$$ </br> 当 $H_0$为真时，*F*值服从一个广为人知的概率分布。为了纪念R.A.Fisher，这个分布称为*F*分布。</br>
 
 ![](images\image-4.png){fig-align="center"}
 
@@ -90,6 +90,61 @@ $$F=\frac{MS_B}{MS_W}$$ </br> 当H~0~为真时，*F*值服从一个广为人知�
 </br>
 
 $$F=\frac{MS_B}{MS_W}=\frac{{\frac{SS_b}{df_b}}}{{\frac{SS_w}{df_w}}}$$
+
+```{r}
+# simulation
+set.seed(123)
+
+df <- data.frame(matrix(nrow = 30 * 3, ncol = 2)) %>%
+      dplyr::rename("values" = 1,
+                    "groups" = 2) %>%
+      dplyr::mutate(groups = rep(1:3, each = 30),
+                    groups = as.factor(groups)) %>%
+      dplyr::group_by(groups) %>%
+      dplyr::mutate(values = round(rnorm(30, mean = 100, sd = 15), 0)) %>%
+      dplyr::ungroup()
+
+df %>% dplyr::group_by(groups) %>%
+      dplyr::summarise(mean = mean(values),
+                       sd = sd(values))
+   
+
+# res <- bruceR::MANOVA(df, dv = "values", between = "groups")   
+res <- summary(aov(values ~ groups, data = df))
+
+sim_anova1 <- function(n = 30, group = 3, N_rep = 1000){
+      
+      Res <- data.frame(matrix(nrow = N_rep, ncol = 3)) %>%
+            dplyr::rename("iter" = 1,
+                          "F_val" = 2,
+                          "p_val" = 3) 
+      
+      for (iter in 1:nrow(Res)) {
+            
+            tmpdf <- data.frame(matrix(nrow = n * group, ncol = 2)) %>%
+                  dplyr::rename("values" = 1,
+                                "groups" = 2) %>%
+                  dplyr::mutate(groups = rep(1:3, each = 30)) %>%
+                  dplyr::group_by(groups) %>%
+                  dplyr::mutate(values = round(rnorm(30, mean = 100, sd = 15), 0)) %>%
+                  dplyr::ungroup()
+            
+            # tmpRes <- bruceR::MANOVA(tmpdf, dv = "values", between = "groups")  
+            tmpRes <- summary(aov(values ~ groups, data = tmpdf))
+                  
+            Res$iter[iter] <- iter
+            # Res$F_val[iter] <- tmpRes$anova_table$F
+            Res$F_val[iter] <- res[[1]]$`F value`[1]
+            # Res$p_val[iter] <- tmpRes$anova_table$`Pr(>F)`
+            Res$p_val[iter] <- res[[1]]$`Pr(>F)`[1]
+            
+      }
+      return(Res)
+}
+
+sim1 <- sim_anova1()
+```
+
 
 # 1 被试间方差分析原理
 
@@ -174,41 +229,39 @@ $$F=\frac{MS_B}{MS_W}=\frac{{\frac{SS_b}{df_b}}}{{\frac{SS_w}{df_w}}}$$
 |  0.147316   |  0.714494   |  0.318536   |
 
 ------------------------------------------------------------------------
+
 ```{r}
 #载入包
-library(pacman)
-library(apaTables)
-p_load('tidyverse','bruceR','patchwork','ggdist','stats')
+if (!requireNamespace("pacman", quietly = TRUE)) {
+  install.packages("pacman") }   # install pacman if not installed yet, it will be used for loading packages
+pacman::p_load('tidyverse','bruceR','patchwork','ggdist','stats', "apaTables")
 ```
 
-```{r echo=FALSE}
-#library(stats)
-#library(gt)
-
+### R code:
+```
 data <- read.csv("data/example2.1.csv")
 
-#进行双因素方差分析
-results=MANOVA(data=data, dv="variable", between=c("region"))
-results[1]
-#data$region <- factor(data$region, levels = c("1", "2", "3"))
-#model <- aov(variable ~ region, data = data)
-#anova_result <- anova(model)
-#anova_table <- as.data.frame(anova_result)
-#anova_table=round(anova_table,3)
-#gt(anova_table) |> 
-#  tab_options(
-#    table.font.size = px(24), 
-#    column_labels.font.size = px(26)
-#)
+results <- bruceR::MANOVA(data=data, dv="variable", between=c("region"))
+
+```
+</br>
+
+### Output:
+
+```{r}
+data <- read.csv("data/example2.1.csv")
+
+results <- bruceR::MANOVA(data=data, dv="variable", between=c("region"))
+# results[1]
 ```
 
 ------------------------------------------------------------------------
 
 ## 因素和水平</br></br>
 
-1.  因素指实验中的自变量。实验中包括一个自变量时，为单因素设计；包含两个自变量时为二因素设计。</br></br>
+1.  因素(factors)：实验中的自变量(independent variables)。实验中包括一个自变量时，为单因素设计；包含两个自变量时为二因素设计。</br></br>
 
-2.  一个因素的不同情况，称为这一因素的不同水平。2×3表示存在两个因素，第一个因素有2个水平，第二个因素有3个水平。</br></br>
+2.  水平(levels)：一个因素的不同情况，称为这一因素的不同水平。2×3的实验设计，表示存在两个因素，第一个因素有2个水平，第二个因素有3个水平。</br></br>
 
 ------------------------------------------------------------------------
 

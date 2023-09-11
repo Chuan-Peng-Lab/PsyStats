@@ -376,7 +376,7 @@
 <img data-src="images\image-3.png" class="r-stretch quarto-figure-center"></section>
 <section id="f值" class="slide level2">
 <h2><em>F</em>值<br><br></h2>
-<p><span class="math display">\[F=\frac{MS_B}{MS_W}\]</span> <br> 当H<sub>0</sub>为真时，<em>F</em>值服从一个广为人知的概率分布。为了纪念R.A.Fisher，这个分布称为<em>F</em>分布。<br></p>
+<p><span class="math display">\[F=\frac{MS_B}{MS_W}\]</span> <br> 当 <span class="math inline">\(H_0\)</span>为真时，<em>F</em>值服从一个广为人知的概率分布。为了纪念R.A.Fisher，这个分布称为<em>F</em>分布。<br></p>
 
 <img data-src="images\image-4.png" class="r-stretch quarto-figure-center"></section>
 <section id="f分布" class="slide level2">
@@ -572,6 +572,12 @@
 </section>
 <section class="slide level2">
 
+<h3 id="r-code">R code:</h3>
+<pre><code>data &lt;- read.csv("data/example2.1.csv")
+
+results &lt;- bruceR::MANOVA(data=data, dv="variable", between=c("region"))
+</code></pre>
+<h3 id="output">Output:</h3>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -609,14 +615,6 @@ Levene’s Test for Homogeneity of Variance:
 ──────────────────────────────────────────
 DV: variable       1.274   2  27  .296    
 ──────────────────────────────────────────</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>$anova_table
-Anova Table (Type III tests)
-
-Response: variable
-       num Df den Df     MSE      F      ges Pr(&gt;F)
-region      2     27 0.41448 0.3663 0.026418 0.6967</code></pre>
 </div>
 </div>
 </section>
@@ -1048,513 +1046,139 @@ DV: RT       0.217   2  15  .807
 <li>描述统计–数据可视化 <br><br></li>
 </ol>
 
-<img data-src="images\image-15.png" class="r-stretch quarto-figure-center"></section>
+<img data-src="lecture2_files/figure-revealjs/unnamed-chunk-11-1.png" width="960" class="r-stretch"></section>
 <section id="单因素方差分析-3" class="slide level2">
 <h2>单因素方差分析 <br><br></h2>
 <ol start="2" type="1">
-<li>统计前提检验<br> 2.1 正态性检验<br><br></li>
+<li>统计前提检验<br></li>
 </ol>
+<p>2.1 正态性检验<br><br></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Shapiro-Wilk normality test
 
-<img data-src="images\image-16.png" class="r-stretch quarto-figure-center"></section>
+data:  data[data$A == 1, ]$RT
+W = 0.94988, p-value = 0.7393</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  data[data$A == 2, ]$RT
+W = 0.94988, p-value = 0.7393</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  data[data$A == 3, ]$RT
+W = 0.95529, p-value = 0.7828</code></pre>
+</div>
+</div>
+</section>
+<section id="section-2" class="slide level2">
+<h2></h2>
+
+<img data-src="lecture2_files/figure-revealjs/unnamed-chunk-13-1.png" width="960" class="r-stretch"></section>
 <section id="单因素方差分析-4" class="slide level2">
 <h2>单因素方差分析<br><br></h2>
 <ol start="2" type="1">
-<li>统计前提检验<br> 2.2 同质性/方差齐性检验验<br><br></li>
+<li>统计前提检验<br></li>
 </ol>
+<p>2.2 同质性/方差齐性检验验<br><br></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+====== ANOVA (Between-Subjects Design) ======
 
-<img data-src="images\image-23.png" class="r-stretch quarto-figure-center"></section>
+Descriptives:
+─────────────────────
+ "A"   Mean    S.D. n
+─────────────────────
+  A1 10.000 (2.366) 6
+  A2 13.000 (2.366) 6
+  A3 19.000 (2.191) 6
+─────────────────────
+Total sample size: N = 18
+
+ANOVA Table:
+Dependent variable(s):      RT
+Between-subjects factor(s): A
+Within-subjects factor(s):  –
+Covariate(s):               –
+──────────────────────────────────────────────────────────────────
+        MS   MSE df1 df2      F     p     η²p [90% CI of η²p]  η²G
+──────────────────────────────────────────────────────────────────
+A  126.000 5.333   2  15 23.625 &lt;.001 ***   .759 [.524, .854] .759
+──────────────────────────────────────────────────────────────────
+MSE = mean square error (the residual variance of the linear model)
+η²p = partial eta-squared = SS / (SS + SSE) = F * df1 / (F * df1 + df2)
+ω²p = partial omega-squared = (F - 1) * df1 / (F * df1 + df2 + 1)
+η²G = generalized eta-squared (see Olejnik &amp; Algina, 2003)
+Cohen’s f² = η²p / (1 - η²p)
+
+Levene’s Test for Homogeneity of Variance:
+────────────────────────────────────
+        Levene’s F df1 df2     p    
+────────────────────────────────────
+DV: RT       0.217   2  15  .807    
+────────────────────────────────────</code></pre>
+</div>
+</div>
+</section>
 <section id="单因素方差分析-5" class="slide level2">
-<h2>单因素方差分析<br><br></h2>
-<ol start="2" type="1">
-<li>统计前提检验<br> 2.2 同质性/方差齐性检验验<br><br></li>
-</ol>
-
-<img data-src="images\image-17.png" class="r-stretch quarto-figure-center"></section>
-<section id="单因素方差分析-6" class="slide level2">
 <h2>单因素方差分析<br><br></h2>
 <ol start="3" type="1">
 <li>ANOVA<br><br></li>
 </ol>
 <div class="cell">
-<div class="cell-output-display">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+====== ANOVA (Between-Subjects Design) ======
 
-<div id="vpvrdpmtdc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#vpvrdpmtdc table {
-  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+Descriptives:
+─────────────────────
+ "A"   Mean    S.D. n
+─────────────────────
+  A1 10.000 (2.366) 6
+  A2 13.000 (2.366) 6
+  A3 19.000 (2.191) 6
+─────────────────────
+Total sample size: N = 18
 
-#vpvrdpmtdc thead, #vpvrdpmtdc tbody, #vpvrdpmtdc tfoot, #vpvrdpmtdc tr, #vpvrdpmtdc td, #vpvrdpmtdc th {
-  border-style: none;
-}
+ANOVA Table:
+Dependent variable(s):      RT
+Between-subjects factor(s): A
+Within-subjects factor(s):  –
+Covariate(s):               –
+──────────────────────────────────────────────────────────────────
+        MS   MSE df1 df2      F     p     η²p [90% CI of η²p]  η²G
+──────────────────────────────────────────────────────────────────
+A  126.000 5.333   2  15 23.625 &lt;.001 ***   .759 [.524, .854] .759
+──────────────────────────────────────────────────────────────────
+MSE = mean square error (the residual variance of the linear model)
+η²p = partial eta-squared = SS / (SS + SSE) = F * df1 / (F * df1 + df2)
+ω²p = partial omega-squared = (F - 1) * df1 / (F * df1 + df2 + 1)
+η²G = generalized eta-squared (see Olejnik &amp; Algina, 2003)
+Cohen’s f² = η²p / (1 - η²p)
 
-#vpvrdpmtdc p {
-  margin: 0;
-  padding: 0;
-}
-
-#vpvrdpmtdc .gt_table {
-  display: table;
-  border-collapse: collapse;
-  line-height: normal;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 24px;
-  font-weight: normal;
-  font-style: normal;
-  background-color: #FFFFFF;
-  width: auto;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #A8A8A8;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #A8A8A8;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-}
-
-#vpvrdpmtdc .gt_caption {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-#vpvrdpmtdc .gt_title {
-  color: #333333;
-  font-size: 125%;
-  font-weight: initial;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-#vpvrdpmtdc .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  font-weight: initial;
-  padding-top: 3px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-#vpvrdpmtdc .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#vpvrdpmtdc .gt_bottom_border {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#vpvrdpmtdc .gt_col_headings {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#vpvrdpmtdc .gt_col_heading {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 26px;
-  font-weight: normal;
-  text-transform: inherit;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow-x: hidden;
-}
-
-#vpvrdpmtdc .gt_column_spanner_outer {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 26px;
-  font-weight: normal;
-  text-transform: inherit;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-#vpvrdpmtdc .gt_column_spanner_outer:first-child {
-  padding-left: 0;
-}
-
-#vpvrdpmtdc .gt_column_spanner_outer:last-child {
-  padding-right: 0;
-}
-
-#vpvrdpmtdc .gt_column_spanner {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  overflow-x: hidden;
-  display: inline-block;
-  width: 100%;
-}
-
-#vpvrdpmtdc .gt_spanner_row {
-  border-bottom-style: hidden;
-}
-
-#vpvrdpmtdc .gt_group_heading {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  text-align: left;
-}
-
-#vpvrdpmtdc .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: middle;
-}
-
-#vpvrdpmtdc .gt_from_md > :first-child {
-  margin-top: 0;
-}
-
-#vpvrdpmtdc .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
-
-#vpvrdpmtdc .gt_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
-
-#vpvrdpmtdc .gt_stub {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#vpvrdpmtdc .gt_stub_row_group {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-  vertical-align: top;
-}
-
-#vpvrdpmtdc .gt_row_group_first td {
-  border-top-width: 2px;
-}
-
-#vpvrdpmtdc .gt_row_group_first th {
-  border-top-width: 2px;
-}
-
-#vpvrdpmtdc .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#vpvrdpmtdc .gt_first_summary_row {
-  border-top-style: solid;
-  border-top-color: #D3D3D3;
-}
-
-#vpvrdpmtdc .gt_first_summary_row.thick {
-  border-top-width: 2px;
-}
-
-#vpvrdpmtdc .gt_last_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#vpvrdpmtdc .gt_grand_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#vpvrdpmtdc .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #D3D3D3;
-}
-
-#vpvrdpmtdc .gt_last_grand_summary_row_top {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: double;
-  border-bottom-width: 6px;
-  border-bottom-color: #D3D3D3;
-}
-
-#vpvrdpmtdc .gt_striped {
-  background-color: rgba(128, 128, 128, 0.05);
-}
-
-#vpvrdpmtdc .gt_table_body {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#vpvrdpmtdc .gt_footnotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#vpvrdpmtdc .gt_footnote {
-  margin: 0px;
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#vpvrdpmtdc .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#vpvrdpmtdc .gt_sourcenote {
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#vpvrdpmtdc .gt_left {
-  text-align: left;
-}
-
-#vpvrdpmtdc .gt_center {
-  text-align: center;
-}
-
-#vpvrdpmtdc .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-#vpvrdpmtdc .gt_font_normal {
-  font-weight: normal;
-}
-
-#vpvrdpmtdc .gt_font_bold {
-  font-weight: bold;
-}
-
-#vpvrdpmtdc .gt_font_italic {
-  font-style: italic;
-}
-
-#vpvrdpmtdc .gt_super {
-  font-size: 65%;
-}
-
-#vpvrdpmtdc .gt_footnote_marks {
-  font-size: 75%;
-  vertical-align: 0.4em;
-  position: initial;
-}
-
-#vpvrdpmtdc .gt_asterisk {
-  font-size: 100%;
-  vertical-align: 0;
-}
-
-#vpvrdpmtdc .gt_indent_1 {
-  text-indent: 5px;
-}
-
-#vpvrdpmtdc .gt_indent_2 {
-  text-indent: 10px;
-}
-
-#vpvrdpmtdc .gt_indent_3 {
-  text-indent: 15px;
-}
-
-#vpvrdpmtdc .gt_indent_4 {
-  text-indent: 20px;
-}
-
-#vpvrdpmtdc .gt_indent_5 {
-  text-indent: 25px;
-}
-</style>
-<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-  <thead>
-    
-    <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Df">Df</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Sum Sq">Sum Sq</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Mean Sq">Mean Sq</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="F value">F value</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Pr(&amp;gt;F)">Pr(&gt;F)</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td headers="Df" class="gt_row gt_right">2</td>
-<td headers="Sum Sq" class="gt_row gt_right">252</td>
-<td headers="Mean Sq" class="gt_row gt_right">126.000000</td>
-<td headers="F value" class="gt_row gt_right">23.625</td>
-<td headers="Pr(>F)" class="gt_row gt_right">2.315471e-05</td></tr>
-    <tr><td headers="Df" class="gt_row gt_right">15</td>
-<td headers="Sum Sq" class="gt_row gt_right">80</td>
-<td headers="Mean Sq" class="gt_row gt_right">5.333333</td>
-<td headers="F value" class="gt_row gt_right">NA</td>
-<td headers="Pr(>F)" class="gt_row gt_right">NA</td></tr>
-  </tbody>
-  
-  
-</table>
-</div>
+Levene’s Test for Homogeneity of Variance:
+────────────────────────────────────
+        Levene’s F df1 df2     p    
+────────────────────────────────────
+DV: RT       0.217   2  15  .807    
+────────────────────────────────────</code></pre>
 </div>
 </div>
 </section>
-<section id="单因素方差分析-7" class="slide level2">
+<section id="单因素方差分析-6" class="slide level2">
 <h2>单因素方差分析<br><br></h2>
 <ol start="3" type="1">
 <li>ANOVA<br><br></li>
 </ol>
 
-<img data-src="images\image-18.png" class="r-stretch quarto-figure-center"></section>
+<img data-src="lecture2_files/figure-revealjs/unnamed-chunk-16-1.png" width="960" class="r-stretch"></section>
 <section id="两因素完全随机的方差分析" class="slide level2">
 <h2>两因素完全随机的方差分析 <br><br></h2>
 <p>例6-8.假设某研究者想考察缪勒错觉受箭头方向和角度的影响，测量被试对长度估计的误差量时考虑箭头方向A，分为向外（A1），向内（A2），箭头角度（B）则设置为15°（B1），45°（B2），75°（B3）3个水平，构成6种实验条件，从某学校文学院抽取30名男生，等分为6组，每组5人接受一种实验处理。（P书179，exp2.4.csv）</p>
