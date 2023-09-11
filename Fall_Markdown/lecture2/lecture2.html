@@ -452,8 +452,8 @@
 </tbody>
 </table>
 </section>
-<section id="单因素完全随机设计的方差和自由度分解" class="slide level2">
-<h2>单因素完全随机设计的方差和自由度分解<br><br></h2>
+<section id="单因素完全随机设计的平方和与自由度分解" class="slide level2">
+<h2>单因素完全随机设计的平方和与自由度分解<br><br></h2>
 
 <img data-src="images\image-2.jpg" class="r-stretch quarto-figure-center"></section>
 <section id="平方和的计算过程" class="slide level2">
@@ -508,8 +508,8 @@
 <p>（1）这三个地区的主观幸福感是否存在差异？<br><br></p>
 <p>（2）如果存在差异，差异是如何体现出来的呢？<br><br></p>
 </section>
-<section class="slide level2">
-
+<section id="数据" class="slide level2">
+<h2>数据<br></h2>
 <table>
 <tbody>
 <tr class="odd">
@@ -570,6 +570,10 @@
 </tbody>
 </table>
 </section>
+<<<<<<< HEAD
+<section id="单因素完全随机设计方差分析结果" class="slide level2">
+<h2>单因素完全随机设计方差分析结果<br></h2>
+=======
 <section class="slide level2">
 
 <h3 id="r-code">R code:</h3>
@@ -578,6 +582,7 @@
 results &lt;- bruceR::MANOVA(data=data, dv="variable", between=c("region"))
 </code></pre>
 <h3 id="output">Output:</h3>
+>>>>>>> c96bcd9e18d2fc2cb79dc7324ee2e90dcfe1f203
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -693,8 +698,8 @@ DV: variable       1.274   2  27  .296
 </tbody>
 </table>
 </section>
-<section id="两因素完全随机设计的方差和自由度分解" class="slide level2">
-<h2>两因素完全随机设计的方差和自由度分解 <br><br></h2>
+<section id="两因素完全随机设计的平方和与自由度分解" class="slide level2">
+<h2>两因素完全随机设计的平方和与自由度分解 <br><br></h2>
 
 <img data-src="images\image-10.png" class="r-stretch quarto-figure-center"></section>
 <section id="平方和的计算过程-1" class="slide level2">
@@ -771,8 +776,64 @@ DV: variable       1.274   2  27  .296
 <p>（2）男性和女性的主观幸福感是否存在差异？<br><br></p>
 <p>（3）如果存在差异，差异是如何体现出来的呢？<br><br></p>
 </section>
-<section class="slide level2">
+<section id="两因素完全随机设计方差分析结果" class="slide level2">
+<h2>两因素完全随机设计方差分析结果<br></h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+====== ANOVA (Between-Subjects Design) ======
 
+Descriptives:
+────────────────────────────────────
+ "gender" "region"   Mean    S.D.  n
+────────────────────────────────────
+  gender1  region1 -0.154 (0.546) 10
+  gender1  region2 -0.056 (0.745) 10
+  gender1  region3  0.091 (0.625) 10
+  gender2  region1 -0.407 (0.644) 10
+  gender2  region2 -0.141 (0.600) 10
+  gender2  region3 -0.449 (0.585) 10
+────────────────────────────────────
+Total sample size: N = 60
+
+ANOVA Table:
+Dependent variable(s):      variable
+Between-subjects factor(s): gender, region
+Within-subjects factor(s):  –
+Covariate(s):               –
+─────────────────────────────────────────────────────────────────────────────
+                    MS   MSE df1 df2     F     p     η²p [90% CI of η²p]  η²G
+─────────────────────────────────────────────────────────────────────────────
+gender           1.285 0.393   1  54 3.267  .076 .     .057 [.000, .182] .057
+region           0.166 0.393   2  54 0.422  .658       .015 [.000, .081] .015
+gender * region  0.265 0.393   2  54 0.672  .515       .024 [.000, .104] .024
+─────────────────────────────────────────────────────────────────────────────
+MSE = mean square error (the residual variance of the linear model)
+η²p = partial eta-squared = SS / (SS + SSE) = F * df1 / (F * df1 + df2)
+ω²p = partial omega-squared = (F - 1) * df1 / (F * df1 + df2 + 1)
+η²G = generalized eta-squared (see Olejnik &amp; Algina, 2003)
+Cohen’s f² = η²p / (1 - η²p)
+
+Levene’s Test for Homogeneity of Variance:
+──────────────────────────────────────────
+              Levene’s F df1 df2     p    
+──────────────────────────────────────────
+DV: variable       0.704   5  54  .623    
+──────────────────────────────────────────</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$anova_table
+Anova Table (Type III tests)
+
+Response: variable
+              num Df den Df     MSE      F      ges  Pr(&gt;F)  
+gender             1     54 0.39343 3.2666 0.057042 0.07628 .
+region             2     54 0.39343 0.4223 0.015399 0.65770  
+gender:region      2     54 0.39343 0.6724 0.024300 0.51469  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
 </section></section>
 <section>
 <section id="被试间方差分析应用" class="title-slide slide level1 center">
@@ -827,12 +888,17 @@ DV: variable       1.274   2  27  .296
 <img data-src="lecture2_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"></section>
 <section id="交互效应interaction-effect" class="slide level2">
 <h2>交互效应(interaction effect)<br><br></h2>
-<p>一因素对因变量的效应，依赖于另一因素，则两因素间存在交互作用。<br><br></p>
-<p><br><br></p>
+<p>一因素对因变量的效应，依赖于另一因素，则两因素间存在交互作用。<br></p>
+<ul>
+<li>不同性别下，地区对主观幸福感的影响趋势<br></li>
+</ul>
 
 <img data-src="lecture2_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"></section>
-<section id="section" class="slide level2">
-<h2></h2>
+<section class="slide level2">
+
+<ul>
+<li>不同地区下，性别对主观幸福感的影响趋势<br></li>
+</ul>
 
 <img data-src="lecture2_files/figure-revealjs/unnamed-chunk-6-1.png" width="960" class="r-stretch"></section>
 <section id="简单效应simple-effect" class="slide level2">
@@ -840,7 +906,7 @@ DV: variable       1.274   2  27  .296
 <p>在某一因素的不同水平条件下，检验另一因素对于因变量的效应，称为简单效应检验。<br><br></p>
 
 <img data-src="lecture2_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
-<section id="section-1" class="slide level2">
+<section id="section" class="slide level2">
 <h2></h2>
 
 <img data-src="lecture2_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section>
@@ -1052,15 +1118,23 @@ DV: RT       0.217   2  15  .807
 <ol start="2" type="1">
 <li>统计前提检验<br></li>
 </ol>
+<<<<<<< HEAD
+<p>2.1 正态性检验<br><br> ::: {.cell} ::: {.cell-output .cell-output-stdout}</p>
+=======
 <p>2.1 正态性检验<br><br></p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
+>>>>>>> c96bcd9e18d2fc2cb79dc7324ee2e90dcfe1f203
 <pre><code>
     Shapiro-Wilk normality test
 
 data:  data[data$A == 1, ]$RT
 W = 0.94988, p-value = 0.7393</code></pre>
+<<<<<<< HEAD
+<p>:::</p>
+=======
 </div>
+>>>>>>> c96bcd9e18d2fc2cb79dc7324ee2e90dcfe1f203
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Shapiro-Wilk normality test
@@ -1075,10 +1149,18 @@ W = 0.94988, p-value = 0.7393</code></pre>
 data:  data[data$A == 3, ]$RT
 W = 0.95529, p-value = 0.7828</code></pre>
 </div>
+<<<<<<< HEAD
+<p>:::</p>
+</section>
+<section class="slide level2">
+
+<p>2.1 正态性检验–QQ图</p>
+=======
 </div>
 </section>
 <section id="section-2" class="slide level2">
 <h2></h2>
+>>>>>>> c96bcd9e18d2fc2cb79dc7324ee2e90dcfe1f203
 
 <img data-src="lecture2_files/figure-revealjs/unnamed-chunk-13-1.png" width="960" class="r-stretch"></section>
 <section id="单因素方差分析-4" class="slide level2">
@@ -1174,9 +1256,6 @@ DV: RT       0.217   2  15  .807
 </section>
 <section id="单因素方差分析-6" class="slide level2">
 <h2>单因素方差分析<br><br></h2>
-<ol start="3" type="1">
-<li>ANOVA<br><br></li>
-</ol>
 
 <img data-src="lecture2_files/figure-revealjs/unnamed-chunk-16-1.png" width="960" class="r-stretch"></section>
 <section id="两因素完全随机的方差分析" class="slide level2">
@@ -1188,54 +1267,258 @@ DV: RT       0.217   2  15  .807
 <ol type="1">
 <li>描述统计 <br></li>
 </ol>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+====== ANOVA (Between-Subjects Design) ======
 
-<img data-src="images\image-24.png" class="r-stretch quarto-figure-center"></section>
+Descriptives:
+─────────────────────────
+ "A" "B"   Mean    S.D. n
+─────────────────────────
+  A1  B1 11.200 (0.837) 5
+  A1  B2  9.200 (0.837) 5
+  A1  B3  6.400 (1.517) 5
+  A2  B1 12.800 (1.643) 5
+  A2  B2 12.000 (1.000) 5
+  A2  B3  5.000 (1.581) 5
+─────────────────────────
+Total sample size: N = 30
+
+ANOVA Table:
+Dependent variable(s):      error
+Between-subjects factor(s): A, B
+Within-subjects factor(s):  –
+Covariate(s):               –
+──────────────────────────────────────────────────────────────────────
+            MS   MSE df1 df2      F     p     η²p [90% CI of η²p]  η²G
+──────────────────────────────────────────────────────────────────────
+A        7.500 1.650   1  24  4.545  .043 *     .159 [.003, .379] .159
+B      109.433 1.650   2  24 66.323 &lt;.001 ***   .847 [.738, .899] .847
+A * B   11.700 1.650   2  24  7.091  .004 **    .371 [.101, .557] .371
+──────────────────────────────────────────────────────────────────────
+MSE = mean square error (the residual variance of the linear model)
+η²p = partial eta-squared = SS / (SS + SSE) = F * df1 / (F * df1 + df2)
+ω²p = partial omega-squared = (F - 1) * df1 / (F * df1 + df2 + 1)
+η²G = generalized eta-squared (see Olejnik &amp; Algina, 2003)
+Cohen’s f² = η²p / (1 - η²p)
+
+Levene’s Test for Homogeneity of Variance:
+───────────────────────────────────────
+           Levene’s F df1 df2     p    
+───────────────────────────────────────
+DV: error       0.630   5  24  .679    
+───────────────────────────────────────</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$anova_table
+Anova Table (Type III tests)
+
+Response: error
+    num Df den Df  MSE       F     ges    Pr(&gt;F)    
+A        1     24 1.65  4.5455 0.15924  0.043442 *  
+B        2     24 1.65 66.3232 0.84679 1.673e-10 ***
+A:B      2     24 1.65  7.0909 0.37143  0.003804 ** 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+</section>
 <section id="两因素完全随机的方差分析-2" class="slide level2">
 <h2>两因素完全随机的方差分析 <br><br></h2>
 <ol type="1">
-<li>描述统计</li>
+<li>描述统计–数据可视化</li>
 </ol>
 <p><br></p>
 
-<img data-src="images\image-19.png" class="r-stretch quarto-figure-center"></section>
+<img data-src="lecture2_files/figure-revealjs/unnamed-chunk-18-1.png" width="960" class="r-stretch"></section>
 <section id="两因素完全随机的方差分析-3" class="slide level2">
 <h2>两因素完全随机的方差分析<br></h2>
 <ol start="2" type="1">
-<li>统计前提检验 <br> 2.1 正态性检验 <br></li>
+<li>统计前提检验 <br></li>
 </ol>
+<p>2.1 正态性检验 <br></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
 
-<img data-src="images\image-25.png" class="r-stretch quarto-figure-center"></section>
+    Shapiro-Wilk normality test
+
+data:  subset_residuals
+W = 0.88104, p-value = 0.314
+
+
+[[2]]
+
+    Shapiro-Wilk normality test
+
+data:  subset_residuals
+W = 0.88104, p-value = 0.314
+
+
+[[3]]
+
+    Shapiro-Wilk normality test
+
+data:  subset_residuals
+W = 0.91408, p-value = 0.4925
+
+
+[[4]]
+
+    Shapiro-Wilk normality test
+
+data:  subset_residuals
+W = 0.77866, p-value = 0.05368
+
+
+[[5]]
+
+    Shapiro-Wilk normality test
+
+data:  subset_residuals
+W = 0.82083, p-value = 0.1185
+
+
+[[6]]
+
+    Shapiro-Wilk normality test
+
+data:  subset_residuals
+W = 0.98676, p-value = 0.9672</code></pre>
+</div>
+</div>
+</section>
 <section id="两因素完全随机的方差分析-4" class="slide level2">
 <h2>两因素完全随机的方差分析<br></h2>
 <ol start="2" type="1">
-<li>统计前提检验 <br> 2.2 同质性检验 <br></li>
+<li>统计前提检验 <br></li>
 </ol>
+<p>2.1 正态性检验–QQ图 <br></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.31403956 0.31403956 0.49248104 0.05367589 0.11850989 0.96717394</code></pre>
+</div>
 
-<img data-src="images\image-20.png" class="r-stretch quarto-figure-center"></section>
+</div>
+<img data-src="lecture2_files/figure-revealjs/unnamed-chunk-20-1.png" width="960" class="r-stretch"></section>
 <section id="两因素完全随机的方差分析-5" class="slide level2">
 <h2>两因素完全随机的方差分析<br><br></h2>
-<ol start="3" type="1">
-<li>ANOVA <br><br></li>
+<ol start="2" type="1">
+<li>统计前提检验 <br></li>
 </ol>
+<p>2.1 同质性检验 <br></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+====== ANOVA (Between-Subjects Design) ======
 
-<img data-src="images\image-26.png" class="r-stretch quarto-figure-center"><p>因素A主效应不显著，因素B主效应显著，A与B交互作用显著 <br><br></p>
+Descriptives:
+─────────────────────────
+ "A" "B"   Mean    S.D. n
+─────────────────────────
+  A1  B1 11.200 (0.837) 5
+  A1  B2  9.200 (0.837) 5
+  A1  B3  6.400 (1.517) 5
+  A2  B1 12.800 (1.643) 5
+  A2  B2 12.000 (1.000) 5
+  A2  B3  5.000 (1.581) 5
+─────────────────────────
+Total sample size: N = 30
+
+ANOVA Table:
+Dependent variable(s):      error
+Between-subjects factor(s): A, B
+Within-subjects factor(s):  –
+Covariate(s):               –
+──────────────────────────────────────────────────────────────────────
+            MS   MSE df1 df2      F     p     η²p [90% CI of η²p]  η²G
+──────────────────────────────────────────────────────────────────────
+A        7.500 1.650   1  24  4.545  .043 *     .159 [.003, .379] .159
+B      109.433 1.650   2  24 66.323 &lt;.001 ***   .847 [.738, .899] .847
+A * B   11.700 1.650   2  24  7.091  .004 **    .371 [.101, .557] .371
+──────────────────────────────────────────────────────────────────────
+MSE = mean square error (the residual variance of the linear model)
+η²p = partial eta-squared = SS / (SS + SSE) = F * df1 / (F * df1 + df2)
+ω²p = partial omega-squared = (F - 1) * df1 / (F * df1 + df2 + 1)
+η²G = generalized eta-squared (see Olejnik &amp; Algina, 2003)
+Cohen’s f² = η²p / (1 - η²p)
+
+Levene’s Test for Homogeneity of Variance:
+───────────────────────────────────────
+           Levene’s F df1 df2     p    
+───────────────────────────────────────
+DV: error       0.630   5  24  .679    
+───────────────────────────────────────</code></pre>
+</div>
+</div>
 </section>
 <section id="两因素完全随机的方差分析-6" class="slide level2">
-<h2>两因素完全随机的方差分析<br><br></h2>
-<p>交互效应分析<br><br></p>
+<h2>两因素完全随机的方差分析<br></h2>
+<ol start="3" type="1">
+<li>ANOVA <br></li>
+</ol>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+====== ANOVA (Between-Subjects Design) ======
 
-<img data-src="images\image-27.png" class="r-stretch quarto-figure-center"></section>
+Descriptives:
+─────────────────────────
+ "A" "B"   Mean    S.D. n
+─────────────────────────
+  A1  B1 11.200 (0.837) 5
+  A1  B2  9.200 (0.837) 5
+  A1  B3  6.400 (1.517) 5
+  A2  B1 12.800 (1.643) 5
+  A2  B2 12.000 (1.000) 5
+  A2  B3  5.000 (1.581) 5
+─────────────────────────
+Total sample size: N = 30
+
+ANOVA Table:
+Dependent variable(s):      error
+Between-subjects factor(s): A, B
+Within-subjects factor(s):  –
+Covariate(s):               –
+──────────────────────────────────────────────────────────────────────
+            MS   MSE df1 df2      F     p     η²p [90% CI of η²p]  η²G
+──────────────────────────────────────────────────────────────────────
+A        7.500 1.650   1  24  4.545  .043 *     .159 [.003, .379] .159
+B      109.433 1.650   2  24 66.323 &lt;.001 ***   .847 [.738, .899] .847
+A * B   11.700 1.650   2  24  7.091  .004 **    .371 [.101, .557] .371
+──────────────────────────────────────────────────────────────────────
+MSE = mean square error (the residual variance of the linear model)
+η²p = partial eta-squared = SS / (SS + SSE) = F * df1 / (F * df1 + df2)
+ω²p = partial omega-squared = (F - 1) * df1 / (F * df1 + df2 + 1)
+η²G = generalized eta-squared (see Olejnik &amp; Algina, 2003)
+Cohen’s f² = η²p / (1 - η²p)
+
+Levene’s Test for Homogeneity of Variance:
+───────────────────────────────────────
+           Levene’s F df1 df2     p    
+───────────────────────────────────────
+DV: error       0.630   5  24  .679    
+───────────────────────────────────────</code></pre>
+</div>
+</div>
+<p>因素A主效应显著，因素B主效应显著，A与B交互作用显著 <br><br></p>
+</section>
 <section id="两因素完全随机的方差分析-7" class="slide level2">
 <h2>两因素完全随机的方差分析<br><br></h2>
+<p>交互效应分析<br><br></p>
+<ul>
+<li>B因素在A因素两个水平上的影响趋势</li>
+</ul>
 
-<img data-src="images\image-21.png" class="r-stretch quarto-figure-center"></section>
-<section id="两因素完全随机的方差分析-8" class="slide level2">
-<h2>两因素完全随机的方差分析<br><br></h2>
-<ol start="4" type="1">
-<li>事后多重比较</li>
-</ol>
+<img data-src="lecture2_files/figure-revealjs/unnamed-chunk-23-1.png" width="960" class="r-stretch"></section>
+<section class="slide level2">
 
-<img data-src="images\image-28.png" class="r-stretch quarto-figure-center"></section>
+<ul>
+<li>A因素在B因素三个水平上的影响趋势</li>
+</ul>
+
+<img data-src="lecture2_files/figure-revealjs/unnamed-chunk-24-1.png" width="960" class="r-stretch"></section>
 <section id="总结" class="slide level2">
 <h2>总结</h2>
 <p>（1）被试间方差分析原理</p>

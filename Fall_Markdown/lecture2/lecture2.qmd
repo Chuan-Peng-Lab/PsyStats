@@ -183,7 +183,7 @@ sim1 <- sim_anova1()
 
 ------------------------------------------------------------------------
 
-## 单因素完全随机设计的方差和自由度分解</br><br>
+## 单因素完全随机设计的平方和与自由度分解</br><br>
 
 ![](images\image-2.jpg){fig-align="center"}
 
@@ -216,6 +216,8 @@ sim1 <- sim_anova1()
 
 ------------------------------------------------------------------------
 
+## 数据</br>
+
 |             |             |             |
 |:-----------:|:-----------:|:-----------:|
 | **region1** | **region2** | **region3** |
@@ -231,6 +233,11 @@ sim1 <- sim_anova1()
 |  0.147316   |  0.714494   |  0.318536   |
 
 ------------------------------------------------------------------------
+
+<<<<<<< HEAD
+## 单因素完全随机设计方差分析结果</br>
+
+=======
 
 ```{r}
 #载入包
@@ -292,7 +299,7 @@ results <- bruceR::MANOVA(data=data, dv="variable", between=c("region"))
 
 ------------------------------------------------------------------------
 
-## 两因素完全随机设计的方差和自由度分解 </br></br>
+## 两因素完全随机设计的平方和与自由度分解 </br></br>
 
 ![](images\image-10.png){fig-align="center"}
 
@@ -328,9 +335,11 @@ results <- bruceR::MANOVA(data=data, dv="variable", between=c("region"))
 
 （3）如果存在差异，差异是如何体现出来的呢？</br></br>
 
-------------------------------------------------------------------------
+---
 
-```{r include=FALSE}
+## 两因素完全随机设计方差分析结果</br>
+
+```{r}
 
 
 #载入数据
@@ -443,10 +452,9 @@ p1+p2
 
 ## 交互效应(interaction effect)</br></br>
 
-一因素对因变量的效应，依赖于另一因素，则两因素间存在交互作用。</br></br>
+一因素对因变量的效应，依赖于另一因素，则两因素间存在交互作用。</br>
 
-</br></br>
-
+- 不同性别下，地区对主观幸福感的影响趋势</br>
 
 ```{r}
 #df1 <- data%>%
@@ -469,8 +477,9 @@ p1+p2
 emmip(results, gender~ region)+
   theme_bw()
 ```
+---
 
-##
+- 不同地区下，性别对主观幸福感的影响趋势</br>
 
 ```{r}
 
@@ -598,8 +607,9 @@ normality_test1
 normality_test2
 normality_test3
 ```
-##
+---
 
+2.1 正态性检验--QQ图
 ```{r}
 p1<-ggplot2::ggplot(mapping = aes(sample = data[data$A==1,]$RT)) +
   geom_qq() +
@@ -652,8 +662,6 @@ res<-MANOVA(data=data, dv="RT", between=c("A"))
 
 ## 单因素方差分析</br></br>
 
-3.  ANOVA</br></br>
-
 ```{r}
 emmip(res, ~A)+
   theme_bw()
@@ -671,39 +679,114 @@ emmip(res, ~A)+
 
 1.  描述统计 </br>
 
-![](images\image-24.png){fig-align="center"}
+```{r}
+#载入数据
+data <- read.csv("data/example2.4.csv")
+
+#进行双因素方差分析
+results<-MANOVA(data=data, dv="error", between=c("A","B"))
+results[1]
+```
 
 ------------------------------------------------------------------------
 
 ## 两因素完全随机的方差分析 </br></br>
 
-1.  描述统计
+1.  描述统计--数据可视化
 
 </br>
 
-![](images\image-19.png){fig-align="center"}
+```{r}
+ggplot(data, aes(x = B, y = error, group = B)) +
+  geom_boxplot(aes(color = B, fill = B), alpha = 0.5, width = 0.2) +
+  geom_jitter(position = position_jitter(width = 0.1, height = 0.1), aes(color = B)) +
+  labs(x = "Factor A", y = "error", color = "Factor B", fill = "Factor B") +
+  stat_halfeye(adjust = .5, width = .7, .width = 0, justification = -.2, point_colour = NA) +
+  theme_bw() +
+  facet_wrap(~A, ncol = 2)
+```
 
 ## 两因素完全随机的方差分析</br>
 
-2.  统计前提检验 </br> 2.1 正态性检验 </br>
+2.  统计前提检验 </br> 
 
-![](images\image-25.png){fig-align="center"}
+2.1 正态性检验 </br>
+
+```{r}
+# 执行两因素完全随机方差分析
+model <- aov(error ~ A * B, data = data)
+
+# 提取误差项
+residuals <- residuals(model)
+
+# 分组数据，按照 A 和 B 因素的组合
+groups <- interaction(data$A, data$B)
+
+# 对每个组合进行正态性检验
+normality_tests <- lapply(unique(groups), function(group) {
+  subset_residuals <- residuals[groups == group]
+  shapiro.test(subset_residuals)
+})
+
+# 打印正态性检验结果
+print(normality_tests)
+```
 
 ------------------------------------------------------------------------
 
 ## 两因素完全随机的方差分析</br>
 
-2.  统计前提检验 </br> 2.2 同质性检验 </br>
+2.  统计前提检验 </br> 
 
-![](images\image-20.png){fig-align="center"}
+2.1 正态性检验--QQ图 </br>
+```{r}
+# 创建一个空的向量，用于存储各组的 p 值
+p_values <- numeric()
+
+# 遍历 normality_tests 列表，提取各组的 p 值
+for (i in 1:length(normality_tests)) {
+  p_value <- normality_tests[[i]]$p.value
+  p_values <- c(p_values, p_value)
+}
+
+# 打印或查看提取的 p 值
+print(p_values)
+
+# 创建 QQ 图
+library(ggplot2)
+qq_plot <- ggplot(data.frame(p_value = p_values), aes(sample = p_value)) +
+  geom_qq() +
+  geom_qq_line() +
+  labs(title = "QQ Plot of Shapiro-Wilk p-values") +
+  theme_minimal()
+
+# 显示 QQ 图
+print(qq_plot)
+```
+
+---
 
 ## 两因素完全随机的方差分析</br></br>
 
-3.  ANOVA </br></br>
+2.  统计前提检验 </br> 
 
-![](images\image-26.png){fig-align="center"}
+2.1 同质性检验 </br>
 
-因素A主效应不显著，因素B主效应显著，A与B交互作用显著 </br></br>
+```{r}
+MANOVA(data=data, dv="error", between=c("A","B"))
+```
+
+
+
+## 两因素完全随机的方差分析</br>
+
+3.  ANOVA </br>
+
+```{r}
+res<-MANOVA(data=data, dv="error", between=c("A","B"))
+```
+
+因素A主效应显著，因素B主效应显著，A与B交互作用显著 </br></br>
 
 ------------------------------------------------------------------------
 
@@ -711,17 +794,19 @@ emmip(res, ~A)+
 
 交互效应分析</br></br>
 
-![](images\image-27.png){fig-align="center"}
+- B因素在A因素两个水平上的影响趋势
+```{r}
+emmip(res, A~ B)+
+  theme_bw()
+```
+---
 
-## 两因素完全随机的方差分析</br></br>
+- A因素在B因素三个水平上的影响趋势
 
-![](images\image-21.png){fig-align="center"}
-
-## 两因素完全随机的方差分析</br></br>
-
-4.  事后多重比较
-
-![](images\image-28.png){fig-align="center"}
+```{r}
+emmip(res, B~ A)+
+  theme_bw()
+```
 
 ## 总结
 
