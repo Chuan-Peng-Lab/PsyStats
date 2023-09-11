@@ -142,7 +142,9 @@ sim_anova1 <- function(n = 30, group = 3, N_rep = 1000){
       return(Res)
 }
 
+# 运行上述的函数
 sim1 <- sim_anova1()
+
 ```
 
 
