@@ -838,15 +838,15 @@ Descriptives:
 ────────────────────────────────────────
  Variable    Factor Level  N Mean (S.D.)
 ────────────────────────────────────────
-       rt condition   rt1 30 0.40 (0.10)
-       rt condition   rt2 30 0.51 (0.13)
+       rt condition   rt1 30 0.40 (0.08)
+       rt condition   rt2 30 0.52 (0.12)
 ────────────────────────────────────────
 
 Levene’s test for homogeneity of variance:
 ───────────────────────────────────────────────────────
                            Levene’s F df1 df2     p    
 ───────────────────────────────────────────────────────
-rt: condition (rt2 - rt1)        1.60   1  58  .212    
+rt: condition (rt2 - rt1)        6.74   1  58  .012 *  
 ───────────────────────────────────────────────────────
 Note: H0 = equal variance (homoscedasticity).
 If significant (violation of the assumption),
@@ -856,7 +856,7 @@ Results of t-test:
 ────────────────────────────────────────────────────────────────────────────────────────────
                               t df     p     Difference [95% CI] Cohen’s d [95% CI]     BF10
 ────────────────────────────────────────────────────────────────────────────────────────────
-rt: condition (rt2 - rt1)  3.62 58 &lt;.001 ***   0.11 [0.05, 0.17]  0.93 [0.42, 1.45] 4.59e+01
+rt: condition (rt2 - rt1)  4.65 58 &lt;.001 ***   0.12 [0.07, 0.18]  1.20 [0.68, 1.72] 9.19e+02
 ────────────────────────────────────────────────────────────────────────────────────────────</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
@@ -877,15 +877,15 @@ Descriptives:
 ────────────────────────────────────────
  Variable    Factor Level  N Mean (S.D.)
 ────────────────────────────────────────
-       rt condition   rt1 30 0.40 (0.10)
-       rt condition   rt3 30 0.66 (0.11)
+       rt condition   rt1 30 0.40 (0.08)
+       rt condition   rt3 30 0.60 (0.12)
 ────────────────────────────────────────
 
 Levene’s test for homogeneity of variance:
 ───────────────────────────────────────────────────────
                            Levene’s F df1 df2     p    
 ───────────────────────────────────────────────────────
-rt: condition (rt3 - rt1)        0.51   1  58  .478    
+rt: condition (rt3 - rt1)        2.78   1  58  .101    
 ───────────────────────────────────────────────────────
 Note: H0 = equal variance (homoscedasticity).
 If significant (violation of the assumption),
@@ -895,7 +895,7 @@ Results of t-test:
 ────────────────────────────────────────────────────────────────────────────────────────────
                               t df     p     Difference [95% CI] Cohen’s d [95% CI]     BF10
 ────────────────────────────────────────────────────────────────────────────────────────────
-rt: condition (rt3 - rt1)  9.48 58 &lt;.001 ***   0.26 [0.20, 0.31]  2.45 [1.93, 2.97] 2.31e+10
+rt: condition (rt3 - rt1)  7.82 58 &lt;.001 ***   0.21 [0.15, 0.26]  2.02 [1.50, 2.53] 5.53e+07
 ────────────────────────────────────────────────────────────────────────────────────────────</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
@@ -916,15 +916,15 @@ Descriptives:
 ────────────────────────────────────────
  Variable    Factor Level  N Mean (S.D.)
 ────────────────────────────────────────
-       rt condition   rt2 30 0.51 (0.13)
-       rt condition   rt3 30 0.66 (0.11)
+       rt condition   rt2 30 0.52 (0.12)
+       rt condition   rt3 30 0.60 (0.12)
 ────────────────────────────────────────
 
 Levene’s test for homogeneity of variance:
 ───────────────────────────────────────────────────────
                            Levene’s F df1 df2     p    
 ───────────────────────────────────────────────────────
-rt: condition (rt3 - rt2)        0.42   1  58  .521    
+rt: condition (rt3 - rt2)        0.36   1  58  .549    
 ───────────────────────────────────────────────────────
 Note: H0 = equal variance (homoscedasticity).
 If significant (violation of the assumption),
@@ -934,7 +934,7 @@ Results of t-test:
 ────────────────────────────────────────────────────────────────────────────────────────────
                               t df     p     Difference [95% CI] Cohen’s d [95% CI]     BF10
 ────────────────────────────────────────────────────────────────────────────────────────────
-rt: condition (rt3 - rt2)  4.92 58 &lt;.001 ***   0.15 [0.09, 0.21]  1.27 [0.75, 1.79] 2.19e+03
+rt: condition (rt3 - rt2)  2.70 58  .009 **    0.08 [0.02, 0.14]  0.70 [0.18, 1.21] 5.11e+00
 ────────────────────────────────────────────────────────────────────────────────────────────</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
@@ -1072,7 +1072,7 @@ rt: condition (rt3 - rt2)  4.92 58 &lt;.001 ***   0.15 [0.09, 0.21]  1.27 [0.75,
 <li><p><span class="math inline">\(t = \frac{\bar{X}-\mu}{\frac{\sigma_{X}}{\sqrt{n-1}}} = \frac{组1均值 - 组2均值}{标准差}\)</span></p></li>
 <li><p>只有两组样本大小一致的数据的<em>F</em>检验</p>
 <ul>
-<li>$ F = = (魅族均值 - 总均值)^2/方差$</li>
+<li><span class="math inline">\(F = \frac{\frac{SS_{b}}{df_{b}}}{\frac{SS_{w}}{df_{w}}} = \sum (每组均值 - 总均值)^2/方差\)</span></li>
 </ul></li>
 <li><p><span class="math inline">\(F = t^2\)</span></p></li>
 </ul>
