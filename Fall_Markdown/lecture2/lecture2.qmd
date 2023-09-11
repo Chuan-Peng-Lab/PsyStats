@@ -48,9 +48,8 @@ Hu Chuan-Peng
 ------------------------------------------------------------------------
 
 ## 方差的可分解性</br></br>
-方差（或变异）的可分解性是指总的离差平方和可以分解为几个不同来源的平方和。
-</br>
-总平方和可以分解为组内平方和和组间平方和。
+
+方差（或变异）的可分解性是指总的离差平方和可以分解为几个不同来源的平方和。 </br> 总平方和可以分解为组内平方和和组间平方和。
 
 ::: {layout-ncol="2"}
 ![](images\image-1.png)
@@ -61,14 +60,14 @@ Hu Chuan-Peng
 ------------------------------------------------------------------------
 
 ## 公式推导</br>
+
 ![](images\image-3.png){fig-align="center"}
 
 ------------------------------------------------------------------------
 
 ## *F*值</br></br>
-$$F=\frac{MS_B}{MS_W}$$
-</br>
-当H~0~为真时，*F*值服从一个广为人知的概率分布。为了纪念R.A.Fisher，这个分布称为*F*分布。</br>
+
+$$F=\frac{MS_B}{MS_W}$$ </br> 当H~0~为真时，*F*值服从一个广为人知的概率分布。为了纪念R.A.Fisher，这个分布称为*F*分布。</br>
 
 ![](images\image-4.png){fig-align="center"}
 
@@ -137,16 +136,16 @@ $$F=\frac{MS_B}{MS_W}=\frac{{\frac{SS_b}{df_b}}}{{\frac{SS_w}{df_w}}}$$
 
 ![](images\image-3.jpg){fig-align="center"}
 
----
+------------------------------------------------------------------------
 
 ## 单因素完全随机设计的方差分析表</br><br>
 
-|              |            |            |                             |                      |
-|:------------:|:----------:|:----------:|:--------------------:|:-------------:|
-| **变异来源** | **平方和** | **自由度** |       **均方**       |     **F**     |
-|   组间变异   |   SS~组间~   |    p-1     |  MS~组间~=SS~组间~/p-1   | MS~组间~/MS~组内~ |
-|   组内变异   |   SS~组内~   |   p(n-1)   | MS~组内~=SS~组内~/p(n-1) |               |
-|     总和     |  SS~总变异~  |    np-1    |                      |               |
+|              |            |            |                          |                   |
+|:------------:|:------------:|:------------:|:---------------:|:------------:|
+| **变异来源** | **平方和** | **自由度** |         **均方**         |       **F**       |
+|   组间变异   |  SS~组间~  |    p-1     |  MS~组间~=SS~组间~/p-1   | MS~组间~/MS~组内~ |
+|   组内变异   |  SS~组内~  |   p(n-1)   | MS~组内~=SS~组内~/p(n-1) |                   |
+|     总和     | SS~总变异~ |    np-1    |                          |                   |
 
 ------------------------------------------------------------------------
 
@@ -175,22 +174,32 @@ $$F=\frac{MS_B}{MS_W}=\frac{{\frac{SS_b}{df_b}}}{{\frac{SS_w}{df_w}}}$$
 |  0.147316   |  0.714494   |  0.318536   |
 
 ------------------------------------------------------------------------
+```{r}
+#载入包
+library(pacman)
+library(apaTables)
+p_load('tidyverse','bruceR','patchwork','ggdist','stats')
+```
 
 ```{r echo=FALSE}
-library(stats)
-library(gt)
+#library(stats)
+#library(gt)
 
 data <- read.csv("data/example2.1.csv")
-data$region <- factor(data$region, levels = c("1", "2", "3"))
-model <- aov(variable ~ region, data = data)
-anova_result <- anova(model)
-anova_table <- as.data.frame(anova_result)
-anova_table=round(anova_table,3)
-gt(anova_table) |> 
-  tab_options(
-    table.font.size = px(24), 
-    column_labels.font.size = px(26)
-)
+
+#进行双因素方差分析
+results=MANOVA(data=data, dv="variable", between=c("region"))
+results[1]
+#data$region <- factor(data$region, levels = c("1", "2", "3"))
+#model <- aov(variable ~ region, data = data)
+#anova_result <- anova(model)
+#anova_table <- as.data.frame(anova_result)
+#anova_table=round(anova_table,3)
+#gt(anova_table) |> 
+#  tab_options(
+#    table.font.size = px(24), 
+#    column_labels.font.size = px(26)
+#)
 ```
 
 ------------------------------------------------------------------------
@@ -232,24 +241,25 @@ gt(anova_table) |>
 
 ![](images\image-10.png){fig-align="center"}
 
----
+------------------------------------------------------------------------
 
 ## 平方和的计算过程 </br></br>
 
 ![](images\image-11.png){fig-align="center"}
 
----
+------------------------------------------------------------------------
 
 ## 两因素完全随机设计的方差分析表 </br>
-|              |            |            |                       |             |
-|:------------:|:----------:|:----------:|:---------------------:|:-----------:|
-| **变异来源** | **平方和** | **自由度** |       **均方**        |    **F**    |
-|   组间变异   |   SS~组间~   |    pq-1    |                       |             |
-|              |    SS~A~     |    p-1     |      MS~A~=SS~A~/p-1      | MS~A~/MS~组内~  |
-|              |    SS~B~     |    q-1     |      MS~B~=SS~B~/q-1      | MS~B~/MS~组内~  |
-|              |    SS~AB~    | (p-1)(q-1) | MS~AB~=SS~AB~/(p-1)(q-1)  | MS~AB~/MS~组内~ |
-|   组内变异   |   SS~组内~   |  pq(n-1)   | MS~组内~=SS~组内~/pq(n-1) |             |
-|     总和     |  SS~总变异~  |   npq-1    |                       |             |
+
+|              |            |            |                           |                 |
+|:------------:|:------------:|:------------:|:----------------:|:------------:|
+| **变异来源** | **平方和** | **自由度** |         **均方**          |      **F**      |
+|   组间变异   |  SS~组间~  |    pq-1    |                           |                 |
+|              |   SS~A~    |    p-1     |      MS~A~=SS~A~/p-1      | MS~A~/MS~组内~  |
+|              |   SS~B~    |    q-1     |      MS~B~=SS~B~/q-1      | MS~B~/MS~组内~  |
+|              |   SS~AB~   | (p-1)(q-1) | MS~AB~=SS~AB~/(p-1)(q-1)  | MS~AB~/MS~组内~ |
+|   组内变异   |  SS~组内~  |  pq(n-1)   | MS~组内~=SS~组内~/pq(n-1) |                 |
+|     总和     | SS~总变异~ |   npq-1    |                           |                 |
 
 ------------------------------------------------------------------------
 
@@ -266,18 +276,17 @@ gt(anova_table) |>
 ------------------------------------------------------------------------
 
 ```{r include=FALSE}
-#载入包
-library(pacman)
-library(apaTables)
-p_load('tidyverse','bruceR')
+
 
 #载入数据
 data <- read.csv("data/example2.2.csv")
 
 #进行双因素方差分析
-results=MANOVA(data=data, dv="variable", between=c("gender", "region"))
+results <- MANOVA(data=data, dv="variable", between=c("gender", "region"))
+results[1]
 ```
-![](images\image-5.jpg){fig-align="center"}
+
+
 
 # 2 被试间方差分析应用
 
@@ -338,7 +347,44 @@ $$\eta ^2=\frac{SS_b}{SS_b+SS_w} $$
 
 </br></br>
 
-![](images\image-12.png){fig-align="center"}
+
+
+```{r}
+#df1 <- data%>%
+#  group_by(region)%>%
+#  summarise(variable=mean(variable))%>%
+#  ungroup()
+
+#df2 <- data%>%
+# group_by(gender)%>%
+#  summarise(variable=mean(variable))%>%
+#  ungroup()
+
+#p1 <- ggplot(data=df1,aes(x=region,
+#                     y=variable))+
+#  geom_line()+
+#  geom_point()+
+#  theme_bw()
+
+#p2 <- ggplot(data=df2,aes(x=gender,
+#                     y=variable))+
+#  geom_line()+
+#  geom_point()+
+#  theme_bw()
+#p1+p2
+
+p1 <- emmip(results, ~region)+
+  theme_bw()
+p2 <- emmip(results, ~gender)+
+  theme_bw()
+p1+p2
+```
+
+
+
+
+
+
 
 ## 交互效应(interaction effect)</br></br>
 
@@ -346,13 +392,77 @@ $$\eta ^2=\frac{SS_b}{SS_b+SS_w} $$
 
 </br></br>
 
-![](images\image-13.png){fig-align="center"}
+
+```{r}
+#df1 <- data%>%
+#  group_by(region,gender)%>%
+#  summarise(variable=mean(variable))%>%
+#  ungroup()%>%
+#  mutate(region=as.factor(region),
+#         gender =as.factor(gender))
+
+#p1 <- ggplot(data=df1,aes(x=region,
+#                     y=variable,
+#                     group=gender,
+#                     color=gender))+
+#  geom_line()+
+#  geom_point()+
+#  theme_bw()
+
+#p1
+
+emmip(results, gender~ region)+
+  theme_bw()
+```
+
+##
+
+```{r}
+
+
+emmip(results, region~ gender)+
+  theme_bw()
+```
 
 ## 简单效应(simple effect) </br></br>
 
 在某一因素的不同水平条件下，检验另一因素对于因变量的效应，称为简单效应检验。</br></br>
 
-![](images\image-14.png){fig-align="center"}
+```{r}
+#df1 <- data%>%
+#  group_by(region,gender)%>%
+#  summarise(variable=mean(variable))%>%
+#  ungroup()%>%
+#  mutate(region=as.factor(region),
+#         gender =as.factor(gender))
+
+#p1 <- ggplot(data=df1,aes(x=region,
+#                     y=variable,
+#                     group=gender,
+#                     color=gender))+
+#  geom_line()+
+#  geom_point()+
+#  theme_bw()
+#p2 <- ggplot(data=df1,aes(x=gender,
+#                     y=variable,
+#                     group=region,
+#                     color=region))+
+#  geom_line()+
+#  geom_point()+
+#  theme_bw()
+#p1+p2
+emmip(results, ~gender| region)+
+  theme_bw()
+```
+
+##
+
+
+```{r}
+emmip(results, ~region| gender)+
+  theme_bw()
+```
+
 
 ------------------------------------------------------------------------
 
@@ -368,26 +478,36 @@ $$\eta ^2=\frac{SS_b}{SS_b+SS_w} $$
 
 如果方差分析的结果是多组平均数之间差异显著，这时需要做进一步比较，确定在哪些实验处理组之间存在显著差异、而哪些实验处理组之间不存在显著差异，这就是事后检验（post hoc test）。这个统计分析过程也被称为事后多重比较（multiple comparison procedures）。 </br></br>
 
-```{r include=FALSE}
+```{r}
 MANOVA(data, dv="variable", between=c("gender", "region")) %>%
   EMMEANS("gender", by="region") %>%
   EMMEANS("region", by="gender")
 ```
-![](images\image-4.jpg){fig-align="center"}
+
 
 # 3 被试间方差分析流程
 
 ## 单因素方差分析 </br></br>
 
-例6-1.某研究者将同一班级的18名男生分为3组，每组被试在A1，A2，A3三种不同的激励气氛下，将一重物举至肩部以上，记录被试所坚持的时间。 （见书P153，exp3.csv）
+例6-1.某研究者将同一班级的18名男生分为3组，每组被试在A1，A2，A3三种不同的激励气氛下，将一重物举至肩部以上，记录被试所坚持的时间。 （见书P153，exp2.3.csv）
 
 ------------------------------------------------------------------------
 
 ## 单因素方差分析 </br></br>
-1.  描述统计
-</br>
 
-![](images\image-22.png){fig-align="center"}
+1.  描述统计 </br>
+
+```{r}
+
+
+#载入数据
+data <- read.csv("data/example2.3.csv")%>%
+  mutate(A=as.factor(A))
+
+#进行双因素方差分析
+MANOVA(data=data, dv="RT", between=c("A"))
+```
+
 
 ------------------------------------------------------------------------
 
@@ -395,69 +515,106 @@ MANOVA(data, dv="variable", between=c("gender", "region")) %>%
 
 1.  描述统计--数据可视化 </br></br>
 
+```{r}
+ggplot(data,aes(x=A,
+                y=RT,
+                color=A,
+                fill=A))+
+  
+  geom_boxplot(alpha=0.5,width=0.2)+
+  geom_point(position = position_jitter(width = 0.1, height = 0.1))+
+  stat_halfeye(adjust = .5, width = .7, .width = 0, justification = -.2, point_colour = NA) + 
+  theme_bw()
+```
 
-![](images\image-15.png){fig-align="center"}
+
+
 
 ## 单因素方差分析 </br></br>
 
-2.  统计前提检验</br> 2.1 正态性检验</br></br>
+2.  统计前提检验</br> 
 
-![](images\image-16.png){fig-align="center"}
+2.1 正态性检验</br></br>
+```{r}
+normality_test1 <- shapiro.test(data[data$A==1,]$RT)
+normality_test2 <- shapiro.test(data[data$A==2,]$RT)
+normality_test3 <- shapiro.test(data[data$A==3,]$RT)
+normality_test1
+normality_test2
+normality_test3
+```
+##
+
+```{r}
+p1<-ggplot2::ggplot(mapping = aes(sample = data[data$A==1,]$RT)) +
+  geom_qq() +
+  geom_qq_line() +
+  theme_minimal()
+p2<-ggplot2::ggplot(mapping = aes(sample = data[data$A==2,]$RT)) +
+  geom_qq() +
+  geom_qq_line() +
+  theme_minimal()
+p3<-ggplot2::ggplot(mapping = aes(sample = data[data$A==3,]$RT)) +
+  geom_qq() +
+  geom_qq_line() +
+  theme_minimal()
+p1+p2+p3
+```
+
+
+
+
+
+
 
 ------------------------------------------------------------------------
 
 ## 单因素方差分析</br></br>
 
-2.  统计前提检验</br>
+2.  统计前提检验</br> 
+
 2.2 同质性/方差齐性检验验</br></br>
 
-![](images\image-23.png){fig-align="center"}
+
+```{r}
+MANOVA(data=data, dv="RT", between=c("A"))
+```
 
 ------------------------------------------------------------------------
 
-## 单因素方差分析</br></br>
 
-2.  统计前提检验</br>
-2.2 同质性/方差齐性检验验</br></br>
 
-![](images\image-17.png){fig-align="center"}
 
 ## 单因素方差分析</br></br>
 
 3.  ANOVA</br></br>
 
 ```{r}
-library(stats)
-library(gt)
-
-data <- read.csv("data/example2.3.csv")
-data$A <- factor(data$A, levels = c("1", "2", "3"))
-model <- aov(RT ~ A, data = data)
-anova_result <- anova(model)
-anova_table <- as.data.frame(anova_result)
-gt(anova_table) |> 
-  tab_options(
-    table.font.size = px(24), 
-    column_labels.font.size = px(26)
-)
+res<-MANOVA(data=data, dv="RT", between=c("A"))
 ```
+
 ------------------------------------------------------------------------
 
 ## 单因素方差分析</br></br>
 
 3.  ANOVA</br></br>
 
-![](images\image-18.png){fig-align="center"}
+```{r}
+emmip(res, ~A)+
+  theme_bw()
+```
+
+
 
 ## 两因素完全随机的方差分析 </br></br>
 
-例6-8.假设某研究者想考察缪勒错觉受箭头方向和角度的影响，测量被试对长度估计的误差量时考虑箭头方向A，分为向外（A1），向内（A2），箭头角度（B）则设置为15°（B1），45°（B2），75°（B3）3个水平，构成6种实验条件，从某学校文学院抽取30名男生，等分为6组，每组5人接受一种实验处理。（P书179，exp4.csv）
+例6-8.假设某研究者想考察缪勒错觉受箭头方向和角度的影响，测量被试对长度估计的误差量时考虑箭头方向A，分为向外（A1），向内（A2），箭头角度（B）则设置为15°（B1），45°（B2），75°（B3）3个水平，构成6种实验条件，从某学校文学院抽取30名男生，等分为6组，每组5人接受一种实验处理。（P书179，exp2.4.csv）
 
 ------------------------------------------------------------------------
 
 ## 两因素完全随机的方差分析</br></br>
-1.  描述统计 
-</br>
+
+1.  描述统计 </br>
 
 ![](images\image-24.png){fig-align="center"}
 
@@ -473,8 +630,7 @@ gt(anova_table) |>
 
 ## 两因素完全随机的方差分析</br>
 
-2.  统计前提检验 </br>
-2.1 正态性检验 </br>
+2.  统计前提检验 </br> 2.1 正态性检验 </br>
 
 ![](images\image-25.png){fig-align="center"}
 
@@ -482,8 +638,7 @@ gt(anova_table) |>
 
 ## 两因素完全随机的方差分析</br>
 
-2.  统计前提检验 </br>
-2.2 同质性检验 </br>
+2.  统计前提检验 </br> 2.2 同质性检验 </br>
 
 ![](images\image-20.png){fig-align="center"}
 
@@ -512,3 +667,11 @@ gt(anova_table) |>
 4.  事后多重比较
 
 ![](images\image-28.png){fig-align="center"}
+
+## 总结
+
+（1）被试间方差分析原理
+
+（2）被试间方差分析应用
+
+（3）被试间方差分析流程
