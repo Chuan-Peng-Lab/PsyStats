@@ -79,34 +79,51 @@ $$F=\frac{MS_B}{MS_W}$$ </br> 当 $H_0$为真时，*F*值服从一个广为人�
 
 ## *F*检验</br></br>
 
-总变异自由度：df~t~ = nk-1
+总变异自由度：$df_t$ = nk-1
 
 每组组内自由度：n-1
 
-总组内变异自由度：df~w~ = k(n-1)
+总组内变异自由度：$df_w$ = k(n-1)
 
-组间变异自由度：df~b~= k-1
+组间变异自由度：$df_b$ = k-1
 
 </br>
 
-$$F=\frac{MS_B}{MS_W}=\frac{{\frac{SS_b}{df_b}}}{{\frac{SS_w}{df_w}}}$$ 
 
----
+$$F=\frac{MS_B}{MS_W}=\frac{{\frac{SS_b}{df_b}}}{{\frac{SS_w}{df_w}}}$$
 
-## 对F检验和t检验的模拟
+## 对*F*检验和*t*检验的模拟
+<br>
+<center> **动手才能学习** </center>
 
-假定有三组数据，每组数据包含30个值，都来自平均值为100，标准差为15的正态分布，对其进行F检验并重复该过程1000次后，p值\<=0.05的情况如下：
+## 对*F*检验和*t*检验的模拟
+<br>
+第一步：从$N(100, 15)$的正态分布中抽取三个$n = 30$的样本；
+
+核心代码: `rnorm(30, mean=100, sd=15)`
+
+## 对*F*检验和*t*检验的模拟
+<br>
+第一步：从$N(100, 15)$的正态分布中抽取三个$n = 30$的样本；
+
+核心代码: `rnorm(30, mean=100, sd=15)`
+
+
+Quiz：
+
+* 这个模拟中体现了哪些*F*/*t*检验的预设？ 
 
 ```{r}
 #载入包
 if (!requireNamespace("pacman", quietly = TRUE)) {
   install.packages("pacman") }   # install pacman if not installed yet, it will be used for loading packages
+
 pacman::p_load('tidyverse','bruceR','patchwork','ggdist','stats', "apaTables")
 ```
 
 ```{r}
 # simulation
-set.seed(123)
+# set.seed(123)
 
 df <- data.frame(matrix(nrow = 30 * 3, ncol = 2)) %>%
       dplyr::rename("values" = 1,
@@ -121,8 +138,6 @@ df %>% dplyr::group_by(groups) %>%
       dplyr::summarise(mean = mean(values),
                        sd = sd(values))
    
-
-
 sim_anova1 <- function(n = 30, group = 3, N_rep = 1000){
       
       Res <- data.frame(matrix(nrow = N_rep, ncol = 3)) %>%
@@ -155,49 +170,43 @@ sim_anova1 <- function(n = 30, group = 3, N_rep = 1000){
 
 # 运行上述的函数
 sim1 <- sim_anova1()
-sim1
+# sim1
 ```
 
-## 
+## 对*F*检验和*t*检验的模拟
+<br>
+
+第二步：对三组数据进行*F*检验，得到$F$和$p$值。
+
+第三步：重复第一步和第二步1000次，记录下每次重复中的*p*和*F*值。
+
+第四步：统计*F*值与*p*值的频率分布。
+
 
 ```{r}
-p1<-ggplot(sim1, aes(x=iter,
-                 y=F_val))+
-  geom_line()+
-  theme_bw()
+p1 <- ggplot(sim1, aes(# x=iter,
+                 x=F_val))+
+      geom_histogram()+
+      papaja::theme_apa()
 
-p2<-ggplot(sim1, aes(x=iter,
-                 y=p_val))+
-  geom_line()+
-  geom_hline(yintercept = 0.05, linetype = "dashed")+
-  theme_bw()
-p1+p2
-print(paste('p值<=0.05的占比为',nrow(sim1[sim1$p_val<=0.05,])/nrow(sim1)))
+p2 <- ggplot(sim1, aes(# x=iter,
+                 x=p_val))+
+      geom_histogram() +
+      geom_vline(xintercept = 0.05, linetype = "dashed", color = "red") +
+      papaja::theme_apa()
+
+p1 + p2
+
+print(paste('p值<=0.05的占比为', nrow(sim1[sim1$p_val<=0.05,])/nrow(sim1)))
 ```
+##
 
-## 
+对于同样的数据，假如在每次重复中，我们使用每两组间的*t*检验而不是*F*检验，同样记录下每次重复中*p*值；
 
-假定有三组数据，每组数据包含30个值，都来自平均值为100，标准差为15的正态分布，对其两两之间进行t检验并重复该过程1000次后，每次检验p值\<=0.05的情况如下：
+假如我们在每次重复中只看最小的*p*是否小于0.05，并计算最小*p* <= 0.05的比率：
 
 ```{r}
 # simulation
-set.seed(123)
-
-df <- data.frame(matrix(nrow = 30 * 3, ncol = 2)) %>%
-      dplyr::rename("values" = 1,
-                    "groups" = 2) %>%
-      dplyr::mutate(groups = rep(1:3, each = 30),
-                    groups = as.factor(groups)) %>%
-      dplyr::group_by(groups) %>%
-      dplyr::mutate(values = round(rnorm(30, mean = 100, sd = 15), 0)) %>%
-      dplyr::ungroup()
-
-df %>% dplyr::group_by(groups) %>%
-      dplyr::summarise(mean = mean(values),
-                       sd = sd(values))
-   
-
-
 
 sim_ttest <- function(n = 30, group = 3, N_rep = 1000){
       
@@ -238,61 +247,34 @@ sim_ttest <- function(n = 30, group = 3, N_rep = 1000){
 }
 
 # 运行上述的函数
-sim2<- sim_ttest()
-sim2
+sim2 <- sim_ttest()
+
+# sim2
+
+sim2 <- sim2 %>%
+      dplyr::rowwise() %>%
+      dplyr::mutate(min_p = min(p_val1, p_val2, p_val3))
+
 ```
 
-## 
+
+##
 
 ```{r}
-p1<-ggplot(sim2, aes(x=iter,
-                 y=t_val1))+
-  geom_line()+
-  theme_bw()
+p3 <- ggplot(sim2, aes(# x=iter,
+                 x=min_p))+
+  geom_histogram()+
+  papaja::theme_apa()
 
-p2<-ggplot(sim2, aes(x=iter,
-                 y=p_val1))+
-  geom_line()+
-  geom_hline(yintercept = 0.05, linetype = "dashed")+
-  theme_bw()
-p1+p2
-print(paste('第一次比较，p值<=0.05的占比为',nrow(sim2[sim2$p_val1<=0.05,])/nrow(sim2)))
-```
+p4 <- ggplot(sim2, aes(# x=iter,
+                 x=min_p))+
+  geom_histogram()+
+  geom_vline(xintercept = 0.05, linetype = "dashed", color="red")+
+  papaja::theme_apa()
 
-```{r}
-p1<-ggplot(sim2, aes(x=iter,
-                 y=t_val2))+
-  geom_line()+
-  theme_bw()
+p2+p4
 
-p2<-ggplot(sim2, aes(x=iter,
-                 y=p_val2))+
-  geom_line()+
-  geom_hline(yintercept = 0.05, linetype = "dashed")+
-  theme_bw()
-p1+p2
-print(paste('第二次比较，p值<=0.05的占比为',nrow(sim2[sim2$p_val2<=0.05,])/nrow(sim2)))
-```
-
-```{r}
-p1<-ggplot(sim2, aes(x=iter,
-                 y=t_val3))+
-  geom_line()+
-  theme_bw()
-
-p2<-ggplot(sim2, aes(x=iter,
-                 y=p_val3))+
-  geom_line()+
-  geom_hline(yintercept = 0.05, linetype = "dashed")+
-  theme_bw()
-p1+p2
-print(paste('第三次比较，p值<=0.05的占比为',nrow(sim2[sim2$p_val3<=0.05,])/nrow(sim2)))
-```
-
-## 
-
-```{r}
-print(paste('三次比较中，至少有一次p值<=0.05的占比为',nrow(sim2[sim2$p_val3<=0.05|sim2$p_val2<=0.05|sim2$p_val1<=0.05,])/nrow(sim2)))
+print(paste('p值<=0.05的占比为',nrow(sim2[sim2$min_p<=0.05,])/nrow(sim2)))
 ```
 
 # 1 被试间方差分析原理
@@ -485,7 +467,7 @@ data <- read.csv("data/example2.2.csv")
 
 #进行双因素方差分析
 results <- MANOVA(data=data, dv="variable", between=c("gender", "region"))
-results[1]
+# results[1]
 ```
 
 # 2 被试间方差分析应用
@@ -572,9 +554,9 @@ $$\eta ^2=\frac{SS_b}{SS_b+SS_w} $$
 #p1+p2
 
 p1 <- emmip(results, ~region)+
-  theme_bw()
+  papaja::theme_apa()
 p2 <- emmip(results, ~gender)+
-  theme_bw()
+  papaja::theme_apa()
 p1+p2
 ```
 
@@ -603,7 +585,7 @@ p1+p2
 #p1
 
 emmip(results, gender~ region)+
-  theme_bw()
+  papaja::theme_apa()
 ```
 
 ------------------------------------------------------------------------
@@ -614,7 +596,7 @@ emmip(results, gender~ region)+
 
 
 emmip(results, region~ gender)+
-  theme_bw()
+  papaja::theme_apa()
 ```
 
 ## 简单效应(simple effect) </br></br>
@@ -645,14 +627,14 @@ emmip(results, region~ gender)+
 #  theme_bw()
 #p1+p2
 emmip(results, ~gender| region)+
-  theme_bw()
+  papaja::theme_apa()
 ```
 
 ## 
 
 ```{r}
 emmip(results, ~region| gender)+
-  theme_bw()
+  papaja::theme_apa()
 ```
 
 ------------------------------------------------------------------------
@@ -713,7 +695,7 @@ ggplot(data,aes(x=A,
   geom_boxplot(alpha=0.5,width=0.2)+
   geom_point(position = position_jitter(width = 0.1, height = 0.1))+
   stat_halfeye(adjust = .5, width = .7, .width = 0, justification = -.2, point_colour = NA) + 
-  theme_bw()
+  papaja::theme_apa()
 ```
 
 ## 单因素方差分析 </br></br>
@@ -739,15 +721,15 @@ normality_test3
 p1<-ggplot2::ggplot(mapping = aes(sample = data[data$A==1,]$RT)) +
   geom_qq() +
   geom_qq_line() +
-  theme_minimal()
+  papaja::theme_apa()
 p2<-ggplot2::ggplot(mapping = aes(sample = data[data$A==2,]$RT)) +
   geom_qq() +
   geom_qq_line() +
-  theme_minimal()
+  papaja::theme_apa()
 p3<-ggplot2::ggplot(mapping = aes(sample = data[data$A==3,]$RT)) +
   geom_qq() +
   geom_qq_line() +
-  theme_minimal()
+  papaja::theme_apa()
 p1+p2+p3
 ```
 
@@ -779,7 +761,7 @@ res<-MANOVA(data=data, dv="RT", between=c("A"))
 
 ```{r}
 emmip(res, ~A)+
-  theme_bw()
+  papaja::theme_apa()
 ```
 
 ## 两因素完全随机的方差分析 </br></br>
@@ -815,7 +797,7 @@ ggplot(data, aes(x = B, y = error, group = B)) +
   geom_jitter(position = position_jitter(width = 0.1, height = 0.1), aes(color = B)) +
   labs(x = "Factor A", y = "error", color = "Factor B", fill = "Factor B") +
   stat_halfeye(adjust = .5, width = .7, .width = 0, justification = -.2, point_colour = NA) +
-  theme_bw() +
+  papaja::theme_apa() +
   facet_wrap(~A, ncol = 2)
 ```
 
@@ -872,7 +854,7 @@ qq_plot <- ggplot(data.frame(p_value = p_values), aes(sample = p_value)) +
   geom_qq() +
   geom_qq_line() +
   labs(title = "QQ Plot of Shapiro-Wilk p-values") +
-  theme_minimal()
+  papaja::theme_apa()
 
 # 显示 QQ 图
 print(qq_plot)
@@ -910,7 +892,7 @@ res<-MANOVA(data=data, dv="error", between=c("A","B"))
 
 ```{r}
 emmip(res, A~ B)+
-  theme_bw()
+  papaja::theme_apa()
 ```
 
 ------------------------------------------------------------------------
@@ -919,7 +901,7 @@ emmip(res, A~ B)+
 
 ```{r}
 emmip(res, B~ A)+
-  theme_bw()
+  papaja::theme_apa()
 ```
 
 ## 总结
