@@ -89,11 +89,13 @@ $$F=\frac{MS_B}{MS_W}$$ </br> 当 $H_0$为真时，*F*值服从一个广为人�
 
 </br>
 
-$$F=\frac{MS_B}{MS_W}=\frac{{\frac{SS_b}{df_b}}}{{\frac{SS_w}{df_w}}}$$
+$$F=\frac{MS_B}{MS_W}=\frac{{\frac{SS_b}{df_b}}}{{\frac{SS_w}{df_w}}}$$ 
+
+---
+
 ## 对F检验和t检验的模拟
 
-假定有三组数据，每组数据包含30个值，都来自平均值为100，标准差为15的正态分布，对其进行F检验并重复该过程1000次后，p值<=0.05的情况如下：
-
+假定有三组数据，每组数据包含30个值，都来自平均值为100，标准差为15的正态分布，对其进行F检验并重复该过程1000次后，p值\<=0.05的情况如下：
 
 ```{r}
 #载入包
@@ -101,6 +103,7 @@ if (!requireNamespace("pacman", quietly = TRUE)) {
   install.packages("pacman") }   # install pacman if not installed yet, it will be used for loading packages
 pacman::p_load('tidyverse','bruceR','patchwork','ggdist','stats', "apaTables")
 ```
+
 ```{r}
 # simulation
 set.seed(123)
@@ -155,7 +158,7 @@ sim1 <- sim_anova1()
 sim1
 ```
 
-##
+## 
 
 ```{r}
 p1<-ggplot(sim1, aes(x=iter,
@@ -171,9 +174,10 @@ p2<-ggplot(sim1, aes(x=iter,
 p1+p2
 print(paste('p值<=0.05的占比为',nrow(sim1[sim1$p_val<=0.05,])/nrow(sim1)))
 ```
-##
 
-假定有三组数据，每组数据包含30个值，都来自平均值为100，标准差为15的正态分布，对其两两之间进行t检验并重复该过程1000次后，每次检验p值<=0.05的情况如下：
+## 
+
+假定有三组数据，每组数据包含30个值，都来自平均值为100，标准差为15的正态分布，对其两两之间进行t检验并重复该过程1000次后，每次检验p值\<=0.05的情况如下：
 
 ```{r}
 # simulation
@@ -238,8 +242,7 @@ sim2<- sim_ttest()
 sim2
 ```
 
-
-##
+## 
 
 ```{r}
 p1<-ggplot(sim2, aes(x=iter,
@@ -255,6 +258,7 @@ p2<-ggplot(sim2, aes(x=iter,
 p1+p2
 print(paste('第一次比较，p值<=0.05的占比为',nrow(sim2[sim2$p_val1<=0.05,])/nrow(sim2)))
 ```
+
 ```{r}
 p1<-ggplot(sim2, aes(x=iter,
                  y=t_val2))+
@@ -269,6 +273,7 @@ p2<-ggplot(sim2, aes(x=iter,
 p1+p2
 print(paste('第二次比较，p值<=0.05的占比为',nrow(sim2[sim2$p_val2<=0.05,])/nrow(sim2)))
 ```
+
 ```{r}
 p1<-ggplot(sim2, aes(x=iter,
                  y=t_val3))+
@@ -284,12 +289,11 @@ p1+p2
 print(paste('第三次比较，p值<=0.05的占比为',nrow(sim2[sim2$p_val3<=0.05,])/nrow(sim2)))
 ```
 
-##
+## 
 
 ```{r}
 print(paste('三次比较中，至少有一次p值<=0.05的占比为',nrow(sim2[sim2$p_val3<=0.05|sim2$p_val2<=0.05|sim2$p_val1<=0.05,])/nrow(sim2)))
 ```
-
 
 # 1 被试间方差分析原理
 
@@ -341,7 +345,7 @@ print(paste('三次比较中，至少有一次p值<=0.05的占比为',nrow(sim2[
 ## 单因素完全随机设计的方差分析表</br><br>
 
 |              |            |            |                          |                   |
-|:------------:|:------------:|:------------:|:---------------:|:------------:|
+|:-------------:|:-------------:|:-------------:|:---------------------------------:|:-----------------------:|
 | **变异来源** | **平方和** | **自由度** |         **均方**         |       **F**       |
 |   组间变异   |  SS~组间~  |    p-1     |  MS~组间~=SS~组间~/p-1   | MS~组间~/MS~组内~ |
 |   组内变异   |  SS~组内~  |   p(n-1)   | MS~组内~=SS~组内~/p(n-1) |                   |
@@ -377,20 +381,16 @@ print(paste('三次比较中，至少有一次p值<=0.05的占比为',nrow(sim2[
 
 ------------------------------------------------------------------------
 
-
 ## 单因素完全随机设计方差分析结果</br>
 
-
-
-
-
 ### R code:
-```
+
+```         
 data <- read.csv("data/example2.1.csv")
 
 results <- bruceR::MANOVA(data=data, dv="variable", between=c("region"))
-
 ```
+
 </br>
 
 ### Output:
@@ -451,8 +451,8 @@ results <- bruceR::MANOVA(data=data, dv="variable", between=c("region"))
 
 ## 两因素完全随机设计的方差分析表 </br>
 
-|              |            |            |                           |                 |
-|:------------:|:------------:|:------------:|:----------------:|:------------:|
+|                  |                   |                  |                           |                 |
+|:----------------:|:-----------------:|:----------------:|:-------------------------------------:|:-----------------------:|
 | **变异来源** | **平方和** | **自由度** |         **均方**          |      **F**      |
 |   组间变异   |  SS~组间~  |    pq-1    |                           |                 |
 |              |   SS~A~    |    p-1     |      MS~A~=SS~A~/p-1      | MS~A~/MS~组内~  |
@@ -473,7 +473,7 @@ results <- bruceR::MANOVA(data=data, dv="variable", between=c("region"))
 
 （3）如果存在差异，差异是如何体现出来的呢？</br></br>
 
----
+------------------------------------------------------------------------
 
 ## 两因素完全随机设计方差分析结果</br>
 
@@ -487,8 +487,6 @@ data <- read.csv("data/example2.2.csv")
 results <- MANOVA(data=data, dv="variable", between=c("gender", "region"))
 results[1]
 ```
-
-
 
 # 2 被试间方差分析应用
 
@@ -549,8 +547,6 @@ $$\eta ^2=\frac{SS_b}{SS_b+SS_w} $$
 
 </br></br>
 
-
-
 ```{r}
 #df1 <- data%>%
 #  group_by(region)%>%
@@ -582,17 +578,11 @@ p2 <- emmip(results, ~gender)+
 p1+p2
 ```
 
-
-
-
-
-
-
 ## 交互效应(interaction effect)</br></br>
 
 一因素对因变量的效应，依赖于另一因素，则两因素间存在交互作用。</br>
 
-- 不同性别下，地区对主观幸福感的影响趋势</br>
+-   不同性别下，地区对主观幸福感的影响趋势</br>
 
 ```{r}
 #df1 <- data%>%
@@ -615,9 +605,10 @@ p1+p2
 emmip(results, gender~ region)+
   theme_bw()
 ```
----
 
-- 不同地区下，性别对主观幸福感的影响趋势</br>
+------------------------------------------------------------------------
+
+-   不同地区下，性别对主观幸福感的影响趋势</br>
 
 ```{r}
 
@@ -657,14 +648,12 @@ emmip(results, ~gender| region)+
   theme_bw()
 ```
 
-##
-
+## 
 
 ```{r}
 emmip(results, ~region| gender)+
   theme_bw()
 ```
-
 
 ------------------------------------------------------------------------
 
@@ -685,7 +674,6 @@ MANOVA(data, dv="variable", between=c("gender", "region")) %>%
   EMMEANS("gender", by="region") %>%
   EMMEANS("region", by="gender")
 ```
-
 
 # 3 被试间方差分析流程
 
@@ -710,7 +698,6 @@ data <- read.csv("data/example2.3.csv")%>%
 MANOVA(data=data, dv="RT", between=c("A"))
 ```
 
-
 ------------------------------------------------------------------------
 
 ## 单因素方差分析 </br></br>
@@ -729,14 +716,12 @@ ggplot(data,aes(x=A,
   theme_bw()
 ```
 
-
-
-
 ## 单因素方差分析 </br></br>
 
-2.  统计前提检验</br> 
+2.  统计前提检验</br>
 
 2.1 正态性检验</br></br>
+
 ```{r}
 normality_test1 <- shapiro.test(data[data$A==1,]$RT)
 normality_test2 <- shapiro.test(data[data$A==2,]$RT)
@@ -745,9 +730,11 @@ normality_test1
 normality_test2
 normality_test3
 ```
----
+
+------------------------------------------------------------------------
 
 2.1 正态性检验--QQ图
+
 ```{r}
 p1<-ggplot2::ggplot(mapping = aes(sample = data[data$A==1,]$RT)) +
   geom_qq() +
@@ -764,29 +751,19 @@ p3<-ggplot2::ggplot(mapping = aes(sample = data[data$A==3,]$RT)) +
 p1+p2+p3
 ```
 
-
-
-
-
-
-
 ------------------------------------------------------------------------
 
 ## 单因素方差分析</br></br>
 
-2.  统计前提检验</br> 
+2.  统计前提检验</br>
 
 2.2 同质性/方差齐性检验验</br></br>
-
 
 ```{r}
 MANOVA(data=data, dv="RT", between=c("A"))
 ```
 
 ------------------------------------------------------------------------
-
-
-
 
 ## 单因素方差分析</br></br>
 
@@ -804,8 +781,6 @@ res<-MANOVA(data=data, dv="RT", between=c("A"))
 emmip(res, ~A)+
   theme_bw()
 ```
-
-
 
 ## 两因素完全随机的方差分析 </br></br>
 
@@ -846,7 +821,7 @@ ggplot(data, aes(x = B, y = error, group = B)) +
 
 ## 两因素完全随机的方差分析</br>
 
-2.  统计前提检验 </br> 
+2.  统计前提检验 </br>
 
 2.1 正态性检验 </br>
 
@@ -874,9 +849,10 @@ print(normality_tests)
 
 ## 两因素完全随机的方差分析</br>
 
-2.  统计前提检验 </br> 
+2.  统计前提检验 </br>
 
 2.1 正态性检验--QQ图 </br>
+
 ```{r}
 # 创建一个空的向量，用于存储各组的 p 值
 p_values <- numeric()
@@ -902,19 +878,17 @@ qq_plot <- ggplot(data.frame(p_value = p_values), aes(sample = p_value)) +
 print(qq_plot)
 ```
 
----
+------------------------------------------------------------------------
 
 ## 两因素完全随机的方差分析</br></br>
 
-2.  统计前提检验 </br> 
+2.  统计前提检验 </br>
 
 2.1 同质性检验 </br>
 
 ```{r}
 MANOVA(data=data, dv="error", between=c("A","B"))
 ```
-
-
 
 ## 两因素完全随机的方差分析</br>
 
@@ -932,14 +906,16 @@ res<-MANOVA(data=data, dv="error", between=c("A","B"))
 
 交互效应分析</br></br>
 
-- B因素在A因素两个水平上的影响趋势
+-   B因素在A因素两个水平上的影响趋势
+
 ```{r}
 emmip(res, A~ B)+
   theme_bw()
 ```
----
 
-- A因素在B因素三个水平上的影响趋势
+------------------------------------------------------------------------
+
+-   A因素在B因素三个水平上的影响趋势
 
 ```{r}
 emmip(res, B~ A)+
