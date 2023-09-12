@@ -169,7 +169,7 @@ sim_anova1 <- function(n = 30, group = 3, N_rep = 1000){
 }
 
 # 运行上述的函数
-sim1 <- sim_anova1()
+sim1 <- sim_anova1(N_rep = 10000)
 # sim1
 ```
 
@@ -247,7 +247,7 @@ sim_ttest <- function(n = 30, group = 3, N_rep = 1000){
 }
 
 # 运行上述的函数
-sim2 <- sim_ttest()
+sim2 <- sim_ttest(N_rep = 10000)
 
 # sim2
 
@@ -460,14 +460,19 @@ results <- bruceR::MANOVA(data=data, dv="variable", between=c("region"))
 ## 两因素完全随机设计方差分析结果</br>
 
 ```{r}
-
-
 #载入数据
 data <- read.csv("data/example2.2.csv")
 
 #进行双因素方差分析
 results <- MANOVA(data=data, dv="variable", between=c("gender", "region"))
 # results[1]
+
+# 求第一组的均值
+m1 <- mean(data$variable[data$region == 1 & data$gender == 1])
+
+# 求第一组的SD
+SS1 <- var(data$variable[data$region == 1 & data$gender == 1]) * 10
+
 ```
 
 # 2 被试间方差分析应用
