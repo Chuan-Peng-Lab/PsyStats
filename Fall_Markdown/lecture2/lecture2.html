@@ -391,6 +391,10 @@
 <p>组间变异自由度：df<sub>b</sub>= k-1</p>
 <p><br></p>
 <p><span class="math display">\[F=\frac{MS_B}{MS_W}=\frac{{\frac{SS_b}{df_b}}}{{\frac{SS_w}{df_w}}}\]</span></p>
+</section>
+<section id="对f检验和t检验的模拟" class="slide level2">
+<h2>对F检验和t检验的模拟</h2>
+<p>假定有三组数据，每组数据包含30个值，都来自平均值为100，标准差为15的正态分布，对其进行F检验并重复该过程1000次后，p值&lt;=0.05的情况如下：</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 3
@@ -822,7 +826,7 @@
 418   418 4.419443e-01 0.5079239135
 419   419 3.609023e-02 0.8497668213
 420   420 8.906754e-01 0.3478782510
-421   421 6.091824e-32 1.0000000000
+421   421 2.436730e-31 1.0000000000
 422   422 2.550276e+00 0.1138599411
 423   423 7.106069e-04 0.9787935010
 424   424 1.569079e-01 0.6929782947
@@ -907,7 +911,7 @@
 503   503 8.130968e-01 0.3696676363
 504   504 6.916573e-05 0.9933832195
 505   505 2.486607e+00 0.1184072601
-506   506 3.649518e-30 1.0000000000
+506   506 3.596818e-30 1.0000000000
 507   507 1.828603e+00 0.1797576309
 508   508 1.972620e-01 0.6580303002
 509   509 2.488604e+00 0.1182616131
@@ -1416,6 +1420,7 @@
 <img data-src="lecture2_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section>
 <section id="section-1" class="slide level2">
 <h2></h2>
+<p>假定有三组数据，每组数据包含30个值，都来自平均值为100，标准差为15的正态分布，对其两两之间进行t检验并重复该过程1000次后，每次检验p值&lt;=0.05的情况如下：</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 3
@@ -3536,13 +3541,13 @@
 <img data-src="images\image-3.jpg" class="r-stretch quarto-figure-center"></section>
 <section id="单因素完全随机设计的方差分析表" class="slide level2">
 <h2>单因素完全随机设计的方差分析表<br><br></h2>
-<table style="width:100%;">
+<table>
 <colgroup>
-<col style="width: 19%">
-<col style="width: 19%">
-<col style="width: 19%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 33%">
 <col style="width: 23%">
-<col style="width: 19%">
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -3649,8 +3654,7 @@
 <h3 id="r-code">R code:</h3>
 <pre><code>data &lt;- read.csv("data/example2.1.csv")
 
-results &lt;- bruceR::MANOVA(data=data, dv="variable", between=c("region"))
-</code></pre>
+results &lt;- bruceR::MANOVA(data=data, dv="variable", between=c("region"))</code></pre>
 <p><br></p>
 <h3 id="output">Output:</h3>
 <div class="cell">
@@ -3780,11 +3784,11 @@ DV: variable       1.274   2  27  .296
 <h2>两因素完全随机设计的方差分析表 <br></h2>
 <table>
 <colgroup>
-<col style="width: 18%">
-<col style="width: 18%">
-<col style="width: 18%">
-<col style="width: 24%">
-<col style="width: 18%">
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 32%">
+<col style="width: 21%">
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -4188,13 +4192,15 @@ DV: RT       0.217   2  15  .807
 <ol start="2" type="1">
 <li>统计前提检验<br></li>
 </ol>
-<p>2.1 正态性检验<br><br> ::: {.cell} ::: {.cell-output .cell-output-stdout}</p>
+<p>2.1 正态性检验<br><br></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
 <pre><code>
     Shapiro-Wilk normality test
 
 data:  data[data$A == 1, ]$RT
 W = 0.94988, p-value = 0.7393</code></pre>
-<p>:::</p>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Shapiro-Wilk normality test
@@ -4209,7 +4215,7 @@ W = 0.94988, p-value = 0.7393</code></pre>
 data:  data[data$A == 3, ]$RT
 W = 0.95529, p-value = 0.7828</code></pre>
 </div>
-<p>:::</p>
+</div>
 </section>
 <section class="slide level2">
 
