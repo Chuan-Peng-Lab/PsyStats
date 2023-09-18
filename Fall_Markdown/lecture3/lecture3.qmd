@@ -177,7 +177,7 @@ bruceR::MANOVA(df, dv="variable", between = c("region"))
 | S~1~ | S~2~ | S~3~ |
 | S~4~ | S~5~ | S~6~ |
 | S~7~ | S~8~ | S~9~ |
-
+| ... | ... | ...|
 
 
 ------------------------------------------------------------------------
@@ -260,7 +260,7 @@ $$总自由度：df = np-1$$
 $$实验处理自由度：df_b = p - 1$$
 $$组内变异自由度：df_w = p(n-1)$$
 
-$$残差自由度：df_e = df - df_b$$
+$$残差自由度：df_e = df - df_b=p(n-1)$$
 ```{r echo=TRUE}
 # 总自由度
 df.t <- 3*20 - 1 
@@ -321,7 +321,7 @@ f
 
 调用bruceR直接计算结果如下：
 
-```{r}
+```{r echo=TRUE}
 df <- read.csv('data/example2.2.csv')%>%
   mutate(subject=as.factor(subject),
          region=as.factor(region),
@@ -342,6 +342,9 @@ bruceR::MANOVA(df, dv="variable", between = c("region", "gender"))
 |   S~7~   |   S~8~   |   S~9~   |  S~10~   |  S~11~   |  S~12~   |
 |  S~13~   |  S~14~   |  S~15~   |  S~16~   |  S~17~   |  S~18~   |
 |  S~19~   |  S~20~   |  S~21~   |  S~22~   |  S~23~   |  S~24~   |
+| ... | ... | ...| ... | ... | ...|
+
+
 
 ------------------------------------------------------------------------
 
@@ -462,7 +465,7 @@ $$ab因素交互效应自由度：df_{AB} = (p-1)(q-1)$$
 
 $$组内变异自由度：df_w = pq(n-1)$$
 
-$$残差自由度：df_e = df - df_b$$
+$$残差自由度：df_e = df - df_b = pq(n-1)$$
 ```{r echo=TRUE}
 # 总自由度
 df.t <- 3*2*10 - 1 
@@ -549,22 +552,6 @@ f.rg
 ```
 
 
-
-
-
-```{r echo=TRUE}
-
-
-
-
-ss.rg.t <- ss.r.g.t - ss.g.t - ss.r.t
-ms.g.t <- ss.rg.t
-ms.r.t <- ss.rg.t
-ms.rg.t <- ss.rg.t
-  
-ss.e <- ss - ss.r.g.t
-
-```
 
 
 
@@ -714,108 +701,203 @@ $$具体公式推导请见邓铸《心理统计学与SPSS应用》$$
 
 ## 
 
-研究者想要研究在人们在不同天气情况下的主观幸福感，将按照地区将被试分为8个区组，然后随机测量每个区组内的4个同质被试在相应天气下的主观幸福感。 (尝试手算)
+研究者想要研究在人们在不同天气情况下的主观幸福感，将按照地区将被试分为8个区组，然后随机测量每个区组内的4个同质被试在相应天气下的主观幸福感。
 
-------------------------------------------------------------------------
+调用bruceR直接计算结果如下：
 
-
-
-
-```{r}
+```{r echo=TRUE}
 df <- data.frame(weather1 = c(3,6,4,3,5,7,5,2),
                  weather2 = c(4,6,4,2,4,5,3,3),
                  weather3 = c(8,9,8,7,5,6,7,6),
                  weather4 = c(9,8,8,7,12,13,12,11),
-                 region = as.factor(rep(1:2,each=4)))%>%
+                 region = as.factor(rep(1:8,each=1)))%>%
   rename('w1'=1,
          'w2'=2,
          'w3'=3,
          'w4'=4)
 bruceR::MANOVA(df,dvs=c("w1", "w2", "w3", "w4"), dvs.pattern="w(.)",
-               within = 'w',
-       between = "region")
+               within = 'w')
+```
+
+------------------------------------------------------------------------
+
+## 数据模式
+
+
+|   |   w~1~   |   w~1~   |   w~2~   |   w~2~   |  
+|:--------:|:--------:|:--------:|:--------:|:--------:|
+| 区组1 | S~11~ | S~12~ | S~13~ | S~14~ |
+| 区组2 | S~21~ | S~22~ | S~23~ | S~24~ |
+| ...|  |  |  |  |
+| 区组8 | S~81~ | S~82~ | S~83~ | S~84~ |
+
+------------------------------------------------------------------------
+
+## 
+
+
+
+
+
+第一步：计算平均值
+
+$$总平均数：\bar{x_{t}} = \frac{\sum x_{ij}}{np},p为实验处理水平数，n为区组数$$
+
+$$实验处理各水平平均数：\bar{x_{j}} = \frac{\sum^p x_{ij}}{n},j为实验处理各水平$$
+
+$$各区组平均数：\bar{x_{i}} = \frac{\sum^nx_{ij}}{p},i为各区组$$
+
+
+
+```{r echo=TRUE}
+# 总平均值
+mu <- mean(as.matrix(df[,c('w1','w2','w3','w4')]))
+# 计算各实验处理平均数
+w1 <- mean(df[,'w1']) # w1平均数
+w2 <- mean(df[,'w2']) # w2平均数
+w3 <- mean(df[,'w3']) # w3平均数
+w4 <- mean(df[,'w4']) # w4平均数
+# 计算各区组平均数
+r1 <- mean(as.matrix(df[df['region']==1,c('w1','w2','w3','w4')])) # r1平均数
+r2 <- mean(as.matrix(df[df['region']==2,c('w1','w2','w3','w4')])) # r2平均数
+r3 <- mean(as.matrix(df[df['region']==3,c('w1','w2','w3','w4')])) # r3平均数
+r4 <- mean(as.matrix(df[df['region']==4,c('w1','w2','w3','w4')])) # r4平均数
+r5 <- mean(as.matrix(df[df['region']==5,c('w1','w2','w3','w4')])) # r5平均数
+r6 <- mean(as.matrix(df[df['region']==6,c('w1','w2','w3','w4')])) # r6平均数
+r7 <- mean(as.matrix(df[df['region']==7,c('w1','w2','w3','w4')])) # r7平均数
+r8 <- mean(as.matrix(df[df['region']==8,c('w1','w2','w3','w4')])) # r8平均数
 ```
 
 
-```{r}
-# calculate the average 
-# calculate the average of all data
-mu <- mean(as.matrix(df[,c('w1','w2','w3','w4')])) 
-# calculate the average of each weather
-w1 <- mean(df[,'w1'])
-w2 <- mean(df[,'w2'])
-w3 <- mean(df[,'w3'])
-w4 <- mean(df[,'w4'])
-# calculate the average of each region
-r1 <- mean(as.matrix(df[df['region']==1,c('w1','w2','w3','w4')]))
-r2 <- mean(as.matrix(df[df['region']==2,c('w1','w2','w3','w4')]))
-# calculate the average of each weather and region
-w1r1<- mean(as.matrix(df[df['region']==1,'w1']))
-w2r1<- mean(as.matrix(df[df['region']==1,'w2']))
-w3r1<- mean(as.matrix(df[df['region']==1,'w3']))
-w4r1<- mean(as.matrix(df[df['region']==1,'w4']))
-w1r2<- mean(as.matrix(df[df['region']==2,'w1']))
-w2r2<- mean(as.matrix(df[df['region']==2,'w2']))
-w3r2<- mean(as.matrix(df[df['region']==2,'w3']))
-w4r2<- mean(as.matrix(df[df['region']==2,'w4']))
-# calculate the sum square 
-# calculate sum square of all data
-ss.T <- sum((as.matrix(df[,c('w1','w2','w3','w4')]) - mu)**2)
-# calculate sum square of each weather 
-ss.w1 <- sum((df[,'w1']-w1)**2)
-ss.w2 <- sum((df[,'w2']-w2)**2)
-ss.w3 <- sum((df[,'w3']-w3)**2)
-ss.w4 <- sum((df[,'w4']-w4)**2)
-ss.w <- sum(ss.w1+ss.w2+ss.w3+ss.w4)
-# calculate sum square of each weather 
-ss.r1 <- sum((as.matrix(df[df['region']==1,c('w1','w2','w3','w4')])-r1)**2)
-ss.r2 <- sum((as.matrix(df[df['region']==2,c('w1','w2','w3','w4')])-r2)**2)
-ss.r <- sum(ss.r1+ss.r2)
-# calculate sum square of each weather and region
-ss.w1r1 <- sum((as.matrix(df[df['region']==1,'w1'])-w1r1)**2)
-ss.w2r1 <- sum((as.matrix(df[df['region']==1,'w2'])-w2r1)**2)
-ss.w3r1 <- sum((as.matrix(df[df['region']==1,'w3'])-w3r1)**2)
-ss.w4r1 <- sum((as.matrix(df[df['region']==1,'w4'])-w4r1)**2)
-ss.w1r2 <- sum((as.matrix(df[df['region']==2,'w1'])-w1r2)**2)
-ss.w2r2 <- sum((as.matrix(df[df['region']==2,'w2'])-w2r2)**2)
-ss.w3r2 <- sum((as.matrix(df[df['region']==2,'w3'])-w3r2)**2)
-ss.w4r2 <- sum((as.matrix(df[df['region']==2,'w4'])-w4r2)**2)
-ss.wr <- sum(ss.w1r1+
-             ss.w2r1+
-             ss.w3r1+
-             ss.w4r1+
-             ss.w1r2+
-             ss.w2r2+
-             ss.w3r2+
-             ss.w4r2)
-ss.r.wr <- sum((w1r1-r1)**2+
-               (w2r1-r1)**2+
-               (w3r1-r1)**2+
-               (w4r1-r1)**2+
-               (w1r2-r2)**2+
-               (w2r2-r2)**2+
-               (w3r2-r2)**2+
-               (w4r2-r2)**2)*4
-ss.w.wr <- sum((w1r1-w1)**2+
-               (w2r1-w2)**2+
-               (w3r1-w3)**2+
-               (w4r1-w4)**2+
-               (w1r2-w1)**2+
-               (w2r2-w2)**2+
-               (w3r2-w3)**2+
-               (w4r2-w4)**2)*4
-ss.wr.t <- sum((w1r1-mu)**2+
-               (w2r1-mu)**2+
-               (w3r1-mu)**2+
-               (w4r1-mu)**2+
-               (w1r2-mu)**2+
-               (w2r2-mu)**2+
-               (w3r2-mu)**2+
-               (w4r2-mu)**2)*4
+
+------------------------------------------------------------------------
+
+## 
+
+第二步：计算不同来源的变异
+
+$$总变异：SS = \sum (x - \bar{x_{ij}})^2$$
+
+$$实验处理变异：SS_w = n \sum (\bar{x_j}-\bar{x_t})^2,j为实验处理水平数$$
 
 
+$$区组引起的变异：SS_b = p \sum (\bar{x_j}-\bar{x_t})^2,j为各区组$$
+
+
+$$残差：SS_e = SS - SS_b$$
+
+
+
+```{r echo=TRUE}
+# 总变异
+ss <- sum((as.matrix(df[,c('w1','w2','w3','w4')]) - mu)**2)
+ss
+# 实验处理变异
+ss.w.t <- ((w1 - mu)**2+
+            (w2 - mu)**2+
+            (w3 - mu)**2+
+            (w4 - mu)**2)*8
+ss.w.t
+# 区组变异
+ss.r.t <- ((r1 - mu)**2+
+         (r2 - mu)**2+
+         (r3 - mu)**2+
+         (r4 - mu)**2+
+         (r5 - mu)**2+
+         (r6 - mu)**2+
+         (r7 - mu)**2+
+         (r8 - mu)**2)*4
+ss.r.t
+# 残差
+ss.e <- ss - ss.w.t - ss.r.t
+ss.e
+```
+
+
+------------------------------------------------------------------------
+
+## 
+
+第三步：计算自由度
+
+$$总自由度：df = np-1$$
+
+$$实验处理自由度：df_w = p - 1$$
+
+
+
+$$区组自由度：df_b = n - 1$$
+
+$$残差自由度：df_e = df - df_b = (p-1)(n-1)$$
+```{r echo=TRUE}
+# 总自由度
+df.t <- 4*8 - 1 
+df.t
+# 实验处理自由度
+df.w <- 4 -1  
+df.w
+# 区组自由度
+df.r <- 8 -1
+df.r
+# 残差自由度
+df.e <- df.t - df.w - df.r
+df.e
+```
+
+
+
+
+------------------------------------------------------------------------
+
+## 
+
+第四步：计算均方
+
+$$实验处理均方：MS_w =\frac{SS_w}{df_w}$$
+
+$$区组均方：MS_r =\frac{SS_r}{df_r}$$
+
+
+
+
+$$残差均方：MS_e =\frac{SS_e}{df_e}$$
+
+
+```{r echo=TRUE}
+# 实验处理均方
+ms.w <- ss.w.t/df.w
+ms.w
+# 区组均方
+ms.r <- ss.r.t/df.r
+ms.r
+# 计算残差均方
+ms.e <- ss.e/df.e
+ms.e
+```
+
+
+------------------------------------------------------------------------
+
+## 
+
+第五步：计算F值
+
+$$实验处理的F值：F=\frac{实验处理均方}{残差均方}=\frac{MS_W}{MS_e} =\frac{\frac{SS_W}{df_W}}{\frac{SS_e}{df_e}}$$
+$$区组的F值：F=\frac{区组均方}{残差均方}=\frac{MS_r}{MS_e} =\frac{\frac{SS_r}{df_r}}{\frac{SS_e}{df_e}}$$
+
+
+
+```{r echo=TRUE}
+# 实验处理F值
+f.w <- ms.w/ms.e
+f.w
+# 区组F值
+f.r <- ms.r/ms.e
+f.r
 
 ```
+
+
 
 ------------------------------------------------------------------------
 
@@ -907,7 +989,12 @@ $$SS_{总变异} = SS_{被试间}+(SS_{实验处理}+SS_{残差})$$
 
 $$SS_{残差} = SS_{总变异}-SS_{被试间}-SS_{实验处理}$$
 
-## $$具体公式推导请见邓铸《心理统计学与SPSS应用》$$
+ $$具体公式推导请见邓铸《心理统计学与SPSS应用》$$
+
+
+
+
+----------------------------------------------------------
 
 ## 
 
@@ -917,11 +1004,7 @@ $$SS_{残差} = SS_{总变异}-SS_{被试间}-SS_{实验处理}$$
 
 被试间平方和：$SS_{B} = \sum \frac{\sum x}{k} - \frac{(\sum \sum x)^2}{nk}$
 
-------------------------------------------------------------------------
 
-## 
-
-研究者想要研究在人们在不同天气情况下的主观幸福感，选取8个被试，然后测量每个被试在相应天气下的主观幸福感。
 
 ------------------------------------------------------------------------
 
@@ -981,37 +1064,210 @@ $$SS_{残差} = SS_{总变异}-SS_{被试间}-SS_{实验处理}$$
 
 ------------------------------------------------------------------------
 
-# 工作流程(workflow)
+
+
+## 
+
+有研究者想要探究吃不同食物对个体主观幸福感的影响。探究选取8名被试，分别记录每一位被试食用不同食物时的主观幸福感。试探究食用不同食物是否对主观幸福感产生影响。
+
+
+调用bruceR直接计算结果如下：
+
+```{r echo=TRUE}
+df <- data.frame(food1 = c(3,6,4,3,5,7,5,2),
+                 food2 = c(4,6,4,2,4,5,3,3),
+                 food3 = c(8,9,8,7,5,6,7,6),
+                 food4 = c(9,8,8,7,12,13,12,11),
+                 region = as.factor(rep(1:8,each=1)))%>%
+  rename('w1'=1,
+         'w2'=2,
+         'w3'=3,
+         'w4'=4)
+bruceR::MANOVA(df,dvs=c("w1", "w2", "w3", "w4"), dvs.pattern="w(.)",
+               within = 'w')
+```
+
+------------------------------------------------------------------------
+
+## 数据模式
+
+
+|   |   w~1~   |   w~1~   |   w~2~   |   w~2~   |  
+|:--------:|:--------:|:--------:|:--------:|:--------:|
+| 被试1 | S~11~ | S~12~ | S~13~ | S~14~ |
+| 被试2 | S~21~ | S~22~ | S~23~ | S~24~ |
+| ...|  |  |  |  |
+| 被试8 | S~81~ | S~82~ | S~83~ | S~84~ |
 
 ------------------------------------------------------------------------
 
 ## 
 
-有研究者想要探究吃不同食物对个体主观幸福感的影响。探究选取8名被试，分别记录每一位被试食用不同食物时的主观幸福感。试探究食用不同食物是否对主观幸福感产生影响。（exp3.3.csv）
+
+
+
+
+第一步：计算平均值
+
+$$总平均数：\bar{x_{t}} = \frac{\sum x_{ij}}{np},p为实验处理水平数，n为被试数$$
+
+$$实验处理各水平平均数：\bar{x_{j}} = \frac{\sum^p x_{ij}}{n},j为实验处理各水平$$
+
+$$各被试平均数：\bar{x_{i}} = \frac{\sum^nx_{ij}}{p},i为各被试$$
+
+
+
+```{r echo=TRUE}
+# 总平均值
+mu <- mean(as.matrix(df[,c('w1','w2','w3','w4')]))
+# 计算各实验处理平均数
+w1 <- mean(df[,'w1']) # w1平均数
+w2 <- mean(df[,'w2']) # w2平均数
+w3 <- mean(df[,'w3']) # w3平均数
+w4 <- mean(df[,'w4']) # w4平均数
+# 计算各被试平均数
+s1 <- mean(as.matrix(df[df['region']==1,c('w1','w2','w3','w4')])) # s1平均数
+s2 <- mean(as.matrix(df[df['region']==2,c('w1','w2','w3','w4')])) # s2平均数
+s3 <- mean(as.matrix(df[df['region']==3,c('w1','w2','w3','w4')])) # s3平均数
+s4 <- mean(as.matrix(df[df['region']==4,c('w1','w2','w3','w4')])) # s4平均数
+s5 <- mean(as.matrix(df[df['region']==5,c('w1','w2','w3','w4')])) # s5平均数
+s6 <- mean(as.matrix(df[df['region']==6,c('w1','w2','w3','w4')])) # s6平均数
+s7 <- mean(as.matrix(df[df['region']==7,c('w1','w2','w3','w4')])) # s7平均数
+s8 <- mean(as.matrix(df[df['region']==8,c('w1','w2','w3','w4')])) # s8平均数
+```
+
+
 
 ------------------------------------------------------------------------
 
-## 描述统计
+## 
+
+第二步：计算不同来源的变异
+
+$$总变异：SS = \sum (x - \bar{x_{ij}})^2$$
+
+$$实验处理变异：SS_w = n \sum (\bar{x_j}-\bar{x_t})^2,j为实验处理水平数$$
+
+
+$$被试引起的变异：SS_b = p \sum (\bar{x_j}-\bar{x_t})^2,j为各被试$$
+
+
+$$残差：SS_e = SS - SS_b$$
+
+
+
+```{r echo=TRUE}
+# 总变异
+ss <- sum((as.matrix(df[,c('w1','w2','w3','w4')]) - mu)**2)
+ss
+# 实验处理变异
+ss.w.t <- ((w1 - mu)**2+
+            (w2 - mu)**2+
+            (w3 - mu)**2+
+            (w4 - mu)**2)*8
+ss.w.t
+# 被试变异
+ss.s.t <- ((s1 - mu)**2+
+         (s2 - mu)**2+
+         (s3 - mu)**2+
+         (s4 - mu)**2+
+         (s5 - mu)**2+
+         (s6 - mu)**2+
+         (s7 - mu)**2+
+         (s8 - mu)**2)*4
+ss.s.t
+# 残差
+ss.e <- ss - ss.w.t - ss.s.t
+ss.e
+```
+
 
 ------------------------------------------------------------------------
 
-## 正态性检验
+## 
+
+第三步：计算自由度
+
+$$总自由度：df = np-1$$
+
+$$实验处理自由度：df_w = p - 1$$
+
+
+
+$$被试自由度：df_b = n - 1$$
+
+$$残差自由度：df_e = df - df_b = (p-1)(n-1)$$
+```{r echo=TRUE}
+# 总自由度
+df.t <- 4*8 - 1 
+df.t
+# 实验处理自由度
+df.w <- 4 -1  
+df.w
+# 区组自由度
+df.s <- 8 -1
+df.s
+# 残差自由度
+df.e <- df.t - df.w - df.s
+df.e
+```
+
+
+
 
 ------------------------------------------------------------------------
 
-## 方差齐性检验
+## 
+
+第四步：计算均方
+
+$$实验处理均方：MS_w =\frac{SS_w}{df_w}$$
+
+$被试组均方：MS_r =\frac{SS_s}{df_s}$$
+
+
+
+
+$$残差均方：MS_e =\frac{SS_e}{df_e}$$
+
+
+```{r echo=TRUE}
+# 实验处理均方
+ms.w <- ss.w.t/df.w
+ms.w
+# 区组均方
+ms.s <- ss.r.t/df.r
+ms.s
+# 计算残差均方
+ms.e <- ss.e/df.e
+ms.e
+```
+
 
 ------------------------------------------------------------------------
 
-## 协方差齐性检验
+## 
 
-------------------------------------------------------------------------
+第五步：计算F值
 
-## 方差分析
+$$实验处理的F值：F=\frac{实验处理均方}{残差均方}=\frac{MS_W}{MS_e} =\frac{\frac{SS_W}{df_W}}{\frac{SS_e}{df_e}}$$
+$$被试的F值：F=\frac{被试均方}{残差均方}=\frac{MS_r}{MS_e} =\frac{\frac{SS_r}{df_r}}{\frac{SS_e}{df_e}}$$
 
-------------------------------------------------------------------------
 
-## 事后比较
+
+```{r echo=TRUE}
+# 实验处理F值
+f.w <- ms.w/ms.e
+f.w
+# 被试F值
+f.s <- ms.r/ms.e
+f.s
+
+```
+
+
+
+
 
 ------------------------------------------------------------------------
 
@@ -1020,5 +1276,3 @@ $$SS_{残差} = SS_{总变异}-SS_{被试间}-SS_{实验处理}$$
 （1）单因素随机区组设计
 
 （2）单因素重复测量设计
-
-（3）工作流程(workflow)
