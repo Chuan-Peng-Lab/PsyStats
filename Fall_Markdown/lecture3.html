@@ -575,8 +575,9 @@
 <img data-src="images\image-10.png" class="r-stretch quarto-figure-center"></section>
 <section id="平方和的计算过程-1" class="slide level2">
 <h2>平方和的计算过程 <br><br></h2>
-<p><span class="math display">\[SS_{A} = n \sum^k_{j=1}(\bar{X_j}-\bar{X_t})^2, A因素的组间平方和是假定全体只根据A因素来分组\]</span></p>
-<p><span class="math display">\[SS_{B} = n \sum^k_{j=1}(\bar{X_j}-\bar{X_t})^2, B因素的组间平方和是假定全体只根据B因素来分组 \]</span> <span class="math display">\[SS_{A*B}=SS_b-SS_A-SS_B\]</span></p>
+<p><span class="math display">\[SS_{A} = n \sum^k_{i=1}(\bar{X_i}-\bar{X_t})^2, A因素的组间平方和是假定全体只根据A因素来分组\]</span> 在此处，i代表A因素各水平，如A1，A2，…</p>
+<p><span class="math display">\[SS_{B} = n \sum^k_{j=1}(\bar{X_j}-\bar{X_t})^2, B因素的组间平方和是假定全体只根据B因素来分组 \]</span> 在此处，j代表B因素各水平，如B1，B2，…</p>
+<p><span class="math display">\[SS_{A*B}=SS_b-SS_A-SS_B\]</span></p>
 </section>
 <section id="两因素完全随机设计的方差分析表" class="slide level2">
 <h2>两因素完全随机设计的方差分析表 <br></h2>
@@ -738,8 +739,10 @@ DV: variable       0.252   2  57  .778
 <section id="section" class="slide level2">
 <h2></h2>
 <p>第一步：计算平均值</p>
-<p><span class="math display">\[总平均数：\bar{x_{t}} = \frac{\sum x_{ij}}{np},p为实验处理数，n为实验处理下每组人数\]</span></p>
-<p><span class="math display">\[各实验处理平均数：\bar{x_{j}} = \frac{\sum x_{ij}}{n},i为组内编号，j为实验处理编号\]</span></p>
+<p><span class="math display">\[总平均数：\bar{x_{t}} = \frac{\sum x_{ij}}{np}\]</span> p为实验处理数，n为实验处理下每组人数</p>
+<p>j为实验处理各水平，如实验处理1，实验处理2，…</p>
+<p>i为实验处理下各个体，如个体1，个体2，…</p>
+<p><span class="math display">\[各实验处理平均数：\bar{x_{j}} = \frac{\sum x_{ij}}{n}\]</span></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>mu <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">as.matrix</span>(df[<span class="st">'variable'</span>])) <span class="co"># 总平均值</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a>r1 <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">as.matrix</span>(df[df[<span class="st">'region'</span>]<span class="sc">==</span><span class="dv">1</span>,<span class="st">'variable'</span>])) <span class="co"># region1的平均值</span></span>
@@ -974,9 +977,18 @@ DV: variable       0.704   5  54  .623
 <section id="section-5" class="slide level2">
 <h2></h2>
 <p>第一步：计算平均值</p>
-<p><span class="math display">\[总平均数：\bar{x_{t}} = \frac{\sum x_{ij}}{npq},p为a因素水平数，q为b因素水平数，n为各实验处理下每组人数\]</span></p>
-<p><span class="math display">\[a因素各水平平均数：\bar{x_{j}} = \frac{\sum^p x_{ij}}{nq},j为a因素各水平\]</span> <span class="math display">\[b因素各水平平均数：\bar{x_{j}} = \frac{\sum^qx_{ij}}{np},j为b因素各水平\]</span></p>
-<p><span class="math display">\[ab因素组合后各条件平均数：\bar{x_{j}} = \frac{\sum^{pq}x_{ij}}{n},j为ab因素组合后各条件\]</span></p>
+<p><span class="math display">\[总平均数：\bar{x_{t}} = \frac{\sum x_{ijh}}{npq}\]</span> p为a因素水平数，q为b因素水平数，n为各实验处理下每组人数,</p>
+<p>i为a因素各水平，如a1，a2，…</p>
+<p>j为b因素各水平，如b1，b2，…</p>
+<p>h为组内各个体</p>
+</section>
+<section id="section-6" class="slide level2">
+<h2></h2>
+<p><span class="math display">\[a因素各水平平均数：\bar{x_{a}} = \frac{\sum^p x_{ih}}{nq}\]</span> <span class="math display">\[b因素各水平平均数：\bar{x_{b}} = \frac{\sum^qx_{jh}}{np}\]</span></p>
+<p><span class="math display">\[ab因素组合后各条件平均数：\bar{x_{j}} = \frac{\sum^{pq}x_{ijh}}{n}\]</span></p>
+</section>
+<section id="section-7" class="slide level2">
+<h2></h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a>mu <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">as.matrix</span>(df[<span class="st">'variable'</span>])) <span class="co"># 总平均值</span></span>
 <span id="cb30-2"><a href="#cb30-2"></a><span class="co"># 只考虑单一因素的分组的平均值</span></span>
@@ -994,16 +1006,19 @@ DV: variable       0.704   5  54  .623
 <span id="cb30-14"><a href="#cb30-14"></a>r3g2 <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">as.matrix</span>(df[(df[<span class="st">'region'</span>]<span class="sc">==</span><span class="dv">3</span>)<span class="sc">&amp;</span>(df[<span class="st">'gender'</span>]<span class="sc">==</span><span class="dv">2</span>),<span class="st">'variable'</span>])) <span class="co"># r3g2的平均值</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="section-6" class="slide level2">
+<section id="section-8" class="slide level2">
 <h2></h2>
 <p>第二步：计算不同来源的变异</p>
 <p><span class="math display">\[总变异：SS = \sum (x - \bar{x_{ij}})^2\]</span></p>
-<p><span class="math display">\[实验处理变异：SS_b = n \sum (\bar{x_j}-\bar{x_t})^2,j为ab因素组合后各条件\]</span></p>
-<p><span class="math display">\[a因素主效应引起的变异：SS_A = nq \sum (\bar{x_j}-\bar{x_t})^2,j为a因素各水平\]</span></p>
-<p><span class="math display">\[b因素主效应引起的变异：SS_B = np \sum (\bar{x_j}-\bar{x_t})^2,j为b因素各水平\]</span></p>
-<p><span class="math display">\[ab因素的交互效应引起的变异：SS_AB = SS_b - SS_A - SS_B\]</span></p>
-<p><span class="math display">\[组内变异：SS_w = pq \sum (x - \bar{x_j})^2, j为ab因素组合后各条件\]</span></p>
+<p><span class="math display">\[实验处理变异：SS_b = n \sum (\bar{x_{ij}}-\bar{x_t})^2\]</span></p>
+<p><span class="math display">\[a因素主效应引起的变异：SS_A = nq \sum (\bar{x_i}-\bar{x_t})^2\]</span></p>
+<p><span class="math display">\[b因素主效应引起的变异：SS_B = np \sum (\bar{x_j}-\bar{x_t})^2\]</span></p>
+<p><span class="math display">\[ab因素的交互效应引起的变异：SS_{AB} = SS_b - SS_A - SS_B\]</span></p>
+<p><span class="math display">\[组内变异：SS_w = pq \sum (x - \bar{x_{ij}})^2\]</span></p>
 <p><span class="math display">\[残差：SS_e = SS - SS_b\]</span></p>
+</section>
+<section id="section-9" class="slide level2">
+<h2></h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="co"># 总变异</span></span>
 <span id="cb31-2"><a href="#cb31-2"></a>ss <span class="ot">&lt;-</span> <span class="fu">sum</span>((<span class="fu">as.matrix</span>(df[<span class="st">'variable'</span>])<span class="sc">-</span>mu)<span class="sc">**</span><span class="dv">2</span>)</span>
@@ -1062,13 +1077,19 @@ DV: variable       0.704   5  54  .623
 </div>
 </div>
 </section>
-<section id="section-7" class="slide level2">
+<section id="section-10" class="slide level2">
 <h2></h2>
 <p>第三步：计算自由度</p>
 <p><span class="math display">\[总自由度：df = npq-1\]</span></p>
-<p><span class="math display">\[实验处理自由度：df_b = pq - 1\]</span> <span class="math display">\[a因素主效应自由度：df_A = p-1\]</span> <span class="math display">\[b因素主效应自由度：df_B = q-1\]</span> <span class="math display">\[ab因素交互效应自由度：df_{AB} = (p-1)(q-1)\]</span></p>
+<p><span class="math display">\[实验处理自由度：df_b = pq - 1\]</span></p>
+<p><span class="math display">\[a因素主效应自由度：df_A = p-1\]</span></p>
+<p><span class="math display">\[b因素主效应自由度：df_B = q-1\]</span></p>
+<p><span class="math display">\[ab因素交互效应自由度：df_{AB} = (p-1)(q-1)\]</span></p>
 <p><span class="math display">\[组内变异自由度：df_w = pq(n-1)\]</span></p>
 <p><span class="math display">\[残差自由度：df_e = df - df_b = pq(n-1)\]</span></p>
+</section>
+<section id="section-11" class="slide level2">
+<h2></h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a><span class="co"># 总自由度</span></span>
 <span id="cb45-2"><a href="#cb45-2"></a>df.t <span class="ot">&lt;-</span> <span class="dv">3</span><span class="sc">*</span><span class="dv">2</span><span class="sc">*</span><span class="dv">10</span> <span class="sc">-</span> <span class="dv">1</span> </span>
@@ -1114,12 +1135,15 @@ DV: variable       0.704   5  54  .623
 </div>
 </div>
 </section>
-<section id="section-8" class="slide level2">
+<section id="section-12" class="slide level2">
 <h2></h2>
 <p>第四步：计算均方</p>
 <p><span class="math display">\[a因素主效应均方：MS_A =\frac{SS_A}{df_A}\]</span></p>
-<p><span class="math display">\[b因素主效应均方：MS_B =\frac{SS_B}{df_B}\]</span> <span class="math display">\[ab因素交互效应均方：MS_AB =\frac{SS_AB}{df_AB}\]</span></p>
+<p><span class="math display">\[b因素主效应均方：MS_B =\frac{SS_B}{df_B}\]</span> <span class="math display">\[ab因素交互效应均方：MS_{AB} =\frac{SS_{AB}}{df_{AB}}\]</span></p>
 <p><span class="math display">\[残差均方：MS_e =\frac{SS_e}{df_e}\]</span></p>
+</section>
+<section id="section-13" class="slide level2">
+<h2></h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1"></a><span class="co"># region主效应均方</span></span>
 <span id="cb59-2"><a href="#cb59-2"></a>ms.r <span class="ot">&lt;-</span> ss.r.t<span class="sc">/</span>df.r</span>
@@ -1147,14 +1171,17 @@ DV: variable       0.704   5  54  .623
 </div>
 </div>
 </section>
-<section id="section-9" class="slide level2">
+<section id="section-14" class="slide level2">
 <h2></h2>
 <p>第五步：计算F值</p>
-<p><span class="math display">\[a因素主效应的F值：F = \frac{a因素主效应均方}{残差均方} =\frac{MS_A}{MS_e} =\frac{\frac{SS_A}{df_A}}{\frac{SS_e}{df_e}}\]</span></p>
-<p><span class="math display">\[b因素主效应的F值：F =\frac{b因素主效应均方}{残差均方} =\frac{MS_B}{MS_e} =\frac{\frac{SS_B}{df_B}}{\frac{SS_e}{df_e}}\]</span></p>
-<p><span class="math display">\[ab因素交互效应的F值：F=\frac{ab因素交互效应均方}{残差均方}=\frac{MS_{AB}}{MS_e} =\frac{\frac{SS_{AB}}{df_{AB}}}{\frac{SS_e}{df_e}}\]</span></p>
+<p><span class="math display">\[a因素主效应的F值：F = \frac{a因素主效应均方}{残差均方} \]</span></p>
+<p><span class="math display">\[=\frac{MS_A}{MS_e} =\frac{\frac{SS_A}{df_A}}{\frac{SS_e}{df_e}}\]</span></p>
+<p><span class="math display">\[b因素主效应的F值：F =\frac{b因素主效应均方}{残差均方} \]</span></p>
+<p><span class="math display">\[=\frac{MS_B}{MS_e} =\frac{\frac{SS_B}{df_B}}{\frac{SS_e}{df_e}}\]</span></p>
+<p><span class="math display">\[ab因素交互效应的F值：F=\frac{ab因素交互效应均方}{残差均方}\]</span></p>
+<p><span class="math display">\[=\frac{MS_{AB}}{MS_e} =\frac{\frac{SS_{AB}}{df_{AB}}}{\frac{SS_e}{df_e}}\]</span></p>
 </section>
-<section id="section-10" class="slide level2">
+<section id="section-15" class="slide level2">
 <h2></h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1"></a><span class="co"># region主效应F值</span></span>
@@ -1203,9 +1230,6 @@ DV: variable       0.704   5  54  .623
 <li>根据主效应，交互效应是否显著，选择简单效应检验或者事后多次比较，得到统计结果；</li>
 </ul>
 <p>4.结论</p>
-</section>
-<section class="slide level2">
-
 </section></section>
 <section>
 <section id="单因素随机区组设计" class="title-slide slide level1 center">
@@ -1347,20 +1371,20 @@ DV: variable       0.704   5  54  .623
 <p><span class="math display">\[SS_{残差} = SS_{总变异}-SS_{组间}-SS_{区组}\]</span></p>
 <p><span class="math display">\[具体公式推导请见邓铸《心理统计学与SPSS应用》\]</span></p>
 </section>
-<section id="section-11" class="slide level2">
+<section id="section-16" class="slide level2">
 <h2></h2>
 <p><span class="math display">\[SS_{总变异} = SS_{组间}+SS_{组内}(完全随机设计)\]</span></p>
 <p><span class="math display">\[SS_{总变异} = SS_{组间}+(SS_{区组}+SS_{残差})(随机区组设计)\]</span></p>
 <p><span class="math display">\[SS_{残差} = SS_{总变异}-SS_{组间}-SS_{区组}\]</span></p>
 <p><span class="math display">\[具体公式推导请见邓铸《心理统计学与SPSS应用》\]</span></p>
 </section>
-<section id="section-12" class="slide level2">
+<section id="section-17" class="slide level2">
 <h2></h2>
 <p>总平方和：<span class="math inline">\(SS_{T} = \sum \sum x^2 - \frac{(\sum \sum x)^2}{nk}\)</span></p>
 <p>组间平方和：<span class="math inline">\(SS_{B} = \sum \frac{(\sum x)^2}{n} - \frac{(\sum \sum x)^2}{nk}\)</span></p>
 <p>区组平方和：<span class="math inline">\(SS_{R} = \sum \frac{\sum x}{k} - \frac{(\sum \sum x)^2}{nk}\)</span></p>
 </section>
-<section id="section-13" class="slide level2">
+<section id="section-18" class="slide level2">
 <h2></h2>
 <p>研究者想要研究在人们在不同天气情况下的主观幸福感，将按照地区将被试分为8个区组，然后随机测量每个区组内的4个同质被试在相应天气下的主观幸福感。</p>
 <p>调用bruceR直接计算结果如下：</p>
@@ -1463,12 +1487,18 @@ w       0.1899  .095 .
 </tbody>
 </table>
 </section>
-<section id="section-14" class="slide level2">
+<section id="section-19" class="slide level2">
 <h2></h2>
 <p>第一步：计算平均值</p>
-<p><span class="math display">\[总平均数：\bar{x_{t}} = \frac{\sum x_{ij}}{np},p为实验处理水平数，n为区组数\]</span></p>
-<p><span class="math display">\[实验处理各水平平均数：\bar{x_{j}} = \frac{\sum^p x_{ij}}{n},j为实验处理各水平\]</span></p>
-<p><span class="math display">\[各区组平均数：\bar{x_{i}} = \frac{\sum^nx_{ij}}{p},i为各区组\]</span></p>
+<p><span class="math display">\[总平均数：\bar{x_{t}} = \frac{\sum x_{ij}}{np}\]</span></p>
+<p>p为实验处理水平数，n为区组数</p>
+<p>j为实验处理各水平，如实验处理1，实验处理2，…</p>
+<p>i为各区组，如区组1，区组2，…</p>
+<p><span class="math display">\[实验处理各水平平均数：\bar{x_{j}} = \frac{\sum x_{ij}}{n}\]</span></p>
+<p><span class="math display">\[各区组平均数：\bar{x_{i}} = \frac{\sum x_{ij}}{p}\]</span></p>
+</section>
+<section id="section-20" class="slide level2">
+<h2></h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1"></a><span class="co"># 总平均值</span></span>
 <span id="cb75-2"><a href="#cb75-2"></a>mu <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">as.matrix</span>(df[,<span class="fu">c</span>(<span class="st">'w1'</span>,<span class="st">'w2'</span>,<span class="st">'w3'</span>,<span class="st">'w4'</span>)]))</span>
@@ -1488,13 +1518,16 @@ w       0.1899  .095 .
 <span id="cb75-16"><a href="#cb75-16"></a>r8 <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">as.matrix</span>(df[df[<span class="st">'region'</span>]<span class="sc">==</span><span class="dv">8</span>,<span class="fu">c</span>(<span class="st">'w1'</span>,<span class="st">'w2'</span>,<span class="st">'w3'</span>,<span class="st">'w4'</span>)])) <span class="co"># r8平均数</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="section-15" class="slide level2">
+<section id="section-21" class="slide level2">
 <h2></h2>
 <p>第二步：计算不同来源的变异</p>
 <p><span class="math display">\[总变异：SS = \sum (x - \bar{x_{ij}})^2\]</span></p>
-<p><span class="math display">\[实验处理变异：SS_w = n \sum (\bar{x_j}-\bar{x_t})^2,j为实验处理水平数\]</span></p>
-<p><span class="math display">\[区组引起的变异：SS_b = p \sum (\bar{x_j}-\bar{x_t})^2,j为各区组\]</span></p>
+<p><span class="math display">\[实验处理变异：SS_w = n \sum (\bar{x_j}-\bar{x_t})^2\]</span></p>
+<p><span class="math display">\[区组引起的变异：SS_b = p \sum (\bar{x_i}-\bar{x_t})^2\]</span></p>
 <p><span class="math display">\[残差：SS_e = SS - SS_b\]</span></p>
+</section>
+<section id="section-22" class="slide level2">
+<h2></h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1"></a><span class="co"># 总变异</span></span>
 <span id="cb76-2"><a href="#cb76-2"></a>ss <span class="ot">&lt;-</span> <span class="fu">sum</span>((<span class="fu">as.matrix</span>(df[,<span class="fu">c</span>(<span class="st">'w1'</span>,<span class="st">'w2'</span>,<span class="st">'w3'</span>,<span class="st">'w4'</span>)]) <span class="sc">-</span> mu)<span class="sc">**</span><span class="dv">2</span>)</span>
@@ -1532,13 +1565,16 @@ w       0.1899  .095 .
 </div>
 </div>
 </section>
-<section id="section-16" class="slide level2">
+<section id="section-23" class="slide level2">
 <h2></h2>
 <p>第三步：计算自由度</p>
 <p><span class="math display">\[总自由度：df = np-1\]</span></p>
 <p><span class="math display">\[实验处理自由度：df_w = p - 1\]</span></p>
 <p><span class="math display">\[区组自由度：df_b = n - 1\]</span></p>
 <p><span class="math display">\[残差自由度：df_e = df - df_b = (p-1)(n-1)\]</span></p>
+</section>
+<section id="section-24" class="slide level2">
+<h2></h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1"></a><span class="co"># 总自由度</span></span>
 <span id="cb84-2"><a href="#cb84-2"></a>df.t <span class="ot">&lt;-</span> <span class="dv">4</span><span class="sc">*</span><span class="dv">8</span> <span class="sc">-</span> <span class="dv">1</span> </span>
@@ -1566,12 +1602,15 @@ w       0.1899  .095 .
 </div>
 </div>
 </section>
-<section id="section-17" class="slide level2">
+<section id="section-25" class="slide level2">
 <h2></h2>
 <p>第四步：计算均方</p>
 <p><span class="math display">\[实验处理均方：MS_w =\frac{SS_w}{df_w}\]</span></p>
 <p><span class="math display">\[区组均方：MS_r =\frac{SS_r}{df_r}\]</span></p>
 <p><span class="math display">\[残差均方：MS_e =\frac{SS_e}{df_e}\]</span></p>
+</section>
+<section id="section-26" class="slide level2">
+<h2></h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb92"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1"></a><span class="co"># 实验处理均方</span></span>
 <span id="cb92-2"><a href="#cb92-2"></a>ms.w <span class="ot">&lt;-</span> ss.w.t<span class="sc">/</span>df.w</span>
@@ -1593,10 +1632,13 @@ w       0.1899  .095 .
 </div>
 </div>
 </section>
-<section id="section-18" class="slide level2">
+<section id="section-27" class="slide level2">
 <h2></h2>
 <p>第五步：计算F值</p>
 <p><span class="math display">\[实验处理的F值：F=\frac{实验处理均方}{残差均方}=\frac{MS_W}{MS_e} =\frac{\frac{SS_W}{df_W}}{\frac{SS_e}{df_e}}\]</span> <span class="math display">\[区组的F值：F=\frac{区组均方}{残差均方}=\frac{MS_r}{MS_e} =\frac{\frac{SS_r}{df_r}}{\frac{SS_e}{df_e}}\]</span></p>
+</section>
+<section id="section-28" class="slide level2">
+<h2></h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb98"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1"></a><span class="co"># 实验处理F值</span></span>
 <span id="cb98-2"><a href="#cb98-2"></a>f.w <span class="ot">&lt;-</span> ms.w<span class="sc">/</span>ms.e</span>
@@ -1623,9 +1665,6 @@ w       0.1899  .095 .
 <h2>随机区组设计的缺点</h2>
 <p>1.如实验中含有许多处理水平，可能给形成同质区组，寻找同质被试带来困难；</p>
 <p>2.使用随机区组设计比使用完全随机设计有更多的限定，例如，使用随机区组实验设计的前提假设是，实验中的自变量与无关变量之间没有交互作用。如果交互作用是存在的，使用随机区组实验设计是不合适的。</p>
-</section>
-<section class="slide level2">
-
 </section></section>
 <section>
 <section id="单因素重复测量设计" class="title-slide slide level1 center">
@@ -1636,11 +1675,11 @@ w       0.1899  .095 .
 <h2>单因素重复测量设计</h2>
 <p>1.实验中测量误差引起的变异和未控制的无关变量引起的变异是组内变异的组成部分。其中主要是被试个体差异带来的变异。减少误差变异的一个方法就是控制个体差异引起的无关变异，一个有效的方法就是随机区组设计，而更有效的方法是重复测量实验设计。</p>
 </section>
-<section id="section-19" class="slide level2">
+<section id="section-29" class="slide level2">
 <h2></h2>
 <p>2.重复测量设计的基本方法是：实验中每个被试接受所有的处理水平。这种实验设计的目的是利用被试自己做控制，使被试的各方面特点在所有的处理中保持恒定，以最大限度地控制由被试的个体差异带来的变异。</p>
 </section>
-<section id="section-20" class="slide level2">
+<section id="section-30" class="slide level2">
 <h2></h2>
 <p>3.使用重复测量设计地前提是研究者必须事先假设，当若干处理水平连续实施给同一被试时，被试接受前面的处理对接受后面地处理没有长期影响。当处理地实施对被试有长期影响时，重复测量设计是不合适的。同时，重复测量设计中需要平衡顺序效应的问题。</p>
 </section>
@@ -1761,22 +1800,22 @@ w       0.1899  .095 .
 <p><span class="math display">\[SS_{残差} = SS_{总变异}-SS_{被试间}-SS_{实验处理}\]</span></p>
 <p><span class="math display">\[具体公式推导请见邓铸《心理统计学与SPSS应用》\]</span></p>
 </section>
-<section id="section-21" class="slide level2">
+<section id="section-31" class="slide level2">
 <h2></h2>
 <p>总平方和：<span class="math inline">\(SS_{T} = \sum \sum x^2 - \frac{(\sum \sum x)^2}{nk}\)</span></p>
 <p>实验处理平方和：<span class="math inline">\(SS = \sum \frac{(\sum x)^2}{n} - \frac{(\sum \sum x)^2}{nk}\)</span></p>
 <p>被试间平方和：<span class="math inline">\(SS_{B} = \sum \frac{\sum x}{k} - \frac{(\sum \sum x)^2}{nk}\)</span></p>
 </section>
-<section id="section-22" class="slide level2">
+<section id="section-32" class="slide level2">
 <h2></h2>
-<p>有研究者想要探究吃不同食物对个体主观幸福感的影响。探究选取8名被试，分别记录每一位被试食用不同食物时的主观幸福感。试探究食用不同食物是否对主观幸福感产生影响。</p>
+<p>研究者想要研究在人们在不同天气情况下的主观幸福感，选取8个被试，然后测量每个被试在相应天气下的主观幸福感。</p>
 <p>调用bruceR直接计算结果如下：</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">food1 =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">6</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">5</span>,<span class="dv">2</span>),</span>
-<span id="cb102-2"><a href="#cb102-2"></a>                 <span class="at">food2 =</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">3</span>),</span>
-<span id="cb102-3"><a href="#cb102-3"></a>                 <span class="at">food3 =</span> <span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">8</span>,<span class="dv">7</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">6</span>),</span>
-<span id="cb102-4"><a href="#cb102-4"></a>                 <span class="at">food4 =</span> <span class="fu">c</span>(<span class="dv">9</span>,<span class="dv">8</span>,<span class="dv">8</span>,<span class="dv">7</span>,<span class="dv">12</span>,<span class="dv">13</span>,<span class="dv">12</span>,<span class="dv">11</span>),</span>
-<span id="cb102-5"><a href="#cb102-5"></a>                 <span class="at">region =</span> <span class="fu">as.factor</span>(<span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>,<span class="at">each=</span><span class="dv">1</span>)))<span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">weather1 =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">6</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">5</span>,<span class="dv">2</span>),</span>
+<span id="cb102-2"><a href="#cb102-2"></a>                 <span class="at">weather2 =</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">3</span>),</span>
+<span id="cb102-3"><a href="#cb102-3"></a>                 <span class="at">weather3 =</span> <span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">8</span>,<span class="dv">7</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">6</span>),</span>
+<span id="cb102-4"><a href="#cb102-4"></a>                 <span class="at">weather4 =</span> <span class="fu">c</span>(<span class="dv">9</span>,<span class="dv">8</span>,<span class="dv">8</span>,<span class="dv">7</span>,<span class="dv">12</span>,<span class="dv">13</span>,<span class="dv">12</span>,<span class="dv">11</span>),</span>
+<span id="cb102-5"><a href="#cb102-5"></a>                 <span class="at">subject =</span> <span class="fu">as.factor</span>(<span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>,<span class="at">each=</span><span class="dv">1</span>)))<span class="sc">%&gt;%</span></span>
 <span id="cb102-6"><a href="#cb102-6"></a>  <span class="fu">rename</span>(<span class="st">'w1'</span><span class="ot">=</span><span class="dv">1</span>,</span>
 <span id="cb102-7"><a href="#cb102-7"></a>         <span class="st">'w2'</span><span class="ot">=</span><span class="dv">2</span>,</span>
 <span id="cb102-8"><a href="#cb102-8"></a>         <span class="st">'w3'</span><span class="ot">=</span><span class="dv">3</span>,</span>
@@ -1870,12 +1909,15 @@ w       0.1899  .095 .
 </tbody>
 </table>
 </section>
-<section id="section-23" class="slide level2">
+<section id="section-33" class="slide level2">
 <h2></h2>
 <p>第一步：计算平均值</p>
-<p><span class="math display">\[总平均数：\bar{x_{t}} = \frac{\sum x_{ij}}{np},p为实验处理水平数，n为被试数\]</span></p>
-<p><span class="math display">\[实验处理各水平平均数：\bar{x_{j}} = \frac{\sum^p x_{ij}}{n},j为实验处理各水平\]</span></p>
-<p><span class="math display">\[各被试平均数：\bar{x_{i}} = \frac{\sum^nx_{ij}}{p},i为各被试\]</span></p>
+<p><span class="math display">\[总平均数：\bar{x_{t}} = \frac{\sum x_{ij}}{np}\]</span></p>
+<p>p为实验处理水平数，n为被试数</p>
+<p>j为实验处理各水平，如实验处理1，实验处理2，…</p>
+<p>i为各被试，如被试1，被试2，…</p>
+<p><span class="math display">\[实验处理各水平平均数：\bar{x_{j}} = \frac{\sum x_{ij}}{n}\]</span></p>
+<p><span class="math display">\[各被试平均数：\bar{x_{i}} = \frac{\sum x_{ij}}{p}\]</span> ##</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb104"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1"></a><span class="co"># 总平均值</span></span>
 <span id="cb104-2"><a href="#cb104-2"></a>mu <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">as.matrix</span>(df[,<span class="fu">c</span>(<span class="st">'w1'</span>,<span class="st">'w2'</span>,<span class="st">'w3'</span>,<span class="st">'w4'</span>)]))</span>
@@ -1885,23 +1927,26 @@ w       0.1899  .095 .
 <span id="cb104-6"><a href="#cb104-6"></a>w3 <span class="ot">&lt;-</span> <span class="fu">mean</span>(df[,<span class="st">'w3'</span>]) <span class="co"># w3平均数</span></span>
 <span id="cb104-7"><a href="#cb104-7"></a>w4 <span class="ot">&lt;-</span> <span class="fu">mean</span>(df[,<span class="st">'w4'</span>]) <span class="co"># w4平均数</span></span>
 <span id="cb104-8"><a href="#cb104-8"></a><span class="co"># 计算各被试平均数</span></span>
-<span id="cb104-9"><a href="#cb104-9"></a>s1 <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">as.matrix</span>(df[df[<span class="st">'region'</span>]<span class="sc">==</span><span class="dv">1</span>,<span class="fu">c</span>(<span class="st">'w1'</span>,<span class="st">'w2'</span>,<span class="st">'w3'</span>,<span class="st">'w4'</span>)])) <span class="co"># s1平均数</span></span>
-<span id="cb104-10"><a href="#cb104-10"></a>s2 <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">as.matrix</span>(df[df[<span class="st">'region'</span>]<span class="sc">==</span><span class="dv">2</span>,<span class="fu">c</span>(<span class="st">'w1'</span>,<span class="st">'w2'</span>,<span class="st">'w3'</span>,<span class="st">'w4'</span>)])) <span class="co"># s2平均数</span></span>
-<span id="cb104-11"><a href="#cb104-11"></a>s3 <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">as.matrix</span>(df[df[<span class="st">'region'</span>]<span class="sc">==</span><span class="dv">3</span>,<span class="fu">c</span>(<span class="st">'w1'</span>,<span class="st">'w2'</span>,<span class="st">'w3'</span>,<span class="st">'w4'</span>)])) <span class="co"># s3平均数</span></span>
-<span id="cb104-12"><a href="#cb104-12"></a>s4 <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">as.matrix</span>(df[df[<span class="st">'region'</span>]<span class="sc">==</span><span class="dv">4</span>,<span class="fu">c</span>(<span class="st">'w1'</span>,<span class="st">'w2'</span>,<span class="st">'w3'</span>,<span class="st">'w4'</span>)])) <span class="co"># s4平均数</span></span>
-<span id="cb104-13"><a href="#cb104-13"></a>s5 <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">as.matrix</span>(df[df[<span class="st">'region'</span>]<span class="sc">==</span><span class="dv">5</span>,<span class="fu">c</span>(<span class="st">'w1'</span>,<span class="st">'w2'</span>,<span class="st">'w3'</span>,<span class="st">'w4'</span>)])) <span class="co"># s5平均数</span></span>
-<span id="cb104-14"><a href="#cb104-14"></a>s6 <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">as.matrix</span>(df[df[<span class="st">'region'</span>]<span class="sc">==</span><span class="dv">6</span>,<span class="fu">c</span>(<span class="st">'w1'</span>,<span class="st">'w2'</span>,<span class="st">'w3'</span>,<span class="st">'w4'</span>)])) <span class="co"># s6平均数</span></span>
-<span id="cb104-15"><a href="#cb104-15"></a>s7 <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">as.matrix</span>(df[df[<span class="st">'region'</span>]<span class="sc">==</span><span class="dv">7</span>,<span class="fu">c</span>(<span class="st">'w1'</span>,<span class="st">'w2'</span>,<span class="st">'w3'</span>,<span class="st">'w4'</span>)])) <span class="co"># s7平均数</span></span>
-<span id="cb104-16"><a href="#cb104-16"></a>s8 <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">as.matrix</span>(df[df[<span class="st">'region'</span>]<span class="sc">==</span><span class="dv">8</span>,<span class="fu">c</span>(<span class="st">'w1'</span>,<span class="st">'w2'</span>,<span class="st">'w3'</span>,<span class="st">'w4'</span>)])) <span class="co"># s8平均数</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb104-9"><a href="#cb104-9"></a>s1 <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">as.matrix</span>(df[df[<span class="st">'subject'</span>]<span class="sc">==</span><span class="dv">1</span>,<span class="fu">c</span>(<span class="st">'w1'</span>,<span class="st">'w2'</span>,<span class="st">'w3'</span>,<span class="st">'w4'</span>)])) <span class="co"># s1平均数</span></span>
+<span id="cb104-10"><a href="#cb104-10"></a>s2 <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">as.matrix</span>(df[df[<span class="st">'subject'</span>]<span class="sc">==</span><span class="dv">2</span>,<span class="fu">c</span>(<span class="st">'w1'</span>,<span class="st">'w2'</span>,<span class="st">'w3'</span>,<span class="st">'w4'</span>)])) <span class="co"># s2平均数</span></span>
+<span id="cb104-11"><a href="#cb104-11"></a>s3 <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">as.matrix</span>(df[df[<span class="st">'subject'</span>]<span class="sc">==</span><span class="dv">3</span>,<span class="fu">c</span>(<span class="st">'w1'</span>,<span class="st">'w2'</span>,<span class="st">'w3'</span>,<span class="st">'w4'</span>)])) <span class="co"># s3平均数</span></span>
+<span id="cb104-12"><a href="#cb104-12"></a>s4 <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">as.matrix</span>(df[df[<span class="st">'subject'</span>]<span class="sc">==</span><span class="dv">4</span>,<span class="fu">c</span>(<span class="st">'w1'</span>,<span class="st">'w2'</span>,<span class="st">'w3'</span>,<span class="st">'w4'</span>)])) <span class="co"># s4平均数</span></span>
+<span id="cb104-13"><a href="#cb104-13"></a>s5 <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">as.matrix</span>(df[df[<span class="st">'subject'</span>]<span class="sc">==</span><span class="dv">5</span>,<span class="fu">c</span>(<span class="st">'w1'</span>,<span class="st">'w2'</span>,<span class="st">'w3'</span>,<span class="st">'w4'</span>)])) <span class="co"># s5平均数</span></span>
+<span id="cb104-14"><a href="#cb104-14"></a>s6 <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">as.matrix</span>(df[df[<span class="st">'subject'</span>]<span class="sc">==</span><span class="dv">6</span>,<span class="fu">c</span>(<span class="st">'w1'</span>,<span class="st">'w2'</span>,<span class="st">'w3'</span>,<span class="st">'w4'</span>)])) <span class="co"># s6平均数</span></span>
+<span id="cb104-15"><a href="#cb104-15"></a>s7 <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">as.matrix</span>(df[df[<span class="st">'subject'</span>]<span class="sc">==</span><span class="dv">7</span>,<span class="fu">c</span>(<span class="st">'w1'</span>,<span class="st">'w2'</span>,<span class="st">'w3'</span>,<span class="st">'w4'</span>)])) <span class="co"># s7平均数</span></span>
+<span id="cb104-16"><a href="#cb104-16"></a>s8 <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">as.matrix</span>(df[df[<span class="st">'subject'</span>]<span class="sc">==</span><span class="dv">8</span>,<span class="fu">c</span>(<span class="st">'w1'</span>,<span class="st">'w2'</span>,<span class="st">'w3'</span>,<span class="st">'w4'</span>)])) <span class="co"># s8平均数</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="section-24" class="slide level2">
+<section id="section-34" class="slide level2">
 <h2></h2>
 <p>第二步：计算不同来源的变异</p>
 <p><span class="math display">\[总变异：SS = \sum (x - \bar{x_{ij}})^2\]</span></p>
-<p><span class="math display">\[实验处理变异：SS_w = n \sum (\bar{x_j}-\bar{x_t})^2,j为实验处理水平数\]</span></p>
-<p><span class="math display">\[被试引起的变异：SS_b = p \sum (\bar{x_j}-\bar{x_t})^2,j为各被试\]</span></p>
+<p><span class="math display">\[实验处理变异：SS_w = n \sum (\bar{x_j}-\bar{x_t})^2\]</span></p>
+<p><span class="math display">\[被试引起的变异：SS_b = p \sum (\bar{x_i}-\bar{x_t})^2\]</span></p>
 <p><span class="math display">\[残差：SS_e = SS - SS_b\]</span></p>
+</section>
+<section id="section-35" class="slide level2">
+<h2></h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb105"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a href="#cb105-1"></a><span class="co"># 总变异</span></span>
 <span id="cb105-2"><a href="#cb105-2"></a>ss <span class="ot">&lt;-</span> <span class="fu">sum</span>((<span class="fu">as.matrix</span>(df[,<span class="fu">c</span>(<span class="st">'w1'</span>,<span class="st">'w2'</span>,<span class="st">'w3'</span>,<span class="st">'w4'</span>)]) <span class="sc">-</span> mu)<span class="sc">**</span><span class="dv">2</span>)</span>
@@ -1939,13 +1984,16 @@ w       0.1899  .095 .
 </div>
 </div>
 </section>
-<section id="section-25" class="slide level2">
+<section id="section-36" class="slide level2">
 <h2></h2>
 <p>第三步：计算自由度</p>
 <p><span class="math display">\[总自由度：df = np-1\]</span></p>
 <p><span class="math display">\[实验处理自由度：df_w = p - 1\]</span></p>
 <p><span class="math display">\[被试自由度：df_b = n - 1\]</span></p>
 <p><span class="math display">\[残差自由度：df_e = df - df_b = (p-1)(n-1)\]</span></p>
+</section>
+<section id="section-37" class="slide level2">
+<h2></h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb113"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb113-1"><a href="#cb113-1"></a><span class="co"># 总自由度</span></span>
 <span id="cb113-2"><a href="#cb113-2"></a>df.t <span class="ot">&lt;-</span> <span class="dv">4</span><span class="sc">*</span><span class="dv">8</span> <span class="sc">-</span> <span class="dv">1</span> </span>
@@ -1973,12 +2021,15 @@ w       0.1899  .095 .
 </div>
 </div>
 </section>
-<section id="section-26" class="slide level2">
+<section id="section-38" class="slide level2">
 <h2></h2>
 <p>第四步：计算均方</p>
 <p><span class="math display">\[实验处理均方：MS_w =\frac{SS_w}{df_w}\]</span></p>
-<p><span class="math inline">\(被试组均方：MS_r =\frac{SS_s}{df_s}\)</span>$</p>
+<p><span class="math display">\[被试组均方：MS_r =\frac{SS_s}{df_s}\]</span></p>
 <p><span class="math display">\[残差均方：MS_e =\frac{SS_e}{df_e}\]</span></p>
+</section>
+<section id="section-39" class="slide level2">
+<h2></h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb121"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb121-1"><a href="#cb121-1"></a><span class="co"># 实验处理均方</span></span>
 <span id="cb121-2"><a href="#cb121-2"></a>ms.w <span class="ot">&lt;-</span> ss.w.t<span class="sc">/</span>df.w</span>
@@ -2000,10 +2051,13 @@ w       0.1899  .095 .
 </div>
 </div>
 </section>
-<section id="section-27" class="slide level2">
+<section id="section-40" class="slide level2">
 <h2></h2>
 <p>第五步：计算F值</p>
 <p><span class="math display">\[实验处理的F值：F=\frac{实验处理均方}{残差均方}=\frac{MS_W}{MS_e} =\frac{\frac{SS_W}{df_W}}{\frac{SS_e}{df_e}}\]</span> <span class="math display">\[被试的F值：F=\frac{被试均方}{残差均方}=\frac{MS_r}{MS_e} =\frac{\frac{SS_r}{df_r}}{\frac{SS_e}{df_e}}\]</span></p>
+</section>
+<section id="section-41" class="slide level2">
+<h2></h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb127"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb127-1"><a href="#cb127-1"></a><span class="co"># 实验处理F值</span></span>
 <span id="cb127-2"><a href="#cb127-2"></a>f.w <span class="ot">&lt;-</span> ms.w<span class="sc">/</span>ms.e</span>
@@ -2018,7 +2072,9 @@ w       0.1899  .095 .
 <pre><code>[1] 1.468085</code></pre>
 </div>
 </div>
-</section>
+<p>bruceR的输出：</p>
+
+<img data-src="images/1695035981473.jpg" class="r-stretch"></section>
 <section id="随机区组设计与重复测量设计的联系和区别" class="slide level2">
 <h2>随机区组设计与重复测量设计的联系和区别</h2>
 <div class="quarto-layout-panel">
