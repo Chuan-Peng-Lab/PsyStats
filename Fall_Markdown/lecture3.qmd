@@ -107,9 +107,13 @@ $$组间平方和:SS_{B}=SS_{T}-SS_{W}=\sum \sum x^2 - \sum \frac{(\sum x)^2}{n}
 
 ## 平方和的计算过程 </br></br>
 
-$$SS_{A} = n \sum^k_{j=1}(\bar{X_j}-\bar{X_t})^2, A因素的组间平方和是假定全体只根据A因素来分组$$
+$$SS_{A} = n \sum^k_{i=1}(\bar{X_i}-\bar{X_t})^2, A因素的组间平方和是假定全体只根据A因素来分组$$
+在此处，i代表A因素各水平，如A1，A2，...
 
-$$SS_{B} = n \sum^k_{j=1}(\bar{X_j}-\bar{X_t})^2, B因素的组间平方和是假定全体只根据B因素来分组 $$ $$SS_{A*B}=SS_b-SS_A-SS_B$$
+$$SS_{B} = n \sum^k_{j=1}(\bar{X_j}-\bar{X_t})^2, B因素的组间平方和是假定全体只根据B因素来分组 $$ 
+在此处，j代表B因素各水平，如B1，B2，...
+
+$$SS_{A*B}=SS_b-SS_A-SS_B$$
 
 ------------------------------------------------------------------------
 
@@ -187,9 +191,16 @@ bruceR::MANOVA(df, dv="variable", between = c("region"))
 
 第一步：计算平均值
 
-$$总平均数：\bar{x_{t}} = \frac{\sum x_{ij}}{np},p为实验处理数，n为实验处理下每组人数$$
+$$总平均数：\bar{x_{t}} = \frac{\sum x_{ij}}{np}$$
+p为实验处理数，n为实验处理下每组人数
 
-$$各实验处理平均数：\bar{x_{j}} = \frac{\sum x_{ij}}{n},i为组内编号，j为实验处理编号$$
+j为实验处理各水平，如实验处理1，实验处理2，...
+
+i为实验处理下各个体，如个体1，个体2，...
+
+$$各实验处理平均数：\bar{x_{j}} = \frac{\sum x_{ij}}{n}$$
+
+##
 
 ```{r echo=TRUE}
 mu <- mean(as.matrix(df['variable'])) # 总平均值
@@ -209,6 +220,8 @@ $$总变异：SS = \sum (x - \bar{x_{ij}})^2$$
 $$实验处理变异：SS_b = n \sum (\bar{x_j}-\bar{x_t})^2$$ $$组内变异：SS_w = p \sum (x - \bar{x_j})^2$$
 
 $$残差：SS_e = SS - SS_b$$
+
+##
 
 ```{r echo=TRUE}
 # 计算总平方和
@@ -241,6 +254,8 @@ $$总自由度：df = np-1$$
 $$实验处理自由度：df_b = p - 1$$ $$组内变异自由度：df_w = p(n-1)$$
 
 $$残差自由度：df_e = df - df_b=p(n-1)$$
+
+##
 
 ```{r echo=TRUE}
 # 总自由度
@@ -327,11 +342,25 @@ bruceR::MANOVA(df, dv="variable", between = c("region", "gender"))
 
 第一步：计算平均值
 
-$$总平均数：\bar{x_{t}} = \frac{\sum x_{ij}}{npq},p为a因素水平数，q为b因素水平数，n为各实验处理下每组人数$$
+$$总平均数：\bar{x_{t}} = \frac{\sum x_{ijh}}{npq}$$
+p为a因素水平数，q为b因素水平数，n为各实验处理下每组人数,
 
-$$a因素各水平平均数：\bar{x_{j}} = \frac{\sum^p x_{ij}}{nq},j为a因素各水平$$ $$b因素各水平平均数：\bar{x_{j}} = \frac{\sum^qx_{ij}}{np},j为b因素各水平$$
+i为a因素各水平，如a1，a2，...
 
-$$ab因素组合后各条件平均数：\bar{x_{j}} = \frac{\sum^{pq}x_{ij}}{n},j为ab因素组合后各条件$$
+j为b因素各水平，如b1，b2，...
+
+h为组内各个体
+
+##
+
+$$a因素各水平平均数：\bar{x_{a}} = \frac{\sum^p x_{ih}}{nq}$$ 
+$$b因素各水平平均数：\bar{x_{b}} = \frac{\sum^qx_{jh}}{np}$$
+
+$$ab因素组合后各条件平均数：\bar{x_{j}} = \frac{\sum^{pq}x_{ijh}}{n}$$
+
+
+##
+
 
 ```{r echo=TRUE}
 mu <- mean(as.matrix(df['variable'])) # 总平均值
@@ -358,17 +387,19 @@ r3g2 <- mean(as.matrix(df[(df['region']==3)&(df['gender']==2),'variable'])) # r3
 
 $$总变异：SS = \sum (x - \bar{x_{ij}})^2$$
 
-$$实验处理变异：SS_b = n \sum (\bar{x_j}-\bar{x_t})^2,j为ab因素组合后各条件$$
+$$实验处理变异：SS_b = n \sum (\bar{x_{ij}}-\bar{x_t})^2$$
 
-$$a因素主效应引起的变异：SS_A = nq \sum (\bar{x_j}-\bar{x_t})^2,j为a因素各水平$$
+$$a因素主效应引起的变异：SS_A = nq \sum (\bar{x_i}-\bar{x_t})^2$$
 
-$$b因素主效应引起的变异：SS_B = np \sum (\bar{x_j}-\bar{x_t})^2,j为b因素各水平$$
+$$b因素主效应引起的变异：SS_B = np \sum (\bar{x_j}-\bar{x_t})^2$$
 
-$$ab因素的交互效应引起的变异：SS_AB = SS_b - SS_A - SS_B$$
+$$ab因素的交互效应引起的变异：SS_{AB} = SS_b - SS_A - SS_B$$
 
-$$组内变异：SS_w = pq \sum (x - \bar{x_j})^2, j为ab因素组合后各条件$$
+$$组内变异：SS_w = pq \sum (x - \bar{x_{ij}})^2$$
 
 $$残差：SS_e = SS - SS_b$$
+
+##
 
 ```{r echo=TRUE}
 # 总变异
@@ -415,11 +446,21 @@ ss.e
 
 $$总自由度：df = npq-1$$
 
-$$实验处理自由度：df_b = pq - 1$$ $$a因素主效应自由度：df_A = p-1$$ $$b因素主效应自由度：df_B = q-1$$ $$ab因素交互效应自由度：df_{AB} = (p-1)(q-1)$$
+$$实验处理自由度：df_b = pq - 1$$ 
+
+
+$$a因素主效应自由度：df_A = p-1$$ 
+
+$$b因素主效应自由度：df_B = q-1$$ 
+
+$$ab因素交互效应自由度：df_{AB} = (p-1)(q-1)$$
 
 $$组内变异自由度：df_w = pq(n-1)$$
 
 $$残差自由度：df_e = df - df_b = pq(n-1)$$
+
+##
+
 
 ```{r echo=TRUE}
 # 总自由度
@@ -453,9 +494,11 @@ df.e
 
 $$a因素主效应均方：MS_A =\frac{SS_A}{df_A}$$
 
-$$b因素主效应均方：MS_B =\frac{SS_B}{df_B}$$ $$ab因素交互效应均方：MS_AB =\frac{SS_AB}{df_AB}$$
+$$b因素主效应均方：MS_B =\frac{SS_B}{df_B}$$ $$ab因素交互效应均方：MS_{AB} =\frac{SS_{AB}}{df_{AB}}$$
 
 $$残差均方：MS_e =\frac{SS_e}{df_e}$$
+
+##
 
 ```{r echo=TRUE}
 # region主效应均方
@@ -478,11 +521,17 @@ ms.e
 
 第五步：计算F值
 
-$$a因素主效应的F值：F = \frac{a因素主效应均方}{残差均方} =\frac{MS_A}{MS_e} =\frac{\frac{SS_A}{df_A}}{\frac{SS_e}{df_e}}$$
+$$a因素主效应的F值：F = \frac{a因素主效应均方}{残差均方} $$
 
-$$b因素主效应的F值：F =\frac{b因素主效应均方}{残差均方} =\frac{MS_B}{MS_e} =\frac{\frac{SS_B}{df_B}}{\frac{SS_e}{df_e}}$$
+$$=\frac{MS_A}{MS_e} =\frac{\frac{SS_A}{df_A}}{\frac{SS_e}{df_e}}$$
 
-$$ab因素交互效应的F值：F=\frac{ab因素交互效应均方}{残差均方}=\frac{MS_{AB}}{MS_e} =\frac{\frac{SS_{AB}}{df_{AB}}}{\frac{SS_e}{df_e}}$$
+$$b因素主效应的F值：F =\frac{b因素主效应均方}{残差均方} $$
+
+$$=\frac{MS_B}{MS_e} =\frac{\frac{SS_B}{df_B}}{\frac{SS_e}{df_e}}$$
+
+$$ab因素交互效应的F值：F=\frac{ab因素交互效应均方}{残差均方}$$
+
+$$=\frac{MS_{AB}}{MS_e} =\frac{\frac{SS_{AB}}{df_{AB}}}{\frac{SS_e}{df_e}}$$
 
 ------------------------------------------------------------------------
 
@@ -535,7 +584,7 @@ bruceR输出：
 
 4.结论
 
-------------------------------------------------------------------------
+
 
 # 单因素随机区组设计
 
@@ -680,11 +729,20 @@ bruceR::MANOVA(df,dvs=c("w1", "w2", "w3", "w4"), dvs.pattern="w(.)",
 
 第一步：计算平均值
 
-$$总平均数：\bar{x_{t}} = \frac{\sum x_{ij}}{np},p为实验处理水平数，n为区组数$$
+$$总平均数：\bar{x_{t}} = \frac{\sum x_{ij}}{np}$$
 
-$$实验处理各水平平均数：\bar{x_{j}} = \frac{\sum^p x_{ij}}{n},j为实验处理各水平$$
+p为实验处理水平数，n为区组数
 
-$$各区组平均数：\bar{x_{i}} = \frac{\sum^nx_{ij}}{p},i为各区组$$
+j为实验处理各水平，如实验处理1，实验处理2，...
+
+i为各区组，如区组1，区组2，...
+
+$$实验处理各水平平均数：\bar{x_{j}} = \frac{\sum x_{ij}}{n}$$
+
+$$各区组平均数：\bar{x_{i}} = \frac{\sum x_{ij}}{p}$$
+
+
+##
 
 ```{r echo=TRUE}
 # 总平均值
@@ -713,11 +771,13 @@ r8 <- mean(as.matrix(df[df['region']==8,c('w1','w2','w3','w4')])) # r8平均数
 
 $$总变异：SS = \sum (x - \bar{x_{ij}})^2$$
 
-$$实验处理变异：SS_w = n \sum (\bar{x_j}-\bar{x_t})^2,j为实验处理水平数$$
+$$实验处理变异：SS_w = n \sum (\bar{x_j}-\bar{x_t})^2$$
 
-$$区组引起的变异：SS_b = p \sum (\bar{x_j}-\bar{x_t})^2,j为各区组$$
+$$区组引起的变异：SS_b = p \sum (\bar{x_i}-\bar{x_t})^2$$
 
 $$残差：SS_e = SS - SS_b$$
+
+##
 
 ```{r echo=TRUE}
 # 总变异
@@ -758,6 +818,8 @@ $$区组自由度：df_b = n - 1$$
 
 $$残差自由度：df_e = df - df_b = (p-1)(n-1)$$
 
+##
+
 ```{r echo=TRUE}
 # 总自由度
 df.t <- 4*8 - 1 
@@ -785,6 +847,8 @@ $$区组均方：MS_r =\frac{SS_r}{df_r}$$
 
 $$残差均方：MS_e =\frac{SS_e}{df_e}$$
 
+##
+
 ```{r echo=TRUE}
 # 实验处理均方
 ms.w <- ss.w.t/df.w
@@ -803,7 +867,7 @@ ms.e
 
 第五步：计算F值
 
-## $$实验处理的F值：F=\frac{实验处理均方}{残差均方}=\frac{MS_W}{MS_e} =\frac{\frac{SS_W}{df_W}}{\frac{SS_e}{df_e}}$$ $$区组的F值：F=\frac{区组均方}{残差均方}=\frac{MS_r}{MS_e} =\frac{\frac{SS_r}{df_r}}{\frac{SS_e}{df_e}}$$
+$$实验处理的F值：F=\frac{实验处理均方}{残差均方}=\frac{MS_W}{MS_e} =\frac{\frac{SS_W}{df_W}}{\frac{SS_e}{df_e}}$$ $$区组的F值：F=\frac{区组均方}{残差均方}=\frac{MS_r}{MS_e} =\frac{\frac{SS_r}{df_r}}{\frac{SS_e}{df_e}}$$
 
 ## 
 
@@ -837,7 +901,7 @@ bruceR输出：
 
 2.使用随机区组设计比使用完全随机设计有更多的限定，例如，使用随机区组实验设计的前提假设是，实验中的自变量与无关变量之间没有交互作用。如果交互作用是存在的，使用随机区组实验设计是不合适的。
 
-------------------------------------------------------------------------
+
 
 # 单因素重复测量设计
 
@@ -960,11 +1024,20 @@ bruceR::MANOVA(df,dvs=c("w1", "w2", "w3", "w4"), dvs.pattern="w(.)",
 
 第一步：计算平均值
 
-$$总平均数：\bar{x_{t}} = \frac{\sum x_{ij}}{np},p为实验处理水平数，n为被试数$$
+$$总平均数：\bar{x_{t}} = \frac{\sum x_{ij}}{np}$$
 
-$$实验处理各水平平均数：\bar{x_{j}} = \frac{\sum^p x_{ij}}{n},j为实验处理各水平$$
+p为实验处理水平数，n为被试数
 
-$$各被试平均数：\bar{x_{i}} = \frac{\sum^nx_{ij}}{p},i为各被试$$
+j为实验处理各水平，如实验处理1，实验处理2，...
+
+i为各被试，如被试1，被试2，...
+
+
+$$实验处理各水平平均数：\bar{x_{j}} = \frac{\sum x_{ij}}{n}$$
+
+$$各被试平均数：\bar{x_{i}} = \frac{\sum x_{ij}}{p}$$
+##
+
 
 ```{r echo=TRUE}
 # 总平均值
@@ -993,11 +1066,13 @@ s8 <- mean(as.matrix(df[df['subject']==8,c('w1','w2','w3','w4')])) # s8平均数
 
 $$总变异：SS = \sum (x - \bar{x_{ij}})^2$$
 
-$$实验处理变异：SS_w = n \sum (\bar{x_j}-\bar{x_t})^2,j为实验处理水平数$$
+$$实验处理变异：SS_w = n \sum (\bar{x_j}-\bar{x_t})^2$$
 
-$$被试引起的变异：SS_b = p \sum (\bar{x_j}-\bar{x_t})^2,j为各被试$$
+$$被试引起的变异：SS_b = p \sum (\bar{x_i}-\bar{x_t})^2$$
 
 $$残差：SS_e = SS - SS_b$$
+
+##
 
 ```{r echo=TRUE}
 # 总变异
@@ -1038,6 +1113,8 @@ $$被试自由度：df_b = n - 1$$
 
 $$残差自由度：df_e = df - df_b = (p-1)(n-1)$$
 
+##
+
 ```{r echo=TRUE}
 # 总自由度
 df.t <- 4*8 - 1 
@@ -1061,9 +1138,11 @@ df.e
 
 $$实验处理均方：MS_w =\frac{SS_w}{df_w}$$
 
-$被试组均方：MS_r =\frac{SS_s}{df_s}$\$
+$$被试组均方：MS_r =\frac{SS_s}{df_s}$$
 
 $$残差均方：MS_e =\frac{SS_e}{df_e}$$
+
+##
 
 ```{r echo=TRUE}
 # 实验处理均方
