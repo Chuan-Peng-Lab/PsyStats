@@ -186,108 +186,12 @@ $$H_0: \mu_{jk} - \mu_{j'k} - \mu_{jk'}+ \mu_{j'k'}= 0$$或$$(αβ)_{jk}=0，(α
 ## 平方和与自由度分解<br>
 
 ![](images/fig1.png)
+---
+## 两因素重复测量设计的平方和计算<br>
 
-## 平方和计算<br>
-
--   各种基本量的计算 $$Y=\frac{(\sum_{i=1}^{n}\sum_{j=1}^{p}\sum_{k=1}^{q}Y_{ijk}  )^2}{npq}$$ $$ABS=\sum_{i=1}^{n}\sum_{j=1}^{p}\sum_{k=1}^{q}Y_{ijk}^2$$ $$S=\sum_{i=1}^{n}\frac{(\sum_{j=1}^{p}\sum_{k=1}^{q}Y_{ijk})^2}{pq} $$ $$A=\sum_{j=1}^{p}\frac{\sum_{i=1}^{n}(\sum_{k=1}^{q}Y_{ijk})^2}{nq} $$ $$B=\sum_{k=1}^{q}\frac{(\sum_{i=1}^{n}\sum_{j=1}^{p}Y_{ijk})^2}{nq} $$ $$AS=\sum_{i=1}^{n}\sum_{j=1}^{p}\frac{(\sum_{k=1}^{q}Y_{ijk})^2}{q} $$ $$BS=\sum_{i=1}^{n}\sum_{k=1}^{q}\frac{(\sum_{j=1}^{p}Y_{ijk})^2}{p} $$ $$AB=\sum_{j=1}^{p}\sum_{k=1}^{q}\frac{(\sum_{i=1}^{n}Y_{ijk})^2}{n} $$
-
-## 平方和计算
-
-SS~总变异~=\[ABS\]-\[Y\] <br>
-
-SS~被试间~=\[S\]-\[Y\] <br>
-
-SS~被试内~=SS~总变异~-SS~被试间~ <br>
-
-SS~A~=\[A\]-\[Y\] <br>
-
-SS~A×被试~=\[AS\]-\[Y\] <br>
-
-SS~B~=\[B\]-\[Y\] <br>
-
-SS~B×被试异~=\[BS\]-\[Y\] <br>
-
-SS~AB~=\[AB\]-\[Y\] <br>
-
-SS~A×B×被试~=SS~被试内~-SS~A~-SS~A×被试~-SS~B~-SS~B×被试异~-SS~AB~<br>
-
-## 练习
-
-阅读理解中的影响因素探索（假想实验）<br>
-
-假定被试阅读前一篇文章不会对阅读后一篇文章产生系统的影响。每个被试每次阅读一篇文章，阅读顺序进行平衡。<br>
-
--   研究者操纵生字密度和主题熟悉性这两个被试内因素。<br>
-
--   主题熟悉性有两个水平：a1，a2； <br>
-
--   生字密度有三个水平：b1，b2，b3。<br>
-
--   被试 n = 4名。
-
-## 数据
-
-|     |        |        |        |        |        |        |
-|:---:|:------:|:------:|:------:|:------:|:------:|:------:|
-|     | **a1** | **a1** | **a1** | **a2** | **a2** | **a2** |
-|     | **b1** | **b2** | **b3** | **b1** | **b2** | **b3** |
-| S1  |   3    |   4    |   5    |   4    |   8    |   12   |
-| S2  |   6    |   6    |   7    |   5    |   9    |   13   |
-| S3  |   4    |   4    |   5    |   3    |   8    |   12   |
-| S4  |   3    |   2    |   2    |   3    |   7    |   11   |
-
-$$m=6.08$$
-
-## 计算SS总变异与SS被试间变异
-
-|     |        |     |     |     |     |     |         |
-|:---:|:------:|:---:|:---:|:---:|:---:|:---:|---------|
-|     |   a1   | a1  | a1  | a2  | a2  | a2  |         |
-|     |   b1   | b2  | b3  | b1  | b2  | b3  | S       |
-| S1  | 3(n=1) |  4  |  5  |  4  |  8  | 12  | 36(n=6) |
-| S2  |   6    |  6  |  7  |  5  |  9  | 13  | 46      |
-| S3  |   4    |  4  |  5  |  3  |  8  | 12  | 36      |
-| S4  |   3    |  2  |  2  |  3  |  7  | 11  | 28      |
-
-$$SS~总变异~=(3 - m)^2 + (6 - m)^2 + (4 - m)^2 + … + (12 - m)^2 + (11 - m)^2$$ <br>
-
-$$SS被试间 = (36 - m)^2 + (46 - m)^2 + (36 - m)^2 + (28 - m)^2$$
-
-## 计算SS~A~、SS~B~、SS~AB~
-
-|     |         |     |          |     |
-|-----|---------|-----|----------|-----|
-|     | a1      | a2  | $$\sum$$ | B   |
-| b1  | 16(n=4) | 15  | 31       | 31  |
-| b2  | 16      | 32  | 48       | 48  |
-| b3  | 19      | 48  | 67       | 67  |
-|     | 51      | 95  |          |     |
-
-$$SS_A = (51 - m)^2 + (95 - m)^2$$
-
-$$SS_B = (31 - m)^2 + (48 - m)^2 + (67 - m)^2$$
-
-$$SS_{AB} = (16 - m)^2 + (16 - m)^2 + … + (67 - m)^2 - SSA - SSB$$
-
-## 计算SSA*被试、SSB*被试、SSA*B*被试
-
-|     |         |     |
-|-----|---------|-----|
-|     | a1      | a2  |
-| S1  | 12(n=3) | 24  |
-| S2  | 19      | 27  |
-| S3  | 13      | 23  |
-| S4  | 7       | 21  |
-
-|     |        |     |     |
-|-----|--------|-----|-----|
-|     | b1     | b2  | b3  |
-| S1  | 7(n=2) | 12  | 17  |
-| S2  | 11     | 15  | 20  |
-| S3  | 7      | 12  | 17  |
-| S4  | 6      | 9   | 13  |
-
-$$SSA*被试 = (12 - m)^2 + (19 - m)^2 + … + (21 - m)^2 - SS被试间 - SSA$$ $$SSB*被试 = (7 - m)^2 + (11 - m)^2 + … + (17 - m)^2 - SS被试间 - SSB$$ $$SSA*B*被试 = SS被试内 - SSA - SSA*被试 - SSB - SSB*被试 -SSAB$$
+$$SS_{总变异}=SS_{组间}+SS_{组内}$$
+$$SS_{总变异}=SS_{与处理无关的个体差异(被试间)}+SS_{被试内}$$ 
+$$SS_{被试内}=SS_A+SS_{A*被试}+SS_B+SS_{B*被试}+SS_{AB}+SS_{AB*被试}$$
 
 ## 方差分析表<br>
 
@@ -303,6 +207,326 @@ $$SSA*被试 = (12 - m)^2 + (19 - m)^2 + … + (21 - m)^2 - SS被试间 - SSA$$ 
 | AB         | SS~AB~         | (p-1)(q-1)      | MS~AB~=SS~AB~/(p-1)(q-1)                      | MS~AB~/MS~A\*B\*被试~ |
 | A\*B\*被试 | SS~A\*B\*被试~ | (p-1)(q-1)(n-1) | MS~A\*B\*被试~=SS~A\*B\*被试~/(p-1)(q-1)(n-1) |                       |
 | 总和       | SS~总变异~     |                 |                                               |                       |
+
+
+## 实例练习
+
+阅读理解中的影响因素探索（假想实验）<br>
+
+假定被试阅读前一篇文章不会对阅读后一篇文章产生系统的影响。每个被试每次阅读一篇文章，阅读顺序进行平衡。<br>
+
+-   研究者操纵生字密度和主题熟悉性这两个被试内因素。<br>
+
+-   主题熟悉性有两个水平：a1，a2； <br>
+
+-   生字密度有三个水平：b1，b2，b3。<br>
+
+-   被试 n = 4名。
+
+## 数据与数据框
+
+|     |        |        |        |        |        |        |
+|:---:|:------:|:------:|:------:|:------:|:------:|:------:|
+|     | **a1** | **a1** | **a1** | **a2** | **a2** | **a2** |
+|     | **b1** | **b2** | **b3** | **b1** | **b2** | **b3** |
+| S1  |   3    |   4    |   5    |   4    |   8    |   12   |
+| S2  |   6    |   6    |   7    |   5    |   9    |   13   |
+| S3  |   4    |   4    |   5    |   3    |   8    |   12   |
+| S4  |   3    |   2    |   2    |   3    |   7    |   11   |
+
+```{r}
+#载入包
+if (!requireNamespace("pacman", quietly = TRUE)) {
+  install.packages("pacman") }   # install pacman if not installed yet, it will be used for loading packages
+
+pacman::p_load('tidyverse','bruceR','patchwork','ggdist','stats', "apaTables","dplyr")
+```
+
+```{r, echo=TRUE}
+#宽形数据框
+data <- data.frame(
+  a1_b1 = c(3, 6, 4, 3),
+  a1_b2 = c(4, 6, 4, 2),
+  a1_b3 = c(5, 7, 5, 2),
+  a2_b1 = c(4, 5, 3, 3),
+  a2_b2 = c(8, 9, 8, 7),
+  a2_b3 = c(12, 13, 12, 11),
+  ID = c("S1", "S2", "S3", "S4")
+)
+```
+
+```{r, echo=TRUE}
+#宽形数据转为长形数据
+data_long <- data %>%
+  pivot_longer(cols = starts_with(c("a1_b1","a1_b2","a1_b3","a2_b1","a2_b2","a2_b3")),  
+               names_to = "Condition",   
+               values_to = "Value") 
+```
+
+
+## 第一步：计算SS~总~、SS~被试间~、SS~被试内~
+
+$$SS_总=\sum{X^2}-\frac{(\sum{X})^2}{npq}$$
+其中，X是单个被试的观测值，n是每个实验处理中的被试数量，p是A因素的水平数，q是B因素的水平数
+
+$$SS_{被试间}=\frac{(\sum{S})^2}{pq}-\frac{(\sum{X})^2}{npq}$$
+其中，S是单个被试在所有实验处理观测值的总和
+
+$$SS_{被试内}=SS_总-SS_{被试间}$$
+
+```{r,echo=TRUE}
+# 计算总和
+X <- unlist(data_long[, 3])
+n <- 4  #每个实验处理下被试数 
+p <- 2  # A因素水平数
+q <- 3  #B因素水平数
+
+SS_total <- sum(X^2) - (sum(X)^2) / (n * p * q)
+SS_total
+```
+
+```{r,echo=TRUE}
+# 计算被试间平方和
+S <- tapply(X, data_long$ID, sum)
+SS_between_subject <- (sum(S^2/ (p * q))) - (sum(X)^2) / (n * p * q)
+SS_between_subject
+```
+
+```{r,echo=TRUE}
+# 计算被试内平方和
+SS_within_subject <- SS_total - SS_between_subject
+SS_within_subject
+```
+|     |        |     |     |     |     |     |         |
+|:---:|:------:|:---:|:---:|:---:|:---:|:---:|---------|
+|     |   a1   | a1  | a1  | a2  | a2  | a2  |         |
+|     |   b1   | b2  | b3  | b1  | b2  | b3  | S       |
+| S1  | 3(n=1) |  4  |  5  |  4  |  8  | 12  | 36(n=6) |
+| S2  |   6    |  6  |  7  |  5  |  9  | 13  | 46      |
+| S3  |   4    |  4  |  5  |  3  |  8  | 12  | 36      |
+| S4  |   3    |  2  |  2  |  3  |  7  | 11  | 28      |
+
+
+## 第二步：计算多种被试内变异
+
+$$SS_A=\frac{(\sum{A})^2}{nq}-\frac{(\sum{X})^2}{npq}$$
+其中，A是A因素每个水平下所有被试观测值的总和
+
+$$SS_B=\frac{(\sum{B})^2}{np}-\frac{(\sum{X})^2}{npq}$$
+其中，B是B因素每个水平下所有被试观测值的总和
+
+$$SS_{AB}=\frac{(\sum{AB})^2}{n}-\frac{(\sum{X})^2}{npq}-SS_A-SS_B$$
+其中，AB是某个实验处理结合下所有被试观测值的总和
+
+```{r,echo=TRUE}
+# 提取"a1" "a2" 所有行
+a1_rows <- data_long[grep("a1", data_long$Condition), ]
+a2_rows <- data_long[grep("a2", data_long$Condition), ]
+
+SS_A=(sum(a1_rows$Value)^2+sum(a2_rows$Value)^2)/(n*q)-(sum(X)^2) / (n * p * q)
+SS_A
+```
+
+```{r,echo=TRUE}
+# 提取"b1" "b2" "b3"所有行
+b1_rows <- data_long[grep("b1", data_long$Condition), ]
+b2_rows <- data_long[grep("b2", data_long$Condition), ]
+b3_rows <- data_long[grep("b3", data_long$Condition), ]
+
+SS_B=(sum(b1_rows$Value)^2+sum(b2_rows$Value)^2++sum(b3_rows$Value)^2)/(n*p)-(sum(X)^2) / (n * p * q)
+SS_B
+```
+```{r,echo=TRUE}
+# 提取"a1_b1" "a1_b2" "a1_b3" "a2_b1" "a2_b2" "a2_b3"所有行
+a1_b1_rows <- data_long[grep("a1_b1", data_long$Condition), ]
+a1_b2_rows <- data_long[grep("a1_b2", data_long$Condition), ]
+a1_b3_rows <- data_long[grep("a1_b3", data_long$Condition), ]
+a2_b1_rows <- data_long[grep("a2_b1", data_long$Condition), ]
+a2_b2_rows <- data_long[grep("a2_b2", data_long$Condition), ]
+a2_b3_rows <- data_long[grep("a2_b3", data_long$Condition), ]
+
+SS_AB=(sum(a1_b1_rows$Value)^2+sum(a1_b2_rows$Value)^2++sum(a1_b3_rows$Value)^2+sum(a2_b1_rows$Value)^2+sum(a2_b2_rows$Value)^2+sum(a2_b3_rows$Value)^2)/(n)-(sum(X)^2) / (n * p * q)-SS_A-SS_B
+SS_AB
+```
+|     |         |     |          |     |
+|-----|---------|-----|----------|-----|
+|     | a1      | a2  | $$\sum$$ | B   |
+| b1  | 16(n=4) | 15  | 31       | 31  |
+| b2  | 16      | 32  | 48       | 48  |
+| b3  | 19      | 48  | 67       | 67  |
+|     | 51      | 95  |          |     |
+
+
+## 
+
+
+$$SS_{A*被试}=\frac{(\sum{AS})^2}{q}-\frac{(\sum{X})^2}{npq}-SS_{被试间}-SS_A$$
+其中，AS是接受A因素某水平的某个被试的观测值
+
+$$SS_{B*被试}=\frac{(\sum{BS})^2}{p}-\frac{(\sum{X})^2}{npq}-SS_{被试间}-SS_B$$
+其中，BS是接受B因素某水平的某个被试的观测值
+
+$$SS_{A*B*被试}=SS_{被试内}-SS_A-SS_B-SS_{AB}-SS_{A*被试}-SS_{B*被试}$$
+
+<br>
+
+|     |        |     |     |
+|-----|--------|-----|-----|
+|     | b1     | b2  | b3  |
+| S1  | 7(n=2) | 12  | 17  |
+| S2  | 11     | 15  | 20  |
+| S3  | 7      | 12  | 17  |
+| S4  | 6      | 9   | 13  |
+
+<br>
+
+|     |         |     |
+|-----|---------|-----|
+|     | a1      | a2  |
+| S1  | 12(n=3) | 24  |
+| S2  | 19      | 27  |
+| S3  | 13      | 23  |
+| S4  | 7       | 21  |
+
+<br>
+
+
+```{r,echo=TRUE}
+#提取所需数据
+a1_rows <- data_long[grep("a1", data_long$Condition), ]
+a2_rows <- data_long[grep("a2", data_long$Condition), ]
+a1 <- tapply(a1_rows$Value, a1_rows$ID, sum)
+a2 <- tapply(a2_rows$Value, a2_rows$ID, sum)
+
+SS_A_被试 <- ((sum(a1^2)+sum(a2^2))/ q) - (sum(X)^2) / (n * p * q)-SS_between_subject-SS_A
+SS_A_被试
+```
+```{r,echo=TRUE}
+#提取所需数据
+b1_rows <- data_long[grep("b1", data_long$Condition), ]
+b2_rows <- data_long[grep("b2", data_long$Condition), ]
+b3_rows <- data_long[grep("b3", data_long$Condition), ]
+b1 <- tapply(b1_rows$Value, b1_rows$ID, sum)
+b2 <- tapply(b2_rows$Value, b2_rows$ID, sum)
+b3 <- tapply(b3_rows$Value, b3_rows$ID, sum)
+
+SS_B_被试 <- ((sum(b1^2)+sum(b2^2)+sum(b3^2))/ p) - (sum(X)^2) / (n * p * q)-SS_between_subject-SS_B
+SS_B_被试
+```
+```{r,echo=TRUE}
+SS_A_B_被试=SS_within_subject-SS_A-SS_B-SS_AB-SS_A_被试-SS_B_被试
+SS_A_B_被试
+
+```
+
+## 第三步：计算自由度
+
+$$df_总=npq-1$$
+$$df_{被试间}=n-1$$
+$$df_{被试内}=n(pq-1)$$
+$$df_A=p-1$$
+$$df_B=q-1$$
+$$df_{AB}=(p-1)(q-1)$$
+$$df_{A*被试}=(p-1)(n-1)$$
+$$df_{B*被试}=(q-1)(n-1)$$
+$$df_{A*B*被试}=(p-1)(q-1)(n-1)$$
+```{r,echo=TRUE}
+df_总=n*p*q-1
+df_总
+```
+
+```{r,echo=TRUE}
+df_被试间=n-1
+df_被试间
+```
+
+```{r,echo=TRUE}
+df_被试内=n*(p*q-1)
+df_被试内
+```
+
+```{r,echo=TRUE}
+df_A=p-1
+df_A
+```
+
+```{r,echo=TRUE}
+df_B=q-1
+df_B
+```
+
+```{r,echo=TRUE}
+df_AB=(p-1)*(q-1)
+df_AB
+```
+
+```{r,echo=TRUE}
+df_A_被试=(p-1)*(n-1)
+df_A_被试
+```
+
+```{r,echo=TRUE}
+df_B_被试=(q-1)*(n-1)
+df_B_被试
+```
+
+```{r,echo=TRUE}
+df_A_B_被试=(p-1)*(q-1)*(n-1)
+df_A_B_被试
+```
+
+## 第四步：计算均方
+
+$$MS_{A}=\frac{SS_A}{df_A}$$
+$$MS_{A*被试}=\frac{SS_{A*被试}}{df_{A*被试}}$$
+$$MS_{B}=\frac{SS_{B}}{df_{B}}$$
+$$MS_{B*被试}==\frac{SS_{B*被试}}{df_{B*被试}}$$
+$$MS_{A*B}=\frac{SS_{A*B}}{df_{A*B}}$$
+$$MS_{A*B*被试}=\frac{SS_{A*B*被试}}{df_{A*B*被试}}$$
+```{r,echo=TRUE}
+MS_A=SS_A/df_A
+MS_A
+```
+```{r,echo=TRUE}
+MS_A_被试=SS_A_被试/df_A_被试
+MS_A_被试
+```
+
+
+```{r,echo=TRUE}
+MS_B=SS_B/df_B
+MS_B
+```
+```{r,echo=TRUE}
+MS_B_被试=SS_B_被试/df_B_被试
+MS_B_被试
+```
+```{r,echo=TRUE}
+MS_AB=SS_AB/df_AB
+MS_AB
+```
+```{r,echo=TRUE}
+MS_A_B_被试=SS_A_B_被试/df_A_B_被试
+MS_A_B_被试
+```
+## 第五步：计算F值
+
+$$F_A=\frac{MS_A}{MS_{A*被试}}$$
+$$F_B=\frac{MS_B}{MS_{B*被试}}$$
+$$F_{AB}=\frac{MS_{AB}}{MS_{AB*被试}}$$
+
+```{r,echo=TRUE}
+F_A=MS_A/MS_A_被试
+F_A
+```
+```{r,echo=TRUE}
+F_B=MS_B/MS_B_被试
+F_B
+```
+```{r,echo=TRUE}
+F_AB=MS_AB/MS_A_B_被试
+F_AB
+```
 
 # 两因素混合设计
 
@@ -379,7 +603,7 @@ SS~AB~=\[AB\]-\[Y\]-SS~A~-SS~B~
 
 SS~B×被试(A)~=SS~被试内~-SS~B~--SS~AB~
 
-## 练习
+## 实例练习
 
 阅读理解中的影响因素探索（假想实验）
 
@@ -393,7 +617,7 @@ SS~B×被试(A)~=SS~被试内~-SS~B~--SS~AB~
 
 -   被试：高年级 4名（熟悉度高）；低年级4名（熟悉度低） 。
 
-## 数据
+## 第一步：计算均值与总变异
 
 |     |     |     |     |     |
 |-----|-----|-----|-----|-----|
@@ -409,7 +633,7 @@ SS~B×被试(A)~=SS~被试内~-SS~B~--SS~AB~
 
 $$m=6.08$$ $$SS总变异 = (3 - m)^2 + (4 - m)^2 + … + (11 - m)^2$$
 
-## SS~被试间~、SS~A~、SS~被试(A)~
+## 第二步：计算组间变异 SS~被试间~、SS~A~、SS~被试(A)~
 
 |     |     |     |     |
 |-----|-----|-----|-----|
@@ -429,7 +653,7 @@ $$SS~A~ = (51 - m)^2 + (95 - m)^2$$
 
 $$SS~被试(A)~ =SS~被试间~ - SS~A~$$
 
-## SS~被试内~、SS~B~、SS~AB~、SSB\*被试(A)
+## 第三步：计算组内变异 SS~被试内~、SS~B~、SS~AB~、SS~B*被试(A)~
 
 |     |         |     |     |     |
 |-----|---------|-----|-----|-----|
@@ -443,6 +667,30 @@ $$SS_{被试内} =SS_{总变异}~-SS_{被试间}$$
 $$SS_B = (31 - m)^2 + (48 - m)^2 + (67 - m)^2$$
 
 $$SS_{AB} = (16 - m)^2 + (415- m)^2+... + (48 - m)^2 -SS_A - SS_B$$ $$SS_{B*被试(A)} = SS_{被试内} - SS_B - SS_{AB} $$
+---
+## 第四步：计算自由度
+
+$$df_总=npq-1$$
+$$df_{被试间}=np-1$$
+$$df_A=p-1$$
+$$df_{被试A}=p(n-1)$$
+$$df_{被试内}=np(q-1)$$
+$$df_B=q-1$$
+$$df_{AB}=(p-1)(q-1)$$
+$$df_{B*被试A}=p(n-1)(q-1)$$
+
+## 第五步：计算均方
+$$MS_A=\frac{SS_A}{df_A}$$
+$$MS_{被试A}=\frac{SS_{被试A}}{df_{被试A}}$$
+$$MS_B=\frac{SS_B}{df_B}$$
+$$MS_{AB}=\frac{SS_{AB}}{df_{AB}}$$
+$$MS_{B*被试A}=\frac{SS_{B*被试A}}{df_{B*被试A}}$$
+---
+## 第六步：计算*F*值
+
+$$F_A=\frac{MS_A}{MS_{被试A}}$$
+$$F_B=\frac{MS_B}{MS_{B*被试A}}$$
+$$F_{AB}=\frac{MS_{AB}}{MS_{B*被试A}}$$
 
 ## 方差分析表
 
@@ -486,9 +734,6 @@ $$SS_{AB} = (16 - m)^2 + (415- m)^2+... + (48 - m)^2 -SS_A - SS_B$$ $$SS_{B*被�
 
 ```{r}
 #载入包
-if (!requireNamespace("pacman", quietly = TRUE)) {
-  install.packages("pacman") }   # install pacman if not installed yet, it will be used for loading packages
-
 pacman::p_load('tidyverse','bruceR','patchwork','ggdist','stats', "apaTables")
 ```
 
