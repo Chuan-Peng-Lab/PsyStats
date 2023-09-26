@@ -762,279 +762,13 @@
 </section>
 <section id="平方和与自由度分解" class="slide level2">
 <h2>平方和与自由度分解<br></h2>
-
-<img data-src="images/fig1.png" class="r-stretch"></section>
-<section id="平方和计算" class="slide level2">
-<h2>平方和计算<br></h2>
-<ul>
-<li>各种基本量的计算 <span class="math display">\[Y=\frac{(\sum_{i=1}^{n}\sum_{j=1}^{p}\sum_{k=1}^{q}Y_{ijk}  )^2}{npq}\]</span> <span class="math display">\[ABS=\sum_{i=1}^{n}\sum_{j=1}^{p}\sum_{k=1}^{q}Y_{ijk}^2\]</span> <span class="math display">\[S=\sum_{i=1}^{n}\frac{(\sum_{j=1}^{p}\sum_{k=1}^{q}Y_{ijk})^2}{pq} \]</span> <span class="math display">\[A=\sum_{j=1}^{p}\frac{\sum_{i=1}^{n}(\sum_{k=1}^{q}Y_{ijk})^2}{nq} \]</span> <span class="math display">\[B=\sum_{k=1}^{q}\frac{(\sum_{i=1}^{n}\sum_{j=1}^{p}Y_{ijk})^2}{nq} \]</span> <span class="math display">\[AS=\sum_{i=1}^{n}\sum_{j=1}^{p}\frac{(\sum_{k=1}^{q}Y_{ijk})^2}{q} \]</span> <span class="math display">\[BS=\sum_{i=1}^{n}\sum_{k=1}^{q}\frac{(\sum_{j=1}^{p}Y_{ijk})^2}{p} \]</span> <span class="math display">\[AB=\sum_{j=1}^{p}\sum_{k=1}^{q}\frac{(\sum_{i=1}^{n}Y_{ijk})^2}{n} \]</span></li>
-</ul>
 </section>
-<section id="平方和计算-1" class="slide level2">
-<h2>平方和计算</h2>
-<p>SS<sub>总变异</sub>=[ABS]-[Y] <br></p>
-<p>SS<sub>被试间</sub>=[S]-[Y] <br></p>
-<p>SS<sub>被试内</sub>=SS<sub>总变异</sub>-SS<sub>被试间</sub> <br></p>
-<p>SS<sub>A</sub>=[A]-[Y] <br></p>
-<p>SS<sub>A×被试</sub>=[AS]-[Y] <br></p>
-<p>SS<sub>B</sub>=[B]-[Y] <br></p>
-<p>SS<sub>B×被试异</sub>=[BS]-[Y] <br></p>
-<p>SS<sub>AB</sub>=[AB]-[Y] <br></p>
-<p>SS<sub>A×B×被试</sub>=SS<sub>被试内</sub>-SS<sub>A</sub>-SS<sub>A×被试</sub>-SS<sub>B</sub>-SS<sub>B×被试异</sub>-SS<sub>AB</sub><br></p>
+<section id="section" class="slide level2">
+<h2><img data-src="images/fig1.png"></h2>
 </section>
-<section id="练习" class="slide level2">
-<h2>练习</h2>
-<p>阅读理解中的影响因素探索（假想实验）<br></p>
-<p>假定被试阅读前一篇文章不会对阅读后一篇文章产生系统的影响。每个被试每次阅读一篇文章，阅读顺序进行平衡。<br></p>
-<ul>
-<li><p>研究者操纵生字密度和主题熟悉性这两个被试内因素。<br></p></li>
-<li><p>主题熟悉性有两个水平：a1，a2； <br></p></li>
-<li><p>生字密度有三个水平：b1，b2，b3。<br></p></li>
-<li><p>被试 n = 4名。</p></li>
-</ul>
-</section>
-<section id="数据" class="slide level2">
-<h2>数据</h2>
-<table>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>a1</strong></td>
-<td style="text-align: center;"><strong>a1</strong></td>
-<td style="text-align: center;"><strong>a1</strong></td>
-<td style="text-align: center;"><strong>a2</strong></td>
-<td style="text-align: center;"><strong>a2</strong></td>
-<td style="text-align: center;"><strong>a2</strong></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>b1</strong></td>
-<td style="text-align: center;"><strong>b2</strong></td>
-<td style="text-align: center;"><strong>b3</strong></td>
-<td style="text-align: center;"><strong>b1</strong></td>
-<td style="text-align: center;"><strong>b2</strong></td>
-<td style="text-align: center;"><strong>b3</strong></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">S1</td>
-<td style="text-align: center;">3</td>
-<td style="text-align: center;">4</td>
-<td style="text-align: center;">5</td>
-<td style="text-align: center;">4</td>
-<td style="text-align: center;">8</td>
-<td style="text-align: center;">12</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">S2</td>
-<td style="text-align: center;">6</td>
-<td style="text-align: center;">6</td>
-<td style="text-align: center;">7</td>
-<td style="text-align: center;">5</td>
-<td style="text-align: center;">9</td>
-<td style="text-align: center;">13</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">S3</td>
-<td style="text-align: center;">4</td>
-<td style="text-align: center;">4</td>
-<td style="text-align: center;">5</td>
-<td style="text-align: center;">3</td>
-<td style="text-align: center;">8</td>
-<td style="text-align: center;">12</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">S4</td>
-<td style="text-align: center;">3</td>
-<td style="text-align: center;">2</td>
-<td style="text-align: center;">2</td>
-<td style="text-align: center;">3</td>
-<td style="text-align: center;">7</td>
-<td style="text-align: center;">11</td>
-</tr>
-</tbody>
-</table>
-<p><span class="math display">\[m=6.08\]</span></p>
-</section>
-<section id="计算ss总变异与ss被试间变异" class="slide level2">
-<h2>计算SS总变异与SS被试间变异</h2>
-<table>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;"></td>
-<td style="text-align: center;">a1</td>
-<td style="text-align: center;">a1</td>
-<td style="text-align: center;">a1</td>
-<td style="text-align: center;">a2</td>
-<td style="text-align: center;">a2</td>
-<td style="text-align: center;">a2</td>
-<td></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"></td>
-<td style="text-align: center;">b1</td>
-<td style="text-align: center;">b2</td>
-<td style="text-align: center;">b3</td>
-<td style="text-align: center;">b1</td>
-<td style="text-align: center;">b2</td>
-<td style="text-align: center;">b3</td>
-<td>S</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">S1</td>
-<td style="text-align: center;">3(n=1)</td>
-<td style="text-align: center;">4</td>
-<td style="text-align: center;">5</td>
-<td style="text-align: center;">4</td>
-<td style="text-align: center;">8</td>
-<td style="text-align: center;">12</td>
-<td>36(n=6)</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">S2</td>
-<td style="text-align: center;">6</td>
-<td style="text-align: center;">6</td>
-<td style="text-align: center;">7</td>
-<td style="text-align: center;">5</td>
-<td style="text-align: center;">9</td>
-<td style="text-align: center;">13</td>
-<td>46</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">S3</td>
-<td style="text-align: center;">4</td>
-<td style="text-align: center;">4</td>
-<td style="text-align: center;">5</td>
-<td style="text-align: center;">3</td>
-<td style="text-align: center;">8</td>
-<td style="text-align: center;">12</td>
-<td>36</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">S4</td>
-<td style="text-align: center;">3</td>
-<td style="text-align: center;">2</td>
-<td style="text-align: center;">2</td>
-<td style="text-align: center;">3</td>
-<td style="text-align: center;">7</td>
-<td style="text-align: center;">11</td>
-<td>28</td>
-</tr>
-</tbody>
-</table>
-<p><span class="math display">\[SS~总变异~=(3 - m)^2 + (6 - m)^2 + (4 - m)^2 + … + (12 - m)^2 + (11 - m)^2\]</span> <br></p>
-<p><span class="math display">\[SS被试间 = (36 - m)^2 + (46 - m)^2 + (36 - m)^2 + (28 - m)^2\]</span></p>
-</section>
-<section id="计算ssassbssab" class="slide level2">
-<h2>计算SS<sub>A</sub>、SS<sub>B</sub>、SS<sub>AB</sub></h2>
-<table>
-<tbody>
-<tr class="odd">
-<td></td>
-<td>a1</td>
-<td>a2</td>
-<td><span class="math display">\[\sum\]</span></td>
-<td>B</td>
-</tr>
-<tr class="even">
-<td>b1</td>
-<td>16(n=4)</td>
-<td>15</td>
-<td>31</td>
-<td>31</td>
-</tr>
-<tr class="odd">
-<td>b2</td>
-<td>16</td>
-<td>32</td>
-<td>48</td>
-<td>48</td>
-</tr>
-<tr class="even">
-<td>b3</td>
-<td>19</td>
-<td>48</td>
-<td>67</td>
-<td>67</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>51</td>
-<td>95</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p><span class="math display">\[SS_A = (51 - m)^2 + (95 - m)^2\]</span></p>
-<p><span class="math display">\[SS_B = (31 - m)^2 + (48 - m)^2 + (67 - m)^2\]</span></p>
-<p><span class="math display">\[SS_{AB} = (16 - m)^2 + (16 - m)^2 + … + (67 - m)^2 - SSA - SSB\]</span></p>
-</section>
-<section id="计算ssa被试ssb被试ssab被试" class="slide level2">
-<h2>计算SSA<em>被试、SSB</em>被试、SSA<em>B</em>被试</h2>
-<table>
-<tbody>
-<tr class="odd">
-<td></td>
-<td>a1</td>
-<td>a2</td>
-</tr>
-<tr class="even">
-<td>S1</td>
-<td>12(n=3)</td>
-<td>24</td>
-</tr>
-<tr class="odd">
-<td>S2</td>
-<td>19</td>
-<td>27</td>
-</tr>
-<tr class="even">
-<td>S3</td>
-<td>13</td>
-<td>23</td>
-</tr>
-<tr class="odd">
-<td>S4</td>
-<td>7</td>
-<td>21</td>
-</tr>
-</tbody>
-</table>
-<table>
-<tbody>
-<tr class="odd">
-<td></td>
-<td>b1</td>
-<td>b2</td>
-<td>b3</td>
-</tr>
-<tr class="even">
-<td>S1</td>
-<td>7(n=2)</td>
-<td>12</td>
-<td>17</td>
-</tr>
-<tr class="odd">
-<td>S2</td>
-<td>11</td>
-<td>15</td>
-<td>20</td>
-</tr>
-<tr class="even">
-<td>S3</td>
-<td>7</td>
-<td>12</td>
-<td>17</td>
-</tr>
-<tr class="odd">
-<td>S4</td>
-<td>6</td>
-<td>9</td>
-<td>13</td>
-</tr>
-</tbody>
-</table>
-<p><span class="math display">\[SSA*被试 = (12 - m)^2 + (19 - m)^2 + … + (21 - m)^2 - SS被试间 - SSA\]</span> <span class="math display">\[SSB*被试 = (7 - m)^2 + (11 - m)^2 + … + (17 - m)^2 - SS被试间 - SSB\]</span> <span class="math display">\[SSA*B*被试 = SS被试内 - SSA - SSA*被试 - SSB - SSB*被试 -SSAB\]</span></p>
+<section id="两因素重复测量设计的平方和计算" class="slide level2">
+<h2>两因素重复测量设计的平方和计算<br></h2>
+<p><span class="math display">\[SS_{总变异}=SS_{组间}+SS_{组内}\]</span> <span class="math display">\[SS_{总变异}=SS_{与处理无关的个体差异(被试间)}+SS_{被试内}\]</span> <span class="math display">\[SS_{被试内}=SS_A+SS_{A*被试}+SS_B+SS_{B*被试}+SS_{AB}+SS_{AB*被试}\]</span></p>
 </section>
 <section id="方差分析表" class="slide level2">
 <h2>方差分析表<br></h2>
@@ -1119,6 +853,525 @@
 </tr>
 </tbody>
 </table>
+</section>
+<section id="实例练习" class="slide level2">
+<h2>实例练习</h2>
+<p>阅读理解中的影响因素探索（假想实验）<br></p>
+<p>假定被试阅读前一篇文章不会对阅读后一篇文章产生系统的影响。每个被试每次阅读一篇文章，阅读顺序进行平衡。<br></p>
+<ul>
+<li><p>研究者操纵生字密度和主题熟悉性这两个被试内因素。<br></p></li>
+<li><p>主题熟悉性有两个水平：a1，a2； <br></p></li>
+<li><p>生字密度有三个水平：b1，b2，b3。<br></p></li>
+<li><p>被试 n = 4名。</p></li>
+</ul>
+</section>
+<section id="数据与数据框" class="slide level2">
+<h2>数据与数据框</h2>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><strong>a1</strong></td>
+<td style="text-align: center;"><strong>a1</strong></td>
+<td style="text-align: center;"><strong>a1</strong></td>
+<td style="text-align: center;"><strong>a2</strong></td>
+<td style="text-align: center;"><strong>a2</strong></td>
+<td style="text-align: center;"><strong>a2</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><strong>b1</strong></td>
+<td style="text-align: center;"><strong>b2</strong></td>
+<td style="text-align: center;"><strong>b3</strong></td>
+<td style="text-align: center;"><strong>b1</strong></td>
+<td style="text-align: center;"><strong>b2</strong></td>
+<td style="text-align: center;"><strong>b3</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">S1</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">12</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">S2</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">13</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">S3</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">12</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">S4</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">11</td>
+</tr>
+</tbody>
+</table>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">#宽形数据框</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb1-3"><a href="#cb1-3"></a>  <span class="at">a1_b1 =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">3</span>),</span>
+<span id="cb1-4"><a href="#cb1-4"></a>  <span class="at">a1_b2 =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">2</span>),</span>
+<span id="cb1-5"><a href="#cb1-5"></a>  <span class="at">a1_b3 =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">2</span>),</span>
+<span id="cb1-6"><a href="#cb1-6"></a>  <span class="at">a2_b1 =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">3</span>),</span>
+<span id="cb1-7"><a href="#cb1-7"></a>  <span class="at">a2_b2 =</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">8</span>, <span class="dv">7</span>),</span>
+<span id="cb1-8"><a href="#cb1-8"></a>  <span class="at">a2_b3 =</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">13</span>, <span class="dv">12</span>, <span class="dv">11</span>),</span>
+<span id="cb1-9"><a href="#cb1-9"></a>  <span class="at">ID =</span> <span class="fu">c</span>(<span class="st">"S1"</span>, <span class="st">"S2"</span>, <span class="st">"S3"</span>, <span class="st">"S4"</span>)</span>
+<span id="cb1-10"><a href="#cb1-10"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">#宽形数据转为长形数据</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>data_long <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="fu">c</span>(<span class="st">"a1_b1"</span>,<span class="st">"a1_b2"</span>,<span class="st">"a1_b3"</span>,<span class="st">"a2_b1"</span>,<span class="st">"a2_b2"</span>,<span class="st">"a2_b3"</span>)),  </span>
+<span id="cb2-4"><a href="#cb2-4"></a>               <span class="at">names_to =</span> <span class="st">"Condition"</span>,   </span>
+<span id="cb2-5"><a href="#cb2-5"></a>               <span class="at">values_to =</span> <span class="st">"Value"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="第一步计算ss总ss被试间ss被试内" class="slide level2">
+<h2>第一步：计算SS<sub>总</sub>、SS<sub>被试间</sub>、SS<sub>被试内</sub></h2>
+<p><span class="math display">\[SS_总=\sum{X^2}-\frac{(\sum{X})^2}{npq}\]</span> 其中，X是单个被试的观测值，n是每个实验处理中的被试数量，p是A因素的水平数，q是B因素的水平数</p>
+<p><span class="math display">\[SS_{被试间}=\frac{(\sum{S})^2}{pq}-\frac{(\sum{X})^2}{npq}\]</span> 其中，S是单个被试在所有实验处理观测值的总和</p>
+<p><span class="math display">\[SS_{被试内}=SS_总-SS_{被试间}\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># 计算总和</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>X <span class="ot">&lt;-</span> <span class="fu">unlist</span>(data_long[, <span class="dv">3</span>])</span>
+<span id="cb3-3"><a href="#cb3-3"></a>n <span class="ot">&lt;-</span> <span class="dv">4</span>  <span class="co">#每个实验处理下被试数 </span></span>
+<span id="cb3-4"><a href="#cb3-4"></a>p <span class="ot">&lt;-</span> <span class="dv">2</span>  <span class="co"># A因素水平数</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a>q <span class="ot">&lt;-</span> <span class="dv">3</span>  <span class="co">#B因素水平数</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a></span>
+<span id="cb3-7"><a href="#cb3-7"></a>SS_total <span class="ot">&lt;-</span> <span class="fu">sum</span>(X<span class="sc">^</span><span class="dv">2</span>) <span class="sc">-</span> (<span class="fu">sum</span>(X)<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> (n <span class="sc">*</span> p <span class="sc">*</span> q)</span>
+<span id="cb3-8"><a href="#cb3-8"></a>SS_total</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 251.8333</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># 计算被试间平方和</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>S <span class="ot">&lt;-</span> <span class="fu">tapply</span>(X, data_long<span class="sc">$</span>ID, sum)</span>
+<span id="cb5-3"><a href="#cb5-3"></a>SS_between_subject <span class="ot">&lt;-</span> (<span class="fu">sum</span>(S<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span> (p <span class="sc">*</span> q))) <span class="sc">-</span> (<span class="fu">sum</span>(X)<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> (n <span class="sc">*</span> p <span class="sc">*</span> q)</span>
+<span id="cb5-4"><a href="#cb5-4"></a>SS_between_subject</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 27.16667</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># 计算被试内平方和</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>SS_within_subject <span class="ot">&lt;-</span> SS_total <span class="sc">-</span> SS_between_subject</span>
+<span id="cb7-3"><a href="#cb7-3"></a>SS_within_subject</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 224.6667</code></pre>
+</div>
+</div>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">a1</td>
+<td style="text-align: center;">a1</td>
+<td style="text-align: center;">a1</td>
+<td style="text-align: center;">a2</td>
+<td style="text-align: center;">a2</td>
+<td style="text-align: center;">a2</td>
+<td></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">b1</td>
+<td style="text-align: center;">b2</td>
+<td style="text-align: center;">b3</td>
+<td style="text-align: center;">b1</td>
+<td style="text-align: center;">b2</td>
+<td style="text-align: center;">b3</td>
+<td>S</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">S1</td>
+<td style="text-align: center;">3(n=1)</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">12</td>
+<td>36(n=6)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">S2</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">13</td>
+<td>46</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">S3</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">12</td>
+<td>36</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">S4</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">11</td>
+<td>28</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="第二步计算多种被试内变异" class="slide level2">
+<h2>第二步：计算多种被试内变异</h2>
+<p><span class="math display">\[SS_A=\frac{(\sum{A})^2}{nq}-\frac{(\sum{X})^2}{npq}\]</span> 其中，A是A因素每个水平下所有被试观测值的总和</p>
+<p><span class="math display">\[SS_B=\frac{(\sum{B})^2}{np}-\frac{(\sum{X})^2}{npq}\]</span> 其中，B是B因素每个水平下所有被试观测值的总和</p>
+<p><span class="math display">\[SS_{AB}=\frac{(\sum{AB})^2}{n}-\frac{(\sum{X})^2}{npq}-SS_A-SS_B\]</span> 其中，AB是某个实验处理结合下所有被试观测值的总和</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># 提取"a1" "a2" 所有行</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a>a1_rows <span class="ot">&lt;-</span> data_long[<span class="fu">grep</span>(<span class="st">"a1"</span>, data_long<span class="sc">$</span>Condition), ]</span>
+<span id="cb9-3"><a href="#cb9-3"></a>a2_rows <span class="ot">&lt;-</span> data_long[<span class="fu">grep</span>(<span class="st">"a2"</span>, data_long<span class="sc">$</span>Condition), ]</span>
+<span id="cb9-4"><a href="#cb9-4"></a></span>
+<span id="cb9-5"><a href="#cb9-5"></a>SS_A<span class="ot">=</span>(<span class="fu">sum</span>(a1_rows<span class="sc">$</span>Value)<span class="sc">^</span><span class="dv">2</span><span class="sc">+</span><span class="fu">sum</span>(a2_rows<span class="sc">$</span>Value)<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span>(n<span class="sc">*</span>q)<span class="sc">-</span>(<span class="fu">sum</span>(X)<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> (n <span class="sc">*</span> p <span class="sc">*</span> q)</span>
+<span id="cb9-6"><a href="#cb9-6"></a>SS_A</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 80.66667</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># 提取"b1" "b2" "b3"所有行</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a>b1_rows <span class="ot">&lt;-</span> data_long[<span class="fu">grep</span>(<span class="st">"b1"</span>, data_long<span class="sc">$</span>Condition), ]</span>
+<span id="cb11-3"><a href="#cb11-3"></a>b2_rows <span class="ot">&lt;-</span> data_long[<span class="fu">grep</span>(<span class="st">"b2"</span>, data_long<span class="sc">$</span>Condition), ]</span>
+<span id="cb11-4"><a href="#cb11-4"></a>b3_rows <span class="ot">&lt;-</span> data_long[<span class="fu">grep</span>(<span class="st">"b3"</span>, data_long<span class="sc">$</span>Condition), ]</span>
+<span id="cb11-5"><a href="#cb11-5"></a></span>
+<span id="cb11-6"><a href="#cb11-6"></a>SS_B<span class="ot">=</span>(<span class="fu">sum</span>(b1_rows<span class="sc">$</span>Value)<span class="sc">^</span><span class="dv">2</span><span class="sc">+</span><span class="fu">sum</span>(b2_rows<span class="sc">$</span>Value)<span class="sc">^</span><span class="dv">2</span><span class="sc">++</span><span class="fu">sum</span>(b3_rows<span class="sc">$</span>Value)<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span>(n<span class="sc">*</span>p)<span class="sc">-</span>(<span class="fu">sum</span>(X)<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> (n <span class="sc">*</span> p <span class="sc">*</span> q)</span>
+<span id="cb11-7"><a href="#cb11-7"></a>SS_B</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 81.08333</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># 提取"a1_b1" "a1_b2" "a1_b3" "a2_b1" "a2_b2" "a2_b3"所有行</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a>a1_b1_rows <span class="ot">&lt;-</span> data_long[<span class="fu">grep</span>(<span class="st">"a1_b1"</span>, data_long<span class="sc">$</span>Condition), ]</span>
+<span id="cb13-3"><a href="#cb13-3"></a>a1_b2_rows <span class="ot">&lt;-</span> data_long[<span class="fu">grep</span>(<span class="st">"a1_b2"</span>, data_long<span class="sc">$</span>Condition), ]</span>
+<span id="cb13-4"><a href="#cb13-4"></a>a1_b3_rows <span class="ot">&lt;-</span> data_long[<span class="fu">grep</span>(<span class="st">"a1_b3"</span>, data_long<span class="sc">$</span>Condition), ]</span>
+<span id="cb13-5"><a href="#cb13-5"></a>a2_b1_rows <span class="ot">&lt;-</span> data_long[<span class="fu">grep</span>(<span class="st">"a2_b1"</span>, data_long<span class="sc">$</span>Condition), ]</span>
+<span id="cb13-6"><a href="#cb13-6"></a>a2_b2_rows <span class="ot">&lt;-</span> data_long[<span class="fu">grep</span>(<span class="st">"a2_b2"</span>, data_long<span class="sc">$</span>Condition), ]</span>
+<span id="cb13-7"><a href="#cb13-7"></a>a2_b3_rows <span class="ot">&lt;-</span> data_long[<span class="fu">grep</span>(<span class="st">"a2_b3"</span>, data_long<span class="sc">$</span>Condition), ]</span>
+<span id="cb13-8"><a href="#cb13-8"></a></span>
+<span id="cb13-9"><a href="#cb13-9"></a>SS_AB<span class="ot">=</span>(<span class="fu">sum</span>(a1_b1_rows<span class="sc">$</span>Value)<span class="sc">^</span><span class="dv">2</span><span class="sc">+</span><span class="fu">sum</span>(a1_b2_rows<span class="sc">$</span>Value)<span class="sc">^</span><span class="dv">2</span><span class="sc">++</span><span class="fu">sum</span>(a1_b3_rows<span class="sc">$</span>Value)<span class="sc">^</span><span class="dv">2</span><span class="sc">+</span><span class="fu">sum</span>(a2_b1_rows<span class="sc">$</span>Value)<span class="sc">^</span><span class="dv">2</span><span class="sc">+</span><span class="fu">sum</span>(a2_b2_rows<span class="sc">$</span>Value)<span class="sc">^</span><span class="dv">2</span><span class="sc">+</span><span class="fu">sum</span>(a2_b3_rows<span class="sc">$</span>Value)<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span>(n)<span class="sc">-</span>(<span class="fu">sum</span>(X)<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> (n <span class="sc">*</span> p <span class="sc">*</span> q)<span class="sc">-</span>SS_A<span class="sc">-</span>SS_B</span>
+<span id="cb13-10"><a href="#cb13-10"></a>SS_AB</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 56.58333</code></pre>
+</div>
+</div>
+<table>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>a1</td>
+<td>a2</td>
+<td><span class="math display">\[\sum\]</span></td>
+<td>B</td>
+</tr>
+<tr class="even">
+<td>b1</td>
+<td>16(n=4)</td>
+<td>15</td>
+<td>31</td>
+<td>31</td>
+</tr>
+<tr class="odd">
+<td>b2</td>
+<td>16</td>
+<td>32</td>
+<td>48</td>
+<td>48</td>
+</tr>
+<tr class="even">
+<td>b3</td>
+<td>19</td>
+<td>48</td>
+<td>67</td>
+<td>67</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>51</td>
+<td>95</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="section-1" class="slide level2">
+<h2></h2>
+<p><span class="math display">\[SS_{A*被试}=\frac{(\sum{AS})^2}{q}-\frac{(\sum{X})^2}{npq}-SS_{被试间}-SS_A\]</span> 其中，AS是接受A因素某水平的某个被试的观测值</p>
+<p><span class="math display">\[SS_{B*被试}=\frac{(\sum{BS})^2}{p}-\frac{(\sum{X})^2}{npq}-SS_{被试间}-SS_B\]</span> 其中，BS是接受B因素某水平的某个被试的观测值</p>
+<p><span class="math display">\[SS_{A*B*被试}=SS_{被试内}-SS_A-SS_B-SS_{AB}-SS_{A*被试}-SS_{B*被试}\]</span></p>
+<p><br></p>
+<table>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>b1</td>
+<td>b2</td>
+<td>b3</td>
+</tr>
+<tr class="even">
+<td>S1</td>
+<td>7(n=2)</td>
+<td>12</td>
+<td>17</td>
+</tr>
+<tr class="odd">
+<td>S2</td>
+<td>11</td>
+<td>15</td>
+<td>20</td>
+</tr>
+<tr class="even">
+<td>S3</td>
+<td>7</td>
+<td>12</td>
+<td>17</td>
+</tr>
+<tr class="odd">
+<td>S4</td>
+<td>6</td>
+<td>9</td>
+<td>13</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<table>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>a1</td>
+<td>a2</td>
+</tr>
+<tr class="even">
+<td>S1</td>
+<td>12(n=3)</td>
+<td>24</td>
+</tr>
+<tr class="odd">
+<td>S2</td>
+<td>19</td>
+<td>27</td>
+</tr>
+<tr class="even">
+<td>S3</td>
+<td>13</td>
+<td>23</td>
+</tr>
+<tr class="odd">
+<td>S4</td>
+<td>7</td>
+<td>21</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="co">#提取所需数据</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a>a1_rows <span class="ot">&lt;-</span> data_long[<span class="fu">grep</span>(<span class="st">"a1"</span>, data_long<span class="sc">$</span>Condition), ]</span>
+<span id="cb15-3"><a href="#cb15-3"></a>a2_rows <span class="ot">&lt;-</span> data_long[<span class="fu">grep</span>(<span class="st">"a2"</span>, data_long<span class="sc">$</span>Condition), ]</span>
+<span id="cb15-4"><a href="#cb15-4"></a>a1 <span class="ot">&lt;-</span> <span class="fu">tapply</span>(a1_rows<span class="sc">$</span>Value, a1_rows<span class="sc">$</span>ID, sum)</span>
+<span id="cb15-5"><a href="#cb15-5"></a>a2 <span class="ot">&lt;-</span> <span class="fu">tapply</span>(a2_rows<span class="sc">$</span>Value, a2_rows<span class="sc">$</span>ID, sum)</span>
+<span id="cb15-6"><a href="#cb15-6"></a></span>
+<span id="cb15-7"><a href="#cb15-7"></a>SS_A_subj <span class="ot">&lt;-</span> ((<span class="fu">sum</span>(a1<span class="sc">^</span><span class="dv">2</span>)<span class="sc">+</span><span class="fu">sum</span>(a2<span class="sc">^</span><span class="dv">2</span>))<span class="sc">/</span> q) <span class="sc">-</span> (<span class="fu">sum</span>(X)<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> (n <span class="sc">*</span> p <span class="sc">*</span> q)<span class="sc">-</span>SS_between_subject<span class="sc">-</span>SS_A</span>
+<span id="cb15-8"><a href="#cb15-8"></a>SS_A_subj</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.333333</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="co">#提取所需数据</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a>b1_rows <span class="ot">&lt;-</span> data_long[<span class="fu">grep</span>(<span class="st">"b1"</span>, data_long<span class="sc">$</span>Condition), ]</span>
+<span id="cb17-3"><a href="#cb17-3"></a>b2_rows <span class="ot">&lt;-</span> data_long[<span class="fu">grep</span>(<span class="st">"b2"</span>, data_long<span class="sc">$</span>Condition), ]</span>
+<span id="cb17-4"><a href="#cb17-4"></a>b3_rows <span class="ot">&lt;-</span> data_long[<span class="fu">grep</span>(<span class="st">"b3"</span>, data_long<span class="sc">$</span>Condition), ]</span>
+<span id="cb17-5"><a href="#cb17-5"></a>b1 <span class="ot">&lt;-</span> <span class="fu">tapply</span>(b1_rows<span class="sc">$</span>Value, b1_rows<span class="sc">$</span>ID, sum)</span>
+<span id="cb17-6"><a href="#cb17-6"></a>b2 <span class="ot">&lt;-</span> <span class="fu">tapply</span>(b2_rows<span class="sc">$</span>Value, b2_rows<span class="sc">$</span>ID, sum)</span>
+<span id="cb17-7"><a href="#cb17-7"></a>b3 <span class="ot">&lt;-</span> <span class="fu">tapply</span>(b3_rows<span class="sc">$</span>Value, b3_rows<span class="sc">$</span>ID, sum)</span>
+<span id="cb17-8"><a href="#cb17-8"></a></span>
+<span id="cb17-9"><a href="#cb17-9"></a>SS_B_subj <span class="ot">&lt;-</span> ((<span class="fu">sum</span>(b1<span class="sc">^</span><span class="dv">2</span>)<span class="sc">+</span><span class="fu">sum</span>(b2<span class="sc">^</span><span class="dv">2</span>)<span class="sc">+</span><span class="fu">sum</span>(b3<span class="sc">^</span><span class="dv">2</span>))<span class="sc">/</span> p) <span class="sc">-</span> (<span class="fu">sum</span>(X)<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> (n <span class="sc">*</span> p <span class="sc">*</span> q)<span class="sc">-</span>SS_between_subject<span class="sc">-</span>SS_B</span>
+<span id="cb17-10"><a href="#cb17-10"></a>SS_B_subj</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.583333</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>SS_A_B_subj<span class="ot">=</span>SS_within_subject<span class="sc">-</span>SS_A<span class="sc">-</span>SS_B<span class="sc">-</span>SS_AB<span class="sc">-</span>SS_A_subj<span class="sc">-</span>SS_B_subj</span>
+<span id="cb19-2"><a href="#cb19-2"></a>SS_A_B_subj</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.416667</code></pre>
+</div>
+</div>
+</section>
+<section id="第三步计算自由度" class="slide level2">
+<h2>第三步：计算自由度</h2>
+<p><span class="math display">\[df_总=npq-1\]</span> <span class="math display">\[df_{被试间}=n-1\]</span> <span class="math display">\[df_{被试内}=n(pq-1)\]</span> <span class="math display">\[df_A=p-1\]</span> <span class="math display">\[df_B=q-1\]</span> <span class="math display">\[df_{AB}=(p-1)(q-1)\]</span> <span class="math display">\[df_{A*被试}=(p-1)(n-1)\]</span> <span class="math display">\[df_{B*被试}=(q-1)(n-1)\]</span> <span class="math display">\[df_{A*B*被试}=(p-1)(q-1)(n-1)\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>df_tot<span class="ot">=</span>n<span class="sc">*</span>p<span class="sc">*</span>q<span class="dv">-1</span></span>
+<span id="cb21-2"><a href="#cb21-2"></a>df_tot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 23</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>df_btw<span class="ot">=</span>n<span class="dv">-1</span></span>
+<span id="cb23-2"><a href="#cb23-2"></a>df_btw</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>df_within<span class="ot">=</span>n<span class="sc">*</span>(p<span class="sc">*</span>q<span class="dv">-1</span>)</span>
+<span id="cb25-2"><a href="#cb25-2"></a>df_within</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 20</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>df_A<span class="ot">=</span>p<span class="dv">-1</span></span>
+<span id="cb27-2"><a href="#cb27-2"></a>df_A</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>df_B<span class="ot">=</span>q<span class="dv">-1</span></span>
+<span id="cb29-2"><a href="#cb29-2"></a>df_B</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a>df_AB<span class="ot">=</span>(p<span class="dv">-1</span>)<span class="sc">*</span>(q<span class="dv">-1</span>)</span>
+<span id="cb31-2"><a href="#cb31-2"></a>df_AB</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a>df_A_subj<span class="ot">=</span>(p<span class="dv">-1</span>)<span class="sc">*</span>(n<span class="dv">-1</span>)</span>
+<span id="cb33-2"><a href="#cb33-2"></a>df_A_subj</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a>df_B_subj<span class="ot">=</span>(q<span class="dv">-1</span>)<span class="sc">*</span>(n<span class="dv">-1</span>)</span>
+<span id="cb35-2"><a href="#cb35-2"></a>df_B_subj</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a>df_A_B_subj<span class="ot">=</span>(p<span class="dv">-1</span>)<span class="sc">*</span>(q<span class="dv">-1</span>)<span class="sc">*</span>(n<span class="dv">-1</span>)</span>
+<span id="cb37-2"><a href="#cb37-2"></a>df_A_B_subj</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6</code></pre>
+</div>
+</div>
+</section>
+<section id="第四步计算均方" class="slide level2">
+<h2>第四步：计算均方</h2>
+<p><span class="math display">\[MS_{A}=\frac{SS_A}{df_A}\]</span> <span class="math display">\[MS_{A*被试}=\frac{SS_{A*被试}}{df_{A*被试}}\]</span> <span class="math display">\[MS_{B}=\frac{SS_{B}}{df_{B}}\]</span> <span class="math display">\[MS_{B*被试}==\frac{SS_{B*被试}}{df_{B*被试}}\]</span> <span class="math display">\[MS_{A*B}=\frac{SS_{A*B}}{df_{A*B}}\]</span> <span class="math display">\[MS_{A*B*被试}=\frac{SS_{A*B*被试}}{df_{A*B*被试}}\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a>MS_A<span class="ot">=</span>SS_A<span class="sc">/</span>df_A</span>
+<span id="cb39-2"><a href="#cb39-2"></a>MS_A</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 80.66667</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a>MS_A_subj<span class="ot">=</span>SS_A_subj<span class="sc">/</span>df_A_subj</span>
+<span id="cb41-2"><a href="#cb41-2"></a>MS_A_subj</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.111111</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a>MS_B<span class="ot">=</span>SS_B<span class="sc">/</span>df_B</span>
+<span id="cb43-2"><a href="#cb43-2"></a>MS_B</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 40.54167</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a>MS_B_subj<span class="ot">=</span>SS_B_subj<span class="sc">/</span>df_B_subj</span>
+<span id="cb45-2"><a href="#cb45-2"></a>MS_B_subj</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.2638889</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a>MS_AB<span class="ot">=</span>SS_AB<span class="sc">/</span>df_AB</span>
+<span id="cb47-2"><a href="#cb47-2"></a>MS_AB</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 28.29167</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a>MS_A_B_subj<span class="ot">=</span>SS_A_B_subj<span class="sc">/</span>df_A_B_subj</span>
+<span id="cb49-2"><a href="#cb49-2"></a>MS_A_B_subj</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.2361111</code></pre>
+</div>
+</div>
+</section>
+<section id="第五步计算f值" class="slide level2">
+<h2>第五步：计算F值</h2>
+<p><span class="math display">\[F_A=\frac{MS_A}{MS_{A*被试}}\]</span> <span class="math display">\[F_B=\frac{MS_B}{MS_{B*被试}}\]</span> <span class="math display">\[F_{AB}=\frac{MS_{AB}}{MS_{AB*被试}}\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a>F_A<span class="ot">=</span>MS_A<span class="sc">/</span>MS_A_subj</span>
+<span id="cb51-2"><a href="#cb51-2"></a>F_A</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 72.6</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a>F_B<span class="ot">=</span>MS_B<span class="sc">/</span>MS_B_subj</span>
+<span id="cb53-2"><a href="#cb53-2"></a>F_B</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 153.6316</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a>F_AB<span class="ot">=</span>MS_AB<span class="sc">/</span>MS_A_B_subj</span>
+<span id="cb55-2"><a href="#cb55-2"></a>F_AB</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 119.8235</code></pre>
+</div>
+</div>
 </section></section>
 <section>
 <section id="两因素混合设计" class="title-slide slide level1 center">
@@ -1219,7 +1472,7 @@
 <p><span class="math display">\[B=\sum_{k=1}^{q} \frac{(\sum_{i=1}^{n} \sum_{j=1}^{p}Y_{ijk})^2}{np}\]</span></p>
 <p><span class="math display">\[AB=\sum_{j=1}^{p}\sum_{k=1}^{q}\frac{(\sum_{i=1}^{n}Y_{ijk})^2}{n}\]</span></p>
 </section>
-<section id="平方和计算-2" class="slide level2">
+<section id="平方和计算" class="slide level2">
 <h2>平方和计算</h2>
 <p>SS<sub>总变异</sub>=[ABS]-[Y]</p>
 <p>SS<sub>被试间</sub>=[AS]-[Y]</p>
@@ -1230,8 +1483,8 @@
 <p>SS<sub>AB</sub>=[AB]-[Y]-SS<sub>A</sub>-SS<sub>B</sub></p>
 <p>SS<sub>B×被试(A)</sub>=SS<sub>被试内</sub>-SS<sub>B</sub>–SS<sub>AB</sub></p>
 </section>
-<section id="练习-1" class="slide level2">
-<h2>练习</h2>
+<section id="实例练习-1" class="slide level2">
+<h2>实例练习</h2>
 <p>阅读理解中的影响因素探索（假想实验）</p>
 <ul>
 <li><p>研究者操纵生字密度被试内因素。</p></li>
@@ -1241,8 +1494,8 @@
 <li><p>被试：高年级 4名（熟悉度高）；低年级4名（熟悉度低） 。</p></li>
 </ul>
 </section>
-<section id="数据-1" class="slide level2">
-<h2>数据</h2>
+<section id="第一步计算均值与总变异" class="slide level2">
+<h2>第一步：计算均值与总变异</h2>
 <table>
 <tbody>
 <tr class="odd">
@@ -1312,8 +1565,8 @@
 </table>
 <p><span class="math display">\[m=6.08\]</span> <span class="math display">\[SS总变异 = (3 - m)^2 + (4 - m)^2 + … + (11 - m)^2\]</span></p>
 </section>
-<section id="ss被试间ssass被试a" class="slide level2">
-<h2>SS<sub>被试间</sub>、SS<sub>A</sub>、SS<sub>被试(A)</sub></h2>
+<section id="第二步计算组间变异-ss被试间ssass被试a" class="slide level2">
+<h2>第二步：计算组间变异 SS<sub>被试间</sub>、SS<sub>A</sub>、SS<sub>被试(A)</sub></h2>
 <table>
 <tbody>
 <tr class="odd">
@@ -1376,8 +1629,8 @@
 <p><span class="math display">\[SS~A~ = (51 - m)^2 + (95 - m)^2\]</span></p>
 <p><span class="math display">\[SS~被试(A)~ =SS~被试间~ - SS~A~\]</span></p>
 </section>
-<section id="ss被试内ssbssabssb被试a" class="slide level2">
-<h2>SS<sub>被试内</sub>、SS<sub>B</sub>、SS<sub>AB</sub>、SSB*被试(A)</h2>
+<section id="第三步计算组内变异-ss被试内ssbssabssb被试a" class="slide level2">
+<h2>第三步：计算组内变异 SS<sub>被试内</sub>、SS<sub>B</sub>、SS<sub>AB</sub>、SS~B*被试(A)~</h2>
 <table>
 <tbody>
 <tr class="odd">
@@ -1412,7 +1665,18 @@
 </table>
 <p><span class="math display">\[SS_{被试内} =SS_{总变异}~-SS_{被试间}\]</span></p>
 <p><span class="math display">\[SS_B = (31 - m)^2 + (48 - m)^2 + (67 - m)^2\]</span></p>
-<p><span class="math display">\[SS_{AB} = (16 - m)^2 + (415- m)^2+... + (48 - m)^2 -SS_A - SS_B\]</span> <span class="math display">\[SS_{B*被试(A)} = SS_{被试内} - SS_B - SS_{AB} \]</span></p>
+</section>
+<section id="ss_ab-16---m2-415--m2...-48---m2--ss_a---ss_b-ss_b被试a-ss_被试内---ss_b---ss_ab" class="slide level2">
+<h2><span class="math display">\[SS_{AB} = (16 - m)^2 + (415- m)^2+... + (48 - m)^2 -SS_A - SS_B\]</span> <span class="math display">\[SS_{B*被试(A)} = SS_{被试内} - SS_B - SS_{AB} \]</span></h2>
+</section>
+<section id="第四步计算自由度" class="slide level2">
+<h2>第四步：计算自由度</h2>
+<p><span class="math display">\[df_总=npq-1\]</span> <span class="math display">\[df_{被试间}=np-1\]</span> <span class="math display">\[df_A=p-1\]</span> <span class="math display">\[df_{被试A}=p(n-1)\]</span> <span class="math display">\[df_{被试内}=np(q-1)\]</span> <span class="math display">\[df_B=q-1\]</span> <span class="math display">\[df_{AB}=(p-1)(q-1)\]</span> <span class="math display">\[df_{B*被试A}=p(n-1)(q-1)\]</span></p>
+</section>
+<section id="第五步计算均方" class="slide level2">
+<h2>第五步：计算均方</h2>
+<p><span class="math display">\[MS_A=\frac{SS_A}{df_A}\]</span> <span class="math display">\[MS_{被试A}=\frac{SS_{被试A}}{df_{被试A}}\]</span> <span class="math display">\[MS_B=\frac{SS_B}{df_B}\]</span> <span class="math display">\[MS_{AB}=\frac{SS_{AB}}{df_{AB}}\]</span> <span class="math display">\[MS_{B*被试A}=\frac{SS_{B*被试A}}{df_{B*被试A}}\]</span> — ## 第六步：计算<em>F</em>值</p>
+<p><span class="math display">\[F_A=\frac{MS_A}{MS_{被试A}}\]</span> <span class="math display">\[F_B=\frac{MS_B}{MS_{B*被试A}}\]</span> <span class="math display">\[F_{AB}=\frac{MS_{AB}}{MS_{B*被试A}}\]</span></p>
 </section>
 <section id="方差分析表-1" class="slide level2">
 <h2>方差分析表</h2>
@@ -1523,13 +1787,13 @@
 </ol>
 <p>描述统计图</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">ggplot</span>(df1, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(phase), <span class="at">y =</span> width, <span class="at">color=</span><span class="fu">factor</span>(engagement))) <span class="sc">+</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a>  <span class="fu">geom_point</span>(<span class="at">position =</span> <span class="fu">position_jitter</span>(<span class="at">width =</span> <span class="fl">0.1</span>, <span class="at">height =</span> <span class="fl">0.1</span>)) <span class="sc">+</span></span>
-<span id="cb1-3"><a href="#cb1-3"></a>  <span class="fu">geom_boxplot</span>(<span class="at">alpha=</span><span class="fl">0.5</span>,<span class="at">width=</span><span class="fl">0.2</span>) <span class="sc">+</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a>  papaja<span class="sc">::</span><span class="fu">theme_apa</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a><span class="fu">ggplot</span>(df1, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(phase), <span class="at">y =</span> width, <span class="at">color=</span><span class="fu">factor</span>(engagement))) <span class="sc">+</span></span>
+<span id="cb57-2"><a href="#cb57-2"></a>  <span class="fu">geom_point</span>(<span class="at">position =</span> <span class="fu">position_jitter</span>(<span class="at">width =</span> <span class="fl">0.1</span>, <span class="at">height =</span> <span class="fl">0.1</span>)) <span class="sc">+</span></span>
+<span id="cb57-3"><a href="#cb57-3"></a>  <span class="fu">geom_boxplot</span>(<span class="at">alpha=</span><span class="fl">0.5</span>,<span class="at">width=</span><span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb57-4"><a href="#cb57-4"></a>  papaja<span class="sc">::</span><span class="fu">theme_apa</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="lecture4_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"></section>
+<img data-src="lecture4_files/figure-revealjs/unnamed-chunk-34-1.png" width="960" class="r-stretch"></section>
 <section id="workflow-4" class="slide level2">
 <h2>Workflow</h2>
 <ol start="2" type="1">
@@ -1539,14 +1803,14 @@
 <li>模型前提预设的检验：正态性检验</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="do">## 正态性检验</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">sample =</span> df1<span class="sc">$</span>width)) <span class="sc">+</span></span>
-<span id="cb2-3"><a href="#cb2-3"></a>  <span class="fu">geom_qq</span>() <span class="sc">+</span></span>
-<span id="cb2-4"><a href="#cb2-4"></a>  <span class="fu">geom_qq_line</span>() <span class="sc">+</span></span>
-<span id="cb2-5"><a href="#cb2-5"></a>  papaja<span class="sc">::</span><span class="fu">theme_apa</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1"></a><span class="do">## 正态性检验</span></span>
+<span id="cb58-2"><a href="#cb58-2"></a><span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">sample =</span> df1<span class="sc">$</span>width)) <span class="sc">+</span></span>
+<span id="cb58-3"><a href="#cb58-3"></a>  <span class="fu">geom_qq</span>() <span class="sc">+</span></span>
+<span id="cb58-4"><a href="#cb58-4"></a>  <span class="fu">geom_qq_line</span>() <span class="sc">+</span></span>
+<span id="cb58-5"><a href="#cb58-5"></a>  papaja<span class="sc">::</span><span class="fu">theme_apa</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="lecture4_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"></section>
+<img data-src="lecture4_files/figure-revealjs/unnamed-chunk-35-1.png" width="960" class="r-stretch"></section>
 <section id="workflow-5" class="slide level2">
 <h2>Workflow</h2>
 <ol start="2" type="1">
@@ -1556,7 +1820,7 @@
 <li>模型前提条件检验:方差齐性检验</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>bruceR<span class="sc">::</span><span class="fu">MANOVA</span>(df1, <span class="at">subID=</span><span class="st">"ID"</span>, <span class="at">dv=</span><span class="st">"width"</span>,<span class="at">between =</span> <span class="st">"engagement"</span>, <span class="at">within=</span><span class="st">"phase"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1"></a>bruceR<span class="sc">::</span><span class="fu">MANOVA</span>(df1, <span class="at">subID=</span><span class="st">"ID"</span>, <span class="at">dv=</span><span class="st">"width"</span>,<span class="at">between =</span> <span class="st">"engagement"</span>, <span class="at">within=</span><span class="st">"phase"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 ====== ANOVA (Mixed Design) ======
@@ -1565,10 +1829,10 @@ Descriptives:
 ──────────────────────────────────────
  "engagement" "phase"  Mean    S.D.  n
 ──────────────────────────────────────
-  engagement1    post 6.665 (0.422) 30
-  engagement1    pre  4.504 (0.861) 30
-  engagement2    post 4.399 (0.695) 30
-  engagement2    pre  4.180 (0.741) 30
+  engagement1    post 6.614 (0.499) 30
+  engagement1    pre  4.393 (0.875) 30
+  engagement2    post 4.777 (0.729) 30
+  engagement2    pre  4.562 (0.859) 30
 ──────────────────────────────────────
 Total sample size: N = 60
 
@@ -1580,9 +1844,9 @@ Covariate(s):               –
 ───────────────────────────────────────────────────────────────────────────────────
                         MS   MSE df1 df2       F     p     η²p [90% CI of η²p]  η²G
 ───────────────────────────────────────────────────────────────────────────────────
-engagement          50.299 0.365   1  58 137.780 &lt;.001 ***   .704 [.597, .775] .471
-phase               42.509 0.611   1  58  69.616 &lt;.001 ***   .546 [.401, .651] .429
-engagement * phase  28.296 0.611   1  58  46.340 &lt;.001 ***   .444 [.288, .568] .333
+engagement          20.868 0.749   1  58  27.870 &lt;.001 ***   .325 [.168, .464] .240
+phase               44.464 0.393   1  58 113.137 &lt;.001 ***   .661 [.543, .742] .402
+engagement * phase  30.183 0.393   1  58  76.799 &lt;.001 ***   .570 [.430, .670] .313
 ───────────────────────────────────────────────────────────────────────────────────
 MSE = mean square error (the residual variance of the linear model)
 η²p = partial eta-squared = SS / (SS + SSE) = F * df1 / (F * df1 + df2)
@@ -1594,8 +1858,8 @@ Levene’s Test for Homogeneity of Variance:
 ──────────────────────────────────────
           Levene’s F df1 df2     p    
 ──────────────────────────────────────
-DV: pre        1.181   1  58  .282    
-DV: post       5.553   1  58  .022 *  
+DV: pre        0.008   1  58  .930    
+DV: post       4.729   1  58  .034 *  
 ──────────────────────────────────────
 
 Mauchly’s Test of Sphericity:
@@ -1621,9 +1885,9 @@ The repeated measures have only two levels. The assumption of sphericity is alwa
 <li>两因素混合方差分析</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="do">## 两因素混合方差分析</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a>bruceR<span class="sc">::</span><span class="fu">MANOVA</span>(df1, <span class="at">subID=</span><span class="st">"ID"</span>, <span class="at">dv=</span><span class="st">"width"</span>,<span class="at">between =</span> <span class="st">"engagement"</span>, <span class="at">within=</span><span class="st">"phase"</span>)<span class="sc">%&gt;%</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a>  <span class="fu">EMMEANS</span>(<span class="st">"phase"</span>, <span class="at">by=</span><span class="st">"engagement"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1"></a><span class="do">## 两因素混合方差分析</span></span>
+<span id="cb61-2"><a href="#cb61-2"></a>bruceR<span class="sc">::</span><span class="fu">MANOVA</span>(df1, <span class="at">subID=</span><span class="st">"ID"</span>, <span class="at">dv=</span><span class="st">"width"</span>,<span class="at">between =</span> <span class="st">"engagement"</span>, <span class="at">within=</span><span class="st">"phase"</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb61-3"><a href="#cb61-3"></a>  <span class="fu">EMMEANS</span>(<span class="st">"phase"</span>, <span class="at">by=</span><span class="st">"engagement"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 ====== ANOVA (Mixed Design) ======
@@ -1632,10 +1896,10 @@ Descriptives:
 ──────────────────────────────────────
  "engagement" "phase"  Mean    S.D.  n
 ──────────────────────────────────────
-  engagement1    post 6.665 (0.422) 30
-  engagement1    pre  4.504 (0.861) 30
-  engagement2    post 4.399 (0.695) 30
-  engagement2    pre  4.180 (0.741) 30
+  engagement1    post 6.614 (0.499) 30
+  engagement1    pre  4.393 (0.875) 30
+  engagement2    post 4.777 (0.729) 30
+  engagement2    pre  4.562 (0.859) 30
 ──────────────────────────────────────
 Total sample size: N = 60
 
@@ -1647,9 +1911,9 @@ Covariate(s):               –
 ───────────────────────────────────────────────────────────────────────────────────
                         MS   MSE df1 df2       F     p     η²p [90% CI of η²p]  η²G
 ───────────────────────────────────────────────────────────────────────────────────
-engagement          50.299 0.365   1  58 137.780 &lt;.001 ***   .704 [.597, .775] .471
-phase               42.509 0.611   1  58  69.616 &lt;.001 ***   .546 [.401, .651] .429
-engagement * phase  28.296 0.611   1  58  46.340 &lt;.001 ***   .444 [.288, .568] .333
+engagement          20.868 0.749   1  58  27.870 &lt;.001 ***   .325 [.168, .464] .240
+phase               44.464 0.393   1  58 113.137 &lt;.001 ***   .661 [.543, .742] .402
+engagement * phase  30.183 0.393   1  58  76.799 &lt;.001 ***   .570 [.430, .670] .313
 ───────────────────────────────────────────────────────────────────────────────────
 MSE = mean square error (the residual variance of the linear model)
 η²p = partial eta-squared = SS / (SS + SSE) = F * df1 / (F * df1 + df2)
@@ -1661,8 +1925,8 @@ Levene’s Test for Homogeneity of Variance:
 ──────────────────────────────────────
           Levene’s F df1 df2     p    
 ──────────────────────────────────────
-DV: pre        1.181   1  58  .282    
-DV: post       5.553   1  58  .022 *  
+DV: pre        0.008   1  58  .930    
+DV: post       4.729   1  58  .034 *  
 ──────────────────────────────────────
 
 Mauchly’s Test of Sphericity:
@@ -1674,8 +1938,8 @@ Joint Tests of "phase":
 ──────────────────────────────────────────────────────────────────
  Effect "engagement" df1 df2       F     p     η²p [90% CI of η²p]
 ──────────────────────────────────────────────────────────────────
-  phase  engagement1   1  58 114.775 &lt;.001 ***   .664 [.547, .744]
-  phase  engagement2   1  58   1.180  .282       .020 [.000, .114]
+  phase  engagement1   1  58 188.182 &lt;.001 ***   .764 [.677, .822]
+  phase  engagement2   1  58   1.754  .191       .029 [.000, .132]
 ──────────────────────────────────────────────────────────────────
 Note. Simple effects of repeated measures with 3 or more levels
 are different from the results obtained with SPSS MANOVA syntax.
@@ -1684,20 +1948,20 @@ Estimated Marginal Means of "phase":
 ───────────────────────────────────────────────────
  "phase" "engagement" Mean [95% CI of Mean]    S.E.
 ───────────────────────────────────────────────────
-    post  engagement1  6.665 [6.455, 6.876] (0.105)
-    pre   engagement1  4.504 [4.210, 4.797] (0.147)
-    post  engagement2  4.399 [4.189, 4.610] (0.105)
-    pre   engagement2  4.180 [3.887, 4.474] (0.147)
+    post  engagement1  6.614 [6.386, 6.842] (0.114)
+    pre   engagement1  4.393 [4.077, 4.710] (0.158)
+    post  engagement2  4.777 [4.549, 5.005] (0.114)
+    pre   engagement2  4.562 [4.246, 4.879] (0.158)
 ───────────────────────────────────────────────────
 
 Pairwise Comparisons of "phase":
 ──────────────────────────────────────────────────────────────────────────────────────
    Contrast "engagement" Estimate    S.E. df       t     p     Cohen’s d [95% CI of d]
 ──────────────────────────────────────────────────────────────────────────────────────
- pre - post  engagement1   -2.162 (0.202) 58 -10.713 &lt;.001 *** -1.973 [-2.341, -1.604]
- pre - post  engagement2   -0.219 (0.202) 58  -1.086  .282     -0.200 [-0.569,  0.169]
+ pre - post  engagement1   -2.220 (0.162) 58 -13.718 &lt;.001 *** -2.526 [-2.895, -2.157]
+ pre - post  engagement2   -0.214 (0.162) 58  -1.324  .191     -0.244 [-0.612,  0.125]
 ──────────────────────────────────────────────────────────────────────────────────────
-Pooled SD for computing Cohen’s d: 1.096
+Pooled SD for computing Cohen’s d: 0.879
 No need to adjust p values.
 
 Disclaimer:
@@ -1717,9 +1981,9 @@ You might also use `effectsize::t_to_d()` to compute d.</code></pre>
 <li>简单效应分析</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="do">## 简单效应分析</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a>bruceR<span class="sc">::</span><span class="fu">MANOVA</span>(df1, <span class="at">subID=</span><span class="st">"ID"</span>, <span class="at">dv=</span><span class="st">"width"</span>,<span class="at">between =</span> <span class="st">"engagement"</span>, <span class="at">within=</span><span class="st">"phase"</span>)<span class="sc">%&gt;%</span></span>
-<span id="cb7-3"><a href="#cb7-3"></a>  <span class="fu">EMMEANS</span>(<span class="st">"phase"</span>, <span class="at">by=</span><span class="st">"engagement"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1"></a><span class="do">## 简单效应分析</span></span>
+<span id="cb63-2"><a href="#cb63-2"></a>bruceR<span class="sc">::</span><span class="fu">MANOVA</span>(df1, <span class="at">subID=</span><span class="st">"ID"</span>, <span class="at">dv=</span><span class="st">"width"</span>,<span class="at">between =</span> <span class="st">"engagement"</span>, <span class="at">within=</span><span class="st">"phase"</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb63-3"><a href="#cb63-3"></a>  <span class="fu">EMMEANS</span>(<span class="st">"phase"</span>, <span class="at">by=</span><span class="st">"engagement"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 ====== ANOVA (Mixed Design) ======
@@ -1728,10 +1992,10 @@ Descriptives:
 ──────────────────────────────────────
  "engagement" "phase"  Mean    S.D.  n
 ──────────────────────────────────────
-  engagement1    post 6.665 (0.422) 30
-  engagement1    pre  4.504 (0.861) 30
-  engagement2    post 4.399 (0.695) 30
-  engagement2    pre  4.180 (0.741) 30
+  engagement1    post 6.614 (0.499) 30
+  engagement1    pre  4.393 (0.875) 30
+  engagement2    post 4.777 (0.729) 30
+  engagement2    pre  4.562 (0.859) 30
 ──────────────────────────────────────
 Total sample size: N = 60
 
@@ -1743,9 +2007,9 @@ Covariate(s):               –
 ───────────────────────────────────────────────────────────────────────────────────
                         MS   MSE df1 df2       F     p     η²p [90% CI of η²p]  η²G
 ───────────────────────────────────────────────────────────────────────────────────
-engagement          50.299 0.365   1  58 137.780 &lt;.001 ***   .704 [.597, .775] .471
-phase               42.509 0.611   1  58  69.616 &lt;.001 ***   .546 [.401, .651] .429
-engagement * phase  28.296 0.611   1  58  46.340 &lt;.001 ***   .444 [.288, .568] .333
+engagement          20.868 0.749   1  58  27.870 &lt;.001 ***   .325 [.168, .464] .240
+phase               44.464 0.393   1  58 113.137 &lt;.001 ***   .661 [.543, .742] .402
+engagement * phase  30.183 0.393   1  58  76.799 &lt;.001 ***   .570 [.430, .670] .313
 ───────────────────────────────────────────────────────────────────────────────────
 MSE = mean square error (the residual variance of the linear model)
 η²p = partial eta-squared = SS / (SS + SSE) = F * df1 / (F * df1 + df2)
@@ -1757,8 +2021,8 @@ Levene’s Test for Homogeneity of Variance:
 ──────────────────────────────────────
           Levene’s F df1 df2     p    
 ──────────────────────────────────────
-DV: pre        1.181   1  58  .282    
-DV: post       5.553   1  58  .022 *  
+DV: pre        0.008   1  58  .930    
+DV: post       4.729   1  58  .034 *  
 ──────────────────────────────────────
 
 Mauchly’s Test of Sphericity:
@@ -1770,8 +2034,8 @@ Joint Tests of "phase":
 ──────────────────────────────────────────────────────────────────
  Effect "engagement" df1 df2       F     p     η²p [90% CI of η²p]
 ──────────────────────────────────────────────────────────────────
-  phase  engagement1   1  58 114.775 &lt;.001 ***   .664 [.547, .744]
-  phase  engagement2   1  58   1.180  .282       .020 [.000, .114]
+  phase  engagement1   1  58 188.182 &lt;.001 ***   .764 [.677, .822]
+  phase  engagement2   1  58   1.754  .191       .029 [.000, .132]
 ──────────────────────────────────────────────────────────────────
 Note. Simple effects of repeated measures with 3 or more levels
 are different from the results obtained with SPSS MANOVA syntax.
@@ -1780,20 +2044,20 @@ Estimated Marginal Means of "phase":
 ───────────────────────────────────────────────────
  "phase" "engagement" Mean [95% CI of Mean]    S.E.
 ───────────────────────────────────────────────────
-    post  engagement1  6.665 [6.455, 6.876] (0.105)
-    pre   engagement1  4.504 [4.210, 4.797] (0.147)
-    post  engagement2  4.399 [4.189, 4.610] (0.105)
-    pre   engagement2  4.180 [3.887, 4.474] (0.147)
+    post  engagement1  6.614 [6.386, 6.842] (0.114)
+    pre   engagement1  4.393 [4.077, 4.710] (0.158)
+    post  engagement2  4.777 [4.549, 5.005] (0.114)
+    pre   engagement2  4.562 [4.246, 4.879] (0.158)
 ───────────────────────────────────────────────────
 
 Pairwise Comparisons of "phase":
 ──────────────────────────────────────────────────────────────────────────────────────
    Contrast "engagement" Estimate    S.E. df       t     p     Cohen’s d [95% CI of d]
 ──────────────────────────────────────────────────────────────────────────────────────
- pre - post  engagement1   -2.162 (0.202) 58 -10.713 &lt;.001 *** -1.973 [-2.341, -1.604]
- pre - post  engagement2   -0.219 (0.202) 58  -1.086  .282     -0.200 [-0.569,  0.169]
+ pre - post  engagement1   -2.220 (0.162) 58 -13.718 &lt;.001 *** -2.526 [-2.895, -2.157]
+ pre - post  engagement2   -0.214 (0.162) 58  -1.324  .191     -0.244 [-0.612,  0.125]
 ──────────────────────────────────────────────────────────────────────────────────────
-Pooled SD for computing Cohen’s d: 1.096
+Pooled SD for computing Cohen’s d: 0.879
 No need to adjust p values.
 
 Disclaimer:
@@ -1813,7 +2077,7 @@ You might also use `effectsize::t_to_d()` to compute d.</code></pre>
 <li>结果可视化</li>
 </ul>
 
-<img data-src="lecture4_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"></section>
+<img data-src="lecture4_files/figure-revealjs/unnamed-chunk-39-1.png" width="960" class="r-stretch"></section>
 <section id="workflow-10" class="slide level2">
 <h2>workflow</h2>
 <p>5.做出决策。结果呈现，报告撰写。<br></p>

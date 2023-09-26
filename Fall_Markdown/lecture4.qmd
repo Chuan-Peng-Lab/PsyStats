@@ -185,13 +185,11 @@ $$H_0: \mu_{jk} - \mu_{j'k} - \mu_{jk'}+ \mu_{j'k'}= 0$$或$$(αβ)_{jk}=0，(α
 
 ## 平方和与自由度分解<br>
 
-![](images/fig1.png)
----
+## ![](images/fig1.png)
+
 ## 两因素重复测量设计的平方和计算<br>
 
-$$SS_{总变异}=SS_{组间}+SS_{组内}$$
-$$SS_{总变异}=SS_{与处理无关的个体差异(被试间)}+SS_{被试内}$$ 
-$$SS_{被试内}=SS_A+SS_{A*被试}+SS_B+SS_{B*被试}+SS_{AB}+SS_{AB*被试}$$
+$$SS_{总变异}=SS_{组间}+SS_{组内}$$ $$SS_{总变异}=SS_{与处理无关的个体差异(被试间)}+SS_{被试内}$$ $$SS_{被试内}=SS_A+SS_{A*被试}+SS_B+SS_{B*被试}+SS_{AB}+SS_{AB*被试}$$
 
 ## 方差分析表<br>
 
@@ -207,7 +205,6 @@ $$SS_{被试内}=SS_A+SS_{A*被试}+SS_B+SS_{B*被试}+SS_{AB}+SS_{AB*被试}$$
 | AB         | SS~AB~         | (p-1)(q-1)      | MS~AB~=SS~AB~/(p-1)(q-1)                      | MS~AB~/MS~A\*B\*被试~ |
 | A\*B\*被试 | SS~A\*B\*被试~ | (p-1)(q-1)(n-1) | MS~A\*B\*被试~=SS~A\*B\*被试~/(p-1)(q-1)(n-1) |                       |
 | 总和       | SS~总变异~     |                 |                                               |                       |
-
 
 ## 实例练习
 
@@ -263,14 +260,11 @@ data_long <- data %>%
                values_to = "Value") 
 ```
 
-
 ## 第一步：计算SS~总~、SS~被试间~、SS~被试内~
 
-$$SS_总=\sum{X^2}-\frac{(\sum{X})^2}{npq}$$
-其中，X是单个被试的观测值，n是每个实验处理中的被试数量，p是A因素的水平数，q是B因素的水平数
+$$SS_总=\sum{X^2}-\frac{(\sum{X})^2}{npq}$$ 其中，X是单个被试的观测值，n是每个实验处理中的被试数量，p是A因素的水平数，q是B因素的水平数
 
-$$SS_{被试间}=\frac{(\sum{S})^2}{pq}-\frac{(\sum{X})^2}{npq}$$
-其中，S是单个被试在所有实验处理观测值的总和
+$$SS_{被试间}=\frac{(\sum{S})^2}{pq}-\frac{(\sum{X})^2}{npq}$$ 其中，S是单个被试在所有实验处理观测值的总和
 
 $$SS_{被试内}=SS_总-SS_{被试间}$$
 
@@ -297,6 +291,7 @@ SS_between_subject
 SS_within_subject <- SS_total - SS_between_subject
 SS_within_subject
 ```
+
 |     |        |     |     |     |     |     |         |
 |:---:|:------:|:---:|:---:|:---:|:---:|:---:|---------|
 |     |   a1   | a1  | a1  | a2  | a2  | a2  |         |
@@ -306,17 +301,13 @@ SS_within_subject
 | S3  |   4    |  4  |  5  |  3  |  8  | 12  | 36      |
 | S4  |   3    |  2  |  2  |  3  |  7  | 11  | 28      |
 
-
 ## 第二步：计算多种被试内变异
 
-$$SS_A=\frac{(\sum{A})^2}{nq}-\frac{(\sum{X})^2}{npq}$$
-其中，A是A因素每个水平下所有被试观测值的总和
+$$SS_A=\frac{(\sum{A})^2}{nq}-\frac{(\sum{X})^2}{npq}$$ 其中，A是A因素每个水平下所有被试观测值的总和
 
-$$SS_B=\frac{(\sum{B})^2}{np}-\frac{(\sum{X})^2}{npq}$$
-其中，B是B因素每个水平下所有被试观测值的总和
+$$SS_B=\frac{(\sum{B})^2}{np}-\frac{(\sum{X})^2}{npq}$$ 其中，B是B因素每个水平下所有被试观测值的总和
 
-$$SS_{AB}=\frac{(\sum{AB})^2}{n}-\frac{(\sum{X})^2}{npq}-SS_A-SS_B$$
-其中，AB是某个实验处理结合下所有被试观测值的总和
+$$SS_{AB}=\frac{(\sum{AB})^2}{n}-\frac{(\sum{X})^2}{npq}-SS_A-SS_B$$ 其中，AB是某个实验处理结合下所有被试观测值的总和
 
 ```{r,echo=TRUE}
 # 提取"a1" "a2" 所有行
@@ -336,6 +327,7 @@ b3_rows <- data_long[grep("b3", data_long$Condition), ]
 SS_B=(sum(b1_rows$Value)^2+sum(b2_rows$Value)^2++sum(b3_rows$Value)^2)/(n*p)-(sum(X)^2) / (n * p * q)
 SS_B
 ```
+
 ```{r,echo=TRUE}
 # 提取"a1_b1" "a1_b2" "a1_b3" "a2_b1" "a2_b2" "a2_b3"所有行
 a1_b1_rows <- data_long[grep("a1_b1", data_long$Condition), ]
@@ -348,6 +340,7 @@ a2_b3_rows <- data_long[grep("a2_b3", data_long$Condition), ]
 SS_AB=(sum(a1_b1_rows$Value)^2+sum(a1_b2_rows$Value)^2++sum(a1_b3_rows$Value)^2+sum(a2_b1_rows$Value)^2+sum(a2_b2_rows$Value)^2+sum(a2_b3_rows$Value)^2)/(n)-(sum(X)^2) / (n * p * q)-SS_A-SS_B
 SS_AB
 ```
+
 |     |         |     |          |     |
 |-----|---------|-----|----------|-----|
 |     | a1      | a2  | $$\sum$$ | B   |
@@ -356,15 +349,11 @@ SS_AB
 | b3  | 19      | 48  | 67       | 67  |
 |     | 51      | 95  |          |     |
 
-
 ## 
 
+$$SS_{A*被试}=\frac{(\sum{AS})^2}{q}-\frac{(\sum{X})^2}{npq}-SS_{被试间}-SS_A$$ 其中，AS是接受A因素某水平的某个被试的观测值
 
-$$SS_{A*被试}=\frac{(\sum{AS})^2}{q}-\frac{(\sum{X})^2}{npq}-SS_{被试间}-SS_A$$
-其中，AS是接受A因素某水平的某个被试的观测值
-
-$$SS_{B*被试}=\frac{(\sum{BS})^2}{p}-\frac{(\sum{X})^2}{npq}-SS_{被试间}-SS_B$$
-其中，BS是接受B因素某水平的某个被试的观测值
+$$SS_{B*被试}=\frac{(\sum{BS})^2}{p}-\frac{(\sum{X})^2}{npq}-SS_{被试间}-SS_B$$ 其中，BS是接受B因素某水平的某个被试的观测值
 
 $$SS_{A*B*被试}=SS_{被试内}-SS_A-SS_B-SS_{AB}-SS_{A*被试}-SS_{B*被试}$$
 
@@ -390,7 +379,6 @@ $$SS_{A*B*被试}=SS_{被试内}-SS_A-SS_B-SS_{AB}-SS_{A*被试}-SS_{B*被试}$$
 
 <br>
 
-
 ```{r,echo=TRUE}
 #提取所需数据
 a1_rows <- data_long[grep("a1", data_long$Condition), ]
@@ -398,9 +386,10 @@ a2_rows <- data_long[grep("a2", data_long$Condition), ]
 a1 <- tapply(a1_rows$Value, a1_rows$ID, sum)
 a2 <- tapply(a2_rows$Value, a2_rows$ID, sum)
 
-SS_A_被试 <- ((sum(a1^2)+sum(a2^2))/ q) - (sum(X)^2) / (n * p * q)-SS_between_subject-SS_A
-SS_A_被试
+SS_A_subj <- ((sum(a1^2)+sum(a2^2))/ q) - (sum(X)^2) / (n * p * q)-SS_between_subject-SS_A
+SS_A_subj
 ```
+
 ```{r,echo=TRUE}
 #提取所需数据
 b1_rows <- data_long[grep("b1", data_long$Condition), ]
@@ -410,39 +399,33 @@ b1 <- tapply(b1_rows$Value, b1_rows$ID, sum)
 b2 <- tapply(b2_rows$Value, b2_rows$ID, sum)
 b3 <- tapply(b3_rows$Value, b3_rows$ID, sum)
 
-SS_B_被试 <- ((sum(b1^2)+sum(b2^2)+sum(b3^2))/ p) - (sum(X)^2) / (n * p * q)-SS_between_subject-SS_B
-SS_B_被试
+SS_B_subj <- ((sum(b1^2)+sum(b2^2)+sum(b3^2))/ p) - (sum(X)^2) / (n * p * q)-SS_between_subject-SS_B
+SS_B_subj
 ```
+
 ```{r,echo=TRUE}
-SS_A_B_被试=SS_within_subject-SS_A-SS_B-SS_AB-SS_A_被试-SS_B_被试
-SS_A_B_被试
+SS_A_B_subj=SS_within_subject-SS_A-SS_B-SS_AB-SS_A_subj-SS_B_subj
+SS_A_B_subj
 
 ```
 
 ## 第三步：计算自由度
 
-$$df_总=npq-1$$
-$$df_{被试间}=n-1$$
-$$df_{被试内}=n(pq-1)$$
-$$df_A=p-1$$
-$$df_B=q-1$$
-$$df_{AB}=(p-1)(q-1)$$
-$$df_{A*被试}=(p-1)(n-1)$$
-$$df_{B*被试}=(q-1)(n-1)$$
-$$df_{A*B*被试}=(p-1)(q-1)(n-1)$$
+$$df_总=npq-1$$ $$df_{被试间}=n-1$$ $$df_{被试内}=n(pq-1)$$ $$df_A=p-1$$ $$df_B=q-1$$ $$df_{AB}=(p-1)(q-1)$$ $$df_{A*被试}=(p-1)(n-1)$$ $$df_{B*被试}=(q-1)(n-1)$$ $$df_{A*B*被试}=(p-1)(q-1)(n-1)$$
+
 ```{r,echo=TRUE}
-df_总=n*p*q-1
-df_总
+df_tot=n*p*q-1
+df_tot
 ```
 
 ```{r,echo=TRUE}
-df_被试间=n-1
-df_被试间
+df_btw=n-1
+df_btw
 ```
 
 ```{r,echo=TRUE}
-df_被试内=n*(p*q-1)
-df_被试内
+df_within=n*(p*q-1)
+df_within
 ```
 
 ```{r,echo=TRUE}
@@ -461,70 +444,70 @@ df_AB
 ```
 
 ```{r,echo=TRUE}
-df_A_被试=(p-1)*(n-1)
-df_A_被试
+df_A_subj=(p-1)*(n-1)
+df_A_subj
 ```
 
 ```{r,echo=TRUE}
-df_B_被试=(q-1)*(n-1)
-df_B_被试
+df_B_subj=(q-1)*(n-1)
+df_B_subj
 ```
 
 ```{r,echo=TRUE}
-df_A_B_被试=(p-1)*(q-1)*(n-1)
-df_A_B_被试
+df_A_B_subj=(p-1)*(q-1)*(n-1)
+df_A_B_subj
 ```
 
 ## 第四步：计算均方
 
-$$MS_{A}=\frac{SS_A}{df_A}$$
-$$MS_{A*被试}=\frac{SS_{A*被试}}{df_{A*被试}}$$
-$$MS_{B}=\frac{SS_{B}}{df_{B}}$$
-$$MS_{B*被试}==\frac{SS_{B*被试}}{df_{B*被试}}$$
-$$MS_{A*B}=\frac{SS_{A*B}}{df_{A*B}}$$
-$$MS_{A*B*被试}=\frac{SS_{A*B*被试}}{df_{A*B*被试}}$$
+$$MS_{A}=\frac{SS_A}{df_A}$$ $$MS_{A*被试}=\frac{SS_{A*被试}}{df_{A*被试}}$$ $$MS_{B}=\frac{SS_{B}}{df_{B}}$$ $$MS_{B*被试}==\frac{SS_{B*被试}}{df_{B*被试}}$$ $$MS_{A*B}=\frac{SS_{A*B}}{df_{A*B}}$$ $$MS_{A*B*被试}=\frac{SS_{A*B*被试}}{df_{A*B*被试}}$$
+
 ```{r,echo=TRUE}
 MS_A=SS_A/df_A
 MS_A
 ```
-```{r,echo=TRUE}
-MS_A_被试=SS_A_被试/df_A_被试
-MS_A_被试
-```
 
+```{r,echo=TRUE}
+MS_A_subj=SS_A_subj/df_A_subj
+MS_A_subj
+```
 
 ```{r,echo=TRUE}
 MS_B=SS_B/df_B
 MS_B
 ```
+
 ```{r,echo=TRUE}
-MS_B_被试=SS_B_被试/df_B_被试
-MS_B_被试
+MS_B_subj=SS_B_subj/df_B_subj
+MS_B_subj
 ```
+
 ```{r,echo=TRUE}
 MS_AB=SS_AB/df_AB
 MS_AB
 ```
+
 ```{r,echo=TRUE}
-MS_A_B_被试=SS_A_B_被试/df_A_B_被试
-MS_A_B_被试
+MS_A_B_subj=SS_A_B_subj/df_A_B_subj
+MS_A_B_subj
 ```
+
 ## 第五步：计算F值
 
-$$F_A=\frac{MS_A}{MS_{A*被试}}$$
-$$F_B=\frac{MS_B}{MS_{B*被试}}$$
-$$F_{AB}=\frac{MS_{AB}}{MS_{AB*被试}}$$
+$$F_A=\frac{MS_A}{MS_{A*被试}}$$ $$F_B=\frac{MS_B}{MS_{B*被试}}$$ $$F_{AB}=\frac{MS_{AB}}{MS_{AB*被试}}$$
 
 ```{r,echo=TRUE}
-F_A=MS_A/MS_A_被试
+F_A=MS_A/MS_A_subj
 F_A
 ```
+
 ```{r,echo=TRUE}
-F_B=MS_B/MS_B_被试
+F_B=MS_B/MS_B_subj
 F_B
 ```
+
 ```{r,echo=TRUE}
-F_AB=MS_AB/MS_A_B_被试
+F_AB=MS_AB/MS_A_B_subj
 F_AB
 ```
 
@@ -653,7 +636,7 @@ $$SS~A~ = (51 - m)^2 + (95 - m)^2$$
 
 $$SS~被试(A)~ =SS~被试间~ - SS~A~$$
 
-## 第三步：计算组内变异 SS~被试内~、SS~B~、SS~AB~、SS~B*被试(A)~
+## 第三步：计算组内变异 SS~被试内~、SS~B~、SS~AB~、SS\~B\*被试(A)\~
 
 |     |         |     |     |     |
 |-----|---------|-----|-----|-----|
@@ -666,31 +649,17 @@ $$SS_{被试内} =SS_{总变异}~-SS_{被试间}$$
 
 $$SS_B = (31 - m)^2 + (48 - m)^2 + (67 - m)^2$$
 
-$$SS_{AB} = (16 - m)^2 + (415- m)^2+... + (48 - m)^2 -SS_A - SS_B$$ $$SS_{B*被试(A)} = SS_{被试内} - SS_B - SS_{AB} $$
----
+## $$SS_{AB} = (16 - m)^2 + (415- m)^2+... + (48 - m)^2 -SS_A - SS_B$$ $$SS_{B*被试(A)} = SS_{被试内} - SS_B - SS_{AB} $$
+
 ## 第四步：计算自由度
 
-$$df_总=npq-1$$
-$$df_{被试间}=np-1$$
-$$df_A=p-1$$
-$$df_{被试A}=p(n-1)$$
-$$df_{被试内}=np(q-1)$$
-$$df_B=q-1$$
-$$df_{AB}=(p-1)(q-1)$$
-$$df_{B*被试A}=p(n-1)(q-1)$$
+$$df_总=npq-1$$ $$df_{被试间}=np-1$$ $$df_A=p-1$$ $$df_{被试A}=p(n-1)$$ $$df_{被试内}=np(q-1)$$ $$df_B=q-1$$ $$df_{AB}=(p-1)(q-1)$$ $$df_{B*被试A}=p(n-1)(q-1)$$
 
 ## 第五步：计算均方
-$$MS_A=\frac{SS_A}{df_A}$$
-$$MS_{被试A}=\frac{SS_{被试A}}{df_{被试A}}$$
-$$MS_B=\frac{SS_B}{df_B}$$
-$$MS_{AB}=\frac{SS_{AB}}{df_{AB}}$$
-$$MS_{B*被试A}=\frac{SS_{B*被试A}}{df_{B*被试A}}$$
----
-## 第六步：计算*F*值
 
-$$F_A=\frac{MS_A}{MS_{被试A}}$$
-$$F_B=\frac{MS_B}{MS_{B*被试A}}$$
-$$F_{AB}=\frac{MS_{AB}}{MS_{B*被试A}}$$
+$$MS_A=\frac{SS_A}{df_A}$$ $$MS_{被试A}=\frac{SS_{被试A}}{df_{被试A}}$$ $$MS_B=\frac{SS_B}{df_B}$$ $$MS_{AB}=\frac{SS_{AB}}{df_{AB}}$$ $$MS_{B*被试A}=\frac{SS_{B*被试A}}{df_{B*被试A}}$$ --- \## 第六步：计算*F*值
+
+$$F_A=\frac{MS_A}{MS_{被试A}}$$ $$F_B=\frac{MS_B}{MS_{B*被试A}}$$ $$F_{AB}=\frac{MS_{AB}}{MS_{B*被试A}}$$
 
 ## 方差分析表
 
@@ -800,7 +769,7 @@ ggplot(mapping = aes(sample = df1$width)) +
 bruceR::MANOVA(df1, subID="ID", dv="width",between = "engagement", within="phase")
 ```
 
-![](images/fig3.jpg) 
+![](images/fig3.jpg)
 
 ## workflow
 
@@ -834,7 +803,6 @@ bruceR::MANOVA(df1, subID="ID", dv="width",between = "engagement", within="phase
   EMMEANS("phase", by="engagement")
 ```
 
-
 ## workflow
 
 4.  基于𝐻0所设定的统计模型，计算检验统计量的值。
@@ -851,14 +819,13 @@ ggplot(df1, aes(x = factor(phase), y = width, group=factor(engagement), color=fa
 
 5.做出决策。结果呈现，报告撰写。<br>
 
-认知参与度主效应显著，*F*(1,58)=33.667,*p*\<0.001,η~p~^2=0.367，高认知参与度个体的工作记忆广度(*M*=5.405, *SD*=0.580)高于低认知参与度个体(*M*=4.674, *SD*=0.756)。 工作记忆的测量时间主效应显著，*F*(1,58) = 68.399, *p* \< 0.001, η~p~^2=0.541，前侧的工作记忆广度(*M*=4.533, *SD*=0.677)低于后侧(*M*=5.545, *SD*=0.659)。
+认知参与度主效应显著，*F*(1,58)=33.667,*p*\<0.001,η~p~\^2=0.367，高认知参与度个体的工作记忆广度(*M*=5.405, *SD*=0.580)高于低认知参与度个体(*M*=4.674, *SD*=0.756)。 工作记忆的测量时间主效应显著，*F*(1,58) = 68.399, *p* \< 0.001, η~p~\^2=0.541，前侧的工作记忆广度(*M*=4.533, *SD*=0.677)低于后侧(*M*=5.545, *SD*=0.659)。
 
-认知参与度与测量时间的交互作用显著，*F*(1,58)=66.194,*p*\<0.001,η~p~^2=0.533。简单效应分析表明，高认知参与度个体前侧与后侧的工作记忆广度间存在显著差异，*t*(58)=-11.601, *p*\<0.001, 低认知参与度个体前侧与后侧的工作记忆广度间不存在显著差异，*t*(58)=-0.095,*p*=0.925。
+认知参与度与测量时间的交互作用显著，*F*(1,58)=66.194,*p*\<0.001,η~p~\^2=0.533。简单效应分析表明，高认知参与度个体前侧与后侧的工作记忆广度间存在显著差异，*t*(58)=-11.601, *p*\<0.001, 低认知参与度个体前侧与后侧的工作记忆广度间不存在显著差异，*t*(58)=-0.095,*p*=0.925。
 
 ## workflow
 
-<br>
-<br>
+<br> <br>
 
 结论： 结果发现, 一次性训练后, 体感游戏中认知参与度的增强不能改善儿童执行功能; 长期训练后, 认知参与度的增强对儿童执行功能起促进作用。
 
