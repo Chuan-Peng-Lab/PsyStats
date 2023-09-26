@@ -13,7 +13,7 @@ fontsize: 24pt
 
 <h1 style="text-align: center">
 
-4 Multi-Factor ANOVA
+第4课: Multi-Factor ANOVA
 
 </h1>
 
