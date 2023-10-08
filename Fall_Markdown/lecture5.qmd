@@ -39,6 +39,8 @@ Hu Chuan-Peng
 
 # 本次课内容
 
+-   ANOVA的三种计算方式
+
 -   线性回归的三种解读
 
 -   残差
@@ -99,14 +101,106 @@ Hu Chuan-Peng
 
 5.  做出决策。结果呈现，报告撰写。
 
+# Anova的三种计算方式
+
+- 在前四节课中，我们介绍的Anova的计算方式都是基于平衡(balanced)数据，那么在不平衡的数据中，Anova该如何计算呢？
+
+- 注：不平衡数据指一些分组的数据观测数不同于另一些分组
+
+- 当数据不平衡时，有三种方法可以用来计算平方和(SS),分别称为I, II, III型平方和。
+
+## type I
+
+- type I， 也称为顺序平方和。
+
+
+计算步骤为：
+
+1. 先计算A因素的平方和，SS(A)
+
+2. 在此基础上，计算B因素的平方和，SS(B|A)=SS(A,B)-SS(A)
+
+3. 基于上述两步，计算AB的交互效应的平方和 SS(AB|B,A)=SS(A,B,AB)-SS(A,B)
+
+
+注：
+
+- SS(A,B)表示不考虑的模型，SS(A,B,AB)表示考虑交互效应的模型
+
+- 主效应计算的顺序不同，结果也会产生差异
+
+## type II
+
+- type II
+
+
+计算步骤为：
+
+1. 先计算A因素的平方和，SS(A|B)=SS(A,B)-SS(B)
+
+2. 在此基础上，计算B因素的平方和，SS(B|A)=SS(A,B)-SS(A)
+
+
+注：该模型不考虑交互效应，故在交互效应不显著的情况下，type II 与 type I 是等价的。
+
+## type III
+
+- type III
+
+计算步骤为：
+
+1. 先计算A因素的平方和，SS(A|B,AB)=SS(A,B,AB)-SS(B,AB)
+
+2. 在此基础上，计算B因素的平方和，SS(B|A,AB)=SS(A,B,AB)-SS(A,AB)
+
+
+
+注：在交互效应存在的情况下，该模型是有效的，该模型与type II 的区别在于考虑交互效应
+
+
+
+##
+
+```{r}
+require('pacman')
+p_load('tidyverse','bruceR','papaja','car')
+```
+
+```{r echo=TRUE}
+# 读取数据，并修改数据类型
+df <- read.csv('data/example2.2.csv')%>%
+  mutate(subject=as.factor(subject),
+         region=as.factor(region),
+         gender=as.factor(gender))
+# between subject anova
+bruceR::MANOVA(df, dv="variable", between = c("region","gender"))
+#aov(variable~region,data=df)
+```
+
+
+
+## 
+
+```{r echo=TRUE}
+summary(aov(variable~region*gender,data=df)) # 计算I型平方和
+
+model <- lm(variable~region*gender,data=df)
+
+car::Anova(model,type = 2) # 计算II型平方和
+
+car::Anova(model,type = 3) # 计算III型平方和
+```
+
+
+
+
+# 线性回归
+
 ## 问题引入
 
 瑞文推理测试是一种常用的心理测量工具，旨在评估个体的推理能力和问题解决能力。测试中包含各种类型的问题，包括数学、语言、空间和逻辑等方面的问题，需要受试者通过分析、推理和解决问题来得出正确答案。研究者想要探究问题解决能力与家庭收入之间是否存在联系
 
-```{r}
-require('pacman')
-p_load('tidyverse','bruceR','papaja')
-```
+
 
 ```{r echo=TRUE}
 # 读取数据并选取感兴趣的变量
@@ -441,6 +535,7 @@ hist(residuals)
 ```{r echo=TRUE}
 qqnorm(residuals)
 qqline(residuals)
+shapiro.test(residuals)
 ```
 
 
@@ -531,6 +626,8 @@ $$F=\frac{MS_{b}}{MS_{w}}=\frac{\frac{SS_{b}}{df_{b}}}{\frac{SS_{w}}{df_{w}}}$$
 (方观富, 2020)
 
 # 总结
+
+-   ANOVA的三种计算方式
 
 -   线性回归的三种解读
 
