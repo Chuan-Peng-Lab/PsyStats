@@ -1,0 +1,282 @@
+---
+title: "simulation homework"
+output: html_document
+date: "2023-09-19"
+---
+
+
+
+
+# 题目(学号尾号为0，2，4，6，8的同学完成)
+
+模拟三种教学方案对学生成绩的影响并分别使用F检验检验这种影响。假设采用三种教学方案的的学生成绩服从正态分布，每组的均值和标准差如下。
+
+```{r}
+#载入包
+if (!requireNamespace("pacman", quietly = TRUE)) {
+  install.packages("pacman") }   # install pacman if not installed yet, it will be used for loading packages
+
+pacman::p_load('tidyverse','bruceR','patchwork','ggdist','stats', "apaTables")
+```
+
+```{r}
+set.seed("???") # 此处需要填写学号
+# 第一组均值和标准差
+mean1 <- sample(45:60, 1)
+sd1 <- sample(10:15, 1)
+# 第二组均值和标准差
+mean2 <- sample(60:75, 1)
+sd2 <- sample(5:10, 1)
+# 第三组均值和标准差
+mean3 <- sample(75:90, 1)
+sd3 <- sample(5:10, 1)
+print(paste("第一组的均值为",mean1,",第一组的标准差为",sd1))
+print(paste("第二组的均值为",mean2,",第二组的标准差为",sd2))
+print(paste("第三组的均值为",mean3,",第三组的标准差为",sd3))
+```
+
+
+## 作业要求
+
+下面的代码是用模拟的方式来比较重复一定次数下，三种教学方案效果的检验。基本步骤已经提供，请在理解基本步骤的思想下根据提示对带有"???"处进行填空。
+
+请注意，只有将"???"替换为正确内容后代码才能正确运行。
+
+
+
+
+## 模拟F检验基本步骤
+
+第一步：从三个正态分布中分别抽取三个n个样本；
+
+```{r}
+# 设置样本数
+n = "???" # 此处需要填写每组样本数
+group = 3 
+N_rep = "???" #此处设计模拟的重复次数
+```
+
+
+
+```{r}
+# 根据三组的均值和标准差生成模拟数值
+df <- data.frame(matrix(nrow = n * group, ncol = 2)) %>%
+  dplyr::rename("values" = 1,
+                "groups" = 2) %>%
+  dplyr::mutate(groups = as.factor(rep(1:3, each = n))) %>%
+  dplyr::group_by(groups) %>%
+  dplyr::mutate(values = case_when(
+    # 根据上文生成的均值和标准差填写
+    groups == 1 ~ rnorm(n, mean = "???", sd = "???"),
+    groups == 2 ~ rnorm(n, mean = "???", sd = "???"),
+    groups == 3 ~ rnorm(n, mean = "???", sd = "???")
+  )) %>%
+  dplyr::ungroup()
+```
+
+
+
+
+第二步：对三组数据进行*F*检验，得到$F$和$p$值。
+
+```{r}
+# 生成空数据框用于存储F检验的结果
+Res <- data.frame(matrix(nrow = N_rep, ncol = 3))%>%
+            dplyr::rename("iter" = 1, # 迭代次数
+                          "F_val" = 2, # F值
+                          "p_val" = 3) # p值
+# 将F检验的结果赋值到数据框
+tmpRes <- summary(aov(values ~ groups, data = df))
+
+Res$iter[1] <- 1
+Res$F_val[1] <- tmpRes[[1]]$`F value`[1]
+Res$p_val[1] <- tmpRes[[1]]$`Pr(>F)`[1]
+```
+
+
+第三步：重复第一步和第二步N_rep次，记录下每次重复中的*p*和*F*值。
+
+```{r}
+for (iter in 1:nrow(Res)) {
+  tmpdf <- data.frame(matrix(nrow = n * 3, ncol = 2)) %>%
+           dplyr::rename("values" = 1,
+                         "groups" = 2) %>%
+           dplyr::mutate(groups = rep(1:3, each = n),
+           groups = as.factor(groups)) %>%
+           dplyr::group_by(groups) %>%
+           dplyr::mutate(values = case_when(
+           # 根据上文生成的均值和标准差填写
+           groups == 1 ~ rnorm(n, mean =  "???", sd =  "???"),
+           groups == 2 ~ rnorm(n, mean =  "???", sd =  "???"),
+           groups == 3 ~ rnorm(n, mean =  "???", sd = "???" ))) %>%
+           dplyr::ungroup()
+              
+  tmpRes <- summary(aov(values ~ groups, data = tmpdf))
+  Res$iter[iter] <- iter
+  Res$F_val[iter] <- tmpRes[[1]]$`F value`[iter]
+  Res$p_val[iter] <- "???" # 填写每次比较的P值
+}
+```
+
+
+
+
+第四步：统计*F*值与*p*值的频率分布。
+
+
+
+```{r}
+print(paste('p值<=0.05的占比为', nrow(Res[Res$p_val<="???",])/nrow(Res))) # 填写 决策阈值，并将打印后的结果填写在下文的"？？？"处
+```
+p值<=0.05的占比为"？？？"(填写在此处)
+
+
+
+
+
+# 题目(学号尾号为1，3，5，7，9的同学完成)
+
+模拟三种教学方案对学生成绩的影响并使用t检验检验这种影响。假设采用三种教学方案的的学生成绩服从正态分布，每组的均值和标准差如下。
+
+
+```{r}
+#载入包
+if (!requireNamespace("pacman", quietly = TRUE)) {
+  install.packages("pacman") }   # install pacman if not installed yet, it will be used for loading packages
+
+pacman::p_load('tidyverse','bruceR','patchwork','ggdist','stats', "apaTables")
+```
+
+```{r}
+set.seed("???") # 此处需要填写学号
+# 第一组均值和标准差
+mean1 <- sample(45:60, 1)
+sd1 <- sample(10:15, 1)
+# 第二组均值和标准差
+mean2 <- sample(60:75, 1)
+sd2 <- sample(5:10, 1)
+# 第三组均值和标准差
+mean3 <- sample(75:90, 1)
+sd3 <- sample(5:10, 1)
+print(paste("第一组的均值为",mean1,",第一组的标准差为",sd1))
+print(paste("第二组的均值为",mean2,",第二组的标准差为",sd2))
+print(paste("第三组的均值为",mean3,",第三组的标准差为",sd3))
+```
+
+
+## 作业要求
+
+下面的代码是用模拟的方式来比较重复一定次数下，三种教学方案效果的检验。基本步骤已经提供，请在理解基本步骤的思想下根据提示对带有"???"处进行填空。
+
+请注意，只有将"???"替换为正确内容后代码才能正确运行。
+
+
+
+## 模拟t检验基本步骤
+
+第一步：从三个正态分布中分别抽取n个样本；
+
+```{r}
+# 设置样本数
+n = "???" # 此处需要填写每组样本数
+group = 3 
+N_rep = "???" #此处需要填写模拟的重复次数
+```
+
+
+```{r}
+# 根据三组的均值和标准差生成模拟数值
+df <- data.frame(matrix(nrow = n * group, ncol = 2)) %>%
+  dplyr::rename("values" = 1,
+                "groups" = 2) %>%
+  dplyr::mutate(groups = as.factor(rep(1:3, each = n))) %>%
+  dplyr::group_by(groups) %>%
+  dplyr::mutate(values = case_when(
+    # 根据上文生成的均值和标准差填写
+    groups == 1 ~ rnorm(n, mean = "???", sd = "???"),
+    groups == 2 ~ rnorm(n, mean = "???", sd = "???"),
+    groups == 3 ~ rnorm(n, mean = "???", sd = "???")
+  )) %>%
+  dplyr::ungroup()
+```
+
+
+第二步：对三组数据进行*t*检验，得到$t$和$p$值。
+
+```{r}
+# 生成空数据框用于存储t检验的结果
+Res <- data.frame(matrix(nrow = N_rep, ncol = 7)) %>%
+            dplyr::rename("iter" = 1,# 迭代次数
+                          "t_val1" = 2,# group2 与group3比较 t值
+                          "p_val1" = 3,# group2 与group3比较 p值
+                          "t_val2" = 4,# group1 与group3比较 t值
+                          "p_val2" = 5,# group1 与group3比较 p值
+                          "t_val3" = 6,# group1 与group2比较 t值
+                          "p_val3" = 7,# group1 与group2比较 p值
+                          ) 
+
+# 将t检验的结果赋值到数据框
+tmpRes1 <- t.test(values~groups,data = df[df$groups!=1,])
+tmpRes2 <- t.test(values~groups,data = df[df$groups!=2,])
+tmpRes3 <- t.test(values~groups,data = df[df$groups!=3,])
+      
+Res$iter[1] <- 1
+Res$t_val1[1] <- tmpRes1$`statistic`
+Res$p_val1[1] <- tmpRes1$`p.value`
+Res$t_val2[1] <- tmpRes2$`statistic`
+Res$p_val2[1] <- tmpRes2$`p.value`
+Res$t_val3[1] <- tmpRes3$`statistic`
+Res$p_val3[1] <- tmpRes3$`p.value`
+```
+
+
+第三步：重复第一步和第二步N_rep次，记录下每次重复中的*p*和*t*值。
+
+```{r}
+for (iter in 1:nrow(Res)) {
+            
+            tmpdf <- data.frame(matrix(nrow = n * group, ncol = 2)) %>%
+                dplyr::rename("values" = 1,
+                          "groups" = 2) %>%
+                dplyr::mutate(groups = rep(1:3, each = n),
+                groups = as.factor(groups)) %>%
+                dplyr::group_by(groups) %>%
+              
+                # 根据上文生成的均值和标准差填写
+                dplyr::mutate(values = case_when(
+                    groups == 1 ~ rnorm(n, mean = "???", sd = "???"),
+                    groups == 2 ~ rnorm(n, mean = "???", sd = "???"),
+                    groups == 3 ~ rnorm(n, mean = "???", sd = "???")
+                )) %>%
+                dplyr::ungroup()
+            
+            tmpRes1 <- t.test(values~groups,data = tmpdf[tmpdf$groups!=1,])
+            tmpRes2 <- t.test(values~groups,data = tmpdf[tmpdf$groups!=2,])
+            tmpRes3 <- t.test(values~groups,data = tmpdf[tmpdf$groups!=3,])
+      
+            Res$iter[iter] <- iter
+            Res$t_val1[iter] <- tmpRes1$`statistic`
+            Res$p_val1[iter] <- tmpRes1$`p.value` 
+            Res$t_val2[iter] <- tmpRes2$`statistic`
+            Res$p_val2[iter] <- #"???"#填写每次比较的p值
+            Res$t_val3[iter] <- tmpRes3$`statistic`
+            Res$p_val3[iter] <- #"???"#填写每次比较的p值
+          }
+```
+
+
+第四步：统计*t*值与*p*值的频率分布。
+
+
+```{r}
+# 用for循环整合所有<=0.05的p值
+for (i in 1:group) {
+  column_name <- paste("p_val", i, sep = "")
+  p_all <- Res[column_name]<= "???" ##填写决策阈值，并将打印后的结果填写在下文的"？？？"处
+}
+
+# 统计p<0.05的p值占比
+print(paste('p值<=0.05的占比为', sum(p_all)/nrow(Res))) 
+```
+p值<=0.05的占比为"？？？"(填写在此处)
+
