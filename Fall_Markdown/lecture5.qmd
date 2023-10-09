@@ -101,15 +101,16 @@ Hu Chuan-Peng
 
 5.  做出决策。结果呈现，报告撰写。
 
-
-
 # 线性回归
 
 ## 问题引入
 
 瑞文推理测试是一种常用的心理测量工具，旨在评估个体的推理能力和问题解决能力。测试中包含各种类型的问题，包括数学、语言、空间和逻辑等方面的问题，需要受试者通过分析、推理和解决问题来得出正确答案。研究者想要探究问题解决能力与家庭收入之间是否存在联系
 
-
+```{r}
+require('pacman')
+p_load('tidyverse','bruceR','papaja')
+```
 
 ```{r echo=TRUE}
 # 读取数据并选取感兴趣的变量
@@ -130,15 +131,11 @@ df_norm
 Corr(df_norm)
 ```
 
-
-
-
 ## 皮尔逊相关系数
 
-$$r = \frac{\sum(x-\bar{x})(y-\bar{y})}{ns_{x}s_{y}}=\frac{\sum z_{x}z_{y}}{n}$$ $$\downarrow$$ $$\hat{z_{y}}=rz_{x}$$ 
+$$r = \frac{\sum(x-\bar{x})(y-\bar{y})}{ns_{x}s_{y}}=\frac{\sum z_{x}z_{y}}{n}$$ $$\downarrow$$ $$\hat{z_{y}}=rz_{x}$$
 
-##
-
+## 
 
 ```{r echo=TRUE}
 ggplot(data = df_norm, mapping = aes(x=ravens.score,y=HouseholdIncome))+
@@ -150,10 +147,7 @@ $$\hat{Z_{y}} = rZ_{x}$$
 
 根据相关系数用X的标准分数来预测Y的标准分数吗？
 
-
-
-##
-
+## 
 
 $$\hat{Z_{y}} = rZ_{x}$$
 
@@ -166,13 +160,7 @@ ggplot(data = df_norm, mapping = aes(x=ravens.score,y=HouseholdIncome))+
   annotate("text", x = -2, y = 5, label = "r = 0.12", size = 5) # 添加文字
 ```
 
-
-
-
-
-
-
-##
+## 
 
 除了使用相关系数，我们该如何表示原始分数之间的关系？
 
@@ -192,19 +180,14 @@ $$b_{yx} = \frac{\sigma_{y}}{\sigma_{x}}r, a_{yx}=\mu_{y}-b_{yx}\mu_{x}$$
 
 $$\hat{y}=b_{yx}x+a_{yx}$$
 
-
-
-##
-
+## 
 
 ```{r echo=TRUE}
 model <- lm(HouseholdIncome~ravens.score,data=df_norm) # 线性回归
 summary(model) # 模型拟合结果
 ```
 
-
-
-##
+## 
 
 $$\hat{Z_{y}} = b_{yx}Z_{x}+a_{yx}$$
 
@@ -224,11 +207,9 @@ res <- lm(HouseholdIncome~ravens.score,data=df) # 线性回归
 summary(res) # 模型拟合结果
 ```
 
-
 ## 用原始分数进行回归分析
 
 $$\hat{y} = b_{yx}x+a_{yx}$$
-
 
 ```{r echo=TRUE}
 ggplot(data = df, mapping = aes(x=ravens.score,y=HouseholdIncome))+
@@ -238,10 +219,6 @@ ggplot(data = df, mapping = aes(x=ravens.score,y=HouseholdIncome))+
   theme_apa()+ # apa格式主题
   annotate("text", x = 3, y = 200000, label = "直线斜率：byx = 896.9", size = 5) # 添加文字
 ```
-
-
-
-
 
 # 线性回归的三种解读
 
@@ -279,15 +256,11 @@ $$观测项 = 机制项 + 干扰项$$
 
 实际观测值与估计值（拟合值）之间的差异。这些误差（error），或称残差（residual），衡量每个观测值与该观测值的预测值之间的距离。
 
-
-
 ## 总变异
-
 
 $$\frac{\sum (y-\bar{y})^2}{N}$$
 
 这部分变异代表每个数据点的总变异
-
 
 ```{r echo=TRUE}
 ggplot(data = df, mapping = aes(x=ravens.score,y=HouseholdIncome))+
@@ -306,16 +279,11 @@ ggplot(data = df, mapping = aes(x=ravens.score,y=HouseholdIncome))+
                alpha = 1)
 ```
 
-
-
 ## 模型可解释的变异
-
 
 $$\frac{\sum (\hat{y}-\bar{y})^2}{N}$$
 
 这部分变异代表每个数据点可以被回归模型解释的变异
-
-
 
 ```{r echo=TRUE}
 ggplot(data = df, mapping = aes(x=ravens.score,y=HouseholdIncome))+
@@ -334,10 +302,7 @@ ggplot(data = df, mapping = aes(x=ravens.score,y=HouseholdIncome))+
                alpha = 1)
 ```
 
-
-
-
-##
+## 
 
 $$\frac{\sum (y-\hat{y})^2}{N}$$
 
@@ -355,9 +320,6 @@ ggplot(data = df, mapping = aes(x=ravens.score,y=HouseholdIncome))+
   ylim(0,70000)+
   geom_segment(aes(x = ravens.score, y = HouseholdIncome, xend = ravens.score, yend = predict(lm(HouseholdIncome ~ ravens.score, data = df))), color = "pink", alpha = 1)
 ```
-
-
-
 
 ## 回归表达形式
 
@@ -393,16 +355,13 @@ $$y = a + bX + \epsilon$$ $$数据=模型+误差$$
 
 -   假定y的条件均值是自变量X的线性函数
 
-
 2.正交假定
 
 -   误差项$\epsilon$与x不相关$cov(x,\epsilon)= 0$
 
 -   误差项$\epsilon$的期望值为0，即$E(\epsilon) = 0$
 
-
-##
-
+## 
 
 ```{r echo=TRUE}
 model <- lm(HouseholdIncome~ravens.score,data=df) # 线性回归
@@ -412,9 +371,7 @@ print(paste('残差的平均值为',format(mean(residuals),digits =3),'残差与
 correlation::cor_to_p(cor(residuals,df$ravens.score),n=522)$statistic,'p值为:',correlation::cor_to_p(cor(residuals,df$ravens.score),n=522)$p))
 ```
 
-
-
-##
+## 
 
 3.独立同分布假定
 
@@ -424,29 +381,21 @@ correlation::cor_to_p(cor(residuals,df$ravens.score),n=522)$statistic,'p值为:'
 
     -   所有误差的方差相同。
 
-
-
-##
-
+## 
 
 ```{r echo=TRUE}
 hist(residuals)
 ```
 
-
-
-
 4.正态分布假定
 
 -   虽然假定$\epsilon$同分布，但仍然无法确定$\epsilon$的实际分布。对于大样本，可以采用中心极限定理进行统计推断。对于小样本，需要假定误差项$\epsilon$服从均值为0，方差为$\sigma^2$的正态分布。
-
 
 ```{r echo=TRUE}
 qqnorm(residuals)
 qqline(residuals)
 shapiro.test(residuals)
 ```
-
 
 # 模型性能的评估
 
