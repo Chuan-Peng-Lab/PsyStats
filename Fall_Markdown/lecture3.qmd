@@ -388,7 +388,7 @@ $$b因素主效应引起的变异：SS_B = np \sum (\bar{x_j}-\bar{x_t})^2$$
 
 $$ab因素的交互效应引起的变异：SS_{AB} = SS_b - SS_A - SS_B$$
 
-$$组内变异：SS_w = pq \sum (x - \bar{x_{ij}})^2$$
+$$组内变异：SS_w = \sum (x - \bar{x_{ij}})^2$$
 
 $$残差：SS_e = SS - SS_b$$
 
