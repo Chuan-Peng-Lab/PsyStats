@@ -1,0 +1,243 @@
+---
+title: "2×3完全随机设计变异分解"
+author: '+7'
+date: "2023-10-09"
+output: html_document
+---
+
+## 题目
+
+分解下列2(性别：男、女)×3(地区：region1、region2、region3)被试间实验设计的变异，因变量为居民的主观幸福感。每组的均值和标准差如下。
+
+```{r}
+# load package
+# if 'pacman' is not exist, this package can be installed
+if (!require('pacman')) {install.packages('pacman')}
+
+# the package 'pacman' can use 'p_load' to load existed package or install package
+library(pacman)
+pacman::p_load('tidyverse', # preprocess the raw data
+               'here', # set the working directory as the root directory the script exist
+               'bruceR', # do anova
+               'papaja') # create the manuscripts to APA.
+```
+
+```{r}
+# 随机生成6个实验处理的均值和标准差
+
+set.seed("???") # 此处需要填写学号
+# r1g1均值和标准差
+mean1 <- sample(45:60, 1)
+sd1 <- sample(10:15, 1)
+# r1g2均值和标准差
+mean2 <- sample(45:60, 1)
+sd2 <- sample(5:10, 1)
+# r2g1均值和标准差
+mean3 <- sample(60:75, 1)
+sd3 <- sample(5:10, 1)
+#r2g2均值和标准差
+mean4 <- sample(60:75, 1)
+sd4 <- sample(10:15, 1)
+#r3g1均值和标准差
+mean5 <- sample(75:90, 1)
+sd5 <- sample(10:15, 1)
+#r3g2均值和标准差
+mean6 <- sample(75:90, 1)
+sd6 <- sample(10:15, 1)
+
+print(paste("r1g1的均值为",mean1,",标准差为",sd1))
+print(paste("r1g2的均值为",mean2,",标准差为",sd2))
+print(paste("r2g1的均值为",mean3,",标准差为",sd3))
+print(paste("r2g2的均值为",mean4,",标准差为",sd4))
+print(paste("r3g1的均值为",mean5,",标准差为",sd5))
+print(paste("r3g2的均值为",mean6,",标准差为",sd6))
+```
+
+```{r}
+# 根据三组的均值和标准差生成模拟数值
+df <- data.frame(matrix(nrow = 10 * 6, ncol = 3)) %>%
+  dplyr::rename("regions" = 1,
+                "gender"=2,
+                "values"=3) %>%
+  dplyr::mutate(regions = as.factor(rep(1:3, each = 20)),
+                gender = as.factor(rep(c(1, 2), times = 30))) %>%
+  dplyr::group_by(regions,gender) %>%
+  dplyr::mutate(values = case_when(
+    # 根据上文生成的均值和标准差填写
+    regions == 1 & gender == 1 ~ rnorm(10, mean = "???", sd = "???"),
+    regions == 1 & gender == 2 ~ rnorm(10, mean = "???", sd = "???"),
+    regions == 2 & gender == 1 ~ rnorm(10, mean = "???", sd = "???"),
+    regions == 2 & gender == 2 ~ rnorm(10, mean = "???", sd = "???"),
+    regions == 3 & gender == 1 ~ rnorm(10, mean = "???", sd = "???"),
+    regions == 3 & gender == 2 ~ rnorm(10, mean = "???", sd = "???")
+  )) %>%
+  dplyr::ungroup()
+```
+
+
+
+## 作业要求
+
+下面的代码用于进行两因素完全随机方差分析。基本步骤已经提供，请在理解基本步骤的思想下根据提示对带有"???"处进行填空。
+
+请注意，只有将"???"替换为正确内容后代码才能正确运行。
+
+## 第一步：计算平均值
+
+$$总平均数：\bar{x_{t}} = \frac{\sum x_{ijh}}{npq}$$ p为a因素水平数，q为b因素水平数，n为各实验处理下每组人数,
+
+$$a因素各水平平均数：\bar{x_{a}} = \frac{\sum^p x_{ih}}{nq}$$ 
+$$b因素各水平平均数：\bar{x_{b}} = \frac{\sum^qx_{jh}}{np}$$
+$$ab因素组合后各条件平均数：\bar{x_{j}} = \frac{\sum^{pq}x_{ijh}}{n}$$
+i为a因素各水平，如a1，a2，...
+
+j为b因素各水平，如b1，b2，...
+
+h为组内各个体
+
+```{r echo=TRUE}
+mu <- mean(as.matrix(df['values'])) # 总平均值
+# 只考虑单一因素的分组的平均值
+r1 <- mean(as.matrix(df[df['regions']==1,'values'])) # r1的平均值
+r2 <- "???" # r2的平均值
+r3 <- "???" # r3的平均值
+g1 <- "???" # g1的平均值
+g2 <- "???" # g2的平均值
+# 考虑两因素的分组的平均值
+r1g1 <- mean(as.matrix(df[(df['regions']==1)&(df['gender']==1),'values'])) # r1g1的平均值
+r1g2 <- "???" # r1g2的平均值
+r2g1 <- "???" # r2g1的平均值
+r2g2 <- "???" # r2g2的平均值
+r3g1 <- "???" # r3g1的平均值
+r3g2 <- "???" # r3g2的平均值
+```
+
+## 第二步：计算不同来源的变异
+
+$$总变异：SS = \sum (x - \bar{x_{ij}})^2$$
+
+$$实验处理变异：SS_b = n \sum (\bar{x_{ij}}-\bar{x_t})^2$$
+
+$$a因素主效应引起的变异：SS_A = nq \sum (\bar{x_i}-\bar{x_t})^2$$
+
+$$b因素主效应引起的变异：SS_B = np \sum (\bar{x_j}-\bar{x_t})^2$$
+
+$$ab因素的交互效应引起的变异：SS_{AB} = SS_b - SS_A - SS_B$$
+
+$$组内变异：SS_w = \sum (x - \bar{x_{ij}})^2$$
+
+$$残差：SS_e = SS - SS_b$$
+```{r echo=TRUE}
+# 总变异
+ss <- sum((as.matrix(df['values'])-mu)**2)
+ss
+# 实验处理变异
+ss.r.g.t <- ((r1g1 - mu)**2+
+            (r1g2 - mu)**2+
+            (r2g1 - mu)**2+
+            (r2g2 - mu)**2+
+            (r3g1 - mu)**2+
+            (r3g2 - mu)**2)*"???"# 此处需要填写每个实验处理中的被试数量
+ss.r.g.t
+# region主效应变异
+ss.r.t <- ((r1 - mu)**2+
+         (r2 - mu)**2+
+         (r3 - mu)**2)*"???"# 此处需要填写每个地区中的被试数量
+ss.r.t
+# gender主效应变异
+ss.g.t <- "???"
+ss.g.t
+# region和gender交互效应变异
+ss.rg.t <- ss.r.g.t - ss.r.t - ss.g.t
+ss.rg.t
+# 组内变异
+ss.rg <- sum((df[(df['regions']==1)&(df['gender']==1),'values']-r1g1)**2+
+             (df[(df['regions']==1)&(df['gender']==2),'values']-r1g2)**2+
+             (df[(df['regions']==2)&(df['gender']==1),'values']-r2g1)**2+
+             #"???"+
+             #"???"+
+             "???")
+ss.rg
+# 残差=组内变异
+ss.e <- ss - ss.r.g.t
+ss.e
+```
+
+## 第三步：计算自由度
+
+$$总自由度：df = npq-1$$
+
+$$实验处理自由度：df_b = pq - 1$$
+
+$$a因素主效应自由度：df_A = p-1$$
+
+$$b因素主效应自由度：df_B = q-1$$
+
+$$ab因素交互效应自由度：df_{AB} = (p-1)(q-1)$$
+
+$$组内变异自由度：df_w = pq(n-1)$$
+
+$$残差自由度：df_e = df - df_b = pq(n-1)$$
+```{r echo=TRUE}
+n=10 # 每个实验处理中的被试数
+p=3 # regions变量的水平数
+q=2 # gender变量的水平数
+
+# 总自由度
+df.t <- n*p*q - 1 
+df.t
+# 实验处理自由度
+df.r.g <- "???" # 此处需要计算组间变异自由度  
+df.r.g
+# region主效应自由度
+df.r <- "???"
+df.r
+# gender主效应自由度
+df.g <- "???" 
+df.g
+# region和gender交互效应自由度
+df.rg <- "???"
+df.rg
+# 组内变异自由度
+df.w <- p*q*(n-1) # 每个实验处理组的自由度*实验处理组数
+df.w
+# 残差自由度
+df.e <- df.t - df.r.g #组内变异自由度=残差变异自由度
+df.e
+```
+
+## 第四步：计算均方
+```{r echo=TRUE}
+# regions主效应均方
+ms.r <- ss.r.t/df.r 
+ms.r
+# gender主效应均方
+ms.g <- ss.g.t/df.g
+ms.g
+# regions和gender交互效应均方
+ms.rg <- ss.rg.t/df.rg
+ms.rg
+# 计算残差均方
+ms.e <- ss.e/df.e
+ms.e
+```
+
+## 第五步：计算F值
+```{r echo=TRUE}
+# regions主效应F值
+f.r <- ms.r/ms.e
+f.r
+# gender主效应F值
+f.g <- ms.g/ms.e
+f.g
+# regions和gender交互效应F值
+f.rg <- ms.rg/ms.e
+f.rg
+
+```
+
+regions主效应F值为"???"(填写在此处)
+
+gender主效应F值为"???"(填写在此处)
+
+regions和gender交互效应F值为"???"(填写在此处)
