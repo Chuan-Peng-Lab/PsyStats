@@ -53,7 +53,7 @@ Hu Chuan-Peng
 
 -   为什么要使用ANOVA?
 
--   ANOVA的原理
+-   ANOVA的原理 (最核心的思想是？)
 
 -   不同的ANOVA的类型
 
@@ -95,7 +95,7 @@ Hu Chuan-Peng
 
 ## 假设检验工作流程
 
-1.  提出假设。
+1.  提出假设(这里的研究假设是$H_{0}$还是$H_{1}$)。
 
 2.  根据研究假设$H_{0}$和$H_{1}$，选择相应的统计模型。
 
@@ -109,7 +109,25 @@ Hu Chuan-Peng
 
 ## 问题引入
 
-瑞文推理测试是一种常用的心理测量工具，旨在评估个体的推理能力和问题解决能力。测试中包含各种类型的问题，包括数学、语言、空间和逻辑等方面的问题，需要受试者通过分析、推理和解决问题来得出正确答案。研究者想要探究问题解决能力与家庭收入之间是否存在联系
+假定一个发展心理学家对如下问题感兴趣：不同家庭背景的儿童是否在的抽象推理能力和问题解决能力有差异？
+
+TA进行的研究：（1）使用（？？）测量儿童的抽象推理能力和问题解决能力；（2）调查了儿童的家庭背景（使用什么指标？）；（3）进行了统计分析（用什么分析？）
+
+## 问题引入
+
+假定一个发展心理学家对如下问题感兴趣：不同家庭背景的儿童是否在的抽象推理能力和问题解决能力有差异？
+
+TA进行的研究：（1）使用瑞文推理测验测量儿童的抽象推理能力和问题解决能；（2）调查了儿童的家庭收入；（3）进行了统计分析（用什么分析？）
+
+## 问题引入
+
+假定一个发展心理学家对如下问题感兴趣：不同家庭背景的儿童是否在的抽象推理能力和问题解决能力有差异？
+
+TA进行的研究：（1）使用**瑞文推理测验**测量儿童的抽象推理能力和问题解决能；（2）调查了儿童的**家庭收入**；（3）进行了统计分析（用什么分析？）
+
+TA的研究发表后，一位小学老师阅读到了这一研究的结果，Ta想根据这一结果指导其教学(非常危险的想法)，但Ta只能通过问卷获得班上同学家庭收入的数据，没有瑞文推理测验。这种情况下，Ta能利用上述发展心理学家的研究结果吗？
+
+##
 
 ```{r}
 require('pacman')
@@ -127,11 +145,11 @@ df_norm
 
 ## 
 
-如何表示变量间的关系
+问题的本质：如何表示变量间的关系？
 
-##
+## 
 
-相关分析
+已经知的知识：相关分析
 
 ```{r echo=TRUE}
 Corr(df_norm)
@@ -141,21 +159,9 @@ Corr(df_norm)
 
 皮尔逊相关系数
 
-$$r = \frac{\sum(x-\bar{x})(y-\bar{y})}{ns_{x}s_{y}}=\frac{\sum z_{x}z_{y}}{n}$$ $$\downarrow$$ $$\hat{z_{y}}=rz_{x}$$
+$$r = \frac{\sum(x_i-\bar{x})(y_i-\bar{y})}{ns_{x}s_{y}}=\frac{\sum(x-\bar{x})(y-\bar{y})}{\sqrt{\sum(x_i - \bar{x})^2 \sum(y_i - \bar{y})^2}}$$ 
 
-## 
-
-```{r echo=TRUE}
-ggplot(data = df_norm, mapping = aes(x=ravens.score,y=HouseholdIncome))+
-  geom_point()+
-  theme_apa()
-```
-
-$$\hat{Z_{y}} = rZ_{x}$$
-
-## 
-
-$$\hat{Z_{y}} = rZ_{x}$$
+##
 
 ```{r echo=TRUE}
 ggplot(data = df_norm, mapping = aes(x=ravens.score,y=HouseholdIncome))+
@@ -168,25 +174,13 @@ ggplot(data = df_norm, mapping = aes(x=ravens.score,y=HouseholdIncome))+
 
 ## 
 
-除了使用相关系数，我们该如何表示原始分数之间的关系？
+发展心理学家可以使用相关关系来描述两个变量之间的关系，但如果一名小学老师想基于TA发现的关系，根据学生的家庭收入来判断学生的“能力”，应该怎么办？
 
-## 
+## 回归分析
 
-$$\hat{z_{y}}=rz_{x}$$
+“使用变量X*预测*变量Y。”
 
-$$\downarrow$$ $$\frac{\hat{y}-\mu_{y}}{\sigma_{y}}=r \frac{x-\mu_{x}}{\sigma_{x}}$$
-
-$$\downarrow$$
-
-$$\hat{y}=\frac{\sigma_{y}}{\sigma_{x}}r(x-\mu_{x})+\mu_{y}$$
-
-$$\downarrow$$
-
-$$b_{yx} = \frac{\sigma_{y}}{\sigma_{x}}r, a_{yx}=\mu_{y}-b_{yx}\mu_{x}$$
-
-$$\hat{y}=b_{yx}x+a_{yx}$$
-
-## 回归表达形式
+## 回归分析
 
 简单线性回归(Simple Linear Regression)
 
@@ -202,19 +196,14 @@ $$y = a + bX + \epsilon$$
 
 -   $\epsilon$ -- 残差，Residual (error)
 
-
-
-
 ## 用标准分数进行回归分析
 
 ```{r echo=TRUE}
-model <- lm(HouseholdIncome~ravens.score,data=df_norm) # 线性回归
+model <- lm(HouseholdIncome~ravens.score, data=df_norm) # 线性回归
 summary(model) # 模型拟合结果
 ```
 
-## 用标准分数进行回归分析
-
-$$\hat{Z_{y}} = b_{yx}Z_{x}+a_{yx}$$
+##
 
 ```{r echo=TRUE}
 ggplot(data = df_norm, mapping = aes(x=ravens.score,y=HouseholdIncome))+
@@ -222,7 +211,7 @@ ggplot(data = df_norm, mapping = aes(x=ravens.score,y=HouseholdIncome))+
   geom_hline(yintercept = 0, color = "red") + # y=0直线
   geom_smooth(method = "lm", se = FALSE, color = "lightblue")+ # 拟合直线
   theme_apa()+ # apa格式主题
-  annotate("text", x = -2, y = 5, label = "直线斜率：byx = 0.12", size = 5) # 添加文字
+  annotate("text", x = -2, y = 5, label = "slope：beta = 0.12", size = 5) # 添加文字
 ```
 
 ## 用原始分数进行回归分析
@@ -245,9 +234,20 @@ ggplot(data = df, mapping = aes(x=ravens.score,y=HouseholdIncome))+
   annotate("text", x = 3, y = 200000, label = "直线斜率：byx = 896.9", size = 5) # 添加文字
 ```
 
+## 回归系数与相关系数
+
+皮尔逊相关系数
+
+$$r = \frac{\sum(x-\bar{x})(y-\bar{y})}{\sqrt{\sum(x_i - \bar{x})^2 \sum(y_i - \bar{y})^2}}$$ 
+
+简单回归系数
+
+$$\beta = \frac{\sum(x-\bar{x})(y-\bar{y})}{\sqrt{\sum(x_i - \bar{x})^2 }}$$ 
+
+
 ## 线性回归解读的三种视角
 
-$$观测项=结构项+随机项$$ 
+$$观测项=结构项+随机项$$
 
 -   观测项：因变量的实际取值
 
@@ -274,7 +274,6 @@ $$观测项 = 机制项 + 干扰项$$
 -   确立模型以发现数据产生的机制，发现"真实"的因果模型，但当前更多学者认为，这种模型并不存在，好的模型只是更接近真实，或更有意义
 
 ## 线性回归变异分解
-
 
 ![](images/1696429339624.jpg){fig-align="center"}
 
@@ -328,14 +327,13 @@ ggplot(data = df, mapping = aes(x=ravens.score,y=HouseholdIncome))+
                alpha = 1)
 ```
 
-
 ## 模型未解释的变异/残差
 
 ![](images/1696426750516.jpg){fig-align="center"}
 
 实际观测值与估计值（拟合值）之间的差异。这些误差（error），或称残差（residual），衡量每个观测值与该观测值的预测值之间的距离。这部分变异代表每个数据点无法被回归模型解释的变异
 
-##
+## 
 
 $$\frac{\sum (y-\hat{y})^2}{N}$$
 
@@ -352,8 +350,7 @@ ggplot(data = df, mapping = aes(x=ravens.score,y=HouseholdIncome))+
   geom_segment(aes(x = ravens.score, y = HouseholdIncome, xend = ravens.score, yend = predict(lm(HouseholdIncome ~ ravens.score, data = df))), color = "pink", alpha = 1)
 ```
 
-
-##
+## 
 
 简单线性回归(Simple Linear Regression)
 
@@ -399,7 +396,7 @@ correlation::cor_to_p(cor(residuals,df$ravens.score),n=522)$statistic,'p值为:'
 hist(residuals)
 ```
 
-##
+## 
 
 4.正态分布假定
 
@@ -445,12 +442,11 @@ R方(R-Squared)，拟合优度、判定系数，它概括了一个模型对一�
 
 $$R^2 = 1 - \frac{\sum(y_{i}-\hat{y_{i}})^2}{\sum(y_{i}-\bar{y_{i}})^2}$$
 
-
 ## 
 
 ![](images/1696429403063.jpg){fig-align="center"}
 
-##
+## 
 
 ![](images/1696429769384.jpg){fig-align="center"}
 
@@ -461,7 +457,6 @@ $$\eta^2=\frac{SS_{b}}{SS_{b}+SS_{w}}$$
 $$R^2=\frac{SS_{R}}{SS_{T}}=\frac{\sum(y_{i}-\hat{y_{i}})^2}{\sum(y_{i}-\bar{y_{i}})^2}$$
 
 $$F=\frac{MS_{b}}{MS_{w}}=\frac{\frac{SS_{b}}{df_{b}}}{\frac{SS_{w}}{df_{w}}}$$
-
 
 ## 应用
 

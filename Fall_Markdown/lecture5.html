@@ -426,7 +426,7 @@
 <h2></h2>
 <ul>
 <li><p>为什么要使用ANOVA?</p></li>
-<li><p>ANOVA的原理</p></li>
+<li><p>ANOVA的原理 (最核心的思想是？)</p></li>
 <li><p>不同的ANOVA的类型</p>
 <ul>
 <li><p>完全随机设计</p>
@@ -465,7 +465,7 @@
 <section id="假设检验工作流程" class="slide level2">
 <h2>假设检验工作流程</h2>
 <ol type="1">
-<li><p>提出假设。</p></li>
+<li><p>提出假设(这里的研究假设是<span class="math inline">\(H_{0}\)</span>还是<span class="math inline">\(H_{1}\)</span>)。</p></li>
 <li><p>根据研究假设<span class="math inline">\(H_{0}\)</span>和<span class="math inline">\(H_{1}\)</span>，选择相应的统计模型。</p></li>
 <li><p>确定显著性水平<span class="math inline">\(\alpha\)</span>，<span class="math inline">\(\alpha\)</span>确定后，否定域也随之被确定了。</p></li>
 <li><p>基于<span class="math inline">\(H_{0}\)</span>所设定的统计模型，计算检验统计量的值。</p></li>
@@ -479,7 +479,22 @@
 </section>
 <section id="问题引入" class="slide level2">
 <h2>问题引入</h2>
-<p>瑞文推理测试是一种常用的心理测量工具，旨在评估个体的推理能力和问题解决能力。测试中包含各种类型的问题，包括数学、语言、空间和逻辑等方面的问题，需要受试者通过分析、推理和解决问题来得出正确答案。研究者想要探究问题解决能力与家庭收入之间是否存在联系</p>
+<p>假定一个发展心理学家对如下问题感兴趣：不同家庭背景的儿童是否在的抽象推理能力和问题解决能力有差异？</p>
+<p>TA进行的研究：（1）使用（？？）测量儿童的抽象推理能力和问题解决能力；（2）调查了儿童的家庭背景（使用什么指标？）；（3）进行了统计分析（用什么分析？）</p>
+</section>
+<section id="问题引入-1" class="slide level2">
+<h2>问题引入</h2>
+<p>假定一个发展心理学家对如下问题感兴趣：不同家庭背景的儿童是否在的抽象推理能力和问题解决能力有差异？</p>
+<p>TA进行的研究：（1）使用瑞文推理测验测量儿童的抽象推理能力和问题解决能；（2）调查了儿童的家庭收入；（3）进行了统计分析（用什么分析？）</p>
+</section>
+<section id="问题引入-2" class="slide level2">
+<h2>问题引入</h2>
+<p>假定一个发展心理学家对如下问题感兴趣：不同家庭背景的儿童是否在的抽象推理能力和问题解决能力有差异？</p>
+<p>TA进行的研究：（1）使用<strong>瑞文推理测验</strong>测量儿童的抽象推理能力和问题解决能；（2）调查了儿童的<strong>家庭收入</strong>；（3）进行了统计分析（用什么分析？）</p>
+<p>TA的研究发表后，一位小学老师阅读到了这一研究的结果，Ta想根据这一结果指导其教学(非常危险的想法)，但Ta只能通过问卷获得班上同学家庭收入的数据，没有瑞文推理测验。这种情况下，Ta能利用上述发展心理学家的研究结果吗？</p>
+</section>
+<section id="section-1" class="slide level2">
+<h2></h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># 读取数据并选取感兴趣的变量</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'data/example5.csv'</span>)<span class="sc">%&gt;%</span></span>
@@ -1014,73 +1029,55 @@
 </div>
 </div>
 </section>
-<section id="section-1" class="slide level2">
-<h2></h2>
-<p>如何表示变量间的关系</p>
-</section>
 <section id="section-2" class="slide level2">
 <h2></h2>
-<p>相关分析</p>
+<p>问题的本质：如何表示变量间的关系？</p>
+</section>
+<section id="section-3" class="slide level2">
+<h2></h2>
+<p>已经知的知识：相关分析</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">Corr</span>(df_norm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
 <div class="cell-output cell-output-stdout">
-<pre><code>Pearson's r and 95% confidence intervals:
+<pre><code>Correlation matrix is displayed in the RStudio `Plots` Pane.
+
+Pearson's r and 95% confidence intervals:
 ─────────────────────────────────────────────────────────────
                                  r     [95% CI]     p       N
 ─────────────────────────────────────────────────────────────
 HouseholdIncome-ravens.score  0.12 [0.04, 0.21]  .005 **  522
 ─────────────────────────────────────────────────────────────</code></pre>
 </div>
-
-<div class="cell-output cell-output-stdout">
-<pre><code>Correlation matrix is displayed in the RStudio `Plots` Pane.</code></pre>
-</div>
 </div>
 <img data-src="lecture5_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section>
-<section id="section-3" class="slide level2">
-<h2></h2>
-<p>皮尔逊相关系数</p>
-<p><span class="math display">\[r = \frac{\sum(x-\bar{x})(y-\bar{y})}{ns_{x}s_{y}}=\frac{\sum z_{x}z_{y}}{n}\]</span> <span class="math display">\[\downarrow\]</span> <span class="math display">\[\hat{z_{y}}=rz_{x}\]</span></p>
-</section>
 <section id="section-4" class="slide level2">
 <h2></h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> df_norm, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x=</span>ravens.score,<span class="at">y=</span>HouseholdIncome))<span class="sc">+</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb6-3"><a href="#cb6-3"></a>  <span class="fu">theme_apa</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-</div>
-<img data-src="lecture5_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"><p><span class="math display">\[\hat{Z_{y}} = rZ_{x}\]</span></p>
+<p>皮尔逊相关系数</p>
+<p><span class="math display">\[r = \frac{\sum(x_i-\bar{x})(y_i-\bar{y})}{ns_{x}s_{y}}=\frac{\sum(x-\bar{x})(y-\bar{y})}{\sqrt{\sum(x_i - \bar{x})^2 \sum(y_i - \bar{y})^2}}\]</span></p>
 </section>
 <section id="section-5" class="slide level2">
 <h2></h2>
-<p><span class="math display">\[\hat{Z_{y}} = rZ_{x}\]</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> df_norm, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x=</span>ravens.score,<span class="at">y=</span>HouseholdIncome))<span class="sc">+</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span><span class="co"># 散点图</span></span>
-<span id="cb7-3"><a href="#cb7-3"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span> <span class="co"># y=0直线</span></span>
-<span id="cb7-4"><a href="#cb7-4"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"lightblue"</span>)<span class="sc">+</span> <span class="co"># 拟合直线</span></span>
-<span id="cb7-5"><a href="#cb7-5"></a>  <span class="fu">theme_apa</span>()<span class="sc">+</span> <span class="co"># apa格式主题</span></span>
-<span id="cb7-6"><a href="#cb7-6"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="sc">-</span><span class="dv">2</span>, <span class="at">y =</span> <span class="dv">5</span>, <span class="at">label =</span> <span class="st">"r = 0.12"</span>, <span class="at">size =</span> <span class="dv">5</span>) <span class="co"># 添加文字</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> df_norm, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x=</span>ravens.score,<span class="at">y=</span>HouseholdIncome))<span class="sc">+</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span><span class="co"># 散点图</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span> <span class="co"># y=0直线</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"lightblue"</span>)<span class="sc">+</span> <span class="co"># 拟合直线</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a>  <span class="fu">theme_apa</span>()<span class="sc">+</span> <span class="co"># apa格式主题</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="sc">-</span><span class="dv">2</span>, <span class="at">y =</span> <span class="dv">5</span>, <span class="at">label =</span> <span class="st">"r = 0.12"</span>, <span class="at">size =</span> <span class="dv">5</span>) <span class="co"># 添加文字</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="lecture5_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"></section>
+<img data-src="lecture5_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"></section>
 <section id="section-6" class="slide level2">
 <h2></h2>
-<p>除了使用相关系数，我们该如何表示原始分数之间的关系？</p>
+<p>发展心理学家可以使用相关关系来描述两个变量之间的关系，但如果一名小学老师想基于TA发现的关系，根据学生的家庭收入来判断学生的“能力”，应该怎么办？</p>
 </section>
-<section id="section-7" class="slide level2">
-<h2></h2>
-<p><span class="math display">\[\hat{z_{y}}=rz_{x}\]</span></p>
-<p><span class="math display">\[\downarrow\]</span> <span class="math display">\[\frac{\hat{y}-\mu_{y}}{\sigma_{y}}=r \frac{x-\mu_{x}}{\sigma_{x}}\]</span></p>
-<p><span class="math display">\[\downarrow\]</span></p>
-<p><span class="math display">\[\hat{y}=\frac{\sigma_{y}}{\sigma_{x}}r(x-\mu_{x})+\mu_{y}\]</span></p>
-<p><span class="math display">\[\downarrow\]</span></p>
-<p><span class="math display">\[b_{yx} = \frac{\sigma_{y}}{\sigma_{x}}r, a_{yx}=\mu_{y}-b_{yx}\mu_{x}\]</span></p>
-<p><span class="math display">\[\hat{y}=b_{yx}x+a_{yx}\]</span></p>
+<section id="回归分析" class="slide level2">
+<h2>回归分析</h2>
+<p>“使用变量X<em>预测</em>变量Y。”</p>
 </section>
-<section id="回归表达形式" class="slide level2">
-<h2>回归表达形式</h2>
+<section id="回归分析-1" class="slide level2">
+<h2>回归分析</h2>
 <p>简单线性回归(Simple Linear Regression)</p>
 <p><span class="math display">\[y = a + bX + \epsilon\]</span></p>
 <ul>
@@ -1094,8 +1091,8 @@ HouseholdIncome-ravens.score  0.12 [0.04, 0.21]  .005 **  522
 <section id="用标准分数进行回归分析" class="slide level2">
 <h2>用标准分数进行回归分析</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(HouseholdIncome<span class="sc">~</span>ravens.score,<span class="at">data=</span>df_norm) <span class="co"># 线性回归</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a><span class="fu">summary</span>(model) <span class="co"># 模型拟合结果</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(HouseholdIncome<span class="sc">~</span>ravens.score, <span class="at">data=</span>df_norm) <span class="co"># 线性回归</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="fu">summary</span>(model) <span class="co"># 模型拟合结果</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -1118,24 +1115,23 @@ F-statistic: 8.047 on 1 and 520 DF,  p-value: 0.004736</code></pre>
 </div>
 </div>
 </section>
-<section id="用标准分数进行回归分析-1" class="slide level2">
-<h2>用标准分数进行回归分析</h2>
-<p><span class="math display">\[\hat{Z_{y}} = b_{yx}Z_{x}+a_{yx}\]</span></p>
+<section id="section-7" class="slide level2">
+<h2></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> df_norm, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x=</span>ravens.score,<span class="at">y=</span>HouseholdIncome))<span class="sc">+</span></span>
-<span id="cb10-2"><a href="#cb10-2"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span><span class="co"># 散点图</span></span>
-<span id="cb10-3"><a href="#cb10-3"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span> <span class="co"># y=0直线</span></span>
-<span id="cb10-4"><a href="#cb10-4"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"lightblue"</span>)<span class="sc">+</span> <span class="co"># 拟合直线</span></span>
-<span id="cb10-5"><a href="#cb10-5"></a>  <span class="fu">theme_apa</span>()<span class="sc">+</span> <span class="co"># apa格式主题</span></span>
-<span id="cb10-6"><a href="#cb10-6"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="sc">-</span><span class="dv">2</span>, <span class="at">y =</span> <span class="dv">5</span>, <span class="at">label =</span> <span class="st">"直线斜率：byx = 0.12"</span>, <span class="at">size =</span> <span class="dv">5</span>) <span class="co"># 添加文字</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> df_norm, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x=</span>ravens.score,<span class="at">y=</span>HouseholdIncome))<span class="sc">+</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span><span class="co"># 散点图</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span> <span class="co"># y=0直线</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"lightblue"</span>)<span class="sc">+</span> <span class="co"># 拟合直线</span></span>
+<span id="cb8-5"><a href="#cb8-5"></a>  <span class="fu">theme_apa</span>()<span class="sc">+</span> <span class="co"># apa格式主题</span></span>
+<span id="cb8-6"><a href="#cb8-6"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="sc">-</span><span class="dv">2</span>, <span class="at">y =</span> <span class="dv">5</span>, <span class="at">label =</span> <span class="st">"slope：beta = 0.12"</span>, <span class="at">size =</span> <span class="dv">5</span>) <span class="co"># 添加文字</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="lecture5_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
+<img data-src="lecture5_files/figure-revealjs/unnamed-chunk-6-1.png" width="960" class="r-stretch"></section>
 <section id="用原始分数进行回归分析" class="slide level2">
 <h2>用原始分数进行回归分析</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>res <span class="ot">&lt;-</span> <span class="fu">lm</span>(HouseholdIncome<span class="sc">~</span>ravens.score,<span class="at">data=</span>df) <span class="co"># 线性回归</span></span>
-<span id="cb11-2"><a href="#cb11-2"></a><span class="fu">summary</span>(res) <span class="co"># 模型拟合结果</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>res <span class="ot">&lt;-</span> <span class="fu">lm</span>(HouseholdIncome<span class="sc">~</span>ravens.score,<span class="at">data=</span>df) <span class="co"># 线性回归</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="fu">summary</span>(res) <span class="co"># 模型拟合结果</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -1162,15 +1158,22 @@ F-statistic: 8.047 on 1 and 520 DF,  p-value: 0.004736</code></pre>
 <h2>用原始分数进行回归分析</h2>
 <p><span class="math display">\[\hat{y} = b_{yx}x+a_{yx}\]</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> df, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x=</span>ravens.score,<span class="at">y=</span>HouseholdIncome))<span class="sc">+</span></span>
-<span id="cb13-2"><a href="#cb13-2"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span><span class="co"># 散点图</span></span>
-<span id="cb13-3"><a href="#cb13-3"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fu">mean</span>(df<span class="sc">$</span>HouseholdIncome), <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span> <span class="co"># y=householdIncome均值直线</span></span>
-<span id="cb13-4"><a href="#cb13-4"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"lightblue"</span>)<span class="sc">+</span> <span class="co"># 拟合直线</span></span>
-<span id="cb13-5"><a href="#cb13-5"></a>  <span class="fu">theme_apa</span>()<span class="sc">+</span> <span class="co"># apa格式主题</span></span>
-<span id="cb13-6"><a href="#cb13-6"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="dv">3</span>, <span class="at">y =</span> <span class="dv">200000</span>, <span class="at">label =</span> <span class="st">"直线斜率：byx = 896.9"</span>, <span class="at">size =</span> <span class="dv">5</span>) <span class="co"># 添加文字</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> df, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x=</span>ravens.score,<span class="at">y=</span>HouseholdIncome))<span class="sc">+</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span><span class="co"># 散点图</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fu">mean</span>(df<span class="sc">$</span>HouseholdIncome), <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span> <span class="co"># y=householdIncome均值直线</span></span>
+<span id="cb11-4"><a href="#cb11-4"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"lightblue"</span>)<span class="sc">+</span> <span class="co"># 拟合直线</span></span>
+<span id="cb11-5"><a href="#cb11-5"></a>  <span class="fu">theme_apa</span>()<span class="sc">+</span> <span class="co"># apa格式主题</span></span>
+<span id="cb11-6"><a href="#cb11-6"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="dv">3</span>, <span class="at">y =</span> <span class="dv">200000</span>, <span class="at">label =</span> <span class="st">"直线斜率：byx = 896.9"</span>, <span class="at">size =</span> <span class="dv">5</span>) <span class="co"># 添加文字</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="lecture5_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"></section>
+<img data-src="lecture5_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section>
+<section id="回归系数与相关系数" class="slide level2">
+<h2>回归系数与相关系数</h2>
+<p>皮尔逊相关系数</p>
+<p><span class="math display">\[r = \frac{\sum(x-\bar{x})(y-\bar{y})}{\sqrt{\sum(x_i - \bar{x})^2 \sum(y_i - \bar{y})^2}}\]</span></p>
+<p>简单回归系数</p>
+<p><span class="math display">\[\beta = \frac{\sum(x-\bar{x})(y-\bar{y})}{\sqrt{\sum(x_i - \bar{x})^2 }}\]</span></p>
+</section>
 <section id="线性回归解读的三种视角" class="slide level2">
 <h2>线性回归解读的三种视角</h2>
 <p><span class="math display">\[观测项=结构项+随机项\]</span></p>
@@ -1213,23 +1216,23 @@ F-statistic: 8.047 on 1 and 520 DF,  p-value: 0.004736</code></pre>
 <section id="section-8" class="slide level2">
 <h2></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> df, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x=</span>ravens.score,<span class="at">y=</span>HouseholdIncome))<span class="sc">+</span></span>
-<span id="cb14-2"><a href="#cb14-2"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span><span class="co"># 散点图</span></span>
-<span id="cb14-3"><a href="#cb14-3"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fu">mean</span>(df<span class="sc">$</span>HouseholdIncome), <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span> <span class="co"># y=householdIncome均值直线</span></span>
-<span id="cb14-4"><a href="#cb14-4"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x=</span>ravens.score,<span class="at">y=</span><span class="fu">predict</span>(<span class="fu">lm</span>(HouseholdIncome <span class="sc">~</span> ravens.score, <span class="at">data =</span> df))),<span class="at">color=</span><span class="st">'lightblue'</span>)<span class="sc">+</span></span>
-<span id="cb14-5"><a href="#cb14-5"></a>  <span class="fu">theme_apa</span>()<span class="sc">+</span> <span class="co"># apa格式主题</span></span>
-<span id="cb14-6"><a href="#cb14-6"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="dv">3</span>, <span class="at">y =</span> <span class="dv">200000</span>, <span class="at">label =</span> <span class="st">"直线斜率：byx = 896.9"</span>, <span class="at">size =</span> <span class="dv">5</span>)<span class="sc">+</span> <span class="co"># 添加文字</span></span>
-<span id="cb14-7"><a href="#cb14-7"></a>  <span class="fu">xlim</span>(<span class="dv">0</span>,<span class="dv">5</span>)<span class="sc">+</span></span>
-<span id="cb14-8"><a href="#cb14-8"></a>  <span class="fu">ylim</span>(<span class="dv">0</span>,<span class="dv">70000</span>)<span class="sc">+</span></span>
-<span id="cb14-9"><a href="#cb14-9"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">x =</span> ravens.score, </span>
-<span id="cb14-10"><a href="#cb14-10"></a>                   <span class="at">y =</span> HouseholdIncome, </span>
-<span id="cb14-11"><a href="#cb14-11"></a>                   <span class="at">xend =</span> ravens.score, </span>
-<span id="cb14-12"><a href="#cb14-12"></a>                   <span class="at">yend =</span> <span class="fu">mean</span>(HouseholdIncome)), </span>
-<span id="cb14-13"><a href="#cb14-13"></a>               <span class="at">color =</span> <span class="st">"pink"</span>, </span>
-<span id="cb14-14"><a href="#cb14-14"></a>               <span class="at">alpha =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> df, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x=</span>ravens.score,<span class="at">y=</span>HouseholdIncome))<span class="sc">+</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span><span class="co"># 散点图</span></span>
+<span id="cb12-3"><a href="#cb12-3"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fu">mean</span>(df<span class="sc">$</span>HouseholdIncome), <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span> <span class="co"># y=householdIncome均值直线</span></span>
+<span id="cb12-4"><a href="#cb12-4"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x=</span>ravens.score,<span class="at">y=</span><span class="fu">predict</span>(<span class="fu">lm</span>(HouseholdIncome <span class="sc">~</span> ravens.score, <span class="at">data =</span> df))),<span class="at">color=</span><span class="st">'lightblue'</span>)<span class="sc">+</span></span>
+<span id="cb12-5"><a href="#cb12-5"></a>  <span class="fu">theme_apa</span>()<span class="sc">+</span> <span class="co"># apa格式主题</span></span>
+<span id="cb12-6"><a href="#cb12-6"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="dv">3</span>, <span class="at">y =</span> <span class="dv">200000</span>, <span class="at">label =</span> <span class="st">"直线斜率：byx = 896.9"</span>, <span class="at">size =</span> <span class="dv">5</span>)<span class="sc">+</span> <span class="co"># 添加文字</span></span>
+<span id="cb12-7"><a href="#cb12-7"></a>  <span class="fu">xlim</span>(<span class="dv">0</span>,<span class="dv">5</span>)<span class="sc">+</span></span>
+<span id="cb12-8"><a href="#cb12-8"></a>  <span class="fu">ylim</span>(<span class="dv">0</span>,<span class="dv">70000</span>)<span class="sc">+</span></span>
+<span id="cb12-9"><a href="#cb12-9"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">x =</span> ravens.score, </span>
+<span id="cb12-10"><a href="#cb12-10"></a>                   <span class="at">y =</span> HouseholdIncome, </span>
+<span id="cb12-11"><a href="#cb12-11"></a>                   <span class="at">xend =</span> ravens.score, </span>
+<span id="cb12-12"><a href="#cb12-12"></a>                   <span class="at">yend =</span> <span class="fu">mean</span>(HouseholdIncome)), </span>
+<span id="cb12-13"><a href="#cb12-13"></a>               <span class="at">color =</span> <span class="st">"pink"</span>, </span>
+<span id="cb12-14"><a href="#cb12-14"></a>               <span class="at">alpha =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="lecture5_files/figure-revealjs/unnamed-chunk-10-1.png" width="960" class="r-stretch"></section>
+<img data-src="lecture5_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"></section>
 <section id="模型可解释的变异" class="slide level2">
 <h2>模型可解释的变异</h2>
 <p><span class="math display">\[\frac{\sum (\hat{y}-\bar{y})^2}{N}\]</span></p>
@@ -1238,23 +1241,23 @@ F-statistic: 8.047 on 1 and 520 DF,  p-value: 0.004736</code></pre>
 <section id="section-9" class="slide level2">
 <h2></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> df, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x=</span>ravens.score,<span class="at">y=</span>HouseholdIncome))<span class="sc">+</span></span>
-<span id="cb15-2"><a href="#cb15-2"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span><span class="co"># 散点图</span></span>
-<span id="cb15-3"><a href="#cb15-3"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fu">mean</span>(df<span class="sc">$</span>HouseholdIncome), <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span> <span class="co"># y=householdIncome均值直线</span></span>
-<span id="cb15-4"><a href="#cb15-4"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x=</span>ravens.score,<span class="at">y=</span><span class="fu">predict</span>(<span class="fu">lm</span>(HouseholdIncome <span class="sc">~</span> ravens.score, <span class="at">data =</span> df))),<span class="at">color=</span><span class="st">'lightblue'</span>)<span class="sc">+</span></span>
-<span id="cb15-5"><a href="#cb15-5"></a>  <span class="fu">theme_apa</span>()<span class="sc">+</span> <span class="co"># apa格式主题</span></span>
-<span id="cb15-6"><a href="#cb15-6"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="dv">3</span>, <span class="at">y =</span> <span class="dv">200000</span>, <span class="at">label =</span> <span class="st">"直线斜率：byx = 896.9"</span>, <span class="at">size =</span> <span class="dv">5</span>)<span class="sc">+</span> <span class="co"># 添加文字</span></span>
-<span id="cb15-7"><a href="#cb15-7"></a>  <span class="fu">xlim</span>(<span class="dv">0</span>,<span class="dv">5</span>)<span class="sc">+</span></span>
-<span id="cb15-8"><a href="#cb15-8"></a>  <span class="fu">ylim</span>(<span class="dv">0</span>,<span class="dv">70000</span>)<span class="sc">+</span></span>
-<span id="cb15-9"><a href="#cb15-9"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">x =</span> ravens.score, </span>
-<span id="cb15-10"><a href="#cb15-10"></a>                   <span class="at">y =</span> <span class="fu">predict</span>(<span class="fu">lm</span>(HouseholdIncome <span class="sc">~</span> ravens.score, <span class="at">data =</span> df)), </span>
-<span id="cb15-11"><a href="#cb15-11"></a>                   <span class="at">xend =</span> ravens.score, </span>
-<span id="cb15-12"><a href="#cb15-12"></a>                   <span class="at">yend =</span> <span class="fu">mean</span>(HouseholdIncome)), </span>
-<span id="cb15-13"><a href="#cb15-13"></a>               <span class="at">color =</span> <span class="st">"pink"</span>, </span>
-<span id="cb15-14"><a href="#cb15-14"></a>               <span class="at">alpha =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> df, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x=</span>ravens.score,<span class="at">y=</span>HouseholdIncome))<span class="sc">+</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span><span class="co"># 散点图</span></span>
+<span id="cb13-3"><a href="#cb13-3"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fu">mean</span>(df<span class="sc">$</span>HouseholdIncome), <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span> <span class="co"># y=householdIncome均值直线</span></span>
+<span id="cb13-4"><a href="#cb13-4"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x=</span>ravens.score,<span class="at">y=</span><span class="fu">predict</span>(<span class="fu">lm</span>(HouseholdIncome <span class="sc">~</span> ravens.score, <span class="at">data =</span> df))),<span class="at">color=</span><span class="st">'lightblue'</span>)<span class="sc">+</span></span>
+<span id="cb13-5"><a href="#cb13-5"></a>  <span class="fu">theme_apa</span>()<span class="sc">+</span> <span class="co"># apa格式主题</span></span>
+<span id="cb13-6"><a href="#cb13-6"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="dv">3</span>, <span class="at">y =</span> <span class="dv">200000</span>, <span class="at">label =</span> <span class="st">"直线斜率：byx = 896.9"</span>, <span class="at">size =</span> <span class="dv">5</span>)<span class="sc">+</span> <span class="co"># 添加文字</span></span>
+<span id="cb13-7"><a href="#cb13-7"></a>  <span class="fu">xlim</span>(<span class="dv">0</span>,<span class="dv">5</span>)<span class="sc">+</span></span>
+<span id="cb13-8"><a href="#cb13-8"></a>  <span class="fu">ylim</span>(<span class="dv">0</span>,<span class="dv">70000</span>)<span class="sc">+</span></span>
+<span id="cb13-9"><a href="#cb13-9"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">x =</span> ravens.score, </span>
+<span id="cb13-10"><a href="#cb13-10"></a>                   <span class="at">y =</span> <span class="fu">predict</span>(<span class="fu">lm</span>(HouseholdIncome <span class="sc">~</span> ravens.score, <span class="at">data =</span> df)), </span>
+<span id="cb13-11"><a href="#cb13-11"></a>                   <span class="at">xend =</span> ravens.score, </span>
+<span id="cb13-12"><a href="#cb13-12"></a>                   <span class="at">yend =</span> <span class="fu">mean</span>(HouseholdIncome)), </span>
+<span id="cb13-13"><a href="#cb13-13"></a>               <span class="at">color =</span> <span class="st">"pink"</span>, </span>
+<span id="cb13-14"><a href="#cb13-14"></a>               <span class="at">alpha =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="lecture5_files/figure-revealjs/unnamed-chunk-11-1.png" width="960" class="r-stretch"></section>
+<img data-src="lecture5_files/figure-revealjs/unnamed-chunk-10-1.png" width="960" class="r-stretch"></section>
 <section id="模型未解释的变异残差" class="slide level2">
 <h2>模型未解释的变异/残差</h2>
 
@@ -1264,19 +1267,19 @@ F-statistic: 8.047 on 1 and 520 DF,  p-value: 0.004736</code></pre>
 <h2></h2>
 <p><span class="math display">\[\frac{\sum (y-\hat{y})^2}{N}\]</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> df, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x=</span>ravens.score,<span class="at">y=</span>HouseholdIncome))<span class="sc">+</span></span>
-<span id="cb16-2"><a href="#cb16-2"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span><span class="co"># 散点图</span></span>
-<span id="cb16-3"><a href="#cb16-3"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fu">mean</span>(df<span class="sc">$</span>HouseholdIncome), <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span> <span class="co"># y=householdIncome均值直线</span></span>
-<span id="cb16-4"><a href="#cb16-4"></a>  <span class="co">#geom_smooth(method = "lm", se = FALSE, color = "lightblue")+ # 拟合直线</span></span>
-<span id="cb16-5"><a href="#cb16-5"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x=</span>ravens.score,<span class="at">y=</span><span class="fu">predict</span>(<span class="fu">lm</span>(HouseholdIncome <span class="sc">~</span> ravens.score, <span class="at">data =</span> df))),<span class="at">color=</span><span class="st">'lightblue'</span>)<span class="sc">+</span></span>
-<span id="cb16-6"><a href="#cb16-6"></a>  <span class="fu">theme_apa</span>()<span class="sc">+</span> <span class="co"># apa格式主题</span></span>
-<span id="cb16-7"><a href="#cb16-7"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="dv">3</span>, <span class="at">y =</span> <span class="dv">200000</span>, <span class="at">label =</span> <span class="st">"直线斜率：byx = 896.9"</span>, <span class="at">size =</span> <span class="dv">5</span>)<span class="sc">+</span> <span class="co"># 添加文字</span></span>
-<span id="cb16-8"><a href="#cb16-8"></a>  <span class="fu">xlim</span>(<span class="dv">0</span>,<span class="dv">5</span>)<span class="sc">+</span></span>
-<span id="cb16-9"><a href="#cb16-9"></a>  <span class="fu">ylim</span>(<span class="dv">0</span>,<span class="dv">70000</span>)<span class="sc">+</span></span>
-<span id="cb16-10"><a href="#cb16-10"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">x =</span> ravens.score, <span class="at">y =</span> HouseholdIncome, <span class="at">xend =</span> ravens.score, <span class="at">yend =</span> <span class="fu">predict</span>(<span class="fu">lm</span>(HouseholdIncome <span class="sc">~</span> ravens.score, <span class="at">data =</span> df))), <span class="at">color =</span> <span class="st">"pink"</span>, <span class="at">alpha =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> df, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x=</span>ravens.score,<span class="at">y=</span>HouseholdIncome))<span class="sc">+</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span><span class="co"># 散点图</span></span>
+<span id="cb14-3"><a href="#cb14-3"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fu">mean</span>(df<span class="sc">$</span>HouseholdIncome), <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span> <span class="co"># y=householdIncome均值直线</span></span>
+<span id="cb14-4"><a href="#cb14-4"></a>  <span class="co">#geom_smooth(method = "lm", se = FALSE, color = "lightblue")+ # 拟合直线</span></span>
+<span id="cb14-5"><a href="#cb14-5"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x=</span>ravens.score,<span class="at">y=</span><span class="fu">predict</span>(<span class="fu">lm</span>(HouseholdIncome <span class="sc">~</span> ravens.score, <span class="at">data =</span> df))),<span class="at">color=</span><span class="st">'lightblue'</span>)<span class="sc">+</span></span>
+<span id="cb14-6"><a href="#cb14-6"></a>  <span class="fu">theme_apa</span>()<span class="sc">+</span> <span class="co"># apa格式主题</span></span>
+<span id="cb14-7"><a href="#cb14-7"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="dv">3</span>, <span class="at">y =</span> <span class="dv">200000</span>, <span class="at">label =</span> <span class="st">"直线斜率：byx = 896.9"</span>, <span class="at">size =</span> <span class="dv">5</span>)<span class="sc">+</span> <span class="co"># 添加文字</span></span>
+<span id="cb14-8"><a href="#cb14-8"></a>  <span class="fu">xlim</span>(<span class="dv">0</span>,<span class="dv">5</span>)<span class="sc">+</span></span>
+<span id="cb14-9"><a href="#cb14-9"></a>  <span class="fu">ylim</span>(<span class="dv">0</span>,<span class="dv">70000</span>)<span class="sc">+</span></span>
+<span id="cb14-10"><a href="#cb14-10"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">x =</span> ravens.score, <span class="at">y =</span> HouseholdIncome, <span class="at">xend =</span> ravens.score, <span class="at">yend =</span> <span class="fu">predict</span>(<span class="fu">lm</span>(HouseholdIncome <span class="sc">~</span> ravens.score, <span class="at">data =</span> df))), <span class="at">color =</span> <span class="st">"pink"</span>, <span class="at">alpha =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="lecture5_files/figure-revealjs/unnamed-chunk-12-1.png" width="960" class="r-stretch"></section>
+<img data-src="lecture5_files/figure-revealjs/unnamed-chunk-11-1.png" width="960" class="r-stretch"></section>
 <section id="section-11" class="slide level2">
 <h2></h2>
 <p>简单线性回归(Simple Linear Regression)</p>
@@ -1298,11 +1301,11 @@ F-statistic: 8.047 on 1 and 520 DF,  p-value: 0.004736</code></pre>
 <section id="section-12" class="slide level2">
 <h2></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(HouseholdIncome<span class="sc">~</span>ravens.score,<span class="at">data=</span>df) <span class="co"># 线性回归</span></span>
-<span id="cb17-2"><a href="#cb17-2"></a>residuals <span class="ot">&lt;-</span> <span class="fu">resid</span>(model)<span class="co"># 提取残差</span></span>
-<span id="cb17-3"><a href="#cb17-3"></a></span>
-<span id="cb17-4"><a href="#cb17-4"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">'残差的平均值为'</span>,<span class="fu">format</span>(<span class="fu">mean</span>(residuals),<span class="at">digits =</span><span class="dv">3</span>),<span class="st">'残差与自变量的皮尔逊相关值为:'</span>,</span>
-<span id="cb17-5"><a href="#cb17-5"></a>correlation<span class="sc">::</span><span class="fu">cor_to_p</span>(<span class="fu">cor</span>(residuals,df<span class="sc">$</span>ravens.score),<span class="at">n=</span><span class="dv">522</span>)<span class="sc">$</span>statistic,<span class="st">'p值为:'</span>,correlation<span class="sc">::</span><span class="fu">cor_to_p</span>(<span class="fu">cor</span>(residuals,df<span class="sc">$</span>ravens.score),<span class="at">n=</span><span class="dv">522</span>)<span class="sc">$</span>p))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(HouseholdIncome<span class="sc">~</span>ravens.score,<span class="at">data=</span>df) <span class="co"># 线性回归</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a>residuals <span class="ot">&lt;-</span> <span class="fu">resid</span>(model)<span class="co"># 提取残差</span></span>
+<span id="cb15-3"><a href="#cb15-3"></a></span>
+<span id="cb15-4"><a href="#cb15-4"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">'残差的平均值为'</span>,<span class="fu">format</span>(<span class="fu">mean</span>(residuals),<span class="at">digits =</span><span class="dv">3</span>),<span class="st">'残差与自变量的皮尔逊相关值为:'</span>,</span>
+<span id="cb15-5"><a href="#cb15-5"></a>correlation<span class="sc">::</span><span class="fu">cor_to_p</span>(<span class="fu">cor</span>(residuals,df<span class="sc">$</span>ravens.score),<span class="at">n=</span><span class="dv">522</span>)<span class="sc">$</span>statistic,<span class="st">'p值为:'</span>,correlation<span class="sc">::</span><span class="fu">cor_to_p</span>(<span class="fu">cor</span>(residuals,df<span class="sc">$</span>ravens.score),<span class="at">n=</span><span class="dv">522</span>)<span class="sc">$</span>p))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "残差的平均值为 -7.75e-14 残差与自变量的皮尔逊相关值为: -2.45949941909535e-15 p值为: 0.999999999999998"</code></pre>
 </div>
@@ -1322,10 +1325,10 @@ F-statistic: 8.047 on 1 and 520 DF,  p-value: 0.004736</code></pre>
 <section id="section-14" class="slide level2">
 <h2></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">hist</span>(residuals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">hist</span>(residuals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="lecture5_files/figure-revealjs/unnamed-chunk-14-1.png" width="960" class="r-stretch"></section>
+<img data-src="lecture5_files/figure-revealjs/unnamed-chunk-13-1.png" width="960" class="r-stretch"></section>
 <section id="section-15" class="slide level2">
 <h2></h2>
 <p>4.正态分布假定</p>
@@ -1333,10 +1336,10 @@ F-statistic: 8.047 on 1 and 520 DF,  p-value: 0.004736</code></pre>
 <li>虽然假定<span class="math inline">\(\epsilon\)</span>同分布，但仍然无法确定<span class="math inline">\(\epsilon\)</span>的实际分布。对于大样本，可以采用中心极限定理进行统计推断。对于小样本，需要假定误差项<span class="math inline">\(\epsilon\)</span>服从均值为0，方差为<span class="math inline">\(\sigma^2\)</span>的正态分布。</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">qqnorm</span>(residuals)</span>
-<span id="cb20-2"><a href="#cb20-2"></a><span class="fu">qqline</span>(residuals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">qqnorm</span>(residuals)</span>
+<span id="cb18-2"><a href="#cb18-2"></a><span class="fu">qqline</span>(residuals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">shapiro.test</span>(residuals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">shapiro.test</span>(residuals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Shapiro-Wilk normality test
@@ -1345,7 +1348,7 @@ data:  residuals
 W = 0.91437, p-value &lt; 2.2e-16</code></pre>
 </div>
 </div>
-<img data-src="lecture5_files/figure-revealjs/unnamed-chunk-15-1.png" width="960" class="r-stretch"></section></section>
+<img data-src="lecture5_files/figure-revealjs/unnamed-chunk-14-1.png" width="960" class="r-stretch"></section></section>
 <section>
 <section id="模型性能的评估" class="title-slide slide level1 center">
 <h1>模型性能的评估</h1>
