@@ -193,9 +193,9 @@ df <- data.frame(matrix(nrow = n * group, ncol = 2)) %>%
   dplyr::group_by(groups) %>%
   dplyr::mutate(values = case_when(
     # 根据上文生成的均值和标准差填写
-    groups == 1 ~ rnorm(n, mean = "???", sd = "???"),
-    groups == 2 ~ rnorm(n, mean = "???", sd = "???"),
-    groups == 3 ~ rnorm(n, mean = "???", sd = "???")
+    groups == 1 ~ rnorm(n, mean = 53, sd = 13),
+    groups == 2 ~ rnorm(n, mean = 66, sd = 5),
+    groups == 3 ~ rnorm(n, mean = 76, sd = 9)
   )) %>%
   dplyr::ungroup()
 ```
@@ -258,9 +258,9 @@ for (iter in 1:nrow(Res)) {
             Res$t_val1[iter] <- tmpRes1$`statistic`
             Res$p_val1[iter] <- tmpRes1$`p.value` 
             Res$t_val2[iter] <- tmpRes2$`statistic`
-            Res$p_val2[iter] <- #"???"#填写每次比较的p值
+            Res$p_val2[iter] <- "???"#填写每次比较的p值
             Res$t_val3[iter] <- tmpRes3$`statistic`
-            Res$p_val3[iter] <- #"???"#填写每次比较的p值
+            Res$p_val3[iter] <- "???"#填写每次比较的p值
           }
 ```
 
@@ -269,14 +269,12 @@ for (iter in 1:nrow(Res)) {
 
 
 ```{r}
-# 用for循环整合所有<=0.05的p值
-for (i in 1:group) {
-  column_name <- paste("p_val", i, sep = "")
-  p_all <- Res[column_name]<= "???" ##填写决策阈值，并将打印后的结果填写在下文的"？？？"处
-}
+Res <- Res %>%
+      dplyr::rowwise() %>%
+      dplyr::mutate(min_p = min(p_val1, p_val2, p_val3))
 
-# 统计p<0.05的p值占比
-print(paste('p值<=0.05的占比为', sum(p_all)/nrow(Res))) 
+# 统计p<=0.05的p值占比
+print(paste('p值<=0.05的占比为', nrow(Res[Res$min_p<="???",])/nrow(Res))) 
 ```
 p值<=0.05的占比为"？？？"(填写在此处)
 
