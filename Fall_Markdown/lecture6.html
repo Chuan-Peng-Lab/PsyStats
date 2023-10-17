@@ -725,6 +725,9 @@
   1&amp;4&amp;7 \\
   5&amp;8&amp;9 \\
 \end{bmatrix}\]</span></p>
+<center>
+(可参考：https://www.youtube.com/watch?v=fNk_zzaMoSs)
+</center>
 </section>
 <section id="回归表达形式" class="slide level2">
 <h2>回归表达形式</h2>
@@ -920,7 +923,7 @@
 <section id="section-13" class="slide level2">
 <h2></h2>
 
-<img data-src="images\6.5.gif" class="r-stretch"></section></section>
+<img data-src="images/gradient-descent-1.gif" class="r-stretch"></section></section>
 <section>
 <section id="part-3-基本假定和workflow" class="title-slide slide level1 center">
 <h1>Part 3 基本假定和workflow</h1>
@@ -1004,8 +1007,8 @@
 </ul></li>
 <li><p>回归系统的显著性检验</p>
 <ul>
-<li><p>H0: 𝛽_1=0</p></li>
-<li><p>H1: 𝛽_1≠0</p></li>
+<li><p>H0: <span class="math inline">\(\beta_1\)</span>=0</p></li>
+<li><p>H1: <span class="math inline">\(\beta_1\)</span>≠0</p></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -1084,7 +1087,8 @@ ravens.score        18 0.02    -0.83    0.19</code></pre>
 <p>该模型在统计上解释了一小部分但统计上显著的变异：</p>
 <p><span class="math inline">\(R^2=0.02, F(1, 520) = 8.05, p = 0.005, adj. R^2 = 0.01\)</span></p>
 <p><br> 回归系数检验: 瑞文推理分数在统计上具有积极且显著的效应：</p>
-<p><span class="math inline">\(β = 896.95，95\% CI [275.78, 1518.12]，t(520) = 2.84, p = 0.005, std. beta = 0.12, 95\% CI [0.04, 0.21]\)</span></p>
+<p><span class="math inline">\(β = 896.95，95\% CI [275.78, 1518.12]，t(520) = 2.84,\)</span></p>
+<p><span class="math inline">\(p = 0.005, std. beta = 0.12, 95\% CI [0.04, 0.21]\)</span></p>
 </section>
 <section id="section-17" class="slide level2">
 <h2></h2>
@@ -1092,7 +1096,9 @@ ravens.score        18 0.02    -0.83    0.19</code></pre>
 <img data-src="lecture6_files/figure-revealjs/unnamed-chunk-13-1.png" width="960" class="r-stretch"></section>
 <section id="统计推断做出决策" class="slide level2">
 <h2>5. 统计推断（做出决策）</h2>
-<p>使用简单线性模型检验瑞文推理的分数与家庭收入的关系。结果表明该模型显著地解释了一部分变异，<span class="math inline">\(R^2=0.02。F(1, 520) = 8.05, p = 0.005, adj. R2 = 0.01\)</span>。瑞文推理分数对家庭收入的预测在统计上具有积极的效应，<span class="math inline">\(β = 896.95，95\% CI [275.78, 1518.12]，t(520) = 2.84, p = 0.005; Std. beta = 0.12, 95\% CI [0.04, 0.21]\)</span>。</p>
+<p>使用简单线性模型检验瑞文推理的分数与家庭收入的关系。结果表明该模型显著地解释了一部分变异，<span class="math inline">\(R^2=0.02。F(1, 520) = 8.05, p = 0.005, adj. R2 = 0.01\)</span>。瑞文推理分数对家庭收入的预测在统计上具有积极的效应，</p>
+<p><span class="math inline">\(β = 896.95，95\% CI [275.78, 1518.12]，t(520) = 2.84,\)</span></p>
+<p><span class="math inline">\(p = 0.005; Std. beta = 0.12, 95\% CI [0.04, 0.21]\)</span>。</p>
 </section></section>
 <section id="总结" class="title-slide slide level1 center">
 <h1>总结</h1>
