@@ -1,0 +1,898 @@
+---
+format: 
+  revealjs:
+    slide-number: true
+    logo: images/image-393370223.png
+    scrollable: true 
+    theme: theme.scss
+editor: visual
+fontsize: 24pt
+editor_options: 
+  chunk_output_type: inline
+---
+
+</br></br>
+
+<h1 style="text-align: center">
+
+7 多元线性回归
+
+</h1>
+
+<h2 style="text-align: center">
+
+</h2>
+
+</br></br>
+
+<h3 style="text-align: center">
+
+Hu Chuan-Peng
+
+</h3>
+
+<h3 style="text-align: center">
+
+2023-10-24
+
+</h3>
+
+</br></br>
+
+# 本次课内容
+
+-   课前复习
+
+-   多元线性回归
+
+-   变量选择
+
+-   多元回归中系数的解读
+
+-   基本假定和workflow
+
+# 课前复习
+
+## 回归表达形式
+
+$$Y_{n×1}=X_{n×2}\beta_{2×1}+\epsilon_{n×1}$$
+
+$$Y=X\beta+\epsilon$$
+
+::: {layout-ncol="6"}
+$$Y_{n×1}=\begin{bmatrix}
+  y_1 \\
+  y_2 \\
+  ... \\
+  y_n
+\end{bmatrix}$$
+
+$$X_{n×2}=\begin{bmatrix}
+  1&x_{12} \\
+  1&x_{22} \\
+  ...&... \\
+  1&x_{n2}
+\end{bmatrix}$$
+
+</br> $$\beta_{2×1}=\begin{bmatrix}
+ \alpha\\
+\beta_1\end{bmatrix}$$
+
+$$\epsilon_{n×1}=\begin{bmatrix}
+ \epsilon_1\\
+  \epsilon_2\\
+  ...\\
+  \epsilon_n\end{bmatrix}$$
+:::
+
+## 最小二乘法
+
+要建立一元线性回归方程，就要先计算方程中的参数a和b。根据最佳拟合原则，回归线是指散点图中每一个点沿Y轴方向到该直线的距离平方和最小的那条直线，即便使误差平方和最小，这就是常规最小二乘法(ordinary least squares, OLS)的基本思想。
+
+## 
+
+::: {layout-ncol="3"}
+![](images/b0dc93e81e710a96842438021825254.png) $\alpha^*,\beta^* = argmin \sum \epsilon^2$
+
+![](images/3124131d90de6cba7df6cca836b3ae0.png) $\alpha^*,\beta^* \ne argmin \sum \epsilon^2$
+
+![](images/fe382e116b1173d474eb19fedf831d0.png) $\alpha^*,\beta^* \ne argmin \sum \epsilon^2$
+:::
+
+## 基本假定
+
+1.模型设定假定(线性预设)
+
+2.  正交预设
+
+3.  残差方差齐性预设
+
+4.  正态分布预设
+
+# 多元线性回归
+
+## 
+
+收入与问题解决能力是什么关系？
+
+我们可以使用简单线性回归来解决这个问题。
+
+## 
+
+假如：同时我们还想知道收入与风险偏好、自我控制是什么关系。
+
+我们还可以使用简单线性回归模型吗？
+
+## 
+
+多个简单回归？ 如何比较不同自变量相互之间的作用？如何比较不同变量对同一因变量的效应大小？
+
+可能需要多元线性回归来回答这个问题。
+
+## 多元线性回归
+
+-   由于一个现象总是同时受到多个因素的影响。如果我们仅考虑个别因素对结果变量的影响，而忽略其他有关变量的影响，则回归模型的参数估计可能是有偏的。
+
+-   而多元线性回归模型适用于分析一个因变量和多个自变量之间的关系。
+
+## 简单回归表达形式
+
+-   简单线性回归（Simple Linear Regression）
+
+$$y = a + bX + \epsilon$$
+
+-   y -- 因变量，Dependent variable
+
+-   x -- 自变量，Independent (explanatory) variable
+
+-   a -- 截距，Intercept
+
+-   b -- 斜率，Slope
+
+-   $\epsilon$ -- 残差，Residual (error)
+
+## 多元回归表达形式
+
+-   多元线性回归（Multiple Linear Regression）
+
+$$y = b_0 + b_{1}X_{1} +b_{2}*X_{2}+... +b_{p}X_{p}+ \epsilon$$ - Y:因变量，Dependent variable
+
+-   X_i:自变量，Independent (explanatory) variable
+
+-   b_0:截距，Intercept
+
+-   b_i:斜率，Slope
+
+-   $\epsilon$:残差，Residual (error)
+
+## 简单回归线性代数表达
+
+$$y_i=a+bx_i+\epsilon $$
+
+$$\downarrow$$
+
+$$Y_1=\alpha +\beta_1 X_1+\epsilon_1$$
+
+$$Y_2=\alpha +\beta_1 X_2+\epsilon_2$$
+
+$$...$$
+
+$$Y_n=\alpha +\beta_1 X_n+\epsilon_n$$
+
+## 多元回归线性代数表达
+
+$$y_i=b_0+b_1x_{i1}++b_2x_{i2}+...+b_{p}X_{ip}+\epsilon $$
+
+$$\downarrow$$
+
+$$Y_1=b_0+b_1x_{11}++b_2x_{12}+...+b_{n}X_{1n}+\epsilon $$
+
+$$Y_2=b_0+b_1x_{21}++b_2x_{22}+...+b_{n}X_{2n}+\epsilon $$
+
+$$...$$
+
+$$Y_n=b_0+b_1x_{n1}++b_2x_{n2}+...+b_{n}X_{np}+\epsilon $$
+
+## 简单回归矩阵表达
+
+$$Y_{n×1}=X_{n×2}\beta_{2×1}+\epsilon_{n×1}$$
+
+$$Y=X\beta+\epsilon$$
+
+::: {layout-ncol="6"}
+$$Y_{n×1}=\begin{bmatrix}
+  y_1 \\
+  y_2 \\
+  ... \\
+  y_n
+\end{bmatrix}$$
+
+$$X_{n×2}=\begin{bmatrix}
+  1&x_{12} \\
+  1&x_{22} \\
+  ...&... \\
+  1&x_{n2}
+\end{bmatrix}$$
+
+</br> $$\beta_{2×1}=\begin{bmatrix}
+ \alpha\\
+\beta_1\end{bmatrix}$$
+
+$$\epsilon_{n×1}=\begin{bmatrix}
+ \epsilon_1\\
+  \epsilon_2\\
+  ...\\
+  \epsilon_n\end{bmatrix}$$
+:::
+
+## 多元回归矩阵表达
+
+$$Y_{n×1}=X_{n×p}\beta_{p×1}+\epsilon_{n×1}$$
+
+$$Y=X\beta+\epsilon$$
+
+$$Y_i = b_0 +(\sum_{k=1}^{K}b_kX_{ik})+\epsilon_i$$
+
+::: {layout-ncol="6"}
+$$Y_{n×1}=\begin{bmatrix}
+  y_1 \\
+  y_2 \\
+  ... \\
+  y_n
+\end{bmatrix}$$
+
+$$X_{n×p}=\begin{bmatrix}
+  1&x_{11}&x_{12}& &x_{1p} \\
+  1&x_{21}&x_{12}& &x_{2p} \\
+  ...&...&...&...  \\
+  1&x_{n1}&x_{n2}& &x_{np}
+\end{bmatrix}$$
+
+</br> $$\beta_{p×1}=\begin{bmatrix}
+ \beta_0\\
+\beta_1\\
+\beta_2\\
+\ ...\\
+\beta_p
+\end{bmatrix}$$
+
+$$\epsilon_{n×1}=\begin{bmatrix}
+ \epsilon_1\\
+  \epsilon_2\\
+  ...\\
+  \epsilon_n\end{bmatrix}$$
+:::
+
+## 简单回归代码表达(r)
+
+</br>
+
+Formula=Y\~X
+
+</br>
+
+Y: 因变量 X: 自变量
+
+## 多元回归代码表达(r)
+
+</br>
+
+$$Formula=Y \sim X_1 +X_2 +...+X_n$$
+
+</br>
+
+Y: 因变量
+
+X_i: 自变量
+
+## 回归表达形式
+
+-   矩阵表达
+
+$$Y_{n×1}=X_{n×2}\beta_{2×1}+\epsilon_{n×1}$$
+
+::: {layout-ncol="4"}
+$$Y_{n×1}=\begin{bmatrix}
+  y_1 \\
+  y_2 \\
+  ... \\
+  y_n
+\end{bmatrix}$$
+
+$$X_{n×2}=\begin{bmatrix}
+  1&x_{12} \\
+  1&x_{22} \\
+  ...&... \\
+  1&x_{n2}
+\end{bmatrix}$$
+
+$$\beta_{2×1}=\begin{bmatrix}
+ \alpha\\
+\beta_1\end{bmatrix}$$
+
+$$\epsilon_{n×1}=\begin{bmatrix}
+ \epsilon_1\\
+  \epsilon_2\\
+  ...\\
+  \epsilon_n\end{bmatrix}$$
+:::
+
+## 
+
+</br>
+
+收入与问题解决能力是什么关系？
+
+</br>
+
+数据： "HouseholdIncome"(家庭收入)和"Ravens.score"(瑞文推理测验)这两个变量进行研究(Eisenberg et al., 2019)
+
+## 
+
+| 变量                                   | 意义               |
+|----------------------------------------|--------------------|
+| HouseholdIncome                        | 收入               |
+| Ravens.score                           | 瑞文推理测验分数   |
+| dospert_eb_survey.financial            | 财政方面的风险偏好 |
+| dospert_eb_survey.health_safety        | 健康方面的风险偏好 |
+| dospert_eb_survey.recreational         | 娱乐方面的风险偏好 |
+| dospert_eb_survey.social               | 社交方面的风险偏好 |
+| brief_self_control_survey.self_control | 自我控制           |
+| self_regulation_survey.control         | 自我规范           |
+
+<center>(Eisenberg et al. 2019)</center>
+
+## 
+
+-   若我们只取前4个样本的数据：
+
+| Y     | $X_1$ | $X_2$ | $X_3$ | $X_4$ | $X_5$ | $X_6$ | $X_7$ |
+|-------|-------|-------|-------|-------|-------|-------|-------|
+| 40000 | 2     | 2.5   | 3     | 1.7   | 4.2   | 53    | 101   |
+| 19500 | 4     | 2     | 1     | 1.7   | 3.3   | 33    | 122   |
+| 60000 | 3     | 4.2   | 3.2   | 1.8   | 3.8   | 40    | 102   |
+| 81000 | 9     | 2     | 2.8   | 1     | 3     | 64    | 133   |
+
+## 
+
+-   用方程组表示为：
+
+$$40000 = \beta_0 + 2*\beta_1+2.5*\beta_2+3*\beta_3+1.7*\beta_4+4.2*\beta_5+53*\beta_6+101*\beta_7+\epsilon_1 $$
+
+$$195000 = \beta_0 + 4*\beta_1+2*\beta_2+1*\beta_3+1.7*\beta_4+3.3*\beta_5+33*\beta_6+122*\beta_7+\epsilon_1 $$
+
+$$60000 = \beta_0 + 3*\beta_1+4.2*\beta_2+3.2*\beta_3+1.8*\beta_4+3.8*\beta_5+40*\beta_6+102*\beta_7+\epsilon_1 $$
+
+$$81000 = \beta_0 + 9*\beta_1+4.2*\beta_2+2.8*\beta_3+1*\beta_4+3*\beta_5+64*\beta_6+133*\beta_7+\epsilon_1 $$
+
+## 
+
+-   矩阵表示：
+
+![](images/1698026859642.jpg){fig-align="center"}
+
+## 
+
+-   简洁的矩阵表达
+
+$$Y_{n*1}=X_{n*p}\beta_{p*1}+\epsilon_{n*1}$$
+
+![](images/1698026897831.jpg){fig-align="center"}
+
+## 设计矩阵
+
+-   设计矩阵通常是用来描述数据集的一个方法。通常有m行n列，
+
+    -   1、每个行向量$x_i$代表第i个实例
+
+    -   2、每个列向量$x_j$代表第j个特征
+
+## 
+
+![](images/1698025642086.jpg){fig-align="center"}
+
+## 
+
+-   $\beta_0$ : Intercept
+
+-   $\beta_1$ : coefficient of Raven
+
+-   $\beta_2$ : coefficient of financial
+
+-   $\beta_3$ : coefficient of health_safety
+
+-   $\beta_4$ : coefficient of recreational
+
+-   $\beta_5$ : coefficient of social
+
+-   $\beta_6$ : coefficient of self_control
+
+-   $\beta_7$ : coefficient of control
+
+## 
+
+$$\begin{bmatrix}
+ \beta_0+\beta_1x_{11}+\beta_2x_{12}+\beta_3x_{13}+\beta_4x_{14}+\beta_5x_{15}+\beta_6x_{16}+\beta_7x_{17}\\
+ \beta_0+\beta_1x_{21}+\beta_2x_{22}+\beta_3x_{23}+\beta_4x_{24}+\beta_5x_{25}+\beta_6x_{26}+\beta_7x_{27}\\
+  ...\\
+ \beta_0+\beta_1x_{n1}+\beta_2x_{n2}+\beta_3x_{n3}+\beta_4x_{n4}+\beta_5x_{n5}+\beta_6x_{n6}+\beta_7x_{n7}\end{bmatrix}$$
+
+$$\uparrow$$ $$income$$
+
+## 多元回归的参数估计
+
+-   最小二乘法（OLS）
+
+# 变量选择
+
+## 
+
+-   回归分析依赖于所设定的模型是正确的，模型参数估计和假设检验都建立在这一大前提之下。
+
+-   在实际研究中，研究者通常根据某个理论或某些经验研究结果设定回归模型。
+
+-   在模型设定中存在两类错误：
+
+    -   1.模型中纳入了某些无关变量；
+
+    -   2.模型中忽略了某些相关变量。
+
+## 纳入无关变量
+
+-   回归分析中，在进行模型设定的时候，可能加入了无关的自变量。也就是说，尽管在总体中一个或多个自变量对因变量没有影响，但它们还是被纳入模型中。
+
+-   选择的标准之一：
+
+    -   若新加入的变量的回归系数不显著，可将其看作无关变量。
+
+## 
+
+无关变量的影响：
+
+若原方程为： $Y=b_0^*+b_1^*X_1+b_2^*X_2+\epsilon$
+
+$X_3$ 为无关变量: $Y=b_0 +b_1X_1+b_2X_2+b_3X_3+\epsilon$
+
+纳入无关变量后，方程
+
+（1）回归系数$b_0$,$b_1$,$b_2$的方差变大，
+
+（2）模型自由度减小。
+
+## 忽略相关自变量
+
+如果在模型设定中忽略了某些本该纳入却未被纳入的有关自变量，可能有两种情况:
+
+-   
+
+    1.  所忽略的变量与模型中的其他变量无关；
+
+    -   
+
+        2.  所忽略的变量与模型中的其他变量相关。
+
+在前一种情形下，不会发生忽略变量偏误，后一种情形下，可能会发生忽略变量偏误。
+
+## 
+
+若真实方程为：$Y=b_0^*+b_1^*X_1+b_2^*X_2+b_3^*X_3+\epsilon$
+
+假如$X_3$被忽略：$Y=b_0 +b_1X_1+b_2X_2+\epsilon$
+
+-   在第一种情况下， $X_3$变成误差项的一部分。由于$X_3$与$X_2$,$X_1$不相关，最小二乘估计无偏。
+
+-   在第一种情况下， $X_3$变成误差项的一部分。由于$X_3$与$X_2$,$X_1$相关，误差项则不能保持独立，违反了最小二乘估计的基本假定。
+
+## 多重共线性(multicollinearity)
+
+-   $Y=b_0 +b_1X_1+b_2X_2+...+b_pX_p+\epsilon$
+
+-   其基本假设之一就是解释变量间相互独立。
+
+-   如果某两个或多个解释变量之间出现了相关性，则称为多重共线性。
+
+## 
+
+-   在设计矩阵中，至少有一个变量可以表示为其他变量的线性组合。则变量之间存在多重共线性。即：$c_1x_1+c_2x_2+c_3x_3+c_ix_i + \epsilon = 0$
+
+-   若$\epsilon=0$，则为完全共线性，但在现实情况并不常见，一般ϵ≠0，即近似共线性。
+
+## 
+
+-   多重共线性的产生是由于变量之间具有相关关系。
+
+-   若解释变量间存在多重共线性，利用最小二乘法推导出的方程没有唯一解。
+
+## 多重共线性的影响
+
+1.  完全共线性下参数估计量不存在
+
+2.  近似共线性下OLS估计量非有效
+
+3.  参数估计量不合理
+
+4.  变量的显著性检验失去意义
+
+## 多重共线性的诊断
+
+-   容许度 $TOL_{x_k} = 1 - R^2_{x_k}$
+
+    -   其中， $R^2_{x_k}$为复相关系数，以$x_k$为因变量，其他自变量来预测$x_k$的新自变量进行回归，所得到的$R2$。 $R^2_{x_k}$越接近1 说明$x_k$能被其他自变量解释，也就是说，$R^2_{x_k}$越接近0，则共线性越严重。
+
+-   方差膨胀因子(variance inflation factor, VIF)
+
+    -   对于自变量$x_k$，$VIF_{x_k}=\frac{1}{TOL_{x_k}}=\frac{1}{1-R^2_{x_k}}$，当多重共线性严重时，$R^2_{x_k}$越接近于1，$VIF_{x_k}$变大。
+
+## 多重共线性的处理
+
+1.  如果完全共线性：直接删除不必要的变量
+
+2.  如果是近似共线性，处理依赖于经验
+
+-   整合解释变量（如降维的方法------主成分分析等）
+
+-   增加样本量
+
+# 多元回归中系数的解读
+
+## 
+
+$$\hat{y_i}=\beta_0+\beta_1x_a+b_2x_b$$
+
+-   $b_0$ : $x_a=0$ 且 $x_b=0$时，对y的预测值
+
+-   $b_1$、$b_2$: 偏回归系数，反映了各自自变量对y的偏效应(partial effect)，即单独效应
+
+-   偏效应：其他自变量的值保持不变时（例如，等于0），变化某个自变量对因变量产生的影响
+
+## 
+
+$$\hat{y_i}=\beta_0+\beta_1x_a+b_2x_b$$
+
+-   偏效应：其他自变量的值保持不变时（例如，等于0），变化某个自变量对因变量产生的影响
+
+    $$\bigtriangleup \hat{y_i}=\beta_1\bigtriangleup x_{i1}+b_2 \bigtriangleup x_{i2} $$
+
+    $$\bigtriangleup x_{i2}=0 \rightarrow \bigtriangleup \hat{y_i}=\beta_1\bigtriangleup x_{i1}+b_2 \bigtriangleup x_{i2} $$
+
+## 偏效应反映了什么？
+
+如果我们觉得一个变量和另一个变量是有因果关系的，两个变量之间的关系必须满足三个标准： （1）变量之间存在关联 （2）变量的适当时间顺序 （3）排除产生这种关联的其他解释
+
+在实际研究中，我们要正确看待不同变量间的关系，避免错误地将相关关系解释为因果关系。
+
+## 相关关系和因果关系
+
+在观察研究中，由于所有变量都是事后调查得到的，我们在看待变量之间的影响时，可能会犯以下错误。
+
+## 混淆(confounding)
+
+-   各种解释变量之间存在相关关系，无法确定哪个变量对结果产生了影响。
+
+-   例如，研究发现，温度越高，泳池溺死人数越多。但我们不能确定泳池溺死人数是否是受温度的影响。与温度相关的其他变量，比如进入泳池的人数等可能也会影响到泳池溺死人数。
+
+## 虚假关联(spurious association)
+
+-   虚假关联是混淆的特例，两个变量之间的关联是由于第三个变量对两个各自产生了影响。
+
+-   例如，研究发现冷饮销量越多，去泳池的人数越多。这两者之间没有直接联系，这两个变量都是由于温度升高导致，由于温度升高导致买冷饮的人变多，由于温度升高导致去泳池的人变多。
+
+## 条件独立(conditionally independent)
+
+-   给定第三个事件，如果$p(X,Y|Z) = p(X|Z)p(Y|Z)$，则称X和Y是条件独立事件,也就是说，当Z发生时，X发生与否与Y发生与否是无关的。
+
+-   例如，研究发现冷饮销量越多，去泳池的人数越多。冷饮的销量和去泳池的人数这两个变量就是条件独立的，两者之间没有直接关联，都是由温度这一变量导致的。
+
+## 
+
+-   变量之间存在强烈的相关关系，我们错误地将不合适的变量纳入了回归方程中，有可能得出荒谬的结论。
+
+-   如果这些变量被同时纳入回归方程，就表现为多重共线性。如果只有某个变量纳入方程，在对变量进行解释时，一定要关注它的实际意义。
+
+-   在对变量进行选择时除了关注模型本身的指标，还要关注变量的实际意义。
+
+## 标准化回归模型
+
+-   回归模型中涉及的自变量具有不同的测量单位，因此回归系数之间不具有直接的可比性。
+
+-   采用标准化回归系数，将自变量转变为无量纲的变量。
+
+## 
+
+设真实的回归模型为：
+
+$$y_i = \beta_0+\beta_1x_{i1}+\beta_2x_{i2}+...+\beta_{p-1}x_{i(p-1)}+\epsilon_i$$
+
+-   所有变量减去其均值（改变原始变量位置，转换后变量的均值为0）
+
+-   再除以其标准差（测度转换，转换后变量的方差为1）
+
+-   得到所有变量的标准Z值
+
+## 
+
+设真实的回归模型为：
+
+$$y_i = \beta_0+\beta_1x_{i1}+\beta_2x_{i2}+...+\beta_{p-1}x_{i(p-1)}+\epsilon_i$$
+
+得到所有变量的标准z值
+
+$$y_i^* = \frac{y_i-\hat{y}}{S_y}$$
+
+$$x_{ik}^* = \frac{x_{ik}-\hat{x_k}}{S_{x_k}}$$
+
+## 
+
+设真实的回归模型为：
+
+$$y_i = \beta_0+\beta_1x_{i1}+\beta_2x_{i2}+...+\beta_{p-1}x_{i(p-1)}+\epsilon_i$$
+
+标准化的回归模型
+
+$$y_i = \beta_0^*+\beta_1^*x_{i1}+\beta_2^*x_{i2}+...+\beta_{p-1}^*x_{i(p-1)}+\epsilon_i$$
+
+（常数项为0，没有截距项）
+
+## 
+
+非标准化系数与标准化系数的关系
+
+![](images/1698035963791.jpg){fig-align="center"}
+
+## 
+
+-   非标准化系数与标准化系数的关系
+
+    -   标准化系数：
+
+        -   回归参数估计值处于（-1,1）
+
+        -   可在标准化尺度上进行比较
+
+    -   非标准化系数：
+
+        -   提供更多关于数据的信息
+
+        -   提供基于实际单位的自变量对因变量的效应
+
+# 基本假定和workflow
+
+## 多元线性回归的模型预设(OLS)
+
+1.模型设定假定(线性预设)
+
+2.正交预设
+
+3.残差方差齐性预设
+
+4.残差正态分布预设
+
+5.变量间不存在多重共线性
+
+## 线性预设
+
+-   Y的条件均值是所有自变量X的线性函数
+
+$$E(y|X)=X\beta$$
+
+![](images/1698036465404.jpg){fig-align="center"}
+
+## 
+
+![](images/1698036523058.jpg){fig-align="center"}
+
+## 正交预设
+
+-   误差项𝝐和x不相关
+
+    -   $cov(X,\epsilon)=0$
+
+    -   等价于$E(\epsilon)=0$和$E(X|\epsilon)=0$
+
+    -   确保对模型参数的最小二乘法估计是无偏的。
+
+## 残差方差齐性
+
+-   $var(\epsilon_i)=\sigma^2_i=\sigma^2$
+
+-   残差的方差不受X变量取值的影响。
+
+-   若残差方差不齐性，误差较大的观测值将对拟合模型产生更大的影响。
+
+## 正态分布预设
+
+-   该预设规定残差项$\epsilon$独立且同分布。
+
+-   $cov(\epsilon_i,\epsilon_j)=0,i \ne j$
+
+实际中无法确定$\epsilon$的分布。
+
+对于大样本数据，可根据中心极限定理对参数进行统计推断。然而在小样本情况下，我们只有假定$\epsilon$服从正态分布时才能使用t检验。
+
+## 变量间不存在多重共线性
+
+多重共线性：线性回归模型中的解释变量之间存在相关关系。
+
+## workflow
+
+例子：
+
+-   因变量：家庭收入
+
+-   自变量：
+
+    -   智力：瑞文推理测验；
+
+    -   风险偏好：道德、金融风险、健康风险、娱乐风险、社交风险
+
+    -   自我控制
+
+    -   自我调节
+
+## 先前的workflow:
+
+-   提出与研究假设对应的统计假设
+
+-   选择统计模型
+
+-   确定显著性水平
+
+-   基于H0的统计模型，计算统计量
+
+-   做出统计推断
+
+## 
+
+![](images/1698039105759.jpg){fig-align="center"}
+
+哪个变量应该进入模型？
+
+自变量如何影响到我们的假设？
+
+##
+
+1. 提出与研究假设对应的统计假设
+
+- 回归分析中的两个假设检验
+
+  - 模型整体检验
+
+    - H0: $\beta_1=\beta_2=…=\beta_p=0$
+
+    - H1: $\beta_i$ 不全为0
+
+    - （至少有一个自变量与因变量之间存在显著性的线性关系）
+
+  - 偏回归系数的显著性检验
+
+    - H0: 单个回归系数$\beta_k=0$
+    
+    - H1:单个回归系数$\beta_k \ne 0$
+
+
+## 了解数据
+
+```{r echo=TRUE}
+library(pacman)
+p_load('bruceR','tidyverse','car')
+```
+
+```{r echo=TRUE}
+df <- read.csv('data/example7.2.csv')
+
+bruceR::Describe(df)
+```
+##
+
+```{r echo=TRUE}
+bruceR::Corr(df)
+```
+
+
+我们希望找到几个自变量能够用于预测收入。
+由图可见，瑞文推理测验分数与收入相关程度较其他变量更高。自我控制与自我调节相关系数高达0.76，后续同时选择这两个变量可能存在多重共线性。
+
+## 1.检验线性回归的预设
+
+检验如下预设：
+
+- 模型设定假定(线性预设)
+
+- 正交预设
+
+- 残差方差齐性
+
+- 残差正态分布
+
+- 不存在多重共线性
+
+线性性模型中，预设的检验与模型需要首先确定模型（依赖于残差）
+
+
+
+## 线性假定&正交
+
+
+
+```{r echo=TRUE}
+fullmodel <- lm(formula =income~raven+ethical+financial+health_safety+recreational+recreational+self_control+self_regulation ,data=df) # 全模型
+```
+
+
+
+
+
+
+
+```{r echo=TRUE}
+residuals <- residuals(fullmodel) # 残差
+predictors <- predict(fullmodel) # 预测值
+scatter.smooth(predictors,residuals)
+```
+
+
+
+
+
+## 残差正态分布
+```{r echo=TRUE}
+hist(residuals)
+```
+
+
+
+
+
+```{r echo=TRUE}
+qqnorm(residuals)
+qqline(residuals)
+print(shapiro.test(residuals))
+```
+
+
+
+## 多重共线性检验
+
+
+```{r echo=TRUE}
+vif(fullmodel)
+```
+
+VIF < 10, 多重共线性问题不严重
+
+
+
+
+## 2.选择统计模型(向后剔除法)
+
+
+AIC为模型选择指标，AIC越低，模型拟合越好
+```{r echo=TRUE}
+# 向后剔除法
+stepModel <- step(fullmodel, direction = "backward", criterion = "AIC")
+```
+## 3.确定显著性水平
+  
+使用传统的 $\alpha = 0.05$
+  
+## 4. 计算统计量
+```{r echo=TRUE}
+bestmodel <- lm(formula =income~raven+financial+self_control ,data=df) 
+summary(bestmodel)
+```
+
+## 5. 统计推断（做出决策）
+
+使用简单线性模型检验，发现选择“Ravens.score”(瑞文推理测验)，
+self_control (自我控制能力)，financial（金融风险偏好水平预测家庭收入效果较好。结果表明该模型显著地解释了一部分变异，$R^2$=0. 069, $F$(3, 256) =  6.31, $p$ < 0.05, adj. $R^2$ = 0.058。
+
+
+# 总结
+
+-   多元线性回归
+
+-   变量选择
+
+-   多元回归中系数的解读
+
+-   基本假定和workflow
