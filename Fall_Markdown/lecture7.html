@@ -482,34 +482,40 @@
 </section>
 <section id="基本假定" class="slide level2">
 <h2>基本假定</h2>
-<p>1.模型设定假定(线性预设)</p>
-<ol start="2" type="1">
+<ol type="1">
+<li><p>模型设定假定(线性预设)</p></li>
 <li><p>正交预设</p></li>
 <li><p>残差方差齐性预设</p></li>
 <li><p>正态分布预设</p></li>
 </ol>
 </section></section>
 <section>
-<section id="多元线性回归" class="title-slide slide level1 center">
-<h1>多元线性回归</h1>
+<section id="part-1-多元线性回归" class="title-slide slide level1 center">
+<h1>Part 1: 多元线性回归</h1>
 
 </section>
 <section id="section-1" class="slide level2">
 <h2></h2>
+<p><br></p>
 <p>收入与问题解决能力是什么关系？</p>
+<p><br></p>
 <p>我们可以使用简单线性回归来解决这个问题。</p>
 </section>
 <section id="section-2" class="slide level2">
 <h2></h2>
+<p><br></p>
 <p>假如：同时我们还想知道收入与风险偏好、自我控制是什么关系。</p>
+<p><br></p>
 <p>我们还可以使用简单线性回归模型吗？</p>
 </section>
 <section id="section-3" class="slide level2">
 <h2></h2>
+<p><br></p>
 <p>多个简单回归？ 如何比较不同自变量相互之间的作用？如何比较不同变量对同一因变量的效应大小？</p>
+<p><br></p>
 <p>可能需要多元线性回归来回答这个问题。</p>
 </section>
-<section id="多元线性回归-1" class="slide level2">
+<section id="多元线性回归" class="slide level2">
 <h2>多元线性回归</h2>
 <ul>
 <li><p>由于一个现象总是同时受到多个因素的影响。如果我们仅考虑个别因素对结果变量的影响，而忽略其他有关变量的影响，则回归模型的参数估计可能是有偏的。</p></li>
@@ -523,10 +529,10 @@
 </ul>
 <p><span class="math display">\[y = a + bX + \epsilon\]</span></p>
 <ul>
-<li><p>y – 因变量，Dependent variable</p></li>
-<li><p>x – 自变量，Independent (explanatory) variable</p></li>
-<li><p>a – 截距，Intercept</p></li>
-<li><p>b – 斜率，Slope</p></li>
+<li><p><span class="math inline">\(y\)</span> – 因变量，Dependent variable</p></li>
+<li><p><span class="math inline">\(x\)</span> – 自变量，Independent (explanatory) variable</p></li>
+<li><p><span class="math inline">\(a\)</span> – 截距，Intercept</p></li>
+<li><p><span class="math inline">\(b\)</span> – 斜率，Slope</p></li>
 <li><p><span class="math inline">\(\epsilon\)</span> – 残差，Residual (error)</p></li>
 </ul>
 </section>
@@ -535,12 +541,13 @@
 <ul>
 <li>多元线性回归（Multiple Linear Regression）</li>
 </ul>
-<p><span class="math display">\[y = b_0 + b_{1}X_{1} +b_{2}*X_{2}+... +b_{p}X_{p}+ \epsilon\]</span> - Y:因变量，Dependent variable</p>
+<p><span class="math display">\[y = b_0 + b_{1}X_{1} + b_{2}*X_{2} +... + b_{p}X_{p} + \epsilon\]</span></p>
 <ul>
-<li><p>X_i:自变量，Independent (explanatory) variable</p></li>
-<li><p>b_0:截距，Intercept</p></li>
-<li><p>b_i:斜率，Slope</p></li>
-<li><p><span class="math inline">\(\epsilon\)</span>:残差，Residual (error)</p></li>
+<li><p><span class="math inline">\(Y\)</span> – 因变量，Dependent variable</p></li>
+<li><p><span class="math inline">\(X_i\)</span> – 自变量，Independent (explanatory) variable</p></li>
+<li><p><span class="math inline">\(b_0\)</span> – 截距，Intercept</p></li>
+<li><p><span class="math inline">\(b_i\)</span> – 斜率，Slope</p></li>
+<li><p><span class="math inline">\(\epsilon\)</span> – 残差，Residual (error)</p></li>
 </ul>
 </section>
 <section id="简单回归线性代数表达" class="slide level2">
@@ -622,7 +629,7 @@
 \end{bmatrix}\]</span></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 16.7%;justify-content: center;">
-<p><br> <span class="math display">\[\beta_{p×1}=\begin{bmatrix}
+<p><span class="math display">\[\beta_{p×1}=\begin{bmatrix}
 \beta_0\\
 \beta_1\\
 \beta_2\\
@@ -643,17 +650,18 @@
 <section id="简单回归代码表达r" class="slide level2">
 <h2>简单回归代码表达(r)</h2>
 <p><br></p>
-<p>Formula=Y~X</p>
+<p>Formula: “Y ~ X”</p>
 <p><br></p>
-<p>Y: 因变量 X: 自变量</p>
+<p><span class="math inline">\(Y\)</span> – 因变量</p>
+<p><span class="math inline">\(X\)</span> – 自变量</p>
 </section>
 <section id="多元回归代码表达r" class="slide level2">
 <h2>多元回归代码表达(r)</h2>
 <p><br></p>
-<p><span class="math display">\[Formula=Y \sim X_1 +X_2 +...+X_n\]</span></p>
+<p>Formula: <span class="math display">\[Y \sim X_1 + X_2 + ... + X_n\]</span></p>
 <p><br></p>
-<p>Y: 因变量</p>
-<p>X_i: 自变量</p>
+<p><span class="math inline">\(Y\)</span> – 因变量</p>
+<p><span class="math inline">\(X_i\)</span> – 自变量</p>
 </section>
 <section id="回归表达形式-1" class="slide level2">
 <h2>回归表达形式</h2>
@@ -680,7 +688,7 @@
 \end{bmatrix}\]</span></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
-<p><span class="math display">\[\beta_{2×1}=\begin{bmatrix}
+<p><br> <span class="math display">\[\beta_{2×1}=\begin{bmatrix}
 \alpha\\
 \beta_1\end{bmatrix}\]</span></p>
 </div>
@@ -752,7 +760,7 @@
 <section id="section-6" class="slide level2">
 <h2></h2>
 <ul>
-<li>若我们只取前4个样本的数据：</li>
+<li>查看一下前4个样本的数据：</li>
 </ul>
 <table>
 <thead>
@@ -879,8 +887,8 @@
 </ul>
 </section></section>
 <section>
-<section id="变量选择" class="title-slide slide level1 center">
-<h1>变量选择</h1>
+<section id="part-2-变量选择" class="title-slide slide level1 center">
+<h1>Part 2: 变量选择</h1>
 
 </section>
 <section id="section-13" class="slide level2">
@@ -908,10 +916,10 @@
 <section id="section-14" class="slide level2">
 <h2></h2>
 <p>无关变量的影响：</p>
-<p>若原方程为： <span class="math inline">\(Y=b_0^*+b_1^*X_1+b_2^*X_2+\epsilon\)</span></p>
-<p><span class="math inline">\(X_3\)</span> 为无关变量: <span class="math inline">\(Y=b_0 +b_1X_1+b_2X_2+b_3X_3+\epsilon\)</span></p>
+<p>若原方程为： <span class="math inline">\(Y = b_0^* + b_1^* X_1 + b_2^* X_2 + \epsilon\)</span></p>
+<p><span class="math inline">\(X_3\)</span> 为无关变量: <span class="math inline">\(Y = b_0 + b_1X_1 + b_2X_2 + b_3X_3 + \epsilon\)</span></p>
 <p>纳入无关变量后，方程</p>
-<p>（1）回归系数<span class="math inline">\(b_0\)</span>,<span class="math inline">\(b_1\)</span>,<span class="math inline">\(b_2\)</span>的方差变大，</p>
+<p>（1）回归系数<span class="math inline">\(b_0\)</span>, <span class="math inline">\(b_1\)</span>, <span class="math inline">\(b_2\)</span>的方差变大，</p>
 <p>（2）模型自由度减小。</p>
 </section>
 <section id="忽略相关自变量" class="slide level2">
@@ -920,41 +928,42 @@
 <ul>
 <li><ol type="1">
 <li>所忽略的变量与模型中的其他变量无关；</li>
-</ol>
-<ul>
+</ol></li>
 <li><ol start="2" type="1">
 <li>所忽略的变量与模型中的其他变量相关。</li>
 </ol></li>
-</ul></li>
 </ul>
 <p>在前一种情形下，不会发生忽略变量偏误，后一种情形下，可能会发生忽略变量偏误。</p>
 </section>
 <section id="section-15" class="slide level2">
 <h2></h2>
-<p>若真实方程为：<span class="math inline">\(Y=b_0^*+b_1^*X_1+b_2^*X_2+b_3^*X_3+\epsilon\)</span></p>
-<p>假如<span class="math inline">\(X_3\)</span>被忽略：<span class="math inline">\(Y=b_0 +b_1X_1+b_2X_2+\epsilon\)</span></p>
+<p><br></p>
+<p>若真实方程为：<span class="math inline">\(Y = b_0^* + b_1^* X_1 + b_2^* X_2 + b_3^* X_3 + \epsilon\)</span></p>
+<p>假如<span class="math inline">\(X_3\)</span>被忽略：<span class="math inline">\(Y = b_0 + b_1X_1 + b_2X_2 + \epsilon\)</span></p>
 <ul>
-<li><p>在第一种情况下， <span class="math inline">\(X_3\)</span>变成误差项的一部分。由于<span class="math inline">\(X_3\)</span>与<span class="math inline">\(X_2\)</span>,<span class="math inline">\(X_1\)</span>不相关，最小二乘估计无偏。</p></li>
-<li><p>在第一种情况下， <span class="math inline">\(X_3\)</span>变成误差项的一部分。由于<span class="math inline">\(X_3\)</span>与<span class="math inline">\(X_2\)</span>,<span class="math inline">\(X_1\)</span>相关，误差项则不能保持独立，违反了最小二乘估计的基本假定。</p></li>
+<li><p>在第一种情况下， <span class="math inline">\(X_3\)</span>变成误差项的一部分。由于<span class="math inline">\(X_3\)</span>与<span class="math inline">\(X_2\)</span>、<span class="math inline">\(X_1\)</span>不相关，最小二乘估计无偏。</p></li>
+<li><p>在第一种情况下， <span class="math inline">\(X_3\)</span>变成误差项的一部分。由于<span class="math inline">\(X_3\)</span>与<span class="math inline">\(X_2\)</span>、<span class="math inline">\(X_1\)</span>相关，误差项则不能保持独立，违反了最小二乘估计的基本假定。</p></li>
 </ul>
 </section>
 <section id="多重共线性multicollinearity" class="slide level2">
 <h2>多重共线性(multicollinearity)</h2>
 <ul>
-<li><p><span class="math inline">\(Y=b_0 +b_1X_1+b_2X_2+...+b_pX_p+\epsilon\)</span></p></li>
+<li><p><span class="math inline">\(Y = b_0 + b_1X_1 + b_2X_2 + ... + b_pX_p + \epsilon\)</span></p></li>
 <li><p>其基本假设之一就是解释变量间相互独立。</p></li>
 <li><p>如果某两个或多个解释变量之间出现了相关性，则称为多重共线性。</p></li>
 </ul>
 </section>
 <section id="section-16" class="slide level2">
 <h2></h2>
+<p><br></p>
 <ul>
-<li><p>在设计矩阵中，至少有一个变量可以表示为其他变量的线性组合。则变量之间存在多重共线性。即：<span class="math inline">\(c_1x_1+c_2x_2+c_3x_3+c_ix_i + \epsilon = 0\)</span></p></li>
-<li><p>若<span class="math inline">\(\epsilon=0\)</span>，则为完全共线性，但在现实情况并不常见，一般ϵ≠0，即近似共线性。</p></li>
+<li><p>在设计矩阵中，至少有一个变量可以表示为其他变量的线性组合。则变量之间存在多重共线性。即：<span class="math inline">\(c_1x_1 + c_2x_2 + c_3x_3 + c_ix_i + \epsilon = 0\)</span></p></li>
+<li><p>若<span class="math inline">\(\epsilon = 0\)</span>，则为完全共线性，但在现实情况并不常见，一般<span class="math inline">\(\epsilon \ne 0\)</span>，即近似共线性。</p></li>
 </ul>
 </section>
 <section id="section-17" class="slide level2">
 <h2></h2>
+<p><br></p>
 <ul>
 <li><p>多重共线性的产生是由于变量之间具有相关关系。</p></li>
 <li><p>若解释变量间存在多重共线性，利用最小二乘法推导出的方程没有唯一解。</p></li>
@@ -972,7 +981,7 @@
 <section id="多重共线性的诊断" class="slide level2">
 <h2>多重共线性的诊断</h2>
 <ul>
-<li><p>容许度 <span class="math inline">\(TOL_{x_k} = 1 - R^2_{x_k}\)</span></p>
+<li><p>容许度(Tolerance) <span class="math inline">\(TOL_{x_k} = 1 - R^2_{x_k}\)</span></p>
 <ul>
 <li>其中， <span class="math inline">\(R^2_{x_k}\)</span>为复相关系数，以<span class="math inline">\(x_k\)</span>为因变量，其他自变量来预测<span class="math inline">\(x_k\)</span>的新自变量进行回归，所得到的<span class="math inline">\(R2\)</span>。 <span class="math inline">\(R^2_{x_k}\)</span>越接近1 说明<span class="math inline">\(x_k\)</span>能被其他自变量解释，也就是说，<span class="math inline">\(R^2_{x_k}\)</span>越接近0，则共线性越严重。</li>
 </ul></li>
@@ -994,8 +1003,8 @@
 </ul>
 </section></section>
 <section>
-<section id="多元回归中系数的解读" class="title-slide slide level1 center">
-<h1>多元回归中系数的解读</h1>
+<section id="part-3-多元回归中系数的解读" class="title-slide slide level1 center">
+<h1>Part 3: 多元回归中系数的解读</h1>
 
 </section>
 <section id="section-18" class="slide level2">
@@ -1018,35 +1027,43 @@
 </section>
 <section id="偏效应反映了什么" class="slide level2">
 <h2>偏效应反映了什么？</h2>
-<p>如果我们觉得一个变量和另一个变量是有因果关系的，两个变量之间的关系必须满足三个标准： （1）变量之间存在关联 （2）变量的适当时间顺序 （3）排除产生这种关联的其他解释</p>
+<p>如果我们觉得一个变量和另一个变量是有因果关系的，两个变量之间的关系必须满足三个标准:</p>
+<ul>
+<li>变量之间存在关联</li>
+<li>变量的适当时间顺序</li>
+<li>排除产生这种关联的其他解释</li>
+</ul>
 <p>在实际研究中，我们要正确看待不同变量间的关系，避免错误地将相关关系解释为因果关系。</p>
 </section>
-<section id="相关关系和因果关系" class="slide level2">
-<h2>相关关系和因果关系</h2>
+<section id="相关关系-vs-因果关系" class="slide level2">
+<h2>相关关系 vs 因果关系</h2>
 <p>在观察研究中，由于所有变量都是事后调查得到的，我们在看待变量之间的影响时，可能会犯以下错误。</p>
 </section>
-<section id="混淆confounding" class="slide level2">
-<h2>混淆(confounding)</h2>
+<section id="section-20" class="slide level2">
+<h2></h2>
+<h3 id="混淆confounding">混淆(confounding)</h3>
 <ul>
 <li><p>各种解释变量之间存在相关关系，无法确定哪个变量对结果产生了影响。</p></li>
 <li><p>例如，研究发现，温度越高，泳池溺死人数越多。但我们不能确定泳池溺死人数是否是受温度的影响。与温度相关的其他变量，比如进入泳池的人数等可能也会影响到泳池溺死人数。</p></li>
 </ul>
 </section>
-<section id="虚假关联spurious-association" class="slide level2">
-<h2>虚假关联(spurious association)</h2>
+<section id="section-21" class="slide level2">
+<h2></h2>
+<h3 id="虚假关联spurious-association">虚假关联(spurious association)</h3>
 <ul>
 <li><p>虚假关联是混淆的特例，两个变量之间的关联是由于第三个变量对两个各自产生了影响。</p></li>
 <li><p>例如，研究发现冷饮销量越多，去泳池的人数越多。这两者之间没有直接联系，这两个变量都是由于温度升高导致，由于温度升高导致买冷饮的人变多，由于温度升高导致去泳池的人变多。</p></li>
 </ul>
 </section>
-<section id="条件独立conditionally-independent" class="slide level2">
-<h2>条件独立(conditionally independent)</h2>
+<section id="section-22" class="slide level2">
+<h2></h2>
+<h3 id="条件独立conditionally-independent">条件独立(conditionally independent)</h3>
 <ul>
 <li><p>给定第三个事件，如果<span class="math inline">\(p(X,Y|Z) = p(X|Z)p(Y|Z)\)</span>，则称X和Y是条件独立事件,也就是说，当Z发生时，X发生与否与Y发生与否是无关的。</p></li>
 <li><p>例如，研究发现冷饮销量越多，去泳池的人数越多。冷饮的销量和去泳池的人数这两个变量就是条件独立的，两者之间没有直接关联，都是由温度这一变量导致的。</p></li>
 </ul>
 </section>
-<section id="section-20" class="slide level2">
+<section id="section-23" class="slide level2">
 <h2></h2>
 <ul>
 <li><p>变量之间存在强烈的相关关系，我们错误地将不合适的变量纳入了回归方程中，有可能得出荒谬的结论。</p></li>
@@ -1061,7 +1078,7 @@
 <li><p>采用标准化回归系数，将自变量转变为无量纲的变量。</p></li>
 </ul>
 </section>
-<section id="section-21" class="slide level2">
+<section id="section-24" class="slide level2">
 <h2></h2>
 <p>设真实的回归模型为：</p>
 <p><span class="math display">\[y_i = \beta_0+\beta_1x_{i1}+\beta_2x_{i2}+...+\beta_{p-1}x_{i(p-1)}+\epsilon_i\]</span></p>
@@ -1071,7 +1088,7 @@
 <li><p>得到所有变量的标准Z值</p></li>
 </ul>
 </section>
-<section id="section-22" class="slide level2">
+<section id="section-25" class="slide level2">
 <h2></h2>
 <p>设真实的回归模型为：</p>
 <p><span class="math display">\[y_i = \beta_0+\beta_1x_{i1}+\beta_2x_{i2}+...+\beta_{p-1}x_{i(p-1)}+\epsilon_i\]</span></p>
@@ -1079,7 +1096,7 @@
 <p><span class="math display">\[y_i^* = \frac{y_i-\hat{y}}{S_y}\]</span></p>
 <p><span class="math display">\[x_{ik}^* = \frac{x_{ik}-\hat{x_k}}{S_{x_k}}\]</span></p>
 </section>
-<section id="section-23" class="slide level2">
+<section id="section-26" class="slide level2">
 <h2></h2>
 <p>设真实的回归模型为：</p>
 <p><span class="math display">\[y_i = \beta_0+\beta_1x_{i1}+\beta_2x_{i2}+...+\beta_{p-1}x_{i(p-1)}+\epsilon_i\]</span></p>
@@ -1087,12 +1104,12 @@
 <p><span class="math display">\[y_i = \beta_0^*+\beta_1^*x_{i1}+\beta_2^*x_{i2}+...+\beta_{p-1}^*x_{i(p-1)}+\epsilon_i\]</span></p>
 <p>（常数项为0，没有截距项）</p>
 </section>
-<section id="section-24" class="slide level2">
+<section id="section-27" class="slide level2">
 <h2></h2>
 <p>非标准化系数与标准化系数的关系</p>
 
 <img data-src="images/1698035963791.jpg" class="r-stretch quarto-figure-center"></section>
-<section id="section-25" class="slide level2">
+<section id="section-28" class="slide level2">
 <h2></h2>
 <ul>
 <li><p>非标准化系数与标准化系数的关系</p>
@@ -1111,37 +1128,39 @@
 </ul>
 </section></section>
 <section>
-<section id="基本假定和workflow" class="title-slide slide level1 center">
-<h1>基本假定和workflow</h1>
+<section id="part-4-基本假定与分析流程workflow" class="title-slide slide level1 center">
+<h1>Part 4: 基本假定与分析流程(workflow)</h1>
 
 </section>
 <section id="多元线性回归的模型预设ols" class="slide level2">
 <h2>多元线性回归的模型预设(OLS)</h2>
-<p>1.模型设定假定(线性预设)</p>
-<p>2.正交预设</p>
-<p>3.残差方差齐性预设</p>
-<p>4.残差正态分布预设</p>
-<p>5.变量间不存在多重共线性</p>
+<ol type="1">
+<li><p>模型设定假定(线性预设)</p></li>
+<li><p>正交预设</p></li>
+<li><p>残差方差齐性预设</p></li>
+<li><p>残差正态分布预设</p></li>
+<li><p>变量间不存在多重共线性</p></li>
+</ol>
 </section>
 <section id="线性预设" class="slide level2">
 <h2>线性预设</h2>
 <ul>
 <li>Y的条件均值是所有自变量X的线性函数</li>
 </ul>
-<p><span class="math display">\[E(y|X)=X\beta\]</span></p>
+<p><span class="math display">\[E(y|X) = X\beta\]</span></p>
 
 <img data-src="images/1698036465404.jpg" class="r-stretch quarto-figure-center"></section>
-<section id="section-26" class="slide level2">
+<section id="section-29" class="slide level2">
 <h2></h2>
 
 <img data-src="images/1698036523058.jpg" class="r-stretch quarto-figure-center"></section>
 <section id="正交预设" class="slide level2">
 <h2>正交预设</h2>
 <ul>
-<li><p>误差项𝝐和x不相关</p>
+<li><p>误差项<span class="math inline">\(\epsilon\)</span>和<span class="math inline">\(X\)</span>不相关</p>
 <ul>
-<li><p><span class="math inline">\(cov(X,\epsilon)=0\)</span></p></li>
-<li><p>等价于<span class="math inline">\(E(\epsilon)=0\)</span>和<span class="math inline">\(E(X|\epsilon)=0\)</span></p></li>
+<li><p><span class="math inline">\(cov(X,\epsilon) = 0\)</span></p></li>
+<li><p>等价于<span class="math inline">\(E(\epsilon) = 0\)</span>和<span class="math inline">\(E(X|\epsilon) = 0\)</span></p></li>
 <li><p>确保对模型参数的最小二乘法估计是无偏的。</p></li>
 </ul></li>
 </ul>
@@ -1149,8 +1168,8 @@
 <section id="残差方差齐性" class="slide level2">
 <h2>残差方差齐性</h2>
 <ul>
-<li><p><span class="math inline">\(var(\epsilon_i)=\sigma^2_i=\sigma^2\)</span></p></li>
-<li><p>残差的方差不受X变量取值的影响。</p></li>
+<li><p><span class="math inline">\(var(\epsilon_i) = \sigma^2_i = \sigma^2\)</span></p></li>
+<li><p>残差的方差不受<span class="math inline">\(X\)</span>变量取值的影响。</p></li>
 <li><p>若残差方差不齐性，误差较大的观测值将对拟合模型产生更大的影响。</p></li>
 </ul>
 </section>
@@ -1158,7 +1177,7 @@
 <h2>正态分布预设</h2>
 <ul>
 <li><p>该预设规定残差项<span class="math inline">\(\epsilon\)</span>独立且同分布。</p></li>
-<li><p><span class="math inline">\(cov(\epsilon_i,\epsilon_j)=0,i \ne j\)</span></p></li>
+<li><p><span class="math inline">\(cov(\epsilon_i, \epsilon_j) = 0, i \ne j\)</span></p></li>
 </ul>
 <p>实际中无法确定<span class="math inline">\(\epsilon\)</span>的分布。</p>
 <p>对于大样本数据，可根据中心极限定理对参数进行统计推断。然而在小样本情况下，我们只有假定<span class="math inline">\(\epsilon\)</span>服从正态分布时才能使用t检验。</p>
@@ -1167,8 +1186,8 @@
 <h2>变量间不存在多重共线性</h2>
 <p>多重共线性：线性回归模型中的解释变量之间存在相关关系。</p>
 </section>
-<section id="workflow" class="slide level2">
-<h2>workflow</h2>
+<section id="workflow-an-example" class="slide level2">
+<h2>Workflow: An example</h2>
 <p>例子：</p>
 <ul>
 <li><p>因变量：家庭收入</p></li>
@@ -1191,13 +1210,13 @@
 <li><p>做出统计推断</p></li>
 </ul>
 </section>
-<section id="section-27" class="slide level2">
+<section id="section-30" class="slide level2">
 <h2></h2>
 
 <img data-src="images/1698039105759.jpg" class="r-stretch quarto-figure-center"><p>哪个变量应该进入模型？</p>
 <p>自变量如何影响到我们的假设？</p>
 </section>
-<section id="section-28" class="slide level2">
+<section id="section-31" class="slide level2">
 <h2></h2>
 <ol type="1">
 <li>提出与研究假设对应的统计假设</li>
@@ -1247,7 +1266,7 @@ self_regulation  260   118.23    20.34 |   120.00 51.00    150.00    -0.75     0
 </div>
 </div>
 </section>
-<section id="section-29" class="slide level2">
+<section id="section-32" class="slide level2">
 <h2></h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>bruceR<span class="sc">::</span><span class="fu">Corr</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1301,7 +1320,7 @@ self_control-self_regulation    0.76 [ 0.70,  0.80] &lt;.001 *** 260
 <img data-src="lecture7_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"><p>我们希望找到几个自变量能够用于预测收入。 由图可见，瑞文推理测验分数与收入相关程度较其他变量更高。自我控制与自我调节相关系数高达0.76，后续同时选择这两个变量可能存在多重共线性。</p>
 </section>
 <section id="检验线性回归的预设" class="slide level2">
-<h2>1.检验线性回归的预设</h2>
+<h2>1. 检验线性回归的预设</h2>
 <p>检验如下预设：</p>
 <ul>
 <li><p>模型设定假定(线性预设)</p></li>
@@ -1312,8 +1331,8 @@ self_control-self_regulation    0.76 [ 0.70,  0.80] &lt;.001 *** 260
 </ul>
 <p>线性性模型中，预设的检验与模型需要首先确定模型（依赖于残差）</p>
 </section>
-<section id="线性假定正交" class="slide level2">
-<h2>线性假定&amp;正交</h2>
+<section id="线性假定-正交" class="slide level2">
+<h2>线性假定 &amp; 正交</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>fullmodel <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span>income<span class="sc">~</span>raven<span class="sc">+</span>ethical<span class="sc">+</span>financial<span class="sc">+</span>health_safety<span class="sc">+</span>recreational<span class="sc">+</span>recreational<span class="sc">+</span>self_control<span class="sc">+</span>self_regulation ,<span class="at">data=</span>df) <span class="co"># 全模型</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1362,7 +1381,7 @@ W = 0.89737, p-value = 2.667e-12</code></pre>
 <p>VIF &lt; 10, 多重共线性问题不严重</p>
 </section>
 <section id="选择统计模型向后剔除法" class="slide level2">
-<h2>2.选择统计模型(向后剔除法)</h2>
+<h2>2. 选择统计模型(向后剔除法)</h2>
 <p>AIC为模型选择指标，AIC越低，模型拟合越好</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># 向后剔除法</span></span>
@@ -1428,7 +1447,7 @@ income ~ raven + financial + self_control
 </div>
 </section>
 <section id="确定显著性水平" class="slide level2">
-<h2>3.确定显著性水平</h2>
+<h2>3. 确定显著性水平</h2>
 <p>使用传统的 <span class="math inline">\(\alpha = 0.05\)</span></p>
 </section>
 <section id="计算统计量" class="slide level2">
