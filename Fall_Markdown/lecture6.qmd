@@ -185,7 +185,7 @@ Y: 因变量 X: 自变量
 
 </br>
 
-数据： "HouseholdIncome"(房产收入)和"Ravens.score"(瑞文推理测验)这两个变量进行研究(Eisenberg et al., 2019)
+数据： "HouseholdIncome"(家庭收入)和"Ravens.score"(瑞文推理测验)这两个变量进行研究(Eisenberg et al., 2019)
 
 ## 
 
@@ -375,7 +375,7 @@ $$\epsilon_{n×1}=\begin{bmatrix}
 
 </br>
 
-数据： "HouseholdIncome"(房产收入)和"Ravens.score"(瑞文推理测验)这两个变量进行研究(Eisenberg et al., 2019)
+数据： "HouseholdIncome"(家庭收入)和"Ravens.score"(瑞文推理测验)这两个变量进行研究(Eisenberg et al., 2019)
 
 ## 
 
@@ -637,7 +637,7 @@ E(y)=E(a+bx)+E(ϵ)。
 
 ## WorkFlow
 
-"HouseholdIncome"(房产收入)和"Ravens.score"(瑞文推理测验) 是否存在线性关系？
+"HouseholdIncome"(家庭收入)和"Ravens.score"(瑞文推理测验) 是否存在线性关系？
 
 ## workflow
 
