@@ -983,7 +983,7 @@
 <ul>
 <li><p>容许度(Tolerance) <span class="math inline">\(TOL_{x_k} = 1 - R^2_{x_k}\)</span></p>
 <ul>
-<li>其中， <span class="math inline">\(R^2_{x_k}\)</span>为复相关系数，以<span class="math inline">\(x_k\)</span>为因变量，其他自变量来预测<span class="math inline">\(x_k\)</span>的新自变量进行回归，所得到的<span class="math inline">\(R2\)</span>。 <span class="math inline">\(R^2_{x_k}\)</span>越接近1 说明<span class="math inline">\(x_k\)</span>能被其他自变量解释，也就是说，<span class="math inline">\(R^2_{x_k}\)</span>越接近0，则共线性越严重。</li>
+<li>其中， <span class="math inline">\(R^2_{x_k}\)</span>为复相关系数，以<span class="math inline">\(x_k\)</span>为因变量，其他自变量来预测<span class="math inline">\(x_k\)</span>的新自变量进行回归，所得到的<span class="math inline">\(R2\)</span>。 <span class="math inline">\(R^2_{x_k}\)</span>越接近1 说明<span class="math inline">\(x_k\)</span>能被其他自变量解释，也就是说，<span class="math inline">\(1-R^2_{x_k}\)</span>越接近0，则共线性越严重。</li>
 </ul></li>
 <li><p>方差膨胀因子(variance inflation factor, VIF)</p>
 <ul>
@@ -1009,7 +1009,7 @@
 </section>
 <section id="section-18" class="slide level2">
 <h2></h2>
-<p><span class="math display">\[\hat{y_i}=\beta_0+\beta_1x_a+b_2x_b\]</span></p>
+<p><span class="math display">\[\hat{y_i}=b_0+b_1x_a+b_2x_b\]</span></p>
 <ul>
 <li><p><span class="math inline">\(b_0\)</span> : <span class="math inline">\(x_a=0\)</span> 且 <span class="math inline">\(x_b=0\)</span>时，对y的预测值</p></li>
 <li><p><span class="math inline">\(b_1\)</span>、<span class="math inline">\(b_2\)</span>: 偏回归系数，反映了各自自变量对y的偏效应(partial effect)，即单独效应</p></li>
@@ -1101,7 +1101,7 @@
 <p>设真实的回归模型为：</p>
 <p><span class="math display">\[y_i = \beta_0+\beta_1x_{i1}+\beta_2x_{i2}+...+\beta_{p-1}x_{i(p-1)}+\epsilon_i\]</span></p>
 <p>标准化的回归模型</p>
-<p><span class="math display">\[y_i = \beta_0^*+\beta_1^*x_{i1}+\beta_2^*x_{i2}+...+\beta_{p-1}^*x_{i(p-1)}+\epsilon_i\]</span></p>
+<p><span class="math display">\[y_i = \beta_1^*x_{i1}+\beta_2^*x_{i2}+...+\beta_{p-1}^*x_{i(p-1)}+\epsilon_i\]</span></p>
 <p>（常数项为0，没有截距项）</p>
 </section>
 <section id="section-27" class="slide level2">
@@ -1270,11 +1270,8 @@ self_regulation  260   118.23    20.34 |   120.00 51.00    150.00    -0.75     0
 <h2></h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>bruceR<span class="sc">::</span><span class="fu">Corr</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
 <div class="cell-output cell-output-stdout">
-<pre><code>Correlation matrix is displayed in the RStudio `Plots` Pane.
-
-Pearson's r and 95% confidence intervals:
+<pre><code>Pearson's r and 95% confidence intervals:
 ─────────────────────────────────────────────────────────────────
                                    r       [95% CI]     p       N
 ─────────────────────────────────────────────────────────────────
@@ -1316,6 +1313,10 @@ social-self_regulation          0.07 [-0.05,  0.19]  .277     260
 self_control-self_regulation    0.76 [ 0.70,  0.80] &lt;.001 *** 260
 ─────────────────────────────────────────────────────────────────</code></pre>
 </div>
+
+<div class="cell-output cell-output-stdout">
+<pre><code>Correlation matrix is displayed in the RStudio `Plots` Pane.</code></pre>
+</div>
 </div>
 <img data-src="lecture7_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"><p>我们希望找到几个自变量能够用于预测收入。 由图可见，瑞文推理测验分数与收入相关程度较其他变量更高。自我控制与自我调节相关系数高达0.76，后续同时选择这两个变量可能存在多重共线性。</p>
 </section>
@@ -1334,30 +1335,30 @@ self_control-self_regulation    0.76 [ 0.70,  0.80] &lt;.001 *** 260
 <section id="线性假定-正交" class="slide level2">
 <h2>线性假定 &amp; 正交</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>fullmodel <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span>income<span class="sc">~</span>raven<span class="sc">+</span>ethical<span class="sc">+</span>financial<span class="sc">+</span>health_safety<span class="sc">+</span>recreational<span class="sc">+</span>recreational<span class="sc">+</span>self_control<span class="sc">+</span>self_regulation ,<span class="at">data=</span>df) <span class="co"># 全模型</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>fullmodel <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span>income<span class="sc">~</span>raven<span class="sc">+</span>ethical<span class="sc">+</span>financial<span class="sc">+</span>health_safety<span class="sc">+</span>recreational<span class="sc">+</span>recreational<span class="sc">+</span>self_control<span class="sc">+</span>self_regulation ,<span class="at">data=</span>df) <span class="co"># 全模型</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>residuals <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fullmodel) <span class="co"># 残差</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a>predictors <span class="ot">&lt;-</span> <span class="fu">predict</span>(fullmodel) <span class="co"># 预测值</span></span>
-<span id="cb7-3"><a href="#cb7-3"></a><span class="fu">scatter.smooth</span>(predictors,residuals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>residuals <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fullmodel) <span class="co"># 残差</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a>predictors <span class="ot">&lt;-</span> <span class="fu">predict</span>(fullmodel) <span class="co"># 预测值</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="fu">scatter.smooth</span>(predictors,residuals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="lecture7_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"></section>
 <section id="残差正态分布" class="slide level2">
 <h2>残差正态分布</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">hist</span>(residuals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">hist</span>(residuals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img data-src="lecture7_files/figure-revealjs/unnamed-chunk-6-1.png" width="960"></p>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">qqnorm</span>(residuals)</span>
-<span id="cb9-2"><a href="#cb9-2"></a><span class="fu">qqline</span>(residuals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">qqnorm</span>(residuals)</span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="fu">qqline</span>(residuals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img data-src="lecture7_files/figure-revealjs/unnamed-chunk-7-1.png" width="960"></p>
 </div>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">print</span>(<span class="fu">shapiro.test</span>(residuals))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">print</span>(<span class="fu">shapiro.test</span>(residuals))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Shapiro-Wilk normality test
@@ -1370,7 +1371,7 @@ W = 0.89737, p-value = 2.667e-12</code></pre>
 <section id="多重共线性检验" class="slide level2">
 <h2>多重共线性检验</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">vif</span>(fullmodel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">vif</span>(fullmodel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          raven         ethical       financial   health_safety    recreational 
        1.043198        1.511609        1.312218        1.329344        1.146295 
@@ -1384,8 +1385,8 @@ W = 0.89737, p-value = 2.667e-12</code></pre>
 <h2>2. 选择统计模型(向后剔除法)</h2>
 <p>AIC为模型选择指标，AIC越低，模型拟合越好</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># 向后剔除法</span></span>
-<span id="cb14-2"><a href="#cb14-2"></a>stepModel <span class="ot">&lt;-</span> <span class="fu">step</span>(fullmodel, <span class="at">direction =</span> <span class="st">"backward"</span>, <span class="at">criterion =</span> <span class="st">"AIC"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># 向后剔除法</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a>stepModel <span class="ot">&lt;-</span> <span class="fu">step</span>(fullmodel, <span class="at">direction =</span> <span class="st">"backward"</span>, <span class="at">criterion =</span> <span class="st">"AIC"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Start:  AIC=5363.02
 income ~ raven + ethical + financial + health_safety + recreational + 
@@ -1453,8 +1454,8 @@ income ~ raven + financial + self_control
 <section id="计算统计量" class="slide level2">
 <h2>4. 计算统计量</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>bestmodel <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span>income<span class="sc">~</span>raven<span class="sc">+</span>financial<span class="sc">+</span>self_control ,<span class="at">data=</span>df) </span>
-<span id="cb16-2"><a href="#cb16-2"></a><span class="fu">summary</span>(bestmodel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>bestmodel <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span>income<span class="sc">~</span>raven<span class="sc">+</span>financial<span class="sc">+</span>self_control ,<span class="at">data=</span>df) </span>
+<span id="cb17-2"><a href="#cb17-2"></a><span class="fu">summary</span>(bestmodel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -1481,7 +1482,7 @@ F-statistic:  6.31 on 3 and 256 DF,  p-value: 0.0003817</code></pre>
 </section>
 <section id="统计推断做出决策" class="slide level2">
 <h2>5. 统计推断（做出决策）</h2>
-<p>使用简单线性模型检验，发现选择“Ravens.score”(瑞文推理测验)， self_control (自我控制能力)，financial（金融风险偏好水平预测家庭收入效果较好。结果表明该模型显著地解释了一部分变异，<span class="math inline">\(R^2\)</span>=0. 069, <span class="math inline">\(F\)</span>(3, 256) = 6.31, <span class="math inline">\(p\)</span> &lt; 0.05, adj. <span class="math inline">\(R^2\)</span> = 0.058。</p>
+<p>使用简单线性模型检验，发现选择”Ravens.score”(瑞文推理测验)， self_control (自我控制能力)，financial（金融风险偏好水平预测家庭收入效果较好。结果表明该模型显著地解释了一部分变异，<span class="math inline">\(R^2\)</span>=0. 069, <span class="math inline">\(F\)</span>(3, 256) = 6.31, <span class="math inline">\(p\)</span> &lt; 0.05, adj. <span class="math inline">\(R^2\)</span> = 0.058。</p>
 </section></section>
 <section id="总结" class="title-slide slide level1 center">
 <h1>总结</h1>
