@@ -579,10 +579,11 @@
 <section id="多元线性回归的模型预设ols" class="slide level2">
 <h2>多元线性回归的模型预设(OLS)</h2>
 <ol type="1">
-<li><p>模型设定假定(线性预设)</p></li>
-<li><p>正交预设</p></li>
-<li><p>残差方差齐性预设</p></li>
-<li><p>残差正态分布预设</p></li>
+<li><p>效度 (Validity)</p></li>
+<li><p>独立性预设 (Independence)</p></li>
+<li><p>线性预设 (Linearity)</p></li>
+<li><p>残差的方差齐性 (同质性, homoscedasticity)</p></li>
+<li><p>残差正态性(Normality)</p></li>
 <li><p>变量间不存在多重共线性</p></li>
 </ol>
 </section></section>
@@ -595,7 +596,7 @@
 <h2>引入</h2>
 <ul>
 <li><p>我们想探究家庭收入(HouseholdIncome)和性别(sex)、种族(race)和瑞文推理分数(raven)的关系；</p></li>
-<li><p>选取Eisenberg的数据进行分析。</p></li>
+<li><p>选取<a href="https://www.nature.com/articles/s41467-019-10301-1">Eisenberg et al (2019)</a>的数据进行分析。</p></li>
 </ul>
 </section>
 <section id="section-2" class="slide level2">
@@ -604,7 +605,7 @@
 <li>一个先前没有碰到的问题：
 <ul>
 <li>性别是二分变量（离散的）；</li>
-<li>种族是一个分类变量；</li>
+<li>种族是一个分类变量（称名变量）；</li>
 <li>具体数值编码并不代表真实的差异大小。</li>
 </ul></li>
 <li>若我们将种族编码直接为1、2、3、4、5，并且进入回归方程，暗含着某些种族对收入的影响是另一些种族的2倍、3倍……</li>
@@ -613,12 +614,11 @@
 <section id="section-3" class="slide level2">
 <h2></h2>
 <ul>
-<li>例如，我们只关注家庭收入与种族(3个种族)的关系： <span class="math display">\[Y=\beta_0+\beta_1X+\epsilon\]</span>
+<li>例如，我们只关注家庭收入与种族(3个种族)的关系： <span class="math display">\[Y = \beta_0 + \beta_1X + \epsilon\]</span>
 <ul>
-<li>则种族一的预测值为 <span class="math inline">\(E(𝑌) =𝛽_0+𝛽_1\)</span></li>
-<li>则种族二的预测值为 <span class="math inline">\(E(𝑌) =𝛽_0+2𝛽_1\)</span></li>
-<li>则种族三的预测值为 <span class="math inline">\(E(𝑌) =𝛽_0+3𝛽_1\)</span></li>
-<li>（由于残差的存在，我们的预测值是该水平的平均值）</li>
+<li>则种族一的预测值为 <span class="math inline">\(E(Y) = \beta_0 + \beta_1\)</span></li>
+<li>则种族二的预测值为 <span class="math inline">\(E(Y) = \beta_0 +2 \beta_1\)</span></li>
+<li>则种族三的预测值为 <span class="math inline">\(E(Y) = \beta_0 +3 \beta_1\)</span></li>
 </ul></li>
 <li>这无疑是很不符合实际的。</li>
 </ul>
@@ -640,26 +640,23 @@
 <ul>
 <li><p>在我们之前的例子中，若想要对性别进行编码，则可能的方式是：</p>
 <ul>
-<li>X1 = 1 女性</li>
-<li>X1 = 0 男性（非女性）</li>
+<li>X = 1 : 女性</li>
+<li>X = 0 : 男性（非女性）</li>
 </ul></li>
-<li><p>注意：分类变量的编码只能用0和1来进行表示。需要注意的是，由于截距的存在，x1 = 0代表参照水平，而不是说男性的家庭收入就不受到影响。</p></li>
 </ul>
 </section>
 <section id="section-6" class="slide level2">
 <h2></h2>
+<p>假如我们仅关注家庭收入与性别(男/女)的关系, 则有如下回归模型</p>
+<p><span class="math display">\[Y = \beta_0 + \beta_1 X+ \epsilon\]</span></p>
 <ul>
-<li>例如，我们只关注家庭收入与性别(男/女)的关系：</li>
-</ul>
-<p><span class="math display">\[𝑌 =𝛽_0+𝛽_1 𝑋+𝜖\]</span></p>
-<ul>
-<li><p>则男性的预测值为 <span class="math inline">\(E(𝑌) =𝛽_0\)</span></p></li>
-<li><p>则女性的预测值为 <span class="math inline">\(E(𝑌) =𝛽_0+𝛽_1\)</span></p></li>
+<li><p>则男性的预测值为 <span class="math inline">\(E(Y) = \beta_0\)</span></p></li>
+<li><p>则女性的预测值为 <span class="math inline">\(E(Y) = \beta_0 + \beta_1\)</span></p></li>
 <li><p>当虚拟变量赋值为0时，</p>
 <ul>
-<li><span class="math inline">\(𝛽_0\)</span>代表男性的平均家庭收入；</li>
-<li><span class="math inline">\(𝛽_0+𝛽_1\)</span>代表女性的平均家庭收入；</li>
-<li><span class="math inline">\(𝛽_1\)</span>表示女性相对于男性的家庭收入的差值。</li>
+<li><span class="math inline">\(\beta_0\)</span> 代表男性的平均家庭收入；</li>
+<li><span class="math inline">\(\beta_0 + \beta_1\)</span> 代表女性的平均家庭收入；</li>
+<li><span class="math inline">\(\beta_1\)</span> 表示女性相对于男性的家庭收入的差值。</li>
 </ul></li>
 </ul>
 </section>
@@ -668,7 +665,7 @@
 <ul>
 <li>我们可以用矩阵的形式来进行表达：</li>
 </ul>
-<p><span class="math display">\[𝑌 =𝛽_0+𝛽_1 𝑋+𝜖\]</span></p>
+<p><span class="math display">\[Y = \beta_0 + \beta_1 X+\epsilon\]</span></p>
 <div class="quarto-layout-panel">
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="quarto-layout-cell" style="flex-basis: 16.7%;justify-content: center;">
@@ -706,14 +703,16 @@
 </section>
 <section id="在r中的操作" class="slide level2">
 <h2>在R中的操作</h2>
-<p>Step 1: 虚拟变量编码，男=0，女=1</p>
+<p><strong>Step 1</strong>: 虚拟变量编码，男=0，女=1</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># load files</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a>df<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">"data/example8.1.csv"</span>)<span class="sc">%&gt;%</span></span>
-<span id="cb1-3"><a href="#cb1-3"></a>  <span class="fu">mutate</span>(<span class="at">Sex=</span><span class="fu">factor</span>(Sex))</span>
+<span id="cb1-2"><a href="#cb1-2"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/example8.1.csv"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a>      <span class="fu">mutate</span>(<span class="at">Sex =</span> <span class="fu">factor</span>(Sex))</span>
 <span id="cb1-4"><a href="#cb1-4"></a></span>
-<span id="cb1-5"><a href="#cb1-5"></a>df_1<span class="ot">&lt;-</span><span class="fu">select</span>(df,X,Sex,HouseholdIncome)</span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="fu">head</span>(df_1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-5"><a href="#cb1-5"></a>df_1 <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
+<span id="cb1-6"><a href="#cb1-6"></a>      dplyr<span class="sc">::</span><span class="fu">select</span>(X, Sex, HouseholdIncome)</span>
+<span id="cb1-7"><a href="#cb1-7"></a></span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="fu">head</span>(df_1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     X Sex HouseholdIncome
 1 s001   1           40000
@@ -733,10 +732,11 @@
 </section>
 <section id="section-7" class="slide level2">
 <h2></h2>
-<p>Step 2: 进行线性回归</p>
+<p><strong>Step 2</strong>: 建立回归模型</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>Model <span class="ot">=</span> <span class="fu">lm</span>(<span class="at">data =</span> df, HouseholdIncome<span class="sc">~</span>Sex)</span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="fu">summary</span>(Model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>Model <span class="ot">=</span> <span class="fu">lm</span>(<span class="at">data =</span> df, HouseholdIncome <span class="sc">~</span> Sex)</span>
+<span id="cb5-2"><a href="#cb5-2"></a></span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="fu">summary</span>(Model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -761,10 +761,11 @@ F-statistic: 3.638 on 1 and 520 DF,  p-value: 0.05704</code></pre>
 </section>
 <section id="section-8" class="slide level2">
 <h2></h2>
-<p>Step 3: 模型整体检验</p>
+<p><strong>Step 3</strong>: 模型整体检验</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>Model <span class="ot">=</span> <span class="fu">lm</span>(<span class="at">data =</span> df, HouseholdIncome<span class="sc">~</span>Sex)</span>
-<span id="cb7-2"><a href="#cb7-2"></a><span class="fu">summary</span>(Model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>Model <span class="ot">=</span> <span class="fu">lm</span>(<span class="at">data =</span> df, HouseholdIncome <span class="sc">~</span> Sex)</span>
+<span id="cb7-2"><a href="#cb7-2"></a></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="fu">summary</span>(Model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -790,7 +791,7 @@ F-statistic: 3.638 on 1 and 520 DF,  p-value: 0.05704</code></pre>
 </section>
 <section id="section-9" class="slide level2">
 <h2></h2>
-<p>Step 4: 偏回归系数的显著性检验</p>
+<p><strong>Step 4</strong>: 偏回归系数的显著性检验</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>Model <span class="ot">=</span> <span class="fu">lm</span>(<span class="at">data =</span> df, HouseholdIncome<span class="sc">~</span>Sex)</span>
 <span id="cb9-2"><a href="#cb9-2"></a>temp<span class="ot">&lt;-</span><span class="fu">summary</span>(Model)</span>
@@ -814,25 +815,26 @@ Sex1         5204.669   2728.893  1.907245 5.703953e-02</code></pre>
 <ul>
 <li>按之前的线性回归的解释：
 <ul>
-<li><p><span class="math inline">\(β_0\)</span>:回归方程截距</p></li>
-<li><p><span class="math inline">\(β_1\)</span>：虚拟变量sex的回归系数</p></li>
+<li><p><span class="math inline">\(\beta_0\)</span>: 回归方程截距</p></li>
+<li><p><span class="math inline">\(\beta_1\)</span>: 虚拟变量sex的回归系数</p></li>
 </ul></li>
 <li>采用Dummy coding之后的解释：
 <ul>
-<li><p><span class="math inline">\(β_0\)</span>:样本中男性群体收入的均值</p></li>
-<li><p><span class="math inline">\(β_0+β_1\)</span>：样本中女性群体收入的均值</p></li>
-<li><p><span class="math inline">\(β_1\)</span>：女性与男性群体收入的差值</p></li>
+<li><p><span class="math inline">\(\beta_0\)</span>: 样本中男性群体收入的均值</p></li>
+<li><p><span class="math inline">\(\beta_0+\beta_1\)</span>: 样本中女性群体收入的均值</p></li>
+<li><p><span class="math inline">\(\beta_1\)</span>: 女性与男性群体收入的差值</p></li>
 </ul></li>
 </ul>
 </section>
 <section id="单变量三水平的虚拟变量编码" class="slide level2">
 <h2>单变量三水平的虚拟变量编码</h2>
-<p>那么，当分类变量多于2个水平时，我们该怎么用虚拟变量来进行表示呢？</p>
+<p><br></p>
+<p>当分类变量多于2个水平时，我们该怎么用虚拟变量来进行表示呢？</p>
 </section>
 <section id="section-10" class="slide level2">
 <h2></h2>
 <ul>
-<li><p>一般来说，对于包括k个类别的名义变量，我们可以用<strong>k-1个虚拟变量</strong>来进行编码。</p></li>
+<li><p>一般来说，对于包括k个类别的名义变量，我们可以用<em>k-1个虚拟变量</em>来进行编码。</p></li>
 <li><p>若我们使用k个虚拟变量进行编码，则会出现多重共线性的问题，即其中一个变量可以表示为其他变量的线性组合。</p></li>
 </ul>
 </section>
@@ -841,7 +843,7 @@ Sex1         5204.669   2728.893  1.907245 5.703953e-02</code></pre>
 <ul>
 <li>例如，我们只关注家庭收入与种族(亚裔 /非裔/欧裔)的关系：
 <ul>
-<li><p>我们可以用两个虚拟变量来对变量进行表示 <span class="math display">\[Y=\beta_0+\beta_1X_1+\beta_2X2+\epsilon\]</span></p>
+<li><p>我们可以用两个虚拟变量来对变量进行表示 <span class="math display">\[Y = \beta_0 + \beta_1X_1 + \beta_2X2 + \epsilon\]</span></p>
 <table>
 <tbody>
 <tr class="odd">
@@ -877,7 +879,7 @@ Sex1         5204.669   2728.893  1.907245 5.703953e-02</code></pre>
 <ul>
 <li>例如，我们只关注家庭收入与种族(亚裔 /非裔/欧裔)的关系：
 <ul>
-<li><p>我们可以用两个虚拟变量来对变量进行表示 <span class="math display">\[Y=\beta_0+\beta_1X_1+\beta_2X_2+\epsilon\]</span></p>
+<li><p>我们可以用两个虚拟变量来对变量进行表示 <span class="math display">\[Y = \beta_0 + \beta_1X_1 + \beta_2X_2 + \epsilon\]</span></p>
 <table>
 <tbody>
 <tr class="odd">
@@ -902,9 +904,9 @@ Sex1         5204.669   2728.893  1.907245 5.703953e-02</code></pre>
 </tr>
 </tbody>
 </table></li>
-<li><p>则亚裔的预测值为 <span class="math inline">\(E(𝑌) =𝛽_0\)</span></p></li>
-<li><p>则非裔的预测值为 <span class="math inline">\(E(𝑌) =𝛽_0+𝛽_1\)</span></p></li>
-<li><p>则欧裔的预测值为 <span class="math inline">\(E(𝑌) =𝛽_0+𝛽_2\)</span></p></li>
+<li><p>则亚裔的预测值为 <span class="math inline">\(E(Y) = \beta_0\)</span></p></li>
+<li><p>则非裔的预测值为 <span class="math inline">\(E(Y) = \beta_0+\beta_1\)</span></p></li>
+<li><p>则欧裔的预测值为 <span class="math inline">\(E(Y) = \beta_0+\beta_2\)</span></p></li>
 </ul></li>
 </ul>
 </section>
@@ -913,7 +915,7 @@ Sex1         5204.669   2728.893  1.907245 5.703953e-02</code></pre>
 <ul>
 <li>例如，我们只关注家庭收入与种族(亚裔 /非裔/欧裔)的关系：
 <ul>
-<li><p>我们可以用两个虚拟变量来对变量进行表示 <span class="math display">\[Y=\beta_0+\beta_1X_1+\beta_2X_2+\epsilon\]</span></p>
+<li><p>我们可以用两个虚拟变量来对变量进行表示 <span class="math display">\[Y = \beta_0 + \beta_1X_1 + \beta_2X_2 + \epsilon\]</span></p>
 <table>
 <tbody>
 <tr class="odd">
@@ -938,9 +940,9 @@ Sex1         5204.669   2728.893  1.907245 5.703953e-02</code></pre>
 </tr>
 </tbody>
 </table></li>
-<li><p><span class="math inline">\(𝛽_0\)</span>表示亚裔的平均家庭收入</p></li>
-<li><p><span class="math inline">\(𝛽_1\)</span>表示非裔相对于亚裔的平均家庭收入的差值</p></li>
-<li><p><span class="math inline">\(𝛽_2\)</span>表示欧裔相对于亚裔的平均家庭收入的差值</p></li>
+<li><p><span class="math inline">\(\beta_0\)</span>表示亚裔的平均家庭收入</p></li>
+<li><p><span class="math inline">\(\beta_1\)</span>表示非裔相对于亚裔的平均家庭收入的差值</p></li>
+<li><p><span class="math inline">\(\beta_2\)</span>表示欧裔相对于亚裔的平均家庭收入的差值</p></li>
 </ul></li>
 </ul>
 </section>
@@ -979,29 +981,35 @@ Sex1         5204.669   2728.893  1.907245 5.703953e-02</code></pre>
 </section>
 <section id="在r中的操作-1" class="slide level2">
 <h2>在R中的操作</h2>
-<p>step 1: 虚拟变量编码，亚裔为基线</p>
+<p><strong>Step 1</strong>: 虚拟变量编码，亚裔为基线</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>df<span class="ot">&lt;-</span>df<span class="sc">%&gt;%</span></span>
-<span id="cb11-2"><a href="#cb11-2"></a>  <span class="fu">mutate</span>(<span class="at">race =</span> <span class="fu">case_when</span>(Race <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"White"</span>,<span class="st">" American Indian or Alaska Native"</span> ,<span class="st">" Native Hawaiian or Other Pacific Islander"</span>,<span class="st">"Other"</span>,<span class="st">"Choose not to respond"</span> ) <span class="sc">~</span> <span class="st">"欧裔"</span>,</span>
-<span id="cb11-3"><a href="#cb11-3"></a>                          Race <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Japanese"</span>, <span class="st">"Chinese"</span>,<span class="st">" Asian Indian"</span>,<span class="st">" Vietnamese"</span>,<span class="st">"Korean"</span>,<span class="st">" Filipino"</span>,<span class="st">" Other Asian"</span>) <span class="sc">~</span> <span class="st">"亚裔"</span>,</span>
-<span id="cb11-4"><a href="#cb11-4"></a>                          Race <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">" Black or African American"</span>,<span class="st">" Middle Eastern or North African"</span>) <span class="sc">~</span> <span class="st">"非裔"</span>),</span>
-<span id="cb11-5"><a href="#cb11-5"></a>         <span class="at">race=</span><span class="fu">factor</span>(race),</span>
-<span id="cb11-6"><a href="#cb11-6"></a>         <span class="at">race =</span> <span class="fu">relevel</span>(race, <span class="at">ref =</span> <span class="st">"亚裔"</span>))<span class="co">#设置基线</span></span>
-<span id="cb11-7"><a href="#cb11-7"></a><span class="fu">contrasts</span>(df<span class="sc">$</span>race)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>df <span class="ot">&lt;-</span>df <span class="sc">%&gt;%</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a>  <span class="fu">mutate</span>(<span class="at">race =</span> <span class="fu">case_when</span>(Race <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"White"</span>,<span class="st">" American Indian or Alaska Native"</span> ,</span>
+<span id="cb11-3"><a href="#cb11-3"></a>                                      <span class="st">" Native Hawaiian or Other Pacific Islander"</span>,</span>
+<span id="cb11-4"><a href="#cb11-4"></a>                                      <span class="st">"Other"</span>,<span class="st">"Choose not to respond"</span> ) <span class="sc">~</span> <span class="st">"欧裔"</span>,</span>
+<span id="cb11-5"><a href="#cb11-5"></a>                          Race <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Japanese"</span>, <span class="st">"Chinese"</span>,<span class="st">" Asian Indian"</span>,</span>
+<span id="cb11-6"><a href="#cb11-6"></a>                                      <span class="st">" Vietnamese"</span>,<span class="st">"Korean"</span>,<span class="st">" Filipino"</span>,</span>
+<span id="cb11-7"><a href="#cb11-7"></a>                                      <span class="st">" Middle Eastern or North African"</span>,</span>
+<span id="cb11-8"><a href="#cb11-8"></a>                                      <span class="st">" Other Asian"</span>) <span class="sc">~</span> <span class="st">"亚裔"</span>,</span>
+<span id="cb11-9"><a href="#cb11-9"></a>                          Race <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">" Black or African American"</span>) <span class="sc">~</span> <span class="st">"非裔"</span>),</span>
+<span id="cb11-10"><a href="#cb11-10"></a>         <span class="at">race =</span> <span class="fu">factor</span>(race),</span>
+<span id="cb11-11"><a href="#cb11-11"></a>         <span class="at">race =</span> <span class="fu">relevel</span>(race, <span class="at">ref =</span> <span class="st">"亚裔"</span>)) <span class="co"># 设置基线</span></span>
+<span id="cb11-12"><a href="#cb11-12"></a><span class="fu">contrasts</span>(df<span class="sc">$</span>race)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>     非裔 欧裔
+<pre><code>     欧裔 非裔
 亚裔    0    0
-非裔    1    0
-欧裔    0    1</code></pre>
+欧裔    1    0
+非裔    0    1</code></pre>
 </div>
 </div>
 </section>
 <section id="section-14" class="slide level2">
 <h2></h2>
-<p>step 2: 进行线性回归</p>
+<p><strong>Step 2</strong>: 进行线性回归</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>Model_2 <span class="ot">=</span> <span class="fu">lm</span>(<span class="at">data =</span> df, HouseholdIncome<span class="sc">~</span>race)</span>
-<span id="cb13-2"><a href="#cb13-2"></a><span class="fu">summary</span>(Model_2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>Model_2 <span class="ot">=</span> <span class="fu">lm</span>(<span class="at">data =</span> df, HouseholdIncome <span class="sc">~</span> race)</span>
+<span id="cb13-2"><a href="#cb13-2"></a></span>
+<span id="cb13-3"><a href="#cb13-3"></a><span class="fu">summary</span>(Model_2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -1013,24 +1021,25 @@ Residuals:
 
 Coefficients:
             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept) 48050.88    5450.46   8.816   &lt;2e-16 ***
-race非裔     1384.90    7545.82   0.184    0.854    
-race欧裔      -71.67    5645.50  -0.013    0.990    
+(Intercept)    49905       5292   9.430   &lt;2e-16 ***
+race欧裔       -1926       5493  -0.351    0.726    
+race非裔       -2297       7539  -0.305    0.761    
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
 Residual standard error: 31310 on 519 degrees of freedom
-Multiple R-squared:  0.0001391, Adjusted R-squared:  -0.003714 
-F-statistic: 0.03611 on 2 and 519 DF,  p-value: 0.9645</code></pre>
+Multiple R-squared:  0.000253,  Adjusted R-squared:  -0.0036 
+F-statistic: 0.06567 on 2 and 519 DF,  p-value: 0.9365</code></pre>
 </div>
 </div>
 </section>
 <section id="section-15" class="slide level2">
 <h2></h2>
-<p>Step 3: 模型整体检验</p>
+<p><strong>Step 3</strong>: 模型整体检验</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>Model_2 <span class="ot">=</span> <span class="fu">lm</span>(<span class="at">data =</span> df, HouseholdIncome<span class="sc">~</span>race)</span>
-<span id="cb15-2"><a href="#cb15-2"></a><span class="fu">summary</span>(Model_2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>Model_2 <span class="ot">=</span> <span class="fu">lm</span>(<span class="at">data =</span> df, HouseholdIncome <span class="sc">~</span> race)</span>
+<span id="cb15-2"><a href="#cb15-2"></a></span>
+<span id="cb15-3"><a href="#cb15-3"></a><span class="fu">summary</span>(Model_2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -1042,30 +1051,30 @@ Residuals:
 
 Coefficients:
             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept) 48050.88    5450.46   8.816   &lt;2e-16 ***
-race非裔     1384.90    7545.82   0.184    0.854    
-race欧裔      -71.67    5645.50  -0.013    0.990    
+(Intercept)    49905       5292   9.430   &lt;2e-16 ***
+race欧裔       -1926       5493  -0.351    0.726    
+race非裔       -2297       7539  -0.305    0.761    
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
 Residual standard error: 31310 on 519 degrees of freedom
-Multiple R-squared:  0.0001391, Adjusted R-squared:  -0.003714 
-F-statistic: 0.03611 on 2 and 519 DF,  p-value: 0.9645</code></pre>
+Multiple R-squared:  0.000253,  Adjusted R-squared:  -0.0036 
+F-statistic: 0.06567 on 2 and 519 DF,  p-value: 0.9365</code></pre>
 </div>
 </div>
-<p>Multiple R-squared: 0.0001391, Adjusted R-squared: -0.003714, p-value: 0.9645</p>
+<p>Multiple R-squared: 0.000253, Adjusted R-squared: -0.0036 , <em>p</em>-value: 0.9365</p>
 </section>
 <section id="section-16" class="slide level2">
 <h2></h2>
-<p>Step 4: 偏回归系数的显著性检验</p>
+<p><strong>Step 4</strong>: 偏回归系数的显著性检验</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>Model_2 <span class="ot">=</span> <span class="fu">lm</span>(<span class="at">data =</span> df, HouseholdIncome<span class="sc">~</span>race)</span>
 <span id="cb17-2"><a href="#cb17-2"></a><span class="fu">summary</span>(Model_2)<span class="sc">$</span>coef</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>               Estimate Std. Error     t value     Pr(&gt;|t|)
-(Intercept) 48050.87879   5450.460  8.81593061 1.797654e-17
-race非裔     1384.89899   7545.820  0.18353193 8.544523e-01
-race欧裔      -71.66907   5645.497 -0.01269491 9.898761e-01</code></pre>
+<pre><code>             Estimate Std. Error    t value     Pr(&gt;|t|)
+(Intercept) 49905.114   5292.141  9.4300429 1.360018e-19
+race欧裔    -1925.905   5492.780 -0.3506247 7.260122e-01
+race非裔    -2296.644   7539.047 -0.3046331 7.607677e-01</code></pre>
 </div>
 </div>
 <p><span class="math display">\[\begin{bmatrix}
@@ -1073,9 +1082,9 @@ race欧裔      -71.66907   5645.497 -0.01269491 9.898761e-01</code></pre>
 \beta_1\\
 \beta_2\\
 \end{bmatrix}=\begin{bmatrix}
-48050.87879 \\
-1384.89899\\
--71.66907 \\
+49905 \\
+-1926\\
+-2297 \\
 \end{bmatrix}\]</span></p>
 </section>
 <section id="两个分类变量的虚拟变量编码" class="slide level2">
@@ -1096,7 +1105,7 @@ race欧裔      -71.66907   5645.497 -0.01269491 9.898761e-01</code></pre>
 <ul>
 <li>例如，我们只关注家庭收入与性别和种族(亚裔 /非裔/欧裔)的关系：</li>
 </ul>
-<p><span class="math display">\[Y=\beta_0+\beta_1X_1+\beta_2X_2+\beta_3X_3+\epsilon\]</span></p>
+<p><span class="math display">\[Y = \beta_0 + \beta_1X_1 + \beta_2X_2 + \beta_3X_3 + \epsilon\]</span></p>
 <table>
 <tbody>
 <tr class="odd">
@@ -1141,17 +1150,17 @@ race欧裔      -71.66907   5645.497 -0.01269491 9.898761e-01</code></pre>
 <section id="section-18" class="slide level2">
 <h2></h2>
 <ul>
-<li><p>亚裔男性的平均家庭收入 <span class="math inline">\(E(Y) = 𝛽_0\)</span></p></li>
-<li><p>亚裔女性的平均家庭收入 <span class="math inline">\(E(Y) = 𝛽_0 + 𝛽_1\)</span></p></li>
-<li><p>非裔男性的平均家庭收入 <span class="math inline">\(E(Y) = 𝛽_0 + 𝛽_2\)</span></p></li>
-<li><p>非裔女性的平均家庭收入 <span class="math inline">\(E(Y) = 𝛽_0 + 𝛽_1 + 𝛽_2\)</span></p></li>
-<li><p>欧裔男性的平均家庭收入 <span class="math inline">\(E(Y) = 𝛽_0 + 𝛽_3\)</span></p></li>
-<li><p>欧裔女性的平均家庭收入 <span class="math inline">\(E(Y) = 𝛽_0 + 𝛽_1 + 𝛽_3\)</span></p></li>
+<li><p>亚裔男性的平均家庭收入 <span class="math inline">\(E(Y) = \beta_0\)</span></p></li>
+<li><p>亚裔女性的平均家庭收入 <span class="math inline">\(E(Y) = \beta_0 + \beta_1\)</span></p></li>
+<li><p>非裔男性的平均家庭收入 <span class="math inline">\(E(Y) = \beta_0 + \beta_2\)</span></p></li>
+<li><p>非裔女性的平均家庭收入 <span class="math inline">\(E(Y) = \beta_0 + \beta_1 + \beta_2\)</span></p></li>
+<li><p>欧裔男性的平均家庭收入 <span class="math inline">\(E(Y) = \beta_0 + \beta_3\)</span></p></li>
+<li><p>欧裔女性的平均家庭收入 <span class="math inline">\(E(Y) = \beta_0 + \beta_1 + \beta_3\)</span></p></li>
 </ul>
 </section>
 <section id="在r中的操作-2" class="slide level2">
 <h2>在R中的操作</h2>
-<p>step 1:虚拟变量编码</p>
+<p><strong>Step 1</strong>:虚拟变量编码</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">contrasts</span>(df<span class="sc">$</span>Sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1161,16 +1170,16 @@ race欧裔      -71.66907   5645.497 -0.01269491 9.898761e-01</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">contrasts</span>(df<span class="sc">$</span>race)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>     非裔 欧裔
+<pre><code>     欧裔 非裔
 亚裔    0    0
-非裔    1    0
-欧裔    0    1</code></pre>
+欧裔    1    0
+非裔    0    1</code></pre>
 </div>
 </div>
 </section>
 <section id="section-19" class="slide level2">
 <h2></h2>
-<p>step 2:进行线性回归</p>
+<p><strong>Step 2</strong>:进行线性回归</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>model_3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(HouseholdIncome <span class="sc">~</span> Sex <span class="sc">+</span> race, <span class="at">data =</span> df)</span>
 <span id="cb23-2"><a href="#cb23-2"></a><span class="fu">summary</span>(model_3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1181,20 +1190,20 @@ lm(formula = HouseholdIncome ~ Sex + race, data = df)
 
 Residuals:
    Min     1Q Median     3Q    Max 
--50579 -22513  -5579  14609 189421 
+-50597 -22373  -5805  15722 189403 
 
 Coefficients:
             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)  45535.4     5596.3   8.137 3.03e-15 ***
-Sex1          5188.1     2735.3   1.897   0.0584 .  
-race非裔      1018.1     7529.5   0.135   0.8925    
-race欧裔      -144.6     5631.6  -0.026   0.9795    
+(Intercept)    47368       5443   8.702   &lt;2e-16 ***
+Sex1            5224       2735   1.910   0.0567 .  
+race欧裔       -1995       5479  -0.364   0.7159    
+race非裔       -2678       7522  -0.356   0.7219    
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
 Residual standard error: 31230 on 518 degrees of freedom
-Multiple R-squared:  0.007035,  Adjusted R-squared:  0.001285 
-F-statistic: 1.223 on 3 and 518 DF,  p-value: 0.3005</code></pre>
+Multiple R-squared:  0.007243,  Adjusted R-squared:  0.001494 
+F-statistic:  1.26 on 3 and 518 DF,  p-value: 0.2875</code></pre>
 </div>
 </div>
 </section>
@@ -1210,20 +1219,20 @@ lm(formula = HouseholdIncome ~ Sex + race, data = df)
 
 Residuals:
    Min     1Q Median     3Q    Max 
--50579 -22513  -5579  14609 189421 
+-50597 -22373  -5805  15722 189403 
 
 Coefficients:
             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)  45535.4     5596.3   8.137 3.03e-15 ***
-Sex1          5188.1     2735.3   1.897   0.0584 .  
-race非裔      1018.1     7529.5   0.135   0.8925    
-race欧裔      -144.6     5631.6  -0.026   0.9795    
+(Intercept)    47368       5443   8.702   &lt;2e-16 ***
+Sex1            5224       2735   1.910   0.0567 .  
+race欧裔       -1995       5479  -0.364   0.7159    
+race非裔       -2678       7522  -0.356   0.7219    
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
 Residual standard error: 31230 on 518 degrees of freedom
-Multiple R-squared:  0.007035,  Adjusted R-squared:  0.001285 
-F-statistic: 1.223 on 3 and 518 DF,  p-value: 0.3005</code></pre>
+Multiple R-squared:  0.007243,  Adjusted R-squared:  0.001494 
+F-statistic:  1.26 on 3 and 518 DF,  p-value: 0.2875</code></pre>
 </div>
 </div>
 <p>Multiple R-squared: 0.007035, Adjusted R-squared: 0.001285 , p-value: 0.3005</p>
@@ -1234,11 +1243,11 @@ F-statistic: 1.223 on 3 and 518 DF,  p-value: 0.3005</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="fu">summary</span>(model_3)<span class="sc">$</span>coef</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>              Estimate Std. Error    t value     Pr(&gt;|t|)
-(Intercept) 45535.4417   5596.280  8.1367346 3.032607e-15
-Sex1         5188.0890   2735.264  1.8967415 5.841808e-02
-race非裔     1018.0644   7529.492  0.1352102 8.924982e-01
-race欧裔     -144.5501   5631.553 -0.0256679 9.795321e-01</code></pre>
+<pre><code>             Estimate Std. Error    t value     Pr(&gt;|t|)
+(Intercept) 47367.998   5443.289  8.7020920 4.352487e-17
+Sex1         5223.475   2735.042  1.9098337 5.670666e-02
+race欧裔    -1994.760   5478.942 -0.3640776 7.159486e-01
+race非裔    -2678.528   7522.550 -0.3560665 7.219357e-01</code></pre>
 </div>
 </div>
 <p><span class="math display">\[\begin{bmatrix}
@@ -1285,7 +1294,7 @@ race欧裔     -144.5501   5631.553 -0.0256679 9.795321e-01</code></pre>
 <li><span class="math inline">\(HouseholdIncome =45535.4+1018.1\)</span></li>
 </ul></li>
 </ul></li>
-<li>方程间截距差值由<span class="math inline">\(β_1\)</span>, <span class="math inline">\(β_2\)</span>和<span class="math inline">\(β_3\)</span>决定</li>
+<li>方程间截距差值由<span class="math inline">\(\beta_1\)</span>, <span class="math inline">\(\beta_2\)</span>和<span class="math inline">\(\beta_3\)</span>决定</li>
 </ul>
 </div>
 </section>
@@ -1302,7 +1311,7 @@ race欧裔     -144.5501   5631.553 -0.0256679 9.795321e-01</code></pre>
 <ul>
 <li>例如，我们只关注家庭收入与性别和种族(亚裔/非裔/欧裔)的关系，且性别和种族间存在交互作用：</li>
 </ul>
-<p><span class="math display">\[𝑌 =𝛽_0+𝛽_1 𝑋_1+𝛽_2 𝑋_2+𝛽_3 𝑋_3+𝛽_4 𝑋_1 𝑋_2+𝛽_5 𝑋_1 𝑋_3+𝜖\]</span></p>
+<p><span class="math display">\[Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3 + \beta_4 X_1 X_2 + \beta_5 X_1 X_3 + \epsilon\]</span></p>
 <table>
 <tbody>
 <tr class="odd">
@@ -1347,17 +1356,17 @@ race欧裔     -144.5501   5631.553 -0.0256679 9.795321e-01</code></pre>
 <section id="section-23" class="slide level2">
 <h2></h2>
 <ul>
-<li>亚裔男性的平均家庭收入 <span class="math inline">\(E(Y) = 𝛽_0\)</span></li>
-<li>亚裔女性的平均家庭收入 <span class="math inline">\(E(Y) = 𝛽_0 + 𝛽_1\)</span></li>
-<li>非裔男性的平均家庭收入 <span class="math inline">\(E(Y) = 𝛽_0 + 𝛽_2\)</span></li>
-<li>非裔女性的平均家庭收入 <span class="math inline">\(E(Y) = 𝛽_0 + 𝛽_1 + 𝛽_2+ 𝛽_4\)</span></li>
-<li>欧裔男性的平均家庭收入 <span class="math inline">\(E(Y) = 𝛽_0 + 𝛽_3\)</span></li>
-<li>欧裔女性的平均家庭收入 <span class="math inline">\(E(Y) = 𝛽_0 + 𝛽_1 + 𝛽_3 + 𝛽_5\)</span></li>
+<li>亚裔男性的平均家庭收入 <span class="math inline">\(E(Y) = \beta_0\)</span></li>
+<li>亚裔女性的平均家庭收入 <span class="math inline">\(E(Y) = \beta_0 + \beta_1\)</span></li>
+<li>非裔男性的平均家庭收入 <span class="math inline">\(E(Y) = \beta_0 + \beta_2\)</span></li>
+<li>非裔女性的平均家庭收入 <span class="math inline">\(E(Y) = \beta_0 + \beta_1 + \beta_2+ \beta_4\)</span></li>
+<li>欧裔男性的平均家庭收入 <span class="math inline">\(E(Y) = \beta_0 + \beta_3\)</span></li>
+<li>欧裔女性的平均家庭收入 <span class="math inline">\(E(Y) = \beta_0 + \beta_1 + \beta_3 + \beta_5\)</span></li>
 </ul>
 </section>
 <section id="在r中的操作-3" class="slide level2">
 <h2>在R中的操作</h2>
-<p>step 1:虚拟变量编码</p>
+<p><strong>Step 1</strong>:虚拟变量编码</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="fu">contrasts</span>(df<span class="sc">$</span>Sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1367,16 +1376,16 @@ race欧裔     -144.5501   5631.553 -0.0256679 9.795321e-01</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="fu">contrasts</span>(df<span class="sc">$</span>race)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>     非裔 欧裔
+<pre><code>     欧裔 非裔
 亚裔    0    0
-非裔    1    0
-欧裔    0    1</code></pre>
+欧裔    1    0
+非裔    0    1</code></pre>
 </div>
 </div>
 </section>
 <section id="section-24" class="slide level2">
 <h2></h2>
-<p>step 2:进行线性回归</p>
+<p><strong>Step 2</strong>:进行线性回归</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a>model_4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(HouseholdIncome <span class="sc">~</span> Sex <span class="sc">*</span> race, <span class="at">data =</span> df)</span>
 <span id="cb33-2"><a href="#cb33-2"></a><span class="fu">summary</span>(model_4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1387,22 +1396,22 @@ lm(formula = HouseholdIncome ~ Sex * race, data = df)
 
 Residuals:
    Min     1Q Median     3Q    Max 
--51085 -22687  -5986  15783 188915 
+-51085 -22887  -6085  15113 188915 
 
 Coefficients:
               Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)    45255.8     7576.8   5.973 4.34e-09 ***
-Sex1            5764.8    10881.3   0.530    0.596    
-race非裔        8737.2    10881.3   0.803    0.422    
-race欧裔        -368.4     7855.4  -0.047    0.963    
-Sex1:race非裔 -13967.8    15106.1  -0.925    0.356    
-Sex1:race欧裔    432.4    11270.3   0.038    0.969    
+(Intercept)      51019       7369   6.924 1.31e-11 ***
+Sex1             -2294      10573  -0.217    0.828    
+race欧裔         -6132       7656  -0.801    0.424    
+race非裔         -3360      10930  -0.307    0.759    
+Sex1:race欧裔     8491      10974   0.774    0.439    
+Sex1:race非裔     2203      15113   0.146    0.884    
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 31240 on 516 degrees of freedom
-Multiple R-squared:  0.0104,    Adjusted R-squared:  0.0008107 
-F-statistic: 1.085 on 5 and 516 DF,  p-value: 0.3679</code></pre>
+Residual standard error: 31260 on 516 degrees of freedom
+Multiple R-squared:  0.008891,  Adjusted R-squared:  -0.0007132 
+F-statistic: 0.9257 on 5 and 516 DF,  p-value: 0.4638</code></pre>
 </div>
 </div>
 </section>
@@ -1418,22 +1427,22 @@ lm(formula = HouseholdIncome ~ Sex * race, data = df)
 
 Residuals:
    Min     1Q Median     3Q    Max 
--51085 -22687  -5986  15783 188915 
+-51085 -22887  -6085  15113 188915 
 
 Coefficients:
               Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)    45255.8     7576.8   5.973 4.34e-09 ***
-Sex1            5764.8    10881.3   0.530    0.596    
-race非裔        8737.2    10881.3   0.803    0.422    
-race欧裔        -368.4     7855.4  -0.047    0.963    
-Sex1:race非裔 -13967.8    15106.1  -0.925    0.356    
-Sex1:race欧裔    432.4    11270.3   0.038    0.969    
+(Intercept)      51019       7369   6.924 1.31e-11 ***
+Sex1             -2294      10573  -0.217    0.828    
+race欧裔         -6132       7656  -0.801    0.424    
+race非裔         -3360      10930  -0.307    0.759    
+Sex1:race欧裔     8491      10974   0.774    0.439    
+Sex1:race非裔     2203      15113   0.146    0.884    
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 31240 on 516 degrees of freedom
-Multiple R-squared:  0.0104,    Adjusted R-squared:  0.0008107 
-F-statistic: 1.085 on 5 and 516 DF,  p-value: 0.3679</code></pre>
+Residual standard error: 31260 on 516 degrees of freedom
+Multiple R-squared:  0.008891,  Adjusted R-squared:  -0.0007132 
+F-statistic: 0.9257 on 5 and 516 DF,  p-value: 0.4638</code></pre>
 </div>
 </div>
 <p>Multiple R-squared: 0.0104, Adjusted R-squared: 0.0008107 , p-value: 0.3679</p>
@@ -1444,13 +1453,13 @@ F-statistic: 1.085 on 5 and 516 DF,  p-value: 0.3679</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="fu">summary</span>(model_4)<span class="sc">$</span>coef</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>                 Estimate Std. Error     t value     Pr(&gt;|t|)
-(Intercept)    45255.8235   7576.779  5.97296368 4.342544e-09
-Sex1            5764.8015  10881.320  0.52978881 5.964862e-01
-race非裔        8737.1765  10881.320  0.80295190 4.223722e-01
-race欧裔        -368.3610   7855.369 -0.04689289 9.626167e-01
-Sex1:race非裔 -13967.8015  15106.128 -0.92464471 3.555830e-01
-Sex1:race欧裔    432.3731  11270.343  0.03836380 9.694125e-01</code></pre>
+<pre><code>               Estimate Std. Error    t value     Pr(&gt;|t|)
+(Intercept)   51019.389   7368.918  6.9235929 1.313381e-11
+Sex1          -2294.095  10573.367 -0.2169692 8.283181e-01
+race欧裔      -6131.926   7655.505 -0.8009826 4.235104e-01
+race非裔      -3360.189  10929.872 -0.3074317 7.586389e-01
+Sex1:race欧裔  8491.269  10973.912  0.7737687 4.394219e-01
+Sex1:race非裔  2203.316  15112.916  0.1457902 8.841439e-01</code></pre>
 </div>
 </div>
 <p><span class="math display">\[\begin{bmatrix}
@@ -1479,17 +1488,17 @@ Sex1:race欧裔    432.3731  11270.343  0.03836380 9.694125e-01</code></pre>
 <section id="变量间不存在交互作用" class="slide level2">
 <h2>变量间不存在交互作用</h2>
 <ul>
-<li>例如，我们只关注家庭收入与性别和瑞文推理分数的关系：</li>
+<li>例如，我们关注家庭收入与性别和瑞文推理分数的关系：</li>
 </ul>
-<p><span class="math display">\[𝑌 =𝛽_0+𝛽_1 𝑋_1+𝛽_2 𝑋_2+𝜖\]</span></p>
+<p><span class="math display">\[Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \epsilon\]</span></p>
 <ul>
-<li>男性的家庭收入(<span class="math inline">\(𝑋_1=0\)</span>)与瑞文推理分数的关系：
+<li>男性的家庭收入(<span class="math inline">\(X_1=0\)</span>)与瑞文推理分数的关系：
 <ul>
-<li><span class="math inline">\(𝑌_{male} = 𝛽_0+𝛽_2 𝑋_2+𝜖\)</span></li>
+<li><span class="math inline">\(Y_{male} = \beta_0+\beta_2 X_2+\epsilon\)</span></li>
 </ul></li>
-<li>女性的家庭收入(<span class="math inline">\(𝑋_1= 1\)</span>)与瑞文推理分数的关系：
+<li>女性的家庭收入(<span class="math inline">\(X_1= 1\)</span>)与瑞文推理分数的关系：
 <ul>
-<li><span class="math inline">\(𝑌_{female} = 𝛽_0 + 𝛽_1+𝛽_2 𝑋_2+𝜖\)</span></li>
+<li><span class="math inline">\(Y_{female} = \beta_0 + \beta_1+\beta_2 X_2+\epsilon\)</span></li>
 </ul></li>
 <li>我们可以看到如果不存在交互作用，性别对家庭收入的影响主要体现在截距上。</li>
 </ul>
@@ -1533,15 +1542,15 @@ F-statistic:  5.89 on 2 and 519 DF,  p-value: 0.002955</code></pre>
 <ul>
 <li>例如，我们只关注家庭收入与性别和瑞文推理分数的关系：</li>
 </ul>
-<p><span class="math display">\[𝑌 =𝛽_0+𝛽_1 𝑋_1+𝛽_2 𝑋_2+𝛽_3 𝑋_1 𝑋_2+𝜖\]</span></p>
+<p><span class="math display">\[Y =\beta_0+\beta_1 X_1+\beta_2 X_2+\beta_3 X_1 X_2+\epsilon\]</span></p>
 <ul>
-<li>男性的家庭收入（ 𝑋_1 = 0）与瑞文推理分数的关系：
+<li>男性的家庭收入（<span class="math inline">\(X_1\)</span> = 0）与瑞文推理分数的关系：
 <ul>
-<li><span class="math inline">\(𝑌_{𝑚𝑎𝑙𝑒} = 𝛽_0+𝛽_2 𝑋_2+𝜖\)</span></li>
+<li><span class="math inline">\(Y_{male} = \beta_0 + \beta_2 X_2 + \epsilon\)</span></li>
 </ul></li>
-<li>女性的家庭收入（ 𝑋_1 = 1）与瑞文推理分数的关系：
+<li>女性的家庭收入（<span class="math inline">\(X_1\)</span> = 1）与瑞文推理分数的关系：
 <ul>
-<li><span class="math inline">\(𝑌_{𝑓𝑒𝑚𝑎𝑙𝑒} = 𝛽_0 + 𝛽_1+𝛽_2 𝑋_2+𝛽_3 𝑋_2+𝜖 = 𝛽_0 + 𝛽_1+(𝛽_2+𝛽_3)𝑋_2+𝜖\)</span></li>
+<li><span class="math inline">\(Y_{female} = \beta_0 + \beta_1 + \beta_2 X_2 + \beta_3 X_2 + \epsilon = \beta_0 + \beta_1 + (\beta_2 + \beta_3)X_2 + \epsilon\)</span></li>
 </ul></li>
 <li>我们可以看到，若存在交互项，交互项的对变量的影响会体现在斜率上。</li>
 </ul>
@@ -1552,35 +1561,37 @@ F-statistic:  5.89 on 2 and 519 DF,  p-value: 0.002955</code></pre>
 <li><p>在回归模型中，如果每个自变量对因变量的作用不受其他自变量取值的影响，即只存在主效应(main effect)。若某个自变量对因变量的作用会依赖于其他自变量的取值，即存在条件效应(conditional effect)。</p></li>
 <li><p>交互项表示的就是条件效应的影响。模型存在交互项时，各自变量对因变量的作用依赖于交互项中其他自变量的取值。</p></li>
 </ul>
+<p><a href="https://zhuanlan.zhihu.com/p/513227882">差之毫厘，谬以千里：辨析「固定效应、主效应、简单效应」</a></p>
 </section>
 <section id="section-29" class="slide level2">
 <h2></h2>
 <ul>
 <li><p>我们可以通过对变量求导来看该变量的变化受那些因素的影响。</p></li>
-<li><p>若不存在交互作用，我们对连续变量<span class="math inline">\(𝑋_2\)</span>求偏导：</p></li>
+<li><p>若不存在交互作用，我们对连续变量<span class="math inline">\(X_2\)</span>求偏导：</p></li>
 </ul>
-<p><span class="math display">\[𝑌 =𝛽_0+𝛽_1 𝑋_1+𝛽_2 𝑋_2+𝜖\]</span></p>
-<p><span class="math display">\[\frac{𝜕𝑌}{𝜕𝑋}=𝛽_2\]</span></p>
+<p><span class="math display">\[Y =\beta_0+\beta_1 X_1+\beta_2 X_2+\epsilon\]</span></p>
+<p><span class="math display">\[\frac{𝜕Y}{𝜕X}=\beta_2\]</span></p>
 <ul>
-<li>若不存在交互作用，连续变量<span class="math inline">\(𝑋_2\)</span>不受另一个变量的影响。</li>
+<li>若不存在交互作用，连续变量<span class="math inline">\(X_2\)</span>不受另一个变量的影响。</li>
 </ul>
 </section>
 <section id="section-30" class="slide level2">
 <h2></h2>
 <ul>
-<li>若存在交互作用，我们对连续变量<span class="math inline">\(𝑋_2\)</span>求偏导：</li>
+<li>若存在交互作用，我们对连续变量<span class="math inline">\(X_2\)</span>求偏导：</li>
 </ul>
-<p><span class="math display">\[𝑌 =𝛽_0+𝛽_1 𝑋_1+𝛽_2 𝑋_2+𝛽_3 𝑋_1 𝑋_2+𝜖\]</span></p>
-<p><span class="math display">\[\frac{𝜕𝑌}{𝜕𝑋}=𝛽_2  +𝛽_3 𝑋_1\]</span></p>
+<p><span class="math display">\[Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_1 X_2 + \epsilon\]</span></p>
+<p><span class="math display">\[\frac{𝜕Y}{𝜕X} = \beta_2  + \beta_3 X_1\]</span></p>
 <ul>
-<li>若存在交互作用，连续变量<span class="math inline">\(𝑋_2\)</span>的效应受另一个变量的影响。</li>
+<li>若存在交互作用，连续变量<span class="math inline">\(X_2\)</span>的效应受另一个变量的影响。</li>
 </ul>
 </section>
 <section id="在r中的操作-5" class="slide level2">
 <h2>在R中的操作</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a>model_6<span class="ot">&lt;-</span><span class="fu">lm</span>(HouseholdIncome <span class="sc">~</span> Sex <span class="sc">+</span> ravens.score<span class="sc">+</span>Sex<span class="sc">:</span>ravens.score, <span class="at">data=</span>df)</span>
-<span id="cb41-2"><a href="#cb41-2"></a><span class="fu">summary</span>(model_6)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a>model_6 <span class="ot">&lt;-</span> <span class="fu">lm</span>(HouseholdIncome <span class="sc">~</span> Sex <span class="sc">+</span> ravens.score <span class="sc">+</span> Sex<span class="sc">:</span>ravens.score, <span class="at">data=</span>df)</span>
+<span id="cb41-2"><a href="#cb41-2"></a></span>
+<span id="cb41-3"><a href="#cb41-3"></a><span class="fu">summary</span>(model_6)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -1620,7 +1631,7 @@ F-statistic:  3.94 on 3 and 518 DF,  p-value: 0.008491</code></pre>
 </ul>
 </section>
 <section id="dummy-coding以外的编码方式" class="slide level2">
-<h2>dummy coding以外的编码方式</h2>
+<h2>Dummy coding以外的编码方式</h2>
 <ul>
 <li><p>Dummy coding，也叫treatment coding</p></li>
 <li><p>不含截距项的编码</p></li>
@@ -1654,10 +1665,10 @@ F-statistic:  3.94 on 3 and 518 DF,  p-value: 0.008491</code></pre>
 <h2>回归方程的多种表达形式</h2>
 <ul>
 <li><p>我们之前提到，回归方程有多种表达形式：</p></li>
-<li><p>简单线性回归：<span class="math inline">\(Y = b_0+𝑏_1 𝑋_1+ 𝑏_2 𝑋_2+…+𝑏_𝑝 𝑋_𝑝 + ϵ\)</span></p></li>
-<li><p>线性代数表达：<span class="math inline">\(𝑦_𝑖=b_0+b_1 𝑋_{𝑖1}+b_2 𝑋_{𝑖2}+…+b_𝑝 𝑋_{𝑖𝑝} + ϵ\)</span></p></li>
-<li><p>矩阵表达: <span class="math inline">\(𝑌= X\beta+\epsilon\)</span></p></li>
-<li><p>代码表达(r): <span class="math inline">\(Y \sim 𝑋_1+𝑋_2+...+𝑋_𝑛\)</span></p></li>
+<li><p>简单线性回归：<span class="math inline">\(Y = b_0+𝑏_1 X_1+ 𝑏_2 X_2+…+𝑏_𝑝 X_𝑝 + ϵ\)</span></p></li>
+<li><p>线性代数表达：<span class="math inline">\(y_i = b_0 + b_1 X_{i1} + b_2 X_{i2} + … + b_p X_{ip} + \epsilon\)</span></p></li>
+<li><p>矩阵表达: <span class="math inline">\(Y= X\beta + \epsilon\)</span></p></li>
+<li><p>代码表达(r): <span class="math inline">\(Y \sim X_1 + X_2 + ... + X_n\)</span></p></li>
 </ul>
 </section>
 <section id="回归方程的概率分布表达" class="slide level2">
@@ -1667,18 +1678,18 @@ F-statistic:  3.94 on 3 and 518 DF,  p-value: 0.008491</code></pre>
 <li><p>观测项 = 预测项 + 误差项</p></li>
 <li><p>假定观测项是正态分布，上述公式可以重新表达为：</p>
 <ul>
-<li>观测项：𝑦 ~𝑁(𝜇, 𝜖)</li>
-<li>其中， 𝜇即为预测项，<span class="math inline">\(𝜇=𝛽_0+𝛽_1 𝑥\)</span></li>
+<li>观测项：<span class="math inline">\(y \sim 𝑁(\mu, \epsilon)\)</span></li>
+<li>其中， <span class="math inline">\(\mu\)</span>即为预测项，<span class="math inline">\(\mu = \beta_0 + \beta_1 x\)</span></li>
 </ul></li>
 <li><p>观测值服从以预测项为均值的正态分布，观测值与预测值之间的差值就是残差。</p></li>
 </ul>
 </section>
 <section id="section-33" class="slide level2">
 <h2></h2>
-<p>观测项：𝑦 ~𝑁(𝜇, 𝜖)</p>
-<p>预测项：<span class="math inline">\(𝜇=𝛽_0+𝛽_1 𝑥\)</span></p>
+<p>观测项：<span class="math inline">\(y \sim N(\mu, \epsilon)\)</span></p>
+<p>预测项：<span class="math inline">\(\mu = \beta_0 + \beta_1 x\)</span></p>
 <ul>
-<li>如果因变量不是连续变量，预测变量不服从正态分布，即𝑦 ~𝑁(𝜇, 𝜖)不成立。</li>
+<li>如果因变量不是连续变量，预测变量不服从正态分布，即<span class="math inline">\(y \sim N(\mu, \epsilon)\)</span>不成立。</li>
 </ul>
 </section>
 <section id="section-34" class="slide level2">
@@ -1726,7 +1737,7 @@ F-statistic:  3.94 on 3 and 518 DF,  p-value: 0.008491</code></pre>
 <section id="section-38" class="slide level2">
 <h2></h2>
 <ul>
-<li><p>预测项可表示为： <span class="math inline">\(z=𝛽_0+𝛽_1 𝑥\)</span>, 其中x为self-regulation得分</p></li>
+<li><p>预测项可表示为： <span class="math inline">\(z=\beta_0+\beta_1 𝑥\)</span>, 其中x为self-regulation得分</p></li>
 <li><p>自变量为连续变量，预测项也是一个连续变量，</p></li>
 <li><p>需要连接函数将预测项与因变量（二分变量）进行连接。</p></li>
 </ul>
@@ -1738,7 +1749,7 @@ F-statistic:  3.94 on 3 and 518 DF,  p-value: 0.008491</code></pre>
 <section id="section-40" class="slide level2">
 <h2></h2>
 <ul>
-<li><p>预测项可表示为： <span class="math inline">\(z=𝛽_0+𝛽_1 𝑥\)</span>, 其中x为self-regulation得分</p></li>
+<li><p>预测项可表示为： <span class="math inline">\(z=\beta_0+\beta_1 𝑥\)</span>, 其中x为self-regulation得分</p></li>
 <li><p>如何将z与二分变量进行连接？</p></li>
 </ul>
 <p>（1）可将预测项映射到(0,1)之间，例如，使用 <span class="math inline">\(\frac{1}{1+exp(-z)}\)</span></p>
@@ -1750,7 +1761,7 @@ F-statistic:  3.94 on 3 and 518 DF,  p-value: 0.008491</code></pre>
 <section id="section-42" class="slide level2">
 <h2></h2>
 <ul>
-<li><p>预测项可表示为： <span class="math inline">\(z=𝛽_0+𝛽_1 𝑥\)</span>, 其中x为self-regulation得分</p></li>
+<li><p>预测项可表示为： <span class="math inline">\(z=\beta_0+\beta_1 𝑥\)</span>, 其中x为self-regulation得分</p></li>
 <li><p>如何将z与二分变量进行连接？</p>
 <ul>
 <li><p>（1）可将预测项映射到(0,1)之间，例如，使用 <span class="math inline">\(\frac{1}{1+exp(-z)}\)</span></p></li>
@@ -1783,7 +1794,7 @@ F-statistic:  3.94 on 3 and 518 DF,  p-value: 0.008491</code></pre>
 <div style="font-size:26px">
 <ul>
 <li><p>以酗酒行为为因变量（Alcohol:有酗酒行为=1，无酗酒行为=0），连续变量自我调节（self regulation）为自变量。</p></li>
-<li><p>Model: <span class="math inline">\(Alcohol = β_0 + β_1 self regulation+ 𝜀\)</span></p></li>
+<li><p>Model: <span class="math inline">\(Alcohol = \beta_0 + \beta_1 self regulation+ 𝜀\)</span></p></li>
 </ul>
 </div>
 <div class="cell">
@@ -1798,10 +1809,6 @@ F-statistic:  3.94 on 3 and 518 DF,  p-value: 0.008491</code></pre>
 Call:
 glm(formula = Alcohol ~ self_regulation, family = binomial(link = "logit"), 
     data = df_no_missing)
-
-Deviance Residuals: 
-    Min       1Q   Median       3Q      Max  
--1.4242  -1.0330  -0.9134   1.2995   1.5151  
 
 Coefficients:
                  Estimate Std. Error z value Pr(&gt;|z|)   
@@ -1831,10 +1838,6 @@ Call:
 glm(formula = Alcohol ~ self_regulation, family = binomial(link = "logit"), 
     data = df_no_missing)
 
-Deviance Residuals: 
-    Min       1Q   Median       3Q      Max  
--1.4242  -1.0330  -0.9134   1.2995   1.5151  
-
 Coefficients:
                  Estimate Std. Error z value Pr(&gt;|z|)   
 (Intercept)      1.248554   0.545319   2.290  0.02205 * 
@@ -1851,7 +1854,7 @@ AIC: 702.08
 Number of Fisher Scoring iterations: 4</code></pre>
 </div>
 </div>
-<p><span class="math inline">\(𝐻_0: Alcohol = β_0\)</span><br> <span class="math inline">\(𝐻_1: Alcohol = β_0+ β_1 self regulation\)</span></p>
+<p><span class="math inline">\(𝐻_0: Alcohol = \beta_0\)</span> <br> <span class="math inline">\(𝐻_1: Alcohol = \beta_0+ \beta_1 self regulation\)</span></p>
 </section>
 <section id="section-45" class="slide level2">
 <h2></h2>
