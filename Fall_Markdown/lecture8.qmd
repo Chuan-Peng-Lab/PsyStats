@@ -1,0 +1,1081 @@
+---
+format: 
+  revealjs:
+    slide-number: true
+    logo: images/image-393370223.png
+    scrollable: true 
+    theme: theme.scss
+editor: visual
+fontsize: 24pt
+editor_options: 
+  chunk_output_type: inline
+---
+
+</br></br>
+
+<h1 style="text-align: center">
+
+8 离散型变量的线性回归
+
+</h1>
+
+<h2 style="text-align: center">
+
+</h2>
+
+</br></br>
+
+<h3 style="text-align: center">
+
+Hu Chuan-Peng
+
+</h3>
+
+<h3 style="text-align: center">
+
+2023-10-31
+
+</h3>
+
+</br></br>
+
+# 本次课内容
+
+-   课前复习
+
+-   离散型自变量的线性回归
+
+-   离散型因变量的线性回归
+
+# 课前复习
+
+## 多元回归表达形式
+
+-   多元线性回归（Multiple Linear Regression）
+
+$$Y = b_0 + b_{1}X_{1} + b_{2}X_{2} +... + b_{p}X_{p} + \epsilon$$
+
+-   $Y$ -- 因变量，Dependent variable
+
+-   $X_i$ -- 自变量，Independent (explanatory) variable
+
+-   $b_0$ -- 截距，Intercept
+
+-   $b_i$ -- 斜率，Slope
+
+-   $\epsilon$ -- 残差，Residual (error)
+
+## 多元回归矩阵表达
+
+$$Y_{n×1}=X_{n×p}\beta_{p×1}+\epsilon_{n×1}$$
+
+$$Y=X\beta+\epsilon$$
+
+$$Y_i = b_0 +(\sum_{k=1}^{K}b_kX_{ik})+\epsilon_i$$
+
+::: {layout-ncol="6"}
+$$Y_{n×1}=\begin{bmatrix}
+  y_1 \\
+  y_2 \\
+  ... \\
+  y_n
+\end{bmatrix}$$
+
+$$X_{n×p}=\begin{bmatrix}
+  1&x_{11}&x_{12}& &x_{1p} \\
+  1&x_{21}&x_{12}& &x_{2p} \\
+  ...&...&...&...  \\
+  1&x_{n1}&x_{n2}& &x_{np}
+\end{bmatrix}$$
+
+$$\beta_{p×1}=\begin{bmatrix}
+ \beta_0\\
+\beta_1\\
+\beta_2\\
+\ ...\\
+\beta_p
+\end{bmatrix}$$
+
+$$\epsilon_{n×1}=\begin{bmatrix}
+ \epsilon_1\\
+  \epsilon_2\\
+  ...\\
+  \epsilon_n\end{bmatrix}$$
+:::
+
+## 多元回归代码表达(r)
+
+</br>
+
+Formula: $$Y \sim X_1 + X_2 + ... + X_n$$
+
+</br>
+
+$Y$ -- 因变量
+
+$X_i$ -- 自变量
+
+## 多元回归中的系数解读
+
+$$\hat{y_i}=b_0+b_1x_a+b_2x_b$$
+
+-   $b_0$ : $x_a=0$ 且 $x_b=0$时，对y的预测值
+
+-   $b_1$、$b_2$: 偏回归系数，反映了各自自变量对y的偏效应(partial effect)，即单独效应
+
+-   偏效应：其他自变量的值保持不变时（例如，等于0），变化某个自变量对因变量产生的影响
+
+## 变量选择
+
+在观察研究中，由于所有变量都是事后调查得到的，我们在看待变量之间的影响时，可能会犯以下错误。
+
+-   混淆(confounding)：各种解释变量之间存在相关关系，无法确定哪个变量对结果产生了影响。
+
+-   虚假关联是混淆的特例，两个变量之间的关联是由于第三个变量对两个各自产生了影响。
+
+-   条件独立(conditionally independent)：给定第三个事件，如果$p(X,Y|Z) = p(X|Z)p(Y|Z)$，则称X和Y是条件独立事件,也就是说，当Z发生时，X发生与否与Y发生与否是无关的。
+
+-   变量之间存在强烈的相关关系，我们错误地将不合适的变量纳入了回归方程中，有可能得出荒谬的结论。如果这些变量被同时纳入回归方程，就表现为多重共线性。
+
+## 多重共线性(multicollinearity)
+
+-   $Y = b_0 + b_1X_1 + b_2X_2 + ... + b_pX_p + \epsilon$
+
+-   其基本假设之一就是解释变量间相互独立。
+
+-   如果某两个或多个解释变量之间出现了相关性，则称为多重共线性。
+
+-   在设计矩阵中，至少有一个变量可以表示为其他变量的线性组合。则变量之间存在多重共线性。即：$c_1x_1 + c_2x_2 + c_3x_3 + c_ix_i + \epsilon = 0$
+
+-   若$\epsilon = 0$，则为完全共线性，但在现实情况并不常见，一般$\epsilon \ne 0$，即近似共线性。
+
+## 多重共线性的诊断
+
+-   容许度(Tolerance) $TOL_{x_k} = 1 - R^2_{x_k}$
+
+    -   其中， $R^2_{x_k}$为复相关系数，以$x_k$为因变量，其他自变量来预测$x_k$的新自变量进行回归，所得到的$R2$。 $R^2_{x_k}$越接近1 说明$x_k$能被其他自变量解释，也就是说，$1-R^2_{x_k}$越接近0，则共线性越严重。
+
+-   方差膨胀因子(variance inflation factor, VIF)
+
+    -   对于自变量$x_k$，$VIF_{x_k}=\frac{1}{TOL_{x_k}}=\frac{1}{1-R^2_{x_k}}$，当多重共线性严重时，$R^2_{x_k}$越接近于1，$VIF_{x_k}$变大。
+
+## 多重共线性的处理
+
+1.  如果完全共线性：直接删除不必要的变量
+
+2.  如果是近似共线性，处理依赖于经验
+
+-   整合解释变量（如降维的方法------主成分分析等）
+
+-   增加样本量
+
+## 标准化回归模型
+
+-   回归模型中涉及的自变量具有不同的测量单位，因此回归系数之间不具有直接的可比性。
+
+-   采用标准化回归系数，将自变量转变为无量纲的变量。
+
+## 
+
+设真实的回归模型为：
+
+$$y_i = \beta_0+\beta_1x_{i1}+\beta_2x_{i2}+...+\beta_{p-1}x_{i(p-1)}+\epsilon_i$$
+
+-   所有变量减去其均值（改变原始变量位置，转换后变量的均值为0）
+
+-   再除以其标准差（测度转换，转换后变量的方差为1）
+
+-   得到所有变量的标准Z值
+
+标准化的回归模型：
+
+$$y_i = \beta_1^*x_{i1}+\beta_2^*x_{i2}+...+\beta_{p-1}^*x_{i(p-1)}+\epsilon_i$$
+
+（常数项为0，没有截距项）
+
+## 
+
+-   非标准化系数与标准化系数的关系
+
+    -   标准化系数：
+
+        -   回归参数估计值处于（-1,1）
+
+        -   可在标准化尺度上进行比较
+
+    -   非标准化系数：
+
+        -   提供更多关于数据的信息
+
+        -   提供基于实际单位的自变量对因变量的效应
+
+## 多元线性回归的模型预设(OLS)
+
+1.  模型设定假定(线性预设)
+
+2.  正交预设
+
+3.  残差方差齐性预设
+
+4.  残差正态分布预设
+
+5.  变量间不存在多重共线性
+
+# 离散型自变量的线性回归
+
+## 引入
+
+-   我们想探究家庭收入(HouseholdIncome)和性别(sex)、种族(race)和瑞文推理分数(raven)的关系；
+
+-   选取Eisenberg的数据进行分析。
+
+## 
+
+-   一个先前没有碰到的问题：
+    -   性别是二分变量（离散的）；
+    -   种族是一个分类变量；
+    -   具体数值编码并不代表真实的差异大小。
+-   若我们将种族编码直接为1、2、3、4、5，并且进入回归方程，暗含着某些种族对收入的影响是另一些种族的2倍、3倍......
+
+## 
+
+-   例如，我们只关注家庭收入与种族(3个种族)的关系： $$Y=\beta_0+\beta_1X+\epsilon$$
+    -   则种族一的预测值为 $E(𝑌) =𝛽_0+𝛽_1$
+    -   则种族二的预测值为 $E(𝑌) =𝛽_0+2𝛽_1$
+    -   则种族三的预测值为 $E(𝑌) =𝛽_0+3𝛽_1$
+    -   （由于残差的存在，我们的预测值是该水平的平均值）
+-   这无疑是很不符合实际的。
+
+## 
+
+那么我们该如何处理分类变量呢？
+
+## 虚拟变量(dummy coding)
+
+-   虚拟变量(或哑变量)是一种对称名（或名义）变量的分类重新编码，使得它们能在回归方程中作为自变量的方式。
+
+-   它将某一初始称名变量重新建构得到一个或多个二分变量。
+
+-   一般来说，当某个样本观测值属于名义变量的某个类别时，表征这个类别的虚拟变量就被赋值为1，否则便被赋值为0。
+
+## 
+
+-   在我们之前的例子中，若想要对性别进行编码，则可能的方式是：
+
+    -   X1 = 1 女性
+    -   X1 = 0 男性（非女性）
+
+-   注意：分类变量的编码只能用0和1来进行表示。需要注意的是，由于截距的存在，x1 = 0代表参照水平，而不是说男性的家庭收入就不受到影响。
+
+## 
+
+-   例如，我们只关注家庭收入与性别(男/女)的关系：
+
+$$𝑌 =𝛽_0+𝛽_1 𝑋+𝜖$$
+
+-   则男性的预测值为 $E(𝑌) =𝛽_0$
+
+-   则女性的预测值为 $E(𝑌) =𝛽_0+𝛽_1$
+
+-   当虚拟变量赋值为0时，
+
+    -   $𝛽_0$代表男性的平均家庭收入；
+    -   $𝛽_0+𝛽_1$代表女性的平均家庭收入；
+    -   $𝛽_1$表示女性相对于男性的家庭收入的差值。
+
+## 设计矩阵
+
+-   我们可以用矩阵的形式来进行表达：
+
+$$𝑌 =𝛽_0+𝛽_1 𝑋+𝜖$$
+
+::: {layout-ncol="6"}
+$$X_{n×p}=\begin{bmatrix}
+  1&1 \\
+  1&1\\
+  1&0\\
+  ...&...\\
+  1&0
+\end{bmatrix}$$
+
+$$\beta_{p×1}=\begin{bmatrix}
+ \beta_0\\
+\beta_1\\
+\end{bmatrix}$$
+
+$$Y_{n×1}=\begin{bmatrix}
+  y_1 \\
+  y_2 \\
+  y_3 \\
+  ... \\
+  y_n
+\end{bmatrix}=\begin{bmatrix}
+  \beta_0+\beta_1+\epsilon \\
+  \beta_0+\beta_1+\epsilon \\
+  \beta_0+\epsilon\\
+  ... \\
+  \beta_0+\epsilon
+\end{bmatrix}$$
+:::
+
+## 在R中的操作
+
+```{r}
+# load packages
+library(pacman)
+p_load('tidyverse','bruceR',"apaTables","ggplot2","papaja")
+```
+
+Step 1: 虚拟变量编码，男=0，女=1
+```{r echo=TRUE}
+# load files
+df<-read.csv("data/example8.1.csv")%>%
+  mutate(Sex=factor(Sex))
+
+df_1<-select(df,X,Sex,HouseholdIncome)
+head(df_1)
+contrasts(df_1$Sex)
+```
+##
+
+Step 2: 进行线性回归
+```{r echo=TRUE}
+Model = lm(data = df, HouseholdIncome~Sex)
+summary(Model)
+```
+##
+
+Step 3: 模型整体检验
+```{r echo=TRUE}
+Model = lm(data = df, HouseholdIncome~Sex)
+summary(Model)
+```
+Multiple R-squared:  0.006947,	Adjusted R-squared:  0.005037,  p-value: 0.05704
+
+## 
+
+Step 4: 偏回归系数的显著性检验
+```{r echo=TRUE}
+Model = lm(data = df, HouseholdIncome~Sex)
+temp<-summary(Model)
+temp[["coefficients"]]
+```
+$$\begin{bmatrix}
+ \beta_0\\
+\beta_1\\
+\end{bmatrix}=\begin{bmatrix}
+ 45471.888\\
+5204.669\\
+\end{bmatrix}$$
+
+## 回归系数的解释
+
+-   按之前的线性回归的解释： 
+    -   $β_0$:回归方程截距
+    
+    -   $β_1$：虚拟变量sex的回归系数
+
+-   采用Dummy coding之后的解释： 
+    -   $β_0$:样本中男性群体收入的均值
+    
+    -   $β_0+β_1$：样本中女性群体收入的均值 
+    
+    -   $β_1$：女性与男性群体收入的差值
+
+## 单变量三水平的虚拟变量编码
+
+那么，当分类变量多于2个水平时，我们该怎么用虚拟变量来进行表示呢？
+
+## 
+
+-   一般来说，对于包括k个类别的名义变量，我们可以用**k-1个虚拟变量**来进行编码。
+
+-   若我们使用k个虚拟变量进行编码，则会出现多重共线性的问题，即其中一个变量可以表示为其他变量的线性组合。
+
+## 
+
+-   例如，我们只关注家庭收入与种族(亚裔 /非裔/欧裔)的关系：
+    -   我们可以用两个虚拟变量来对变量进行表示 $$Y=\beta_0+\beta_1X_1+\beta_2X2+\epsilon$$
+
+        |      |     |     |
+        |------|-----|-----|
+        |      | X1  | X2  |
+        | 亚裔 | 0   | 0   |
+        | 非裔 | 1   | 0   |
+        | 欧裔 | 0   | 1   |
+
+    -   亚裔表示为x1=0，x2=0
+
+    -   非裔表示为x1=1，x2=0
+
+    -   欧裔表示为x1=0，x2=1
+
+## 
+
+-   例如，我们只关注家庭收入与种族(亚裔 /非裔/欧裔)的关系：
+    -   我们可以用两个虚拟变量来对变量进行表示 $$Y=\beta_0+\beta_1X_1+\beta_2X_2+\epsilon$$
+
+        |      |     |     |
+        |------|-----|-----|
+        |      | X1  | X2  |
+        | 亚裔 | 0   | 0   |
+        | 非裔 | 1   | 0   |
+        | 欧裔 | 0   | 1   |
+
+    -   则亚裔的预测值为 $E(𝑌) =𝛽_0$
+
+    -   则非裔的预测值为 $E(𝑌) =𝛽_0+𝛽_1$
+
+    -   则欧裔的预测值为 $E(𝑌) =𝛽_0+𝛽_2$
+
+## 
+
+-   例如，我们只关注家庭收入与种族(亚裔 /非裔/欧裔)的关系：
+    -   我们可以用两个虚拟变量来对变量进行表示 $$Y=\beta_0+\beta_1X_1+\beta_2X_2+\epsilon$$
+
+        |      |     |     |
+        |------|-----|-----|
+        |      | X1  | X2  |
+        | 亚裔 | 0   | 0   |
+        | 非裔 | 1   | 0   |
+        | 欧裔 | 0   | 1   |
+
+    -   $𝛽_0$表示亚裔的平均家庭收入
+
+    -   $𝛽_1$表示非裔相对于亚裔的平均家庭收入的差值
+
+    -   $𝛽_2$表示欧裔相对于亚裔的平均家庭收入的差值
+
+## 设计矩阵
+
+我们可以用矩阵的形式来进行表达： $$Y=\beta_0+\beta_1X_1+\beta_2X_2+\epsilon$$
+
+::: {layout-ncol="6"}
+$$X_{n×p}=\begin{bmatrix}
+  1&0&0 \\
+  1&1&0\\
+  1&0&1\\
+\end{bmatrix}$$
+
+$$\beta_{p×1}=\begin{bmatrix}
+ \beta_0\\
+\beta_1\\
+\beta_2
+\end{bmatrix}$$
+
+$$Y_{n×1}=\begin{bmatrix}
+  y_1 \\
+  y_2 \\
+  y_3 
+\end{bmatrix}=\begin{bmatrix}
+  \beta_0+\epsilon\\
+  \beta_0+\beta_1+\epsilon \\
+  \beta_0+\beta_2+\epsilon\\
+\end{bmatrix}$$
+:::
+
+## 在R中的操作
+
+step 1: 虚拟变量编码，亚裔为基线
+```{r echo=TRUE}
+df<-df%>%
+  mutate(race = case_when(Race %in% c("White"," American Indian or Alaska Native" ," Native Hawaiian or Other Pacific Islander","Other","Choose not to respond" ) ~ "欧裔",
+                          Race %in% c("Japanese", "Chinese"," Asian Indian"," Vietnamese","Korean"," Filipino"," Other Asian") ~ "亚裔",
+                          Race %in% c(" Black or African American"," Middle Eastern or North African") ~ "非裔"),
+         race=factor(race),
+         race = relevel(race, ref = "亚裔"))#设置基线
+contrasts(df$race)
+```
+## 
+
+step 2: 进行线性回归
+```{r echo=TRUE}
+Model_2 = lm(data = df, HouseholdIncome~race)
+summary(Model_2)
+```
+## 
+
+Step 3: 模型整体检验
+```{r echo=TRUE}
+Model_2 = lm(data = df, HouseholdIncome~race)
+summary(Model_2)
+```
+Multiple R-squared:  0.0001391,	Adjusted R-squared:  -0.003714, p-value: 0.9645
+
+## 
+
+Step 4: 偏回归系数的显著性检验
+```{r echo=TRUE}
+Model_2 = lm(data = df, HouseholdIncome~race)
+summary(Model_2)$coef
+```
+$$\begin{bmatrix}
+ \beta_0\\
+\beta_1\\
+\beta_2\\
+\end{bmatrix}=\begin{bmatrix}
+ 48050.87879 \\
+1384.89899\\
+-71.66907 \\
+\end{bmatrix}$$
+
+
+## 两个分类变量的虚拟变量编码
+
+-   若两个分类变量(性别/种族)同时存在，我们该如何处理？
+
+## 
+
+-   若两个分类变量(性别/种族)同时存在，我们该如何处理？
+
+-   最理想的情况，变量之间不存在交互作用。
+
+## 两个分类变量间不存在交互作用
+
+-   例如，我们只关注家庭收入与性别和种族(亚裔 /非裔/欧裔)的关系：
+
+$$Y=\beta_0+\beta_1X_1+\beta_2X_2+\beta_3X_3+\epsilon$$
+
+|      |     |
+|------|-----|
+|      | X1  |
+| 男性 | 0   |
+| 女性 | 1   |
+
+|      |     |     |
+|------|-----|-----|
+|      | X2  | X3  |
+| 亚裔 | 0   | 0   |
+| 非裔 | 1   | 0   |
+| 欧裔 | 0   | 1   |
+
+## 
+
+-   亚裔男性的平均家庭收入 $E(Y) = 𝛽_0$
+
+-   亚裔女性的平均家庭收入 $E(Y) = 𝛽_0 + 𝛽_1$
+
+-   非裔男性的平均家庭收入 $E(Y) = 𝛽_0 + 𝛽_2$
+
+-   非裔女性的平均家庭收入 $E(Y) = 𝛽_0 + 𝛽_1 + 𝛽_2$
+
+-   欧裔男性的平均家庭收入 $E(Y) = 𝛽_0 + 𝛽_3$
+
+-   欧裔女性的平均家庭收入 $E(Y) = 𝛽_0 + 𝛽_1 + 𝛽_3$
+
+## 在R中的操作
+
+step 1:虚拟变量编码
+```{r echo=TRUE}
+contrasts(df$Sex)
+contrasts(df$race)
+```
+
+## 
+
+step 2:进行线性回归
+```{r echo=TRUE}
+model_3 <- lm(HouseholdIncome ~ Sex + race, data = df)
+summary(model_3)
+```
+
+##
+
+模型整体检验
+```{r echo=TRUE}
+summary(model_3)
+```
+Multiple R-squared:  0.007035,	Adjusted R-squared:  0.001285 , p-value: 0.3005
+
+## 
+
+偏回归系数的显著性检验
+```{r echo=TRUE}
+summary(model_3)$coef
+```
+$$\begin{bmatrix}
+ \beta_0\\
+\beta_1\\
+\beta_2\\
+\beta_3\\
+\end{bmatrix}=\begin{bmatrix}
+ 45535.4417 \\
+5188.0890\\
+1018.0644 \\
+-144.5501 \\
+\end{bmatrix}$$
+
+
+## 回归系数的解释
+
+:::{style="font-size:24px"}
+-   $HouseholdIncome =45535.4+5188.1sex+1018.1race_{black}-144.6race_{white}$
+-   三个虚拟变量划分的6组人群对应的回归模型的估计结果
+    -   (1)亚裔的男性（sex =0，race_black = 0， race_white=0，参照组）
+        -   $HouseholdIncome =45535.4$
+    -   (2)亚裔的女性（sex =1，race_black = 0， race_white=0）
+        -   $HouseholdIncome =45535.4+5188.1$
+    -   (3)欧裔的男性（sex =0，race_black = 0， race_white=1）
+        -   $HouseholdIncome =45535.4 -144.6$
+    -   (4)欧裔的女性（sex =1，race_black = 0， race_white=1）
+        -   $HouseholdIncome =45535.4+5188.1-144.6$
+    -   (5)非裔的女性（sex =1，race_black = 1， race_white=0）
+        -   $HouseholdIncome =45535.4+5188.1+1018.1$
+    -   (6)非裔的男性（sex =0，race_black = 1， race_white=1）
+        -   $HouseholdIncome =45535.4+1018.1$
+-   方程间截距差值由$β_1$, $β_2$和$β_3$决定
+
+:::
+
+
+## 
+
+-   若两个分类变量(性别/种族)同时存在，我们该如何处理？
+
+-   最理想的情况，变量之间不存在交互作用。
+
+-   但一般情况下，变量之间存在交互作用。
+
+## 两个变量间存在交互作用
+
+-   例如，我们只关注家庭收入与性别和种族(亚裔/非裔/欧裔)的关系，且性别和种族间存在交互作用：
+
+$$𝑌 =𝛽_0+𝛽_1 𝑋_1+𝛽_2 𝑋_2+𝛽_3 𝑋_3+𝛽_4 𝑋_1 𝑋_2+𝛽_5 𝑋_1 𝑋_3+𝜖$$
+
+|      |     |
+|------|-----|
+|      | X1  |
+| 男性 | 0   |
+| 女性 | 1   |
+
+|      |     |     |
+|------|-----|-----|
+|      | X2  | X3  |
+| 亚裔 | 0   | 0   |
+| 非裔 | 1   | 0   |
+| 欧裔 | 0   | 1   |
+
+## 
+
+-   亚裔男性的平均家庭收入 $E(Y) = 𝛽_0$
+-   亚裔女性的平均家庭收入 $E(Y) = 𝛽_0 + 𝛽_1$
+-   非裔男性的平均家庭收入 $E(Y) = 𝛽_0 + 𝛽_2$
+-   非裔女性的平均家庭收入 $E(Y) = 𝛽_0 + 𝛽_1 + 𝛽_2+ 𝛽_4$
+-   欧裔男性的平均家庭收入 $E(Y) = 𝛽_0 + 𝛽_3$
+-   欧裔女性的平均家庭收入 $E(Y) = 𝛽_0 + 𝛽_1 + 𝛽_3 + 𝛽_5$
+
+
+## 在R中的操作
+
+step 1:虚拟变量编码
+```{r echo=TRUE}
+contrasts(df$Sex)
+contrasts(df$race)
+```
+
+##
+
+step 2:进行线性回归
+```{r echo=TRUE}
+model_4 <- lm(HouseholdIncome ~ Sex * race, data = df)
+summary(model_4)
+```
+
+##
+
+模型整体检验
+```{r echo=TRUE}
+summary(model_4)
+```
+Multiple R-squared:  0.0104,	Adjusted R-squared:  0.0008107 , p-value: 0.3679
+
+## 
+
+偏回归系数的显著性检验
+```{r echo=TRUE}
+summary(model_4)$coef
+```
+$$\begin{bmatrix}
+ \beta_0\\
+\beta_1\\
+\beta_2\\
+\beta_3\\
+\beta_4\\
+\beta_5\\
+\end{bmatrix}=\begin{bmatrix}
+45255.8235  \\
+5764.8015\\
+8737.1765 \\
+-368.3610 \\
+-13967.8015 \\
+ 432.3731 \\
+\end{bmatrix}$$
+
+## 自变量同时包括分类变量和连续变量
+
+-   对于分类变量与连续变量同时存在？
+
+-   假定变量之间不存在交互作用，比较容易处理。
+
+## 变量间不存在交互作用
+
+-   例如，我们只关注家庭收入与性别和瑞文推理分数的关系：
+
+$$𝑌 =𝛽_0+𝛽_1 𝑋_1+𝛽_2 𝑋_2+𝜖$$
+
+-   男性的家庭收入($𝑋_1=0$)与瑞文推理分数的关系：
+    -   $𝑌_{male} = 𝛽_0+𝛽_2 𝑋_2+𝜖$
+-   女性的家庭收入($𝑋_1= 1$)与瑞文推理分数的关系：
+    -   $𝑌_{female} = 𝛽_0 + 𝛽_1+𝛽_2 𝑋_2+𝜖$
+
+-   我们可以看到如果不存在交互作用，性别对家庭收入的影响主要体现在截距上。
+
+## 在R中的操作
+
+```{r echo=TRUE}
+model_5<-lm(HouseholdIncome ~ Sex + ravens.score, data=df)
+summary(model_5)
+```
+
+## 变量间存在交互作用
+
+-   如果分类变量与连续变量同时存在且可能有交互作用呢？
+
+## 
+
+-   例如，我们只关注家庭收入与性别和瑞文推理分数的关系：
+
+$$𝑌 =𝛽_0+𝛽_1 𝑋_1+𝛽_2 𝑋_2+𝛽_3 𝑋_1 𝑋_2+𝜖$$
+
+-   男性的家庭收入（ 𝑋_1 = 0）与瑞文推理分数的关系：
+    -   $𝑌_{𝑚𝑎𝑙𝑒} = 𝛽_0+𝛽_2 𝑋_2+𝜖$
+-   女性的家庭收入（ 𝑋_1 = 1）与瑞文推理分数的关系：
+    -   $𝑌_{𝑓𝑒𝑚𝑎𝑙𝑒} = 𝛽_0 + 𝛽_1+𝛽_2 𝑋_2+𝛽_3 𝑋_2+𝜖 = 𝛽_0 + 𝛽_1+(𝛽_2+𝛽_3)𝑋_2+𝜖$
+
+-   我们可以看到，若存在交互项，交互项的对变量的影响会体现在斜率上。
+
+## 
+
+-   在回归模型中，如果每个自变量对因变量的作用不受其他自变量取值的影响，即只存在主效应(main effect)。若某个自变量对因变量的作用会依赖于其他自变量的取值，即存在条件效应(conditional effect)。
+
+-   交互项表示的就是条件效应的影响。模型存在交互项时，各自变量对因变量的作用依赖于交互项中其他自变量的取值。
+
+## 
+
+-   我们可以通过对变量求导来看该变量的变化受那些因素的影响。
+
+-   若不存在交互作用，我们对连续变量$𝑋_2$求偏导：
+
+$$𝑌 =𝛽_0+𝛽_1 𝑋_1+𝛽_2 𝑋_2+𝜖$$
+
+$$\frac{𝜕𝑌}{𝜕𝑋}=𝛽_2$$
+
+-   若不存在交互作用，连续变量$𝑋_2$不受另一个变量的影响。
+
+## 
+
+-   若存在交互作用，我们对连续变量$𝑋_2$求偏导：
+
+$$𝑌 =𝛽_0+𝛽_1 𝑋_1+𝛽_2 𝑋_2+𝛽_3 𝑋_1 𝑋_2+𝜖$$
+
+$$\frac{𝜕𝑌}{𝜕𝑋}=𝛽_2  +𝛽_3 𝑋_1$$
+
+-   若存在交互作用，连续变量$𝑋_2$的效应受另一个变量的影响。
+
+## 在R中的操作
+
+```{r echo=TRUE}
+model_6<-lm(HouseholdIncome ~ Sex + ravens.score+Sex:ravens.score, data=df)
+summary(model_6)
+```
+
+## 小结 
+
+-   自变量是离散变量时，可通过构造虚拟变量进行回归
+    -   虚拟变量的数量：k-1 ，k为离散自变量的水平数；
+-   存在多个自变量时，回归模型中需要考虑交互项
+    -   交互项对回归系数（斜率, slope）产生影响
+
+## dummy coding以外的编码方式
+
+-   Dummy coding，也叫treatment coding
+
+-   不含截距项的编码
+
+-   效应编码(effect coding)
+
+-   正交编码(orthogonal coding)
+
+# 离散型因变量的线性回归
+
+## 
+
+-   如果因变量为分类变量，我们该如何处理？
+
+-   例如，个体的self-regulation能否预测个体的酗酒行为。
+
+-   因变量：是否酗酒（0 or 1）
+
+-   如何建立回归模型？
+
+## 线性模型的组成部分
+
+![](images/1698463307289.png)
+
+## 
+
+![](images/1698463376812.png)
+
+## 回归方程的多种表达形式
+
+-   我们之前提到，回归方程有多种表达形式：
+
+-   简单线性回归：$Y = b_0+𝑏_1 𝑋_1+ 𝑏_2 𝑋_2+…+𝑏_𝑝 𝑋_𝑝 + ϵ$
+
+-   线性代数表达：$𝑦_𝑖=b_0+b_1 𝑋_{𝑖1}+b_2 𝑋_{𝑖2}+…+b_𝑝 𝑋_{𝑖𝑝} + ϵ$
+
+-   矩阵表达: $𝑌= X\beta+\epsilon$
+
+-   代码表达(r): $Y \sim 𝑋_1+𝑋_2+...+𝑋_𝑛$
+
+## 回归方程的概率分布表达
+
+我们还可以用概率分布的形式进行表达：
+
+-   观测项 = 预测项 + 误差项
+
+-   假定观测项是正态分布，上述公式可以重新表达为：
+
+    -   观测项：𝑦 \~𝑁(𝜇, 𝜖)
+    -   其中， 𝜇即为预测项，$𝜇=𝛽_0+𝛽_1 𝑥$
+
+-   观测值服从以预测项为均值的正态分布，观测值与预测值之间的差值就是残差。
+
+## 
+
+观测项：𝑦 \~𝑁(𝜇, 𝜖)
+
+预测项：$𝜇=𝛽_0+𝛽_1 𝑥$
+
+-   如果因变量不是连续变量，预测变量不服从正态分布，即𝑦 \~𝑁(𝜇, 𝜖)不成立。
+
+## 
+
+![](images/1698464084969.png)
+
+## 
+
+![](images/1698464160346.png)
+
+## 广义线性模型(Generalized Linear Model, GLM)
+
+-   在简单线性回归中，预测项的连接函数等于它本身
+
+![](images/1698464237129.png)
+
+## 
+
+-   简单线性模型可视为GLM的特殊形式，预测项的连接函数等于它本身，观测项为正态分布。
+
+-   在广义线性模型中：
+
+    -   观测项不一定是正态分布（残差不一定是正态分布）
+    -   连接函数不等于其自身
+
+-   通过广义线性模型，能够对离散的因变量进行建模
+
+## 广义线性模型(GLM)的基本成分
+
+![](images/1698464321763.png)
+
+## 
+
+-   回到例子：个体的self-regulation得分能否预测其酗酒行为？
+
+-   问题情境：
+
+    -   自变量（预测项）：问卷得分，连续变量
+    -   因变量：是否酗酒，二分变量
+
+## 
+
+-   预测项可表示为： $z=𝛽_0+𝛽_1 𝑥$, 其中x为self-regulation得分
+
+-   自变量为连续变量，预测项也是一个连续变量，
+
+-   需要连接函数将预测项与因变量（二分变量）进行连接。
+
+## 
+
+![](images/1698464486990.png)
+
+## 
+
+-   预测项可表示为： $z=𝛽_0+𝛽_1 𝑥$, 其中x为self-regulation得分
+
+-   如何将z与二分变量进行连接？
+
+（1）可将预测项映射到(0,1)之间，例如，使用 $\frac{1}{1+exp(-z)}$
+
+## 
+
+![](images/1698464648563.png)
+
+## 
+
+-   预测项可表示为： $z=𝛽_0+𝛽_1 𝑥$, 其中x为self-regulation得分
+
+-   如何将z与二分变量进行连接？
+
+    -   （1）可将预测项映射到(0,1)之间，例如，使用 $\frac{1}{1+exp(-z)}$
+
+    -   （2）找到一个分布，能根据(0,1)之间的值转成二分变量，例如，伯努利分布。
+
+## 
+
+![](images/1698464773553.png)
+
+## Logit 回归
+
+![](images/1698464836378.png) 
+
+## 参数求解
+
+-   对于logit回归，我们可以使用极大似然估计对其进行求解
+
+-   该求解过程比较复杂，一般由计算机自动完成
+
+![](images/1698464921155.png)
+
+## Possion 回归
+
+![](images/1698464968289.png)
+
+## 在R中的操作
+
+:::{style="font-size:26px"}
+-   以酗酒行为为因变量（Alcohol:有酗酒行为=1，无酗酒行为=0），连续变量自我调节（self regulation）为自变量。
+
+-   Model: $Alcohol = β_0 + β_1 self regulation+ 𝜀$
+
+:::
+
+```{r echo=TRUE}
+#去除缺失值
+df_no_missing <- na.omit(df)
+
+#进行logit回归
+model_7=glm(Alcohol~self_regulation,family=binomial(link='logit'),data=df_no_missing)
+summary(model_7)
+```
+
+##
+
+模型整体检验
+```{r echo=TRUE}
+summary(model_7)
+```
+$𝐻_0: Alcohol = β_0$</br>
+$𝐻_1: Alcohol = β_0+ β_1 self regulation$
+
+## 
+
+偏回归系数的显著性检验
+```{r echo=TRUE}
+summary(model_7)$coef
+```
+$$Alcohol = 1.249−0.013self regulation$$
+
+## 回归方程的预测情况
+
+```{r echo=TRUE}
+#| code-fold: true    #折叠代码
+#| code-summary: "模型预测情况"    #代码块说明文字
+#| fig-align: "center"
+# 使用已拟合的逻辑回归模型 model_7 进行预测
+predicted_probability <- predict(model_7, df_no_missing, type = "response", na.rm = TRUE)
+
+
+# 将概率转化为二元分类（酗酒/不酗酒）
+threshold <- 0.5
+binary_predictions <- ifelse(predicted_probability > threshold, 1, 0)
+
+# 创建混淆矩阵
+confusion_matrix <- table(Actual = df_no_missing$Alcohol, Predicted = binary_predictions)
+
+# 计算模型性能指标
+tp <- confusion_matrix[2, 2]  # 真正例 (True Positives)
+tn <- confusion_matrix[1, 1]  # 真负例 (True Negatives)
+fp <- confusion_matrix[1, 2]  # 假正例 (False Positives)
+fn <- confusion_matrix[2, 1]  # 假负例 (False Negatives)
+
+# 计算准确率 (Accuracy)
+accuracy <- (tp + tn) / sum(confusion_matrix)
+
+# 计算敏感度（sensitivity）：真实酗酒人群中被预测为酗酒行为人群的比例，验出真阳性的能力
+sensitivity<-tp/(tp+fn)
+
+# 计算特异度（specificity）：不酗酒人群中被预测无酗酒行为人群的比例，排除假阴性的能力
+specificity<-tn/(tn+fp)
+```
+```{r}
+# 输出混淆矩阵和性能指标
+print(confusion_matrix)
+cat("Accuracy:", accuracy, "\n")
+cat("sensitivity:", sensitivity, "\n")
+cat("specificity:", specificity, "\n")
+```
+
+## 预测情况可视化
+
+```{r echo=TRUE}
+#| code-fold: true    
+#| code-summary: "Squared_Pearson_Residuals plot"    
+#| fig-align: "center"
+
+# 计算 Squared Pearson residuals
+observed_values <- df_no_missing$Alcohol
+squared_pearson_residuals <- ((observed_values - predicted_probability)^2 / (predicted_probability * (1 - predicted_probability)))
+
+# 创建一个数据框包含预测值和残差
+scatter_data <- data.frame(Predicted_Probability = predicted_probability, Squared_Pearson_Residuals = squared_pearson_residuals)
+
+# 画出Squared_Pearson_Residuals plot
+ggplot(scatter_data, aes(x = Predicted_Probability, y = Squared_Pearson_Residuals)) +
+  geom_point() +
+  geom_hline(yintercept = 1, linetype = "dashed", color = "grey")+
+  labs(x = "Predicted_Probability", y = "Squared_Pearson_Residuals") +
+  scale_x_continuous(limits = c(0, 1)) +
+  scale_y_continuous(limits = c(0, 2.5)) +
+  theme_apa()
+
+```
+
+## 预测情况可视化
+
+```{r echo=TRUE}
+#| code-fold: true    
+#| code-summary: "estimates plot"    
+#| fig-align: "center"
+ 
+ggplot(df, aes(x = self_regulation, y = Alcohol)) +
+  geom_point(color = "gray",na.rm = TRUE)+
+  geom_smooth(method = "glm", method.args = list(family = binomial(link = "logit")), se = TRUE,na.rm = TRUE,color = "black") +  
+  labs(x = "self_regulation", y = "Alcohol") +  
+  scale_x_continuous(limits = c(40, 160)) + 
+  scale_y_continuous(limits = c(0, 1)) +  
+  theme_apa()  
+
+```
+
+# 总结
+
+-   离散型自变量的线性回归
+    -   虚拟变量
+    -   设计矩阵
+    -   回归系数
+    -   其他编码方式
+-   离散型因变量的线性回归
+    -   广义线性模型
+    -   Logit回归
+    -   Poission回归
