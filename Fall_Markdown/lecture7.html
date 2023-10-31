@@ -1132,20 +1132,33 @@
 <h1>Part 4: 基本假定与分析流程(workflow)</h1>
 
 </section>
-<section id="多元线性回归的模型预设ols" class="slide level2">
-<h2>多元线性回归的模型预设(OLS)</h2>
+<section id="多元回归模型的预设-gelman-hill-2007" class="slide level2">
+<h2>多元回归模型的预设 (Gelman &amp; Hill, 2007)</h2>
 <ol type="1">
-<li><p>模型设定假定(线性预设)</p></li>
-<li><p>正交预设</p></li>
-<li><p>残差方差齐性预设</p></li>
-<li><p>残差正态分布预设</p></li>
+<li><p>效度 (Validity)</p></li>
+<li><p>独立性预设 (Independence)</p></li>
+<li><p>线性预设 (Linearity)</p></li>
+<li><p>残差的方差齐性 (同质性, homoscedasticity)</p></li>
+<li><p>残差正态性(Normality)</p></li>
 <li><p>变量间不存在多重共线性</p></li>
 </ol>
 </section>
-<section id="线性预设" class="slide level2">
-<h2>线性预设</h2>
+<section id="效度-validity" class="slide level2">
+<h2>效度 (Validity)</h2>
 <ul>
-<li>Y的条件均值是所有自变量X的线性函数</li>
+<li>回归模型应该能够帮助研究者回答其科学问题 (“the most challenging step”, Gelman &amp; Hill, 2007)。</li>
+</ul>
+</section>
+<section id="独立性预设-independence" class="slide level2">
+<h2>独立性预设 (Independence)</h2>
+<ul>
+<li>回归的误差项<span class="math inline">\(\epsilon_i\)</span>和因变量<span class="math inline">\(Y\)</span>不相关</li>
+</ul>
+</section>
+<section id="线性预设-linearity" class="slide level2">
+<h2>线性预设 (linearity)</h2>
+<ul>
+<li>因变量<span class="math inline">\(Y\)</span>与自变量<span class="math inline">\(X\)</span>应该是线性（和可加<additive>）的关系，这个关系是通过回归系数<span class="math inline">\(\beta\)</span>来表现。</additive></li>
 </ul>
 <p><span class="math display">\[E(y|X) = X\beta\]</span></p>
 
@@ -1154,33 +1167,21 @@
 <h2></h2>
 
 <img data-src="images/1698036523058.jpg" class="r-stretch quarto-figure-center"></section>
-<section id="正交预设" class="slide level2">
-<h2>正交预设</h2>
-<ul>
-<li><p>误差项<span class="math inline">\(\epsilon\)</span>和<span class="math inline">\(X\)</span>不相关</p>
-<ul>
-<li><p><span class="math inline">\(cov(X,\epsilon) = 0\)</span></p></li>
-<li><p>等价于<span class="math inline">\(E(\epsilon) = 0\)</span>和<span class="math inline">\(E(X|\epsilon) = 0\)</span></p></li>
-<li><p>确保对模型参数的最小二乘法估计是无偏的。</p></li>
-</ul></li>
-</ul>
-</section>
-<section id="残差方差齐性" class="slide level2">
-<h2>残差方差齐性</h2>
+<section id="残差方差齐性-homoscedasticity" class="slide level2">
+<h2>残差方差齐性 (homoscedasticity)</h2>
 <ul>
 <li><p><span class="math inline">\(var(\epsilon_i) = \sigma^2_i = \sigma^2\)</span></p></li>
 <li><p>残差的方差不受<span class="math inline">\(X\)</span>变量取值的影响。</p></li>
 <li><p>若残差方差不齐性，误差较大的观测值将对拟合模型产生更大的影响。</p></li>
 </ul>
 </section>
-<section id="正态分布预设" class="slide level2">
-<h2>正态分布预设</h2>
+<section id="残差正态预设normality" class="slide level2">
+<h2>残差正态预设(Normality)</h2>
 <ul>
 <li><p>该预设规定残差项<span class="math inline">\(\epsilon\)</span>独立且同分布。</p></li>
 <li><p><span class="math inline">\(cov(\epsilon_i, \epsilon_j) = 0, i \ne j\)</span></p></li>
 </ul>
-<p>实际中无法确定<span class="math inline">\(\epsilon\)</span>的分布。</p>
-<p>对于大样本数据，可根据中心极限定理对参数进行统计推断。然而在小样本情况下，我们只有假定<span class="math inline">\(\epsilon\)</span>服从正态分布时才能使用t检验。</p>
+<p>对于正态性的预设，当前研究者存在不同的态度。Gelman &amp; Hill (2007)认为这个预设并不重要。见Knief &amp; Forstmeier (2021)的模拟研究。</p>
 </section>
 <section id="变量间不存在多重共线性" class="slide level2">
 <h2>变量间不存在多重共线性</h2>
@@ -1226,14 +1227,14 @@
 <ul>
 <li><p>模型整体检验</p>
 <ul>
-<li><p>H0: <span class="math inline">\(\beta_1=\beta_2=…=\beta_p=0\)</span></p></li>
-<li><p>H1: <span class="math inline">\(\beta_i\)</span> 不全为0</p></li>
+<li><p><span class="math inline">\(H_0\)</span>: <span class="math inline">\(\beta_1=\beta_2=…=\beta_p = 0\)</span></p></li>
+<li><p><span class="math inline">\(H_1\)</span>: <span class="math inline">\(\beta_i\)</span> 不全为0</p></li>
 <li><p>（至少有一个自变量与因变量之间存在显著性的线性关系）</p></li>
 </ul></li>
 <li><p>偏回归系数的显著性检验</p>
 <ul>
-<li><p>H0: 单个回归系数<span class="math inline">\(\beta_k=0\)</span></p></li>
-<li><p>H1:单个回归系数<span class="math inline">\(\beta_k \ne 0\)</span></p></li>
+<li><p><span class="math inline">\(H_0\)</span>: 单个回归系数<span class="math inline">\(\beta_k = 0\)</span></p></li>
+<li><p><span class="math inline">\(H_1\)</span>:单个回归系数<span class="math inline">\(\beta_k \ne 0\)</span></p></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -1324,11 +1325,24 @@ self_control-self_regulation    0.76 [ 0.70,  0.80] &lt;.001 *** 260
 <h2>1. 检验线性回归的预设</h2>
 <p>检验如下预设：</p>
 <ul>
-<li><p>模型设定假定(线性预设)</p></li>
-<li><p>正交预设</p></li>
-<li><p>残差方差齐性</p></li>
-<li><p>残差正态分布</p></li>
-<li><p>不存在多重共线性</p></li>
+<li><ol type="1">
+<li>效度 (Validity)</li>
+</ol></li>
+<li><ol start="2" type="1">
+<li>独立性预设 (Independence)</li>
+</ol></li>
+<li><ol start="3" type="1">
+<li>线性预设 (Linearity)</li>
+</ol></li>
+<li><ol start="4" type="1">
+<li>残差的方差齐性 (同质性, homoscedasticity)</li>
+</ol></li>
+<li><ol start="5" type="1">
+<li>残差正态性(Normality)</li>
+</ol></li>
+<li><ol start="6" type="1">
+<li>变量间不存在多重共线性</li>
+</ol></li>
 </ul>
 <p>线性性模型中，预设的检验与模型需要首先确定模型（依赖于残差）</p>
 </section>
@@ -1338,8 +1352,8 @@ self_control-self_regulation    0.76 [ 0.70,  0.80] &lt;.001 *** 260
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>fullmodel <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span>income<span class="sc">~</span>raven<span class="sc">+</span>ethical<span class="sc">+</span>financial<span class="sc">+</span>health_safety<span class="sc">+</span>recreational<span class="sc">+</span>recreational<span class="sc">+</span>self_control<span class="sc">+</span>self_regulation ,<span class="at">data=</span>df) <span class="co"># 全模型</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>residuals <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fullmodel) <span class="co"># 残差</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a>predictors <span class="ot">&lt;-</span> <span class="fu">predict</span>(fullmodel) <span class="co"># 预测值</span></span>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>residuals <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fullmodel)     <span class="co"># 残差</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a>predictors <span class="ot">&lt;-</span> <span class="fu">predict</span>(fullmodel)      <span class="co"># 预测值</span></span>
 <span id="cb8-3"><a href="#cb8-3"></a><span class="fu">scatter.smooth</span>(predictors,residuals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
@@ -1490,7 +1504,7 @@ F-statistic:  6.31 on 3 and 256 DF,  p-value: 0.0003817</code></pre>
 <li><p>多元线性回归</p></li>
 <li><p>变量选择</p></li>
 <li><p>多元回归中系数的解读</p></li>
-<li><p>基本假定和workflow</p></li>
+<li><p>基本假定和Workflow</p></li>
 </ul>
 
 <img src="images/image-393370223.png" class="slide-logo r-stretch"><div class="footer footer-default">
