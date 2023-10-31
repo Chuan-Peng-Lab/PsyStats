@@ -211,17 +211,17 @@ $$y_i = \beta_1^*x_{i1}+\beta_2^*x_{i2}+...+\beta_{p-1}^*x_{i(p-1)}+\epsilon_i$$
 
 ## 多元线性回归的模型预设(OLS)
 
-  1.  效度 (Validity)
+1.  效度 (Validity)
 
-  2.  独立性预设 (Independence)
+2.  独立性预设 (Independence)
 
-  3.  线性预设 (Linearity)
+3.  线性预设 (Linearity)
 
-  4.  残差的方差齐性 (同质性, homoscedasticity)
+4.  残差的方差齐性 (同质性, homoscedasticity)
 
-  5.  残差正态性(Normality)
+5.  残差正态性(Normality)
 
-  6.  变量间不存在多重共线性
+6.  变量间不存在多重共线性
 
 # 离散型自变量的线性回归
 
@@ -245,7 +245,6 @@ $$y_i = \beta_1^*x_{i1}+\beta_2^*x_{i2}+...+\beta_{p-1}^*x_{i(p-1)}+\epsilon_i$$
     -   则种族一的预测值为 $E(Y) = \beta_0 + \beta_1$
     -   则种族二的预测值为 $E(Y) = \beta_0 +2 \beta_1$
     -   则种族三的预测值为 $E(Y) = \beta_0 +3 \beta_1$
-
 -   这无疑是很不符合实际的。
 
 ## 
@@ -327,6 +326,7 @@ p_load('tidyverse','bruceR',"apaTables","ggplot2","papaja")
 ```
 
 **Step 1**: 虚拟变量编码，男=0，女=1
+
 ```{r echo=TRUE}
 # load files
 df <- read.csv("data/example8.1.csv") %>%
@@ -339,7 +339,8 @@ head(df_1)
 
 contrasts(df_1$Sex)
 ```
-##
+
+## 
 
 **Step 2**: 建立回归模型
 
@@ -349,7 +350,7 @@ Model = lm(data = df, HouseholdIncome ~ Sex)
 summary(Model)
 ```
 
-##
+## 
 
 **Step 3**: 模型整体检验
 
@@ -358,7 +359,8 @@ Model = lm(data = df, HouseholdIncome ~ Sex)
 
 summary(Model)
 ```
-Multiple R-squared:  0.006947,	Adjusted R-squared:  0.005037,  p-value: 0.05704
+
+Multiple R-squared: 0.006947, Adjusted R-squared: 0.005037, p-value: 0.05704
 
 ## 
 
@@ -380,16 +382,15 @@ $$\begin{bmatrix}
 
 ## 回归系数的解释
 
--   按之前的线性回归的解释： 
+-   按之前的线性回归的解释：
     -   $\beta_0$: 回归方程截距
-    
-    -   $\beta_1$: 虚拟变量sex的回归系数
 
--   采用Dummy coding之后的解释： 
+    -   $\beta_1$: 虚拟变量sex的回归系数
+-   采用Dummy coding之后的解释：
     -   $\beta_0$: 样本中男性群体收入的均值
-    
-    -   $\beta_0+\beta_1$: 样本中女性群体收入的均值 
-    
+
+    -   $\beta_0+\beta_1$: 样本中女性群体收入的均值
+
     -   $\beta_1$: 女性与男性群体收入的差值
 
 ## 单变量三水平的虚拟变量编码
@@ -525,7 +526,8 @@ Model_2 = lm(data = df, HouseholdIncome ~ race)
 
 summary(Model_2)
 ```
-Multiple R-squared:  0.000253,	Adjusted R-squared:  -0.0036 , *p*-value: 0.9365
+
+Multiple R-squared: 0.000253, Adjusted R-squared: -0.0036 , *p*-value: 0.9365
 
 ## 
 
@@ -545,7 +547,6 @@ $$\begin{bmatrix}
 -1926\\
 -2297 \\
 \end{bmatrix}$$
-
 
 ## 两个分类变量的虚拟变量编码
 
@@ -593,6 +594,7 @@ $$Y = \beta_0 + \beta_1X_1 + \beta_2X_2 + \beta_3X_3 + \epsilon$$
 ## 在R中的操作
 
 **Step 1**:虚拟变量编码
+
 ```{r echo=TRUE}
 contrasts(df$Sex)
 contrasts(df$race)
@@ -607,14 +609,15 @@ model_3 <- lm(HouseholdIncome ~ Sex + race, data = df)
 summary(model_3)
 ```
 
-##
+## 
 
 模型整体检验
 
 ```{r echo=TRUE}
 summary(model_3)
 ```
-Multiple R-squared:  0.007035,	Adjusted R-squared:  0.001285 , p-value: 0.3005
+
+Multiple R-squared: 0.007035, Adjusted R-squared: 0.001285 , p-value: 0.3005
 
 ## 
 
@@ -623,6 +626,7 @@ Multiple R-squared:  0.007035,	Adjusted R-squared:  0.001285 , p-value: 0.3005
 ```{r echo=TRUE}
 summary(model_3)$coef
 ```
+
 $$\begin{bmatrix}
  \beta_0\\
 \beta_1\\
@@ -635,10 +639,9 @@ $$\begin{bmatrix}
 -144.5501 \\
 \end{bmatrix}$$
 
-
 ## 回归系数的解释
 
-:::{style="font-size:24px"}
+::: {style="font-size:24px"}
 -   $HouseholdIncome =45535.4+5188.1sex+1018.1race_{black}-144.6race_{white}$
 -   三个虚拟变量划分的6组人群对应的回归模型的估计结果
     -   (1)亚裔的男性（sex =0，race_black = 0， race_white=0，参照组）
@@ -654,9 +657,7 @@ $$\begin{bmatrix}
     -   (6)非裔的男性（sex =0，race_black = 1， race_white=1）
         -   $HouseholdIncome =45535.4+1018.1$
 -   方程间截距差值由$\beta_1$, $\beta_2$和$\beta_3$决定
-
 :::
-
 
 ## 
 
@@ -694,7 +695,6 @@ $$Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3 + \beta_4 X_1 X_2 + \bet
 -   欧裔男性的平均家庭收入 $E(Y) = \beta_0 + \beta_3$
 -   欧裔女性的平均家庭收入 $E(Y) = \beta_0 + \beta_1 + \beta_3 + \beta_5$
 
-
 ## 在R中的操作
 
 **Step 1**:虚拟变量编码
@@ -704,21 +704,24 @@ contrasts(df$Sex)
 contrasts(df$race)
 ```
 
-##
+## 
 
 **Step 2**:进行线性回归
+
 ```{r echo=TRUE}
 model_4 <- lm(HouseholdIncome ~ Sex * race, data = df)
 summary(model_4)
 ```
 
-##
+## 
 
 模型整体检验
+
 ```{r echo=TRUE}
 summary(model_4)
 ```
-Multiple R-squared:  0.0104,	Adjusted R-squared:  0.0008107 , p-value: 0.3679
+
+Multiple R-squared: 0.0104, Adjusted R-squared: 0.0008107 , p-value: 0.3679
 
 ## 
 
@@ -760,7 +763,6 @@ $$Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \epsilon$$
     -   $Y_{male} = \beta_0+\beta_2 X_2+\epsilon$
 -   女性的家庭收入($X_1= 1$)与瑞文推理分数的关系：
     -   $Y_{female} = \beta_0 + \beta_1+\beta_2 X_2+\epsilon$
-
 -   我们可以看到如果不存在交互作用，性别对家庭收入的影响主要体现在截距上。
 
 ## 在R中的操作
@@ -785,7 +787,6 @@ $$Y =\beta_0+\beta_1 X_1+\beta_2 X_2+\beta_3 X_1 X_2+\epsilon$$
     -   $Y_{male} = \beta_0 + \beta_2 X_2 + \epsilon$
 -   女性的家庭收入（$X_1$ = 1）与瑞文推理分数的关系：
     -   $Y_{female} = \beta_0 + \beta_1 + \beta_2 X_2 + \beta_3 X_2 + \epsilon = \beta_0 + \beta_1 + (\beta_2 + \beta_3)X_2 + \epsilon$
-
 -   我们可以看到，若存在交互项，交互项的对变量的影响会体现在斜率上。
 
 ## 
@@ -793,7 +794,6 @@ $$Y =\beta_0+\beta_1 X_1+\beta_2 X_2+\beta_3 X_1 X_2+\epsilon$$
 -   在回归模型中，如果每个自变量对因变量的作用不受其他自变量取值的影响，即只存在主效应(main effect)。若某个自变量对因变量的作用会依赖于其他自变量的取值，即存在条件效应(conditional effect)。
 
 -   交互项表示的就是条件效应的影响。模型存在交互项时，各自变量对因变量的作用依赖于交互项中其他自变量的取值。
-
 
 [差之毫厘，谬以千里：辨析「固定效应、主效应、简单效应」](https://zhuanlan.zhihu.com/p/513227882)
 
@@ -805,7 +805,7 @@ $$Y =\beta_0+\beta_1 X_1+\beta_2 X_2+\beta_3 X_1 X_2+\epsilon$$
 
 $$Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \epsilon$$
 
-$$\frac{𝜕Y}{𝜕X}=\beta_2$$
+$$\frac{\partial Y}{\partial X}=\beta_2$$
 
 -   若不存在交互作用，连续变量$X_2$不受另一个变量的影响。
 
@@ -815,7 +815,7 @@ $$\frac{𝜕Y}{𝜕X}=\beta_2$$
 
 $$Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_1 X_2 + \epsilon$$
 
-$$\frac{𝜕Y}{𝜕X} = \beta_2  + \beta_3 X_1$$
+$$\frac{\partial Y}{\partial X} = \beta_2  + \beta_3 X_1$$
 
 -   若存在交互作用，连续变量$X_2$的效应受另一个变量的影响。
 
@@ -827,7 +827,7 @@ model_6 <- lm(HouseholdIncome ~ Sex + ravens.score + Sex:ravens.score, data=df)
 summary(model_6)
 ```
 
-## 小结 
+## 小结
 
 -   自变量是离散变量时，可通过构造虚拟变量进行回归
     -   虚拟变量的数量：k-1 ，k为离散自变量的水平数；
@@ -868,7 +868,7 @@ summary(model_6)
 
 -   我们之前提到，回归方程有多种表达形式：
 
--   简单线性回归：$Y = b_0+𝑏_1 X_1+ 𝑏_2 X_2+…+𝑏_𝑝 X_𝑝 + ϵ$
+-   简单线性回归：$Y = b_0+b_1 X_1+ b_2 X_2+…+b_p X_p + \epsilon$
 
 -   线性代数表达：$y_i = b_0 + b_1 X_{i1} + b_2 X_{i2} + … + b_p X_{ip} + \epsilon$
 
@@ -937,7 +937,7 @@ summary(model_6)
 
 ## 
 
--   预测项可表示为： $z = \beta_0 + \beta_1 𝑥$, 其中x为self-regulation得分
+-   预测项可表示为： $z = \beta_0 + \beta_1 x$, 其中$x$为self-regulation得分
 
 -   自变量为连续变量，预测项也是一个连续变量，
 
@@ -949,7 +949,7 @@ summary(model_6)
 
 ## 
 
--   预测项可表示为： $z = \beta_0 + \beta_1 x$, 其中x为self-regulation得分
+-   预测项可表示为： $z = \beta_0 + \beta_1 x$, 其中$x$为self-regulation得分
 
 -   如何将z与二分变量进行连接？
 
@@ -975,7 +975,7 @@ summary(model_6)
 
 ## Logit 回归
 
-![](images/1698464836378.png) 
+![](images/1698464836378.png)
 
 ## 参数求解
 
@@ -991,11 +991,10 @@ summary(model_6)
 
 ## 在R中的操作
 
-:::{style="font-size:26px"}
+::: {style="font-size:26px"}
 -   以酗酒行为为因变量（Alcohol:有酗酒行为=1，无酗酒行为=0），连续变量自我调节（self regulation）为自变量。
 
--   Model: $Alcohol = \beta_0 + \beta_1 self regulation+ 𝜀$
-
+-   Model: $Alcohol = \beta_0 + \beta_1 self regulation+ \epsilon$
 :::
 
 ```{r echo=TRUE}
@@ -1008,15 +1007,15 @@ model_7 = glm(Alcohol ~ self_regulation, family = binomial(link='logit'), data =
 summary(model_7)
 ```
 
-##
+## 
 
 模型整体检验
+
 ```{r echo=TRUE}
 summary(model_7)
 ```
 
-$H_0: Alcohol = \beta_0$ </br>
-$H_1: Alcohol = \beta_0 + \beta_1 self \ regulation$
+$H_0: Alcohol = \beta_0$ </br> $H_1: Alcohol = \beta_0 + \beta_1 self \ regulation$
 
 ## 
 

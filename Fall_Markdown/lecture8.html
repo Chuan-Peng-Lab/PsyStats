@@ -996,10 +996,10 @@ Sex1         5204.669   2728.893  1.907245 5.703953e-02</code></pre>
 <span id="cb11-11"><a href="#cb11-11"></a>         <span class="at">race =</span> <span class="fu">relevel</span>(race, <span class="at">ref =</span> <span class="st">"亚裔"</span>)) <span class="co"># 设置基线</span></span>
 <span id="cb11-12"><a href="#cb11-12"></a><span class="fu">contrasts</span>(df<span class="sc">$</span>race)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>     欧裔 非裔
+<pre><code>     非裔 欧裔
 亚裔    0    0
-欧裔    1    0
-非裔    0    1</code></pre>
+非裔    1    0
+欧裔    0    1</code></pre>
 </div>
 </div>
 </section>
@@ -1022,8 +1022,8 @@ Residuals:
 Coefficients:
             Estimate Std. Error t value Pr(&gt;|t|)    
 (Intercept)    49905       5292   9.430   &lt;2e-16 ***
-race欧裔       -1926       5493  -0.351    0.726    
 race非裔       -2297       7539  -0.305    0.761    
+race欧裔       -1926       5493  -0.351    0.726    
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
@@ -1052,8 +1052,8 @@ Residuals:
 Coefficients:
             Estimate Std. Error t value Pr(&gt;|t|)    
 (Intercept)    49905       5292   9.430   &lt;2e-16 ***
-race欧裔       -1926       5493  -0.351    0.726    
 race非裔       -2297       7539  -0.305    0.761    
+race欧裔       -1926       5493  -0.351    0.726    
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
@@ -1073,8 +1073,8 @@ F-statistic: 0.06567 on 2 and 519 DF,  p-value: 0.9365</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>             Estimate Std. Error    t value     Pr(&gt;|t|)
 (Intercept) 49905.114   5292.141  9.4300429 1.360018e-19
-race欧裔    -1925.905   5492.780 -0.3506247 7.260122e-01
-race非裔    -2296.644   7539.047 -0.3046331 7.607677e-01</code></pre>
+race非裔    -2296.644   7539.047 -0.3046331 7.607677e-01
+race欧裔    -1925.905   5492.780 -0.3506247 7.260122e-01</code></pre>
 </div>
 </div>
 <p><span class="math display">\[\begin{bmatrix}
@@ -1170,10 +1170,10 @@ race非裔    -2296.644   7539.047 -0.3046331 7.607677e-01</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">contrasts</span>(df<span class="sc">$</span>race)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>     欧裔 非裔
+<pre><code>     非裔 欧裔
 亚裔    0    0
-欧裔    1    0
-非裔    0    1</code></pre>
+非裔    1    0
+欧裔    0    1</code></pre>
 </div>
 </div>
 </section>
@@ -1196,8 +1196,8 @@ Coefficients:
             Estimate Std. Error t value Pr(&gt;|t|)    
 (Intercept)    47368       5443   8.702   &lt;2e-16 ***
 Sex1            5224       2735   1.910   0.0567 .  
-race欧裔       -1995       5479  -0.364   0.7159    
 race非裔       -2678       7522  -0.356   0.7219    
+race欧裔       -1995       5479  -0.364   0.7159    
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
@@ -1225,8 +1225,8 @@ Coefficients:
             Estimate Std. Error t value Pr(&gt;|t|)    
 (Intercept)    47368       5443   8.702   &lt;2e-16 ***
 Sex1            5224       2735   1.910   0.0567 .  
-race欧裔       -1995       5479  -0.364   0.7159    
 race非裔       -2678       7522  -0.356   0.7219    
+race欧裔       -1995       5479  -0.364   0.7159    
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
@@ -1246,8 +1246,8 @@ F-statistic:  1.26 on 3 and 518 DF,  p-value: 0.2875</code></pre>
 <pre><code>             Estimate Std. Error    t value     Pr(&gt;|t|)
 (Intercept) 47367.998   5443.289  8.7020920 4.352487e-17
 Sex1         5223.475   2735.042  1.9098337 5.670666e-02
-race欧裔    -1994.760   5478.942 -0.3640776 7.159486e-01
-race非裔    -2678.528   7522.550 -0.3560665 7.219357e-01</code></pre>
+race非裔    -2678.528   7522.550 -0.3560665 7.219357e-01
+race欧裔    -1994.760   5478.942 -0.3640776 7.159486e-01</code></pre>
 </div>
 </div>
 <p><span class="math display">\[\begin{bmatrix}
@@ -1376,10 +1376,10 @@ race非裔    -2678.528   7522.550 -0.3560665 7.219357e-01</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="fu">contrasts</span>(df<span class="sc">$</span>race)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>     欧裔 非裔
+<pre><code>     非裔 欧裔
 亚裔    0    0
-欧裔    1    0
-非裔    0    1</code></pre>
+非裔    1    0
+欧裔    0    1</code></pre>
 </div>
 </div>
 </section>
@@ -1402,10 +1402,10 @@ Coefficients:
               Estimate Std. Error t value Pr(&gt;|t|)    
 (Intercept)      51019       7369   6.924 1.31e-11 ***
 Sex1             -2294      10573  -0.217    0.828    
-race欧裔         -6132       7656  -0.801    0.424    
 race非裔         -3360      10930  -0.307    0.759    
-Sex1:race欧裔     8491      10974   0.774    0.439    
+race欧裔         -6132       7656  -0.801    0.424    
 Sex1:race非裔     2203      15113   0.146    0.884    
+Sex1:race欧裔     8491      10974   0.774    0.439    
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
@@ -1433,10 +1433,10 @@ Coefficients:
               Estimate Std. Error t value Pr(&gt;|t|)    
 (Intercept)      51019       7369   6.924 1.31e-11 ***
 Sex1             -2294      10573  -0.217    0.828    
-race欧裔         -6132       7656  -0.801    0.424    
 race非裔         -3360      10930  -0.307    0.759    
-Sex1:race欧裔     8491      10974   0.774    0.439    
+race欧裔         -6132       7656  -0.801    0.424    
 Sex1:race非裔     2203      15113   0.146    0.884    
+Sex1:race欧裔     8491      10974   0.774    0.439    
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
@@ -1456,10 +1456,10 @@ F-statistic: 0.9257 on 5 and 516 DF,  p-value: 0.4638</code></pre>
 <pre><code>               Estimate Std. Error    t value     Pr(&gt;|t|)
 (Intercept)   51019.389   7368.918  6.9235929 1.313381e-11
 Sex1          -2294.095  10573.367 -0.2169692 8.283181e-01
-race欧裔      -6131.926   7655.505 -0.8009826 4.235104e-01
 race非裔      -3360.189  10929.872 -0.3074317 7.586389e-01
-Sex1:race欧裔  8491.269  10973.912  0.7737687 4.394219e-01
-Sex1:race非裔  2203.316  15112.916  0.1457902 8.841439e-01</code></pre>
+race欧裔      -6131.926   7655.505 -0.8009826 4.235104e-01
+Sex1:race非裔  2203.316  15112.916  0.1457902 8.841439e-01
+Sex1:race欧裔  8491.269  10973.912  0.7737687 4.394219e-01</code></pre>
 </div>
 </div>
 <p><span class="math display">\[\begin{bmatrix}
@@ -1506,8 +1506,9 @@ Sex1:race非裔  2203.316  15112.916  0.1457902 8.841439e-01</code></pre>
 <section id="在r中的操作-4" class="slide level2">
 <h2>在R中的操作</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a>model_5<span class="ot">&lt;-</span><span class="fu">lm</span>(HouseholdIncome <span class="sc">~</span> Sex <span class="sc">+</span> ravens.score, <span class="at">data=</span>df)</span>
-<span id="cb39-2"><a href="#cb39-2"></a><span class="fu">summary</span>(model_5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a>model_5 <span class="ot">&lt;-</span> <span class="fu">lm</span>(HouseholdIncome <span class="sc">~</span> Sex <span class="sc">+</span> ravens.score, <span class="at">data =</span> df)</span>
+<span id="cb39-2"><a href="#cb39-2"></a></span>
+<span id="cb39-3"><a href="#cb39-3"></a><span class="fu">summary</span>(model_5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -1569,8 +1570,8 @@ F-statistic:  5.89 on 2 and 519 DF,  p-value: 0.002955</code></pre>
 <li><p>我们可以通过对变量求导来看该变量的变化受那些因素的影响。</p></li>
 <li><p>若不存在交互作用，我们对连续变量<span class="math inline">\(X_2\)</span>求偏导：</p></li>
 </ul>
-<p><span class="math display">\[Y =\beta_0+\beta_1 X_1+\beta_2 X_2+\epsilon\]</span></p>
-<p><span class="math display">\[\frac{𝜕Y}{𝜕X}=\beta_2\]</span></p>
+<p><span class="math display">\[Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \epsilon\]</span></p>
+<p><span class="math display">\[\frac{\partial Y}{\partial X}=\beta_2\]</span></p>
 <ul>
 <li>若不存在交互作用，连续变量<span class="math inline">\(X_2\)</span>不受另一个变量的影响。</li>
 </ul>
@@ -1581,7 +1582,7 @@ F-statistic:  5.89 on 2 and 519 DF,  p-value: 0.002955</code></pre>
 <li>若存在交互作用，我们对连续变量<span class="math inline">\(X_2\)</span>求偏导：</li>
 </ul>
 <p><span class="math display">\[Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_1 X_2 + \epsilon\]</span></p>
-<p><span class="math display">\[\frac{𝜕Y}{𝜕X} = \beta_2  + \beta_3 X_1\]</span></p>
+<p><span class="math display">\[\frac{\partial Y}{\partial X} = \beta_2  + \beta_3 X_1\]</span></p>
 <ul>
 <li>若存在交互作用，连续变量<span class="math inline">\(X_2\)</span>的效应受另一个变量的影响。</li>
 </ul>
@@ -1665,7 +1666,7 @@ F-statistic:  3.94 on 3 and 518 DF,  p-value: 0.008491</code></pre>
 <h2>回归方程的多种表达形式</h2>
 <ul>
 <li><p>我们之前提到，回归方程有多种表达形式：</p></li>
-<li><p>简单线性回归：<span class="math inline">\(Y = b_0+𝑏_1 X_1+ 𝑏_2 X_2+…+𝑏_𝑝 X_𝑝 + ϵ\)</span></p></li>
+<li><p>简单线性回归：<span class="math inline">\(Y = b_0+b_1 X_1+ b_2 X_2+…+b_p X_p + \epsilon\)</span></p></li>
 <li><p>线性代数表达：<span class="math inline">\(y_i = b_0 + b_1 X_{i1} + b_2 X_{i2} + … + b_p X_{ip} + \epsilon\)</span></p></li>
 <li><p>矩阵表达: <span class="math inline">\(Y= X\beta + \epsilon\)</span></p></li>
 <li><p>代码表达(r): <span class="math inline">\(Y \sim X_1 + X_2 + ... + X_n\)</span></p></li>
@@ -1678,7 +1679,7 @@ F-statistic:  3.94 on 3 and 518 DF,  p-value: 0.008491</code></pre>
 <li><p>观测项 = 预测项 + 误差项</p></li>
 <li><p>假定观测项是正态分布，上述公式可以重新表达为：</p>
 <ul>
-<li>观测项：<span class="math inline">\(y \sim 𝑁(\mu, \epsilon)\)</span></li>
+<li>观测项：<span class="math inline">\(y \sim N(\mu, \epsilon)\)</span></li>
 <li>其中， <span class="math inline">\(\mu\)</span>即为预测项，<span class="math inline">\(\mu = \beta_0 + \beta_1 x\)</span></li>
 </ul></li>
 <li><p>观测值服从以预测项为均值的正态分布，观测值与预测值之间的差值就是残差。</p></li>
@@ -1737,7 +1738,7 @@ F-statistic:  3.94 on 3 and 518 DF,  p-value: 0.008491</code></pre>
 <section id="section-38" class="slide level2">
 <h2></h2>
 <ul>
-<li><p>预测项可表示为： <span class="math inline">\(z=\beta_0+\beta_1 𝑥\)</span>, 其中x为self-regulation得分</p></li>
+<li><p>预测项可表示为： <span class="math inline">\(z = \beta_0 + \beta_1 x\)</span>, 其中<span class="math inline">\(x\)</span>为self-regulation得分</p></li>
 <li><p>自变量为连续变量，预测项也是一个连续变量，</p></li>
 <li><p>需要连接函数将预测项与因变量（二分变量）进行连接。</p></li>
 </ul>
@@ -1749,7 +1750,7 @@ F-statistic:  3.94 on 3 and 518 DF,  p-value: 0.008491</code></pre>
 <section id="section-40" class="slide level2">
 <h2></h2>
 <ul>
-<li><p>预测项可表示为： <span class="math inline">\(z=\beta_0+\beta_1 𝑥\)</span>, 其中x为self-regulation得分</p></li>
+<li><p>预测项可表示为： <span class="math inline">\(z = \beta_0 + \beta_1 x\)</span>, 其中<span class="math inline">\(x\)</span>为self-regulation得分</p></li>
 <li><p>如何将z与二分变量进行连接？</p></li>
 </ul>
 <p>（1）可将预测项映射到(0,1)之间，例如，使用 <span class="math inline">\(\frac{1}{1+exp(-z)}\)</span></p>
@@ -1761,7 +1762,7 @@ F-statistic:  3.94 on 3 and 518 DF,  p-value: 0.008491</code></pre>
 <section id="section-42" class="slide level2">
 <h2></h2>
 <ul>
-<li><p>预测项可表示为： <span class="math inline">\(z=\beta_0+\beta_1 𝑥\)</span>, 其中x为self-regulation得分</p></li>
+<li><p>预测项可表示为： <span class="math inline">\(z= \beta_0 + \beta_1 x\)</span>, 其中<span class="math inline">\(x\)</span>为self-regulation得分</p></li>
 <li><p>如何将z与二分变量进行连接？</p>
 <ul>
 <li><p>（1）可将预测项映射到(0,1)之间，例如，使用 <span class="math inline">\(\frac{1}{1+exp(-z)}\)</span></p></li>
@@ -1794,7 +1795,7 @@ F-statistic:  3.94 on 3 and 518 DF,  p-value: 0.008491</code></pre>
 <div style="font-size:26px">
 <ul>
 <li><p>以酗酒行为为因变量（Alcohol:有酗酒行为=1，无酗酒行为=0），连续变量自我调节（self regulation）为自变量。</p></li>
-<li><p>Model: <span class="math inline">\(Alcohol = \beta_0 + \beta_1 self regulation+ 𝜀\)</span></p></li>
+<li><p>Model: <span class="math inline">\(Alcohol = \beta_0 + \beta_1 self regulation+ \epsilon\)</span></p></li>
 </ul>
 </div>
 <div class="cell">
@@ -1802,13 +1803,18 @@ F-statistic:  3.94 on 3 and 518 DF,  p-value: 0.008491</code></pre>
 <span id="cb43-2"><a href="#cb43-2"></a>df_no_missing <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(df)</span>
 <span id="cb43-3"><a href="#cb43-3"></a></span>
 <span id="cb43-4"><a href="#cb43-4"></a><span class="co">#进行logit回归</span></span>
-<span id="cb43-5"><a href="#cb43-5"></a>model_7<span class="ot">=</span><span class="fu">glm</span>(Alcohol<span class="sc">~</span>self_regulation,<span class="at">family=</span><span class="fu">binomial</span>(<span class="at">link=</span><span class="st">'logit'</span>),<span class="at">data=</span>df_no_missing)</span>
-<span id="cb43-6"><a href="#cb43-6"></a><span class="fu">summary</span>(model_7)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb43-5"><a href="#cb43-5"></a>model_7 <span class="ot">=</span> <span class="fu">glm</span>(Alcohol <span class="sc">~</span> self_regulation, <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link=</span><span class="st">'logit'</span>), <span class="at">data =</span> df_no_missing)</span>
+<span id="cb43-6"><a href="#cb43-6"></a></span>
+<span id="cb43-7"><a href="#cb43-7"></a><span class="fu">summary</span>(model_7)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
 glm(formula = Alcohol ~ self_regulation, family = binomial(link = "logit"), 
     data = df_no_missing)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-1.4242  -1.0330  -0.9134   1.2995   1.5151  
 
 Coefficients:
                  Estimate Std. Error z value Pr(&gt;|z|)   
@@ -1838,6 +1844,10 @@ Call:
 glm(formula = Alcohol ~ self_regulation, family = binomial(link = "logit"), 
     data = df_no_missing)
 
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-1.4242  -1.0330  -0.9134   1.2995   1.5151  
+
 Coefficients:
                  Estimate Std. Error z value Pr(&gt;|z|)   
 (Intercept)      1.248554   0.545319   2.290  0.02205 * 
@@ -1854,7 +1864,7 @@ AIC: 702.08
 Number of Fisher Scoring iterations: 4</code></pre>
 </div>
 </div>
-<p><span class="math inline">\(𝐻_0: Alcohol = \beta_0\)</span> <br> <span class="math inline">\(𝐻_1: Alcohol = \beta_0+ \beta_1 self regulation\)</span></p>
+<p><span class="math inline">\(H_0: Alcohol = \beta_0\)</span> <br> <span class="math inline">\(H_1: Alcohol = \beta_0 + \beta_1 self \ regulation\)</span></p>
 </section>
 <section id="section-45" class="slide level2">
 <h2></h2>
@@ -1972,8 +1982,8 @@ Actual   0   1
 <li>离散型因变量的线性回归
 <ul>
 <li>广义线性模型</li>
-<li>Logit回归</li>
-<li>Poission回归</li>
+<li>Logit回归/logistic回归</li>
+<li>Poisson回归</li>
 </ul></li>
 </ul>
 
