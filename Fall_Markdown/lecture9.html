@@ -1,0 +1,1831 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="lecture9_files/libs/clipboard/clipboard.min.js"></script>
+<script src="lecture9_files/libs/quarto-html/tabby.min.js"></script>
+<script src="lecture9_files/libs/quarto-html/popper.min.js"></script>
+<script src="lecture9_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="lecture9_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="lecture9_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="lecture9_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="lecture9_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.3.433">
+
+  <title>lecture9</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="lecture9_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="lecture9_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="lecture9_files/libs/revealjs/dist/theme/quarto.css">
+  <link href="lecture9_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="lecture9_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="lecture9_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="lecture9_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-titled.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-titled) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-titled.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-titled .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-titled .callout-title  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-titled.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-titled.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-title {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-title {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-title {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-titled .callout-body > .callout-content > :last-child {
+    margin-bottom: 0.5rem;
+  }
+
+  .callout.callout-titled .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-titled) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-title {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-title {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-title {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-title {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-title {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+
+<section class="slide level2">
+
+<p><br><br></p>
+<h1 style="text-align: center">
+<p>9 分层线性回归</p>
+</h1>
+<h2 style="text-align: center">
+</h2>
+<p><br><br></p>
+<h3 style="text-align: center">
+<p>Hu Chuan-Peng</p>
+</h3>
+<h3 style="text-align: center">
+<p>2023-11-7</p>
+</h3>
+<p><br><br></p>
+</section>
+<section id="本次课内容" class="title-slide slide level1 center">
+<h1>本次课内容</h1>
+<ul>
+<li><p>课前复习</p></li>
+<li><p>分层线性模型介绍</p></li>
+<li><p>分层线性模型举例</p></li>
+<li><p>分层线性模型应用</p></li>
+</ul>
+</section>
+
+<section>
+<section id="课前复习" class="title-slide slide level1 center">
+<h1>课前复习</h1>
+
+</section>
+<section id="section" class="slide level2">
+<h2></h2>
+<ul>
+<li>离散型自变量的线性回归
+<ul>
+<li>虚拟变量</li>
+<li>设计矩阵</li>
+<li>回归系数</li>
+<li>其他编码方式</li>
+</ul></li>
+<li>离散型因变量的线性回归
+<ul>
+<li>广义线性模型</li>
+<li>Logit回归/logistic回归</li>
+<li>Poisson回归</li>
+</ul></li>
+</ul>
+</section></section>
+<section>
+<section id="分层线性模型简介" class="title-slide slide level1 center">
+<h1>分层线性模型简介</h1>
+
+</section>
+<section id="分层线性模型" class="slide level2">
+<h2>分层线性模型</h2>
+<ul>
+<li><p>分层线性模型/多层线性模型(HLM): 关注”多层嵌套数据”，在一个以上层次上变化参数的线性模型。</p>
+<ul>
+<li>其他近义词：</li>
+<li>多水平模型（Multilevel Model，MLM）</li>
+<li>线性混合模型（Linear Mixed Model）</li>
+<li>混合效应模型（Mixed Effects Model）</li>
+<li>随机效应模型（Random Effects Model）</li>
+<li>随机系数模型（Random Coefficients Model）</li>
+<li>增长曲线模型（Growth Curve Model）</li>
+</ul></li>
+</ul>
+</section>
+<section id="一个线性模型的例子" class="slide level2">
+<h2>一个线性模型的例子</h2>
+<ul>
+<li><p>我们想用工龄预测某个拥有4个学院的学校员工的工资</p>
+<ul>
+<li>收集到的数据如下</li>
+</ul></li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>Subject</th>
+<th>Department</th>
+<th>Years of experience</th>
+<th>Salary</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>sociology</td>
+<td>0</td>
+<td>36095</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>biology</td>
+<td>1</td>
+<td>55254</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>english</td>
+<td>1</td>
+<td>59140</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>english</td>
+<td>8</td>
+<td>78325</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>statistics</td>
+<td>1</td>
+<td>74054</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>sociology</td>
+<td>3</td>
+<td>46508</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>biology</td>
+<td>8</td>
+<td>55648</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>english</td>
+<td>2</td>
+<td>56330</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="数据结构" class="slide level2">
+<h2>数据结构</h2>
+
+<img data-src="images/1698805701922.jpg" class="r-stretch quarto-figure-center"></section>
+<section id="section-1" class="slide level2">
+<h2></h2>
+<ul>
+<li><p>是否可用工龄预测某个学校员工的工资？</p>
+<ul>
+<li><p>用概率方式表达:</p>
+<ul>
+<li><p>预测项:<span class="math inline">\(\mu_i=\beta_0+\beta_1x_i\)</span></p></li>
+<li><p>观测项:<span class="math inline">\(y_i \sim N(\mu_i,\epsilon^2)\)</span></p></li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="形式化表达" class="slide level2">
+<h2>形式化表达</h2>
+<ul>
+<li><p>观测项: <span class="math inline">\(y_i=\beta_0+\beta_1x_i+\epsilon,\epsilon \sim N(0,\sigma^2)\)</span></p></li>
+<li><p><span class="math inline">\(salary_{i,j}=\beta_0+\beta_1x_{i,j}+\epsilon\)</span></p>
+<ul>
+<li>i: 第i个员工</li>
+<li>j: 第j个学院</li>
+<li><span class="math inline">\(salary_{i,j}\)</span>:对每个员工工资的预测值，回归线上的点</li>
+<li><span class="math inline">\(\beta_0\)</span>:全校员工的平均工资</li>
+<li><span class="math inline">\(\epsilon\)</span>:残差，观测值距离回归线的距离</li>
+</ul></li>
+</ul>
+</section>
+<section id="section-2" class="slide level2">
+<h2></h2>
+<ul>
+<li><span class="math inline">\(salary_i=\beta_0+\beta_1experience_i+\epsilon\)</span></li>
+</ul>
+
+<img data-src="images/1698910895802.png" class="r-stretch quarto-figure-center"><p>散点的不同颜色代表不同学院</p>
+<center>
+http://mfviz.com/hierarchical-models/
+</center>
+</section>
+<section id="section-3" class="slide level2">
+<h2></h2>
+<ul>
+<li>在上述这种线性模型中，我们不考虑个体的其他分组信息，假定所有数据同质，所有数据来自一个同分布的正态总体， X（工龄）对 Y（工资）的影响固定。</li>
+<li>代码形式：<span class="math inline">\(salary \sim experience +1,data = data\)</span></li>
+<li>简单模型形式: <span class="math inline">\(salary_i=\beta_0+\beta_1experience_i+\epsilon\)</span>
+<ul>
+<li><span class="math inline">\(\epsilon \sim N(0,\sigma^2)\)</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="section-4" class="slide level2">
+<h2></h2>
+<ul>
+<li><p>回顾一下数据，其来自四个学院的数据。</p></li>
+<li><p>众所周知，不同学院的经济水平并不一致，员工工资因此也会有所差异。这种学院的差异并未考虑在上述简单的线性模型中。</p></li>
+<li><p>如何考虑这种不同”组”的异质性？</p></li>
+</ul>
+</section>
+<section id="section-5" class="slide level2">
+<h2></h2>
+<ul>
+<li><p>由于不同组（学院）间的差异较大，起始工资不同，X（工龄）对 Y（工资）的影响不同，不同组间在回归模型的截距和斜率上可能没有关系。</p></li>
+<li><p>以学院为单位进行回归分析：</p>
+<ul>
+<li><span class="math inline">\(salary_{i,j}=\beta_{0,j}+\beta_{1,j}experience_{i,j}+\epsilon\)</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="section-6" class="slide level2">
+<h2></h2>
+<ul>
+<li><p>建模方式：</p>
+<ul>
+<li>无视不同学院的异质性:</li>
+</ul>
+<p><span class="math inline">\(salary_{i,j}=\beta_{0}+\beta_{1}experience_{i}+\epsilon\)</span> (complete pooling，完全池化)</p>
+<ul>
+<li>认为不同学院完全异质:</li>
+</ul>
+<p><span class="math inline">\(salary_{i,j}=\beta_{0,j}+\beta_{1,j}experience_{i,j}+\epsilon_j\)</span> (no pooling，非池化)</p></li>
+</ul>
+<p>实际上，同一个学校的不同学院的员工的起始工资以及工龄对工资的影响存在相关。是否有介于两者之间的建模方式？</p>
+</section>
+<section id="section-7" class="slide level2">
+<h2></h2>
+<ul>
+<li><p>建模方式：</p>
+<ul>
+<li>无视不同学院的异质性:</li>
+</ul>
+<p><span class="math inline">\(salary_{i,j}=\beta_{0}+\beta_{1}experience_{i}+\epsilon\)</span> (complete pooling)</p>
+<ul>
+<li>认为不同学院完全异质:</li>
+</ul>
+<p><span class="math inline">\(salary_{i,j}=\beta_{0,j}+\beta_{1,j}experience_{i,j}+\epsilon_j\)</span> (no pooling)<br></p></li>
+<li><p>在 no pooling的基础之上增加一层模型？<br></p></li>
+<li><p><span class="math inline">\(\beta_{0,j}\sim N(\mu_{\beta_0},sigma_{\beta_0}^2)\)</span> -<span class="math inline">\(\beta_{1,j}\sim N(\mu_{\beta_1},sigma_{\beta_1}^2)\)</span></p></li>
+</ul>
+</section>
+<section id="partial-pooling" class="slide level2">
+<h2>Partial pooling</h2>
+<ul>
+<li>同时考虑到组内同质和组间异质但又属于一个更大的群体的情况。</li>
+<li>Partial pooling，部分池化</li>
+</ul>
+
+<img data-src="images/1698811614277-01.jpg" class="r-stretch quarto-figure-center"></section>
+<section id="情况一" class="slide level2">
+<h2>情况一</h2>
+<ul>
+<li><p>每个学院的起始工资不同，即不同学院的回归线截距不同，但工龄对工资的影响相同。</p></li>
+<li><p>如按照不同学院分组，绘制回归直线</p></li>
+</ul>
+
+<img data-src="images/1698811670034.jpg" class="r-stretch quarto-figure-center"><center>
+http://mfviz.com/hierarchical-models/
+</center>
+</section>
+<section id="section-8" class="slide level2">
+<h2></h2>
+<ul>
+<li>变化截距-固定斜率模型
+<ul>
+<li>假定不同学院的起始工资不同(变化截距)，但工资与工龄之间的关系在不同学院中相同（固定斜率,<span class="math inline">\(\beta_1\)</span> ）。</li>
+<li>变化效应(varying effects):线性模型中的参数，其随着分组的不同而取值不同，也被叫做随机效应（random effects）。</li>
+<li>固定效应(fixed effects):线性模型中参数，其不因分组不同而取值不同，而是仅反映了总体上的参数值。</li>
+</ul></li>
+</ul>
+</section>
+<section id="section-9" class="slide level2">
+<h2></h2>
+<ul>
+<li>变化截距-固定斜率模型：
+<ul>
+<li>假定不同学院的平均工资不同(随机截距)，但工资与工龄之间的变量关系在不同学院中保持相同(固定斜率，<span class="math inline">\(\beta_1\)</span>)。</li>
+</ul></li>
+<li><span class="math inline">\(y_{i,j}=\beta_{0,j}+\beta_1experience_{i,j}+\epsilon\)</span></li>
+<li>固定效应（fixed effects）：固定的斜率，<span class="math inline">\(\beta_1\)</span>
+<ul>
+<li>变化的截距/随机截距(varying/ random intercepts):<span class="math inline">\(\beta_{0,j}\)</span></li>
+<li>i:第i个员工</li>
+<li>j:第j个学院</li>
+</ul></li>
+</ul>
+</section>
+<section id="section-10" class="slide level2">
+<h2></h2>
+<ul>
+<li><p><span class="math inline">\(y_{i,j}=\beta_{0,j}+\beta_1experience_{i,j}+\epsilon,\epsilon \sim N(0,\sigma_e)\)</span></p></li>
+<li><p><span class="math inline">\(\beta_{0.j}=\beta_0+effect_{group} = \beta_0+\mu_j,\mu \sim N(0,\sigma_j)\)</span></p>
+<ul>
+<li><span class="math inline">\(\beta_0\)</span>:总体(学校)的员工工资的平均值</li>
+<li><span class="math inline">\(\mu_j\)</span>:组(学院)的平均值与总体(学校)平均值的差值</li>
+</ul></li>
+</ul>
+</section>
+<section id="section-11" class="slide level2">
+<h2></h2>
+<ul>
+<li><p><span class="math inline">\(salary_{i,j}=(\beta_0+effect_{group})+\beta_1experience_{i,j}+\epsilon\)</span></p></li>
+<li><p>简化: <span class="math inline">\(salary_{i,j}=\beta_{0.j}+\beta_1experience_{i,j}+\epsilon\)</span></p>
+<ul>
+<li><span class="math inline">\(\beta_{0,j}\sim N(\beta_0,\sigma_0), \epsilon \sim N(0,\sigma_e)\)</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="情况二" class="slide level2">
+<h2>情况二</h2>
+<ul>
+<li>实际上，工资与工龄之间的变量关系在不同学院中也可能不同(斜率<span class="math inline">\(\beta_1\)</span>也非相同) 此时我们假定不同学院的基线水平相同(固定截距，<span class="math inline">\(\beta_0\)</span>)工资与工龄之间的变量关系在不同学院中不同（随机斜率）</li>
+</ul>
+
+<img data-src="images/1698817873784.jpg" class="r-stretch quarto-figure-center"><center>
+http://mfviz.com/hierarchical-models/
+</center>
+</section>
+<section id="section-12" class="slide level2">
+<h2></h2>
+<ul>
+<li>我们假定不同学院的基线水平相同(固定截距,<span class="math inline">\(\beta_0\)</span>)，工资与工龄之间的变量关系在不同学院中不同（随机斜率）</li>
+<li>变化的效应(varying effect)：X（工龄）对Y（工资）的影响随着分组变量（group，学院）的变化而变化， X（工龄）受到分组的影响。</li>
+</ul>
+</section>
+<section id="section-13" class="slide level2">
+<h2></h2>
+<ul>
+<li><p>变化斜率-固定截距模型</p></li>
+<li><p><span class="math inline">\(y_{i,j}=\beta_0+\beta_{1,j}experience_{i,j}+\epsilon,\epsilon \sim N(0,\sigma_e)\)</span></p>
+<ul>
+<li>固定的截距(fixed intercepts):<span class="math inline">\(\beta_0\)</span></li>
+<li>变化的斜率(varying slopes):<span class="math inline">\(\beta_{1,j}\)</span></li>
+<li>i:第i个员工</li>
+<li>j:第j个学院</li>
+<li><span class="math inline">\(\epsilon \sim N(0,\sigma_e)\)</span></li>
+<li><span class="math inline">\(\beta_{1,j} \sim N(\beta_1,\sigma_1)\)</span></li>
+<li><span class="math inline">\(\beta_1\)</span>:总体水平(学校)的工龄与工资的关系</li>
+<li>第j组的斜率: <span class="math inline">\(\beta_{1,j}=\beta_1+\mu_{1,j}\)</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="section-14" class="slide level2">
+<h2></h2>
+<ul>
+<li><p><span class="math inline">\(y_{i,j}=\beta_0+\beta_{1,j}experience_{i,j}+\epsilon\)</span></p></li>
+<li><p>固定的截距(fixed intercepts):<span class="math inline">\(\beta_0\)</span></p></li>
+<li><p>变化的斜率(varying slopes):<span class="math inline">\(\beta_{1,j}\)</span></p></li>
+</ul>
+</section>
+<section id="情况三" class="slide level2">
+<h2>情况三</h2>
+<ul>
+<li>实际上，不同学院的不仅基线水平不同（随机截距,<span class="math inline">\(\beta_0\)</span>），工资与工龄之间的变量关系在不同学院中也不同（斜率<span class="math inline">\(\beta_1\)</span>也非相同，随机斜率<span class="math inline">\(\beta_1\)</span>）</li>
+</ul>
+
+<img data-src="images/1698826757439.jpg" class="r-stretch quarto-figure-center"><center>
+http://mfviz.com/hierarchical-models/
+</center>
+</section>
+<section id="section-15" class="slide level2">
+<h2></h2>
+<ul>
+<li><p>变化斜率-变化截距模型：</p></li>
+<li><p><span class="math inline">\(y_{i,j}=\beta_0+\beta_{1,j}experience_{i,j}+\epsilon,\epsilon \sim N(0,\sigma_e)\)</span></p>
+<ul>
+<li><p>变化的截距:<span class="math inline">\(\beta_0\)</span></p></li>
+<li><p>变化的斜率:<span class="math inline">\(\beta_1\)</span></p></li>
+<li><p>i:第i个员工</p></li>
+<li><p>j:第j个学院</p></li>
+<li><p>变化的截距:<span class="math inline">\(\beta_{0,j}\)</span></p></li>
+<li><p>变化的斜率:<span class="math inline">\(\beta_{1,j}\)</span></p></li>
+</ul></li>
+</ul>
+</section>
+<section id="section-16" class="slide level2">
+<h2></h2>
+<ul>
+<li>此时存在两个水平的分析水平
+<ul>
+<li>Level 2：整个学校，是population水平</li>
+<li>Level 1：单个学院，是group水平</li>
+</ul></li>
+</ul>
+</section>
+<section id="section-17" class="slide level2">
+<h2></h2>
+<ul>
+<li><p>变化截距-变化斜率模型</p></li>
+<li><p>Level2:<span class="math inline">\(y_{i,j}=\beta_{0,j}+\beta_{1,j}experience_{i,j}+\epsilon\)</span></p></li>
+<li><p>Level1:</p>
+<ul>
+<li><span class="math inline">\(\beta_{0,j} \sim N(\mu_0,\sigma_0)\)</span></li>
+<li><span class="math inline">\(\beta_{1,j} \sim N(\mu_1,\sigma_1)\)</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="section-18" class="slide level2">
+<h2></h2>
+
+<img data-src="images/1698827124219.jpg" class="r-stretch quarto-figure-center"></section>
+<section id="小结" class="slide level2">
+<h2>小结</h2>
+
+<img data-src="images/1698827162624.jpg" class="r-stretch quarto-figure-center"><p><span class="math inline">\(\hat{salary_{i,j}}=\beta_0+\beta_1experience_{i,j}\)</span></p>
+<p>完全不考虑分组，一般线性回归方程</p>
+</section>
+<section id="变化截距固定斜率" class="slide level2">
+<h2>变化截距，固定斜率</h2>
+
+<img data-src="images/1698827597107.jpg" class="r-stretch quarto-figure-center"><p><span class="math inline">\(\hat{y_{i,j}}=\beta_{0,j}+\beta_{1}experience_{i,j}\)</span></p>
+</section>
+<section id="固定截距变化斜率" class="slide level2">
+<h2>固定截距，变化斜率</h2>
+
+<img data-src="images/1698827691640.jpg" class="r-stretch quarto-figure-center"><p><span class="math inline">\(\hat{y_{i,j}}=\beta_{0}+\beta_{1,j}experience_{i,j}\)</span></p>
+</section>
+<section id="变化截距变化斜率" class="slide level2">
+<h2>变化截距，变化斜率</h2>
+
+<img data-src="images/1698827698638.jpg" class="r-stretch quarto-figure-center"><p><span class="math inline">\(\hat{y_{i,j}}=\beta_{0,j}+\beta_{1,j}experience_{i,j}\)</span></p>
+</section>
+<section id="section-19" class="slide level2">
+<h2></h2>
+<ul>
+<li>优点：
+<ul>
+<li>既考虑群组差异，也考虑到总体情况</li>
+<li>总体参数与个体数据相互制约（Partial pooling or shrinkage)</li>
+</ul></li>
+</ul>
+</section></section>
+<section>
+<section id="分层线性模型实例" class="title-slide slide level1 center">
+<h1>分层线性模型实例</h1>
+
+</section>
+<section id="section-20" class="slide level2">
+<h2></h2>
+<ul>
+<li><p>Stroop任务试图探究一致和不一致条件下的认知控制能力，实验记录被试的反应时间。</p></li>
+<li><p>我们想要探究一致和不一致条件对反应时间的影响。</p></li>
+</ul>
+<center>
+(Eisenberg et al.&nbsp;2019)
+</center>
+</section>
+<section id="section-21" class="slide level2">
+<h2></h2>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>加载package</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">require</span>(<span class="st">'pacman'</span>) <span class="co"># load this package and download it if it doesn't exist </span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">p_load</span>(<span class="st">'tidyverse'</span>,<span class="st">"papaja"</span>,<span class="st">'lme4'</span>,<span class="st">'car'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>读取数据</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'data/example9.1.csv'</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>      <span class="fu">mutate</span>(<span class="at">condition=</span><span class="fu">as.factor</span>(condition),</span>
+<span id="cb2-3"><a href="#cb2-3"></a>             <span class="at">subject =</span> <span class="fu">as.factor</span>(subject)) <span class="co"># 改变数据类型</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a>      </span>
+<span id="cb2-5"><a href="#cb2-5"></a>df.avg <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a>          <span class="fu">group_by</span>(condition,subject)<span class="sc">%&gt;%</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a>          <span class="fu">summarise</span>(<span class="at">rt =</span> <span class="fu">mean</span>(rt))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>描述数据</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> df,</span>
+<span id="cb3-2"><a href="#cb3-2"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> condition,</span>
+<span id="cb3-3"><a href="#cb3-3"></a>                     <span class="at">y =</span> rt))<span class="sc">+</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a>  <span class="fu">geom_violin</span>()<span class="sc">+</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a>  <span class="fu">geom_boxplot</span>()<span class="sc">+</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a>  <span class="fu">theme_apa</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="lecture9_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch quarto-figure-center"></section>
+<section id="section-22" class="slide level2">
+<h2></h2>
+<ul>
+<li><p>我们可以构建下简单线性模型：</p>
+<ul>
+<li><span class="math inline">\(rt_{i,j} \sim \beta_0 + \beta_1condition_{i,j}\)</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="section-23" class="slide level2">
+<h2></h2>
+<ul>
+<li><p>在complete pooling的情况下，我们可以用概率形式进行表达：</p>
+<ul>
+<li><p><span class="math inline">\(\mu=\beta_0+\beta_1condition_i\)</span></p></li>
+<li><p><span class="math inline">\(rt_{i,j} \sim N(\mu,\sigma^2)\)</span></p></li>
+</ul></li>
+<li><p>该情况假定所有被试都是同质的，不同被试之间在截距和斜率上没有差别。</p></li>
+</ul>
+</section>
+<section id="section-24" class="slide level2">
+<h2></h2>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>简单线性回归</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>model.sm <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> <span class="st">'rt ~ 1+condition'</span>,<span class="at">data=</span>df) <span class="co"># 建立简单线性模型</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>res <span class="ot">&lt;-</span> <span class="fu">summary</span>(model.sm) <span class="co"># 模型结果</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a>res</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = "rt ~ 1+condition", data = df)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-773.16 -143.16  -35.75  111.84 1344.84 
+
+Coefficients:
+                     Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)           681.751      1.174  580.63   &lt;2e-16 ***
+conditionincongruent  123.413      1.665   74.11   &lt;2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 206.7 on 61618 degrees of freedom
+Multiple R-squared:  0.08183,   Adjusted R-squared:  0.08181 
+F-statistic:  5492 on 1 and 61618 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+</section>
+<section id="section-25" class="slide level2">
+<h2></h2>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>线性模型参数估计结果</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>coef <span class="ot">&lt;-</span> res[[<span class="st">"coefficients"</span>]] <span class="co"># 回归方程系数</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>beta0 <span class="ot">&lt;-</span> coef[<span class="dv">1</span>,<span class="dv">1</span>] <span class="co"># 截距</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a>error1 <span class="ot">&lt;-</span> coef[<span class="dv">1</span>,<span class="dv">2</span>] <span class="co"># 截距的误差</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a>beta1 <span class="ot">&lt;-</span> coef[<span class="dv">2</span>,<span class="dv">1</span>] <span class="co"># 斜率</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a>error2 <span class="ot">&lt;-</span> coef[<span class="dv">2</span>,<span class="dv">2</span>] <span class="co"># 斜率的误差</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a>df.est <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">matrix</span>(<span class="at">data=</span><span class="cn">NA</span>,<span class="at">nrow=</span><span class="dv">2</span>,<span class="at">ncol =</span> <span class="dv">3</span>)) <span class="co"># 生成2*3的空数据框</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="fu">colnames</span>(df.est)<span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'beta'</span>,<span class="st">'error'</span>,<span class="st">'condition'</span>) <span class="co"># 为每列命名</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a>df.est[<span class="dv">1</span>,<span class="dv">1</span>] <span class="ot">&lt;-</span> coef[<span class="dv">1</span>,<span class="dv">1</span>]</span>
+<span id="cb6-9"><a href="#cb6-9"></a>df.est[<span class="dv">2</span>,<span class="dv">1</span>] <span class="ot">&lt;-</span> coef[<span class="dv">2</span>,<span class="dv">1</span>]<span class="sc">+</span>coef[<span class="dv">1</span>,<span class="dv">1</span>] <span class="co"># beta值</span></span>
+<span id="cb6-10"><a href="#cb6-10"></a></span>
+<span id="cb6-11"><a href="#cb6-11"></a>df.est[<span class="dv">1</span>,<span class="dv">2</span>] <span class="ot">&lt;-</span> coef[<span class="dv">1</span>,<span class="dv">2</span>]</span>
+<span id="cb6-12"><a href="#cb6-12"></a>df.est[<span class="dv">2</span>,<span class="dv">2</span>] <span class="ot">&lt;-</span> coef[<span class="dv">2</span>,<span class="dv">2</span>]<span class="sc">+</span>coef[<span class="dv">1</span>,<span class="dv">2</span>] <span class="co"># error值</span></span>
+<span id="cb6-13"><a href="#cb6-13"></a>df.est[,<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'congruent'</span>,<span class="st">'incongruent'</span>) <span class="co"># 条件</span></span>
+<span id="cb6-14"><a href="#cb6-14"></a></span>
+<span id="cb6-15"><a href="#cb6-15"></a><span class="fu">ggplot</span>(<span class="at">data =</span> df.est,</span>
+<span id="cb6-16"><a href="#cb6-16"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> condition,</span>
+<span id="cb6-17"><a href="#cb6-17"></a>                     <span class="at">y =</span> beta))<span class="sc">+</span></span>
+<span id="cb6-18"><a href="#cb6-18"></a></span>
+<span id="cb6-19"><a href="#cb6-19"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span>                         <span class="co"># 绘制点</span></span>
+<span id="cb6-20"><a href="#cb6-20"></a>  <span class="fu">geom_segment</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> condition, <span class="at">y =</span> beta,         <span class="co"># 绘制连线</span></span>
+<span id="cb6-21"><a href="#cb6-21"></a>                   <span class="at">xend =</span> <span class="fu">lead</span>(condition),</span>
+<span id="cb6-22"><a href="#cb6-22"></a>                   <span class="at">yend =</span> <span class="fu">lead</span>(beta)))<span class="sc">+</span></span>
+<span id="cb6-23"><a href="#cb6-23"></a>  <span class="fu">geom_errorbar</span>(<span class="at">mapping =</span><span class="fu">aes</span>(<span class="at">ymin=</span>beta<span class="sc">-</span>error, <span class="co"># 绘制误差线</span></span>
+<span id="cb6-24"><a href="#cb6-24"></a>                    <span class="at">ymax=</span>beta<span class="sc">+</span>error),</span>
+<span id="cb6-25"><a href="#cb6-25"></a>                <span class="at">width=</span><span class="fl">0.2</span>)<span class="sc">+</span></span>
+<span id="cb6-26"><a href="#cb6-26"></a>  <span class="fu">theme_apa</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="lecture9_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch quarto-figure-center"></section>
+<section id="section-26" class="slide level2">
+<h2></h2>
+<p>no pooling的情况下，假定所有被试都是异质的，不同被试之间在截距和斜率上没有关系。</p>
+<p>我们将对每个被试进行一次回归分析</p>
+<ul>
+<li><p><span class="math inline">\(\mu_j=\beta_{0,j}+\beta_{1,j}condition_{i,j}\)</span></p></li>
+<li><p><span class="math inline">\(rt_{i,j} \sim N(\mu_j,\sigma_j^2)\)</span></p></li>
+</ul>
+<p>注：在此情况下，仅是对每个被试的全体数据进行简单线性回归，代码实现上没有区别</p>
+</section>
+<section id="section-27" class="slide level2">
+<h2></h2>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>读取数据</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'data/example9.1.csv'</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>      <span class="fu">mutate</span>(<span class="at">condition=</span><span class="fu">as.factor</span>(condition),</span>
+<span id="cb7-3"><a href="#cb7-3"></a>             <span class="at">subject =</span> <span class="fu">as.factor</span>(subject))<span class="sc">%&gt;%</span> <span class="co"># 改变数据类型</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a>      <span class="fu">filter</span>(subject<span class="sc">==</span><span class="st">'s001'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>简单线性回归</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>model.sm <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> <span class="st">'rt ~ 1+condition'</span>,<span class="at">data=</span>df) <span class="co"># 建立简单线性模型</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a>res <span class="ot">&lt;-</span> <span class="fu">summary</span>(model.sm) <span class="co"># 模型结果</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a>res</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = "rt ~ 1+condition", data = df)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-320.41 -112.41  -41.41   87.58  735.58 
+
+Coefficients:
+                     Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)            698.42      23.27  30.011  &lt; 2e-16 ***
+conditionincongruent   123.99      33.05   3.751 0.000277 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 178.8 on 115 degrees of freedom
+Multiple R-squared:  0.109, Adjusted R-squared:  0.1013 
+F-statistic: 14.07 on 1 and 115 DF,  p-value: 0.0002773</code></pre>
+</div>
+</div>
+</section>
+<section id="section-28" class="slide level2">
+<h2></h2>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>线性模型参数估计结果</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>coef <span class="ot">&lt;-</span> res[[<span class="st">"coefficients"</span>]] <span class="co"># 回归方程系数</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a>beta0 <span class="ot">&lt;-</span> coef[<span class="dv">1</span>,<span class="dv">1</span>] <span class="co"># 截距</span></span>
+<span id="cb10-3"><a href="#cb10-3"></a>error1 <span class="ot">&lt;-</span> coef[<span class="dv">1</span>,<span class="dv">2</span>] <span class="co"># 截距的误差</span></span>
+<span id="cb10-4"><a href="#cb10-4"></a>beta1 <span class="ot">&lt;-</span> coef[<span class="dv">2</span>,<span class="dv">1</span>] <span class="co"># 斜率</span></span>
+<span id="cb10-5"><a href="#cb10-5"></a>error2 <span class="ot">&lt;-</span> coef[<span class="dv">2</span>,<span class="dv">2</span>] <span class="co"># 斜率的误差</span></span>
+<span id="cb10-6"><a href="#cb10-6"></a>df.est <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">matrix</span>(<span class="at">data=</span><span class="cn">NA</span>,<span class="at">nrow=</span><span class="dv">2</span>,<span class="at">ncol =</span> <span class="dv">3</span>)) <span class="co"># 生成2*3的空数据框</span></span>
+<span id="cb10-7"><a href="#cb10-7"></a><span class="fu">colnames</span>(df.est)<span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'beta'</span>,<span class="st">'error'</span>,<span class="st">'condition'</span>) <span class="co"># 为每列命名</span></span>
+<span id="cb10-8"><a href="#cb10-8"></a>df.est[<span class="dv">1</span>,<span class="dv">1</span>] <span class="ot">&lt;-</span> coef[<span class="dv">1</span>,<span class="dv">1</span>]</span>
+<span id="cb10-9"><a href="#cb10-9"></a>df.est[<span class="dv">2</span>,<span class="dv">1</span>] <span class="ot">&lt;-</span> coef[<span class="dv">2</span>,<span class="dv">1</span>]<span class="sc">+</span>coef[<span class="dv">1</span>,<span class="dv">1</span>] <span class="co"># beta值</span></span>
+<span id="cb10-10"><a href="#cb10-10"></a></span>
+<span id="cb10-11"><a href="#cb10-11"></a>df.est[<span class="dv">1</span>,<span class="dv">2</span>] <span class="ot">&lt;-</span> coef[<span class="dv">1</span>,<span class="dv">2</span>]</span>
+<span id="cb10-12"><a href="#cb10-12"></a>df.est[<span class="dv">2</span>,<span class="dv">2</span>] <span class="ot">&lt;-</span> coef[<span class="dv">2</span>,<span class="dv">2</span>]<span class="sc">+</span>coef[<span class="dv">1</span>,<span class="dv">2</span>] <span class="co"># error值</span></span>
+<span id="cb10-13"><a href="#cb10-13"></a>df.est[,<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'congruent'</span>,<span class="st">'incongruent'</span>) <span class="co"># 条件</span></span>
+<span id="cb10-14"><a href="#cb10-14"></a></span>
+<span id="cb10-15"><a href="#cb10-15"></a><span class="fu">ggplot</span>(<span class="at">data =</span> df.est,</span>
+<span id="cb10-16"><a href="#cb10-16"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> condition,</span>
+<span id="cb10-17"><a href="#cb10-17"></a>                     <span class="at">y =</span> beta))<span class="sc">+</span></span>
+<span id="cb10-18"><a href="#cb10-18"></a></span>
+<span id="cb10-19"><a href="#cb10-19"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span>                         <span class="co"># 绘制点</span></span>
+<span id="cb10-20"><a href="#cb10-20"></a>  <span class="fu">geom_segment</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> condition, <span class="at">y =</span> beta,         <span class="co"># 绘制连线</span></span>
+<span id="cb10-21"><a href="#cb10-21"></a>                   <span class="at">xend =</span> <span class="fu">lead</span>(condition),</span>
+<span id="cb10-22"><a href="#cb10-22"></a>                   <span class="at">yend =</span> <span class="fu">lead</span>(beta)))<span class="sc">+</span></span>
+<span id="cb10-23"><a href="#cb10-23"></a>  <span class="fu">geom_errorbar</span>(<span class="at">mapping =</span><span class="fu">aes</span>(<span class="at">ymin=</span>beta<span class="sc">-</span>error, <span class="co"># 绘制误差线</span></span>
+<span id="cb10-24"><a href="#cb10-24"></a>                    <span class="at">ymax=</span>beta<span class="sc">+</span>error),</span>
+<span id="cb10-25"><a href="#cb10-25"></a>                <span class="at">width=</span><span class="fl">0.2</span>)<span class="sc">+</span></span>
+<span id="cb10-26"><a href="#cb10-26"></a>  <span class="fu">theme_apa</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="lecture9_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch quarto-figure-center"><p>注：由于no pooling是每一个被试单独拟合，故标准误很大。</p>
+</section>
+<section id="section-29" class="slide level2">
+<h2></h2>
+<ul>
+<li><p>在no pooling的情况下，由于每个被试之间的截距和斜率都没有关系，每个被试的反应时间都会分别使用单独的回归方程来进行。</p></li>
+<li><p>在该例子中，由于包含500多个被试，每个被试需要单独拟合一个回归方程，则需要500多个回归方程。</p></li>
+</ul>
+</section>
+<section id="section-30" class="slide level2">
+<h2></h2>
+<ul>
+<li><p>Partial pooling，groups与population的参数相互制约</p></li>
+<li><p>在RT的例子中，有三种可能的模型：</p>
+<ul>
+<li>变化截距、固定斜率（M1）</li>
+<li>固定截距、变化斜率（M2）</li>
+<li>变化截距、变化斜率（M3）</li>
+</ul></li>
+</ul>
+</section>
+<section id="section-31" class="slide level2">
+<h2></h2>
+<ul>
+<li>M1: 固定斜率，变化截距
+<ul>
+<li><p>Population level:<span class="math inline">\(\mu_{i,j}=\beta_{0,j}+\beta_1condition_{i,j}\)</span></p></li>
+<li><p><span class="math inline">\(rt_{i,j} \sim N(\mu_{i,j},\sigma_{i,j}^2)\)</span></p></li>
+<li><p>Subject level: <span class="math inline">\(\beta_{0,j} \sim N(\mu_{\beta_0},\sigma_{\beta_0}^2)\)</span></p></li>
+</ul></li>
+</ul>
+</section>
+<section id="section-32" class="slide level2">
+<h2></h2>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>读取数据</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'data/example9.1.csv'</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a>      <span class="fu">mutate</span>(<span class="at">condition=</span><span class="fu">as.factor</span>(condition),</span>
+<span id="cb11-3"><a href="#cb11-3"></a>             <span class="at">subject =</span> <span class="fu">as.factor</span>(subject)) <span class="co"># 改变数据类型</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>分层线性回归</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">lmer</span>(<span class="at">formula =</span> <span class="st">'rt ~ 1+condition+(1|subject)'</span>,<span class="at">data=</span>df) <span class="co"># 建立分层线性模型</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a>res <span class="ot">&lt;-</span> <span class="fu">summary</span>(m1) <span class="co"># 模型结果</span></span>
+<span id="cb12-3"><a href="#cb12-3"></a>res</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Linear mixed model fit by REML ['lmerMod']
+Formula: rt ~ 1 + condition + (1 | subject)
+   Data: df
+
+REML criterion at convergence: 815596.2
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-4.6184 -0.6518 -0.1337  0.5052  6.9891 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ subject  (Intercept) 11078    105.3   
+ Residual             31777    178.3   
+Number of obs: 61620, groups:  subject, 522
+
+Fixed effects:
+                     Estimate Std. Error t value
+(Intercept)           682.236      4.717  144.63
+conditionincongruent  124.577      1.436   86.73
+
+Correlation of Fixed Effects:
+            (Intr)
+cndtnncngrn -0.151</code></pre>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>模型比较</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">AIC</span>(m1) <span class="co"># AIC,BIC为模型比较的指标，AIC,BIC越低，模型表现越好</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 815604.2</code></pre>
+</div>
+<details>
+<summary>模型比较</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">BIC</span>(m1) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 815640.3</code></pre>
+</div>
+</div>
+</section>
+<section id="section-33" class="slide level2">
+<h2></h2>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>线性模型参数估计结果</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>coef <span class="ot">&lt;-</span> res[[<span class="st">"coefficients"</span>]] <span class="co"># 回归方程系数</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a>beta0 <span class="ot">&lt;-</span> coef[<span class="dv">1</span>,<span class="dv">1</span>] <span class="co"># 截距</span></span>
+<span id="cb18-3"><a href="#cb18-3"></a>error1 <span class="ot">&lt;-</span> coef[<span class="dv">1</span>,<span class="dv">2</span>] <span class="co"># 截距的误差</span></span>
+<span id="cb18-4"><a href="#cb18-4"></a>beta1 <span class="ot">&lt;-</span> coef[<span class="dv">2</span>,<span class="dv">1</span>] <span class="co"># 斜率</span></span>
+<span id="cb18-5"><a href="#cb18-5"></a>error2 <span class="ot">&lt;-</span> coef[<span class="dv">2</span>,<span class="dv">2</span>] <span class="co"># 斜率的误差</span></span>
+<span id="cb18-6"><a href="#cb18-6"></a>df.est <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">matrix</span>(<span class="at">data=</span><span class="cn">NA</span>,<span class="at">nrow=</span><span class="dv">2</span>,<span class="at">ncol =</span> <span class="dv">3</span>)) <span class="co"># 生成2*3的空数据框</span></span>
+<span id="cb18-7"><a href="#cb18-7"></a><span class="fu">colnames</span>(df.est)<span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'beta'</span>,<span class="st">'error'</span>,<span class="st">'condition'</span>) <span class="co"># 为每列命名</span></span>
+<span id="cb18-8"><a href="#cb18-8"></a>df.est[<span class="dv">1</span>,<span class="dv">1</span>] <span class="ot">&lt;-</span> coef[<span class="dv">1</span>,<span class="dv">1</span>]</span>
+<span id="cb18-9"><a href="#cb18-9"></a>df.est[<span class="dv">2</span>,<span class="dv">1</span>] <span class="ot">&lt;-</span> coef[<span class="dv">2</span>,<span class="dv">1</span>]<span class="sc">+</span>coef[<span class="dv">1</span>,<span class="dv">1</span>] <span class="co"># beta值</span></span>
+<span id="cb18-10"><a href="#cb18-10"></a></span>
+<span id="cb18-11"><a href="#cb18-11"></a>df.est[<span class="dv">1</span>,<span class="dv">2</span>] <span class="ot">&lt;-</span> coef[<span class="dv">1</span>,<span class="dv">2</span>]</span>
+<span id="cb18-12"><a href="#cb18-12"></a>df.est[<span class="dv">2</span>,<span class="dv">2</span>] <span class="ot">&lt;-</span> coef[<span class="dv">2</span>,<span class="dv">2</span>]<span class="sc">+</span>coef[<span class="dv">1</span>,<span class="dv">2</span>] <span class="co"># error值</span></span>
+<span id="cb18-13"><a href="#cb18-13"></a>df.est[,<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'congruent'</span>,<span class="st">'incongruent'</span>) <span class="co"># 条件</span></span>
+<span id="cb18-14"><a href="#cb18-14"></a></span>
+<span id="cb18-15"><a href="#cb18-15"></a><span class="fu">ggplot</span>(<span class="at">data =</span> df.est,</span>
+<span id="cb18-16"><a href="#cb18-16"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> condition,</span>
+<span id="cb18-17"><a href="#cb18-17"></a>                     <span class="at">y =</span> beta))<span class="sc">+</span></span>
+<span id="cb18-18"><a href="#cb18-18"></a></span>
+<span id="cb18-19"><a href="#cb18-19"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span>                         <span class="co"># 绘制点</span></span>
+<span id="cb18-20"><a href="#cb18-20"></a>  <span class="fu">geom_segment</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> condition, <span class="at">y =</span> beta,         <span class="co"># 绘制连线</span></span>
+<span id="cb18-21"><a href="#cb18-21"></a>                   <span class="at">xend =</span> <span class="fu">lead</span>(condition),</span>
+<span id="cb18-22"><a href="#cb18-22"></a>                   <span class="at">yend =</span> <span class="fu">lead</span>(beta)))<span class="sc">+</span></span>
+<span id="cb18-23"><a href="#cb18-23"></a>  <span class="fu">geom_errorbar</span>(<span class="at">mapping =</span><span class="fu">aes</span>(<span class="at">ymin=</span>beta<span class="sc">-</span>error, <span class="co"># 绘制误差线</span></span>
+<span id="cb18-24"><a href="#cb18-24"></a>                    <span class="at">ymax=</span>beta<span class="sc">+</span>error),</span>
+<span id="cb18-25"><a href="#cb18-25"></a>                <span class="at">width=</span><span class="fl">0.2</span>)<span class="sc">+</span></span>
+<span id="cb18-26"><a href="#cb18-26"></a>  <span class="fu">theme_apa</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="lecture9_files/figure-revealjs/unnamed-chunk-12-1.png" width="960" class="r-stretch quarto-figure-center"></section>
+<section id="section-34" class="slide level2">
+<h2></h2>
+<ul>
+<li>M2: 固定截距，变化斜率
+<ul>
+<li><p>Population level:<span class="math inline">\(\mu_{i,j}=\beta_{0}+\beta_{1,j}condition_{i,j}\)</span></p></li>
+<li><p><span class="math inline">\(rt_{i,j} \sim N(\mu_{i,j},\sigma_{i,j}^2)\)</span></p></li>
+<li><p>Subject level: <span class="math inline">\(\beta_{1,j} \sim N(\mu_{\beta_1},\sigma_{\beta_1}^2)\)</span></p></li>
+</ul></li>
+</ul>
+</section>
+<section id="section-35" class="slide level2">
+<h2></h2>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>读取数据</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'data/example9.1.csv'</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb19-2"><a href="#cb19-2"></a>      <span class="fu">mutate</span>(<span class="at">condition=</span><span class="fu">as.factor</span>(condition),</span>
+<span id="cb19-3"><a href="#cb19-3"></a>             <span class="at">subject =</span> <span class="fu">as.factor</span>(subject)) <span class="co"># 改变数据类型</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>分层线性回归</summary>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">lmer</span>(<span class="at">formula =</span> <span class="st">'rt ~ 1+condition+(condition|subject)'</span>,<span class="at">data=</span>df) <span class="co"># 建立分层线性模型</span></span>
+<span id="cb20-2"><a href="#cb20-2"></a>res <span class="ot">&lt;-</span> <span class="fu">summary</span>(m2) <span class="co"># 模型结果</span></span>
+<span id="cb20-3"><a href="#cb20-3"></a>res</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Linear mixed model fit by REML ['lmerMod']
+Formula: rt ~ 1 + condition + (condition | subject)
+   Data: df
+
+REML criterion at convergence: 815088.4
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-4.6443 -0.6441 -0.1363  0.4951  6.9833 
+
+Random effects:
+ Groups   Name                 Variance Std.Dev. Corr
+ subject  (Intercept)           9695     98.46       
+          conditionincongruent  2092     45.74   0.20
+ Residual                      31251    176.78       
+Number of obs: 61620, groups:  subject, 522
+
+Fixed effects:
+                     Estimate Std. Error t value
+(Intercept)           682.211      4.425  154.16
+conditionincongruent  124.772      2.458   50.77
+
+Correlation of Fixed Effects:
+            (Intr)
+cndtnncngrn 0.064 </code></pre>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>模型比较</summary>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">AIC</span>(m2) <span class="co"># AIC,BIC为模型比较的指标，AIC,BIC越低，模型表现越好</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 815100.4</code></pre>
+</div>
+<details>
+<summary>模型比较</summary>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">BIC</span>(m2) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 815154.6</code></pre>
+</div>
+</div>
+</section>
+<section id="section-36" class="slide level2">
+<h2></h2>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>线性模型参数估计结果</summary>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>coef <span class="ot">&lt;-</span> res[[<span class="st">"coefficients"</span>]] <span class="co"># 回归方程系数</span></span>
+<span id="cb26-2"><a href="#cb26-2"></a>beta0 <span class="ot">&lt;-</span> coef[<span class="dv">1</span>,<span class="dv">1</span>] <span class="co"># 截距</span></span>
+<span id="cb26-3"><a href="#cb26-3"></a>error1 <span class="ot">&lt;-</span> coef[<span class="dv">1</span>,<span class="dv">2</span>] <span class="co"># 截距的误差</span></span>
+<span id="cb26-4"><a href="#cb26-4"></a>beta1 <span class="ot">&lt;-</span> coef[<span class="dv">2</span>,<span class="dv">1</span>] <span class="co"># 斜率</span></span>
+<span id="cb26-5"><a href="#cb26-5"></a>error2 <span class="ot">&lt;-</span> coef[<span class="dv">2</span>,<span class="dv">2</span>] <span class="co"># 斜率的误差</span></span>
+<span id="cb26-6"><a href="#cb26-6"></a>df.est <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">matrix</span>(<span class="at">data=</span><span class="cn">NA</span>,<span class="at">nrow=</span><span class="dv">2</span>,<span class="at">ncol =</span> <span class="dv">3</span>)) <span class="co"># 生成2*3的空数据框</span></span>
+<span id="cb26-7"><a href="#cb26-7"></a><span class="fu">colnames</span>(df.est)<span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'beta'</span>,<span class="st">'error'</span>,<span class="st">'condition'</span>) <span class="co"># 为每列命名</span></span>
+<span id="cb26-8"><a href="#cb26-8"></a>df.est[<span class="dv">1</span>,<span class="dv">1</span>] <span class="ot">&lt;-</span> coef[<span class="dv">1</span>,<span class="dv">1</span>]</span>
+<span id="cb26-9"><a href="#cb26-9"></a>df.est[<span class="dv">2</span>,<span class="dv">1</span>] <span class="ot">&lt;-</span> coef[<span class="dv">2</span>,<span class="dv">1</span>]<span class="sc">+</span>coef[<span class="dv">1</span>,<span class="dv">1</span>] <span class="co"># beta值</span></span>
+<span id="cb26-10"><a href="#cb26-10"></a></span>
+<span id="cb26-11"><a href="#cb26-11"></a>df.est[<span class="dv">1</span>,<span class="dv">2</span>] <span class="ot">&lt;-</span> coef[<span class="dv">1</span>,<span class="dv">2</span>]</span>
+<span id="cb26-12"><a href="#cb26-12"></a>df.est[<span class="dv">2</span>,<span class="dv">2</span>] <span class="ot">&lt;-</span> coef[<span class="dv">2</span>,<span class="dv">2</span>]<span class="sc">+</span>coef[<span class="dv">1</span>,<span class="dv">2</span>] <span class="co"># error值</span></span>
+<span id="cb26-13"><a href="#cb26-13"></a>df.est[,<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'congruent'</span>,<span class="st">'incongruent'</span>) <span class="co"># 条件</span></span>
+<span id="cb26-14"><a href="#cb26-14"></a></span>
+<span id="cb26-15"><a href="#cb26-15"></a><span class="fu">ggplot</span>(<span class="at">data =</span> df.est,</span>
+<span id="cb26-16"><a href="#cb26-16"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> condition,</span>
+<span id="cb26-17"><a href="#cb26-17"></a>                     <span class="at">y =</span> beta))<span class="sc">+</span></span>
+<span id="cb26-18"><a href="#cb26-18"></a></span>
+<span id="cb26-19"><a href="#cb26-19"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span>                         <span class="co"># 绘制点</span></span>
+<span id="cb26-20"><a href="#cb26-20"></a>  <span class="fu">geom_segment</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> condition, <span class="at">y =</span> beta,         <span class="co"># 绘制连线</span></span>
+<span id="cb26-21"><a href="#cb26-21"></a>                   <span class="at">xend =</span> <span class="fu">lead</span>(condition),</span>
+<span id="cb26-22"><a href="#cb26-22"></a>                   <span class="at">yend =</span> <span class="fu">lead</span>(beta)))<span class="sc">+</span></span>
+<span id="cb26-23"><a href="#cb26-23"></a>  <span class="fu">geom_errorbar</span>(<span class="at">mapping =</span><span class="fu">aes</span>(<span class="at">ymin=</span>beta<span class="sc">-</span>error, <span class="co"># 绘制误差线</span></span>
+<span id="cb26-24"><a href="#cb26-24"></a>                    <span class="at">ymax=</span>beta<span class="sc">+</span>error),</span>
+<span id="cb26-25"><a href="#cb26-25"></a>                <span class="at">width=</span><span class="fl">0.2</span>)<span class="sc">+</span></span>
+<span id="cb26-26"><a href="#cb26-26"></a>  <span class="fu">theme_apa</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="lecture9_files/figure-revealjs/unnamed-chunk-16-1.png" width="960" class="r-stretch quarto-figure-center"></section>
+<section id="section-37" class="slide level2">
+<h2></h2>
+<ul>
+<li>M3: 变化截距，变化斜率
+<ul>
+<li><p>Population level:<span class="math inline">\(\mu_{i,j}=\beta_{0,j}+\beta_{1,j}condition_{i,j}\)</span></p></li>
+<li><p><span class="math inline">\(rt_{i,j} \sim N(\mu_{i,j},\sigma_{i,j}^2)\)</span></p></li>
+<li><p>Subject level:</p>
+<ul>
+<li><p><span class="math inline">\(\beta_{0,j} \sim N(\mu_{\beta_0},\sigma_{\beta_0}^2)\)</span></p></li>
+<li><p><span class="math inline">\(\beta_{1,j} \sim N(\mu_{\beta_1},\sigma_{\beta_1}^2)\)</span></p></li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="section-38" class="slide level2">
+<h2></h2>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>读取数据</summary>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'data/example9.1.csv'</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb27-2"><a href="#cb27-2"></a>      <span class="fu">mutate</span>(<span class="at">condition=</span><span class="fu">as.factor</span>(condition),</span>
+<span id="cb27-3"><a href="#cb27-3"></a>             <span class="at">subject =</span> <span class="fu">as.factor</span>(subject)) <span class="co"># 改变数据类型</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>分层线性回归</summary>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a>m3 <span class="ot">&lt;-</span> <span class="fu">lmer</span>(<span class="at">formula =</span> <span class="st">'rt ~ 1+condition+(1+condition|subject)'</span>,<span class="at">data=</span>df) <span class="co"># 建立分层线性模型</span></span>
+<span id="cb28-2"><a href="#cb28-2"></a>res <span class="ot">&lt;-</span> <span class="fu">summary</span>(m3) <span class="co"># 模型结果</span></span>
+<span id="cb28-3"><a href="#cb28-3"></a>res</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Linear mixed model fit by REML ['lmerMod']
+Formula: rt ~ 1 + condition + (1 + condition | subject)
+   Data: df
+
+REML criterion at convergence: 815088.4
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-4.6443 -0.6441 -0.1363  0.4951  6.9833 
+
+Random effects:
+ Groups   Name                 Variance Std.Dev. Corr
+ subject  (Intercept)           9695     98.46       
+          conditionincongruent  2092     45.74   0.20
+ Residual                      31251    176.78       
+Number of obs: 61620, groups:  subject, 522
+
+Fixed effects:
+                     Estimate Std. Error t value
+(Intercept)           682.211      4.425  154.16
+conditionincongruent  124.772      2.458   50.77
+
+Correlation of Fixed Effects:
+            (Intr)
+cndtnncngrn 0.064 </code></pre>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>模型比较</summary>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="fu">AIC</span>(m3) <span class="co"># AIC,BIC为模型比较的指标，AIC,BIC越低，模型表现越好</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 815100.4</code></pre>
+</div>
+<details>
+<summary>模型比较</summary>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="fu">BIC</span>(m3) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 815154.6</code></pre>
+</div>
+</div>
+</section>
+<section id="section-39" class="slide level2">
+<h2></h2>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>线性模型参数估计结果</summary>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a>coef <span class="ot">&lt;-</span> res[[<span class="st">"coefficients"</span>]] <span class="co"># 回归方程系数</span></span>
+<span id="cb34-2"><a href="#cb34-2"></a>beta0 <span class="ot">&lt;-</span> coef[<span class="dv">1</span>,<span class="dv">1</span>] <span class="co"># 截距</span></span>
+<span id="cb34-3"><a href="#cb34-3"></a>error1 <span class="ot">&lt;-</span> coef[<span class="dv">1</span>,<span class="dv">2</span>] <span class="co"># 截距的误差</span></span>
+<span id="cb34-4"><a href="#cb34-4"></a>beta1 <span class="ot">&lt;-</span> coef[<span class="dv">2</span>,<span class="dv">1</span>] <span class="co"># 斜率</span></span>
+<span id="cb34-5"><a href="#cb34-5"></a>error2 <span class="ot">&lt;-</span> coef[<span class="dv">2</span>,<span class="dv">2</span>] <span class="co"># 斜率的误差</span></span>
+<span id="cb34-6"><a href="#cb34-6"></a>df.est <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">matrix</span>(<span class="at">data=</span><span class="cn">NA</span>,<span class="at">nrow=</span><span class="dv">2</span>,<span class="at">ncol =</span> <span class="dv">3</span>)) <span class="co"># 生成2*3的空数据框</span></span>
+<span id="cb34-7"><a href="#cb34-7"></a><span class="fu">colnames</span>(df.est)<span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'beta'</span>,<span class="st">'error'</span>,<span class="st">'condition'</span>) <span class="co"># 为每列命名</span></span>
+<span id="cb34-8"><a href="#cb34-8"></a>df.est[<span class="dv">1</span>,<span class="dv">1</span>] <span class="ot">&lt;-</span> coef[<span class="dv">1</span>,<span class="dv">1</span>]</span>
+<span id="cb34-9"><a href="#cb34-9"></a>df.est[<span class="dv">2</span>,<span class="dv">1</span>] <span class="ot">&lt;-</span> coef[<span class="dv">2</span>,<span class="dv">1</span>]<span class="sc">+</span>coef[<span class="dv">1</span>,<span class="dv">1</span>] <span class="co"># beta值</span></span>
+<span id="cb34-10"><a href="#cb34-10"></a></span>
+<span id="cb34-11"><a href="#cb34-11"></a>df.est[<span class="dv">1</span>,<span class="dv">2</span>] <span class="ot">&lt;-</span> coef[<span class="dv">1</span>,<span class="dv">2</span>]</span>
+<span id="cb34-12"><a href="#cb34-12"></a>df.est[<span class="dv">2</span>,<span class="dv">2</span>] <span class="ot">&lt;-</span> coef[<span class="dv">2</span>,<span class="dv">2</span>]<span class="sc">+</span>coef[<span class="dv">1</span>,<span class="dv">2</span>] <span class="co"># error值</span></span>
+<span id="cb34-13"><a href="#cb34-13"></a>df.est[,<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'congruent'</span>,<span class="st">'incongruent'</span>) <span class="co"># 条件</span></span>
+<span id="cb34-14"><a href="#cb34-14"></a></span>
+<span id="cb34-15"><a href="#cb34-15"></a><span class="fu">ggplot</span>(<span class="at">data =</span> df.est,</span>
+<span id="cb34-16"><a href="#cb34-16"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> condition,</span>
+<span id="cb34-17"><a href="#cb34-17"></a>                     <span class="at">y =</span> beta))<span class="sc">+</span></span>
+<span id="cb34-18"><a href="#cb34-18"></a></span>
+<span id="cb34-19"><a href="#cb34-19"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span>                         <span class="co"># 绘制点</span></span>
+<span id="cb34-20"><a href="#cb34-20"></a>  <span class="fu">geom_segment</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> condition, <span class="at">y =</span> beta,         <span class="co"># 绘制连线</span></span>
+<span id="cb34-21"><a href="#cb34-21"></a>                   <span class="at">xend =</span> <span class="fu">lead</span>(condition),</span>
+<span id="cb34-22"><a href="#cb34-22"></a>                   <span class="at">yend =</span> <span class="fu">lead</span>(beta)))<span class="sc">+</span></span>
+<span id="cb34-23"><a href="#cb34-23"></a>  <span class="fu">geom_errorbar</span>(<span class="at">mapping =</span><span class="fu">aes</span>(<span class="at">ymin=</span>beta<span class="sc">-</span>error, <span class="co"># 绘制误差线</span></span>
+<span id="cb34-24"><a href="#cb34-24"></a>                    <span class="at">ymax=</span>beta<span class="sc">+</span>error),</span>
+<span id="cb34-25"><a href="#cb34-25"></a>                <span class="at">width=</span><span class="fl">0.2</span>)<span class="sc">+</span></span>
+<span id="cb34-26"><a href="#cb34-26"></a>  <span class="fu">theme_apa</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="lecture9_files/figure-revealjs/unnamed-chunk-20-1.png" width="960" class="r-stretch quarto-figure-center"></section></section>
+<section>
+<section id="分层线性模型的应用" class="title-slide slide level1 center">
+<h1>分层线性模型的应用</h1>
+
+</section>
+<section id="元分析meta-analysis" class="slide level2">
+<h2>元分析(meta-analysis)</h2>
+<p>通过综合一组研究来评估效应量的大小。由于不同研究的结果之间往往涉及到不同质的群体或不同的实验条件。</p>
+
+<img data-src="images/1698909987884.jpg" class="r-stretch quarto-figure-center"><center>
+https://bookdown.org/MathiasHarrer/Doing_Meta_Analysis_in_R/forest.html
+</center>
+</section>
+<section id="section-40" class="slide level2">
+<h2></h2>
+
+<img data-src="images/1698910073807.jpg" class="r-stretch quarto-figure-center"><center>
+https://bookdown.org/MathiasHarrer/Doing_Meta_Analysis_in_R/forest.html
+</center>
+</section>
+<section id="长期追踪" class="slide level2">
+<h2>长期追踪</h2>
+<p>在一段时间内对儿童进行多次观察，不同时间的观测数据形成数据结构的第一层，而儿童之间的个体差异形成数据结构的第二层，这样就可以探索个体在发展趋势上的差异。</p>
+
+<img data-src="images/1698910263840.jpg" class="r-stretch quarto-figure-center"></section>
+<section id="section-41" class="slide level2">
+<h2></h2>
+<p>目前我们介绍的HLM仅局限于组间实验设计，对于更复杂的重复测量设计、混合设计或者嵌套设计则需要更复杂的HLM。</p>
+<p>目前我们的因变量是连续变量，当因变量为分类变量时，我们就需要使用GLMM(generalized linear mixed models)</p>
+</section>
+<section id="总结" class="slide level2">
+<h2>总结</h2>
+<ul>
+<li><p>分层线性模型介绍</p></li>
+<li><p>分层线性模型举例</p></li>
+<li><p>分层线性模型应用</p></li>
+</ul>
+
+<img src="images/image-393370223.png" class="slide-logo r-stretch"><div class="footer footer-default">
+
+</div>
+</section></section>
+    </div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="lecture9_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="lecture9_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="lecture9_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="lecture9_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="lecture9_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="lecture9_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="lecture9_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="lecture9_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="lecture9_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="lecture9_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'smaller': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        text: function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+      });
+      clipboard.on('success', function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      });
+      function tippyHover(el, contentFn) {
+        const config = {
+          allowHTML: true,
+          content: contentFn,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start'
+        };
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          return note.innerHTML;
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>
