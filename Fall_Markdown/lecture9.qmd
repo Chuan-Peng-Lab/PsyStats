@@ -110,9 +110,9 @@ Hu Chuan-Peng
 
 ## 形式化表达
 
--   观测项: $y_i=\beta_0+\beta_1x_i+\epsilon,\epsilon \sim N(0,\sigma^2)$
+-   观测项: $salary_{i,j}=\beta_0+\beta_1x_i+\epsilon,\epsilon \sim N(0,\sigma^2)$
 
--   $salary_{i,j}=\beta_0+\beta_1x_{i,j}+\epsilon$
+-   预测项: $\hat{salary_{i,j}}=\beta_0+\beta_1x_{i,j}$
 
     -   i: 第i个员工
     -   j: 第j个学院
@@ -166,7 +166,7 @@ Hu Chuan-Peng
 
     -   认为不同学院完全异质:
 
-    $salary_{i,j}=\beta_{0,j}+\beta_{1,j}experience_{i,j}+\epsilon_j$ (no pooling，非池化)
+    $salary_{i,j}=\beta_{0,j}+\beta_{1,j}experience_{i,j}+\epsilon$ (no pooling，非池化)
 
 实际上，同一个学校的不同学院的员工的起始工资以及工龄对工资的影响存在相关。是否有介于两者之间的建模方式？
 
@@ -180,11 +180,11 @@ Hu Chuan-Peng
 
     -   认为不同学院完全异质:
 
-    $salary_{i,j}=\beta_{0,j}+\beta_{1,j}experience_{i,j}+\epsilon_j$ (no pooling)</br>
+    $salary_{i,j}=\beta_{0,j}+\beta_{1,j}experience_{i,j}+\epsilon$ (no pooling)</br>
 
 -   在 no pooling的基础之上增加一层模型？</br>
 
--   $\beta_{0,j}\sim N(\mu_{\beta_0},sigma_{\beta_0}^2)$ -$\beta_{1,j}\sim N(\mu_{\beta_1},sigma_{\beta_1}^2)$
+-   $\beta_{0,j}\sim N(\mu_{\beta_0},\sigma_{\beta_0}^2)$ -$\beta_{1,j}\sim N(\mu_{\beta_1},\sigma_{\beta_1}^2)$
 
 ##  Partial pooling
 
@@ -224,7 +224,7 @@ Hu Chuan-Peng
 
 -   $y_{i,j}=\beta_{0,j}+\beta_1experience_{i,j}+\epsilon,\epsilon \sim N(0,\sigma_e)$
 
--   $\beta_{0.j}=\beta_0+effect_{group} = \beta_0+\mu_j,\mu \sim N(0,\sigma_j)$
+-   $\beta_{0,j}=\beta_0+effect_{group} = \beta_0+\mu_j,\mu_j \sim N(0,\sigma_j)$
 
     -   $\beta_0$:总体(学校)的员工工资的平均值
     -   $\mu_j$:组(学院)的平均值与总体(学校)平均值的差值
@@ -261,21 +261,21 @@ Hu Chuan-Peng
     -   i:第i个员工
     -   j:第j个学院
 
-##
 
-
-    -   $\epsilon \sim N(0,\sigma_e)$
-    -   $\beta_{1,j} \sim N(\beta_1,\sigma_1)$
-    -   $\beta_1$:总体水平(学校)的工龄与工资的关系
-    -   第j组的斜率: $\beta_{1,j}=\beta_1+\mu_{1,j}$
 
 ## 
 
--   $y_{i,j}=\beta_0+\beta_{1,j}experience_{i,j}+\epsilon$
+-   $y_{i,j}=\beta_0+\beta_{1,j}experience_{i,j}+\epsilon,\epsilon \sim N(0,\sigma_e)$
 
--   固定的截距(fixed intercepts):$\beta_0$
+-   $\beta_{1,j}=\beta_1+effect_{group} = \beta_1+\mu_j,\mu_j \sim N(0,\sigma_j)$
 
--   变化的斜率(varying slopes):$\beta_{1,j}$
+    -   $\beta_1$:总体(学校)工龄对员工工资影响的平均值
+    -   $\mu_j$:组(学院)工龄对员工工资影响的平均值与总体(学校)平均值的差值
+    
+    
+
+
+
 
 
 
@@ -820,9 +820,9 @@ ggplot(data = df.est,
 
 ## 
 
-目前我们介绍的HLM仅局限于组间实验设计，对于更复杂的重复测量设计、混合设计或者嵌套设计则需要更复杂的HLM。
+- 目前我们介绍的HLM仅局限于组间实验设计，对于更复杂的重复测量设计、混合设计或者嵌套设计则需要更复杂的HLM。
 
-目前我们的因变量是连续变量，当因变量为分类变量时，我们就需要使用GLMM(generalized linear mixed models)
+- 目前我们的因变量是连续变量，当因变量为分类变量时，我们就需要使用GLMM(generalized linear mixed models)
 
 ## 总结
 
