@@ -549,8 +549,8 @@
 <section id="形式化表达" class="slide level2">
 <h2>形式化表达</h2>
 <ul>
-<li><p>观测项: <span class="math inline">\(y_i=\beta_0+\beta_1x_i+\epsilon,\epsilon \sim N(0,\sigma^2)\)</span></p></li>
-<li><p><span class="math inline">\(salary_{i,j}=\beta_0+\beta_1x_{i,j}+\epsilon\)</span></p>
+<li><p>观测项: <span class="math inline">\(salary_{i,j}=\beta_0+\beta_1x_i+\epsilon,\epsilon \sim N(0,\sigma^2)\)</span></p></li>
+<li><p>预测项: <span class="math inline">\(\hat{salary_{i,j}}=\beta_0+\beta_1x_{i,j}\)</span></p>
 <ul>
 <li>i: 第i个员工</li>
 <li>j: 第j个学院</li>
@@ -611,7 +611,7 @@ http://mfviz.com/hierarchical-models/
 <ul>
 <li>认为不同学院完全异质:</li>
 </ul>
-<p><span class="math inline">\(salary_{i,j}=\beta_{0,j}+\beta_{1,j}experience_{i,j}+\epsilon_j\)</span> (no pooling，非池化)</p></li>
+<p><span class="math inline">\(salary_{i,j}=\beta_{0,j}+\beta_{1,j}experience_{i,j}+\epsilon\)</span> (no pooling，非池化)</p></li>
 </ul>
 <p>实际上，同一个学校的不同学院的员工的起始工资以及工龄对工资的影响存在相关。是否有介于两者之间的建模方式？</p>
 </section>
@@ -626,9 +626,9 @@ http://mfviz.com/hierarchical-models/
 <ul>
 <li>认为不同学院完全异质:</li>
 </ul>
-<p><span class="math inline">\(salary_{i,j}=\beta_{0,j}+\beta_{1,j}experience_{i,j}+\epsilon_j\)</span> (no pooling)<br></p></li>
+<p><span class="math inline">\(salary_{i,j}=\beta_{0,j}+\beta_{1,j}experience_{i,j}+\epsilon\)</span> (no pooling)<br></p></li>
 <li><p>在 no pooling的基础之上增加一层模型？<br></p></li>
-<li><p><span class="math inline">\(\beta_{0,j}\sim N(\mu_{\beta_0},sigma_{\beta_0}^2)\)</span> -<span class="math inline">\(\beta_{1,j}\sim N(\mu_{\beta_1},sigma_{\beta_1}^2)\)</span></p></li>
+<li><p><span class="math inline">\(\beta_{0,j}\sim N(\mu_{\beta_0},\sigma_{\beta_0}^2)\)</span> -<span class="math inline">\(\beta_{1,j}\sim N(\mu_{\beta_1},\sigma_{\beta_1}^2)\)</span></p></li>
 </ul>
 </section>
 <section id="partial-pooling" class="slide level2">
@@ -681,7 +681,7 @@ http://mfviz.com/hierarchical-models/
 <h2></h2>
 <ul>
 <li><p><span class="math inline">\(y_{i,j}=\beta_{0,j}+\beta_1experience_{i,j}+\epsilon,\epsilon \sim N(0,\sigma_e)\)</span></p></li>
-<li><p><span class="math inline">\(\beta_{0.j}=\beta_0+effect_{group} = \beta_0+\mu_j,\mu \sim N(0,\sigma_j)\)</span></p>
+<li><p><span class="math inline">\(\beta_{0,j}=\beta_0+effect_{group} = \beta_0+\mu_j,\mu_j \sim N(0,\sigma_j)\)</span></p>
 <ul>
 <li><span class="math inline">\(\beta_0\)</span>:总体(学校)的员工工资的平均值</li>
 <li><span class="math inline">\(\mu_j\)</span>:组(学院)的平均值与总体(学校)平均值的差值</li>
@@ -725,19 +725,18 @@ http://mfviz.com/hierarchical-models/
 <li>变化的斜率(varying slopes):<span class="math inline">\(\beta_{1,j}\)</span></li>
 <li>i:第i个员工</li>
 <li>j:第j个学院</li>
-<li><span class="math inline">\(\epsilon \sim N(0,\sigma_e)\)</span></li>
-<li><span class="math inline">\(\beta_{1,j} \sim N(\beta_1,\sigma_1)\)</span></li>
-<li><span class="math inline">\(\beta_1\)</span>:总体水平(学校)的工龄与工资的关系</li>
-<li>第j组的斜率: <span class="math inline">\(\beta_{1,j}=\beta_1+\mu_{1,j}\)</span></li>
 </ul></li>
 </ul>
 </section>
 <section id="section-14" class="slide level2">
 <h2></h2>
 <ul>
-<li><p><span class="math inline">\(y_{i,j}=\beta_0+\beta_{1,j}experience_{i,j}+\epsilon\)</span></p></li>
-<li><p>固定的截距(fixed intercepts):<span class="math inline">\(\beta_0\)</span></p></li>
-<li><p>变化的斜率(varying slopes):<span class="math inline">\(\beta_{1,j}\)</span></p></li>
+<li><p><span class="math inline">\(y_{i,j}=\beta_0+\beta_{1,j}experience_{i,j}+\epsilon,\epsilon \sim N(0,\sigma_e)\)</span></p></li>
+<li><p><span class="math inline">\(\beta_{1,j}=\beta_1+effect_{group} = \beta_1+\mu_j,\mu_j \sim N(0,\sigma_j)\)</span></p>
+<ul>
+<li><span class="math inline">\(\beta_1\)</span>:总体(学校)工龄对员工工资影响的平均值</li>
+<li><span class="math inline">\(\mu_j\)</span>:组(学院)工龄对员工工资影响的平均值与总体(学校)平均值的差值</li>
+</ul></li>
 </ul>
 </section>
 <section id="情况三" class="slide level2">
@@ -754,10 +753,8 @@ http://mfviz.com/hierarchical-models/
 <h2></h2>
 <ul>
 <li><p>变化斜率-变化截距模型：</p></li>
-<li><p><span class="math inline">\(y_{i,j}=\beta_0+\beta_{1,j}experience_{i,j}+\epsilon,\epsilon \sim N(0,\sigma_e)\)</span></p>
+<li><p><span class="math inline">\(y_{i,j}=\beta_{0,j}+\beta_{1,j}experience_{i,j}+\epsilon,\epsilon \sim N(0,\sigma_e)\)</span></p>
 <ul>
-<li><p>变化的截距:<span class="math inline">\(\beta_0\)</span></p></li>
-<li><p>变化的斜率:<span class="math inline">\(\beta_1\)</span></p></li>
 <li><p>i:第i个员工</p></li>
 <li><p>j:第j个学院</p></li>
 <li><p>变化的截距:<span class="math inline">\(\beta_{0,j}\)</span></p></li>
