@@ -445,12 +445,13 @@
 <h1>分层线性模型简介</h1>
 
 </section>
-<section id="分层线性模型" class="slide level2">
-<h2>分层线性模型</h2>
+<section id="分层线性模型hierarchical-linear-model-hlm" class="slide level2">
+<h2>分层线性模型(Hierarchical Linear Model, HLM)</h2>
 <ul>
 <li><p>分层线性模型/多层线性模型(HLM): 关注”多层嵌套数据”，在一个以上层次上变化参数的线性模型。</p>
 <ul>
 <li>其他近义词：</li>
+<li>层级模型（Hierarchical Model，HM）</li>
 <li>多水平模型（Multilevel Model，MLM）</li>
 <li>线性混合模型（Linear Mixed Model）</li>
 <li>混合效应模型（Mixed Effects Model）</li>
@@ -540,8 +541,8 @@
 <ul>
 <li><p>用概率方式表达:</p>
 <ul>
-<li><p>预测项:<span class="math inline">\(\mu_i=\beta_0+\beta_1x_i\)</span></p></li>
-<li><p>观测项:<span class="math inline">\(y_i \sim N(\mu_i,\epsilon^2)\)</span></p></li>
+<li><p>预测项: <span class="math inline">\(\mu_i=\beta_0+\beta_1x_i\)</span></p></li>
+<li><p>观测项: <span class="math inline">\(y_i \sim N(\mu_i,\epsilon^2)\)</span></p></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -550,11 +551,11 @@
 <h2>形式化表达</h2>
 <ul>
 <li><p>观测项: <span class="math inline">\(salary_{i,j}=\beta_0+\beta_1x_i+\epsilon,\epsilon \sim N(0,\sigma^2)\)</span></p></li>
-<li><p>预测项: <span class="math inline">\(\hat{salary_{i,j}}=\beta_0+\beta_1x_{i,j}\)</span></p>
+<li><p>预测项: <span class="math inline">\(\widehat{salary_{i,j}}=\beta_0+\beta_1x_{i,j}\)</span></p>
 <ul>
-<li>i: 第i个员工</li>
-<li>j: 第j个学院</li>
-<li><span class="math inline">\(salary_{i,j}\)</span>:对每个员工工资的预测值，回归线上的点</li>
+<li><span class="math inline">\(i\)</span>: 第<span class="math inline">\(i\)</span>个员工</li>
+<li><span class="math inline">\(j\)</span>: 第<span class="math inline">\(j\)</span>个学院</li>
+<li><span class="math inline">\(\widehat{salary_{i,j}}\)</span>:对每个员工工资的预测值，回归线上的点</li>
 <li><span class="math inline">\(\beta_0\)</span>:全校员工的平均工资</li>
 <li><span class="math inline">\(\epsilon\)</span>:残差，观测值距离回归线的距离</li>
 </ul></li>
@@ -568,15 +569,15 @@
 
 <img data-src="images/1698910895802.png" class="r-stretch quarto-figure-center"><p>散点的不同颜色代表不同学院</p>
 <center>
-http://mfviz.com/hierarchical-models/
+Source: http://mfviz.com/hierarchical-models/
 </center>
 </section>
 <section id="section-3" class="slide level2">
 <h2></h2>
 <ul>
 <li>在上述这种线性模型中，我们不考虑个体的其他分组信息，假定所有数据同质，所有数据来自一个同分布的正态总体， X（工龄）对 Y（工资）的影响固定。</li>
-<li>代码形式：<span class="math inline">\(salary \sim experience +1,data = data\)</span></li>
-<li>简单模型形式: <span class="math inline">\(salary_i=\beta_0+\beta_1experience_i+\epsilon\)</span>
+<li>代码形式：<span class="math inline">\(salary \sim 1 + experience,data = data\)</span></li>
+<li>简单模型形式: <span class="math inline">\(salary_i = \beta_0 + \beta_1 experience_i + \epsilon\)</span>
 <ul>
 <li><span class="math inline">\(\epsilon \sim N(0,\sigma^2)\)</span></li>
 </ul></li>
@@ -586,24 +587,30 @@ http://mfviz.com/hierarchical-models/
 <h2></h2>
 <ul>
 <li><p>回顾一下数据，其来自四个学院的数据。</p></li>
-<li><p>众所周知，不同学院的经济水平并不一致，员工工资因此也会有所差异。这种学院的差异并未考虑在上述简单的线性模型中。</p></li>
+<li><p>不同学院的经济水平并不一致，员工工资因此也会有所差异。学院间差异并未考虑在上述简单的线性模型中。</p></li>
 <li><p>如何考虑这种不同”组”的异质性？</p></li>
 </ul>
 </section>
 <section id="section-5" class="slide level2">
 <h2></h2>
 <ul>
-<li><p>由于不同组（学院）间的差异较大，起始工资不同，X（工龄）对 Y（工资）的影响不同，不同组间在回归模型的截距和斜率上可能没有关系。</p></li>
-<li><p>以学院为单位进行回归分析：</p>
+<li><p>由于不同组（学院）间的差异较大，起始工资不同，X（工龄）对 Y（工资）的影响不同，不同组间在回归模型的截距和斜率上可能有关系。</p></li>
+<li><p>也就是说，各个学院可能有自己的截距和（或）自己斜率。</p></li>
+</ul>
+<p><br></p>
 <ul>
-<li><span class="math inline">\(salary_{i,j}=\beta_{0,j}+\beta_{1,j}experience_{i,j}+\epsilon\)</span></li>
+<li><p>这意味着：我们需要以学院为单位进行回归分析：</p>
+<ul>
+<li><p><span class="math inline">\(salary_{i,j}=\beta_{0,j}+\beta_{1,j}experience_{i,j}+\epsilon\)</span></p></li>
+<li><p><span class="math inline">\(\beta_{0,j}\)</span>: 模型中第<span class="math inline">\(j\)</span>个学院的截距；</p></li>
+<li><p><span class="math inline">\(\beta_{1,j}\)</span>: 模型中第<span class="math inline">\(j\)</span>个学院的斜率；</p></li>
 </ul></li>
 </ul>
 </section>
 <section id="section-6" class="slide level2">
 <h2></h2>
 <ul>
-<li><p>建模方式：</p>
+<li><p>对于上述种情况，我们可以选择的建模方式：</p>
 <ul>
 <li>无视不同学院的异质性:</li>
 </ul>
@@ -627,8 +634,11 @@ http://mfviz.com/hierarchical-models/
 <li>认为不同学院完全异质:</li>
 </ul>
 <p><span class="math inline">\(salary_{i,j}=\beta_{0,j}+\beta_{1,j}experience_{i,j}+\epsilon\)</span> (no pooling)<br></p></li>
-<li><p>在 no pooling的基础之上增加一层模型？<br></p></li>
-<li><p><span class="math inline">\(\beta_{0,j}\sim N(\mu_{\beta_0},\sigma_{\beta_0}^2)\)</span> -<span class="math inline">\(\beta_{1,j}\sim N(\mu_{\beta_1},\sigma_{\beta_1}^2)\)</span></p></li>
+<li><p>在 no pooling的基础之上增加一层模型？<br></p>
+<ul>
+<li><span class="math inline">\(\beta_{0,j}\sim N(\mu_{\beta_0},\sigma_{\beta_0}^2)\)</span></li>
+<li><span class="math inline">\(\beta_{1,j}\sim N(\mu_{\beta_1},\sigma_{\beta_1}^2)\)</span></li>
+</ul></li>
 </ul>
 </section>
 <section id="partial-pooling" class="slide level2">
@@ -655,9 +665,9 @@ http://mfviz.com/hierarchical-models/
 <ul>
 <li>变化截距-固定斜率模型
 <ul>
-<li>假定不同学院的起始工资不同(变化截距)，但工资与工龄之间的关系在不同学院中相同（固定斜率,<span class="math inline">\(\beta_1\)</span> ）。</li>
-<li>变化效应(varying effects):线性模型中的参数，其随着分组的不同而取值不同，也被叫做随机效应（random effects）。</li>
-<li>固定效应(fixed effects):线性模型中参数，其不因分组不同而取值不同，而是仅反映了总体上的参数值。</li>
+<li>假定不同学院的起始工资不同(变化截距)，但工资与工龄之间的关系在不同学院中相同（固定斜率，<span class="math inline">\(\beta_1\)</span> ）。</li>
+<li>变化效应(varying effects): 线性模型中的参数，其随着分组的不同而取值不同，也被叫做随机效应（random effects）。</li>
+<li>固定效应(fixed effects): 线性模型中参数，其不因分组不同而取值不同，而是仅反映了总体上的参数值。</li>
 </ul></li>
 </ul>
 </section>
@@ -666,42 +676,40 @@ http://mfviz.com/hierarchical-models/
 <ul>
 <li>变化截距-固定斜率模型：
 <ul>
-<li>假定不同学院的平均工资不同(随机截距)，但工资与工龄之间的变量关系在不同学院中保持相同(固定斜率，<span class="math inline">\(\beta_1\)</span>)。</li>
+<li>假定不同学院的平均工资不同(变化截距)，但工资与工龄之间的变量关系在不同学院中保持相同(固定斜率，<span class="math inline">\(\beta_1\)</span>)。</li>
 </ul></li>
 <li><span class="math inline">\(y_{i,j}=\beta_{0,j}+\beta_1experience_{i,j}+\epsilon\)</span></li>
 <li>固定效应（fixed effects）：固定的斜率，<span class="math inline">\(\beta_1\)</span>
 <ul>
 <li>变化的截距/随机截距(varying/ random intercepts):<span class="math inline">\(\beta_{0,j}\)</span></li>
-<li>i:第i个员工</li>
-<li>j:第j个学院</li>
+<li><span class="math inline">\(i\)</span>: 第<span class="math inline">\(i\)</span>个员工.</li>
+<li><span class="math inline">\(j\)</span>: 第<span class="math inline">\(j\)</span>个学院.</li>
 </ul></li>
 </ul>
 </section>
 <section id="section-10" class="slide level2">
 <h2></h2>
+<p><span class="math display">\[y_{i,j} = \beta_{0,j} + \beta_1experience_{i,j} + \epsilon\]</span> <span class="math display">\[\epsilon \sim N(0,\sigma_e)\]</span></p>
+<p><span class="math display">\[\beta_{0,j} = \beta_0 + effect_{group} = \beta_0 + b_{0, j}\]</span> <span class="math display">\[b_{0, j} \sim N(0,\sigma_j)\]</span></p>
 <ul>
-<li><p><span class="math inline">\(y_{i,j}=\beta_{0,j}+\beta_1experience_{i,j}+\epsilon,\epsilon \sim N(0,\sigma_e)\)</span></p></li>
-<li><p><span class="math inline">\(\beta_{0,j}=\beta_0+effect_{group} = \beta_0+\mu_j,\mu_j \sim N(0,\sigma_j)\)</span></p>
-<ul>
-<li><span class="math inline">\(\beta_0\)</span>:总体(学校)的员工工资的平均值</li>
-<li><span class="math inline">\(\mu_j\)</span>:组(学院)的平均值与总体(学校)平均值的差值</li>
-</ul></li>
+<li><span class="math inline">\(\beta_0\)</span>: 总体(学校)的员工工资的平均值;</li>
+<li><span class="math inline">\(b_{0, j}\)</span>: 组(学院)的平均值与总体(学校)平均值的差值.</li>
 </ul>
 </section>
 <section id="section-11" class="slide level2">
 <h2></h2>
+<p><span class="math display">\[salary_{i,j} = (\beta_0 + b_{0,j}) + \beta_1 experience_{i,j} + \epsilon\]</span></p>
 <ul>
-<li><p><span class="math inline">\(salary_{i,j}=(\beta_0+effect_{group})+\beta_1experience_{i,j}+\epsilon\)</span></p></li>
-<li><p>简化: <span class="math inline">\(salary_{i,j}=\beta_{0.j}+\beta_1experience_{i,j}+\epsilon\)</span></p>
+<li><p>简化: <span class="math inline">\(salary_{i,j} = \beta_{0, j} + \beta_1 experience_{i,j} + \epsilon\)</span></p>
 <ul>
-<li><span class="math inline">\(\beta_{0,j}\sim N(\beta_0,\sigma_0), \epsilon \sim N(0,\sigma_e)\)</span></li>
+<li><span class="math inline">\(\beta_{0,j} \sim N(\beta_0,\sigma_0)\)</span>, <span class="math inline">\(\epsilon \sim N(0,\sigma_e)\)</span></li>
 </ul></li>
 </ul>
 </section>
 <section id="情况二" class="slide level2">
 <h2>情况二</h2>
 <ul>
-<li>实际上，工资与工龄之间的变量关系在不同学院中也可能不同(斜率<span class="math inline">\(\beta_1\)</span>也非相同) 此时我们假定不同学院的基线水平相同(固定截距，<span class="math inline">\(\beta_0\)</span>)工资与工龄之间的变量关系在不同学院中不同（随机斜率）</li>
+<li>实际上，工资与工龄之间的变量关系在不同学院中也可能不同(斜率<span class="math inline">\(\beta_1\)</span>也非相同) 此时我们假定不同学院的基线水平相同(固定截距，<span class="math inline">\(\beta_0\)</span>)工资与工龄之间的变量关系在不同学院中不同（变化/随机斜率）</li>
 </ul>
 
 <img data-src="images/1698817873784.jpg" class="r-stretch quarto-figure-center"><center>
@@ -711,31 +719,31 @@ http://mfviz.com/hierarchical-models/
 <section id="section-12" class="slide level2">
 <h2></h2>
 <ul>
-<li>我们假定不同学院的基线水平相同(固定截距,<span class="math inline">\(\beta_0\)</span>)，工资与工龄之间的变量关系在不同学院中不同（随机斜率）</li>
+<li>我们假定不同学院的基线水平相同(固定截距，<span class="math inline">\(\beta_0\)</span>)，工资与工龄之间的变量关系在不同学院中不同（变化/随机斜率）</li>
 <li>变化的效应(varying effect)：X（工龄）对Y（工资）的影响随着分组变量（group，学院）的变化而变化， X（工龄）受到分组的影响。</li>
 </ul>
 </section>
 <section id="section-13" class="slide level2">
 <h2></h2>
 <ul>
-<li><p>变化斜率-固定截距模型</p></li>
-<li><p><span class="math inline">\(y_{i,j}=\beta_0+\beta_{1,j}experience_{i,j}+\epsilon,\epsilon \sim N(0,\sigma_e)\)</span></p>
+<li>固定截距-变化斜率模型</li>
+</ul>
+<p><span class="math display">\[y_{i,j} = \beta_0 + \beta_{1,j} experience_{i,j} + \epsilon\]</span> <span class="math display">\[\epsilon \sim N(0,\sigma_e)\]</span></p>
 <ul>
-<li>固定的截距(fixed intercepts):<span class="math inline">\(\beta_0\)</span></li>
-<li>变化的斜率(varying slopes):<span class="math inline">\(\beta_{1,j}\)</span></li>
-<li>i:第i个员工</li>
-<li>j:第j个学院</li>
-</ul></li>
+<li>固定的截距(fixed intercepts): <span class="math inline">\(\beta_0\)</span></li>
+<li>变化/随机的斜率(varying/random slopes): <span class="math inline">\(\beta_{1,j}\)</span></li>
+<li><span class="math inline">\(i\)</span>:第<span class="math inline">\(i\)</span>个员工</li>
+<li><span class="math inline">\(j\)</span>:第<span class="math inline">\(j\)</span>个学院</li>
 </ul>
 </section>
 <section id="section-14" class="slide level2">
 <h2></h2>
+<p><span class="math display">\[y_{i,j}=\beta_0+\beta_{1,j}experience_{i,j}+\epsilon\]</span> <span class="math display">\[\epsilon \sim N(0,\sigma_e)\]</span></p>
 <ul>
-<li><p><span class="math inline">\(y_{i,j}=\beta_0+\beta_{1,j}experience_{i,j}+\epsilon,\epsilon \sim N(0,\sigma_e)\)</span></p></li>
-<li><p><span class="math inline">\(\beta_{1,j}=\beta_1+effect_{group} = \beta_1+\mu_j,\mu_j \sim N(0,\sigma_j)\)</span></p>
+<li><p><span class="math inline">\(\beta_{1,j} = \beta_1 + effect_{1, group} = \beta_1 + b_{1, j}\)</span>, <span class="math inline">\(b_{1, j} \sim N(0,\sigma_j)\)</span></p>
 <ul>
-<li><span class="math inline">\(\beta_1\)</span>:总体(学校)工龄对员工工资影响的平均值</li>
-<li><span class="math inline">\(\mu_j\)</span>:组(学院)工龄对员工工资影响的平均值与总体(学校)平均值的差值</li>
+<li><span class="math inline">\(\beta_1\)</span>: 总体(学校)工龄对员工工资影响的平均值</li>
+<li><span class="math inline">\(b_{1, j}\)</span>: 组(学院)工龄对员工工资影响的平均值与总体(学校)平均值的差值</li>
 </ul></li>
 </ul>
 </section>
@@ -908,8 +916,8 @@ Residuals:
 
 Coefficients:
                      Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)           681.751      1.174  580.63   &lt;2e-16 ***
-conditionincongruent  123.413      1.665   74.11   &lt;2e-16 ***
+(Intercept)           681.751      1.174   580.6   &lt;2e-16 ***
+conditionincongruent  123.413      1.665    74.1   &lt;2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
@@ -1413,8 +1421,10 @@ https://bookdown.org/MathiasHarrer/Doing_Meta_Analysis_in_R/forest.html
 <img data-src="images/1698910263840.jpg" class="r-stretch quarto-figure-center"></section>
 <section id="section-41" class="slide level2">
 <h2></h2>
-<p>目前我们介绍的HLM仅局限于组间实验设计，对于更复杂的重复测量设计、混合设计或者嵌套设计则需要更复杂的HLM。</p>
-<p>目前我们的因变量是连续变量，当因变量为分类变量时，我们就需要使用GLMM(generalized linear mixed models)</p>
+<ul>
+<li><p>目前我们介绍的HLM仅局限于组间实验设计，对于更复杂的重复测量设计、混合设计或者嵌套设计则需要更复杂的HLM。</p></li>
+<li><p>目前我们的因变量是连续变量，当因变量为分类变量时，我们就需要使用GLMM(generalized linear mixed models)</p></li>
+</ul>
 </section>
 <section id="总结" class="slide level2">
 <h2>总结</h2>

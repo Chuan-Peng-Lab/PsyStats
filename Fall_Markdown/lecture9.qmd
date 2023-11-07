@@ -65,11 +65,12 @@ Hu Chuan-Peng
 
 # 分层线性模型简介
 
-## 分层线性模型
+## 分层线性模型(Hierarchical Linear Model, HLM)
 
 -   分层线性模型/多层线性模型(HLM): 关注"多层嵌套数据"，在一个以上层次上变化参数的线性模型。
 
     -   其他近义词：
+    -   层级模型（Hierarchical Model，HM）
     -   多水平模型（Multilevel Model，MLM）
     -   线性混合模型（Linear Mixed Model）
     -   混合效应模型（Mixed Effects Model）
@@ -104,19 +105,19 @@ Hu Chuan-Peng
 
     -   用概率方式表达:
 
-        -   预测项:$\mu_i=\beta_0+\beta_1x_i$
+        -   预测项: $\mu_i=\beta_0+\beta_1x_i$
 
-        -   观测项:$y_i \sim N(\mu_i,\epsilon^2)$
+        -   观测项: $y_i \sim N(\mu_i,\epsilon^2)$
 
 ## 形式化表达
 
 -   观测项: $salary_{i,j}=\beta_0+\beta_1x_i+\epsilon,\epsilon \sim N(0,\sigma^2)$
 
--   预测项: $\hat{salary_{i,j}}=\beta_0+\beta_1x_{i,j}$
+-   预测项: $\widehat{salary_{i,j}}=\beta_0+\beta_1x_{i,j}$
 
-    -   i: 第i个员工
-    -   j: 第j个学院
-    -   $salary_{i,j}$:对每个员工工资的预测值，回归线上的点
+    -   $i$: 第$i$个员工
+    -   $j$: 第$j$个学院
+    -   $\widehat{salary_{i,j}}$:对每个员工工资的预测值，回归线上的点
     -   $\beta_0$:全校员工的平均工资
     -   $\epsilon$:残差，观测值距离回归线的距离
 
@@ -131,34 +132,42 @@ Hu Chuan-Peng
 
 散点的不同颜色代表不同学院
 
-<center>http://mfviz.com/hierarchical-models/</center>
+<center> Source: http://mfviz.com/hierarchical-models/</center>
 
 ## 
 
 -   在上述这种线性模型中，我们不考虑个体的其他分组信息，假定所有数据同质，所有数据来自一个同分布的正态总体， X（工龄）对 Y（工资）的影响固定。
--   代码形式：$salary \sim experience +1,data = data$
--   简单模型形式: $salary_i=\beta_0+\beta_1experience_i+\epsilon$
+-   代码形式：$salary \sim 1 + experience,data = data$
+-   简单模型形式: $salary_i = \beta_0 + \beta_1 experience_i + \epsilon$
     -   $\epsilon \sim N(0,\sigma^2)$
 
 ## 
 
 -   回顾一下数据，其来自四个学院的数据。
 
--   众所周知，不同学院的经济水平并不一致，员工工资因此也会有所差异。这种学院的差异并未考虑在上述简单的线性模型中。
+-   不同学院的经济水平并不一致，员工工资因此也会有所差异。学院间差异并未考虑在上述简单的线性模型中。
 
 -   如何考虑这种不同"组"的异质性？
 
 ## 
 
--   由于不同组（学院）间的差异较大，起始工资不同，X（工龄）对 Y（工资）的影响不同，不同组间在回归模型的截距和斜率上可能没有关系。
+-   由于不同组（学院）间的差异较大，起始工资不同，X（工龄）对 Y（工资）的影响不同，不同组间在回归模型的截距和斜率上可能有关系。
 
--   以学院为单位进行回归分析：
+-   也就是说，各个学院可能有自己的截距和（或）自己斜率。
+
+</br>
+
+-   这意味着：我们需要以学院为单位进行回归分析：
 
     -   $salary_{i,j}=\beta_{0,j}+\beta_{1,j}experience_{i,j}+\epsilon$
+    
+    - $\beta_{0,j}$: 模型中第$j$个学院的截距；
+    
+    - $\beta_{1,j}$: 模型中第$j$个学院的斜率；
 
 ## 
 
--   建模方式：
+-   对于上述种情况，我们可以选择的建模方式：
 
     -   无视不同学院的异质性:
 
@@ -183,8 +192,8 @@ Hu Chuan-Peng
     $salary_{i,j}=\beta_{0,j}+\beta_{1,j}experience_{i,j}+\epsilon$ (no pooling)</br>
 
 -   在 no pooling的基础之上增加一层模型？</br>
-
--   $\beta_{0,j}\sim N(\mu_{\beta_0},\sigma_{\beta_0}^2)$ -$\beta_{1,j}\sim N(\mu_{\beta_1},\sigma_{\beta_1}^2)$
+      -   $\beta_{0,j}\sim N(\mu_{\beta_0},\sigma_{\beta_0}^2)$
+      -   $\beta_{1,j}\sim N(\mu_{\beta_1},\sigma_{\beta_1}^2)$
 
 ##  Partial pooling
 
@@ -206,40 +215,43 @@ Hu Chuan-Peng
 ## 
 
 -   变化截距-固定斜率模型
-    -   假定不同学院的起始工资不同(变化截距)，但工资与工龄之间的关系在不同学院中相同（固定斜率,$\beta_1$ ）。
-    -   变化效应(varying effects):线性模型中的参数，其随着分组的不同而取值不同，也被叫做随机效应（random effects）。
-    -   固定效应(fixed effects):线性模型中参数，其不因分组不同而取值不同，而是仅反映了总体上的参数值。
+    -   假定不同学院的起始工资不同(变化截距)，但工资与工龄之间的关系在不同学院中相同（固定斜率，$\beta_1$ ）。
+    -   变化效应(varying effects): 线性模型中的参数，其随着分组的不同而取值不同，也被叫做随机效应（random effects）。
+    -   固定效应(fixed effects): 线性模型中参数，其不因分组不同而取值不同，而是仅反映了总体上的参数值。
 
 ##
 
 -   变化截距-固定斜率模型：
-    -   假定不同学院的平均工资不同(随机截距)，但工资与工龄之间的变量关系在不同学院中保持相同(固定斜率，$\beta_1$)。
+    -   假定不同学院的平均工资不同(变化截距)，但工资与工龄之间的变量关系在不同学院中保持相同(固定斜率，$\beta_1$)。
 -   $y_{i,j}=\beta_{0,j}+\beta_1experience_{i,j}+\epsilon$
 -   固定效应（fixed effects）：固定的斜率，$\beta_1$
-    -   变化的截距/随机截距(varying/ random intercepts):$\beta_{0,j}$
-    -   i:第i个员工
-    -   j:第j个学院
+    -   变化的截距截距(varying/ random intercepts):$\beta_{0,j}$
+    -   $i$: 第$i$个员工.
+    -   $j$: 第$j$个学院.
 
 ## 
 
--   $y_{i,j}=\beta_{0,j}+\beta_1experience_{i,j}+\epsilon,\epsilon \sim N(0,\sigma_e)$
+   $$y_{i,j} = \beta_{0,j} + \beta_1experience_{i,j} + \epsilon$$ 
+   $$\epsilon \sim N(0,\sigma_e)$$
 
--   $\beta_{0,j}=\beta_0+effect_{group} = \beta_0+\mu_j,\mu_j \sim N(0,\sigma_j)$
+   $$\beta_{0,j} = \beta_0 + effect_{group} = \beta_0 + b_{0, j}$$
+   $$b_{0, j} \sim N(0,\sigma_j)$$
 
-    -   $\beta_0$:总体(学校)的员工工资的平均值
-    -   $\mu_j$:组(学院)的平均值与总体(学校)平均值的差值
+
+-   $\beta_0$: 总体(学校)的员工工资的平均值;
+-   $b_{0, j}$: 组(学院)的平均值与总体(学校)平均值的差值.
 
 ## 
 
--   $salary_{i,j}=(\beta_0+effect_{group})+\beta_1experience_{i,j}+\epsilon$
+$$salary_{i,j} = (\beta_0 + b_{0,j}) + \beta_1 experience_{i,j} + \epsilon$$
 
--   简化: $salary_{i,j}=\beta_{0.j}+\beta_1experience_{i,j}+\epsilon$
+-   简化: $salary_{i,j} = \beta_{0, j} + \beta_1 experience_{i,j} + \epsilon$
 
-    -   $\beta_{0,j}\sim N(\beta_0,\sigma_0), \epsilon \sim N(0,\sigma_e)$
+    -   $\beta_{0,j} \sim N(\beta_0,\sigma_0)$,  $\epsilon \sim N(0,\sigma_e)$
 
 ## 情况二
 
--   实际上，工资与工龄之间的变量关系在不同学院中也可能不同(斜率$\beta_1$也非相同) 此时我们假定不同学院的基线水平相同(固定截距，$\beta_0$)工资与工龄之间的变量关系在不同学院中不同（随机斜率）
+-   实际上，工资与工龄之间的变量关系在不同学院中也可能不同(斜率$\beta_1$也非相同) 此时我们假定不同学院的基线水平相同(固定截距，$\beta_0$)工资与工龄之间的变量关系在不同学院中不同（变化斜率）
 
 ![](images/1698817873784.jpg){fig-align="center"}
 
@@ -247,41 +259,37 @@ Hu Chuan-Peng
 
 ## 
 
--   我们假定不同学院的基线水平相同(固定截距,$\beta_0$)，工资与工龄之间的变量关系在不同学院中不同（随机斜率）
+-   我们假定不同学院的基线水平相同(固定截距，$\beta_0$)，工资与工龄之间的变量关系在不同学院中不同（变化斜率）
 -   变化的效应(varying effect)：X（工龄）对Y（工资）的影响随着分组变量（group，学院）的变化而变化， X（工龄）受到分组的影响。
 
 ## 
 
--   变化斜率-固定截距模型
+-   固定截距-变化斜率模型
 
--   $y_{i,j}=\beta_0+\beta_{1,j}experience_{i,j}+\epsilon,\epsilon \sim N(0,\sigma_e)$
+$$y_{i,j} = \beta_0 + \beta_{1,j} experience_{i,j} + \epsilon$$
+$$\epsilon \sim N(0,\sigma_e)$$
 
-    -   固定的截距(fixed intercepts):$\beta_0$
-    -   变化的斜率(varying slopes):$\beta_{1,j}$
-    -   i:第i个员工
-    -   j:第j个学院
-
+-   固定的截距(fixed intercepts): $\beta_0$
+-   变化的斜率(varying/random slopes): $\beta_{1,j}$
+-   $i$:第$i$个员工
+-   $j$:第$j$个学院
 
 
 ## 
 
--   $y_{i,j}=\beta_0+\beta_{1,j}experience_{i,j}+\epsilon,\epsilon \sim N(0,\sigma_e)$
 
--   $\beta_{1,j}=\beta_1+effect_{group} = \beta_1+\mu_j,\mu_j \sim N(0,\sigma_j)$
+$$y_{i,j}=\beta_0+\beta_{1,j}experience_{i,j}+\epsilon$$ 
+$$\epsilon \sim N(0,\sigma_e)$$
 
-    -   $\beta_1$:总体(学校)工龄对员工工资影响的平均值
-    -   $\mu_j$:组(学院)工龄对员工工资影响的平均值与总体(学校)平均值的差值
+-   $\beta_{1,j} = \beta_1 + effect_{1, group} = \beta_1 + b_{1, j}$, $b_{1, j} \sim N(0,\sigma_j)$
+
+    -   $\beta_1$: 总体(学校)工龄对员工工资影响的平均值
+    -   $b_{1, j}$: 组(学院)工龄对员工工资影响的平均值与总体(学校)平均值的差值
     
-    
-
-
-
-
-
 
 ## 情况三
 
--   实际上，不同学院的不仅基线水平不同（随机截距,$\beta_0$），工资与工龄之间的变量关系在不同学院中也不同（斜率$\beta_1$也非相同，随机斜率$\beta_1$）
+-   实际上，不同学院的不仅基线水平不同（变化截距, $\beta_0$），工资与工龄之间的变量关系在不同学院中也不同（斜率$\beta_1$也非相同，变化斜率$\beta_1$）
 
 
 
@@ -293,15 +301,15 @@ Hu Chuan-Peng
 
 -   变化斜率-变化截距模型：
 
--   $y_{i,j}=\beta_{0,j}+\beta_{1,j}experience_{i,j}+\epsilon,\epsilon \sim N(0,\sigma_e)$
+-   $y_{i,j}=\beta_{0,j}+\beta_{1,j}experience_{i,j} + \epsilon,\epsilon \sim N(0,\sigma_e)$
 
     -   i:第i个员工
 
     -   j:第j个学院
 
-    -   变化的截距:$\beta_{0,j}$
+    -   变化截距:$\beta_{0,j}$
 
-    -   变化的斜率:$\beta_{1,j}$
+    -   变化斜率:$\beta_{1,j}$
     
 
 
@@ -315,7 +323,7 @@ Hu Chuan-Peng
 
 -   变化截距-变化斜率模型
 
--   Level2:$y_{i,j}=\beta_{0,j}+\beta_{1,j}experience_{i,j}+\epsilon$
+-   Level2: $y_{i,j} = \beta_{0,j} + \beta_{1,j} experience_{i,j} + \epsilon$
 
 -   Level1:
 
