@@ -1,0 +1,2184 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="lecture10_files/libs/clipboard/clipboard.min.js"></script>
+<script src="lecture10_files/libs/quarto-html/tabby.min.js"></script>
+<script src="lecture10_files/libs/quarto-html/popper.min.js"></script>
+<script src="lecture10_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="lecture10_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="lecture10_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="lecture10_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="lecture10_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.3.433">
+
+  <title>lecture10</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="lecture10_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="lecture10_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="lecture10_files/libs/revealjs/dist/theme/quarto.css">
+  <link href="lecture10_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="lecture10_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="lecture10_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="lecture10_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-titled.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-titled) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-titled.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-titled .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-titled .callout-title  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-titled.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-titled.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-title {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-title {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-title {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-titled .callout-body > .callout-content > :last-child {
+    margin-bottom: 0.5rem;
+  }
+
+  .callout.callout-titled .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-titled) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-title {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-title {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-title {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-title {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-title {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+
+<section class="slide level2">
+
+<p><br><br></p>
+<h1 style="text-align: center">
+<p>lecture 10</p>
+<p>常用统计检验均是线性模型</p>
+</h1>
+<h2 style="text-align: center">
+</h2>
+<p><br><br></p>
+<h3 style="text-align: center">
+<p>Hu Chuan-Peng</p>
+</h3>
+<h3 style="text-align: center">
+<p>2023-11-14</p>
+</h3>
+<p><br><br></p>
+</section>
+<section id="本次课内容" class="title-slide slide level1 center">
+<h1>本次课内容</h1>
+<ul>
+<li><p>线性模型回顾</p></li>
+<li><p>t 检验是线性模型的特殊形式(自变量为二分变量）</p></li>
+<li><p>方差分析作为线性模型的特殊形式</p></li>
+</ul>
+</section>
+
+<section>
+<section id="part-1-线性模型回顾" class="title-slide slide level1 center">
+<h1>Part 1: 线性模型回顾</h1>
+
+</section>
+<section id="section" class="slide level2">
+<h2></h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<p><br></p>
+<p><br></p>
+<ul>
+<li><p>第五课：线性模型简介</p></li>
+<li><p>第六课：简单线性模型</p></li>
+<li><p>第七课：多元线性模型</p></li>
+<li><p>第八课：线性模型中的虚拟变量与广义线性模型</p></li>
+<li><p>第九课：分层线性模型</p></li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><img data-src="images/1699335765612.jpg"></p>
+</div>
+</div>
+</section>
+<section id="线性模型的三种视角" class="slide level2">
+<h2>线性模型的三种视角</h2>
+
+<img data-src="images/1699336097021.jpg" class="r-stretch"></section>
+<section id="简单线性回归" class="slide level2">
+<h2>简单线性回归</h2>
+
+<img data-src="images/1699336163650.jpg" class="r-stretch"></section>
+<section id="多元线性回归" class="slide level2">
+<h2>多元线性回归</h2>
+
+<img data-src="images/1699336226005.jpg" class="r-stretch"></section>
+<section id="当自变量为离散变量时" class="slide level2">
+<h2>当自变量为离散变量时</h2>
+
+<img data-src="images/1699336336397.jpg" class="r-stretch"><p>https://lindeloev.github.io/tests-as-linear/</p>
+</section>
+<section id="广义线性模型" class="slide level2">
+<h2>广义线性模型</h2>
+
+<img data-src="images/1699336409113.jpg" class="r-stretch"></section>
+<section id="logit-回归" class="slide level2">
+<h2>Logit 回归</h2>
+
+<img data-src="images/1699336460014.jpg" class="r-stretch"></section>
+<section id="section-1" class="slide level2">
+<h2></h2>
+
+<img data-src="images/1699336563683.jpg" class="r-stretch"><p><a href="https://medium.com/analytics-vidhya/the-math-behind-logistic-regression-c2f04ca27bca">The math behind Logistic Regression | by Khushwant Rai | Analytics Vidhya | Medium</a></p>
+</section>
+<section id="section-2" class="slide level2">
+<h2></h2>
+<p><br></p>
+<ul>
+<li>简单线性回归是多元线性回归只有一个自变量的特殊形式</li>
+</ul>
+<p><br></p>
+<ul>
+<li>多元线性回归是广义线性模型的一种特殊形式，连接函数为预测值本身，观测值服从以预测项为均值的正态分布，观测值与预测值之间的差值就是残差。</li>
+</ul>
+</section>
+<section id="分层线性模型hierarchical-linear-models" class="slide level2">
+<h2>分层线性模型(Hierarchical linear models)</h2>
+<ul>
+<li>多水平模型（Multilevel Model，MLM）、线性混合模型（Linear Mixed Model）、混合效应模型（Mixed Effects Model）、随机效应模型（Random Effects Model）…</li>
+</ul>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li><p>部分混合（Partial pooling）</p></li>
+<li><p>组水平（groups）与整体（population）的参数相互制约</p></li>
+<li><p>有三种可能的模型：</p>
+<ul>
+<li><p>变化截距、固定斜率（M1）</p></li>
+<li><p>固定截距、变化斜率（M2）</p></li>
+<li><p>变化截距、变化斜率（M3）</p></li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><img data-src="images/1699336971421.jpg"> <br></p>
+<p>补充材料：<a href="http://mfviz.com/hierarchical-models/">hierarchical-models</a></p>
+</div>
+</div>
+</section>
+<section id="section-3" class="slide level2">
+<h2></h2>
+<ul>
+<li><p>当因变量为分类变量时，我们就需要使用广义线性混合模型(GLMM, generalized linear mixed models)。</p></li>
+<li><p>当数据结构为同一层级时，简单线性模型，多元线性模型，广义线性模型均为广义线性混合模型的一种特殊形式。</p></li>
+</ul>
+</section>
+<section id="section-4" class="slide level2 smaller">
+<h2></h2>
+<table style="width:96%;">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 16%">
+<col style="width: 15%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>简单线性模型</th>
+<th>多元线性模型</th>
+<th>广义线性模型</th>
+<th>分层线性模型</th>
+<th>广义线性混合模型</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>自变量</td>
+<td>一个</td>
+<td>多个</td>
+<td>一个或多个</td>
+<td>一个或多个</td>
+<td>一个或多个</td>
+</tr>
+<tr class="even">
+<td>因变量</td>
+<td>连续变量</td>
+<td>连续变量</td>
+<td>连续/分类变量</td>
+<td>连续变量</td>
+<td>连续/分类变量</td>
+</tr>
+<tr class="odd">
+<td>数据层级</td>
+<td>一层</td>
+<td>一层</td>
+<td>一层</td>
+<td>多层</td>
+<td>多层</td>
+</tr>
+<tr class="even">
+<td>分布形态</td>
+<td>正态分布</td>
+<td>正态分布</td>
+<td>多种分布</td>
+<td>正态分布</td>
+<td>多种分布</td>
+</tr>
+<tr class="odd">
+<td>连接函数</td>
+<td>g(z)=z</td>
+<td>g(z)=z</td>
+<td>g(z)=q</td>
+<td>g(z)=z</td>
+<td>g(z)=q</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="section-5" class="slide level2 smaller">
+<h2></h2>
+<table style="width:99%;">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 32%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: left;">传统的检验(R代码)</th>
+<th style="text-align: left;">线性模型(R代码)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">相关</td>
+<td style="text-align: left;"><p>cor.test(x,y,method=‘Pearson’)</p>
+<p>cor.test(x,y,method=‘Spearman’)</p></td>
+<td style="text-align: left;"><p>lm(y~1+x)</p>
+<p>lm(rank(y)~1+rak(x))</p></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">单样本t检验</td>
+<td style="text-align: left;">t.test(y)</td>
+<td style="text-align: left;">lm(y~1)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">独立样本t检验</td>
+<td style="text-align: left;">t.test(y<sub>1</sub>,y<sub>2</sub>,var.equal=True)</td>
+<td style="text-align: left;">lm(y~ 1+G<sub>2</sub>)<sup>A</sup></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">配对样本t检验</td>
+<td style="text-align: left;">t.test(y<sub>1</sub>,y<sub>2</sub>,paired=True)</td>
+<td style="text-align: left;"><p>lmer(y~x+(1|subject))</p>
+<p>lm(y_1-y_2~1)</p></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">单因素方差分析</td>
+<td style="text-align: left;">aov(y~group)</td>
+<td style="text-align: left;">lm(y~ 1+G<sub>2</sub>+G<sub>3</sub>+…)<sup>A</sup></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">两因素方差分析</td>
+<td style="text-align: left;">aov(y~group+sex)</td>
+<td style="text-align: left;">lm(y~ 1+G<sub>2</sub>+G<sub>3</sub>+…+S<sub>2</sub>+S<sub>3</sub>+…+G<sub>2</sub>*S<sub>2</sub>+…)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="回归与相关分析" class="slide level2">
+<h2>回归与相关分析</h2>
+<ul>
+<li>皮尔逊相关系数</li>
+</ul>
+<p><span class="math inline">\(r=\frac{\sum{(x-\bar{x})(y-\bar{y})}}{nS_xS_y}=\frac{\sum{Z_xZ_y}}{N}\longrightarrow \widehat{Z_y}=rZ_x\)</span></p>
+<ul>
+<li>相关系数可以表示变量间的共同变化的关系，可以使用一个变量的z分数和相关系数来预测另一个变量的z分数。</li>
+</ul>
+</section>
+<section id="section-6" class="slide level2">
+<h2></h2>
+
+<img data-src="images/1699435606638.jpg" class="r-stretch"></section>
+<section id="section-7" class="slide level2">
+<h2></h2>
+
+<img data-src="images/1699435646226.jpg" class="r-stretch"></section>
+<section id="section-8" class="slide level2">
+<h2></h2>
+<ul>
+<li><p>相关系数 = 标准化后的回归系数。</p></li>
+<li><p>相关分析的统计检验</p></li>
+</ul>
+<p><span class="math display">\[t=\left | r \right | \sqrt{\frac{n-2}{1-r^2}} \]</span></p>
+<ul>
+<li>相关分析的统计检验是根据相关系数和转换的t分数在t分布中的位置来决定的。</li>
+</ul>
+</section></section>
+<section>
+<section id="part-2-t-检验是线性模型的特殊形式自变量为二分变量" class="title-slide slide level1 center">
+<h1>Part 2: <br><em>t</em> 检验是线性模型的特殊形式<br>(自变量为二分变量）</h1>
+
+</section>
+<section id="t检验" class="slide level2">
+<h2><em>t</em>检验</h2>
+<ul>
+<li>独立样本<em>t</em>检验
+<ul>
+<li>两样本之间的差异呈正态分布</li>
+<li>不同样本间方差齐性</li>
+</ul></li>
+<li>配对样本<em>t</em>检验
+<ul>
+<li>两样本之间的差异呈正态分布</li>
+<li>不同样本间的值存在相关关系，不同样本来自同一个体或配对个体</li>
+</ul></li>
+</ul>
+</section>
+<section id="独立样本t检验" class="slide level2">
+<h2>独立样本<em>t</em>检验</h2>
+<ul>
+<li>研究问题：
+<ul>
+<li><span class="math inline">\(𝜇_𝐴=𝜇_𝐵\)</span></li>
+<li><span class="math inline">\(𝜇_𝐴&gt;𝜇_𝐵\)</span></li>
+<li><span class="math inline">\(𝜇_𝐴&lt;𝜇_𝐵\)</span></li>
+</ul></li>
+<li>虚无假设：
+<ul>
+<li><span class="math inline">\(𝜇_𝐴=𝜇_𝐵\)</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="section-9" class="slide level2">
+<h2></h2>
+<ul>
+<li>独立样本<em>t</em>检验是根据两样本差值转换的<em>t</em>分数在<em>t</em>分布中的位置来决定的。</li>
+</ul>
+<div class="columns">
+<div class="column" style="width:40%;">
+<ul>
+<li><span class="math inline">\(t=\frac{\bar{X_1}-\bar{X_2}}{\sqrt{\frac{n_1S_1^2+n_2S_2^2}{n_1+n_2-2}(\frac{n_1+n_2}{n_1n_2})}}\)</span></li>
+</ul>
+</div><div class="column" style="width:60%;">
+<p><img data-src="images/1699436247149.jpg"></p>
+</div>
+</div>
+</section>
+<section id="section-10" class="slide level2">
+<h2></h2>
+<div class="columns">
+<div class="column" style="width:45%;">
+<ul>
+<li>线性模型表达</li>
+</ul>
+<p><span class="math inline">\(Y=\beta_0+\beta_1X_1\)</span> <br></p>
+<ul>
+<li><p>其中，<span class="math inline">\(𝑋_1\)</span>为二分变量，组1、组2分别编码为0、1；</p></li>
+<li><p>当<span class="math inline">\(𝑋_1\)</span>为0时，<span class="math inline">\(Y=\beta_0\)</span>，代表组1的均值；</p></li>
+<li><p>当<span class="math inline">\(𝑋_1\)</span>为1时，<span class="math inline">\(Y=\beta_0+\beta_1\)</span>，代表组2的均值；</p></li>
+<li><p><span class="math inline">\(\beta_1\)</span>代表组2与组1的均值差异</p></li>
+</ul>
+</div><div class="column" style="width:5%;">
+
+</div><div class="column" style="width:50;">
+<p><img data-src="images/1699436544163.jpg"></p>
+<p>补充材料：<a href="https://www.georgeho.org/tests-as-linear/#:~:text=Most%20of%20the%20common%20statistical%20models%20%28t-test%2C%20correlation%2C,b%20which%20most%20students%20know%20from%20high%20school.">Common statistical tests are linear models: Python port | Eigenfoo (georgeho.org)</a></p>
+</div>
+</div>
+</section>
+<section id="section-11" class="slide level2">
+<h2></h2>
+<ul>
+<li>线性模型表达：</li>
+</ul>
+<p><span class="math display">\[Y=b_0+b_1X_1\]</span> <br></p>
+<p><span class="math display">\[H_0:b_1 = 0\]</span></p>
+<ul>
+<li>与独立样本<em>t</em>检验不同，在线性模型中检查两组之间的差异相当于检查回归系数<span class="math inline">\(b_1\)</span>的显著性。</li>
+</ul>
+</section>
+<section id="r-独立样本t检验" class="slide level2">
+<h2>R 独立样本<em>t</em>检验</h2>
+<ul>
+<li><p>利用独立样本<em>t</em>检验检验stroop范式下congruent组与incongruent组间是否存在反应时差异。</p></li>
+<li><p>数据：example10_1.csv</p></li>
+</ul>
+</section>
+<section id="section-12" class="slide level2">
+<h2></h2>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>加载package</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># 载入包</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(pacman)</span>
+<span id="cb1-3"><a href="#cb1-3"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(<span class="st">'tidyverse'</span>,<span class="st">'bruceR'</span>,<span class="st">'lme4'</span>,<span class="st">"tidyr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>读取数据</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">#读取数据</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>df.it<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">'data/example10_1.csv'</span>)</span>
+<span id="cb2-3"><a href="#cb2-3"></a></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="co">#转成因子</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a>df.it<span class="ot">&lt;-</span>df.it<span class="sc">%&gt;%</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a>  <span class="fu">mutate</span>(<span class="at">condition=</span><span class="fu">factor</span>(condition))</span>
+<span id="cb2-7"><a href="#cb2-7"></a></span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="fu">head</span>(df.it)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  subject   condition    rt_sd   rt_mean group
+1    s007   congruent 205.6915  967.5227     1
+2    s007 incongruent 195.3517 1019.2051     1
+3    s014   congruent 172.4687  648.1064     1
+4    s014 incongruent 158.9408  791.6522     1
+5    s028   congruent 102.3237  606.8958     1
+6    s028 incongruent 128.5749  654.1042     1</code></pre>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>独立样本<em>t</em>检验</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co">#独立样本*t*检验</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>bruceR<span class="sc">::</span><span class="fu">TTEST</span>(df.it, <span class="at">y =</span> <span class="st">"rt_mean"</span>,<span class="st">"condition"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Independent-Samples t-test
+
+Hypothesis: two-sided (μ2 - μ1 ≠ 0)
+
+Descriptives:
+──────────────────────────────────────────────────
+ Variable    Factor       Level  N     Mean (S.D.)
+──────────────────────────────────────────────────
+  rt_mean condition congruent   30 679.06 (137.14)
+  rt_mean condition incongruent 30 795.41 (148.16)
+──────────────────────────────────────────────────
+
+Levene’s test for homogeneity of variance:
+──────────────────────────────────────────────────────────────────────────
+                                              Levene’s F df1 df2     p    
+──────────────────────────────────────────────────────────────────────────
+rt_mean: condition (incongruent - congruent)        0.64   1  58  .426    
+──────────────────────────────────────────────────────────────────────────
+Note: H0 = equal variance (homoscedasticity).
+If significant (violation of the assumption),
+then you should better set `var.equal=FALSE`.
+
+Results of t-test:
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+                                                 t df     p        Difference [95% CI] Cohen’s d [95% CI]     BF10
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+rt_mean: condition (incongruent - congruent)  3.16 58  .003 **  116.35 [42.57, 190.14]  0.82 [0.30, 1.33] 1.43e+01
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────</code></pre>
+</div>
+</div>
+</section>
+<section id="r-线性回归" class="slide level2">
+<h2>R 线性回归</h2>
+<ul>
+<li>线性回归模型同样可以对两组独立样本的Stroop试验结果进行显著性检验。</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>线性回归</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co">#线性回归</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>Model.it <span class="ot">=</span> <span class="fu">lm</span>(<span class="at">data =</span> df.it, rt_mean <span class="sc">~</span> condition)</span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="fu">summary</span>(Model.it)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = rt_mean ~ condition, data = df.it)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-214.87  -89.85  -35.46   42.02  511.13 
+
+Coefficients:
+                     Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)            679.06      26.06  26.053  &lt; 2e-16 ***
+conditionincongruent   116.35      36.86   3.157  0.00253 ** 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 142.8 on 58 degrees of freedom
+Multiple R-squared:  0.1466,    Adjusted R-squared:  0.1319 
+F-statistic: 9.964 on 1 and 58 DF,  p-value: 0.002532</code></pre>
+</div>
+</div>
+</section>
+<section id="结果比较" class="slide level2">
+<h2>结果比较</h2>
+<p><img data-src="images/1699783526507(1).jpg"></p>
+<p><img data-src="images/1699783564021.jpg"></p>
+</section>
+<section id="配对样本t检验" class="slide level2">
+<h2>配对样本<em>t</em>检验</h2>
+<p><br></p>
+<ul>
+<li><p>虚无假设：</p>
+<ul>
+<li><span class="math inline">\(𝜇_𝐴=𝜇_𝐵\)</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="section-13" class="slide level2">
+<h2></h2>
+<ul>
+<li><span class="math inline">\(\sigma_{D\bar{X}}=\sqrt{\frac{\sigma_1^2}{\sqrt{n}^2}-2r\frac{\sigma_1}{\sqrt{n}}\frac{\sigma_2}{\sqrt{n}}+\frac{\sigma_2^2}{\sqrt{n}^2}}\)</span></li>
+</ul>
+<p><br></p>
+<ul>
+<li><span class="math inline">\(t=\frac{\bar{X_1}-\bar{X_2}}{\sigma_{D\bar{X}}}\)</span></li>
+</ul>
+<p><br></p>
+<ul>
+<li>配对样本<em>t</em>检验也是根据两样本差值转换的<em>t</em>分数在<em>t</em>分布中的位置来决定的。</li>
+</ul>
+</section>
+<section id="section-14" class="slide level2 smaller">
+<h2></h2>
+<ul>
+<li>线性模型表达(分层线性模型，固定斜率，变化斜率)：</li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50;">
+<p><span class="math inline">\(Population level: Y = \beta_{0,j}+\beta_1X_1\)</span></p>
+<p><span class="math inline">\(Group level: \beta_{0,j}\sim N(\mu\beta_0,\sigma\beta_0)\)</span></p>
+<ul>
+<li><p>其中，<span class="math inline">\(𝑋_1\)</span>为二分变量，条件1/条件2分别编码为0/1</p></li>
+<li><p>当<span class="math inline">\(𝑋_1\)</span>为0时，<span class="math inline">\(Y=\beta_0\)</span>，代表条件1的均值</p></li>
+<li><p>当<span class="math inline">\(𝑋_1\)</span>为1时，<span class="math inline">\(Y=\beta_0+\beta_1\)</span>，代表条件2的均值</p></li>
+<li><p><span class="math inline">\(\beta_1\)</span>代表条件2与条件1的均值的差异</p></li>
+<li><p>由于2个条件是在同一个体内部进行的，所以被试之间存在个体差异，各被试的截距不同。</p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="images/1699437481108.jpg"></p>
+<p><a href="https://www.georgeho.org/tests-as-linear/#:~:text=Most%20of%20the%20common%20statistical%20models%20%28t-test%2C%20correlation%2C,b%20which%20most%20students%20know%20from%20high%20school.">Common statistical tests are linear models: Python port | Eigenfoo (georgeho.org)</a></p>
+</div>
+</div>
+</section>
+<section id="section-15" class="slide level2">
+<h2></h2>
+<ul>
+<li>线性模型表达</li>
+</ul>
+<p><span class="math display">\[整体水平（Population level）：𝑌=\beta_{0,j}+\beta_1𝑋_1\]</span> <span class="math display">\[组水平（Group level）： \beta_{0,𝑗}\sim 𝑁(𝜇_{𝛽_0},𝜎_{𝛽_0} )\]</span> <span class="math display">\[H_0: \beta_1 = 0\]</span></p>
+<ul>
+<li><p>与配对样本<em>t</em>检验不同，在线性模型中检查两组之间的差异相当于检查回归系数<span class="math inline">\(\beta_1\)</span>的显著性。</p></li>
+<li><p>需要注意的是，尽管线性模型中有变化效应存在，但我们检验的仍是固定效应(总体层面的效应)。</p></li>
+</ul>
+</section>
+<section id="r-配对样本t检验" class="slide level2">
+<h2>R 配对样本<em>t</em>检验</h2>
+<ul>
+<li><p>利用配对样本<em>t</em>检验检验stroop范式下congruent组与incongruent组间是否存在反应时差异。</p></li>
+<li><p>数据：example10_2.csv</p></li>
+</ul>
+</section>
+<section id="section-16" class="slide level2">
+<h2></h2>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>读取数据</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co">#读取数据</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a>df.rt<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">'data/example10_2.csv'</span>)</span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="fu">head</span>(df.rt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  subject congruent incongruent
+1    s007  967.5227   1019.2051
+2    s014  648.1064    791.6522
+3    s028  606.8958    654.1042
+4    s096  718.7917    825.1277
+5    s097  656.8333    759.9583
+6    s125  703.7826    885.5000</code></pre>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>配对样本<em>t</em>检验</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co">#配对样本*t*检验</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a>bruceR<span class="sc">::</span><span class="fu">TTEST</span>(df.rt,<span class="at">y=</span><span class="fu">c</span>(<span class="st">"congruent"</span>,<span class="st">"incongruent"</span>),<span class="at">paired=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Paired-Samples t-test
+
+Hypothesis: two-sided (μ2 - μ1 ≠ 0)
+
+Descriptives:
+───────────────────────────────
+    Variable  N     Mean (S.D.)
+───────────────────────────────
+ congruent   30 679.06 (137.14)
+ incongruent 30 795.41 (148.16)
+───────────────────────────────
+
+Results of t-test:
+───────────────────────────────────────────────────────────────────────────────────────────────────────
+                                      t df     p        Difference [95% CI] Cohen’s d [95% CI]     BF10
+───────────────────────────────────────────────────────────────────────────────────────────────────────
+Paired: (incongruent - congruent)  9.66 29 &lt;.001 *** 116.35 [91.71, 141.00]  1.76 [1.39, 2.14] 7.04e+07
+───────────────────────────────────────────────────────────────────────────────────────────────────────</code></pre>
+</div>
+</div>
+</section>
+<section id="r-混合线性模型" class="slide level2">
+<h2>R 混合线性模型</h2>
+<ul>
+<li><p>在线性模型中，使用混合线性模型可以进行同样的假设检验</p></li>
+<li><p>数据：example10_1.csv</p></li>
+</ul>
+</section>
+<section id="section-17" class="slide level2">
+<h2></h2>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>数据预处理</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># 宽数据转成长数据</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a>df.rt.l<span class="ot">&lt;-</span>df.rt<span class="sc">%&gt;%</span></span>
+<span id="cb12-3"><a href="#cb12-3"></a>  <span class="fu">pivot_longer</span>(<span class="fu">c</span>(<span class="st">"congruent"</span>, <span class="st">"incongruent"</span>),</span>
+<span id="cb12-4"><a href="#cb12-4"></a>               <span class="at">names_to =</span> <span class="st">"condition"</span>,</span>
+<span id="cb12-5"><a href="#cb12-5"></a>               <span class="at">values_to =</span> <span class="st">"rt"</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb12-6"><a href="#cb12-6"></a>  <span class="fu">mutate</span>(<span class="at">condition=</span><span class="fu">factor</span>(condition),</span>
+<span id="cb12-7"><a href="#cb12-7"></a>         <span class="at">subject=</span><span class="fu">factor</span>(subject))</span>
+<span id="cb12-8"><a href="#cb12-8"></a></span>
+<span id="cb12-9"><a href="#cb12-9"></a>df.rt.l<span class="ot">&lt;-</span>df.rt.l<span class="sc">%&gt;%</span></span>
+<span id="cb12-10"><a href="#cb12-10"></a>  <span class="fu">mutate</span>(<span class="at">condition=</span><span class="fu">factor</span>(condition))</span>
+<span id="cb12-11"><a href="#cb12-11"></a></span>
+<span id="cb12-12"><a href="#cb12-12"></a><span class="fu">head</span>(df.rt.l)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 3
+  subject condition      rt
+  &lt;fct&gt;   &lt;fct&gt;       &lt;dbl&gt;
+1 s007    congruent    968.
+2 s007    incongruent 1019.
+3 s014    congruent    648.
+4 s014    incongruent  792.
+5 s028    congruent    607.
+6 s028    incongruent  654.</code></pre>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>分层线性回归</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="co">#分层线性回归</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a>lm.rt <span class="ot">&lt;-</span> <span class="fu">lmer</span>(rt <span class="sc">~</span> condition <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>subject), <span class="at">data =</span> df.rt.l)</span>
+<span id="cb14-3"><a href="#cb14-3"></a><span class="fu">summary</span>(lm.rt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Linear mixed model fit by REML. t-tests use Satterthwaite's method [
+lmerModLmerTest]
+Formula: rt ~ condition + (1 | subject)
+   Data: df.rt.l
+
+REML criterion at convergence: 700.6
+
+Scaled residuals: 
+     Min       1Q   Median       3Q      Max 
+-1.32617 -0.44508 -0.08481  0.54321  1.75116 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ subject  (Intercept) 18203    134.92  
+ Residual              2178     46.67  
+Number of obs: 60, groups:  subject, 30
+
+Fixed effects:
+                     Estimate Std. Error     df t value Pr(&gt;|t|)    
+(Intercept)            679.06      26.06  32.26  26.053  &lt; 2e-16 ***
+conditionincongruent   116.35      12.05  29.00   9.656 1.45e-10 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Correlation of Fixed Effects:
+            (Intr)
+cndtnncngrn -0.231</code></pre>
+</div>
+</div>
+</section>
+<section id="结果比较-1" class="slide level2">
+<h2>结果比较</h2>
+<p><img data-src="images/1699783643193(1).jpg"></p>
+<p><img data-src="images/1699783727764.jpg"></p>
+</section></section>
+<section>
+<section id="part-3-方差分析作为线性模型的特殊形式" class="title-slide slide level1 center">
+<h1>Part 3:<br> 方差分析作为线性模型的特殊形式</h1>
+
+</section>
+<section id="方差分析" class="slide level2">
+<h2>方差分析</h2>
+<p><br></p>
+<ul>
+<li>两因素完全随机方差分析</li>
+</ul>
+<p><br></p>
+<ul>
+<li>两因素重复测量方差分析</li>
+</ul>
+<p><br></p>
+<ul>
+<li>两因素混合设计方差分析</li>
+</ul>
+</section>
+<section id="两因素完全随机方差分析数据模式" class="slide level2">
+<h2>两因素完全随机方差分析数据模式</h2>
+
+<img data-src="images/1699504017623.jpg" class="r-stretch quarto-figure-center"></section>
+<section id="研究问题" class="slide level2">
+<h2>研究问题</h2>
+<ol type="1">
+<li>A因素的处理效应是否为0</li>
+</ol>
+<p><br></p>
+<ol start="2" type="1">
+<li>B因素的处理效应是否为0</li>
+</ol>
+<p><br></p>
+<ol start="3" type="1">
+<li>AB的交互作用是否为0</li>
+</ol>
+</section>
+<section id="方差分析表" class="slide level2 smaller">
+<h2>方差分析表</h2>
+<table style="width:97%;">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 35%">
+<col style="width: 26%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">变异来源</th>
+<th style="text-align: center;">平方和</th>
+<th style="text-align: center;">自由度</th>
+<th style="text-align: center;">均方</th>
+<th style="text-align: center;"><em>F</em></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">组间变异</td>
+<td style="text-align: center;">SS<sub>组间</sub></td>
+<td style="text-align: center;">pq-1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">SS<sub>A</sub></td>
+<td style="text-align: center;">p-1</td>
+<td style="text-align: center;"><span class="math display">\[
+MS_A=\frac{SS_A}{p-1}
+\]</span></td>
+<td style="text-align: center;"><span class="math display">\[
+\frac{MS_A}{MS_{组内}}
+\]</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">SS<sub>B</sub></td>
+<td style="text-align: center;">q-1</td>
+<td style="text-align: center;"><span class="math display">\[
+MS_B=\frac{SS_B}{q-1}
+\]</span></td>
+<td style="text-align: center;"><span class="math display">\[
+\frac{MS_B}{MS_{组内}}
+\]</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">SS<sub>AB</sub></td>
+<td style="text-align: center;">(p-1)(q-1)</td>
+<td style="text-align: center;"><span class="math display">\[
+MS_{AB}=\frac{SS_{AB}}{(p-1)(q-1)}
+\]</span></td>
+<td style="text-align: center;"><span class="math display">\[
+\frac{MS_{AB}}{MS_{组内}}
+\]</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">组内变异</td>
+<td style="text-align: center;">SS<sub>组内</sub></td>
+<td style="text-align: center;">pq(n-1)</td>
+<td style="text-align: center;"><span class="math display">\[
+MS_{组内}=\frac{SS_{组内}}{pq(n-1)}
+\]</span></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">总和</td>
+<td style="text-align: center;">SS<sub>总变异</sub></td>
+<td style="text-align: center;">npq-1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="section-18" class="slide level2">
+<h2></h2>
+
+<img data-src="images/1699504683849-01.jpg" class="r-stretch quarto-figure-center"><p><span class="math display">\[H_0: \beta1=\beta2=\beta3=\beta4=\beta5=0\]</span></p>
+</section>
+<section id="r-两因素完全随机方差分析" class="slide level2">
+<h2>R 两因素完全随机方差分析</h2>
+<p><br></p>
+<ul>
+<li><p>数据：example10_3_w.csv</p></li>
+<li><p>用两因素完全随机方差分析探究性别(男vs女)和情感状况(未婚vs已婚vs离婚)对反应时的影响，两自变量均为组间变量。</p></li>
+</ul>
+</section>
+<section id="section-19" class="slide level2">
+<h2></h2>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>读取数据</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="co">#读取数据</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a>df.ia<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">'data/example10_3_w.csv'</span>)</span>
+<span id="cb16-3"><a href="#cb16-3"></a></span>
+<span id="cb16-4"><a href="#cb16-4"></a><span class="co">#因子转换</span></span>
+<span id="cb16-5"><a href="#cb16-5"></a>df.ia<span class="ot">&lt;-</span>df.ia<span class="sc">%&gt;%</span></span>
+<span id="cb16-6"><a href="#cb16-6"></a>  <span class="fu">mutate</span>(<span class="at">Sex=</span><span class="fu">factor</span>(Sex),</span>
+<span id="cb16-7"><a href="#cb16-7"></a>         <span class="at">RelationshipStatus=</span><span class="fu">factor</span>(RelationshipStatus))</span>
+<span id="cb16-8"><a href="#cb16-8"></a></span>
+<span id="cb16-9"><a href="#cb16-9"></a><span class="fu">head</span>(df.ia)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  worker_id Sex RelationshipStatus       rt
+1      s004   0                  1 762.9583
+2      s016   1                  1 685.5495
+3      s087   1                  1 819.7708
+4      s088   0                  3 664.5417
+5      s092   1                  2 745.4091
+6      s156   0                  1 696.2841</code></pre>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>两因素完全随机方差分析</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="co">#两因素完全随机方差分析</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a>lm <span class="ot">=</span> <span class="fu">lm</span>(rt <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Sex <span class="sc">+</span> RelationshipStatus <span class="sc">+</span> Sex<span class="sc">:</span>RelationshipStatus, <span class="at">data =</span> df.ia)</span>
+<span id="cb18-3"><a href="#cb18-3"></a><span class="fu">anova</span>(lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Variance Table
+
+Response: rt
+                       Df Sum Sq Mean Sq F value Pr(&gt;F)
+Sex                     1   3456  3455.8  0.3454 0.5622
+RelationshipStatus      2   5406  2702.9  0.2701 0.7656
+Sex:RelationshipStatus  2  10644  5322.0  0.5319 0.5942
+Residuals              24 240122 10005.1               </code></pre>
+</div>
+</div>
+</section>
+<section id="r-多元线性回归" class="slide level2">
+<h2>R 多元线性回归</h2>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>多元线性回归</summary>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">summary</span>(lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = rt ~ 1 + Sex + RelationshipStatus + Sex:RelationshipStatus, 
+    data = df.ia)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-153.923  -60.054   -4.164   63.223  226.601 
+
+Coefficients:
+                         Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)               752.798     37.806  19.912   &lt;2e-16 ***
+Sex1                       -7.845     58.569  -0.134    0.895    
+RelationshipStatus2       -46.332     69.024  -0.671    0.508    
+RelationshipStatus3        19.206     80.199   0.239    0.813    
+Sex1:RelationshipStatus2   35.517     90.524   0.392    0.698    
+Sex1:RelationshipStatus3  -73.924    100.501  -0.736    0.469    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 100 on 24 degrees of freedom
+Multiple R-squared:  0.07513,   Adjusted R-squared:  -0.1176 
+F-statistic: 0.3899 on 5 and 24 DF,  p-value: 0.8508</code></pre>
+</div>
+</div>
+</section>
+<section id="两因素重复测量方差分析数据模式" class="slide level2">
+<h2>两因素重复测量方差分析数据模式</h2>
+
+<img data-src="images/1699504974166.jpg" class="r-stretch quarto-figure-center"></section>
+<section id="方差分析表-1" class="slide level2 smaller">
+<h2>方差分析表</h2>
+<table style="width:98%;">
+<colgroup>
+<col style="width: 8%">
+<col style="width: 11%">
+<col style="width: 13%">
+<col style="width: 40%">
+<col style="width: 23%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">变异来源</th>
+<th style="text-align: center;">平方和</th>
+<th style="text-align: center;">自由度</th>
+<th style="text-align: center;">均方</th>
+<th style="text-align: center;"><em>F</em></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">被试间</td>
+<td style="text-align: center;">SS<sub>被试间</sub></td>
+<td style="text-align: center;">n-1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">被试内</td>
+<td style="text-align: center;">SS<sub>被试内</sub></td>
+<td style="text-align: center;">n(pq-1)</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">A</td>
+<td style="text-align: center;">SS<sub>A</sub></td>
+<td style="text-align: center;">p-1</td>
+<td style="text-align: center;"><span class="math display">\[
+MS_A=\frac{SS_A}{p-1}
+\]</span></td>
+<td style="text-align: center;"><span class="math display">\[
+\frac{MS_A}{MS_{A*被试}}
+\]</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">A*被试</td>
+<td style="text-align: center;">SS<sub>A*被试</sub></td>
+<td style="text-align: center;">(p-1)(n-1)</td>
+<td style="text-align: center;"><span class="math display">\[
+MS_{A*被试}=\frac{SS_{A*被试}}{(p-1)(n-1)}
+\]</span></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">B</td>
+<td style="text-align: center;">SS<sub>B</sub></td>
+<td style="text-align: center;">q-1</td>
+<td style="text-align: center;"><span class="math display">\[
+MS_B=\frac{SS_B}{q-1}
+\]</span></td>
+<td style="text-align: center;"><span class="math display">\[
+\frac{MS_B}{MS_{B*被试}}
+\]</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">B*被试</td>
+<td style="text-align: center;">SS<sub>B*被试</sub></td>
+<td style="text-align: center;">(q-1)(n-1)</td>
+<td style="text-align: center;"><span class="math display">\[
+MS_{B*被试}=\frac{SS_{B*被试}}{(q-1)(n-1)}
+\]</span></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">AB</td>
+<td style="text-align: center;">SS<sub>AB</sub></td>
+<td style="text-align: center;">(p-1)(q-1)</td>
+<td style="text-align: center;"><span class="math display">\[
+MS_{AB}=\frac{SS_{AB}}{(p-1)(q-1)}
+\]</span></td>
+<td style="text-align: center;"><span class="math display">\[
+\frac{MS_{AB}}{MS_{AB*被试}}
+\]</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">AB*被试</td>
+<td style="text-align: center;">SS<sub>AB*被试</sub></td>
+<td style="text-align: center;">(p-1)(q-1)(n-1)</td>
+<td style="text-align: center;"><span class="math display">\[
+MS_{AB*被试}=\frac{SS_{AB*被试}}{(p-1)(q-1)(n-1)}
+\]</span></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">总和</td>
+<td style="text-align: center;">SS<sub>总变异</sub></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="section-20" class="slide level2">
+<h2></h2>
+
+<img data-src="images/1699506065952.jpg" class="r-stretch quarto-figure-center"></section>
+<section id="section-21" class="slide level2">
+<h2></h2>
+
+<img data-src="images/1699513784595.jpg" class="r-stretch quarto-figure-center"></section>
+<section id="r-两因素重复测量方差分析" class="slide level2">
+<h2>R 两因素重复测量方差分析</h2>
+<ul>
+<li><p>数据：example10_4_w.csv</p></li>
+<li><p>用两因素重复测量方差分析探究一致性 (一致vs不一致)和刺激颜色(红vs蓝vs绿)对反应时的影响，两变量均为组内变量。</p></li>
+</ul>
+</section>
+<section id="section-22" class="slide level2">
+<h2></h2>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>数据预处理</summary>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="co">#读取数据</span></span>
+<span id="cb22-2"><a href="#cb22-2"></a>df.da<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">'data/example10_4_w.csv'</span>)</span>
+<span id="cb22-3"><a href="#cb22-3"></a></span>
+<span id="cb22-4"><a href="#cb22-4"></a><span class="co"># 宽数据转长数据</span></span>
+<span id="cb22-5"><a href="#cb22-5"></a>df.da.l <span class="ot">&lt;-</span> df.da <span class="sc">%&gt;%</span></span>
+<span id="cb22-6"><a href="#cb22-6"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="st">"congruent_blue"</span>, <span class="st">"congruent_green"</span>, <span class="st">"congruent_red"</span>,</span>
+<span id="cb22-7"><a href="#cb22-7"></a>                        <span class="st">"incongruent_blue"</span>, <span class="st">"incongruent_green"</span>,<span class="st">"incongruent_red"</span>),</span>
+<span id="cb22-8"><a href="#cb22-8"></a>               <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">"condition"</span>, <span class="st">"stim_color"</span>),</span>
+<span id="cb22-9"><a href="#cb22-9"></a>               <span class="at">names_sep =</span> <span class="st">"_"</span>,</span>
+<span id="cb22-10"><a href="#cb22-10"></a>               <span class="at">values_to =</span> <span class="st">"rt"</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb22-11"><a href="#cb22-11"></a>  <span class="fu">mutate</span>(<span class="at">condition=</span><span class="fu">factor</span>(condition),</span>
+<span id="cb22-12"><a href="#cb22-12"></a>         <span class="at">stim_color=</span><span class="fu">factor</span>(stim_color))</span>
+<span id="cb22-13"><a href="#cb22-13"></a></span>
+<span id="cb22-14"><a href="#cb22-14"></a><span class="fu">head</span>(df.da.l)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 4
+  worker_id condition   stim_color    rt
+  &lt;chr&gt;     &lt;fct&gt;       &lt;fct&gt;      &lt;dbl&gt;
+1 s004      congruent   blue        681.
+2 s004      congruent   green       740 
+3 s004      congruent   red         740.
+4 s004      incongruent blue        750.
+5 s004      incongruent green       837.
+6 s004      incongruent red         830.</code></pre>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>两因素重复测量方差分析</summary>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="co"># 两因素重复测量方差分析</span></span>
+<span id="cb24-2"><a href="#cb24-2"></a>lm <span class="ot">=</span> <span class="fu">lmer</span>( rt <span class="sc">~</span> condition<span class="sc">*</span>stim_color <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>worker_id) <span class="sc">+</span> </span>
+<span id="cb24-3"><a href="#cb24-3"></a>             (<span class="dv">1</span><span class="sc">|</span>worker_id<span class="sc">:</span>condition) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>worker_id<span class="sc">:</span>stim_color), df.da.l)</span>
+<span id="cb24-4"><a href="#cb24-4"></a><span class="fu">anova</span>(lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Type III Analysis of Variance Table with Satterthwaite's method
+                     Sum Sq Mean Sq NumDF DenDF  F value    Pr(&gt;F)    
+condition            310985  310985     1    29 211.7212 7.341e-15 ***
+stim_color            48744   24372     2    58  16.5925 2.003e-06 ***
+condition:stim_color   3459    1730     2    58   1.1776    0.3153    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+</section>
+<section id="分层线性回归" class="slide level2">
+<h2>分层线性回归</h2>
+<ul>
+<li>重复测量方差分析是一种特殊的层级模型，其变化的截距不仅包括每个个体，也包括个体与每个条件的交互下的截距</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>分层线性回归</summary>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">summary</span>(lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Linear mixed model fit by REML. t-tests use Satterthwaite's method [
+lmerModLmerTest]
+Formula: 
+rt ~ condition * stim_color + (1 | worker_id) + (1 | worker_id:condition) +  
+    (1 | worker_id:stim_color)
+   Data: df.da.l
+
+REML criterion at convergence: 1965.3
+
+Scaled residuals: 
+     Min       1Q   Median       3Q      Max 
+-2.04410 -0.50092 -0.03966  0.40354  2.33417 
+
+Random effects:
+ Groups               Name        Variance Std.Dev.
+ worker_id:stim_color (Intercept)  923.5   30.39   
+ worker_id:condition  (Intercept)  840.6   28.99   
+ worker_id            (Intercept) 8521.3   92.31   
+ Residual                         1468.8   38.33   
+Number of obs: 180, groups:  
+worker_id:stim_color, 90; worker_id:condition, 60; worker_id, 30
+
+Fixed effects:
+                                     Estimate Std. Error      df t value
+(Intercept)                           684.385     19.794  43.879  34.575
+conditionincongruent                  141.475     12.408  68.776  11.402
+stim_colorgreen                        -7.233     12.629 100.956  -0.573
+stim_colorred                         -46.658     12.629 100.956  -3.695
+conditionincongruent:stim_colorgreen    3.348     13.994  58.000   0.239
+conditionincongruent:stim_colorred    -16.698     13.994  58.000  -1.193
+                                     Pr(&gt;|t|)    
+(Intercept)                           &lt; 2e-16 ***
+conditionincongruent                  &lt; 2e-16 ***
+stim_colorgreen                      0.568084    
+stim_colorred                        0.000358 ***
+conditionincongruent:stim_colorgreen 0.811741    
+conditionincongruent:stim_colorred   0.237665    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Correlation of Fixed Effects:
+                      (Intr) cndtnn stm_clrg stm_clrr cndtnncngrnt:stm_clrg
+cndtnncngrn           -0.313                                               
+stim_clrgrn           -0.319  0.312                                        
+stim_colrrd           -0.319  0.312  0.500                                 
+cndtnncngrnt:stm_clrg  0.177 -0.564 -0.554   -0.277                        
+cndtnncngrnt:stm_clrr  0.177 -0.564 -0.277   -0.554    0.500               </code></pre>
+</div>
+</div>
+</section>
+<section id="两因素混合设计方差分析数据模式" class="slide level2">
+<h2>两因素混合设计方差分析数据模式</h2>
+
+<img data-src="images/1699506402640.jpg" class="r-stretch quarto-figure-center"></section>
+<section id="方差分析表-2" class="slide level2 smaller">
+<h2>方差分析表</h2>
+<table style="width:98%;">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 12%">
+<col style="width: 10%">
+<col style="width: 39%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">变异来源</th>
+<th style="text-align: center;">平方和</th>
+<th style="text-align: center;">自由度</th>
+<th style="text-align: center;">均方</th>
+<th style="text-align: center;"><em>F</em></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">被试间</td>
+<td style="text-align: center;">SS<sub>被试间</sub></td>
+<td style="text-align: center;">np-1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">A</td>
+<td style="text-align: center;">SS<sub>A</sub></td>
+<td style="text-align: center;">p-1</td>
+<td style="text-align: center;"><span class="math display">\[
+MS_A=\frac{SS_A}{p-1}
+\]</span></td>
+<td style="text-align: center;"><span class="math display">\[
+\frac{MS_A}{MS_{被试(A)}}
+\]</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">被试(A)</td>
+<td style="text-align: center;">SS<sub>被试(A)</sub></td>
+<td style="text-align: center;">p(n-1)</td>
+<td style="text-align: center;"><span class="math display">\[
+MS_{被试(A)}=\frac{SS_{被试(A)}}{p(n-1)}
+\]</span></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">被试内</td>
+<td style="text-align: center;">SS<sub>被试内</sub></td>
+<td style="text-align: center;">np(q-1)</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">B</td>
+<td style="text-align: center;">SS<sub>B</sub></td>
+<td style="text-align: center;">q-1</td>
+<td style="text-align: center;"><span class="math display">\[
+MS_B=\frac{SS_B}{q-1}
+\]</span></td>
+<td style="text-align: center;"><span class="math display">\[
+\frac{MS_B}{MS_{B*被试(A)}}
+\]</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">AB</td>
+<td style="text-align: center;">SS<sub>AB</sub></td>
+<td style="text-align: center;">(p-1)(q-1)</td>
+<td style="text-align: center;"><span class="math display">\[
+MS_{AB}=\frac{SS_{AB}}{(p-1)(q-1)}
+\]</span></td>
+<td style="text-align: center;"><span class="math display">\[
+\frac{MS_{AB}}{MS_{B*被试(A)}}
+\]</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">B*被试(A)</td>
+<td style="text-align: center;">SS<sub>B*被试(A)</sub></td>
+<td style="text-align: center;">p(n-1)(q-1)</td>
+<td style="text-align: center;"><span class="math display">\[
+MS_{B*被试(A)}=\frac{SS_{B*被试(A)}}{p(n-1)(q-1)}
+\]</span></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">总和</td>
+<td style="text-align: center;">SS<sub>总变异</sub></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="section-23" class="slide level2">
+<h2></h2>
+
+<img data-src="images/1699507067887.jpg" class="r-stretch quarto-figure-center"></section>
+<section id="section-24" class="slide level2">
+<h2></h2>
+
+<img data-src="images/1699507138294.jpg" class="r-stretch quarto-figure-center"></section>
+<section id="r-两因素混合设计方差分析" class="slide level2">
+<h2>R 两因素混合设计方差分析</h2>
+<ul>
+<li><p>数据：example10_5_w.csv</p></li>
+<li><p>用两因素混合设计方差分析探究性别（男vs女）和刺激颜色(红vs蓝vs绿)对反应时的影响，其中性别为组间变量，刺激颜色为组内变量。</p></li>
+</ul>
+</section>
+<section id="section-25" class="slide level2">
+<h2></h2>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>数据预处理</summary>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="co">#读取数据</span></span>
+<span id="cb28-2"><a href="#cb28-2"></a>df.ma<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">'data/example10_5_w.csv'</span>)</span>
+<span id="cb28-3"><a href="#cb28-3"></a></span>
+<span id="cb28-4"><a href="#cb28-4"></a><span class="co"># 宽数据转长数据</span></span>
+<span id="cb28-5"><a href="#cb28-5"></a>df.ma.l <span class="ot">&lt;-</span> df.ma <span class="sc">%&gt;%</span></span>
+<span id="cb28-6"><a href="#cb28-6"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="st">"blue"</span>,<span class="st">"green"</span>, <span class="st">"red"</span>),</span>
+<span id="cb28-7"><a href="#cb28-7"></a>               <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">"stim_color"</span>),</span>
+<span id="cb28-8"><a href="#cb28-8"></a>               <span class="at">values_to =</span> <span class="st">"rt"</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb28-9"><a href="#cb28-9"></a>  <span class="fu">mutate</span>(<span class="at">stim_color=</span><span class="fu">factor</span>(stim_color),</span>
+<span id="cb28-10"><a href="#cb28-10"></a>         <span class="at">Sex=</span><span class="fu">factor</span>(Sex))</span>
+<span id="cb28-11"><a href="#cb28-11"></a><span class="fu">head</span>(df.ma.l)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 4
+  worker_id Sex   stim_color    rt
+  &lt;chr&gt;     &lt;fct&gt; &lt;fct&gt;      &lt;dbl&gt;
+1 s004      0     blue        715.
+2 s004      0     green       789.
+3 s004      0     red         785.
+4 s016      1     blue        659.
+5 s016      1     green       688.
+6 s016      1     red         711.</code></pre>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>混合设计方差分析</summary>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="co"># 混合设计方差分析</span></span>
+<span id="cb30-2"><a href="#cb30-2"></a>lm <span class="ot">=</span> <span class="fu">lmer</span>( rt <span class="sc">~</span>  Sex<span class="sc">*</span>stim_color <span class="sc">+</span>(<span class="dv">1</span> <span class="sc">|</span>worker_id) , df.ma.l)</span>
+<span id="cb30-3"><a href="#cb30-3"></a><span class="fu">anova</span>(lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Type III Analysis of Variance Table with Satterthwaite's method
+               Sum Sq Mean Sq NumDF DenDF F value    Pr(&gt;F)    
+Sex               580   580.5     1    28  0.3521    0.5577    
+stim_color      53367 26683.3     2    56 16.1850 2.836e-06 ***
+Sex:stim_color   3024  1511.8     2    56  0.9170    0.4056    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+</section>
+<section id="r-分层线性回归" class="slide level2">
+<h2>R 分层线性回归</h2>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>分层线性回归</summary>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="fu">summary</span>(lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Linear mixed model fit by REML. t-tests use Satterthwaite's method [
+lmerModLmerTest]
+Formula: rt ~ Sex * stim_color + (1 | worker_id)
+   Data: df.ma.l
+
+REML criterion at convergence: 955.9
+
+Scaled residuals: 
+     Min       1Q   Median       3Q      Max 
+-2.14781 -0.55914 -0.05631  0.61116  1.92494 
+
+Random effects:
+ Groups    Name        Variance Std.Dev.
+ worker_id (Intercept) 8746     93.52   
+ Residual              1649     40.60   
+Number of obs: 90, groups:  worker_id, 30
+
+Fixed effects:
+                     Estimate Std. Error     df t value Pr(&gt;|t|)    
+(Intercept)            774.59      29.43  34.77  26.318  &lt; 2e-16 ***
+Sex1                   -37.73      38.00  34.77  -0.993    0.328    
+stim_colorgreen        -19.77      16.58  56.00  -1.193    0.238    
+stim_colorred          -70.33      16.58  56.00  -4.243 8.36e-05 ***
+Sex1:stim_colorgreen    21.75      21.40  56.00   1.016    0.314    
+Sex1:stim_colorred      27.46      21.40  56.00   1.283    0.205    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Correlation of Fixed Effects:
+             (Intr) Sex1   stm_clrg stm_clrr Sx1:stm_clrg
+Sex1         -0.775                                      
+stim_clrgrn  -0.282  0.218                               
+stim_colrrd  -0.282  0.218  0.500                        
+Sx1:stm_clrg  0.218 -0.282 -0.775   -0.387               
+Sx1:stm_clrr  0.218 -0.282 -0.387   -0.775    0.500      </code></pre>
+</div>
+</div>
+</section>
+<section id="总结" class="slide level2 smaller">
+<h2>总结</h2>
+<table style="width:99%;">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 16%">
+<col style="width: 42%">
+<col style="width: 28%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">R中内置函数</th>
+<th style="text-align: center;">一般线性表达形式</th>
+<th style="text-align: center;">R中的线性模型</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">独立样本t检验</td>
+<td style="text-align: center;">t.test(y~group)</td>
+<td style="text-align: center;"><span class="math display">\[Y=\beta_0+\beta_1X_1\]</span></td>
+<td style="text-align: center;">lm(y~ 1+X<sub>1</sub>)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">两因素完全随机方差分析</td>
+<td style="text-align: center;">aov(y~ X<sub>1</sub>+X<sub>2</sub>)</td>
+<td style="text-align: center;"><span class="math display">\[
+Y=\beta_0+\beta_1X_1+\beta_2X_2+\beta_3X_3+\beta_4X_1X_2+\beta_5X_1X_3
+\]</span></td>
+<td style="text-align: center;">lm(y~1)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">配对样本t检验</td>
+<td style="text-align: center;">t.test(y<sub>1</sub>, y<sub>2</sub>, paired =True)</td>
+<td style="text-align: center;"><p><span class="math display">\[
+Population level: Y=\beta_{0,j}+\beta_1X_1
+\]</span></p>
+<p><span class="math display">\[
+Subject level: \beta_{0,j}\sim N(\mu_{\beta_0},\sigma_{\beta_0})
+\]</span></p></td>
+<td style="text-align: center;"><p>lmer(y~ x+(1|subject))</p>
+<p>lm(y<sub>1</sub> -y<sub>2</sub> ~1)</p></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">两因素重复测量方差分析</td>
+<td style="text-align: center;">aov(y~ X<sub>1</sub>*X<sub>2</sub>+Error(n/X<sub>1</sub>))</td>
+<td style="text-align: center;"><p><span class="math display">\[
+Population level:Y=\beta_0+\beta_1X_1+\beta_2X_2+\beta_3X_3+\beta_4X_1X_2+\beta_5X_1X_3
+\]</span></p>
+<p><span class="math display">\[
+Subject level: \beta_{0,j}\sim N(\mu_{\beta_0},\sigma_{\beta_0})
+\]</span></p></td>
+<td style="text-align: center;">lmer(y~ X<sub>1</sub>+X<sub>2</sub> +(1+X<sub>1</sub>|subject)+(1+X<sub>2</sub> |subject))</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">两因素混合方差分析</td>
+<td style="text-align: center;">aov(y~ X<sub>1</sub>+X2+X<sub>1:</sub>X2)</td>
+<td style="text-align: center;"><p><span class="math display">\[
+Population level:Y=\beta_0+\beta_1X_1+\beta_2X_2+\beta_3X_3+\beta_4X_1X_2+\beta_5X_1X_3
+\]</span></p>
+<p><span class="math display">\[
+Group_{subject} level:\beta_{0,j}\sim N(\mu_{\beta_0},\sigma_{\beta_0})
+\]</span></p>
+<p><span class="math display">\[
+Group_{condition} level:\beta_{0,j}\sim N(\mu_{\beta_0},\sigma_{\beta_0})
+\]</span></p></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="推荐阅读" class="slide level2">
+<h2>推荐阅读</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/1699507376225.jpg" width="742"></p>
+</figure>
+</div>
+<p>https://lindeloev.github.io/tests-as-linear/</p>
+<p><img src="images/image-393370223.png" class="slide-logo"></p>
+<div class="footer footer-default">
+
+</div>
+</section></section>
+    </div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="lecture10_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="lecture10_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="lecture10_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="lecture10_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="lecture10_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="lecture10_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="lecture10_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="lecture10_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="lecture10_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="lecture10_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'smaller': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        text: function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+      });
+      clipboard.on('success', function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      });
+      function tippyHover(el, contentFn) {
+        const config = {
+          allowHTML: true,
+          content: contentFn,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start'
+        };
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          return note.innerHTML;
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>

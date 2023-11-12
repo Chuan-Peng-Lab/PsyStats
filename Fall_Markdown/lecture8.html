@@ -996,10 +996,10 @@ Sex1         5204.669   2728.893  1.907245 5.703953e-02</code></pre>
 <span id="cb11-11"><a href="#cb11-11"></a>         <span class="at">race =</span> <span class="fu">relevel</span>(race, <span class="at">ref =</span> <span class="st">"亚裔"</span>)) <span class="co"># 设置基线</span></span>
 <span id="cb11-12"><a href="#cb11-12"></a><span class="fu">contrasts</span>(df<span class="sc">$</span>race)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>     欧裔 非裔
+<pre><code>     非裔 欧裔
 亚裔    0    0
-欧裔    1    0
-非裔    0    1</code></pre>
+非裔    1    0
+欧裔    0    1</code></pre>
 </div>
 </div>
 </section>
@@ -1022,8 +1022,8 @@ Residuals:
 Coefficients:
             Estimate Std. Error t value Pr(&gt;|t|)    
 (Intercept)    49905       5292   9.430   &lt;2e-16 ***
-race欧裔       -1926       5493  -0.351    0.726    
 race非裔       -2297       7539  -0.305    0.761    
+race欧裔       -1926       5493  -0.351    0.726    
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
@@ -1052,8 +1052,8 @@ Residuals:
 Coefficients:
             Estimate Std. Error t value Pr(&gt;|t|)    
 (Intercept)    49905       5292   9.430   &lt;2e-16 ***
-race欧裔       -1926       5493  -0.351    0.726    
 race非裔       -2297       7539  -0.305    0.761    
+race欧裔       -1926       5493  -0.351    0.726    
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
@@ -1073,8 +1073,8 @@ F-statistic: 0.06567 on 2 and 519 DF,  p-value: 0.9365</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>             Estimate Std. Error    t value     Pr(&gt;|t|)
 (Intercept) 49905.114   5292.141  9.4300429 1.360018e-19
-race欧裔    -1925.905   5492.780 -0.3506247 7.260122e-01
-race非裔    -2296.644   7539.047 -0.3046331 7.607677e-01</code></pre>
+race非裔    -2296.644   7539.047 -0.3046331 7.607677e-01
+race欧裔    -1925.905   5492.780 -0.3506247 7.260122e-01</code></pre>
 </div>
 </div>
 <p><span class="math display">\[\begin{bmatrix}
@@ -1170,10 +1170,10 @@ race非裔    -2296.644   7539.047 -0.3046331 7.607677e-01</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">contrasts</span>(df<span class="sc">$</span>race)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>     欧裔 非裔
+<pre><code>     非裔 欧裔
 亚裔    0    0
-欧裔    1    0
-非裔    0    1</code></pre>
+非裔    1    0
+欧裔    0    1</code></pre>
 </div>
 </div>
 </section>
@@ -1196,8 +1196,8 @@ Coefficients:
             Estimate Std. Error t value Pr(&gt;|t|)    
 (Intercept)    47368       5443   8.702   &lt;2e-16 ***
 Sex1            5224       2735   1.910   0.0567 .  
-race欧裔       -1995       5479  -0.364   0.7159    
 race非裔       -2678       7522  -0.356   0.7219    
+race欧裔       -1995       5479  -0.364   0.7159    
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
@@ -1225,8 +1225,8 @@ Coefficients:
             Estimate Std. Error t value Pr(&gt;|t|)    
 (Intercept)    47368       5443   8.702   &lt;2e-16 ***
 Sex1            5224       2735   1.910   0.0567 .  
-race欧裔       -1995       5479  -0.364   0.7159    
 race非裔       -2678       7522  -0.356   0.7219    
+race欧裔       -1995       5479  -0.364   0.7159    
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
@@ -1246,8 +1246,8 @@ F-statistic:  1.26 on 3 and 518 DF,  p-value: 0.2875</code></pre>
 <pre><code>             Estimate Std. Error    t value     Pr(&gt;|t|)
 (Intercept) 47367.998   5443.289  8.7020920 4.352487e-17
 Sex1         5223.475   2735.042  1.9098337 5.670666e-02
-race欧裔    -1994.760   5478.942 -0.3640776 7.159486e-01
-race非裔    -2678.528   7522.550 -0.3560665 7.219357e-01</code></pre>
+race非裔    -2678.528   7522.550 -0.3560665 7.219357e-01
+race欧裔    -1994.760   5478.942 -0.3640776 7.159486e-01</code></pre>
 </div>
 </div>
 <p><span class="math display">\[\begin{bmatrix}
@@ -1376,10 +1376,10 @@ race非裔    -2678.528   7522.550 -0.3560665 7.219357e-01</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="fu">contrasts</span>(df<span class="sc">$</span>race)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>     欧裔 非裔
+<pre><code>     非裔 欧裔
 亚裔    0    0
-欧裔    1    0
-非裔    0    1</code></pre>
+非裔    1    0
+欧裔    0    1</code></pre>
 </div>
 </div>
 </section>
@@ -1402,10 +1402,10 @@ Coefficients:
               Estimate Std. Error t value Pr(&gt;|t|)    
 (Intercept)      51019       7369   6.924 1.31e-11 ***
 Sex1             -2294      10573  -0.217    0.828    
-race欧裔         -6132       7656  -0.801    0.424    
 race非裔         -3360      10930  -0.307    0.759    
-Sex1:race欧裔     8491      10974   0.774    0.439    
+race欧裔         -6132       7656  -0.801    0.424    
 Sex1:race非裔     2203      15113   0.146    0.884    
+Sex1:race欧裔     8491      10974   0.774    0.439    
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
@@ -1433,10 +1433,10 @@ Coefficients:
               Estimate Std. Error t value Pr(&gt;|t|)    
 (Intercept)      51019       7369   6.924 1.31e-11 ***
 Sex1             -2294      10573  -0.217    0.828    
-race欧裔         -6132       7656  -0.801    0.424    
 race非裔         -3360      10930  -0.307    0.759    
-Sex1:race欧裔     8491      10974   0.774    0.439    
+race欧裔         -6132       7656  -0.801    0.424    
 Sex1:race非裔     2203      15113   0.146    0.884    
+Sex1:race欧裔     8491      10974   0.774    0.439    
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
@@ -1456,10 +1456,10 @@ F-statistic: 0.9257 on 5 and 516 DF,  p-value: 0.4638</code></pre>
 <pre><code>               Estimate Std. Error    t value     Pr(&gt;|t|)
 (Intercept)   51019.389   7368.918  6.9235929 1.313381e-11
 Sex1          -2294.095  10573.367 -0.2169692 8.283181e-01
-race欧裔      -6131.926   7655.505 -0.8009826 4.235104e-01
 race非裔      -3360.189  10929.872 -0.3074317 7.586389e-01
-Sex1:race欧裔  8491.269  10973.912  0.7737687 4.394219e-01
-Sex1:race非裔  2203.316  15112.916  0.1457902 8.841439e-01</code></pre>
+race欧裔      -6131.926   7655.505 -0.8009826 4.235104e-01
+Sex1:race非裔  2203.316  15112.916  0.1457902 8.841439e-01
+Sex1:race欧裔  8491.269  10973.912  0.7737687 4.394219e-01</code></pre>
 </div>
 </div>
 <p><span class="math display">\[\begin{bmatrix}
@@ -1812,6 +1812,10 @@ Call:
 glm(formula = Alcohol ~ self_regulation, family = binomial(link = "logit"), 
     data = df_no_missing)
 
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-1.4242  -1.0330  -0.9134   1.2995   1.5151  
+
 Coefficients:
                  Estimate Std. Error z value Pr(&gt;|z|)   
 (Intercept)      1.248554   0.545319   2.290  0.02205 * 
@@ -1839,6 +1843,10 @@ Number of Fisher Scoring iterations: 4</code></pre>
 Call:
 glm(formula = Alcohol ~ self_regulation, family = binomial(link = "logit"), 
     data = df_no_missing)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-1.4242  -1.0330  -0.9134   1.2995   1.5151  
 
 Coefficients:
                  Estimate Std. Error z value Pr(&gt;|z|)   
