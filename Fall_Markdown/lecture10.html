@@ -394,7 +394,7 @@
 
 <p><br><br></p>
 <h1 style="text-align: center">
-<p>lecture 10</p>
+<p>Lecture 10</p>
 <p>常用统计检验均是线性模型</p>
 </h1>
 <h2 style="text-align: center">
@@ -412,7 +412,7 @@
 <h1>本次课内容</h1>
 <ul>
 <li><p>线性模型回顾</p></li>
-<li><p>t 检验是线性模型的特殊形式(自变量为二分变量）</p></li>
+<li><p><em>t</em> 检验是线性模型的特殊形式(自变量为二分变量）</p></li>
 <li><p>方差分析作为线性模型的特殊形式</p></li>
 </ul>
 </section>
@@ -433,7 +433,7 @@
 <li><p>第六课：简单线性模型</p></li>
 <li><p>第七课：多元线性模型</p></li>
 <li><p>第八课：线性模型中的虚拟变量与广义线性模型</p></li>
-<li><p>第九课：分层线性模型</p></li>
+<li><p>第九课：层级模型</p></li>
 </ul>
 </div><div class="column" style="width:40%;">
 <p><img data-src="images/1699335765612.jpg"></p>
@@ -481,8 +481,8 @@
 <li>多元线性回归是广义线性模型的一种特殊形式，连接函数为预测值本身，观测值服从以预测项为均值的正态分布，观测值与预测值之间的差值就是残差。</li>
 </ul>
 </section>
-<section id="分层线性模型hierarchical-linear-models" class="slide level2">
-<h2>分层线性模型(Hierarchical linear models)</h2>
+<section id="层级模型hierarchical-linear-models" class="slide level2">
+<h2>层级模型(Hierarchical linear models)</h2>
 <ul>
 <li>多水平模型（Multilevel Model，MLM）、线性混合模型（Linear Mixed Model）、混合效应模型（Mixed Effects Model）、随机效应模型（Random Effects Model）…</li>
 </ul>
@@ -507,8 +507,8 @@
 <section id="section-3" class="slide level2">
 <h2></h2>
 <ul>
-<li><p>当因变量为分类变量时，我们就需要使用广义线性混合模型(GLMM, generalized linear mixed models)。</p></li>
-<li><p>当数据结构为同一层级时，简单线性模型，多元线性模型，广义线性模型均为广义线性混合模型的一种特殊形式。</p></li>
+<li><p>当因变量为分类变量时，我们就需要使用广义层级模型。</p></li>
+<li><p>当数据结构为同一层级时，简单线性模型，多元线性模型，广义线性模型均为广义层级模型的一种特殊形式。</p></li>
 </ul>
 </section>
 <section id="section-4" class="slide level2 smaller">
@@ -528,8 +528,8 @@
 <th>简单线性模型</th>
 <th>多元线性模型</th>
 <th>广义线性模型</th>
-<th>分层线性模型</th>
-<th>广义线性混合模型</th>
+<th>层级模型</th>
+<th>广义层级模型</th>
 </tr>
 </thead>
 <tbody>
@@ -810,11 +810,11 @@ If significant (violation of the assumption),
 then you should better set `var.equal=FALSE`.
 
 Results of t-test:
-──────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-                                                 t df     p        Difference [95% CI] Cohen’s d [95% CI]     BF10
-──────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-rt_mean: condition (incongruent - congruent)  3.16 58  .003 **  116.35 [42.57, 190.14]  0.82 [0.30, 1.33] 1.43e+01
-──────────────────────────────────────────────────────────────────────────────────────────────────────────────────</code></pre>
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────
+                                                 t df     p        Difference [95% CI] Cohen’s d [95% CI] BF10
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────
+rt_mean: condition (incongruent - congruent)  3.16 58  .003 **  116.35 [42.57, 190.14]  0.82 [0.30, 1.33]     
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────</code></pre>
 </div>
 </div>
 </section>
@@ -888,8 +888,8 @@ F-statistic: 9.964 on 1 and 58 DF,  p-value: 0.002532</code></pre>
 </ul>
 <div class="columns">
 <div class="column" style="width:50;">
-<p><span class="math inline">\(Population level: Y = \beta_{0,j}+\beta_1X_1\)</span></p>
-<p><span class="math inline">\(Group level: \beta_{0,j}\sim N(\mu\beta_0,\sigma\beta_0)\)</span></p>
+<p>Population level: <span class="math inline">\(Y = \beta_{0,j}+\beta_1X_1\)</span></p>
+<p>Group level: <span class="math inline">\(\beta_{0,j}\sim N(\mu\beta_0,\sigma\beta_0)\)</span></p>
 <ul>
 <li><p>其中，<span class="math inline">\(𝑋_1\)</span>为二分变量，条件1/条件2分别编码为0/1</p></li>
 <li><p>当<span class="math inline">\(𝑋_1\)</span>为0时，<span class="math inline">\(Y=\beta_0\)</span>，代表条件1的均值</p></li>
@@ -908,7 +908,8 @@ F-statistic: 9.964 on 1 and 58 DF,  p-value: 0.002532</code></pre>
 <ul>
 <li>线性模型表达</li>
 </ul>
-<p><span class="math display">\[整体水平（Population level）：𝑌=\beta_{0,j}+\beta_1𝑋_1\]</span> <span class="math display">\[组水平（Group level）： \beta_{0,𝑗}\sim 𝑁(𝜇_{𝛽_0},𝜎_{𝛽_0} )\]</span> <span class="math display">\[H_0: \beta_1 = 0\]</span></p>
+<p>整体水平（Population level）：<span class="math display">\[𝑌 = \beta_{0,j} + \beta_1𝑋_1\]</span></p>
+<p>组水平（Group level）： <span class="math display">\[\beta_{0,𝑗}\sim 𝑁(\mu_{\beta_0}, \sigma_{\beta_0} )\]</span> <span class="math display">\[H_0: \beta_1 = 0\]</span></p>
 <ul>
 <li><p>与配对样本<em>t</em>检验不同，在线性模型中检查两组之间的差异相当于检查回归系数<span class="math inline">\(\beta_1\)</span>的显著性。</p></li>
 <li><p>需要注意的是，尽管线性模型中有变化效应存在，但我们检验的仍是固定效应(总体层面的效应)。</p></li>
@@ -961,18 +962,18 @@ Descriptives:
 ───────────────────────────────
 
 Results of t-test:
-───────────────────────────────────────────────────────────────────────────────────────────────────────
-                                      t df     p        Difference [95% CI] Cohen’s d [95% CI]     BF10
-───────────────────────────────────────────────────────────────────────────────────────────────────────
-Paired: (incongruent - congruent)  9.66 29 &lt;.001 *** 116.35 [91.71, 141.00]  1.76 [1.39, 2.14] 7.04e+07
-───────────────────────────────────────────────────────────────────────────────────────────────────────</code></pre>
+───────────────────────────────────────────────────────────────────────────────────────────────────
+                                      t df     p        Difference [95% CI] Cohen’s d [95% CI] BF10
+───────────────────────────────────────────────────────────────────────────────────────────────────
+Paired: (incongruent - congruent)  9.66 29 &lt;.001 *** 116.35 [91.71, 141.00]  1.76 [1.39, 2.14]     
+───────────────────────────────────────────────────────────────────────────────────────────────────</code></pre>
 </div>
 </div>
 </section>
-<section id="r-混合线性模型" class="slide level2">
-<h2>R 混合线性模型</h2>
+<section id="r-层级模型" class="slide level2">
+<h2>R 层级模型</h2>
 <ul>
-<li><p>在线性模型中，使用混合线性模型可以进行同样的假设检验</p></li>
+<li><p>在线性模型中，使用层级模型可以进行同样的假设检验</p></li>
 <li><p>数据：example10_1.csv</p></li>
 </ul>
 </section>
@@ -1008,8 +1009,8 @@ Paired: (incongruent - congruent)  9.66 29 &lt;.001 *** 116.35 [91.71, 141.00]  
 </div>
 <div class="cell" data-layout-align="center">
 <details>
-<summary>分层线性回归</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="co">#分层线性回归</span></span>
+<summary>层级模型</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="co">#层级线性回归</span></span>
 <span id="cb14-2"><a href="#cb14-2"></a>lm.rt <span class="ot">&lt;-</span> <span class="fu">lmer</span>(rt <span class="sc">~</span> condition <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>subject), <span class="at">data =</span> df.rt.l)</span>
 <span id="cb14-3"><a href="#cb14-3"></a><span class="fu">summary</span>(lm.rt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
