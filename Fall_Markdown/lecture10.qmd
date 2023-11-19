@@ -298,7 +298,7 @@ $$H_0:b_1 = 0$$
 #| fig-align: "center"
 # 载入包
 library(pacman)
-pacman::p_load('tidyverse','bruceR','lme4',"tidyr")
+pacman::p_load('tidyverse','bruceR','lme4',"tidyr","car")
 ```
 
 ```{r echo=TRUE}
@@ -569,8 +569,8 @@ head(df.ia)
 #| fig-align: "center"
 
 #两因素完全随机方差分析
-lm = lm(rt ~ 1 + Sex + RelationshipStatus + Sex:RelationshipStatus, data = df.ia)
-anova(lm)
+anova<-aov(rt~Sex*RelationshipStatus,data=df.ia)
+summary(anova)
 ```
 
 ## R 多元线性回归
@@ -580,8 +580,25 @@ anova(lm)
 #| code-summary: "多元线性回归"    #代码块说明文字
 #| fig-align: "center"
 
+lm = lm(rt ~ 1 + Sex + RelationshipStatus + Sex:RelationshipStatus, data = df.ia)
 summary(lm)
 ```
+## 结果对比
+```{r echo=TRUE}
+#| code-fold: true    #折叠代码
+#| code-summary: "多元线性回归中的ANOVA"    #代码块说明文字
+#| fig-align: "center"
+anova(lm)
+```
+```{r echo=TRUE}
+#| code-fold: true    #折叠代码
+#| code-summary: "ANOVA"    #代码块说明文字
+#| fig-align: "center"
+
+anova<-aov(rt~Sex*RelationshipStatus,data=df.ia)
+summary(anova)
+```
+
 
 ## 两因素重复测量方差分析数据模式
 
@@ -667,12 +684,11 @@ head(df.da.l)
 #| fig-align: "center"
 
 # 两因素重复测量方差分析
-lm = lmer( rt ~ condition*stim_color + (1|worker_id) + 
-             (1|worker_id:condition) + (1|worker_id:stim_color), df.da.l)
-anova(lm)
+anova<-aov(rt~condition*stim_color+Error(worker_id/(condition*stim_color)),data=df.da.l)
+summary(anova)
 ```
 
-## 分层线性回归
+## R 分层线性回归
 
 -   重复测量方差分析是一种特殊的层级模型，其变化的截距不仅包括每个个体，也包括个体与每个条件的交互下的截距
 
@@ -680,8 +696,29 @@ anova(lm)
 #| code-fold: true    #折叠代码
 #| code-summary: "分层线性回归"    #代码块说明文字
 #| fig-align: "center"
+
+lm = lmer( rt ~ condition*stim_color + (1|worker_id) + 
+             (1|worker_id:condition) + (1|worker_id:stim_color), df.da.l)
 summary(lm)
 ```
+## 结果对比
+```{r echo=TRUE}
+#| code-fold: true    #折叠代码
+#| code-summary: "多元线性回归中的ANOVA"    #代码块说明文字
+#| fig-align: "center"
+anova(lm)
+```
+
+```{r echo=TRUE}
+#| code-fold: true    #折叠代码
+#| code-summary: "ANOVA"    #代码块说明文字
+#| fig-align: "center"
+
+anova<-aov(rt~condition*stim_color+Error(worker_id/(condition*stim_color)),data=df.da.l)
+summary(anova)
+```
+
+
 
 ## 两因素混合设计方差分析数据模式
 
@@ -760,8 +797,8 @@ head(df.ma.l)
 #| fig-align: "center"
 
 # 混合设计方差分析
-lm = lmer( rt ~  Sex*stim_color +(1 |worker_id) , df.ma.l)
-anova(lm)
+anova<-aov(rt~Sex*stim_color+Error(worker_id/stim_color),data=df.ma.l)
+summary(anova)
 ```
 
 ## R 分层线性回归
@@ -770,7 +807,27 @@ anova(lm)
 #| code-fold: true    #折叠代码
 #| code-summary: "分层线性回归"    #代码块说明文字
 #| fig-align: "center"
+lm = lmer( rt ~  Sex*stim_color +(1 |worker_id) , df.ma.l)
 summary(lm)
+```
+
+## 结果对比
+
+```{r echo=TRUE}
+#| code-fold: true    #折叠代码
+#| code-summary: "多元线性回归中的ANOVA"    #代码块说明文字
+#| fig-align: "center"
+anova(lm)
+```
+
+```{r echo=TRUE}
+#| code-fold: true    #折叠代码
+#| code-summary: "ANOVA"    #代码块说明文字
+#| fig-align: "center"
+
+# 混合设计方差分析
+anova<-aov(rt~Sex*stim_color+Error(worker_id/stim_color),data=df.ma.l)
+summary(anova)
 ```
 
 ## 总结 {.smaller}

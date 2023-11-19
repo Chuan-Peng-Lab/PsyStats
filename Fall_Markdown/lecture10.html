@@ -754,7 +754,7 @@
 <summary>加载package</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># 载入包</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(pacman)</span>
-<span id="cb1-3"><a href="#cb1-3"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(<span class="st">'tidyverse'</span>,<span class="st">'bruceR'</span>,<span class="st">'lme4'</span>,<span class="st">"tidyr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(<span class="st">'tidyverse'</span>,<span class="st">'bruceR'</span>,<span class="st">'lme4'</span>,<span class="st">"tidyr"</span>,<span class="st">"car"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell" data-layout-align="center">
@@ -1208,18 +1208,15 @@ MS_{组内}=\frac{SS_{组内}}{pq(n-1)}
 <details>
 <summary>两因素完全随机方差分析</summary>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="co">#两因素完全随机方差分析</span></span>
-<span id="cb18-2"><a href="#cb18-2"></a>lm <span class="ot">=</span> <span class="fu">lm</span>(rt <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Sex <span class="sc">+</span> RelationshipStatus <span class="sc">+</span> Sex<span class="sc">:</span>RelationshipStatus, <span class="at">data =</span> df.ia)</span>
-<span id="cb18-3"><a href="#cb18-3"></a><span class="fu">anova</span>(lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-2"><a href="#cb18-2"></a>anova<span class="ot">&lt;-</span><span class="fu">aov</span>(rt<span class="sc">~</span>Sex<span class="sc">*</span>RelationshipStatus,<span class="at">data=</span>df.ia)</span>
+<span id="cb18-3"><a href="#cb18-3"></a><span class="fu">summary</span>(anova)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Analysis of Variance Table
-
-Response: rt
-                       Df Sum Sq Mean Sq F value Pr(&gt;F)
-Sex                     1   3456  3455.8  0.3454 0.5622
-RelationshipStatus      2   5406  2702.9  0.2701 0.7656
-Sex:RelationshipStatus  2  10644  5322.0  0.5319 0.5942
-Residuals              24 240122 10005.1               </code></pre>
+<pre><code>                       Df Sum Sq Mean Sq F value Pr(&gt;F)
+Sex                     1   3456    3456   0.345  0.562
+RelationshipStatus      2   5406    2703   0.270  0.766
+Sex:RelationshipStatus  2  10644    5322   0.532  0.594
+Residuals              24 240122   10005               </code></pre>
 </div>
 </div>
 </section>
@@ -1228,7 +1225,8 @@ Residuals              24 240122 10005.1               </code></pre>
 <div class="cell" data-layout-align="center">
 <details>
 <summary>多元线性回归</summary>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">summary</span>(lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>lm <span class="ot">=</span> <span class="fu">lm</span>(rt <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Sex <span class="sc">+</span> RelationshipStatus <span class="sc">+</span> Sex<span class="sc">:</span>RelationshipStatus, <span class="at">data =</span> df.ia)</span>
+<span id="cb20-2"><a href="#cb20-2"></a><span class="fu">summary</span>(lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -1254,6 +1252,39 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 Residual standard error: 100 on 24 degrees of freedom
 Multiple R-squared:  0.07513,   Adjusted R-squared:  -0.1176 
 F-statistic: 0.3899 on 5 and 24 DF,  p-value: 0.8508</code></pre>
+</div>
+</div>
+</section>
+<section id="结果对比" class="slide level2">
+<h2>结果对比</h2>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>多元线性回归中的ANOVA</summary>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">anova</span>(lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Variance Table
+
+Response: rt
+                       Df Sum Sq Mean Sq F value Pr(&gt;F)
+Sex                     1   3456  3455.8  0.3454 0.5622
+RelationshipStatus      2   5406  2702.9  0.2701 0.7656
+Sex:RelationshipStatus  2  10644  5322.0  0.5319 0.5942
+Residuals              24 240122 10005.1               </code></pre>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>ANOVA</summary>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>anova<span class="ot">&lt;-</span><span class="fu">aov</span>(rt<span class="sc">~</span>Sex<span class="sc">*</span>RelationshipStatus,<span class="at">data=</span>df.ia)</span>
+<span id="cb24-2"><a href="#cb24-2"></a><span class="fu">summary</span>(anova)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>                       Df Sum Sq Mean Sq F value Pr(&gt;F)
+Sex                     1   3456    3456   0.345  0.562
+RelationshipStatus      2   5406    2703   0.270  0.766
+Sex:RelationshipStatus  2  10644    5322   0.532  0.594
+Residuals              24 240122   10005               </code></pre>
 </div>
 </div>
 </section>
@@ -1385,20 +1416,20 @@ MS_{AB*被试}=\frac{SS_{AB*被试}}{(p-1)(q-1)(n-1)}
 <div class="cell" data-layout-align="center">
 <details>
 <summary>数据预处理</summary>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="co">#读取数据</span></span>
-<span id="cb22-2"><a href="#cb22-2"></a>df.da<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">'data/example10_4_w.csv'</span>)</span>
-<span id="cb22-3"><a href="#cb22-3"></a></span>
-<span id="cb22-4"><a href="#cb22-4"></a><span class="co"># 宽数据转长数据</span></span>
-<span id="cb22-5"><a href="#cb22-5"></a>df.da.l <span class="ot">&lt;-</span> df.da <span class="sc">%&gt;%</span></span>
-<span id="cb22-6"><a href="#cb22-6"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="st">"congruent_blue"</span>, <span class="st">"congruent_green"</span>, <span class="st">"congruent_red"</span>,</span>
-<span id="cb22-7"><a href="#cb22-7"></a>                        <span class="st">"incongruent_blue"</span>, <span class="st">"incongruent_green"</span>,<span class="st">"incongruent_red"</span>),</span>
-<span id="cb22-8"><a href="#cb22-8"></a>               <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">"condition"</span>, <span class="st">"stim_color"</span>),</span>
-<span id="cb22-9"><a href="#cb22-9"></a>               <span class="at">names_sep =</span> <span class="st">"_"</span>,</span>
-<span id="cb22-10"><a href="#cb22-10"></a>               <span class="at">values_to =</span> <span class="st">"rt"</span>)<span class="sc">%&gt;%</span></span>
-<span id="cb22-11"><a href="#cb22-11"></a>  <span class="fu">mutate</span>(<span class="at">condition=</span><span class="fu">factor</span>(condition),</span>
-<span id="cb22-12"><a href="#cb22-12"></a>         <span class="at">stim_color=</span><span class="fu">factor</span>(stim_color))</span>
-<span id="cb22-13"><a href="#cb22-13"></a></span>
-<span id="cb22-14"><a href="#cb22-14"></a><span class="fu">head</span>(df.da.l)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="co">#读取数据</span></span>
+<span id="cb26-2"><a href="#cb26-2"></a>df.da<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">'data/example10_4_w.csv'</span>)</span>
+<span id="cb26-3"><a href="#cb26-3"></a></span>
+<span id="cb26-4"><a href="#cb26-4"></a><span class="co"># 宽数据转长数据</span></span>
+<span id="cb26-5"><a href="#cb26-5"></a>df.da.l <span class="ot">&lt;-</span> df.da <span class="sc">%&gt;%</span></span>
+<span id="cb26-6"><a href="#cb26-6"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="st">"congruent_blue"</span>, <span class="st">"congruent_green"</span>, <span class="st">"congruent_red"</span>,</span>
+<span id="cb26-7"><a href="#cb26-7"></a>                        <span class="st">"incongruent_blue"</span>, <span class="st">"incongruent_green"</span>,<span class="st">"incongruent_red"</span>),</span>
+<span id="cb26-8"><a href="#cb26-8"></a>               <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">"condition"</span>, <span class="st">"stim_color"</span>),</span>
+<span id="cb26-9"><a href="#cb26-9"></a>               <span class="at">names_sep =</span> <span class="st">"_"</span>,</span>
+<span id="cb26-10"><a href="#cb26-10"></a>               <span class="at">values_to =</span> <span class="st">"rt"</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb26-11"><a href="#cb26-11"></a>  <span class="fu">mutate</span>(<span class="at">condition=</span><span class="fu">factor</span>(condition),</span>
+<span id="cb26-12"><a href="#cb26-12"></a>         <span class="at">stim_color=</span><span class="fu">factor</span>(stim_color))</span>
+<span id="cb26-13"><a href="#cb26-13"></a></span>
+<span id="cb26-14"><a href="#cb26-14"></a><span class="fu">head</span>(df.da.l)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 4
@@ -1415,31 +1446,48 @@ MS_{AB*被试}=\frac{SS_{AB*被试}}{(p-1)(q-1)(n-1)}
 <div class="cell" data-layout-align="center">
 <details>
 <summary>两因素重复测量方差分析</summary>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="co"># 两因素重复测量方差分析</span></span>
-<span id="cb24-2"><a href="#cb24-2"></a>lm <span class="ot">=</span> <span class="fu">lmer</span>( rt <span class="sc">~</span> condition<span class="sc">*</span>stim_color <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>worker_id) <span class="sc">+</span> </span>
-<span id="cb24-3"><a href="#cb24-3"></a>             (<span class="dv">1</span><span class="sc">|</span>worker_id<span class="sc">:</span>condition) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>worker_id<span class="sc">:</span>stim_color), df.da.l)</span>
-<span id="cb24-4"><a href="#cb24-4"></a><span class="fu">anova</span>(lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="co"># 两因素重复测量方差分析</span></span>
+<span id="cb28-2"><a href="#cb28-2"></a>anova<span class="ot">&lt;-</span><span class="fu">aov</span>(rt<span class="sc">~</span>condition<span class="sc">*</span>stim_color<span class="sc">+</span><span class="fu">Error</span>(worker_id<span class="sc">/</span>(condition<span class="sc">*</span>stim_color)),<span class="at">data=</span>df.da.l)</span>
+<span id="cb28-3"><a href="#cb28-3"></a><span class="fu">summary</span>(anova)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Type III Analysis of Variance Table with Satterthwaite's method
-                     Sum Sq Mean Sq NumDF DenDF  F value    Pr(&gt;F)    
-condition            310985  310985     1    29 211.7212 7.341e-15 ***
-stim_color            48744   24372     2    58  16.5925 2.003e-06 ***
-condition:stim_color   3459    1730     2    58   1.1776    0.3153    
+<pre><code>
+Error: worker_id
+          Df  Sum Sq Mean Sq F value Pr(&gt;F)
+Residuals 29 1652011   56966               
+
+Error: worker_id:condition
+          Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+condition  1 844914  844914   211.7 7.34e-15 ***
+Residuals 29 115731    3991                     
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Error: worker_id:stim_color
+           Df Sum Sq Mean Sq F value Pr(&gt;F)    
+stim_color  2 110036   55018   16.59  2e-06 ***
+Residuals  58 192317    3316                   
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Error: worker_id:condition:stim_color
+                     Df Sum Sq Mean Sq F value Pr(&gt;F)
+condition:stim_color  2   3459    1730   1.178  0.315
+Residuals            58  85192    1469               </code></pre>
 </div>
 </div>
 </section>
-<section id="分层线性回归" class="slide level2">
-<h2>分层线性回归</h2>
+<section id="r-分层线性回归" class="slide level2">
+<h2>R 分层线性回归</h2>
 <ul>
 <li>重复测量方差分析是一种特殊的层级模型，其变化的截距不仅包括每个个体，也包括个体与每个条件的交互下的截距</li>
 </ul>
 <div class="cell" data-layout-align="center">
 <details>
 <summary>分层线性回归</summary>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">summary</span>(lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a>lm <span class="ot">=</span> <span class="fu">lmer</span>( rt <span class="sc">~</span> condition<span class="sc">*</span>stim_color <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>worker_id) <span class="sc">+</span> </span>
+<span id="cb30-2"><a href="#cb30-2"></a>             (<span class="dv">1</span><span class="sc">|</span>worker_id<span class="sc">:</span>condition) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>worker_id<span class="sc">:</span>stim_color), df.da.l)</span>
+<span id="cb30-3"><a href="#cb30-3"></a><span class="fu">summary</span>(lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Linear mixed model fit by REML. t-tests use Satterthwaite's method [
@@ -1489,6 +1537,56 @@ stim_clrgrn           -0.319  0.312
 stim_colrrd           -0.319  0.312  0.500                                 
 cndtnncngrnt:stm_clrg  0.177 -0.564 -0.554   -0.277                        
 cndtnncngrnt:stm_clrr  0.177 -0.564 -0.277   -0.554    0.500               </code></pre>
+</div>
+</div>
+</section>
+<section id="结果对比-1" class="slide level2">
+<h2>结果对比</h2>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>多元线性回归中的ANOVA</summary>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="fu">anova</span>(lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Type III Analysis of Variance Table with Satterthwaite's method
+                     Sum Sq Mean Sq NumDF DenDF  F value    Pr(&gt;F)    
+condition            310985  310985     1    29 211.7212 7.341e-15 ***
+stim_color            48744   24372     2    58  16.5925 2.003e-06 ***
+condition:stim_color   3459    1730     2    58   1.1776    0.3153    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>ANOVA</summary>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a>anova<span class="ot">&lt;-</span><span class="fu">aov</span>(rt<span class="sc">~</span>condition<span class="sc">*</span>stim_color<span class="sc">+</span><span class="fu">Error</span>(worker_id<span class="sc">/</span>(condition<span class="sc">*</span>stim_color)),<span class="at">data=</span>df.da.l)</span>
+<span id="cb34-2"><a href="#cb34-2"></a><span class="fu">summary</span>(anova)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Error: worker_id
+          Df  Sum Sq Mean Sq F value Pr(&gt;F)
+Residuals 29 1652011   56966               
+
+Error: worker_id:condition
+          Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+condition  1 844914  844914   211.7 7.34e-15 ***
+Residuals 29 115731    3991                     
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Error: worker_id:stim_color
+           Df Sum Sq Mean Sq F value Pr(&gt;F)    
+stim_color  2 110036   55018   16.59  2e-06 ***
+Residuals  58 192317    3316                   
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Error: worker_id:condition:stim_color
+                     Df Sum Sq Mean Sq F value Pr(&gt;F)
+condition:stim_color  2   3459    1730   1.178  0.315
+Residuals            58  85192    1469               </code></pre>
 </div>
 </div>
 </section>
@@ -1611,17 +1709,17 @@ MS_{B*被试(A)}=\frac{SS_{B*被试(A)}}{p(n-1)(q-1)}
 <div class="cell" data-layout-align="center">
 <details>
 <summary>数据预处理</summary>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="co">#读取数据</span></span>
-<span id="cb28-2"><a href="#cb28-2"></a>df.ma<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">'data/example10_5_w.csv'</span>)</span>
-<span id="cb28-3"><a href="#cb28-3"></a></span>
-<span id="cb28-4"><a href="#cb28-4"></a><span class="co"># 宽数据转长数据</span></span>
-<span id="cb28-5"><a href="#cb28-5"></a>df.ma.l <span class="ot">&lt;-</span> df.ma <span class="sc">%&gt;%</span></span>
-<span id="cb28-6"><a href="#cb28-6"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="st">"blue"</span>,<span class="st">"green"</span>, <span class="st">"red"</span>),</span>
-<span id="cb28-7"><a href="#cb28-7"></a>               <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">"stim_color"</span>),</span>
-<span id="cb28-8"><a href="#cb28-8"></a>               <span class="at">values_to =</span> <span class="st">"rt"</span>)<span class="sc">%&gt;%</span></span>
-<span id="cb28-9"><a href="#cb28-9"></a>  <span class="fu">mutate</span>(<span class="at">stim_color=</span><span class="fu">factor</span>(stim_color),</span>
-<span id="cb28-10"><a href="#cb28-10"></a>         <span class="at">Sex=</span><span class="fu">factor</span>(Sex))</span>
-<span id="cb28-11"><a href="#cb28-11"></a><span class="fu">head</span>(df.ma.l)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="co">#读取数据</span></span>
+<span id="cb36-2"><a href="#cb36-2"></a>df.ma<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">'data/example10_5_w.csv'</span>)</span>
+<span id="cb36-3"><a href="#cb36-3"></a></span>
+<span id="cb36-4"><a href="#cb36-4"></a><span class="co"># 宽数据转长数据</span></span>
+<span id="cb36-5"><a href="#cb36-5"></a>df.ma.l <span class="ot">&lt;-</span> df.ma <span class="sc">%&gt;%</span></span>
+<span id="cb36-6"><a href="#cb36-6"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="st">"blue"</span>,<span class="st">"green"</span>, <span class="st">"red"</span>),</span>
+<span id="cb36-7"><a href="#cb36-7"></a>               <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">"stim_color"</span>),</span>
+<span id="cb36-8"><a href="#cb36-8"></a>               <span class="at">values_to =</span> <span class="st">"rt"</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb36-9"><a href="#cb36-9"></a>  <span class="fu">mutate</span>(<span class="at">stim_color=</span><span class="fu">factor</span>(stim_color),</span>
+<span id="cb36-10"><a href="#cb36-10"></a>         <span class="at">Sex=</span><span class="fu">factor</span>(Sex))</span>
+<span id="cb36-11"><a href="#cb36-11"></a><span class="fu">head</span>(df.ma.l)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 4
@@ -1638,27 +1736,34 @@ MS_{B*被试(A)}=\frac{SS_{B*被试(A)}}{p(n-1)(q-1)}
 <div class="cell" data-layout-align="center">
 <details>
 <summary>混合设计方差分析</summary>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="co"># 混合设计方差分析</span></span>
-<span id="cb30-2"><a href="#cb30-2"></a>lm <span class="ot">=</span> <span class="fu">lmer</span>( rt <span class="sc">~</span>  Sex<span class="sc">*</span>stim_color <span class="sc">+</span>(<span class="dv">1</span> <span class="sc">|</span>worker_id) , df.ma.l)</span>
-<span id="cb30-3"><a href="#cb30-3"></a><span class="fu">anova</span>(lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="co"># 混合设计方差分析</span></span>
+<span id="cb38-2"><a href="#cb38-2"></a>anova<span class="ot">&lt;-</span><span class="fu">aov</span>(rt<span class="sc">~</span>Sex<span class="sc">*</span>stim_color<span class="sc">+</span><span class="fu">Error</span>(worker_id<span class="sc">/</span>stim_color),<span class="at">data=</span>df.ma.l)</span>
+<span id="cb38-3"><a href="#cb38-3"></a><span class="fu">summary</span>(anova)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Type III Analysis of Variance Table with Satterthwaite's method
-               Sum Sq Mean Sq NumDF DenDF F value    Pr(&gt;F)    
-Sex               580   580.5     1    28  0.3521    0.5577    
-stim_color      53367 26683.3     2    56 16.1850 2.836e-06 ***
-Sex:stim_color   3024  1511.8     2    56  0.9170    0.4056    
+<pre><code>
+Error: worker_id
+          Df Sum Sq Mean Sq F value Pr(&gt;F)
+Sex        1   9819    9819   0.352  0.558
+Residuals 28 780831   27887               
+
+Error: worker_id:stim_color
+               Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+stim_color      2  51676   25838  15.672 3.93e-06 ***
+Sex:stim_color  2   3024    1512   0.917    0.406    
+Residuals      56  92324    1649                     
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 </div>
 </section>
-<section id="r-分层线性回归" class="slide level2">
+<section id="r-分层线性回归-1" class="slide level2">
 <h2>R 分层线性回归</h2>
 <div class="cell" data-layout-align="center">
 <details>
 <summary>分层线性回归</summary>
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="fu">summary</span>(lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a>lm <span class="ot">=</span> <span class="fu">lmer</span>( rt <span class="sc">~</span>  Sex<span class="sc">*</span>stim_color <span class="sc">+</span>(<span class="dv">1</span> <span class="sc">|</span>worker_id) , df.ma.l)</span>
+<span id="cb40-2"><a href="#cb40-2"></a><span class="fu">summary</span>(lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Linear mixed model fit by REML. t-tests use Satterthwaite's method [
@@ -1696,6 +1801,47 @@ stim_clrgrn  -0.282  0.218
 stim_colrrd  -0.282  0.218  0.500                        
 Sx1:stm_clrg  0.218 -0.282 -0.775   -0.387               
 Sx1:stm_clrr  0.218 -0.282 -0.387   -0.775    0.500      </code></pre>
+</div>
+</div>
+</section>
+<section id="结果对比-2" class="slide level2">
+<h2>结果对比</h2>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>多元线性回归中的ANOVA</summary>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a><span class="fu">anova</span>(lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Type III Analysis of Variance Table with Satterthwaite's method
+               Sum Sq Mean Sq NumDF DenDF F value    Pr(&gt;F)    
+Sex               580   580.5     1    28  0.3521    0.5577    
+stim_color      53367 26683.3     2    56 16.1850 2.836e-06 ***
+Sex:stim_color   3024  1511.8     2    56  0.9170    0.4056    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>ANOVA</summary>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a><span class="co"># 混合设计方差分析</span></span>
+<span id="cb44-2"><a href="#cb44-2"></a>anova<span class="ot">&lt;-</span><span class="fu">aov</span>(rt<span class="sc">~</span>Sex<span class="sc">*</span>stim_color<span class="sc">+</span><span class="fu">Error</span>(worker_id<span class="sc">/</span>stim_color),<span class="at">data=</span>df.ma.l)</span>
+<span id="cb44-3"><a href="#cb44-3"></a><span class="fu">summary</span>(anova)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Error: worker_id
+          Df Sum Sq Mean Sq F value Pr(&gt;F)
+Sex        1   9819    9819   0.352  0.558
+Residuals 28 780831   27887               
+
+Error: worker_id:stim_color
+               Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+stim_color      2  51676   25838  15.672 3.93e-06 ***
+Sex:stim_color  2   3024    1512   0.917    0.406    
+Residuals      56  92324    1649                     
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 </div>
 </section>
