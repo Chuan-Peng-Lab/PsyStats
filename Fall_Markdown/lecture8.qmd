@@ -994,7 +994,7 @@ summary(model_6)
 ::: {style="font-size:26px"}
 -   以酗酒行为为因变量（Alcohol:有酗酒行为=1，无酗酒行为=0），连续变量自我调节（self regulation）为自变量。
 
--   Model: $Alcohol = \beta_0 + \beta_1 self regulation+ \epsilon$
+-   Model: $\mu_{Alcohol} = \beta_0 + \beta_1 self regulation+ \epsilon$
 :::
 
 ```{r echo=TRUE}
@@ -1015,7 +1015,7 @@ summary(model_7)
 summary(model_7)
 ```
 
-$H_0: Alcohol = \beta_0$ </br> $H_1: Alcohol = \beta_0 + \beta_1 self \ regulation$
+$H_0: \mu_{Alcohol} = \beta_0$ </br> $H_1: \mu_{Alcohol} = \beta_0 + \beta_1 self \ regulation$
 
 ## 
 
@@ -1025,7 +1025,7 @@ $H_0: Alcohol = \beta_0$ </br> $H_1: Alcohol = \beta_0 + \beta_1 self \ regulati
 summary(model_7)$coef
 ```
 
-$$Alcohol = 1.249−0.013self regulation$$
+$$\mu_{Alcohol} = 1.249−0.013self regulation$$
 
 ## 回归方程的预测情况
 
@@ -1095,14 +1095,18 @@ ggplot(scatter_data, aes(x = Predicted_Probability, y = Squared_Pearson_Residual
 
 ## 预测情况可视化
 
+(黑色为实际情况，灰色为预测情况)
+
 ```{r echo=TRUE}
 #| code-fold: true    
 #| code-summary: "estimates plot"    
 #| fig-align: "center"
- 
-ggplot(df, aes(x = self_regulation, y = Alcohol)) +
+
+df_no_missing <- mutate(df_no_missing, pre_res = binary_predictions)
+ggplot(df_no_missing, aes(x = self_regulation, y = pre_res)) +
+  geom_point(data=df_no_missing, mapping=aes(x = self_regulation, y = Alcohol),color = "black",na.rm = TRUE)+
   geom_point(color = "gray",na.rm = TRUE)+
-  geom_smooth(method = "glm", method.args = list(family = binomial(link = "logit")), se = TRUE,na.rm = TRUE,color = "black") +  
+  geom_smooth(method = "glm", method.args = list(family = binomial(link = "logit")), se = F,na.rm = TRUE,color = "gray") +  
   labs(x = "self_regulation", y = "Alcohol") +  
   scale_x_continuous(limits = c(40, 160)) + 
   scale_y_continuous(limits = c(0, 1)) +  

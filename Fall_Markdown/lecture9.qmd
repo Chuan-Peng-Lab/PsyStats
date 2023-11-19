@@ -672,7 +672,7 @@ df <- read.csv('data/example9.1.csv')%>%
 #| code-summary: "分层线性回归"    
 #| fig-align: "center"
 
-m2 <- lmer(formula = 'rt ~ 1 + condition + (condition|subject)', data=df) # 建立分层线性模型
+m2 <- lmer(formula = 'rt ~ 1 + condition + (0+condition|subject)', data=df) # 建立分层线性模型
 res <- summary(m2) # 模型结果
 res
 ```
