@@ -1795,7 +1795,7 @@ F-statistic:  3.94 on 3 and 518 DF,  p-value: 0.008491</code></pre>
 <div style="font-size:26px">
 <ul>
 <li><p>以酗酒行为为因变量（Alcohol:有酗酒行为=1，无酗酒行为=0），连续变量自我调节（self regulation）为自变量。</p></li>
-<li><p>Model: <span class="math inline">\(Alcohol = \beta_0 + \beta_1 self regulation+ \epsilon\)</span></p></li>
+<li><p>Model: <span class="math inline">\(\mu_{Alcohol} = \beta_0 + \beta_1 self regulation+ \epsilon\)</span></p></li>
 </ul>
 </div>
 <div class="cell">
@@ -1811,10 +1811,6 @@ F-statistic:  3.94 on 3 and 518 DF,  p-value: 0.008491</code></pre>
 Call:
 glm(formula = Alcohol ~ self_regulation, family = binomial(link = "logit"), 
     data = df_no_missing)
-
-Deviance Residuals: 
-    Min       1Q   Median       3Q      Max  
--1.4242  -1.0330  -0.9134   1.2995   1.5151  
 
 Coefficients:
                  Estimate Std. Error z value Pr(&gt;|z|)   
@@ -1844,10 +1840,6 @@ Call:
 glm(formula = Alcohol ~ self_regulation, family = binomial(link = "logit"), 
     data = df_no_missing)
 
-Deviance Residuals: 
-    Min       1Q   Median       3Q      Max  
--1.4242  -1.0330  -0.9134   1.2995   1.5151  
-
 Coefficients:
                  Estimate Std. Error z value Pr(&gt;|z|)   
 (Intercept)      1.248554   0.545319   2.290  0.02205 * 
@@ -1864,7 +1856,7 @@ AIC: 702.08
 Number of Fisher Scoring iterations: 4</code></pre>
 </div>
 </div>
-<p><span class="math inline">\(H_0: Alcohol = \beta_0\)</span> <br> <span class="math inline">\(H_1: Alcohol = \beta_0 + \beta_1 self \ regulation\)</span></p>
+<p><span class="math inline">\(H_0: \mu_{Alcohol} = \beta_0\)</span> <br> <span class="math inline">\(H_1: \mu_{Alcohol} = \beta_0 + \beta_1 self \ regulation\)</span></p>
 </section>
 <section id="section-45" class="slide level2">
 <h2></h2>
@@ -1877,7 +1869,7 @@ Number of Fisher Scoring iterations: 4</code></pre>
 self_regulation -0.01343007 0.004544198 -2.955433 0.003122308</code></pre>
 </div>
 </div>
-<p><span class="math display">\[Alcohol = 1.249−0.013self regulation\]</span></p>
+<p><span class="math display">\[\mu_{Alcohol} = 1.249−0.013self regulation\]</span></p>
 </section>
 <section id="回归方程的预测情况" class="slide level2">
 <h2>回归方程的预测情况</h2>
@@ -1955,16 +1947,19 @@ Actual   0   1
 <img data-src="lecture8_files/figure-revealjs/unnamed-chunk-25-1.png" width="960" class="r-stretch quarto-figure-center"></section>
 <section id="预测情况可视化-1" class="slide level2">
 <h2>预测情况可视化</h2>
+<p>(黑色为实际情况，灰色为预测情况)</p>
 <div class="cell" data-layout-align="center">
 <details>
 <summary>estimates plot</summary>
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> self_regulation, <span class="at">y =</span> Alcohol)) <span class="sc">+</span></span>
-<span id="cb55-2"><a href="#cb55-2"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"gray"</span>,<span class="at">na.rm =</span> <span class="cn">TRUE</span>)<span class="sc">+</span></span>
-<span id="cb55-3"><a href="#cb55-3"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"glm"</span>, <span class="at">method.args =</span> <span class="fu">list</span>(<span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">"logit"</span>)), <span class="at">se =</span> <span class="cn">TRUE</span>,<span class="at">na.rm =</span> <span class="cn">TRUE</span>,<span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span>  </span>
-<span id="cb55-4"><a href="#cb55-4"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"self_regulation"</span>, <span class="at">y =</span> <span class="st">"Alcohol"</span>) <span class="sc">+</span>  </span>
-<span id="cb55-5"><a href="#cb55-5"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">40</span>, <span class="dv">160</span>)) <span class="sc">+</span> </span>
-<span id="cb55-6"><a href="#cb55-6"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>)) <span class="sc">+</span>  </span>
-<span id="cb55-7"><a href="#cb55-7"></a>  <span class="fu">theme_apa</span>()  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a>df_no_missing <span class="ot">&lt;-</span> <span class="fu">mutate</span>(df_no_missing, <span class="at">pre_res =</span> binary_predictions)</span>
+<span id="cb55-2"><a href="#cb55-2"></a><span class="fu">ggplot</span>(df_no_missing, <span class="fu">aes</span>(<span class="at">x =</span> self_regulation, <span class="at">y =</span> pre_res)) <span class="sc">+</span></span>
+<span id="cb55-3"><a href="#cb55-3"></a>  <span class="fu">geom_point</span>(<span class="at">data=</span>df_no_missing, <span class="at">mapping=</span><span class="fu">aes</span>(<span class="at">x =</span> self_regulation, <span class="at">y =</span> Alcohol),<span class="at">color =</span> <span class="st">"black"</span>,<span class="at">na.rm =</span> <span class="cn">TRUE</span>)<span class="sc">+</span></span>
+<span id="cb55-4"><a href="#cb55-4"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"gray"</span>,<span class="at">na.rm =</span> <span class="cn">TRUE</span>)<span class="sc">+</span></span>
+<span id="cb55-5"><a href="#cb55-5"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"glm"</span>, <span class="at">method.args =</span> <span class="fu">list</span>(<span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">"logit"</span>)), <span class="at">se =</span> F,<span class="at">na.rm =</span> <span class="cn">TRUE</span>,<span class="at">color =</span> <span class="st">"gray"</span>) <span class="sc">+</span>  </span>
+<span id="cb55-6"><a href="#cb55-6"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"self_regulation"</span>, <span class="at">y =</span> <span class="st">"Alcohol"</span>) <span class="sc">+</span>  </span>
+<span id="cb55-7"><a href="#cb55-7"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">40</span>, <span class="dv">160</span>)) <span class="sc">+</span> </span>
+<span id="cb55-8"><a href="#cb55-8"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>)) <span class="sc">+</span>  </span>
+<span id="cb55-9"><a href="#cb55-9"></a>  <span class="fu">theme_apa</span>()  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 
 </div>
