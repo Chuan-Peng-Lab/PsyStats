@@ -28,6 +28,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="lecture11_files/libs/revealjs/dist/theme/quarto.css">
   <link href="lecture11_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -438,9 +503,9 @@
 <h2></h2>
 <table style="width:99%;">
 <colgroup>
-<col style="width: 15%">
-<col style="width: 32%">
-<col style="width: 50%">
+<col style="width: 18%">
+<col style="width: 31%">
+<col style="width: 49%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -464,12 +529,12 @@
 </tr>
 <tr class="odd">
 <td style="text-align: left;">独立样本t检验</td>
-<td style="text-align: left;">t.test(y<sub>1</sub>,y<sub>2</sub>,var.equal=True)</td>
+<td style="text-align: left;">t.test(y<sub>1</sub>,y<sub>2</sub>,var.equal=TRUE)</td>
 <td style="text-align: left;">lm(y~ 1+G<sub>2</sub>)<sup>A</sup></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">配对样本t检验</td>
-<td style="text-align: left;">t.test(y<sub>1</sub>,y<sub>2</sub>,paired=True)</td>
+<td style="text-align: left;">t.test(y<sub>1</sub>,y<sub>2</sub>,paired=TRUE)</td>
 <td style="text-align: left;"><p>lmer(y~x+(1|subject))</p>
 <p>lm(y_1-y_2~1)</p></td>
 </tr>
@@ -778,13 +843,13 @@ https://derekogle.com/Book107/ChiSquare.html
 <h1>Part3: 独立性卡方检验</h1>
 
 </section>
-<section id="section-14" class="slide level2">
-<h2></h2>
+<section id="示例1" class="slide level2">
+<h2>示例1</h2>
 <ul>
 <li>某教师提出一套新的教学办法，为了比较效果，随机抽取240名大一新生，随机分为两组，分别接受新旧两种办法的训练，学期末进行达标测试。</li>
 </ul>
 </section>
-<section id="section-15" class="slide level2">
+<section id="section-14" class="slide level2">
 <h2></h2>
 <ul>
 <li>某教师提出一套新的教学办法，为了比较效果，随机抽取240名大一新生，随机分为两组，分别接受新旧两种办法的训练。</li>
@@ -824,7 +889,7 @@ https://derekogle.com/Book107/ChiSquare.html
 </tbody>
 </table>
 
-独立样本的独立性<span class="math inline">\(\chi^2\)</span>检验
+<p>独立样本的独立性<span class="math inline">\(\chi^2\)</span>检验</p>
 <center>
 </center></section>
 <section id="workflow-1" class="slide level2">
@@ -834,17 +899,17 @@ https://derekogle.com/Book107/ChiSquare.html
 <li><p><span class="math inline">\(H_0\)</span>: 新旧两种办法的训练的效果不存在差异(采用新或旧方法的达标人数比率相同）</p></li>
 <li><p>各单元格期望频数 ：</p>
 <ul>
-<li><p>计算“新方法 × 达标”这一单元格人数：</p></li>
+<li><p>计算”新方法 × 达标”这一单元格人数：</p></li>
 <li><p>240人中130人达标，新方法120人，<span class="math inline">\(f_{e}\)</span> = 120 *130/240 = 65</p></li>
 </ul></li>
 </ul>
 </section>
-<section id="section-16" class="slide level2">
+<section id="section-15" class="slide level2">
 <h2></h2>
 <ul>
 <li><p>各单元格期望频数 ：</p>
 <ul>
-<li><p>计算“新方法 × 达标”这一单元格人数：</p></li>
+<li><p>计算”新方法 × 达标”这一单元格人数：</p></li>
 <li><p>240人中130人达标，新方法120人，<span class="math inline">\(f_{e}\)</span> = 120*130/240 = 65</p></li>
 <li><p>一个单元格的期望频数: <span class="math inline">\(f_{e} = (n_{r}*n_{c})/N\)</span></p></li>
 <li><p><span class="math inline">\(n_{r}\)</span> : 计算单元格所在行的总次数</p></li>
@@ -852,7 +917,7 @@ https://derekogle.com/Book107/ChiSquare.html
 </ul></li>
 </ul>
 </section>
-<section id="section-17" class="slide level2">
+<section id="section-16" class="slide level2">
 <h2></h2>
 <table>
 <thead>
@@ -893,7 +958,7 @@ https://derekogle.com/Book107/ChiSquare.html
 <li><p><span class="math inline">\(\chi^2=\frac{(a-\frac{(a+b)(a+c)}{N})^2}{\frac{(a+b)(a+c)}{N}}+\frac{(b-\frac{(a+b)(b+d)}{N})^2}{\frac{(a+b)(b+d)}{N}}+\frac{(c-\frac{(c+d)(a+c)}{N})^2}{\frac{(c+d)(a+c)}{N}}+\frac{(d-\frac{(b+d)(d+c)}{N})^2}{\frac{(b+d)(d+c)}{N}}\)</span></p></li>
 </ul>
 </section>
-<section id="section-18" class="slide level2">
+<section id="section-17" class="slide level2">
 <h2></h2>
 <ul>
 <li><p><span class="math inline">\(\chi^2=\frac{(a-\frac{(a+b)(a+c)}{N})^2}{\frac{(a+b)(a+c)}{N}}+\frac{(b-\frac{(a+b)(b+d)}{N})^2}{\frac{(a+b)(b+d)}{N}}+\frac{(c-\frac{(c+d)(a+c)}{N})^2}{\frac{(c+d)(a+c)}{N}}+\frac{(d-\frac{(b+d)(d+c)}{N})^2}{\frac{(b+d)(d+c)}{N}}\)</span></p>
@@ -906,7 +971,7 @@ https://derekogle.com/Book107/ChiSquare.html
 <li><p><span class="math inline">\(\rightarrow \chi^2=\frac{N(ad-bc)^2}{(a+b)(c+d)(a+c)(b+d)}\)</span></p></li>
 </ul>
 </section>
-<section id="section-19" class="slide level2">
+<section id="section-18" class="slide level2">
 <h2></h2>
 <ul>
 <li><p>一个单元格的期望频数:<span class="math inline">\(f_{e}=\frac{n_{r}n_{c}}{N}\)</span></p></li>
@@ -917,19 +982,16 @@ https://derekogle.com/Book107/ChiSquare.html
 </ul></li>
 </ul>
 </section>
-<section id="section-20" class="slide level2">
+<section id="section-19" class="slide level2">
 <h2></h2>
 <p>1.提出假设</p>
 <ul>
-<li><p><span class="math inline">\(H_0\)</span>: 新旧两种办法的训练的效果不存在差异(采用新或旧方法的达标人数比率相同）</p></li>
-<li><p>各单元格期望频数 ：</p>
-<ul>
-<li><p>计算“新方法 × 达标”这一单元格人数：</p></li>
-<li><p>240人中130人达标，新方法120人，<span class="math inline">\(f_{e}\)</span> = 120 *130/240 = 65</p></li>
-</ul></li>
+<li><p><span class="math inline">\(H_0\)</span>: 新旧两种办法的训练的效果不存在差异</p></li>
+<li><p>一个单元格的期望频数:<span class="math inline">\(f_{e}=\frac{n_{r}n_{c}}{N}\)</span></p></li>
+<li><p><span class="math inline">\(H_1\)</span>: 新旧两种办法的训练的效果存在差异</p></li>
 </ul>
 </section>
-<section id="section-21" class="slide level2">
+<section id="section-20" class="slide level2">
 <h2></h2>
 <p>2.根据虚无假设<span class="math inline">\(H_0\)</span>，选择相应的统计模型。</p>
 <ul>
@@ -940,47 +1002,251 @@ https://derekogle.com/Book107/ChiSquare.html
 </ul></li>
 </ul>
 </section>
-<section id="section-22" class="slide level2">
-<h2></h2>
-<ul>
-<li><p>理论频数&gt;5或理论频数&lt;5的格子数不能超过总格子数的1/5。</p>
-<ul>
-<li><p><span class="math inline">\(\chi^2=\sum \frac{(f_{observed}-f_{expected})^2}{f_{expected}}\)</span></p></li>
-<li><p>如果零假设成立， <span class="math inline">\(f_{observed}-f_{expected}\)</span>差异很小，可能远小于<span class="math inline">\(f_{expected}\)</span>，卡方值较小，则结果倾向于判断各组无差异，与假设一致。</p></li>
-<li><p>如果零假设成立，<span class="math inline">\(f_{expected}&lt;5\)</span>；<span class="math inline">\(f_{observed}-f_{expected}\)</span>差异很小，但是相对于分母<span class="math inline">\(f_{expected}\)</span>较大，最终得到的卡方值较大，结果倾向于判断各组存在差异。</p></li>
-</ul></li>
-</ul>
-</section>
-<section id="section-23" class="slide level2">
+<section id="section-21" class="slide level2">
 <h2></h2>
 <p>3.确定显著性水平<span class="math inline">\(\alpha\)</span>，<span class="math inline">\(\alpha\)</span>确定后，否定域也随之被确定了</p>
 <ul>
 <li><p>指定<span class="math inline">\(\alpha\)</span>=0.05(拒绝零假设犯错的可能性)</p></li>
-<li><p>单侧检验的临界点 df = 4–1 = 3, <span class="math inline">\(\chi^2_{0.05,3}\)</span>=7.81</p></li>
+<li><p>单侧检验的临界点 df = (2-1)*(2-1) = 1, <span class="math inline">\(\chi^2_{0.05,1}\)</span>=3.84</p></li>
 </ul>
 </section>
-<section id="section-24" class="slide level2">
+<section id="section-22" class="slide level2">
 <h2></h2>
 <p>4.基于<span class="math inline">\(H_0\)</span>所设定的统计模型，计算检验统计量的值。</p>
 <ul>
-<li><span class="math inline">\(\chi^2=\sum \frac{(f_{observed}-f_{expected})^2}{f_{expected}} = \frac{(42-50)^2}{50}+\frac{(59-50)^2}{50}+\frac{(48-50)^2}{50}+\frac{(51-50)^2}{50}=2.98\)</span></li>
+<li><span class="math inline">\(\chi^2=\frac{N(ad-bc)^2}{(a+b)(c+d)(a+c)(b+d)}=5.438\)</span></li>
+</ul>
+</section>
+<section id="section-23" class="slide level2">
+<h2></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(pacman)</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">p_load</span>(<span class="st">'tidyverse'</span>,<span class="st">'lme4'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># 公式计算</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>N<span class="ot">=</span><span class="dv">240</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a>a<span class="ot">=</span><span class="dv">64</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a>b<span class="ot">=</span><span class="dv">56</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a>c<span class="ot">=</span><span class="dv">46</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a>d<span class="ot">=</span><span class="dv">74</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a>chi2 <span class="ot">=</span> (N<span class="sc">*</span>((a<span class="sc">*</span>d)<span class="sc">-</span>(b<span class="sc">*</span>c))<span class="sc">**</span><span class="dv">2</span>)<span class="sc">/</span>((a<span class="sc">+</span>b)<span class="sc">*</span>(c<span class="sc">+</span>d)<span class="sc">*</span>(a<span class="sc">+</span>c)<span class="sc">*</span>(b<span class="sc">+</span>d))</span>
+<span id="cb2-8"><a href="#cb2-8"></a>chi2 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5.437762</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>observed <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">64</span>, <span class="dv">46</span>,<span class="dv">56</span>, <span class="dv">74</span>),<span class="at">nrow=</span><span class="dv">2</span>,<span class="at">ncol=</span><span class="dv">2</span>)<span class="co">#创建数据矩阵</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="fu">chisq.test</span>(observed,<span class="at">correct=</span><span class="cn">FALSE</span>)<span class="co">#卡方检验，不需要校正</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pearson's Chi-squared test
+
+data:  observed
+X-squared = 5.4378, df = 1, p-value = 0.01971</code></pre>
+</div>
+</div>
+</section>
+<section id="section-24" class="slide level2">
+<h2></h2>
+<p>5.做出决策</p>
+<ul>
+<li><p>单侧检验的临界点df = 1, <span class="math inline">\(\chi^2_{0.05,3}\)</span>=3.84</p></li>
+<li><p><span class="math inline">\(\chi^2\)</span>= 5.438 &gt; <span class="math inline">\(\chi^2_{0.05,1}\)</span></p></li>
+<li><p>在<span class="math inline">\(\alpha\)</span> = 0.05显著性水平上不能拒绝虚无假设，即新旧两种办法的训练的效果存在差异。</p></li>
 </ul>
 </section>
 <section id="section-25" class="slide level2">
 <h2></h2>
-<p>5.做出决策</p>
 <ul>
-<li><p>单侧检验的临界点df = 4–1 = 3, <span class="math inline">\(\chi^2_{0.05,3}\)</span>=7.81</p></li>
-<li><p><span class="math inline">\(\chi^2\)</span>= 2.98 &lt; <span class="math inline">\(\chi^2_{0.05,3}\)</span></p></li>
-<li><p>在<span class="math inline">\(\alpha\)</span> = 0.05显著性水平上不能拒绝虚无假设，即没有证据支持4种包装能够引起消费者购买欲的差异。</p></li>
+<li><p>结果呈现</p>
+<ul>
+<li>新旧两种办法的训练的效果存在统计学上的差异(<span class="math inline">\(\chi^2\)</span> = 5.438 , <span class="math inline">\(p\)</span> &lt; 0.05), 可以认为新旧两种办法的训练后的学生来自不同总体。</li>
+</ul></li>
 </ul>
+</section>
+<section id="示例2" class="slide level2">
+<h2>示例2</h2>
 </section>
 <section id="section-26" class="slide level2">
 <h2></h2>
 <ul>
-<li><p>结果呈现</p>
+<li><p>某单位提出一套新的改革办法，并进行了对改革意见的民主测评，后又进行了演讲，为了查看演讲对员工接受度的影响效果，进行了第二次对改革意见的民主测评。</p></li>
+<li><p>问题：演讲是否改变了员工态度，是否使得拥护政策的人数增加？</p></li>
+</ul>
+</section>
+<section id="section-27" class="slide level2">
+<h2></h2>
+<p>两次民主测评的结果如下：</p>
+
+<img data-src="images/1700313706578.jpg" class="r-stretch quarto-figure-center"></section>
+<section id="section-28" class="slide level2">
+<h2></h2>
+
+<img data-src="images/1700313732022.jpg" class="r-stretch quarto-figure-center"></section>
+<section id="section-29" class="slide level2">
+<h2></h2>
 <ul>
-<li>4种包装引起消费者的购买欲相比较差异没有统计学意义(<span class="math inline">\(\chi^2\)</span> = 2.98 , <span class="math inline">\(p\)</span> &gt; 0.05)。</li>
+<li><p>问题：演讲是否改变了员工态度，是否使得拥护政策的人数增加？</p>
+<ul>
+<li><p>b (原来反对，后来拥护)人数是否大于c (原来拥护，后来反对)人数？</p></li>
+<li><p><span class="math inline">\(\chi^2=\frac{(b-c)^2}{b+c}\)</span></p></li>
+<li><p><span class="math inline">\(df=(r-1)(c-1)\)</span></p></li>
+</ul></li>
+</ul>
+</section>
+<section id="section-30" class="slide level2">
+<h2></h2>
+<p>1.提出假设</p>
+<ul>
+<li><p><span class="math inline">\(H_{0}\)</span>：两个变量相互独立，即前后两次测评的员工意见不存在差异</p></li>
+<li><p><span class="math inline">\(H_{1}\)</span>：两个变量相关，前后两次测评的员工意见存在差异</p></li>
+</ul>
+</section>
+<section id="section-31" class="slide level2">
+<h2></h2>
+<ol start="2" type="1">
+<li>根据虚无假设<span class="math inline">\(H_{0}\)</span>，选择相应的统计模型。</li>
+</ol>
+<ul>
+<li><p><span class="math inline">\(\chi^2\)</span>检验前提：</p>
+<ul>
+<li><p>随机样本数据。</p></li>
+<li><p>理论频数&gt;5或理论频数&lt;5的格子数不能超过总格子数的1/5。</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="section-32" class="slide level2">
+<h2></h2>
+<p>3.确定显著性水平<span class="math inline">\(\alpha\)</span>，<span class="math inline">\(\alpha\)</span>确定后，否定域也随之被确定了</p>
+<ul>
+<li><p>指定<span class="math inline">\(\alpha\)</span>=0.05(拒绝零假设犯错的可能性)</p></li>
+<li><p>单侧检验的临界点 df = (2-1)*(2-1) = 1, <span class="math inline">\(\chi^2_{0.05,1}\)</span>=3.84</p></li>
+</ul>
+</section>
+<section id="section-33" class="slide level2">
+<h2></h2>
+<p>4.基于<span class="math inline">\(H_0\)</span>所设定的统计模型，计算检验统计量的值。</p>
+<ul>
+<li><span class="math inline">\(\chi^2=\frac{(b-c)^2}{b+c}=8.167\)</span></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># 公式计算</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a></span>
+<span id="cb6-3"><a href="#cb6-3"></a>b<span class="ot">=</span><span class="dv">19</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a>c<span class="ot">=</span><span class="dv">5</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a>chi2 <span class="ot">=</span> ((b<span class="sc">-</span>c)<span class="sc">**</span><span class="dv">2</span>)<span class="sc">/</span>(b<span class="sc">+</span>c)</span>
+<span id="cb6-6"><a href="#cb6-6"></a>chi2 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 8.166667</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>observed <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">5</span>,<span class="dv">19</span>, <span class="dv">18</span>),<span class="at">nrow=</span><span class="dv">2</span>,<span class="at">ncol=</span><span class="dv">2</span>)<span class="co">#创建数据矩阵</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="fu">mcnemar.test</span>(observed,<span class="at">correct=</span><span class="cn">FALSE</span>)<span class="co">#配对卡方检验，不需要校正</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    McNemar's Chi-squared test
+
+data:  observed
+McNemar's chi-squared = 8.1667, df = 1, p-value = 0.004267</code></pre>
+</div>
+</div>
+</section>
+<section id="section-34" class="slide level2">
+<h2></h2>
+<p>5.做出决策</p>
+<ul>
+<li><p>单侧检验的临界点df = 1, <span class="math inline">\(\chi^2_{0.05,3}\)</span>=3.84</p></li>
+<li><p><span class="math inline">\(\chi^2\)</span>= 8.167 &gt; <span class="math inline">\(\chi^2_{0.05,1}\)</span></p></li>
+<li><p>在<span class="math inline">\(\alpha\)</span> = 0.05显著性水平上不能接受虚无假设，即前后两次测评的员工意见存在差异，演讲有效。</p></li>
+</ul>
+</section>
+<section id="section-35" class="slide level2">
+<h2></h2>
+<ul>
+<li><p>结果呈现：</p>
+<ul>
+<li>前后两次测评的员工意见存在统计学上的差异 (<span class="math inline">\(\chi^2\)</span>= 8.167 , <span class="math inline">\(p\)</span> &lt; 0.05),可以认为，演讲有效，第二次测评中有19人改变原来的反对意见，5人改变原来的赞同，即更多人赞同改革。</li>
+</ul></li>
+</ul>
+</section>
+<section id="卡方检验与线性模型glm" class="slide level2">
+<h2>卡方检验与线性模型（GLM）</h2>
+<ul>
+<li><p>卡方检验是对数线性模型</p>
+<ul>
+<li><p><span class="math inline">\(H_{0}：M_{null} = glm(counts \sim 1, data = D, family = poisson(link='log'))\)</span></p></li>
+<li><p><span class="math inline">\(H_{0}：M_{null} = glm(counts \sim 1+X_{1}+X_{2}, data = D, family = poisson(link='log'))\)</span></p></li>
+</ul></li>
+</ul>
+<center>
+https://lindeloev.github.io/tests-as-linear/#7_proportions:_chi-square_is_a_log-linear_model
+</center>
+</section>
+<section id="section-36" class="slide level2">
+<h2></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">freq =</span> <span class="fu">c</span>(<span class="dv">64</span>, <span class="dv">46</span>,<span class="dv">56</span>, <span class="dv">74</span>),</span>
+<span id="cb10-2"><a href="#cb10-2"></a>                   <span class="at">new=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>),</span>
+<span id="cb10-3"><a href="#cb10-3"></a>                   <span class="at">pass =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>))</span>
+<span id="cb10-4"><a href="#cb10-4"></a>m1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(freq <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> data, <span class="at">family =</span> <span class="fu">poisson</span>(<span class="at">link=</span><span class="st">'log'</span>))</span>
+<span id="cb10-5"><a href="#cb10-5"></a><span class="fu">summary</span>(m1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+glm(formula = freq ~ 1, family = poisson(link = "log"), data = data)
+
+Coefficients:
+            Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept)  4.09434    0.06455   63.43   &lt;2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for poisson family taken to be 1)
+
+    Null deviance: 7.1277  on 3  degrees of freedom
+Residual deviance: 7.1277  on 3  degrees of freedom
+AIC: 32.808
+
+Number of Fisher Scoring iterations: 4</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">glm</span>(freq <span class="sc">~</span> <span class="dv">1</span><span class="sc">+</span>new<span class="sc">+</span>pass, <span class="at">data =</span> data, <span class="at">family =</span> <span class="fu">poisson</span>(<span class="at">link=</span><span class="st">'log'</span>))</span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="fu">summary</span>(m2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+glm(formula = freq ~ 1 + new + pass, family = poisson(link = "log"), 
+    data = data)
+
+Coefficients:
+             Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept) 4.007e+00  1.151e-01  34.804   &lt;2e-16 ***
+new         8.095e-16  1.291e-01   0.000    1.000    
+pass        1.671e-01  1.296e-01   1.289    0.197    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for poisson family taken to be 1)
+
+    Null deviance: 7.1277  on 3  degrees of freedom
+Residual deviance: 5.4591  on 1  degrees of freedom
+AIC: 35.139
+
+Number of Fisher Scoring iterations: 4</code></pre>
+</div>
+</div>
+</section>
+<section id="小结" class="slide level2">
+<h2>小结</h2>
+<ul>
+<li><p>卡方检验的基本原理</p>
+<ul>
+<li><p>适合性<span class="math inline">\(\chi^2\)</span>检验</p></li>
+<li><p>独立性<span class="math inline">\(\chi^2\)</span>检验</p></li>
 </ul></li>
 </ul>
 
@@ -1199,6 +1465,44 @@ https://derekogle.com/Book107/ChiSquare.html
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
