@@ -394,7 +394,7 @@
 
 <p><br><br></p>
 <h1 style="text-align: center">
-<p>lecture 11</p>
+<p>Lecture 11</p>
 <p>卡方检验</p>
 </h1>
 <h2 style="text-align: center">
@@ -503,16 +503,15 @@
 <h2></h2>
 <table style="width:99%;">
 <colgroup>
-<col style="width: 21%">
-<col style="width: 25%">
-<col style="width: 0%">
-<col style="width: 51%">
+<col style="width: 19%">
+<col style="width: 34%">
+<col style="width: 45%">
 </colgroup>
 <thead>
 <tr class="header">
 <th style="text-align: left;"></th>
 <th style="text-align: left;">传统的检验(R代码)</th>
-<th colspan="2" style="text-align: left;">线性模型(R代码)</th>
+<th style="text-align: left;">线性模型(R代码)</th>
 </tr>
 </thead>
 <tbody>
@@ -520,38 +519,41 @@
 <td style="text-align: left;">相关</td>
 <td style="text-align: left;"><p>cor.test(x, y, method = ‘Pearson’)</p>
 <p>cor.test(x, y, method = ‘Spearman’)</p></td>
-<td colspan="2" style="text-align: left;"><p>lm(y ~ 1 + x)</p>
-<p>lm(rank(y) ~ 1 + rak(x))</p></td>
+<td style="text-align: left;"><p>lm(y ~ 1 + x)</p>
+<p>lm(rank(y) ~ 1 + rank(x))</p></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">单样本t检验</td>
 <td style="text-align: left;">t.test(y)</td>
-<td colspan="2" style="text-align: left;">lm(y ~ 1)</td>
+<td style="text-align: left;">lm(y ~ 1)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">独立样本t检验</td>
-<td colspan="3" style="text-align: left;">t.test(y ~ 1 ~,y ~ 2 ~,var.equal = TRUE) | lm(y ~ 1 + G ~ 2 ~)<sup>A</sup></td>
+<td style="text-align: left;">t.test(y<sub>1</sub>, y<sub>2</sub>, var.equal = T)</td>
+<td style="text-align: left;">lm(y ~ 1 + G ~ 2 ~)<sup>A</sup></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">配对样本t检验</td>
-<td colspan="3" style="text-align: left;">t.test(y ~ 1 ~,y ~ 2 ~,paired = TRUE) | lmer(y ~ x + (1 | subject)) | | lm(y_1 - y_2 ~1)</td>
+<td style="text-align: left;">t.test(y<sub>1</sub>, y<sub>2</sub>, paired = T)</td>
+<td style="text-align: left;"><p>lmer(y ~ x + (1 | subject))</p>
+<p>lm(y<sub>1</sub> - y<sub>2</sub> ~ 1)</p></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">单因素方差分析</td>
 <td style="text-align: left;">aov(y ~ group)</td>
-<td colspan="2" style="text-align: left;">lm(y ~ 1 + G ~ 2 ~ + G ~ 3 ~ + …)<sup>A</sup></td>
+<td style="text-align: left;">lm(y ~ 1 + X<sub>1</sub> + X<sub>2</sub> + …)<sup>A</sup></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">两因素方差分析</td>
 <td style="text-align: left;">aov(y ~ group + sex)</td>
-<td colspan="2" style="text-align: left;">lm(y ~ 1 + G ~ 2 ~ + G ~ 3 ~ + … + S ~ 2 ~ + S ~ 3 ~ + … + G ~ 2 ~ * S ~ 2 ~ + …)</td>
+<td style="text-align: left;">lm(y ~ 1 + X<sub>1</sub> + X<sub>2</sub> + … + X<sub>n</sub> )</td>
 </tr>
 </tbody>
 </table>
 </section></section>
 <section>
-<section id="part1-卡方检验的基本原理" class="title-slide slide level1 center">
-<h1>Part1: 卡方检验的基本原理</h1>
+<section id="part-1-卡方检验的基本原理" class="title-slide slide level1 center">
+<h1>Part 1: 卡方检验的基本原理</h1>
 
 </section>
 <section id="section-3" class="slide level2">
@@ -739,8 +741,8 @@ https://derekogle.com/Book107/ChiSquare.html
 </ul>
 </section></section>
 <section>
-<section id="part2-适合性卡方检验goodness-of-fit" class="title-slide slide level1 center">
-<h1>Part2: 适合性卡方检验(Goodness of fit)</h1>
+<section id="part-2-适合性卡方检验goodness-of-fit" class="title-slide slide level1 center">
+<h1>Part 2: 适合性卡方检验(Goodness of fit)</h1>
 
 </section>
 <section id="section-7" class="slide level2">
@@ -847,8 +849,8 @@ https://derekogle.com/Book107/ChiSquare.html
 </ul>
 </section></section>
 <section>
-<section id="part3-独立性卡方检验" class="title-slide slide level1 center">
-<h1>Part3: 独立性卡方检验</h1>
+<section id="part-3-独立性卡方检验" class="title-slide slide level1 center">
+<h1>Part 3: 独立性卡方检验</h1>
 
 </section>
 <section id="示例1" class="slide level2">
@@ -1213,6 +1215,47 @@ https://lindeloev.github.io/tests-as-linear/#7_proportions:_chi-square_is_a_log-
 </section>
 <section id="section-36" class="slide level2">
 <h2></h2>
+<p>以示例1的结果为例</p>
+<ul>
+<li>某教师提出一套新的教学办法，为了比较效果，随机抽取240名大一新生，随机分为两组，分别接受新旧两种办法的训练。</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>未达标</th>
+<th>达标</th>
+<th>合计</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>旧方法</td>
+<td>64(a)</td>
+<td>56(b)</td>
+<td>120</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>新方法</td>
+<td>46(c)</td>
+<td>74(d)</td>
+<td>120</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>合计</td>
+<td>110</td>
+<td>130</td>
+<td>240</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="section-37" class="slide level2">
+<h2></h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">freq =</span> <span class="fu">c</span>(<span class="dv">64</span>, <span class="dv">46</span>,<span class="dv">56</span>, <span class="dv">74</span>),</span>
 <span id="cb10-2"><a href="#cb10-2"></a>                   <span class="at">new=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>),</span>
@@ -1251,7 +1294,7 @@ glm(formula = freq ~ 1 + new + pass, family = poisson(link = "log"),
 Coefficients:
              Estimate Std. Error z value Pr(&gt;|z|)    
 (Intercept) 4.007e+00  1.151e-01  34.804   &lt;2e-16 ***
-new         1.816e-16  1.291e-01   0.000    1.000    
+new         8.095e-16  1.291e-01   0.000    1.000    
 pass        1.671e-01  1.296e-01   1.289    0.197    
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
