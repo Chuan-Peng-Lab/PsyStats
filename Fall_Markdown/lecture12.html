@@ -28,6 +28,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="lecture12_files/libs/revealjs/dist/theme/quarto.css">
   <link href="lecture12_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -357,7 +422,7 @@
 <ul>
 <li><p>卡方检验的原理</p>
 <ul>
-<li><span class="math inline">\(\chi^2 = \sum \frac{(f_{observed}-f_{expected})^2}{f_{expected}}\)</span>;</li>
+<li><span class="math inline">\(\chi^2 = \sum \frac{(f_{observed} - f_{expected})^2}{f_{expected}}\)</span>;</li>
 <li><span class="math inline">\(\chi^2\)</span> 反映了实际的观察频数与期望频数的偏离程度。</li>
 <li>是离散分布在假设研究中的应用(e.g., Poisson)</li>
 </ul></li>
@@ -387,7 +452,7 @@
 <ul>
 <li><p>以潜在较少数量的未观察变量（因子）用于描述观察到的、相关的变量之间的变异性。</p></li>
 <li><p>用少数因子反映原始资料的大部分信息。</p></li>
-<li><p>观测变量被建模为潜变量(latent variables)和“误差”项的线性组合。</p></li>
+<li><p>观测变量被建模为潜变量(latent variables)和”误差”项的线性组合。</p></li>
 </ul>
 </section>
 <section id="section" class="slide level2">
@@ -450,7 +515,7 @@ X_p = \lambda_{p1}F_1 + \lambda_{p2}F_2+ ... + \lambda_{pm}F_m +\epsilon_p
 <ul>
 <li><p><span class="math inline">\(X_i = \lambda_{i1}F_1 + \lambda_{i2}F_2+ ... + \lambda_{im}F_m +\epsilon_i\)</span></p></li>
 <li><p><span class="math inline">\(h_i^2 = \lambda_{i1}^2 + \lambda_{i2}^2 + ... + \lambda_{im}^2\)</span></p></li>
-<li><p>共同度(<span class="math inline">\(h_i^2\)</span>)在数值上等于因子载荷矩阵中第i行因子载荷的平方和，反映“所有因子对这个变量共同制约的程度”，共同度越接近1越好</p></li>
+<li><p>共同度(<span class="math inline">\(h_i^2\)</span>)在数值上等于因子载荷矩阵中第i行因子载荷的平方和，反映”所有因子对这个变量共同制约的程度”，共同度越接近1越好</p></li>
 </ul>
 </section>
 <section id="section-3" class="slide level2">
@@ -476,7 +541,7 @@ X_p = \lambda_{p1}F_1 + \lambda_{p2}F_2+ ... + \lambda_{pm}F_m +\epsilon_p
 <h2>Step 1: 因素分析的适合度检验</h2>
 <ul>
 <li><p>相关矩阵：大部分相关系数低于0.3且不显著，就不适合因素分析</p></li>
-<li><p>巴特利特球形检验：<span class="math inline">\(H_0\)</span>为“相关矩阵是一个单位阵”，根据行列式计算得到统计量，进行卡方检验，结果显著则可进行因素分析</p></li>
+<li><p>巴特利特球形检验：<span class="math inline">\(H_0\)</span>为”相关矩阵是一个单位阵”，根据行列式计算得到统计量，进行卡方检验，结果显著则可进行因素分析</p></li>
 <li><p>反像相关矩阵检验：从偏相关矩阵出发，每个元素都是负的偏相关系数，元素绝对值大，说明受其他变量更迭影响小，不适合因素分析</p></li>
 </ul>
 </section>
@@ -550,13 +615,2052 @@ X_p = \lambda_{p1}F_1 + \lambda_{p2}F_2+ ... + \lambda_{pm}F_m +\epsilon_p
 </ul></li>
 </ul>
 </section>
-<section id="r-26" class="slide level2">
-<h2>R 26</h2>
-<p>碎石图</p>
-<p>因子载荷矩阵</p>
-<p>旋转前后</p>
-<p>特征值</p>
-<p>路径图</p>
+<section id="示例" class="slide level2">
+<h2>示例</h2>
+<p>大五人格问卷题目分析，表中为每个被试在单个题目的得分</p>
+<p>数据：example13.csv (Liu et al., 2020, J Open Psych Data)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">require</span>(pacman)</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">p_load</span>(<span class="st">'tidyverse'</span>,</span>
+<span id="cb1-3"><a href="#cb1-3"></a>       <span class="st">'bruceR'</span>,</span>
+<span id="cb1-4"><a href="#cb1-4"></a>       <span class="st">'factoextra'</span>, <span class="co"># 多元统计方法的可视化</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a>       <span class="st">'igraph'</span>)<span class="co"># 网络数据可视化</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># 载入数据</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'data/example13.csv'</span>)</span>
+<span id="cb2-3"><a href="#cb2-3"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    BFI_A1 BFI_A2 BFI_A3 BFI_A4 BFI_A5 BFI_A6 BFI_A7 BFI_A8 BFI_A9 BFI_C1
+1        4      4      3      3      3      3      3      4      4      4
+2        4      4      3      4      4      3      3      3      3      2
+3        4      2      3      4      4      3      1      3      1      4
+4        4      4      5      5      4      2      1      3      3      4
+5        4      4      3      2      2      5      1      2      4      2
+6        4      4      4      4      4      2      1      2      4      3
+7        3      4      3      4      4      4      4      4      3      3
+8        5      5      5      4      4      2      2      2      4      4
+9        4      4      4      4      4      3      3      4      3      5
+10       5      4      5      4      5      4      1      2      1      5
+11       5      4      4      5      4      3      1      1      4      5
+12       5      5      4      4      4      2      1      3      2      4
+13       5      4      4      5      4      3      1      2      3      3
+14       4      3      3      4      4      2      4      3      5      3
+15       5      4      4      3      5      1      1      5      2      2
+16       4      4      4      4      4      2      3      4      3      3
+17       4      4      4      4      5      3      2      3      4      4
+18       5      3      3      5      3      2      1      4      3      5
+19       5      5      4      3      4      2      3      1      4      4
+20       5      4      4      4      4      2      1      2      2      5
+21       4      4      3      2      5      3      3      2      2      4
+22       4      3      4      3      3      3      3      2      3      3
+23       5      3      5      5      5      3      3      3      4      5
+24       4      4      3      4      2      3      2      1      2      4
+25       4      3      3      3      3      1      3      2      4      2
+26       3      3      3      3      3      3      3      3      4      3
+27       4      5      3      4      5      2      1      1      3      4
+28       2      3      4      3      3      2      4      3      2      2
+29       5      3      4      5      4      2      2      3      2      4
+30       4      3      2      2      2      3      2      4      4      3
+31       4      4      4      4      4      3      2      3      2      4
+32       5      5      4      5      4      3      1      2      3      4
+33       4      4      4      4      4      3      3      2      2      5
+34       3      3      4      4      3      3      4      2      3      4
+35       5      4      3      5      5      1      2      3      4      3
+36       4      3      4      3      2      4      3      5      4      4
+37       2      3      2      2      2      5      2      5      2      5
+38       4      4      3      4      4      3      2      4      3      4
+39       3      3      3      4      4      3      3      4      3      3
+40       5      4      4      4      2      4      3      2      2      5
+41       4      4      3      5      4      3      3      2      2      4
+42       5      5      4      4      4      3      1      2      2      4
+43       3      2      1      2      3      4      3      4      1      2
+44       4      4      4      3      4      3      2      2      2      3
+45       4      4      4      4      4      3      1      3      3      4
+46       4      2      5      4      4      2      1      5      1      4
+47       4      4      4      4      4      3      3      4      4      4
+48       4      4      4      4      4      3      3      3      3      4
+49       5      5      4      5      4      2      2      2      2      4
+50       4      4      4      4      4      2      2      4      4      4
+51       5      1      4      3      5      2      1      1      1      4
+52       4      4      3      3      3      2      2      3      2      3
+53       4      4      5      4      4      2      1      2      2      3
+54       5      2      4      4      4      4      2      3      4      3
+55       5      5      4      4      5      5      3      1      4      4
+56       4      4      4      3      3      2      2      3      4      3
+57       5      4      4      4      3      3      1      4      2      4
+58       5      4      4      5      4      2      2      2      2      5
+59       5      5      3      3      4      2      3      4      4      5
+60       5      5      3      3      3      2      2      2      1      4
+61       5      4      3      3      3      2      4      3      3      3
+62       4      3      3      3      3      2      2      3      3      3
+63       4      4      3      3      4      2      2      4      3      4
+64       4      4      4      4      5      4      3      3      2      3
+65       4      4      4      4      4      2      3      3      2      4
+66       3      4      3      3      4      2      1      3      3      2
+67       5      4      4      4      4      2      2      3      4      4
+68       5      3      4      4      4      3      1      4      2      5
+69       4      4      4      4      4      2      2      5      3      3
+70       4      3      4      4      4      2      3      2      2      4
+71       4      4      4      3      4      2      2      2      4      2
+72       4      4      3      3      4      4      2      3      4      3
+73       4      4      5      5      4      4      2      2      3      5
+74       4      3      4      4      3      2      3      3      4      4
+75       5      2      5      5      4      3      1      5      2      2
+76       5      4      5      3      4      3      2      2      3      3
+77       5      4      4      3      3      4      3      4      2      5
+78       5      5      4      5      5      2      2      1      3      4
+79       5      4      3      4      5      2      2      4      1      2
+80       4      4      3      3      4      4      3      2      4      3
+81       5      2      3      5      5      2      1      5      4      3
+82       5      2      3      4      5      2      2      3      2      3
+83       4      4      4      3      4      3      2      2      4      3
+84       2      4      4      4      4      2      4      2      4      4
+85       4      4      3      4      4      3      3      3      3      3
+86       5      5      5      5      4      2      2      4      3      5
+87       4      4      3      3      2      4      2      2      4      4
+88       4      3      4      5      4      2      2      2      1      4
+89       3      4      3      3      3      2      3      1      1      2
+90       5      4      4      5      2      2      2      4      2      4
+91       5      3      3      5      3      4      1      4      2      4
+92       4      2      2      4      4      2      1      4      2      4
+93       3      2      3      3      3      3      3      4      3      3
+94       5      5      4      3      5      1      1      3      3      4
+95       4      4      4      4      4      3      4      4      4      4
+96       4      3      4      4      4      2      2      2      2      3
+97       4      4      4      4      5      2      2      4      2      3
+98       4      4      4      3      2      2      2      3      4      4
+99       4      4      4      4      4      2      2      4      4      4
+100      5      4      5      3      4      2      1      5      4      5
+101      4      4      3      4      4      2      1      1      2      4
+102      3      3      2      3      4      3      2      4      2      2
+103      4      4      3      2      4      2      2      4      4      4
+104      5      5      4      5      5      2      2      2      1      5
+105      4      4      4      4      3      4      3      2      3      4
+106      5      5      5      5      5      3      4      4      5      4
+107      5      4      4      5      4      1      1      1      2      3
+108      4      4      4      4      4      2      2      3      2      4
+109      4      4      3      4      4      2      1      3      1      4
+110      4      4      4      5      4      2      2      4      2      3
+111      2      5      3      4      2      4      4      4      2      2
+112      4      3      3      4      4      2      3      4      2      5
+113      5      3      4      4      3      2      1      2      4      4
+114      4      4      4      4      4      2      2      2      2      4
+115      4      3      4      4      2      3      4      3      4      5
+116      5      5      3      3      5      1      1      4      4      5
+117      4      5      3      3      2      5      1      5      4      3
+118      5      4      4      4      4      2      2      3      2      3
+119      4      4      3      4      5      2      1      4      4      2
+120      2      1      1      4      3      3      5      5      2      4
+121      5      5      4      5      5      2      1      1      1      3
+122      5      5      4      4      5      2      1      2      1      4
+123      4      3      3      5      3      4      5      2      2      3
+124      5      4      4      5      4      2      2      2      3      3
+125      4      4      3      4      3      2      2      3      2      3
+126      4      4      4      4      4      4      4      4      4      4
+127      5      4      4      5      4      3      3      2      2      3
+128      4      4      3      3      4      2      2      5      4      4
+129      2      3      4      4      3      3      3      2      3      3
+130      4      4      4      4      3      3      1      3      2      4
+131      4      3      3      4      3      4      2      4      4      3
+132      4      4      4      2      4      2      4      2      4      4
+133      5      3      4      5      4      2      2      3      3      3
+134      2      3      5      5      2      4      5      3      5      2
+135      2      3      3      3      3      3      3      3      3      3
+136      4      3      4      3      4      4      2      2      4      3
+137      5      5      4      4      4      1      1      3      2      3
+138      4      5      4      4      5      2      2      5      2      4
+139      4      4      4      4      4      2      1      1      1      4
+140      4      4      3      3      4      2      3      4      4      3
+141      5      3      4      4      4      1      1      3      2      4
+142      5      5      4      5      5      5      4      5      5      5
+143      5      5      4      5      5      1      1      1      1      4
+144      4      4      4      5      4      3      1      2      2      3
+145      4      4      4      4      4      1      1      4      3      3
+146      5      4      4      4      4      2      1      1      1      4
+147      5      4      4      4      4      4      2      3      2      4
+148      4      4      3      4      3      3      2      2      3      4
+149      4      4      4      4      4      3      2      2      2      4
+150      5      2      2      1      2      3      4      2      5      4
+151      4      4      4      3      3      2      2      4      3      5
+152      4      4      4      4      3      3      1      4      1      5
+153      5      5      5      5      4      3      1      1      2      5
+154      4      4      3      4      4      2      1      1      1      3
+155      5      5      3      2      2      5      3      4      5      3
+156      4      3      4      2      2      4      3      2      4      5
+157      4      5      5      5      4      2      2      3      1      5
+158      4      4      3      4      3      2      3      4      2      3
+159      5      3      3      4      5      1      2      4      2      3
+160      5      4      4      4      4      3      3      3      3      4
+161      4      4      2      4      4      2      2      2      3      3
+162      4      4      4      3      4      3      2      3      4      2
+163      4      4      4      3      4      4      2      3      3      3
+164      4      4      4      4      4      4      4      2      2      4
+165      4      4      3      4      4      2      2      3      2      4
+166      5      4      5      5      5      2      3      2      3      4
+167      3      2      2      2      4      2      2      3      4      2
+168      5      4      4      4      2      1      2      2      2      4
+169      4      4      4      3      4      2      1      4      1      4
+170      4      5      4      4      5      2      2      3      2      5
+171      4      2      4      3      4      3      1      5      2      4
+172      4      3      3      3      2      2      2      4      2      4
+173      4      4      3      3      4      2      2      4      2      4
+174      5      3      3      5      4      2      2      4      1      2
+175      4      4      4      4      5      2      2      3      2      4
+176      5      4      4      5      4      5      1      1      3      3
+177      4      4      3      3      4      2      2      1      2      4
+178      4      4      4      5      4      1      1      4      3      4
+179      4      4      3      2      5      1      4      1      2      2
+180      5      4      3      4      5      2      1      4      3      4
+181      5      4      4      4      5      1      1      4      1      4
+182      5      3      3      5      5      1      3      2      2      2
+183      2      4      3      5      4      2      2      4      2      4
+184      3      4      3      2      4      3      3      4      3      3
+185      5      4      4      3      4      3      3      2      3      4
+186      4      4      4      3      4      4      2      3      3      4
+187      4      4      4      4      4      4      4      2      3      4
+188      4      4      3      4      4      2      2      3      2      3
+189      4      4      2      4      4      3      2      1      4      4
+190      3      4      5      5      4      1      2      5      5      2
+191      5      4      4      4      4      2      2      2      2      4
+192      4      4      4      4      5      3      2      4      2      2
+193      4      4      3      3      4      3      2      3      2      2
+194      4      4      4      4      3      1      1      4      1      3
+195      4      5      4      2      4      3      4      3      3      3
+196      4      3      4      3      4      3      4      4      2      3
+197      4      4      4      4      4      3      4      2      3      4
+198      4      5      4      4      3      2      2      3      2      3
+199      5      5      4      5      5      2      2      2      4      5
+200      5      4      4      5      4      2      2      1      2      3
+201      4      3      3      5      2      4      4      2      4      4
+202      5      4      4      4      4      3      4      4      4      5
+203      5      5      5      5      5      2      1      2      4      2
+204      4      4      3      5      4      2      1      2      1      5
+205      5      5      4      5      3      3      2      4      2      4
+206      4      3      3      4      4      1      1      4      1      3
+207      3      3      4      4      4      2      3      4      2      4
+208      4      5      4      3      5      3      1      1      1      5
+209      3      4      4      4      3      2      1      3      2      4
+210      5      5      5      4      4      2      4      1      3      3
+211      4      4      4      4      4      2      1      4      3      3
+212      5      5      4      4      5      2      2      2      2      3
+213      4      4      4      4      4      4      4      4      4      4
+214      4      4      4      4      3      2      3      2      2      4
+215      3      4      5      5      4      5      2      2      5      3
+216      4      4      4      4      4      1      3      1      4      4
+217      4      4      2      4      4      2      3      3      4      3
+218      4      3      4      3      3      3      3      4      3      4
+219      3      5      3      4      3      3      4      2      3      3
+220      4      4      3      4      4      3      2      3      4      3
+221      5      5      4      5      5      3      2      4      3      4
+222      5      3      2      3      2      4      4      5      5      3
+223      5      4      4      4      2      3      1      5      1      3
+224      5      5      3      5      4      3      2      4      3      4
+225      3      2      4      4      4      5      4      3      3      4
+226      4      4      3      4      4      3      3      2      3      4
+227      5      3      4      4      4      3      3      2      3      3
+228      5      5      4      5      5      3      2      3      3      3
+229      5      5      3      5      3      3      4      5      5      3
+230      5      5      5      3      4      1      2      4      3      5
+231      4      4      3      3      4      1      2      4      3      3
+232      4      3      3      2      3      4      1      5      4      3
+233      4      4      3      4      5      3      3      4      3      3
+234      5      4      4      5      4      2      2      4      2      4
+235      5      4      4      4      5      2      2      1      5      5
+236      5      4      4      5      4      4      2      4      2      2
+237      5      4      5      4      4      4      3      2      2      2
+238      5      5      5      4      4      2      1      3      2      3
+239      5      4      3      3      4      3      2      3      2      3
+240      4      4      4      4      4      2      2      2      2      4
+241      5      4      5      5      4      2      2      4      4      4
+242      5      5      4      4      4      5      4      2      1      4
+243      3      1      3      3      4      3      3      3      1      2
+244      5      4      3      4      3      3      3      3      3      4
+245      4      4      4      3      4      2      1      4      3      4
+246      4      4      4      4      4      3      2      3      2      4
+247      4      4      3      4      4      2      1      1      2      5
+248      4      4      3      2      3      2      2      3      3      4
+249      4      4      4      4      4      2      2      2      2      4
+250      5      5      4      5      4      1      1      4      1      4
+251      4      5      5      3      4      3      3      2      2      4
+252      4      3      3      4      4      2      2      3      2      3
+253      4      4      2      4      4      3      2      2      4      3
+254      5      3      5      3      4      4      1      4      3      4
+255      5      1      5      5      5      1      1      5      1      3
+256      4      2      3      3      3      2      2      3      4      4
+257      4      4      4      4      4      2      1      3      2      3
+258      5      3      3      4      4      4      4      5      4      4
+259      4      2      3      3      4      2      2      4      4      3
+260      4      5      4      4      4      3      2      3      3      4
+261      4      4      4      4      4      5      2      3      2      4
+262      3      3      3      3      3      2      1      2      2      3
+263      5      4      4      3      3      4      4      4      4      2
+264      4      3      3      3      5      5      3      3      3      4
+265      4      5      4      4      4      2      1      5      1      4
+266      5      5      5      5      4      3      2      3      1      3
+267      5      4      4      4      4      3      1      3      1      3
+268      5      3      4      4      4      2      1      3      1      3
+269      5      5      5      5      4      1      1      4      3      4
+270      5      3      4      5      4      1      1      2      1      3
+271      3      4      4      4      4      3      2      3      4      3
+272      4      4      4      4      4      3      2      2      3      4
+273      3      3      3      2      3      4      1      4      2      4
+274      4      4      3      4      4      2      1      4      3      4
+275      5      4      4      5      2      2      1      2      5      5
+276      5      5      5      5      4      2      1      5      3      4
+277      4      4      4      4      4      3      2      4      3      5
+278      5      4      4      4      5      2      2      2      2      4
+279      4      4      4      4      4      3      1      4      2      5
+280      5      5      4      3      5      2      2      2      3      5
+281      5      5      5      5      5      4      1      1      2      4
+282      4      4      3      4      4      3      1      2      2      4
+283      5      3      4      4      4      2      1      4      3      4
+284      4      4      3      3      4      3      2      2      4      4
+285      5      5      4      5      4      2      1      2      1      4
+286      4      4      3      4      4      3      3      4      4      2
+287      3      3      3      4      4      3      3      4      3      3
+288      4      5      5      5      4      3      3      4      4      3
+289      4      4      3      4      5      2      2      3      2      4
+290      4      5      4      4      4      3      3      1      2      3
+291      4      4      4      4      4      2      2      3      2      3
+292      4      4      5      2      5      3      3      1      3      3
+293      4      4      3      3      4      2      3      5      4      4
+294      5      3      5      5      3      3      2      5      3      4
+295      4      5      4      4      5      2      3      2      3      2
+296      4      4      4      4      4      3      2      4      2      4
+297      5      5      4      4      5      4      2      4      4      5
+298      5      4      4      3      4      3      3      3      3      5
+299      4      5      4      4      2      2      3      2      2      4
+300      4      4      4      4      4      2      2      3      4      4
+301      4      5      4      5      4      3      2      1      3      5
+302      4      3      2      2      4      2      3      4      4      3
+303      5      2      4      5      4      1      1      2      1      3
+304      5      5      5      5      4      1      2      1      4      5
+305      4      4      5      5      4      3      2      4      4      5
+306      4      4      4      2      4      2      2      2      3      3
+307      4      3      3      4      4      1      1      4      2      2
+308      2      2      2      3      4      4      4      4      4      3
+309      4      3      2      3      3      2      2      4      4      4
+310      4      4      4      3      3      1      1      5      2      3
+311      4      4      4      4      4      3      1      2      4      4
+312      4      4      3      3      2      2      2      2      4      3
+313      4      4      4      4      4      2      2      1      4      3
+314      4      4      4      3      3      2      1      2      3      4
+315      4      4      4      4      4      3      3      4      4      3
+316      5      3      4      4      4      2      1      3      2      4
+317      5      5      4      5      5      1      1      1      1      3
+318      3      3      2      3      3      4      3      4      3      3
+319      5      4      3      4      4      3      1      1      1      4
+320      5      4      4      4      4      2      2      2      2      4
+321      5      3      5      5      4      1      1      1      2      4
+322      4      4      4      4      4      2      2      3      2      3
+323      5      5      5      4      5      1      2      5      2      4
+324      4      4      4      4      4      3      1      2      4      4
+325      4      4      3      4      4      2      2      3      3      3
+326      5      5      5      5      5      3      2      5      3      3
+327      4      4      4      4      4      4      2      2      2      4
+328      5      2      5      5      4      3      1      3      1      3
+329      4      4      4      3      3      4      4      2      3      4
+330      4      4      3      2      5      5      2      3      5      3
+331      4      4      4      4      4      2      2      2      3      5
+332      4      4      5      4      4      3      2      2      4      4
+333      4      3      4      3      4      3      2      5      4      1
+334      5      4      3      3      3      2      1      3      2      4
+335      4      4      3      2      4      2      2      4      2      4
+336      4      3      4      4      4      2      3      3      2      4
+337      4      3      3      4      4      3      4      2      4      5
+338      5      4      3      3      5      3      2      3      3      3
+339      5      4      4      4      4      2      1      3      1      5
+340      5      4      4      3      3      3      3      3      3      5
+341      5      3      4      4      3      3      1      4      2      3
+342      4      4      3      3      4      5      3      5      3      2
+343      5      5      3      5      4      3      1      5      1      3
+344      5      5      4      5      4      2      1      3      1      3
+345      4      4      4      4      4      2      2      2      1      4
+346      4      2      3      3      4      2      2      4      2      2
+347      5      4      5      2      3      3      4      4      5      3
+348      4      4      3      3      5      1      2      2      3      3
+349      5      5      5      5      4      2      1      3      1      5
+350      4      3      4      4      4      1      1      1      1      4
+351      4      4      4      4      3      3      2      4      3      3
+352      4      4      3      4      4      3      2      4      4      4
+353      5      3      3      4      4      2      2      3      4      3
+354      4      2      3      4      3      2      2      3      2      4
+355      4      4      4      4      5      2      2      3      3      3
+356      3      3      4      3      4      4      4      4      4      4
+357      5      3      3      5      4      2      1      3      2      3
+358      5      4      4      4      5      4      2      1      3      4
+359      3      4      4      3      4      2      2      2      2      3
+360      4      4      4      4      3      3      2      4      3      3
+361      4      5      3      3      4      2      2      3      4      4
+362      4      4      3      3      4      2      2      2      2      3
+363      4      2      2      4      4      5      1      5      4      2
+364      4      4      3      4      4      2      2      4      4      4
+365      4      4      4      4      4      2      2      4      2      3
+366      4      3      2      3      3      3      1      3      1      3
+367      4      4      4      4      3      1      1      1      1      4
+368      4      3      3      3      3      2      2      4      4      4
+369      5      5      4      3      5      4      1      4      3      5
+370      4      3      4      4      3      3      3      4      2      3
+371      4      3      3      4      4      3      3      3      2      3
+372      4      4      4      4      4      4      2      4      2      4
+373      5      5      4      4      4      1      1      3      1      4
+374      5      3      3      3      4      2      2      3      3      4
+375      4      5      4      4      4      2      1      3      2      4
+376      5      5      5      4      4      3      2      3      3      5
+377      4      3      3      4      4      1      1      3      1      3
+    BFI_C2 BFI_C3 BFI_C4 BFI_C5 BFI_C6 BFI_C7 BFI_C8 BFI_C9 BFI_N1 BFI_N2
+1        4      4      4      4      3      3      4      2      3      3
+2        3      2      4      2      3      4      4      3      4      4
+3        4      3      4      4      2      3      3      2      3      2
+4        2      3      3      5      3      4      4      4      4      5
+5        2      3      3      2      4      4      4      4      4      5
+6        4      3      4      2      3      4      4      2      4      4
+7        4      2      4      4      4      4      4      4      4      4
+8        5      4      4      4      4      5      4      3      4      4
+9        5      4      4      4      2      4      4      3      3      4
+10       4      4      5      4      4      4      4      3      2      4
+11       4      3      4      5      2      4      3      3      4      4
+12       4      4      4      4      2      3      1      2      2      4
+13       2      2      3      3      4      4      4      3      4      4
+14       2      3      4      4      5      5      4      3      5      5
+15       5      2      2      4      5      4      5      4      5      5
+16       2      3      4      3      3      4      4      3      4      4
+17       4      3      4      4      4      4      4      3      4      5
+18       4      5      5      5      2      4      3      1      3      4
+19       4      4      5      5      2      4      4      2      3      5
+20       4      3      4      4      3      4      2      1      3      4
+21       3      3      4      2      3      4      5      3      3      4
+22       3      3      3      2      4      4      5      4      4      4
+23       5      5      5      5      3      3      1      1      5      3
+24       3      2      4      4      2      4      4      2      2      4
+25       3      2      3      2      4      4      3      3      3      4
+26       3      3      4      3      3      3      3      3      3      4
+27       3      2      4      4      2      4      5      3      4      4
+28       4      3      3      3      4      4      4      4      2      4
+29       1      5      5      4      3      2      5      3      4      3
+30       2      4      4      3      4      4      4      4      4      4
+31       2      4      4      4      3      3      3      3      4      4
+32       4      4      4      4      2      4      3      1      2      2
+33       3      4      4      4      3      5      3      2      4      5
+34       3      4      4      4      2      2      4      1      4      4
+35       3      3      3      5      5      4      4      2      4      4
+36       4      4      4      4      4      2      2      2      4      5
+37       4      2      3      2      5      2      5      1      5      5
+38       3      3      4      3      4      4      4      3      3      4
+39       3      2      3      2      4      4      5      4      4      5
+40       3      3      4      5      4      4      4      3      4      4
+41       3      3      4      4      2      4      3      2      2      4
+42       4      5      4      4      3      4      3      2      3      4
+43       3      3      3      2      4      3      3      5      4      2
+44       3      3      4      4      4      4      3      2      5      4
+45       4      4      4      4      2      4      4      2      3      3
+46       3      3      5      3      4      3      3      2      4      4
+47       5      4      4      4      3      3      3      2      5      4
+48       4      3      4      4      3      4      3      2      4      3
+49       3      3      4      4      4      4      3      3      3      4
+50       3      2      3      4      2      4      4      2      2      4
+51       4      4      5      4      2      4      3      1      3      3
+52       3      3      4      3      4      2      3      2      4      4
+53       5      3      5      3      2      4      3      3      3      2
+54       3      3      3      5      3      5      4      4      3      3
+55       4      2      4      4      2      1      5      4      3      3
+56       2      2      5      2      4      4      4      4      4      4
+57       4      2      4      4      3      4      3      2      2      4
+58       4      4      4      5      2      3      2      2      2      2
+59       2      3      4      2      2      5      4      2      3      3
+60       4      4      5      4      2      3      1      2      3      3
+61       4      3      2      3      2      4      3      2      4      4
+62       3      3      3      3      2      5      3      3      3      4
+63       2      4      4      4      4      4      4      3      4      4
+64       4      4      4      4      4      4      4      2      5      5
+65       3      3      3      5      4      4      4      2      4      4
+66       2      2      3      2      4      5      5      3      5      2
+67       4      4      4      4      4      4      4      4      4      4
+68       3      4      3      4      2      3      3      3      1      4
+69       3      2      3      3      5      4      4      4      4      4
+70       4      4      4      4      2      3      2      2      2      2
+71       3      3      4      3      2      4      4      3      4      4
+72       3      3      4      4      3      3      3      3      4      3
+73       3      5      4      5      5      3      4      3      3      3
+74       4      3      4      4      4      4      3      2      4      4
+75       4      3      2      2      4      4      4      4      4      5
+76       2      4      5      4      3      3      3      4      4      4
+77       4      3      5      5      4      4      2      2      4      5
+78       4      5      4      5      4      4      3      1      4      4
+79       2      4      4      2      2      4      5      2      2      4
+80       3      3      3      3      2      4      4      2      3      4
+81       2      4      4      4      2      4      3      3      2      3
+82       3      4      4      4      3      4      4      3      3      4
+83       3      3      4      3      4      4      4      3      4      4
+84       3      4      4      4      2      4      2      3      4      4
+85       3      2      4      4      4      4      4      3      4      4
+86       5      5      5      5      4      4      1      2      4      4
+87       3      4      4      3      4      4      4      2      4      4
+88       3      2      4      4      2      4      4      3      2      4
+89       4      5      4      3      3      4      2      1      4      4
+90       4      3      4      4      3      4      4      2      4      5
+91       3      3      5      3      4      4      4      3      3      4
+92       3      4      4      3      4      5      5      4      5      4
+93       1      2      2      2      5      4      4      3      4      4
+94       4      4      5      3      4      2      1      1      3      5
+95       3      3      4      4      3      4      4      5      4      4
+96       4      2      4      3      3      4      4      3      4      4
+97       4      3      3      3      4      5      3      5      4      5
+98       4      4      4      4      3      4      2      2      2      3
+99       4      4      4      4      2      3      2      2      2      4
+100      4      3      5      5      5      3      2      1      3      5
+101      4      3      4      4      2      4      4      2      3      3
+102      2      2      3      3      4      4      4      4      4      4
+103      2      3      4      4      4      4      4      4      5      4
+104      3      5      5      5      4      2      2      1      2      4
+105      4      4      4      4      2      3      3      2      2      4
+106      4      3      5      5      5      4      5      3      5      5
+107      4      5      5      5      2      1      2      2      1      4
+108      4      3      4      4      3      2      2      3      4      4
+109      3      4      4      4      4      4      2      2      3      4
+110      4      2      4      3      3      2      3      3      4      4
+111      2      4      4      4      4      4      4      1      4      4
+112      4      4      5      4      1      2      2      2      2      5
+113      4      4      4      4      4      4      2      2      5      4
+114      4      3      4      4      3      4      4      2      4      4
+115      3      4      5      5      4      1      4      5      3      5
+116      4      5      4      5      4      3      4      2      4      4
+117      3      4      3      4      4      4      3      2      5      4
+118      3      2      4      4      3      4      4      3      3      4
+119      1      1      3      3      2      3      4      3      2      2
+120      4      1      3      3      2      1      3      1      4      4
+121      3      3      4      4      3      4      4      3      4      4
+122      5      3      5      4      1      5      2      4      3      1
+123      3      4      5      5      3      3      2      3      3      3
+124      3      4      5      4      2      3      4      2      4      2
+125      3      4      4      3      2      4      4      3      2      4
+126      4      4      4      4      4      4      4      4      4      4
+127      2      3      3      3      2      4      4      4      4      4
+128      4      4      5      4      3      4      3      2      5      5
+129      3      3      2      3      3      4      3      3      3      3
+130      4      3      4      3      2      4      4      2      2      3
+131      3      3      4      3      3      4      4      2      3      4
+132      4      4      4      3      4      5      3      3      5      4
+133      3      4      4      4      3      2      3      3      2      2
+134      4      2      2      1      5      5      4      5      5      5
+135      3      2      3      3      4      3      2      3      4      3
+136      2      2      4      3      4      4      4      3      4      4
+137      3      2      4      2      3      4      4      2      4      5
+138      4      4      5      4      2      3      2      4      4      5
+139      4      2      4      4      4      3      4      3      2      4
+140      4      2      4      4      3      4      3      3      4      4
+141      4      3      4      4      3      3      3      2      4      4
+142      3      4      4      5      5      5      5      5      5      5
+143      5      3      4      4      2      4      1      3      3      2
+144      3      3      4      3      4      5      5      2      3      4
+145      4      2      4      3      3      4      4      4      3      3
+146      4      4      4      4      2      2      1      1      2      3
+147      4      3      4      3      4      4      3      4      4      4
+148      4      3      4      4      2      3      2      2      2      4
+149      3      2      4      4      2      4      2      4      4      4
+150      4      4      5      4      4      5      2      4      5      5
+151      4      5      5      5      4      2      2      2      4      3
+152      3      2      5      5      5      3      3      2      3      5
+153      5      5      4      5      1      4      4      2      3      2
+154      1      2      3      3      4      4      4      4      4      4
+155      5      2      4      3      5      5      5      5      5      4
+156      2      3      4      5      4      5      4      4      5      4
+157      5      4      5      5      3      2      2      1      2      3
+158      1      3      3      4      2      5      4      4      3      2
+159      3      2      5      3      2      4      5      2      4      4
+160      4      5      4      4      3      3      2      3      3      2
+161      3      4      4      4      4      4      4      2      4      4
+162      2      2      3      3      4      4      4      4      4      3
+163      3      3      4      4      3      3      2      2      4      4
+164      3      3      3      4      4      4      4      3      4      5
+165      3      3      4      4      2      3      3      2      3      2
+166      4      4      5      4      4      4      3      3      4      4
+167      2      2      4      2      4      3      5      4      3      4
+168      3      3      4      4      2      4      4      4      3      4
+169      4      3      4      5      2      4      4      4      2      4
+170      4      4      5      5      3      3      1      2      3      3
+171      3      3      4      3      4      4      4      2      5      5
+172      4      3      4      4      2      4      3      3      4      4
+173      4      3      5      4      4      2      4      2      5      4
+174      3      4      3      3      3      4      3      2      5      4
+175      4      4      5      4      1      4      3      2      1      2
+176      2      4      4      3      2      5      4      2      1      4
+177      4      4      5      4      4      2      2      1      4      4
+178      4      3      5      4      3      4      3      2      4      4
+179      4      2      4      5      3      4      4      2      2      4
+180      3      3      5      4      2      4      3      1      2      4
+181      4      3      5      5      3      4      4      3      4      4
+182      3      3      5      3      2      5      4      2      3      3
+183      3      3      4      4      3      4      4      3      4      4
+184      4      3      4      3      3      4      3      3      4      4
+185      4      4      5      3      3      3      3      2      3      2
+186      4      4      4      4      4      4      2      2      3      3
+187      5      4      4      4      4      4      4      4      4      4
+188      2      3      4      3      4      4      4      3      4      4
+189      2      2      5      4      4      5      4      4      4      4
+190      5      2      5      4      5      4      5      3      4      5
+191      3      3      4      4      4      3      3      3      4      4
+192      4      4      4      3      4      4      4      2      4      4
+193      3      3      3      2      2      2      3      1      2      4
+194      3      3      2      2      4      2      5      2      3      4
+195      2      3      4      3      3      2      4      3      3      4
+196      2      2      3      4      4      4      4      3      4      4
+197      4      4      4      4      3      4      4      2      3      4
+198      2      3      4      3      4      4      4      3      2      4
+199      3      3      5      4      4      3      3      5      5      5
+200      3      3      5      5      1      3      2      2      2      3
+201      4      2      4      4      5      4      4      3      5      5
+202      5      4      5      4      2      5      2      1      4      2
+203      4      3      4      2      4      2      4      2      2      4
+204      3      4      5      5      1      4      3      2      1      2
+205      4      5      5      5      5      5      4      1      4      4
+206      3      4      4      3      4      4      4      1      4      4
+207      5      3      3      4      3      2      3      3      4      3
+208      4      3      5      4      4      4      4      4      5      5
+209      4      3      4      4      2      4      2      2      4      4
+210      4      2      3      3      5      5      5      4      5      4
+211      4      2      4      2      5      4      4      4      5      5
+212      4      2      4      4      2      4      4      2      4      4
+213      4      3      4      3      4      4      3      2      4      4
+214      4      5      4      4      3      3      2      2      2      2
+215      3      1      3      4      3      5      5      5      4      4
+216      4      4      4      3      4      4      4      3      4      4
+217      4      4      4      4      3      2      4      4      4      4
+218      4      3      4      4      3      3      3      3      3      3
+219      4      3      4      4      2      3      4      4      4      3
+220      2      3      3      3      3      4      4      3      4      4
+221      4      3      4      4      2      5      4      1      3      3
+222      1      1      3      3      5      4      5      3      5      5
+223      4      3      4      2      5      4      4      3      1      4
+224      5      5      4      4      3      4      3      2      3      4
+225      2      3      4      3      3      4      4      4      4      4
+226      4      4      4      4      3      4      3      2      3      3
+227      3      3      5      3      4      4      4      3      2      4
+228      4      4      4      4      4      4      4      2      4      3
+229      2      5      4      3      4      5      5      4      3      4
+230      3      4      5      5      4      4      3      3      4      4
+231      3      2      3      3      4      4      3      2      3      3
+232      2      3      3      4      5      4      5      5      5      5
+233      3      4      4      3      5      4      3      2      4      4
+234      2      4      5      4      4      4      4      4      4      4
+235      5      4      5      5      5      5      4      5      4      5
+236      2      2      4      4      4      5      4      5      3      4
+237      3      2      4      2      2      2      3      2      3      3
+238      4      2      4      3      4      4      2      2      4      4
+239      4      3      4      4      3      3      3      3      4      3
+240      4      4      4      4      2      2      2      2      2      2
+241      3      3      4      4      2      4      4      2      2      2
+242      1      1      4      4      5      5      5      5      5      5
+243      4      2      5      3      3      4      4      4      3      3
+244      3      2      4      3      4      4      4      4      3      4
+245      4      4      4      3      3      3      2      2      2      4
+246      3      4      4      4      4      4      2      2      4      4
+247      5      4      4      5      2      4      2      2      4      4
+248      4      4      4      4      3      3      3      3      4      3
+249      4      4      4      4      3      2      3      2      3      2
+250      4      5      5      3      2      4      1      2      2      4
+251      4      4      5      3      3      3      3      3      4      3
+252      3      3      3      3      3      3      4      2      3      3
+253      2      3      3      4      3      5      4      4      4      3
+254      3      3      3      3      4      4      3      4      4      4
+255      3      3      3      3      5      4      5      3      4      5
+256      2      2      4      3      4      4      4      3      4      5
+257      3      3      4      4      2      4      4      3      3      4
+258      2      3      4      4      4      3      5      2      4      3
+259      4      3      4      4      4      2      2      3      4      4
+260      4      4      4      4      3      2      3      2      3      2
+261      4      4      3      4      4      4      4      4      4      3
+262      3      3      4      2      2      4      4      2      4      4
+263      3      3      4      3      3      1      5      5      4      5
+264      3      4      5      4      4      4      3      2      3      3
+265      4      4      4      4      5      4      3      3      1      3
+266      3      5      5      3      4      4      4      2      3      5
+267      4      4      4      4      3      5      4      2      2      4
+268      3      2      4      3      3      4      3      4      4      3
+269      5      4      5      4      1      4      2      2      2      1
+270      3      2      4      3      4      4      5      5      3      4
+271      3      3      3      4      4      4      2      2      4      5
+272      4      4      5      4      2      3      2      2      3      3
+273      3      5      4      4      4      5      4      2      4      5
+274      3      4      3      4      3      4      4      2      3      4
+275      5      4      2      5      1      4      1      2      3      3
+276      3      5      5      4      5      3      2      1      2      4
+277      4      4      4      5      4      4      3      1      4      5
+278      4      3      4      4      4      4      2      3      3      4
+279      3      5      5      4      2      2      2      2      1      3
+280      4      4      4      5      2      4      3      2      4      3
+281      4      4      5      4      1      2      2      1      2      3
+282      3      5      4      5      3      4      4      4      4      4
+283      3      2      4      5      3      3      4      2      4      3
+284      3      3      4      4      4      4      3      2      3      4
+285      4      1      4      4      1      4      5      2      2      4
+286      3      3      4      3      3      4      3      3      2      4
+287      2      3      4      2      4      4      3      2      3      4
+288      3      4      5      5      5      4      4      3      5      4
+289      3      3      4      3      4      4      3      3      4      5
+290      4      2      4      4      4      4      3      2      4      3
+291      4      3      4      4      4      4      3      3      4      4
+292      3      2      4      4      4      5      5      4      5      3
+293      3      3      4      5      3      4      3      3      3      4
+294      3      5      5      4      4      5      3      3      4      4
+295      2      3      3      2      4      5      5      3      4      4
+296      4      3      4      4      3      2      3      2      2      4
+297      5      4      5      4      5      3      4      1      4      4
+298      3      4      5      4      2      3      4      3      4      4
+299      3      3      4      2      2      4      2      2      2      2
+300      3      3      3      4      4      5      4      4      4      5
+301      3      3      5      5      4      5      2      1      3      5
+302      2      3      5      4      5      4      2      2      4      4
+303      3      3      4      1      2      4      5      4      2      2
+304      5      4      5      5      3      4      2      2      4      5
+305      4      4      5      4      4      4      4      3      4      4
+306      2      2      3      3      3      5      4      3      4      4
+307      1      4      4      3      4      5      5      2      2      5
+308      3      3      4      2      4      4      4      2      4      4
+309      4      3      4      3      2      3      4      2      3      4
+310      3      4      3      5      4      3      3      5      5      5
+311      3      2      4      2      2      4      2      2      2      4
+312      3      3      3      3      4      3      3      2      4      4
+313      3      3      4      3      3      5      5      4      4      5
+314      4      4      4      4      3      4      2      2      3      4
+315      3      3      4      4      3      3      3      2      3      4
+316      5      4      5      4      3      4      1      2      2      4
+317      4      2      4      4      4      4      4      3      4      4
+318      2      2      3      3      4      3      3      3      3      2
+319      3      3      4      3      4      2      4      2      4      4
+320      4      4      4      4      3      4      2      2      2      4
+321      4      3      5      4      5      2      1      1      3      4
+322      2      4      4      3      3      5      4      2      4      4
+323      3      3      5      4      2      5      5      3      4      3
+324      4      4      4      4      2      4      2      2      2      4
+325      3      2      3      3      4      5      4      2      3      4
+326      3      2      5      3      4      3      2      5      5      5
+327      2      1      4      4      4      4      4      4      4      4
+328      4      5      4      5      2      3      2      2      1      3
+329      4      2      4      4      4      4      3      3      4      3
+330      4      4      4      3      3      4      5      2      3      5
+331      4      5      4      4      3      3      2      2      3      4
+332      3      3      3      4      4      4      5      2      4      4
+333      2      3      4      2      4      4      5      1      2      5
+334      3      3      3      5      2      4      3      2      4      5
+335      3      2      4      4      2      3      4      2      3      2
+336      4      3      4      4      2      4      3      2      3      3
+337      2      2      3      5      4      5      4      4      4      4
+338      2      3      3      2      4      4      4      3      4      4
+339      3      3      4      3      2      2      3      1      2      3
+340      4      5      2      1      2      3      2      3      1      4
+341      4      2      4      3      4      4      3      2      2      4
+342      3      2      3      3      4      4      2      3      4      4
+343      3      4      5      4      1      2      4      3      1      1
+344      5      5      5      5      2      4      3      1      4      4
+345      4      4      4      4      3      3      3      2      3      4
+346      1      2      4      2      4      4      4      3      5      4
+347      3      2      2      3      4      3      3      3      5      2
+348      4      4      4      4      2      4      3      4      2      3
+349      5      5      5      5      2      2      1      1      2      5
+350      4      5      5      5      1      1      1      1      1      2
+351      2      3      3      3      3      3      3      3      4      4
+352      4      3      3      4      2      4      4      2      3      3
+353      3      3      4      3      4      4      3      2      4      4
+354      3      4      4      4      3      3      4      3      3      2
+355      4      4      4      3      2      4      4      2      4      2
+356      3      3      3      3      3      4      3      3      4      4
+357      3      3      3      3      3      3      4      5      2      4
+358      4      4      4      4      2      4      4      2      2      2
+359      3      3      4      3      3      4      4      3      3      2
+360      4      4      4      3      3      4      4      2      4      4
+361      3      2      5      4      3      4      4      1      3      4
+362      3      4      4      4      3      3      3      3      4      3
+363      5      2      4      2      4      4      2      2      5      5
+364      3      4      4      4      4      4      2      2      4      4
+365      3      3      3      3      2      4      4      3      3      3
+366      4      3      4      2      3      2      3      2      3      4
+367      4      3      4      4      3      3      2      2      3      4
+368      4      2      3      4      4      2      2      4      3      3
+369      4      5      5      4      4      4      3      3      4      3
+370      3      3      3      4      2      3      2      2      2      3
+371      3      3      3      4      3      3      2      3      3      3
+372      4      4      4      4      3      2      3      2      3      2
+373      4      4      5      3      1      3      4      2      1      1
+374      3      3      4      4      3      4      3      3      3      3
+375      4      3      4      3      2      4      3      2      2      4
+376      4      4      4      5      3      3      2      2      4      4
+377      3      2      3      3      4      3      4      3      4      5
+    BFI_N3 BFI_N4 BFI_N5 BFI_N6 BFI_N7 BFI_N8 BFI_O1 BFI_O2 BFI_O3 BFI_O4
+1        3      4      3      3      4      3      3      3      4      3
+2        3      4      3      3      3      3      3      3      3      3
+3        4      4      3      2      3      2      2      3      3      3
+4        3      4      4      3      2      2      3      2      5      2
+5        3      4      5      2      2      3      2      3      2      3
+6        2      3      2      4      3      2      3      3      4      3
+7        4      4      4      2      2      4      3      4      4      3
+8        5      4      5      2      2      2      5      4      2      5
+9        2      4      2      3      4      4      4      4      4      4
+10       4      4      5      5      3      4      5      4      3      4
+11       1      3      1      5      5      4      4      3      3      4
+12       3      5      4      4      3      3      4      4      4      3
+13       4      4      5      2      2      4      3      2      5      2
+14       5      5      5      3      1      4      3      1      3      5
+15       5      5      5      2      1      1      4      2      5      3
+16       4      4      4      4      3      3      4      4      4      4
+17       4      4      4      2      2      3      2      3      3      3
+18       3      4      4      3      3      5      3      3      5      4
+19       2      4      2      4      2      3      4      4      5      3
+20       3      4      4      3      3      3      3      3      3      3
+21       3      4      4      2      2      2      3      3      4      2
+22       3      4      5      4      2      3      4      4      4      5
+23       4      4      4      5      2      3      5      5      5      5
+24       3      4      3      2      3      4      3      3      4      3
+25       3      4      3      2      2      2      2      2      3      3
+26       4      3      4      3      2      2      3      3      3      3
+27       4      4      2      4      2      2      2      2      2      2
+28       4      3      4      2      4      2      2      2      2      4
+29       2      5      4      2      3      3      3      3      3      3
+30       4      4      4      4      2      2      2      2      2      5
+31       3      3      4      3      3      2      3      3      4      4
+32       1      3      2      4      3      5      4      4      5      4
+33       3      5      4      4      3      4      3      4      4      5
+34       2      4      5      3      2      1      3      3      3      2
+35       4      5      4      3      3      5      3      3      5      2
+36       5      4      5      3      2      2      3      3      4      3
+37       5      5      4      3      5      1      4      3      2      5
+38       4      4      4      3      3      3      4      3      3      3
+39       4      3      5      2      1      2      3      3      3      3
+40       4      4      4      3      2      3      4      4      4      4
+41       2      4      2      5      3      3      4      4      4      4
+42       4      5      5      2      3      2      4      3      3      4
+43       5      3      3      2      4      3      4      3      3      2
+44       4      4      4      3      2      3      3      3      4      4
+45       3      4      3      4      4      3      4      4      4      4
+46       2      5      2      4      3      2      4      5      4      3
+47       4      5      4      3      3      3      3      4      3      4
+48       3      3      3      3      3      2      4      4      4      3
+49       2      4      4      3      3      3      4      4      4      4
+50       2      4      2      3      4      4      3      3      4      3
+51       2      4      3      4      2      4      4      4      4      4
+52       4      4      5      2      2      3      3      3      3      4
+53       2      3      2      4      4      4      3      3      3      4
+54       3      4      3      1      2      3      3      3      4      3
+55       4      3      4      4      5      3      3      4      3      5
+56       4      5      4      2      2      1      3      3      3      3
+57       3      4      3      4      2      3      3      2      4      2
+58       2      4      3      4      5      5      3      4      5      4
+59       4      5      4      2      4      3      4      3      2      2
+60       3      3      4      4      4      4      3      3      3      3
+61       4      4      3      2      3      3      3      3      3      4
+62       4      4      4      3      4      2      2      2      3      3
+63       4      3      4      3      2      2      3      2      3      3
+64       3      4      5      2      3      3      3      4      3      4
+65       4      4      4      2      2      2      4      3      3      2
+66       5      4      5      1      2      2      2      2      2      2
+67       4      5      5      4      4      3      3      3      4      3
+68       3      4      4      3      4      3      3      4      3      4
+69       5      4      4      3      2      4      2      2      2      3
+70       2      4      4      4      4      4      3      3      4      3
+71       2      4      3      3      3      3      3      3      3      3
+72       4      3      3      2      3      3      4      2      3      3
+73       3      4      5      2      2      5      3      3      4      2
+74       3      4      4      4      2      3      4      3      2      4
+75       3      5      4      3      4      3      2      3      1      3
+76       3      3      4      4      3      4      5      5      4      5
+77       4      4      5      3      3      3      3      3      4      5
+78       4      5      5      2      3      4      3      4      4      4
+79       4      4      4      3      4      2      2      2      5      2
+80       2      4      2      3      3      4      3      3      2      3
+81       2      3      4      3      4      3      2      2      3      4
+82       2      4      3      4      3      3      3      4      3      5
+83       4      4      4      3      2      3      3      4      3      3
+84       2      4      4      4      4      4      4      4      4      4
+85       4      4      4      2      2      3      2      2      4      2
+86       4      4      4      4      4      5      5      5      5      5
+87       4      4      4      3      3      2      3      1      3      3
+88       4      4      3      4      4      4      4      4      4      4
+89       1      5      2      4      2      5      3      3      4      3
+90       4      4      4      3      4      4      5      5      3      5
+91       2      4      3      2      3      3      2      4      4      4
+92       5      5      5      3      2      2      3      2      4      3
+93       4      5      4      2      2      2      2      2      3      2
+94       4      5      5      2      2      1      2      1      3      2
+95       4      4      3      4      3      2      3      3      3      3
+96       4      3      4      2      2      3      3      3      3      4
+97       4      4      5      3      2      3      3      4      5      4
+98       3      3      3      4      3      3      4      4      4      4
+99       3      4      3      4      4      3      4      3      3      3
+100      3      4      5      3      2      5      5      5      5      5
+101      2      3      2      3      4      4      4      3      3      3
+102      3      4      2      4      3      4      3      2      3      3
+103      4      4      4      2      2      2      3      2      4      4
+104      3      3      4      3      2      3      3      4      3      3
+105      3      4      3      4      4      4      4      4      3      4
+106      3      5      4      5      1      4      3      5      3      5
+107      1      5      3      3      4      3      3      3      3      3
+108      3      4      3      4      4      4      3      3      4      3
+109      4      4      4      3      2      2      4      4      4      4
+110      3      4      3      3      3      3      4      4      5      4
+111      4      5      4      4      2      2      4      4      5      4
+112      2      5      3      4      3      3      2      4      5      4
+113      4      4      4      3      2      3      2      3      2      4
+114      4      4      4      3      3      3      3      3      4      3
+115      4      5      5      2      3      4      4      4      3      4
+116      2      4      5      5      2      4      5      4      5      4
+117      5      4      5      3      1      2      5      5      4      4
+118      3      4      3      3      3      3      3      3      3      2
+119      1      4      2      4      4      2      2      1      2      2
+120      4      4      3      5      5      1      4      5      4      4
+121      5      5      5      4      1      4      5      5      5      5
+122      2      4      3      3      4      4      3      4      5      4
+123      5      3      5      2      4      3      5      5      5      4
+124      2      2      1      3      4      3      3      3      4      4
+125      3      3      2      4      4      4      3      3      3      4
+126      4      4      4      4      4      4      4      4      3      4
+127      2      4      4      4      3      5      4      4      5      4
+128      5      4      5      2      2      3      4      4      5      4
+129      3      4      3      4      3      4      3      3      4      3
+130      2      4      4      4      5      3      2      2      4      2
+131      4      3      3      3      3      4      3      4      3      4
+132      4      4      4      2      2      2      4      5      3      5
+133      2      3      4      4      5      5      4      4      3      4
+134      5      4      4      4      2      4      5      5      5      5
+135      3      3      4      3      3      3      3      3      4      4
+136      4      4      4      2      2      4      4      4      2      4
+137      5      5      3      4      2      4      3      4      3      3
+138      3      5      4      3      2      4      3      3      4      2
+139      2      3      3      3      2      4      3      4      4      5
+140      3      4      5      3      2      2      2      3      4      5
+141      3      4      5      3      5      3      3      4      5      3
+142      5      5      5      5      3      4      4      4      5      3
+143      2      3      2      3      4      5      3      3      5      3
+144      4      4      5      2      2      4      4      4      4      4
+145      4      4      4      3      3      3      3      4      4      4
+146      2      4      3      4      4      4      4      3      3      4
+147      5      5      5      2      3      3      2      3      4      3
+148      2      4      3      4      4      4      4      4      4      4
+149      4      4      3      3      4      3      3      2      3      2
+150      3      5      2      2      2      2      2      2      3      2
+151      3      5      4      2      2      2      3      4      4      3
+152      5      4      5      3      3      2      2      2      4      2
+153      2      3      2      5      4      5      4      4      5      5
+154      4      2      4      2      3      2      4      3      4      4
+155      5      5      4      2      1      3      2      3      5      5
+156      4      4      4      2      2      3      3      3      5      4
+157      2      3      3      3      4      5      4      5      5      4
+158      5      4      4      3      3      3      4      3      2      4
+159      1      2      2      4      3      5      5      5      5      5
+160      2      3      3      4      4      4      4      4      5      4
+161      5      4      5      3      3      2      3      3      4      4
+162      2      3      4      2      3      2      4      2      4      3
+163      2      4      3      3      2      3      3      3      4      3
+164      4      3      4      3      3      4      5      4      3      4
+165      2      3      2      3      3      3      4      3      4      4
+166      3      4      3      5      3      4      4      4      4      4
+167      4      4      3      2      2      2      2      1      4      2
+168      3      4      4      2      3      3      3      2      3      2
+169      4      3      4      3      3      3      4      3      4      3
+170      2      3      3      4      4      4      4      4      4      5
+171      3      5      4      3      2      3      3      4      4      3
+172      3      4      2      3      3      4      4      4      4      4
+173      3      4      4      3      3      2      3      3      3      5
+174      4      4      5      3      2      5      3      3      5      5
+175      1      3      3      3      5      4      2      3      5      4
+176      2      2      4      3      3      3      3      4      5      5
+177      2      4      4      3      2      3      4      3      3      5
+178      3      4      3      3      2      3      4      4      4      5
+179      3      1      5      1      2      4      5      5      4      4
+180      1      4      3      3      3      5      3      3      2      2
+181      1      4      2      4      3      4      4      4      5      5
+182      1      4      3      4      2      4      3      3      5      4
+183      3      4      4      3      2      3      4      3      3      4
+184      4      4      3      2      3      3      3      3      3      2
+185      2      2      2      4      2      3      5      4      2      4
+186      4      4      3      4      3      4      4      4      4      4
+187      4      4      4      4      4      4      4      4      4      4
+188      4      4      4      2      2      2      4      4      3      4
+189      4      4      5      4      1      2      3      3      4      4
+190      5      5      5      4      2      1      3      3      2      3
+191      4      4      3      2      3      3      4      4      5      4
+192      4      4      4      3      2      3      3      4      3      4
+193      2      4      2      4      4      3      3      3      4      3
+194      4      2      4      2      4      3      4      3      4      3
+195      3      4      4      3      3      2      4      3      5      4
+196      4      4      4      2      2      3      4      4      4      4
+197      3      3      3      4      3      4      4      4      4      4
+198      2      4      4      3      2      4      3      3      4      3
+199      4      4      4      4      2      4      3      3      4      5
+200      2      4      3      4      4      4      3      3      2      3
+201      4      4      5      2      2      2      2      3      2      5
+202      3      5      4      3      5      4      5      5      5      5
+203      3      4      4      3      2      3      5      5      5      5
+204      1      3      1      3      5      4      2      3      3      2
+205      5      5      4      4      3      3      5      4      5      5
+206      4      4      4      2      3      2      3      3      4      4
+207      4      4      3      5      3      2      4      4      4      5
+208      5      5      5      2      1      1      3      2      5      4
+209      4      4      3      4      3      4      4      4      4      4
+210      5      5      5      2      1      2      3      4      1      3
+211      5      5      5      1      1      2      4      4      3      4
+212      3      4      4      3      3      3      3      3      4      3
+213      4      4      3      3      3      3      3      3      4      3
+214      2      3      2      4      4      4      4      4      3      3
+215      5      5      4      4      5      5      5      3      4      5
+216      4      2      4      4      3      4      4      4      4      3
+217      3      3      4      4      3      3      4      4      3      4
+218      4      4      4      3      3      3      3      4      4      4
+219      4      4      3      2      3      4      4      4      5      4
+220      4      4      3      2      3      3      3      4      4      3
+221      2      3      2      4      4      5      4      4      4      5
+222      5      5      5      3      1      3      3      3      1      3
+223      5      4      5      3      2      2      3      3      4      4
+224      4      4      5      4      3      5      3      3      2      2
+225      3      3      4      4      4      4      4      4      4      2
+226      3      3      3      3      4      3      4      4      4      4
+227      4      4      4      4      2      2      2      2      4      4
+228      3      3      5      4      3      3      3      4      5      4
+229      5      5      3      3      1      3      4      4      5      5
+230      4      4      5      3      3      3      3      3      3      3
+231      4      4      3      2      3      3      3      3      3      3
+232      5      5      5      2      1      1      5      5      1      5
+233      5      5      4      2      1      3      3      3      4      4
+234      4      4      3      4      2      4      2      4      1      2
+235      5      5      5      1      1      1      5      5      5      5
+236      4      4      4      4      2      4      2      4      4      4
+237      2      4      3      3      4      3      3      4      4      4
+238      4      5      4      2      2      2      4      3      4      3
+239      3      3      3      3      4      3      3      3      4      3
+240      2      2      3      4      4      4      4      4      4      4
+241      2      2      2      3      3      4      3      2      3      3
+242      5      5      5      1      1      1      4      4      5      5
+243      2      4      2      3      3      4      5      5      5      5
+244      4      4      5      3      3      3      2      3      5      3
+245      2      4      2      4      2      3      4      4      3      3
+246      3      4      4      2      2      2      4      4      4      3
+247      2      4      4      4      3      4      4      3      4      4
+248      1      4      1      3      3      4      4      3      4      5
+249      2      3      4      4      4      4      4      4      3      4
+250      2      3      4      5      5      3      5      4      5      5
+251      2      3      4      4      2      4      5      4      4      4
+252      3      3      3      3      2      2      3      3      4      3
+253      3      4      4      2      2      3      3      3      3      3
+254      4      4      4      3      2      3      3      3      4      4
+255      5      5      5      5      3      3      4      4      5      3
+256      5      5      5      2      2      2      1      2      3      1
+257      2      4      3      3      4      3      3      3      3      3
+258      4      4      5      4      3      4      2      3      3      3
+259      4      4      3      2      3      3      3      3      3      4
+260      2      3      4      4      3      4      4      4      3      3
+261      3      4      3      3      3      3      4      3      4      4
+262      4      3      4      2      2      3      4      3      4      3
+263      4      3      3      3      2      3      5      5      5      5
+264      3      3      4      4      3      4      3      4      5      3
+265      3      4      3      4      4      4      3      4      2      4
+266      4      4      5      2      2      5      4      4      5      4
+267      3      2      4      3      4      5      4      3      4      4
+268      4      4      2      3      3      3      4      4      4      3
+269      1      2      1      5      5      5      4      4      3      5
+270      3      4      3      3      3      3      4      4      5      4
+271      4      4      5      3      2      2      3      3      3      3
+272      2      3      3      4      4      4      4      4      4      4
+273      4      4      5      3      2      2      3      3      4      4
+274      4      4      3      3      4      4      5      5      5      4
+275      2      4      2      4      4      4      3      3      3      5
+276      4      5      5      5      2      4      5      4      2      4
+277      4      4      5      4      3      3      3      3      5      3
+278      2      4      3      3      4      3      4      2      3      2
+279      4      2      4      3      4      3      3      3      4      3
+280      2      2      2      4      4      4      4      5      3      5
+281      1      4      3      4      5      4      4      5      4      4
+282      4      4      3      3      3      3      4      5      5      3
+283      3      2      2      3      3      2      3      3      4      2
+284      3      5      3      2      2      2      3      4      4      4
+285      1      4      3      3      5      4      4      4      3      4
+286      2      4      4      4      3      3      2      2      4      2
+287      3      4      2      4      4      4      3      3      3      4
+288      4      4      3      4      4      4      3      5      4      2
+289      4      4      5      3      2      3      3      3      3      4
+290      4      4      4      3      3      3      3      3      4      4
+291      4      5      5      3      2      4      3      3      3      3
+292      5      2      2      3      2      4      4      5      5      5
+293      4      4      4      3      3      3      4      4      5      4
+294      5      5      4      3      3      3      3      3      3      3
+295      4      5      4      2      3      2      3      3      3      3
+296      4      4      4      4      4      4      3      4      3      4
+297      4      5      5      5      3      3      3      3      4      4
+298      3      4      4      4      3      4      4      4      5      5
+299      2      3      2      2      4      4      4      4      4      4
+300      5      4      5      3      3      2      4      4      3      4
+301      4      4      4      2      2      4      3      3      5      3
+302      4      4      4      4      2      3      3      4      3      3
+303      2      3      2      3      5      5      3      2      3      4
+304      2      4      5      5      5      5      5      5      5      5
+305      4      5      5      5      2      4      3      4      4      5
+306      4      4      3      2      3      2      3      3      3      4
+307      5      5      5      1      2      1      2      1      3      1
+308      4      4      4      2      2      2      2      3      3      2
+309      2      4      3      3      4      3      2      2      3      3
+310      5      5      5      3      1      2      2      2      4      2
+311      3      4      2      2      3      2      3      3      5      3
+312      4      3      4      4      3      3      2      3      2      2
+313      3      4      4      3      3      3      4      3      3      4
+314      4      4      3      2      3      4      3      3      3      4
+315      2      4      3      3      3      3      4      4      3      4
+316      3      4      4      4      3      3      2      3      2      3
+317      4      5      5      1      1      2      4      4      4      4
+318      3      3      3      2      2      3      2      4      3      4
+319      4      4      4      3      2      2      3      3      5      3
+320      3      4      4      4      4      4      4      4      4      4
+321      4      5      5      4      4      5      2      2      4      3
+322      3      4      3      4      3      4      2      4      4      2
+323      3      5      3      3      3      5      5      5      5      5
+324      2      4      4      2      2      2      3      3      4      2
+325      3      4      4      3      3      3      4      3      4      4
+326      3      5      5      3      3      3      5      5      5      5
+327      2      2      4      3      4      3      3      2      3      2
+328      3      2      4      4      4      5      5      5      5      5
+329      2      4      3      3      2      3      4      4      4      4
+330      4      4      5      2      3      2      2      2      3      3
+331      3      3      4      3      3      3      4      4      5      4
+332      4      4      4      2      4      2      2      3      3      4
+333      4      3      4      3      2      2      2      4      3      3
+334      3      5      4      3      3      3      2      2      3      2
+335      2      4      3      2      3      2      2      2      3      4
+336      4      4      3      3      4      4      3      3      4      4
+337      4      4      4      2      2      2      3      3      3      2
+338      3      5      3      2      2      2      3      3      3      2
+339      2      4      2      2      4      4      3      2      4      4
+340      3      2      1      3      4      5      5      5      3      3
+341      4      4      4      4      3      3      4      4      5      4
+342      4      4      5      4      2      2      4      4      4      4
+343      1      4      2      3      5      2      3      2      4      3
+344      3      4      4      4      4      3      3      3      5      4
+345      2      4      4      4      3      4      4      4      4      4
+346      4      4      5      2      2      4      2      3      2      2
+347      4      3      4      3      3      2      3      2      3      3
+348      2      3      2      4      4      4      4      3      3      3
+349      1      2      3      5      5      5      4      3      3      3
+350      2      2      2      5      5      5      4      4      5      5
+351      4      4      4      3      4      3      4      3      5      4
+352      2      4      4      4      3      2      2      2      3      3
+353      4      4      4      3      2      2      2      3      4      5
+354      2      2      3      4      4      4      4      4      4      4
+355      2      4      2      3      4      3      3      4      4      4
+356      3      4      3      3      3      3      2      2      2      2
+357      2      4      2      3      2      3      2      2      4      3
+358      1      4      2      5      4      4      5      5      4      5
+359      2      4      3      4      3      3      3      3      2      3
+360      2      4      4      4      3      3      3      3      5      3
+361      1      4      3      3      2      2      4      5      4      5
+362      4      4      4      5      4      3      3      3      4      4
+363      5      5      5      5      2      1      4      4      5      5
+364      3      4      3      3      2      3      3      3      4      2
+365      3      4      3      3      3      4      4      3      4      3
+366      4      4      4      3      3      3      3      4      4      4
+367      2      4      3      4      3      4      3      3      3      3
+368      3      4      4      4      4      2      4      3      4      5
+369      2      4      3      3      3      4      1      2      5      2
+370      3      2      4      3      4      4      4      3      3      3
+371      3      3      3      3      3      3      3      3      2      3
+372      2      4      2      4      3      4      3      4      4      2
+373      1      4      2      4      5      4      3      3      3      5
+374      3      4      3      4      3      3      4      3      4      4
+375      4      4      4      3      3      3      3      2      4      3
+376      1      4      4      5      4      4      3      3      5      2
+377      5      5      5      1      1      1      2      3      3      2
+    BFI_O5 BFI_O6 BFI_O7 BFI_O8 BFI_O9 BFI_O10 BFI_E1 BFI_E2 BFI_E3 BFI_E4
+1        4      3      3      4      3       2      3      3      4      4
+2        4      3      3      3      3       3      3      3      3      3
+3        4      2      3      4      3       3      3      2      2      4
+4        4      3      2      2      1       1      2      3      3      1
+5        2      1      3      5      3       2      2      2      2      3
+6        2      2      3      4      2       2      5      3      4      4
+7        4      3      4      4      4       3      3      4      4      3
+8        5      2      4      5      5       4      5      2      4      4
+9        4      1      4      4      4       4      4      4      4      4
+10       5      2      5      5      5       4      4      4      4      5
+11       4      3      5      5      4       2      4      4      4      4
+12       4      3      4      4      3       1      5      3      3      4
+13       4      3      3      4      3       1      3      3      2      3
+14       4      4      3      4      3       1      2      1      5      5
+15       5      2      2      5      4       1      3      1      5      3
+16       4      4      4      4      2       2      3      3      4      3
+17       4      3      3      3      4       3      2      2      3      3
+18       5      4      5      5      5       1      4      4      5      4
+19       4      3      4      3      4       1      5      4      4      4
+20       4      3      3      4      3       2      2      3      4      3
+21       4      2      3      4      4       2      4      3      3      4
+22       3      2      4      4      2       2      3      3      2      3
+23       5      4      5      4      3       1      5      5      5      5
+24       3      3      4      5      3       2      5      3      3      4
+25       4      1      3      4      3       2      4      3      3      3
+26       3      3      3      3      4       3      4      2      3      3
+27       4      1      4      3      5       1      2      2      4      2
+28       3      4      3      3      4       3      1      2      2      2
+29       4      1      4      5      5       4      4      4      2      4
+30       4      2      5      4      4       4      2      2      4      2
+31       4      4      4      4      3       2      2      2      3      2
+32       4      3      4      4      3       1      5      5      4      5
+33       4      3      4      4      2       1      3      4      3      4
+34       4      3      3      3      4       2      4      2      3      3
+35       4      2      3      5      5       3      3      3      3      4
+36       5      3      4      3      4       3      4      4      3      3
+37       5      1      3      5      5       1      2      3      2      4
+38       4      3      3      4      4       2      3      3      3      3
+39       4      2      3      3      3       4      2      3      2      3
+40       3      2      4      4      3       2      4      4      4      4
+41       4      2      3      4      2       1      4      3      3      4
+42       4      1      3      5      4       3      3      3      3      3
+43       4      3      3      2      2       3      2      2      5      4
+44       3      3      3      5      3       2      4      5      3      4
+45       3      4      4      4      4       1      3      3      4      3
+46       4      3      4      3      4       1      2      3      3      2
+47       4      3      3      4      4       2      3      3      3      4
+48       4      4      3      4      4       2      3      3      4      4
+49       5      3      4      4      4       2      3      4      3      4
+50       4      2      4      4      4       4      3      3      4      4
+51       4      4      4      4      5       1      5      4      4      4
+52       4      2      3      4      3       2      3      3      3      3
+53       4      2      3      3      4       3      5      4      4      4
+54       5      4      2      4      4       2      2      3      4      4
+55       4      3      4      5      3       3      5      5      3      5
+56       3      2      3      4      2       3      2      2      3      4
+57       4      2      4      3      4       2      2      2      3      3
+58       4      3      3      4      3       3      5      4      4      4
+59       3      5      4      3      3       2      4      5      3      4
+60       3      3      4      3      3       4      3      3      5      3
+61       3      2      3      3      5       3      4      3      4      4
+62       3      1      2      3      4       4      3      2      3      3
+63       3      2      2      3      4       4      3      2      4      3
+64       5      2      4      5      3       2      3      3      4      4
+65       3      2      2      4      4       4      2      3      2      2
+66       3      1      2      2      4       4      3      3      2      2
+67       4      2      3      4      4       3      3      3      4      4
+68       5      3      3      4      3       2      2      2      2      3
+69       4      3      4      3      4       3      2      2      2      2
+70       4      2      3      4      2       3      3      4      3      3
+71       4      2      3      4      3       2      3      3      3      4
+72       4      3      4      4      2       4      4      3      4      4
+73       4      3      3      5      4       2      3      1      2      4
+74       3      2      3      4      4       3      4      4      3      4
+75       5      1      3      4      5       5      2      1      2      3
+76       4      4      5      4      3       2      4      5      5      5
+77       3      2      4      4      4       3      4      3      2      4
+78       5      3      3      4      4       2      4      3      4      4
+79       4      4      4      4      3       2      2      4      4      2
+80       4      2      4      4      3       4      4      4      4      3
+81       4      3      2      3      3       4      2      2      4      3
+82       4      3      3      2      2       1      3      4      3      3
+83       3      3      2      4      2       2      4      4      3      4
+84       5      4      4      4      4       1      4      4      4      4
+85       4      2      3      4      4       2      2      2      2      2
+86       5      5      5      5      5       2      5      5      5      5
+87       4      3      4      3      4       1      5      4      4      4
+88       4      4      4      5      2       1      3      3      2      4
+89       4      2      4      3      3       2      5      4      4      4
+90       5      3      4      5      3       2      3      3      4      5
+91       5      2      3      5      5       4      2      3      2      3
+92       4      2      4      5      4       2      1      2      4      3
+93       5      1      2      3      4       4      2      2      2      2
+94       4      3      2      3      5       4      2      2      2      3
+95       4      3      3      4      3       4      4      3      3      4
+96       3      2      3      3      4       4      4      3      3      4
+97       4      3      2      5      3       2      4      2      2      3
+98       4      2      4      3      4       2      4      3      4      4
+99       4      2      4      4      2       4      3      3      3      4
+100      5      3      4      5      3       5      5      5      5      3
+101      4      2      3      4      4       2      4      3      3      4
+102      4      2      4      4      4       4      2      3      4      3
+103      4      4      4      4      4       2      3      3      3      4
+104      5      2      3      4      3       4      4      4      4      4
+105      4      3      4      4      2       1      4      4      4      4
+106      5      1      5      5      5       5      5      5      4      4
+107      3      2      3      4      4       3      3      3      3      4
+108      4      3      4      4      4       1      4      4      4      4
+109      4      3      3      3      3       3      3      2      4      3
+110      3      3      4      5      2       2      4      4      5      4
+111      5      3      5      4      1       1      4      2      3      3
+112      4      4      4      5      2       1      2      3      3      4
+113      4      2      3      2      4       4      4      4      3      4
+114      4      2      4      4      4       3      3      3      4      4
+115      5      2      4      5      1       2      3      3      5      4
+116      4      4      5      5      4       1      3      3      3      2
+117      4      2      3      5      5       1      3      2      3      4
+118      3      3      3      3      4       4      2      2      3      2
+119      2      1      2      2      5       5      2      3      3      2
+120      2      2      3      3      3       1      4      3      1      1
+121      5      4      4      5      3       1      5      5      5      5
+122      4      4      4      5      1       1      5      4      4      5
+123      4      5      5      5      3       3      2      3      5      4
+124      5      3      4      4      4       2      4      4      4      4
+125      3      2      3      3      4       4      5      4      4      4
+126      4      4      4      4      4       3      2      4      4      4
+127      4      2      5      4      5       2      5      5      5      4
+128      4      4      4      5      3       1      4      5      2      3
+129      3      2      3      3      2       3      4      3      4      4
+130      3      3      3      4      3       2      4      2      4      3
+131      3      3      4      3      3       3      3      4      3      4
+132      4      2      4      5      3       4      4      4      3      4
+133      5      2      4      4      3       4      5      3      4      3
+134      5      2      5      5      3       2      4      4      4      4
+135      4      4      3      3      4       2      3      3      2      3
+136      4      2      4      4      2       2      4      3      3      4
+137      4      1      3      2      3       2      3      3      3      3
+138      4      3      4      4      4       4      3      3      4      4
+139      3      1      4      5      2       2      5      3      5      5
+140      4      2      4      4      4       2      2      4      3      4
+141      4      3      3      4      2       4      3      2      4      3
+142      5      4      4      5      5       1      4      2      4      4
+143      3      4      4      5      2       1      5      4      4      5
+144      4      3      4      4      4       2      4      2      3      4
+145      4      3      3      4      4       3      3      3      3      3
+146      4      3      4      4      4       2      4      4      4      4
+147      4      2      2      3      4       3      3      2      3      4
+148      4      3      4      4      2       2      4      4      4      4
+149      4      3      4      3      4       4      3      3      3      3
+150      5      1      4      2      5       3      4      3      2      2
+151      4      2      3      4      4       2      3      3      3      3
+152      5      3      2      3      4       1      2      2      3      3
+153      5      4      5      5      2       1      5      5      5      5
+154      4      4      4      5      2       1      3      3      3      4
+155      4      5      4      5      2       1      5      5      3      5
+156      4      4      4      5      2       2      4      4      4      4
+157      5      2      4      4      3       2      4      4      3      4
+158      4      2      4      4      3       3      4      4      3      3
+159      5      3      2      5      2       1      4      5      5      5
+160      4      4      4      4      3       2      4      3      4      4
+161      4      2      3      4      3       2      3      2      3      3
+162      2      4      4      2      2       2      3      2      2      3
+163      3      2      2      4      2       2      3      2      3      3
+164      4      3      4      4      4       2      4      4      3      4
+165      4      4      4      4      2       1      4      3      4      4
+166      4      3      5      5      4       3      4      4      4      5
+167      3      1      2      4      2       4      2      3      2      2
+168      4      2      3      4      4       2      2      2      3      3
+169      4      2      4      4      4       2      4      4      4      4
+170      4      3      4      5      4       3      5      4      5      5
+171      3      3      4      5      5       4      3      3      3      3
+172      3      4      3      5      2       1      3      3      4      3
+173      5      2      4      3      4       4      2      3      4      3
+174      4      5      4      3      3       1      3      3      4      5
+175      4      4      4      4      4       1      4      3      4      3
+176      5      4      3      5      2       2      4      4      3      4
+177      4      3      2      4      4       4      3      3      4      4
+178      4      4      4      4      2       1      4      4      3      4
+179      5      1      5      5      1       3      4      4      5      4
+180      4      2      3      5      5       4      3      3      3      4
+181      5      3      4      5      2       1      4      3      4      4
+182      4      5      4      5      5       1      4      2      3      5
+183      4      3      2      4      4       4      2      2      4      2
+184      4      2      3      5      3       4      4      3      3      4
+185      5      2      3      5      3       3      3      3      4      4
+186      4      2      4      4      2       2      4      5      4      4
+187      4      4      4      4      4       4      4      4      4      4
+188      4      2      3      4      2       4      2      2      3      2
+189      4      3      4      5      2       2      4      3      4      4
+190      5      3      1      5      3       3      2      2      2      3
+191      4      4      4      3      2       2      2      2      3      3
+192      4      1      3      3      3       5      2      2      3      3
+193      4      3      3      4      3       3      2      1      3      3
+194      4      2      3      3      3       2      4      2      2      3
+195      4      4      2      5      5       1      3      3      2      4
+196      4      4      3      3      3       1      2      2      3      3
+197      4      4      4      4      3       3      3      3      3      3
+198      4      4      4      4      2       2      4      4      4      4
+199      5      3      3      5      5       2      4      4      4      4
+200      4      1      3      4      4       5      3      3      4      4
+201      5      2      4      5      4       5      5      4      5      5
+202      4      5      5      5      2       1      5      5      4      5
+203      5      4      4      5      2       2      5      5      4      4
+204      5      2      1      4      2       1      3      3      5      3
+205      5      5      5      5      2       1      5      5      4      5
+206      5      4      4      4      5       2      2      3      2      1
+207      4      4      3      3      3       3      2      4      3      3
+208      5      5      4      5      5       1      4      4      5      4
+209      4      3      4      3      2       2      3      3      4      4
+210      3      1      3      4      4       5      5      2      5      3
+211      3      2      4      4      2       3      1      2      2      4
+212      4      3      3      4      5       3      4      4      4      3
+213      3      2      4      4      3       2      3      3      3      3
+214      3      3      3      3      3       3      5      5      4      4
+215      1      1      3      5      3       1      5      3      2      2
+216      4      4      4      4      4       1      4      4      4      4
+217      4      4      4      4      4       4      3      4      3      4
+218      4      3      3      4      3       2      3      2      3      3
+219      4      2      4      3      3       1      4      5      4      4
+220      2      2      3      4      4       3      3      2      3      3
+221      5      3      4      4      4       1      3      3      3      4
+222      5      1      5      5      5       1      2      2      2      3
+223      4      4      2      4      3       1      2      2      2      2
+224      5      1      4      4      5       5      3      3      4      4
+225      4      2      4      4      4       4      1      3      4      4
+226      4      3      3      4      2       3      3      3      4      4
+227      4      2      3      3      4       2      2      1      3      3
+228      5      4      3      5      4       1      3      3      3      4
+229      5      5      5      4      1       3      3      2      3      3
+230      5      2      3      5      5       5      3      3      3      4
+231      4      2      3      4      3       3      3      3      3      3
+232      5      2      4      5      2       2      4      3      1      2
+233      2      2      3      4      3       2      2      2      2      3
+234      4      2      4      5      2       4      4      5      4      5
+235      3      2      4      5      2       1      5      4      4      4
+236      4      4      3      4      4       2      2      2      2      4
+237      4      3      3      4      3       2      4      4      4      4
+238      4      2      4      4      3       2      4      4      2      3
+239      4      4      3      4      4       1      2      2      4      3
+240      4      4      4      4      3       2      4      4      4      4
+241      4      3      2      2      4       2      4      4      4      5
+242      5      5      4      5      4       1      5      2      1      5
+243      5      3      5      5      2       2      4      4      4      4
+244      4      4      4      4      4       1      4      3      4      4
+245      4      3      3      3      3       2      2      3      4      3
+246      4      3      3      4      2       2      2      3      4      4
+247      4      4      4      4      3       1      4      4      3      4
+248      4      3      4      4      4       2      4      4      3      4
+249      4      2      4      4      2       3      4      3      4      4
+250      5      5      4      5      4       1      3      3      3      3
+251      2      5      4      5      3       5      5      3      5      4
+252      3      1      3      4      3       3      5      3      2      5
+253      3      2      4      4      3       3      3      3      2      4
+254      5      3      4      4      4       1      3      3      3      4
+255      5      3      5      5      3       1      3      1      4      3
+256      4      3      2      3      5       2      1      1      2      3
+257      4      2      3      4      4       3      3      2      3      3
+258      4      2      4      2      4       4      2      1      4      2
+259      3      3      3      2      5       2      3      4      3      3
+260      4      3      4      5      4       3      3      3      4      4
+261      3      2      4      4      4       2      4      4      4      4
+262      3      3      3      4      3       4      4      4      3      4
+263      2      5      5      5      2       1      4      3      4      3
+264      4      3      4      5      5       2      5      4      3      5
+265      3      1      4      4      5       4      1      1      4      4
+266      4      3      3      4      4       3      5      3      4      5
+267      4      3      4      4      5       2      4      1      4      4
+268      3      2      2      5      2       5      3      2      4      3
+269      4      3      4      4      3       3      5      4      4      5
+270      4      4      4      3      5       1      4      4      3      4
+271      4      2      3      4      5       2      3      3      3      3
+272      4      2      4      4      3       2      4      4      4      4
+273      4      2      3      4      3       2      3      3      2      2
+274      4      1      5      3      3       3      2      4      4      4
+275      5      2      4      4      4       4      3      4      3      2
+276      5      3      5      5      5       2      4      3      3      4
+277      5      4      4      4      4       1      3      4      4      3
+278      4      1      4      4      4       3      4      4      4      4
+279      4      3      3      4      3       2      2      1      4      4
+280      4      1      4      4      2       3      4      4      4      4
+281      4      4      5      3      2       4      5      4      5      5
+282      3      5      5      3      4       1      3      3      4      4
+283      4      2      3      4      4       3      2      2      3      3
+284      4      4      3      4      2       2      4      3      3      4
+285      3      3      3      3      3       3      4      3      4      3
+286      3      3      3      3      4       2      2      3      3      3
+287      4      2      4      3      3       3      3      4      3      3
+288      5      1      4      5      2       4      5      4      5      4
+289      5      2      3      4      3       3      4      4      3      3
+290      5      3      3      4      3       1      5      4      4      4
+291      2      3      4      4      5       3      5      5      4      4
+292      4      4      4      5      1       1      5      5      5      5
+293      3      4      2      4      3       2      3      2      4      4
+294      4      1      3      5      5       3      2      2      3      5
+295      4      2      3      4      4       3      2      2      2      4
+296      4      3      4      3      4       4      3      3      3      3
+297      5      3      4      5      5       1      3      2      4      4
+298      5      3      3      5      2       2      3      4      3      3
+299      4      3      4      4      3       2      3      3      4      4
+300      4      3      3      5      4       2      3      3      3      3
+301      4      4      4      3      4       2      2      4      4      4
+302      4      2      4      4      2       2      2      3      2      4
+303      3      2      3      3      3       3      3      2      4      3
+304      5      4      5      4      1       4      5      5      5      5
+305      5      4      4      5      3       3      4      4      4      4
+306      3      3      3      4      3       2      4      3      4      4
+307      4      2      1      5      4       2      1      1      1      1
+308      4      3      3      4      2       2      2      2      2      2
+309      2      3      3      3      4       2      2      2      3      2
+310      5      4      3      4      4       1      1      1      1      3
+311      3      2      3      4      2       2      2      1      3      3
+312      3      2      2      2      4       4      3      3      2      3
+313      4      1      5      4      2       5      4      4      4      4
+314      4      2      3      4      3       2      2      1      3      3
+315      4      2      4      4      3       1      3      4      3      3
+316      4      4      4      3      4       1      3      3      4      4
+317      5      2      3      2      3       2      2      1      2      4
+318      3      2      2      5      3       2      2      3      2      3
+319      4      3      3      5      4       2      3      3      3      4
+320      4      2      4      4      2       2      3      4      4      4
+321      5      3      3      5      4       2      4      4      5      5
+322      4      3      2      4      4       2      4      4      4      4
+323      5      3      4      5      1       1      5      5      3      5
+324      4      4      3      4      4       2      4      4      3      4
+325      4      2      5      4      3       2      3      3      3      2
+326      5      4      5      5      1       1      5      5      5      5
+327      4      1      2      4      4       4      2      2      4      4
+328      5      3      5      5      2       2      2      3      5      5
+329      5      2      4      4      2       1      4      4      4      4
+330      3      2      3      3      5       4      3      3      3      3
+331      4      5      5      4      4       2      4      4      4      4
+332      4      2      3      2      4       5      5      4      5      5
+333      4      1      4      4      5       1      1      1      2      1
+334      4      2      2      4      4       3      1      2      3      2
+335      4      2      3      4      5       4      2      3      3      3
+336      4      3      3      4      4       1      4      4      4      2
+337      4      2      2      4      4       4      4      3      2      4
+338      2      1      2      4      4       2      3      1      3      3
+339      4      3      4      4      3       2      2      2      4      3
+340      4      5      5      5      2       4      4      3      5      3
+341      4      3      3      4      2       2      2      3      3      4
+342      4      4      4      5      3       2      3      4      3      4
+343      4      3      2      3      5       1      1      1      3      3
+344      4      3      4      5      3       4      4      4      4      4
+345      4      4      4      4      2       2      4      4      4      4
+346      2      1      2      2      4       3      4      3      2      2
+347      2      3      2      3      2       3      2      2      2      2
+348      4      3      3      4      5       3      4      4      4      5
+349      5      3      4      4      5       3      4      5      5      5
+350      4      4      5      5      3       1      4      4      5      5
+351      4      3      4      4      2       2      3      3      4      4
+352      5      2      2      4      4       2      3      3      3      3
+353      4      3      5      4      3       2      2      3      4      3
+354      5      4      4      4      4       3      2      2      4      4
+355      3      4      4      3      4       2      3      4      3      3
+356      3      2      2      3      5       4      3      3      3      3
+357      2      2      2      3      3       2      2      2      3      4
+358      3      3      5      5      3       2      4      3      3      5
+359      3      1      3      3      4       4      3      3      3      3
+360      4      3      3      3      3       1      2      2      4      3
+361      5      2      4      5      4       1      4      4      4      5
+362      5      4      3      4      3       2      4      4      3      3
+363      5      5      5      5      2       1      1      3      2      2
+364      4      3      3      4      4       2      4      4      3      3
+365      4      2      3      4      3       2      3      3      3      3
+366      4      3      4      4      4       1      2      4      4      3
+367      3      4      2      3      3       1      4      4      4      4
+368      5      4      2      4      4       4      3      3      5      2
+369      5      2      3      5      3       2      4      3      4      5
+370      3      3      3      3      3       2      4      4      4      3
+371      3      3      3      4      3       3      3      4      4      3
+372      4      2      3      3      4       2      2      1      4      3
+373      3      2      3      5      3       2      3      3      3      3
+374      3      4      4      4      2       2      3      3      3      3
+375      4      2      3      4      2       2      2      2      3      4
+376      4      2      3      4      5       3      3      3      4      3
+377      4      2      2      3      3       3      1      1      3      2
+    BFI_E5 BFI_E6 BFI_E7 BFI_E8
+1        4      3      3      3
+2        4      4      4      4
+3        4      3      4      3
+4        3      4      4      4
+5        3      3      5      3
+6        4      2      2      4
+7        3      4      4      4
+8        5      2      4      2
+9        4      3      4      4
+10       4      2      4      4
+11       4      3      4      4
+12       4      2      4      2
+13       3      4      5      4
+14       4      4      5      4
+15       3      5      5      5
+16       4      4      4      4
+17       3      4      4      4
+18       4      3      4      3
+19       4      2      4      2
+20       3      4      4      4
+21       3      3      5      3
+22       4      4      4      3
+23       5      3      4      5
+24       4      2      4      3
+25       3      1      4      3
+26       3      4      3      3
+27       3      2      4      4
+28       2      4      2      4
+29       4      3      3      3
+30       2      4      4      4
+31       3      4      4      4
+32       5      2      3      2
+33       4      4      4      3
+34       3      4      3      4
+35       4      3      4      4
+36       3      3      4      3
+37       2      2      4      1
+38       3      4      4      3
+39       3      3      3      3
+40       4      2      2      2
+41       4      2      4      2
+42       4      4      4      4
+43       3      4      3      4
+44       4      2      5      2
+45       4      4      4      4
+46       3      5      5      4
+47       4      3      4      3
+48       4      3      4      3
+49       3      4      4      4
+50       3      3      4      3
+51       5      1      3      2
+52       3      4      4      4
+53       4      4      4      4
+54       3      4      4      2
+55       5      2      3      3
+56       4      4      5      4
+57       4      4      5      4
+58       4      2      2      3
+59       4      4      4      3
+60       4      3      4      4
+61       4      3      2      2
+62       3      2      4      4
+63       2      4      4      4
+64       3      4      5      3
+65       4      5      4      4
+66       2      2      4      3
+67       4      5      4      5
+68       3      4      4      4
+69       3      3      4      4
+70       3      4      4      3
+71       3      4      4      2
+72       3      4      3      2
+73       3      4      5      4
+74       4      2      4      2
+75       4      4      4      5
+76       4      2      3      2
+77       4      5      5      5
+78       4      5      5      4
+79       2      4      4      4
+80       4      2      4      3
+81       4      4      4      3
+82       3      3      3      4
+83       4      2      5      2
+84       4      3      4      2
+85       2      4      4      4
+86       5      5      4      5
+87       5      3      4      2
+88       4      4      2      4
+89       4      1      1      3
+90       3      4      5      4
+91       3      4      4      5
+92       3      4      4      5
+93       2      4      4      4
+94       2      4      5      4
+95       3      2      3      3
+96       4      2      3      2
+97       5      4      5      5
+98       4      3      2      4
+99       4      2      4      4
+100      5      3      3      3
+101      3      3      2      3
+102      3      3      3      4
+103      4      4      4      2
+104      4      2      2      2
+105      4      2      3      3
+106      5      5      5      2
+107      4      4      5      4
+108      4      3      3      3
+109      3      4      4      4
+110      4      3      4      3
+111      2      4      3      4
+112      4      5      4      5
+113      3      2      4      3
+114      4      4      4      3
+115      4      5      5      4
+116      4      3      4      3
+117      4      4      4      4
+118      3      5      5      5
+119      3      3      4      3
+120      2      2      2      4
+121      5      2      4      1
+122      5      1      3      2
+123      4      3      4      4
+124      4      3      3      3
+125      4      2      2      2
+126      4      4      4      5
+127      5      2      3      2
+128      4      2      4      3
+129      4      2      3      4
+130      3      4      4      4
+131      4      2      4      3
+132      4      2      4      2
+133      4      3      2      5
+134      5      2      3      2
+135      3      3      3      3
+136      4      2      4      3
+137      4      3      5      5
+138      3      5      4      5
+139      5      2      3      3
+140      4      4      5      5
+141      3      3      4      3
+142      3      4      5      3
+143      5      1      2      2
+144      3      4      5      2
+145      3      4      4      4
+146      5      2      3      3
+147      4      5      4      3
+148      4      2      4      4
+149      3      4      4      4
+150      4      2      4      2
+151      3      4      5      3
+152      3      5      5      5
+153      5      2      1      2
+154      4      3      4      4
+155      5      1      4      3
+156      4      4      4      3
+157      5      2      3      2
+158      3      2      4      1
+159      5      2      3      2
+160      4      2      3      4
+161      3      3      4      3
+162      3      3      4      3
+163      4      2      4      3
+164      4      3      5      3
+165      3      3      3      4
+166      4      3      4      3
+167      2      4      3      4
+168      3      4      4      4
+169      4      4      4      4
+170      4      5      4      4
+171      2      4      4      3
+172      4      4      4      2
+173      3      4      4      4
+174      5      5      5      4
+175      4      2      3      3
+176      4      2      5      2
+177      4      3      4      3
+178      4      2      3      3
+179      4      1      2      2
+180      4      4      5      4
+181      4      3      4      3
+182      4      4      5      4
+183      2      4      4      4
+184      3      2      4      2
+185      4      4      3      4
+186      4      2      2      2
+187      4      4      4      4
+188      3      4      4      4
+189      4      1      3      2
+190      2      5      5      4
+191      3      4      4      3
+192      3      4      4      4
+193      3      5      4      4
+194      4      4      4      4
+195      3      4      4      4
+196      4      4      5      4
+197      4      4      4      4
+198      3      2      4      3
+199      4      2      4      5
+200      4      3      4      4
+201      4      2      4      2
+202      5      1      4      2
+203      4      1      2      2
+204      3      4      3      5
+205      4      2      4      5
+206      2      4      3      4
+207      3      4      3      4
+208      3      4      5      4
+209      3      4      3      3
+210      5      1      2      3
+211      2      5      5      4
+212      4      4      4      3
+213      4      4      4      4
+214      4      2      3      2
+215      1      2      5      1
+216      4      4      4      1
+217      4      4      2      4
+218      3      3      4      3
+219      4      2      2      3
+220      3      4      4      4
+221      4      4      4      4
+222      3      5      5      5
+223      2      4      4      3
+224      4      5      4      5
+225      2      4      3      3
+226      4      3      4      3
+227      3      4      4      5
+228      4      3      5      4
+229      4      3      5      5
+230      3      3      4      5
+231      4      3      3      4
+232      3      2      4      4
+233      2      3      5      3
+234      5      4      4      2
+235      4      2      4      1
+236      4      4      4      4
+237      4      2      4      2
+238      3      2      4      4
+239      4      3      4      4
+240      4      2      3      4
+241      4      2      4      2
+242      5      1      5      4
+243      5      1      3      2
+244      4      3      4      4
+245      3      4      4      4
+246      4      4      4      4
+247      4      3      4      2
+248      5      1      4      2
+249      4      3      3      4
+250      4      5      5      5
+251      4      3      2      4
+252      4      4      4      3
+253      3      2      2      3
+254      3      4      4      2
+255      4      1      3      2
+256      2      5      5      4
+257      3      4      4      4
+258      2      5      5      5
+259      3      3      3      3
+260      4      3      2      3
+261      4      2      2      2
+262      4      2      2      2
+263      2      3      3      3
+264      3      2      3      3
+265      4      2      5      5
+266      5      4      4      2
+267      3      3      4      4
+268      3      2      4      3
+269      4      3      4      3
+270      3      2      2      3
+271      3      3      4      4
+272      4      2      4      3
+273      2      3      4      4
+274      4      4      4      2
+275      4      4      5      4
+276      5      4      5      5
+277      3      3      4      3
+278      4      3      4      3
+279      4      5      4      5
+280      4      3      4      4
+281      5      1      3      2
+282      3      2      4      4
+283      3      4      3      4
+284      3      2      3      1
+285      4      4      5      3
+286      3      4      4      4
+287      3      2      4      3
+288      5      1      4      3
+289      3      3      3      3
+290      4      1      4      2
+291      4      4      5      2
+292      5      1      2      2
+293      4      4      4      4
+294      3      5      5      5
+295      4      4      4      3
+296      3      4      4      4
+297      4      5      5      5
+298      3      4      3      3
+299      4      3      3      3
+300      4      4      4      5
+301      4      4      4      4
+302      3      4      4      3
+303      3      3      4      4
+304      5      1      4      2
+305      4      3      5      3
+306      4      2      4      3
+307      1      5      5      5
+308      2      4      4      4
+309      2      3      4      4
+310      3      5      5      5
+311      3      3      4      2
+312      2      3      2      3
+313      4      2      3      3
+314      4      4      4      3
+315      3      2      3      3
+316      4      4      4      4
+317      4      5      5      3
+318      2      3      3      3
+319      3      3      4      4
+320      4      3      4      3
+321      5      5      5      5
+322      4      2      4      2
+323      5      2      5      4
+324      4      2      2      2
+325      2      4      3      3
+326      5      5      5      3
+327      4      4      4      4
+328      4      4      5      4
+329      4      2      4      2
+330      3      4      4      5
+331      4      5      4      4
+332      4      2      4      4
+333      2      5      5      5
+334      3      4      5      4
+335      3      4      4      4
+336      4      3      3      3
+337      3      2      4      3
+338      3      5      5      2
+339      3      4      4      4
+340      5      3      5      3
+341      4      2      4      3
+342      4      4      4      3
+343      2      4      5      5
+344      4      2      3      2
+345      4      3      4      4
+346      2      3      4      3
+347      3      4      2      4
+348      4      4      4      3
+349      5      3      4      5
+350      5      2      1      5
+351      4      4      4      2
+352      3      4      4      4
+353      3      3      5      3
+354      4      4      4      4
+355      3      3      3      3
+356      3      3      4      3
+357      3      4      4      4
+358      4      3      4      3
+359      3      3      3      3
+360      3      4      4      4
+361      5      1      4      1
+362      3      2      2      2
+363      1      5      5      5
+364      4      3      4      3
+365      3      3      4      4
+366      3      4      4      4
+367      4      1      4      3
+368      3      2      4      3
+369      5      2      4      3
+370      4      2      3      2
+371      3      3      3      3
+372      2      3      3      4
+373      3      3      4      4
+374      4      3      4      3
+375      4      4      4      4
+376      3      3      4      4
+377      2      3      4      3</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">EFA</span>(df, <span class="at">varrange=</span><span class="fu">c</span>(<span class="st">"BFI_A1:BFI_E8"</span>),<span class="co"># 选取观测变量</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>    <span class="at">nfactors=</span><span class="st">"parallel"</span>, <span class="co">#决定抽取多少因子</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a>    <span class="at">method=</span><span class="st">"minres"</span>,<span class="co"># 因子提取方法,最小残差因子分析       </span></span>
+<span id="cb4-4"><a href="#cb4-4"></a>    <span class="at">rotation=</span><span class="st">"varimax"</span>, <span class="co"># 旋转方法，方差最大化</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a>    <span class="at">kaiser=</span><span class="cn">FALSE</span>, <span class="co"># 有没有进行kaiser正态化</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a>    <span class="at">sort.loadings=</span><span class="cn">TRUE</span>, <span class="co"># 按照因子载荷排序</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a>    <span class="at">hide.loadings=</span><span class="fl">0.45</span>,<span class="co">#因子载荷阈值</span></span>
+<span id="cb4-8"><a href="#cb4-8"></a>    <span class="at">plot.scree =</span> <span class="cn">TRUE</span>,<span class="co">#绘制碎石图</span></span>
+<span id="cb4-9"><a href="#cb4-9"></a>    <span class="at">max.iter =</span> <span class="dv">25</span>,<span class="co">#最大迭代次数</span></span>
+<span id="cb4-10"><a href="#cb4-10"></a>    <span class="at">min.eigen =</span> <span class="dv">1</span>,<span class="co">#最小特征值</span></span>
+<span id="cb4-11"><a href="#cb4-11"></a>    )  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Explanatory Factor Analysis
+
+Summary:
+Total Items: 44
+Scale Range: 1 ~ 5
+Total Cases: 377
+Valid Cases: 377 (100.0%)
+
+Extraction Method:
+- Minimum Residual Factor Analysis
+Rotation Method:
+- Varimax
+
+KMO and Bartlett's Test:
+- Kaiser-Meyer-Olkin (KMO) Measure of Sampling Adequacy: MSA = 0.865
+- Bartlett's Test of Sphericity: Approx. χ²(946) = 6106.44, p &lt; 1e-99 ***
+
+Total Variance Explained:
+────────────────────────────────────────────────────────────────────────────────
+           Eigenvalue Variance % Cumulative % SS Loading Variance % Cumulative %
+────────────────────────────────────────────────────────────────────────────────
+Factor 1        8.026     18.241       18.241      4.077      9.266        9.266
+Factor 2        4.236      9.628       27.869      3.715      8.444       17.710
+Factor 3        3.380      7.681       35.550      3.116      7.082       24.792
+Factor 4        2.182      4.959       40.509      2.972      6.756       31.547
+Factor 5        1.945      4.420       44.929      2.493      5.665       37.213
+Factor 6        1.584      3.600       48.529      1.488      3.381       40.594
+Factor 7        1.278      2.905       51.435                                   
+Factor 8        1.101      2.502       53.937                                   
+Factor 9        1.053      2.394       56.331                                   
+Factor 10       1.024      2.327       58.658                                   
+Factor 11       0.980      2.227       60.885                                   
+Factor 12       0.915      2.080       62.965                                   
+Factor 13       0.881      2.003       64.968                                   
+Factor 14       0.829      1.884       66.852                                   
+Factor 15       0.818      1.858       68.710                                   
+Factor 16       0.758      1.722       70.432                                   
+Factor 17       0.750      1.705       72.136                                   
+Factor 18       0.717      1.630       73.767                                   
+Factor 19       0.697      1.583       75.350                                   
+Factor 20       0.668      1.518       76.868                                   
+Factor 21       0.656      1.491       78.359                                   
+Factor 22       0.624      1.417       79.776                                   
+Factor 23       0.619      1.406       81.182                                   
+Factor 24       0.583      1.326       82.508                                   
+Factor 25       0.563      1.280       83.787                                   
+Factor 26       0.542      1.232       85.020                                   
+Factor 27       0.518      1.177       86.197                                   
+Factor 28       0.480      1.090       87.287                                   
+Factor 29       0.469      1.066       88.353                                   
+Factor 30       0.463      1.053       89.406                                   
+Factor 31       0.448      1.018       90.424                                   
+Factor 32       0.432      0.981       91.406                                   
+Factor 33       0.397      0.903       92.309                                   
+Factor 34       0.396      0.901       93.210                                   
+Factor 35       0.368      0.836       94.046                                   
+Factor 36       0.360      0.818       94.864                                   
+Factor 37       0.345      0.784       95.647                                   
+Factor 38       0.324      0.736       96.383                                   
+Factor 39       0.311      0.707       97.091                                   
+Factor 40       0.280      0.637       97.728                                   
+Factor 41       0.275      0.624       98.352                                   
+Factor 42       0.258      0.587       98.938                                   
+Factor 43       0.239      0.543       99.481                                   
+Factor 44       0.228      0.519      100.000                                   
+────────────────────────────────────────────────────────────────────────────────
+
+Factor Loadings (Rotated) (Sorted by Size):
+────────────────────────────────────────────────────────────
+            MR2   MR1    MR3    MR6   MR5    MR4 Communality
+────────────────────────────────────────────────────────────
+BFI_C6    0.729                                        0.590
+BFI_N3    0.678                                        0.559
+BFI_N7   -0.676                                        0.539
+BFI_N5    0.673                                        0.493
+BFI_N1    0.635                                        0.480
+BFI_N2    0.633                                        0.425
+BFI_N4    0.531                                        0.321
+BFI_N8                                                 0.487
+BFI_C7                                                 0.235
+BFI_A9                                                 0.253
+BFI_O2          0.698                                  0.553
+BFI_O1          0.644                                  0.499
+BFI_O7          0.619                                  0.443
+BFI_O4          0.596                                  0.439
+BFI_O8                                                 0.283
+BFI_N6                                                 0.351
+BFI_E3                                                 0.382
+BFI_O5                                                 0.253
+BFI_E1                 0.722                           0.699
+BFI_E6                -0.708                           0.551
+BFI_E8                -0.663                           0.476
+BFI_E2                 0.558                           0.544
+BFI_A8                -0.511                           0.329
+BFI_E5                 0.461                           0.579
+BFI_E4                                                 0.524
+BFI_E7                                                 0.384
+BFI_C1                        0.631                    0.436
+BFI_C8                       -0.586                    0.422
+BFI_C3                        0.553                    0.375
+BFI_C5                        0.550                    0.381
+BFI_C2                        0.489                    0.328
+BFI_C4                        0.467                    0.343
+BFI_C9                                                 0.294
+BFI_A1                              0.589              0.390
+BFI_A4                              0.520              0.364
+BFI_A3                              0.465              0.336
+BFI_A5                                                 0.205
+BFI_A7                                                 0.362
+BFI_A2                                                 0.236
+BFI_A6                                                 0.188
+BFI_O10                                    0.640       0.425
+BFI_O3                                    -0.605       0.499
+BFI_O6                                    -0.488       0.362
+BFI_O9                                                 0.245
+────────────────────────────────────────────────────────────
+Communality = Sum of Squared (SS) Factor Loadings
+(Uniqueness = 1 - Communality)</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img data-src="lecture12_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
+</div>
+</div>
+<p><img data-src="images/1701056253249.jpg"></p>
 </section></section>
 <section>
 <section id="part-2-主成分分析pca" class="title-slide slide level1 center">
@@ -589,7 +2693,7 @@ X_p = \lambda_{p1}F_1 + \lambda_{p2}F_2+ ... + \lambda_{pm}F_m +\epsilon_p
 <h2>协方差矩阵</h2>
 <ul>
 <li><p>数据能够进行降维的原因是因为不同变量之间的存在相关，包含冗余信息。</p></li>
-<li><p>通过协方差矩阵，能够“识别”数据间的相关性。</p></li>
+<li><p>通过协方差矩阵，能够”识别”数据间的相关性。</p></li>
 </ul>
 </section>
 <section id="section-8" class="slide level2">
@@ -678,16 +2782,149 @@ X_p = \lambda_{p1}F_1 + \lambda_{p2}F_2+ ... + \lambda_{pm}F_m +\epsilon_p
 <h2></h2>
 <p>在机器学习中，还有k-Neareast Neighbours(K-近邻)，随机森林等一系列降维算法。</p>
 </section>
-<section id="r-54" class="slide level2">
-<h2>R 54</h2>
-<p>卡方检验</p>
-<p>主成分权重</p>
-<p>旋转前后</p>
-<p>主成分相关</p>
-<p>碎石图</p>
-<p>路径</p>
-</section>
+<section id="示例-1" class="slide level2">
+<h2>示例</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">EFA</span>(df, <span class="at">varrange=</span><span class="fu">c</span>(<span class="st">"BFI_A1:BFI_E8"</span>),<span class="co"># 选取观测变量</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>    <span class="at">nfactors=</span><span class="st">"parallel"</span>, <span class="co">#决定抽取多少因子</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a>    <span class="at">method=</span><span class="st">"pca"</span>,<span class="co"># 主成分分析       </span></span>
+<span id="cb6-4"><a href="#cb6-4"></a>    <span class="at">rotation=</span><span class="st">"varimax"</span>, <span class="co"># 旋转方法，方差最大化</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a>    <span class="at">kaiser=</span><span class="cn">FALSE</span>, <span class="co"># 有没有进行kaiser正态化</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a>    <span class="at">sort.loadings=</span><span class="cn">TRUE</span>, <span class="co"># 按照因子载荷排序</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a>    <span class="at">hide.loadings=</span><span class="fl">0.45</span>,<span class="co">#因子载荷阈值</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a>    <span class="at">plot.scree =</span> <span class="cn">TRUE</span>,<span class="co">#绘制碎石图</span></span>
+<span id="cb6-9"><a href="#cb6-9"></a>    <span class="at">max.iter =</span> <span class="dv">25</span>,<span class="co">#最大迭代次数</span></span>
+<span id="cb6-10"><a href="#cb6-10"></a>    <span class="at">min.eigen =</span> <span class="dv">1</span>,<span class="co">#最小特征值</span></span>
+<span id="cb6-11"><a href="#cb6-11"></a>    )  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Principal Component Analysis
+
+Summary:
+Total Items: 44
+Scale Range: 1 ~ 5
+Total Cases: 377
+Valid Cases: 377 (100.0%)
+
+Extraction Method:
+- Principal Component Analysis
+Rotation Method:
+- Varimax
+
+KMO and Bartlett's Test:
+- Kaiser-Meyer-Olkin (KMO) Measure of Sampling Adequacy: MSA = 0.865
+- Bartlett's Test of Sphericity: Approx. χ²(946) = 6106.44, p &lt; 1e-99 ***
+
+Total Variance Explained:
+───────────────────────────────────────────────────────────────────────────────────
+              Eigenvalue Variance % Cumulative % SS Loading Variance % Cumulative %
+───────────────────────────────────────────────────────────────────────────────────
+Component 1        8.026     18.241       18.241      4.613     10.485       10.485
+Component 2        4.236      9.628       27.869      4.327      9.833       20.318
+Component 3        3.380      7.681       35.550      3.607      8.198       28.515
+Component 4        2.182      4.959       40.509      3.586      8.150       36.665
+Component 5        1.945      4.420       44.929      3.126      7.105       43.770
+Component 6        1.584      3.600       48.529      2.094      4.759       48.529
+Component 7        1.278      2.905       51.435                                   
+Component 8        1.101      2.502       53.937                                   
+Component 9        1.053      2.394       56.331                                   
+Component 10       1.024      2.327       58.658                                   
+Component 11       0.980      2.227       60.885                                   
+Component 12       0.915      2.080       62.965                                   
+Component 13       0.881      2.003       64.968                                   
+Component 14       0.829      1.884       66.852                                   
+Component 15       0.818      1.858       68.710                                   
+Component 16       0.758      1.722       70.432                                   
+Component 17       0.750      1.705       72.136                                   
+Component 18       0.717      1.630       73.767                                   
+Component 19       0.697      1.583       75.350                                   
+Component 20       0.668      1.518       76.868                                   
+Component 21       0.656      1.491       78.359                                   
+Component 22       0.624      1.417       79.776                                   
+Component 23       0.619      1.406       81.182                                   
+Component 24       0.583      1.326       82.508                                   
+Component 25       0.563      1.280       83.787                                   
+Component 26       0.542      1.232       85.020                                   
+Component 27       0.518      1.177       86.197                                   
+Component 28       0.480      1.090       87.287                                   
+Component 29       0.469      1.066       88.353                                   
+Component 30       0.463      1.053       89.406                                   
+Component 31       0.448      1.018       90.424                                   
+Component 32       0.432      0.981       91.406                                   
+Component 33       0.397      0.903       92.309                                   
+Component 34       0.396      0.901       93.210                                   
+Component 35       0.368      0.836       94.046                                   
+Component 36       0.360      0.818       94.864                                   
+Component 37       0.345      0.784       95.647                                   
+Component 38       0.324      0.736       96.383                                   
+Component 39       0.311      0.707       97.091                                   
+Component 40       0.280      0.637       97.728                                   
+Component 41       0.275      0.624       98.352                                   
+Component 42       0.258      0.587       98.938                                   
+Component 43       0.239      0.543       99.481                                   
+Component 44       0.228      0.519      100.000                                   
+───────────────────────────────────────────────────────────────────────────────────
+
+Component Loadings (Rotated) (Sorted by Size):
+─────────────────────────────────────────────────────────────
+            RC2   RC1    RC6    RC3    RC5    RC4 Communality
+─────────────────────────────────────────────────────────────
+BFI_C6    0.746                                         0.620
+BFI_N7   -0.718                                         0.603
+BFI_N5    0.713                                         0.552
+BFI_N3    0.703                                         0.595
+BFI_N2    0.684                                         0.492
+BFI_N1    0.672                                         0.542
+BFI_N4    0.599                                         0.405
+BFI_N8   -0.451                                         0.551
+BFI_O2          0.718                                   0.588
+BFI_O7          0.675                                   0.506
+BFI_O1          0.667                                   0.545
+BFI_O4          0.637                                   0.502
+BFI_O8          0.465                                   0.351
+BFI_N6                                                  0.449
+BFI_E3                                                  0.427
+BFI_O5                                                  0.327
+BFI_C1                 0.693                            0.520
+BFI_C8                -0.666                            0.529
+BFI_C3                 0.617                            0.450
+BFI_C5                 0.609                            0.457
+BFI_C2                 0.558                            0.396
+BFI_C9                -0.548                            0.411
+BFI_C4                 0.525                            0.409
+BFI_C7                                                  0.346
+BFI_E6                       -0.755                     0.618
+BFI_E8                       -0.734                     0.575
+BFI_E1                        0.724                     0.711
+BFI_A8                       -0.609                     0.458
+BFI_E2                        0.586                     0.588
+BFI_E5                        0.475                     0.609
+BFI_E7                       -0.459                     0.470
+BFI_E4                        0.455                     0.563
+BFI_A1                               0.654              0.470
+BFI_A4                               0.592              0.476
+BFI_A5                               0.567              0.328
+BFI_A3                               0.536              0.418
+BFI_A7                              -0.488              0.498
+BFI_A2                                                  0.317
+BFI_A6                                                  0.317
+BFI_O10                                     0.735       0.560
+BFI_O3                                     -0.661       0.577
+BFI_O6                                     -0.571       0.472
+BFI_O9                                                  0.366
+BFI_A9                                                  0.390
+─────────────────────────────────────────────────────────────
+Communality = Sum of Squared (SS) Factor Loadings
+(Uniqueness = 1 - Communality)</code></pre>
+</div>
+
+</div>
+<img data-src="lecture12_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"></section>
 <section id="section-14" class="slide level2">
+<h2></h2>
+
+<img data-src="images/1701056390059.jpg" class="r-stretch"></section>
+<section id="section-15" class="slide level2">
 <h2></h2>
 
 <img data-src="images/1700811217292.jpg" class="r-stretch"></section></section>
@@ -704,7 +2941,7 @@ X_p = \lambda_{p1}F_1 + \lambda_{p2}F_2+ ... + \lambda_{pm}F_m +\epsilon_p
 <li><p>聚类的目标是得到较高的簇内相似度和较低的簇间相似度，使得簇间的距离尽可能大，簇内样本与簇中心的距离尽可能小。</p></li>
 </ul>
 </section>
-<section id="section-15" class="slide level2">
+<section id="section-16" class="slide level2">
 <h2></h2>
 <ul>
 <li><p>聚类得到的簇可以用聚类中心、簇大小、簇密度等来表示。</p>
@@ -736,14 +2973,14 @@ X_p = \lambda_{p1}F_1 + \lambda_{p2}F_2+ ... + \lambda_{pm}F_m +\epsilon_p
 </ul></li>
 </ul>
 </section>
-<section id="section-16" class="slide level2">
+<section id="section-17" class="slide level2">
 <h2></h2>
 <ul>
 <li><p>欧式距离（Euclidean Distance）是计算欧式空间中两点之间的直线距离</p></li>
 <li><p><span class="math inline">\(dict_{ED} = \sqrt{{\textstyle \sum_{k=1}^{m}} (x_{ik}-x_{jk})^2}\)</span></p></li>
 </ul>
 </section>
-<section id="section-17" class="slide level2">
+<section id="section-18" class="slide level2">
 <h2></h2>
 <ul>
 <li><p>曼哈顿距离（ManhattanDistance）也称绝对值距离，类似于在城市中两个地点之间的实际距离，即沿道路行驶的距离。</p></li>
@@ -751,7 +2988,7 @@ X_p = \lambda_{p1}F_1 + \lambda_{p2}F_2+ ... + \lambda_{pm}F_m +\epsilon_p
 <li><p><span class="math inline">\(dict_{mand} ={\textstyle \sum_{k=1}^{m}} \left | (x_{ik}-x_{jk})^2 \right |\)</span></p></li>
 </ul>
 </section>
-<section id="section-18" class="slide level2">
+<section id="section-19" class="slide level2">
 <h2></h2>
 <ul>
 <li><p>切比雪夫距离（Chebyshev Distance），向量空间中的距离度量。</p></li>
@@ -785,12 +3022,12 @@ X_p = \lambda_{p1}F_1 + \lambda_{p2}F_2+ ... + \lambda_{pm}F_m +\epsilon_p
 <li><p>对个案的层次聚类分析叫Q聚类分析，对变量的层次聚类分析叫R聚类分析。</p></li>
 </ul>
 </section>
-<section id="section-19" class="slide level2">
+<section id="section-20" class="slide level2">
 <h2></h2>
 
 <img data-src="images/1700881403678.jpg" class="r-stretch"><p>https://zhuanlan.zhihu.com/p/37856153</p>
 </section>
-<section id="section-20" class="slide level2">
+<section id="section-21" class="slide level2">
 <h2></h2>
 
 <img data-src="images/1700881449626.jpg" class="r-stretch"><p>https://zhuanlan.zhihu.com/p/37856153</p>
@@ -830,18 +3067,358 @@ X_p = \lambda_{p1}F_1 + \lambda_{p2}F_2+ ... + \lambda_{pm}F_m +\epsilon_p
 </ul></li>
 </ul>
 </section>
-<section id="r" class="slide level2">
-<h2>R</h2>
-<p>example13_2.csv</p>
+<section id="示例-2" class="slide level2">
+<h2>示例</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>df<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">'data/example13_2.csv'</span>)</span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="fu">rownames</span>(df)<span class="ot">&lt;-</span> df<span class="sc">$</span>X <span class="co"># 将第一列命名为索引</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a>df <span class="ot">&lt;-</span> df[,<span class="sc">-</span><span class="dv">1</span>] <span class="co"># 去除原本的第一咧</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a>df <span class="ot">&lt;-</span><span class="fu">scale</span>(df) <span class="co"># 将数据进行正态化</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>d<span class="ot">&lt;-</span><span class="fu">dist</span>(df)<span class="co">#计算欧氏距离</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a>d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           BFI_A1    BFI_A2    BFI_A3    BFI_A4    BFI_A5    BFI_A6    BFI_A7
+BFI_A2   5.248827                                                            
+BFI_A3   5.641153  5.140066                                                  
+BFI_A4   5.613163  5.990790  4.750481                                        
+BFI_A5   5.868183  5.311234  4.859801  5.307190                              
+BFI_A6  10.824548  8.816979  8.660744  9.390882  9.481122                    
+BFI_A7  13.853882 11.269703 10.842308 11.904912 11.644540  7.649904          
+BFI_A8  11.009394  9.395443  8.914150  9.231475  9.425496  7.373384  7.364671
+BFI_A9   9.469314  7.782888  8.157711  8.968263  9.314868  8.015913  8.500899
+BFI_C1   6.281374  6.765450  5.846448  6.345851  6.689744  8.768124 12.043864
+BFI_C2   8.167162  6.778821  6.358396  7.522130  6.901538  8.370126 10.377221
+BFI_C3   7.943276  7.962981  6.265133  7.995407  8.338529  7.748051  9.718695
+BFI_C4   4.846583  5.247226  5.961386  5.390808  5.521707  9.235897 11.747671
+BFI_C5   7.219827  6.845960  6.137676  5.773116  7.157583  8.787549 11.309581
+BFI_C6   9.017193  7.621373  6.720230  8.372477  7.765147  7.083839  8.196410
+BFI_C7   5.641043  4.313663  5.173597  5.880283  5.593250  8.873069 10.858359
+BFI_C8   7.641635  6.205145  7.227609  8.027870  7.119646  9.199722 10.978388
+BFI_C9  10.975238  8.627457  7.990802  9.445469  9.107120  6.068490  7.086455
+BFI_N1   6.821167  6.278080  6.058229  5.980869  5.858567  7.972021  9.949693
+BFI_N2   5.998761  4.640372  5.853192  6.765052  6.246779  9.931651 11.993629
+BFI_N3   8.784650  7.560605  6.973929  7.763508  7.224591  7.961887  9.407431
+BFI_N4   3.837189  4.596460  5.565623  5.448326  5.289121  9.462411 11.708772
+BFI_N5   7.909453  7.818400  6.717736  8.210884  7.894522  8.968553 11.249541
+BFI_N6   8.817738  8.018224  6.835844  8.254906  8.505075  7.841541  9.724283
+BFI_N7  10.747591  9.151598  8.339033  9.020347 10.081699  7.184809  8.550737
+BFI_N8   9.091948  7.703418  7.449506  6.931112  8.633748  5.690867  8.428117
+BFI_O1   7.476573  6.419243  4.750206  6.789278  6.965933  7.387933  9.027476
+BFI_O2   8.171923  6.533429  5.609084  7.058497  7.025789  6.013093  8.373726
+BFI_O3   6.607270  6.111634  5.860017  6.047485  6.634083  8.779209 10.473855
+BFI_O4   7.700898  7.613680  5.821127  7.315707  8.073566  8.051558  9.130287
+BFI_O5   4.418511  5.242885  5.478234  5.150918  4.619381  9.587502 11.511181
+BFI_O6  11.465364  9.559215  8.622411  9.039455  9.921108  7.550434  7.252204
+BFI_O7   6.124907  5.970827  5.705242  5.887700  6.858252  7.751206 10.373741
+BFI_O8   4.573651  5.939508  6.197415  6.358107  7.149051  9.349942 12.416259
+BFI_O9   8.132257  7.124137  7.440771  7.806578  7.172953  8.016967 10.375547
+BFI_O10 12.935184 11.205110 10.076734 11.112366 11.166391  6.340444  7.472389
+BFI_E1   7.750961  7.473521  7.212437  7.817272  8.384991  9.141910 10.890936
+BFI_E2   8.920228  7.669484  6.829109  7.159395  8.079343  6.523174  8.271603
+BFI_E3   7.083513  5.801861  6.575760  6.742481  6.667748  8.627739  9.875092
+BFI_E4   6.284938  6.598792  6.027832  6.618514  6.594806  7.590871 10.093780
+BFI_E5   5.057386  5.292795  4.773275  4.942847  5.923080  8.231998 10.455283
+BFI_E6   9.378475  7.999617  7.385643  7.718488  7.701568  7.270385  8.900565
+BFI_E7   4.771668  5.338459  6.363175  6.388051  5.619966  8.936243 11.909481
+BFI_E8   7.060706  6.017294  5.354717  5.254014  5.233233  7.779373  9.946103
+           BFI_A8    BFI_A9    BFI_C1    BFI_C2    BFI_C3    BFI_C4    BFI_C5
+BFI_A2                                                                       
+BFI_A3                                                                       
+BFI_A4                                                                       
+BFI_A5                                                                       
+BFI_A6                                                                       
+BFI_A7                                                                       
+BFI_A8                                                                       
+BFI_A9   8.147444                                                            
+BFI_C1   9.552545  9.296957                                                  
+BFI_C2   8.518186  8.629930  6.286255                                        
+BFI_C3   7.194588  7.536396  5.505779  7.252192                              
+BFI_C4   9.415685  8.371991  5.738377  7.178875  6.925328                    
+BFI_C5   8.540302  8.696407  4.377580  6.372746  6.228465  6.275660          
+BFI_C6   7.377860  6.682741  9.589166  8.372110  8.095513  8.564694  8.887340
+BFI_C7   9.345686  7.605212  7.509051  6.984812  8.431796  5.612967  7.538270
+BFI_C8   9.642738  8.890096  9.028482  9.222296  9.165143  7.035586  9.206217
+BFI_C9   7.311835  7.724771 10.468656  9.500650  8.815499 10.015207  9.707795
+BFI_N1   7.789713  6.122248  8.364601  8.310462  7.923780  6.736288  7.804145
+BFI_N2  10.271970  7.744690  8.363003  8.313385  9.130670  5.778468  8.095271
+BFI_N3   7.397312  7.882471  8.949140  8.147282  8.332953  7.440265  7.878802
+BFI_N4   8.919501  8.644094  6.822396  7.621144  7.638010  4.453848  6.746172
+BFI_N5   9.108204  9.200274  9.296747  9.628077  8.561406  7.680015  9.046314
+BFI_N6   8.650661  7.569598  7.641335  8.515756  6.235872  8.149975  8.224326
+BFI_N7   7.583779  9.141953  8.228175  7.974613  6.776893  9.797540  8.554577
+BFI_N8   7.571645  8.237034  7.192997  7.896811  7.151371  8.234823  6.958975
+BFI_O1   7.946165  7.907958  6.477483  6.823819  5.814581  7.150475  6.983509
+BFI_O2   7.234385  7.986728  6.565978  6.198865  6.019861  6.708191  7.112527
+BFI_O3   8.172091  8.289769  6.666006  7.295186  7.393763  6.571850  6.596300
+BFI_O4   7.683091  7.115332  7.492859  7.204046  5.804319  6.885802  7.498715
+BFI_O5   8.530535  8.808797  6.041249  6.704577  7.308789  4.454156  5.786665
+BFI_O6   7.164534  8.212001  9.792287  9.362695  8.195641  9.931046  8.558949
+BFI_O7   8.589350  7.999664  5.775043  7.032468  6.040360  4.779164  6.118126
+BFI_O8   9.843974  9.195950  6.586820  7.559546  7.571410  5.258717  7.225521
+BFI_O9   8.984002  8.488105  7.042404  6.861965  7.059464  6.081639  6.814193
+BFI_O10  7.714439  9.747660 10.616921  9.743353  8.538092 11.139891 10.756185
+BFI_E1  10.265148  8.458582  7.429633  7.624156  7.386684  6.888258  8.363041
+BFI_E2   7.830221  8.555583  6.975273  7.420178  6.509477  7.978840  7.316632
+BFI_E3   7.289398  6.693987  6.248123  6.225279  6.609639  5.944336  5.774562
+BFI_E4   8.657841  7.926503  5.419626  6.051888  5.550289  5.404672  6.532137
+BFI_E5   8.520176  7.570522  5.890277  6.392727  6.131547  4.755260  6.509401
+BFI_E6   6.405450  7.907875  9.223019  8.889275  8.501907  8.016046  8.486739
+BFI_E7   9.792145  8.838395  7.372807  8.316113  8.818072  5.957971  7.660784
+BFI_E8   7.384647  7.668784  7.494517  7.098855  7.977517  6.216540  7.176390
+           BFI_C6    BFI_C7    BFI_C8    BFI_C9    BFI_N1    BFI_N2    BFI_N3
+BFI_A2                                                                       
+BFI_A3                                                                       
+BFI_A4                                                                       
+BFI_A5                                                                       
+BFI_A6                                                                       
+BFI_A7                                                                       
+BFI_A8                                                                       
+BFI_A9                                                                       
+BFI_C1                                                                       
+BFI_C2                                                                       
+BFI_C3                                                                       
+BFI_C4                                                                       
+BFI_C5                                                                       
+BFI_C6                                                                       
+BFI_C7   6.110381                                                            
+BFI_C8   7.103949  5.425674                                                  
+BFI_C9   4.984644  7.655784  7.453538                                        
+BFI_N1   5.552731  5.308850  6.397072  6.909992                              
+BFI_N2   7.029510  3.509586  6.158568  8.472097  6.181140                    
+BFI_N3   5.010017  6.303513  7.914962  7.035353  6.363037  7.211856          
+BFI_N4   7.141050  4.489134  5.869845  8.931611  5.656738  4.943093  6.771623
+BFI_N5   5.302412  6.566605  7.775370  7.975569  6.996773  6.551673  4.795053
+BFI_N6   8.479462  8.312438  9.840421  8.375018  7.563323  9.243313  8.873531
+BFI_N7   9.402576  9.707799 10.303766  8.582987  9.697015 11.278518 10.264899
+BFI_N8   7.695686  7.689523  9.077139  7.752549  7.693939  9.105981  8.693598
+BFI_O1   7.477789  6.992318  8.552929  7.812098  6.865192  8.147196  7.700921
+BFI_O2   7.636945  7.281689  8.559605  7.587626  6.930321  8.369606  7.610075
+BFI_O3   8.193041  6.653569  7.662943  9.198856  6.696377  7.159308  8.225696
+BFI_O4   6.250989  5.872754  7.924829  7.352417  6.191316  7.449752  6.675875
+BFI_O5   7.547836  5.044339  7.070849  9.313304  6.157277  6.156073  6.568606
+BFI_O6   7.960946  9.418194 11.044890  8.357450  8.693753 10.414861  7.646391
+BFI_O7   7.554087  5.549506  7.413339  8.064585  6.433660  6.796358  7.299823
+BFI_O8   7.811966  5.385902  6.788690  9.595004  6.977719  6.532068  7.876266
+BFI_O9   7.621602  7.122327  7.816823  8.161674  8.015061  7.483985  7.057618
+BFI_O10  8.505884 10.820566 10.888295  6.825189 10.133971 12.104800  9.499365
+BFI_E1   9.663609  8.277270  9.665869 10.068622  8.713645  8.821288  9.405135
+BFI_E2   8.296968  8.283635  9.330849  8.001366  7.794593  9.619247  9.554797
+BFI_E3   7.508573  5.972875  8.309842  9.046519  6.144777  7.136829  7.214471
+BFI_E4   7.865870  6.841101  8.166457  9.415487  7.256346  8.093109  7.880026
+BFI_E5   7.914711  5.699080  7.130991  9.064444  5.815746  7.050567  7.542151
+BFI_E6   6.106660  7.070839  7.637900  6.507105  5.702874  7.326428  5.931797
+BFI_E7   7.287253  4.147665  6.554033  8.594638  5.611895  4.982243  6.889084
+BFI_E8   5.844885  4.724653  6.573650  7.088209  4.470477  5.852020  6.191681
+           BFI_N4    BFI_N5    BFI_N6    BFI_N7    BFI_N8    BFI_O1    BFI_O2
+BFI_A2                                                                       
+BFI_A3                                                                       
+BFI_A4                                                                       
+BFI_A5                                                                       
+BFI_A6                                                                       
+BFI_A7                                                                       
+BFI_A8                                                                       
+BFI_A9                                                                       
+BFI_C1                                                                       
+BFI_C2                                                                       
+BFI_C3                                                                       
+BFI_C4                                                                       
+BFI_C5                                                                       
+BFI_C6                                                                       
+BFI_C7                                                                       
+BFI_C8                                                                       
+BFI_C9                                                                       
+BFI_N1                                                                       
+BFI_N2                                                                       
+BFI_N3                                                                       
+BFI_N4                                                                       
+BFI_N5   6.219121                                                            
+BFI_N6   8.926580  9.833949                                                  
+BFI_N7  10.111958 11.630598  7.102173                                        
+BFI_N8   8.114968  9.241122  7.324075  6.457118                              
+BFI_O1   7.319785  8.004591  5.067544  7.396115  6.136849                    
+BFI_O2   7.326355  8.191717  6.127283  7.200763  5.828755  3.855226          
+BFI_O3   5.952937  8.149017  7.903824  9.096049  6.896566  5.951862  6.160694
+BFI_O4   6.761855  7.129426  6.113230  8.136157  7.067533  5.466208  5.979186
+BFI_O5   3.631308  7.073740  8.527828  9.720796  7.994192  6.743715  7.143477
+BFI_O6  10.312730  9.469214  7.488063  7.333837  6.935383  7.534711  7.614555
+BFI_O7   5.671561  7.629015  6.128657  8.330701  6.151548  5.464609  5.201374
+BFI_O8   4.377538  7.087332  9.027955  9.694864  7.939381  7.149054  7.315540
+BFI_O9   7.196209  8.142009  9.187536  9.317467  7.995788  7.865778  7.600513
+BFI_O10 11.583548 11.157988  9.391811  7.318030  8.416944  8.893121  8.030281
+BFI_E1   8.059962  9.907411  7.865327  9.254319  8.367114  5.781067  6.162018
+BFI_E2   8.363287 10.022299  6.500560  6.166061  4.482469  5.335180  4.614602
+BFI_E3   6.516801  8.771447  6.528333  8.522620  6.872213  5.808725  6.494364
+BFI_E4   6.058544  8.383281  7.185597  7.660020  6.315339  5.278469  5.622450
+BFI_E5   4.887676  7.966130  6.678293  7.842480  6.752742  4.652252  5.046482
+BFI_E6   7.572517  6.503788  8.494117  9.224213  8.005495  7.823812  7.517032
+BFI_E7   3.645843  6.392199  9.166012 10.812682  7.976059  7.496030  7.618164
+BFI_E8   5.739950  7.296580  7.290603  8.448496  7.119572  6.929747  6.954156
+           BFI_O3    BFI_O4    BFI_O5    BFI_O6    BFI_O7    BFI_O8    BFI_O9
+BFI_A2                                                                       
+BFI_A3                                                                       
+BFI_A4                                                                       
+BFI_A5                                                                       
+BFI_A6                                                                       
+BFI_A7                                                                       
+BFI_A8                                                                       
+BFI_A9                                                                       
+BFI_C1                                                                       
+BFI_C2                                                                       
+BFI_C3                                                                       
+BFI_C4                                                                       
+BFI_C5                                                                       
+BFI_C6                                                                       
+BFI_C7                                                                       
+BFI_C8                                                                       
+BFI_C9                                                                       
+BFI_N1                                                                       
+BFI_N2                                                                       
+BFI_N3                                                                       
+BFI_N4                                                                       
+BFI_N5                                                                       
+BFI_N6                                                                       
+BFI_N7                                                                       
+BFI_N8                                                                       
+BFI_O1                                                                       
+BFI_O2                                                                       
+BFI_O3                                                                       
+BFI_O4   7.863504                                                            
+BFI_O5   6.199497  6.704611                                                  
+BFI_O6   8.445376  8.167707  9.722405                                        
+BFI_O7   6.693406  4.490830  5.317452  8.918869                              
+BFI_O8   6.879212  6.433326  5.407840 10.904416  4.903181                    
+BFI_O9   8.931197  7.540838  6.350105  9.951686  5.949294  7.054563          
+BFI_O10 11.720432  8.750743 11.153995  9.254203  9.565764 11.488739  8.642127
+BFI_E1   6.688720  8.114043  8.084513 10.068557  6.705594  7.257063  7.954989
+BFI_E2   6.203887  7.497078  7.808701  7.813557  5.997024  8.235450  8.233538
+BFI_E3   6.203775  6.206128  5.513890  8.061839  5.533318  6.705587  7.151079
+BFI_E4   6.170169  6.281782  6.157448  8.816155  5.614081  5.288669  6.793924
+BFI_E5   5.432118  5.634799  5.180760  8.757541  5.195841  5.217092  7.684966
+BFI_E6   7.735871  7.127085  7.737618  6.973901  7.967857  8.972733  8.321259
+BFI_E7   6.456821  7.365263  4.584734 10.450385  6.104954  5.302096  7.597829
+BFI_E8   6.550143  6.197037  5.624224  8.197347  5.940568  6.747153  7.383734
+          BFI_O10    BFI_E1    BFI_E2    BFI_E3    BFI_E4    BFI_E5    BFI_E6
+BFI_A2                                                                       
+BFI_A3                                                                       
+BFI_A4                                                                       
+BFI_A5                                                                       
+BFI_A6                                                                       
+BFI_A7                                                                       
+BFI_A8                                                                       
+BFI_A9                                                                       
+BFI_C1                                                                       
+BFI_C2                                                                       
+BFI_C3                                                                       
+BFI_C4                                                                       
+BFI_C5                                                                       
+BFI_C6                                                                       
+BFI_C7                                                                       
+BFI_C8                                                                       
+BFI_C9                                                                       
+BFI_N1                                                                       
+BFI_N2                                                                       
+BFI_N3                                                                       
+BFI_N4                                                                       
+BFI_N5                                                                       
+BFI_N6                                                                       
+BFI_N7                                                                       
+BFI_N8                                                                       
+BFI_O1                                                                       
+BFI_O2                                                                       
+BFI_O3                                                                       
+BFI_O4                                                                       
+BFI_O5                                                                       
+BFI_O6                                                                       
+BFI_O7                                                                       
+BFI_O8                                                                       
+BFI_O9                                                                       
+BFI_O10                                                                      
+BFI_E1  10.401597                                                            
+BFI_E2   8.339968  6.985136                                                  
+BFI_E3  10.349978  7.488940  6.864035                                        
+BFI_E4   9.663997  5.199921  6.422700  5.859032                              
+BFI_E5  10.190851  5.538206  6.522375  5.785452  3.720926                    
+BFI_E6   9.177554 10.525591  8.861930  7.934475  8.921299  8.075309          
+BFI_E7  11.766160  8.482159  8.608111  7.083142  6.829361  6.031041  7.571756
+BFI_E8   9.604675  9.052023  7.224883  5.662976  7.161738  6.359862  5.295016
+           BFI_E7
+BFI_A2           
+BFI_A3           
+BFI_A4           
+BFI_A5           
+BFI_A6           
+BFI_A7           
+BFI_A8           
+BFI_A9           
+BFI_C1           
+BFI_C2           
+BFI_C3           
+BFI_C4           
+BFI_C5           
+BFI_C6           
+BFI_C7           
+BFI_C8           
+BFI_C9           
+BFI_N1           
+BFI_N2           
+BFI_N3           
+BFI_N4           
+BFI_N5           
+BFI_N6           
+BFI_N7           
+BFI_N8           
+BFI_O1           
+BFI_O2           
+BFI_O3           
+BFI_O4           
+BFI_O5           
+BFI_O6           
+BFI_O7           
+BFI_O8           
+BFI_O9           
+BFI_O10          
+BFI_E1           
+BFI_E2           
+BFI_E3           
+BFI_E4           
+BFI_E5           
+BFI_E6           
+BFI_E7           
+BFI_E8   5.978740</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>fit1<span class="ot">&lt;-</span><span class="fu">hclust</span>(d,<span class="at">method =</span> <span class="st">"average"</span>) <span class="co"># 层次聚类分析</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a></span>
+<span id="cb11-3"><a href="#cb11-3"></a><span class="fu">plot</span>(fit1,<span class="at">hang =</span> <span class="sc">-</span><span class="dv">1</span>,<span class="at">cex=</span>.<span class="dv">8</span>,<span class="at">main =</span> <span class="st">"title"</span>) <span class="co"># 树状图</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img data-src="lecture12_files/figure-revealjs/unnamed-chunk-7-1.png" width="960"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">fviz_dend</span>(fit1,<span class="at">k=</span><span class="dv">4</span>,<span class="at">rect =</span>T,<span class="at">rect_fill =</span> T,<span class="at">type =</span> <span class="st">"circular"</span>,</span>
+<span id="cb12-2"><a href="#cb12-2"></a>          <span class="at">rect_border =</span> <span class="fu">c</span>(<span class="st">"#2E9FDF"</span>, <span class="st">"#00AFBB"</span>, <span class="st">"#E7B800"</span>, <span class="st">"#FC4E07"</span>)) <span class="co">#圆形视图</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img data-src="lecture12_files/figure-revealjs/unnamed-chunk-8-1.png" width="960"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">heatmap</span>(<span class="fu">as.matrix</span>(d)) <span class="co">#热力图</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img data-src="lecture12_files/figure-revealjs/unnamed-chunk-9-1.png" width="960"></p>
+</div>
+</div>
 </section>
 <section id="总结" class="slide level2">
 <h2>总结</h2>
 <table style="width:100%;">
 <colgroup>
-<col style="width: 20%">
-<col style="width: 27%">
-<col style="width: 29%">
-<col style="width: 22%">
+<col style="width: 24%">
+<col style="width: 24%">
+<col style="width: 26%">
+<col style="width: 24%">
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -1092,6 +3669,44 @@ X_p = \lambda_{p1}F_1 + \lambda_{p2}F_2+ ... + \lambda_{pm}F_m +\epsilon_p
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

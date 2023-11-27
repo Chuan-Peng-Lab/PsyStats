@@ -53,7 +53,7 @@ Hu Chuan-Peng
 
 -   卡方检验的原理
 
-    -   $\chi^2 = \sum \frac{(f_{observed}-f_{expected})^2}{f_{expected}}$;
+    -   $\chi^2 = \sum \frac{(f_{observed} - f_{expected})^2}{f_{expected}}$;
     -   $\chi^2$ 反映了实际的观察频数与期望频数的偏离程度。
     -   是离散分布在假设研究中的应用(e.g., Poisson)
 
@@ -66,9 +66,9 @@ Hu Chuan-Peng
 
 -   对数线性模型（log-linear model）
 
--   Model 1: Freq \~ 1 + Answer_Puppy + Answer_Flower + Agent_Robot
+-   Model 1: Freq ~ 1 + Answer_Puppy + Answer_Flower + Agent_Robot
 
--   Model 2: Freq \~ 1 + Answer_Puppy + Answer_Flower + Agent_Robot + Answer_Puppy \* Agent_Robot + Answer_Flower \* Agent_Robot</br></br>
+-   Model 2: Freq ~ 1 + Answer_Puppy + Answer_Flower + Agent_Robot + Answer_Puppy * Agent_Robot + Answer_Flower * Agent_Robot</br></br>
 
 ![](images/1700804818480.jpg)
 
@@ -80,7 +80,7 @@ Hu Chuan-Peng
 
 -   用少数因子反映原始资料的大部分信息。
 
--   观测变量被建模为潜变量(latent variables)和“误差”项的线性组合。
+-   观测变量被建模为潜变量(latent variables)和"误差"项的线性组合。
 
 ## 
 
@@ -95,6 +95,7 @@ Hu Chuan-Peng
 -   探索性因素分析：探索多变量的内在结构并进行降维的处理技术，将多变量综合为少数几个核心因子。
 
     -   变量较多，根据相关性大小可将变量分组，组内的变量间相关性较高，不同组的变量间相关性较低。</br></br>
+
 -   验证性因素分析：对因子结构及一系列原变量间的关系是否符合研究者的理论构想进行验证的技术。
 
 ## 探索性因素分析
@@ -111,7 +112,6 @@ Hu Chuan-Peng
 
 ## 探索性因素分析的代数模型
 
-
 $$\begin{cases}
  X_1 = \lambda_{11}F_1 + \lambda_{12}F_2+ ... + \lambda_{1m}F_m +\epsilon_1\\
  X_2 = \lambda_{21}F_1 + \lambda_{22}F_2+ ... + \lambda_{2m}F_m +\epsilon_2\\
@@ -120,12 +120,9 @@ $$\begin{cases}
  X_p = \lambda_{p1}F_1 + \lambda_{p2}F_2+ ... + \lambda_{pm}F_m +\epsilon_p
 \end{cases}$$
 
-$X_1$, $X_2$, ... $X_p$分别表示某被试在第1个、第2个到第p个变量上的得分，以标准分表示</br> 
-$F_1$，$F_2$, ...$F_m$分别表示某被试在第m个公共因子上的得分，以标准分表示</br> 
-$\lambda_{ij}$表示第i个变量对应回归方程中第j个因子的系数，也称因子载荷
+$X_1$, $X_2$, ... $X_p$分别表示某被试在第1个、第2个到第p个变量上的得分，以标准分表示</br> $F_1$，$F_2$, ...$F_m$分别表示某被试在第m个公共因子上的得分，以标准分表示</br> $\lambda_{ij}$表示第i个变量对应回归方程中第j个因子的系数，也称因子载荷
 
 ## 因素分析的矩阵形式
-
 
 -   $X = (X_1, X_2, ... , X_p)$
 
@@ -133,28 +130,25 @@ $\lambda_{ij}$表示第i个变量对应回归方程中第j个因子的系数，�
 
 -   $ε = (\epsilon_1, \epsilon_2, ... , \epsilon_m)$ </br> </br>
 
--   $X_i = \lambda_{i1}F_1 + \lambda_{i2}F_2+ ... + \lambda_{im}F_m +\epsilon_i$
+-   $X_i = \lambda_{i1}F_1 + \lambda_{i2}F_2 + ... + \lambda_{im}F_m + \epsilon_i$
 
-$X_1$, $X_2$, ...$X_p$分别表示某被试在第1个、第2个到第p个变量上的得分，以标准分表示</br>
-$F_1$，$F_2$, ...$F_m$分别表示某被试在第m个公共因子上的得分，以标准分表示</br>
-$\lambda_{ij}$表示第i个变量对应回归方程中第j个因子的系数，也称因子载荷
+$X_1$, $X_2$, ...$X_p$分别表示某被试在第1个、第2个到第p个变量上的得分，以标准分表示</br> $F_1$，$F_2$, ...$F_m$分别表示某被试在第m个公共因子上的得分，以标准分表示</br> $\lambda_{ij}$表示第i个变量对应回归方程中第j个因子的系数，也称因子载荷
 
 ## 变量的共同度
 
-
--   $X_i = \lambda_{i1}F_1 + \lambda_{i2}F_2+ ... + \lambda_{im}F_m +\epsilon_i$
+-   $X_i = \lambda_{i1}F_1 + \lambda_{i2}F_2 + ... + \lambda_{im}F_m +\epsilon_i$
 
 -   $h_i^2 = \lambda_{i1}^2 + \lambda_{i2}^2 + ... + \lambda_{im}^2$
 
--   共同度($h_i^2$)在数值上等于因子载荷矩阵中第i行因子载荷的平方和，反映“所有因子对这个变量共同制约的程度”，共同度越接近1越好
+-   共同度($h_i^2$)在数值上等于因子载荷矩阵中第i行因子载荷的平方和，反映"所有因子对这个变量共同制约的程度"，共同度越接近1越好
 
 ## 
 
--   $X_i = \lambda_{i1}F_1 + \lambda_{i2}F_2+ ... + \lambda_{im}F_m +\epsilon_i$
+-   $X_i = \lambda_{i1}F_1 + \lambda_{i2}F_2+ ... + \lambda_{im}F_m + \epsilon_i$
 
--   $X_p = \lambda_{p1}F_1 +\lambda_{p2}F_2+ ... + \lambda_{pm}F_m +\epsilon_p$
+-   $X_p = \lambda_{p1}F_1 +\lambda_{p2}F_2+ ... + \lambda_{pm}F_m + \epsilon_p$
 
--   $v_j^2 = {\textstyle \sum_{i=1}^{p}} \lambda_{ij}^2 = \lambda_{1j}^2 +\lambda_{2j}^2 + ... + \lambda_{pj}^2$
+-   $v_j^2 = {\textstyle \sum_{i = 1}^{p}} \lambda_{ij}^2 = \lambda_{1j}^2 +\lambda_{2j}^2 + ... + \lambda_{pj}^2$
 
 -   反映公共因子对所有变量总的影响，以及其在所有公共因子中的相对重要性
 
@@ -174,7 +168,7 @@ $\lambda_{ij}$表示第i个变量对应回归方程中第j个因子的系数，�
 
 -   相关矩阵：大部分相关系数低于0.3且不显著，就不适合因素分析
 
--   巴特利特球形检验：$H_0$为“相关矩阵是一个单位阵”，根据行列式计算得到统计量，进行卡方检验，结果显著则可进行因素分析
+-   巴特利特球形检验：$H_0$为"相关矩阵是一个单位阵"，根据行列式计算得到统计量，进行卡方检验，结果显著则可进行因素分析
 
 -   反像相关矩阵检验：从偏相关矩阵出发，每个元素都是负的偏相关系数，元素绝对值大，说明受其他变量更迭影响小，不适合因素分析
 
@@ -182,15 +176,15 @@ $\lambda_{ij}$表示第i个变量对应回归方程中第j个因子的系数，�
 
 -   KMO取样适合度检验：结合偏相关矩阵和相关矩阵，比较某变量和其他变量的相关系数与偏相关系数的相对大小。如果相关矩阵中绝对值大，偏相关矩阵元素绝对值小，存在公共因子可能性高，适合因素分析
 
-    -   KMO \> 0.9，非常合适；
+    -   KMO > 0.9，非常合适；
 
-    -   0.8 \< KMO \<0.9，合适；
+    -   0.8 < KMO <0.9，合适；
 
-    -   0.7 \< KMO \< 0.8，一般；
+    -   0.7 < KMO < 0.8，一般；
 
-    -   0.6 \< KMO \<0.7，不太合适；
+    -   0.6 < KM  O <0.7，不太合适；
 
-    -   KMO \<0.5，极不合适。
+    -   KMO < 0.5，极不合适。
 
 ## Step 2: 因子提取的方法
 
@@ -204,7 +198,7 @@ $\lambda_{ij}$表示第i个变量对应回归方程中第j个因子的系数，�
 
 ## Step 2: 因子数的确定
 
--   抽取的m个因子对原变量方差的解释率要达到较高比例，一般建议达到80%，实际运用可根据具体情况调整，也可定在40%\~60%。
+-   抽取的m个因子对原变量方差的解释率要达到较高比例，一般建议达到80%，实际运用可根据具体情况调整，也可定在40% ~ 60%。
 
 -   特征值大于1，低于1的特征值表明该因子可解释的变异信息比原变量的变异方差小。
 
@@ -247,19 +241,43 @@ $\lambda_{ij}$表示第i个变量对应回归方程中第j个因子的系数，�
     -   $\widehat{F_j} =W_{j1} × ZX_1 + W_{j2} × ZX_2 + ... + W_{jp} × ZX_p$
 
         -   $W_{ij}$为标准化后的数据矩阵X的加权系数，反映第i个变量和第j个因子的相关关系
-        -   误差项为真因子分F与因子分估计值$\widehat{F}$之间的差异, $E = F- \widehat{F}$
+        -   误差项为真因子分F与因子分估计值$\widehat{F}$之间的差异, $E = F - \widehat{F}$
 
-## R 26
+## 示例
 
-碎石图
+大五人格问卷题目分析，表中为每个被试在单个题目的得分
 
-因子载荷矩阵
+数据：example13.csv (Liu et al., 2020, J Open Psych Data)
 
-旋转前后
+```{r echo=TRUE, message=FALSE}
+require(pacman)
+p_load('tidyverse',
+       'bruceR',
+       'factoextra', # 多元统计方法的可视化
+       'igraph')# 网络数据可视化
+```
 
-特征值
+```{r echo=TRUE}
+# 载入数据
+df <- read.csv('data/example13.csv')
+df
+```
 
-路径图
+```{r echo=TRUE}
+EFA(df, varrange=c("BFI_A1:BFI_E8"),# 选取观测变量
+    nfactors="parallel", #决定抽取多少因子
+    method="minres",# 因子提取方法,最小残差因子分析       
+    rotation="varimax", # 旋转方法，方差最大化
+    kaiser=FALSE, # 有没有进行kaiser正态化
+    sort.loadings=TRUE, # 按照因子载荷排序
+    hide.loadings=0.45,#因子载荷阈值
+    plot.scree = TRUE,#绘制碎石图
+    max.iter = 25,#最大迭代次数
+    min.eigen = 1,#最小特征值
+    )  
+```
+
+![](images/1701056253249.jpg)
 
 # Part 2: 主成分分析(PCA)
 
@@ -287,7 +305,7 @@ $\lambda_{ij}$表示第i个变量对应回归方程中第j个因子的系数，�
 
 -   数据能够进行降维的原因是因为不同变量之间的存在相关，包含冗余信息。
 
--   通过协方差矩阵，能够“识别”数据间的相关性。
+-   通过协方差矩阵，能够"识别"数据间的相关性。
 
 ## 
 
@@ -351,7 +369,6 @@ $\lambda_{ij}$表示第i个变量对应回归方程中第j个因子的系数，�
 
 ## 
 
-
 ![](images/1700810988139.jpg)
 
 -   紫色的线是最大化方差（从投影点（红点）到原点的平方距离的平均值）的线。
@@ -374,24 +391,29 @@ https://blog.csdn.net/ctyqy2015301200079/article/details/85325125
 
 在机器学习中，还有k-Neareast Neighbours(K-近邻)，随机森林等一系列降维算法。
 
-## R 54
+## 示例
 
-卡方检验
+```{r echo=TRUE}
+EFA(df, varrange=c("BFI_A1:BFI_E8"),# 选取观测变量
+    nfactors="parallel", #决定抽取多少因子
+    method="pca",# 主成分分析       
+    rotation="varimax", # 旋转方法，方差最大化
+    kaiser=FALSE, # 有没有进行kaiser正态化
+    sort.loadings=TRUE, # 按照因子载荷排序
+    hide.loadings=0.45,#因子载荷阈值
+    plot.scree = TRUE,#绘制碎石图
+    max.iter = 25,#最大迭代次数
+    min.eigen = 1,#最小特征值
+    )  
+```
 
-主成分权重
+## 
 
-旋转前后
-
-主成分相关
-
-碎石图
-
-路径
+![](images/1701056390059.jpg)
 
 ## 
 
 ![](images/1700811217292.jpg)
-
 
 # Part 3: 聚类分析
 
@@ -435,7 +457,7 @@ https://blog.csdn.net/ctyqy2015301200079/article/details/85325125
 
 -   欧式距离（Euclidean Distance）是计算欧式空间中两点之间的直线距离
 
--   $dict_{ED} = \sqrt{{\textstyle \sum_{k=1}^{m}} (x_{ik}-x_{jk})^2}$
+-   $dict_{ED} = \sqrt{{\textstyle \sum_{k = 1}^{m}} (x_{ik} - x_{jk})^2}$
 
 ## 
 
@@ -443,7 +465,7 @@ https://blog.csdn.net/ctyqy2015301200079/article/details/85325125
 
 -   计算空间中两点各维度指标间差值的绝对值之和。
 
--   $dict_{mand} ={\textstyle \sum_{k=1}^{m}} \left | (x_{ik}-x_{jk})^2 \right |$
+-   $dict_{mand} ={\textstyle \sum_{k = 1}^{m}} \left | (x_{ik} - x_{jk})^2 \right |$
 
 ## 
 
@@ -451,7 +473,7 @@ https://blog.csdn.net/ctyqy2015301200079/article/details/85325125
 
 -   将空间坐标中两个点的距离定义为其各坐标数值差绝对值的最大值。
 
--   $dict_{CD} =max \left | (x_{ik}-x_{jk}) \right |$
+-   $dict_{CD} =max \left | (x_{ik} - x_{jk}) \right |$
 
 ## 测量指标的量纲统一
 
@@ -527,15 +549,40 @@ https://zhuanlan.zhihu.com/p/37856153
 
     -   重心法
 
-## R
+## 示例
 
-example13_2.csv
+```{r echo=TRUE}
+df<-read.csv('data/example13_2.csv')
+rownames(df)<- df$X # 将第一列命名为索引
+df <- df[,-1] # 去除原本的第一咧
+df <-scale(df) # 将数据进行正态化
+```
+
+```{r echo=TRUE}
+d<-dist(df)#计算欧氏距离
+d
+```
+
+```{r echo=TRUE}
+fit1<-hclust(d,method = "average") # 层次聚类分析
+
+plot(fit1,hang = -1,cex=.8,main = "title") # 树状图
+```
+
+```{r echo=TRUE}
+fviz_dend(fit1,k=4,rect =T,rect_fill = T,type = "circular",
+          rect_border = c("#2E9FDF", "#00AFBB", "#E7B800", "#FC4E07")) #圆形视图
+```
+
+```{r echo=TRUE}
+heatmap(as.matrix(d)) #热力图
+```
 
 ## 总结
 
-|                 |                      |                        |                  |
-|:---------------:|:--------------------:|:----------------------:|:----------------:|
-|                 |         EFA          |          PCA           |     Clusters     |
+|            |                      |                        |                  |
+|:----------------:|:----------------:|:-----------------:|:----------------:|
+|            |         EFA          |          PCA           |     Clusters     |
 |    原理    | 变量是因子的线性组合 | 主成分是变量的线性组合 | 相似变量归为一类 |
 |    应用    |   Reflective model   |    Formative model     |       分类       |
 |   新变量   |     独立 / 相关      |          独立          |        /         |
