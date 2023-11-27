@@ -264,16 +264,16 @@ df
 ```
 
 ```{r echo=TRUE}
-EFA(df, varrange=c("BFI_A1:BFI_E8"),# 选取观测变量
-    nfactors="parallel", #决定抽取多少因子
-    method="minres",# 因子提取方法,最小残差因子分析       
-    rotation="varimax", # 旋转方法，方差最大化
-    kaiser=FALSE, # 有没有进行kaiser正态化
-    sort.loadings=TRUE, # 按照因子载荷排序
-    hide.loadings=0.45,#因子载荷阈值
-    plot.scree = TRUE,#绘制碎石图
-    max.iter = 25,#最大迭代次数
-    min.eigen = 1,#最小特征值
+bruceR::EFA(df, varrange=c("BFI_A1:BFI_E8"), # 选取观测变量
+    nfactors="parallel",             # 决定抽取多少因子
+    method="minres",                 # 因子提取方法,最小残差因子分析       
+    rotation="oblimin",              # 旋转方法，方差最大化
+    kaiser=FALSE,                    # 有没有进行kaiser正态化
+    sort.loadings=TRUE,              # 按照因子载荷排序
+    hide.loadings=0.45,              # 因子载荷阈值
+    plot.scree = TRUE,               # 绘制碎石图
+    max.iter = 25,                   # 最大迭代次数
+    min.eigen = 1,                   # 最小特征值
     )  
 ```
 
@@ -394,16 +394,16 @@ https://blog.csdn.net/ctyqy2015301200079/article/details/85325125
 ## 示例
 
 ```{r echo=TRUE}
-EFA(df, varrange=c("BFI_A1:BFI_E8"),# 选取观测变量
-    nfactors="parallel", #决定抽取多少因子
-    method="pca",# 主成分分析       
-    rotation="varimax", # 旋转方法，方差最大化
-    kaiser=FALSE, # 有没有进行kaiser正态化
-    sort.loadings=TRUE, # 按照因子载荷排序
-    hide.loadings=0.45,#因子载荷阈值
-    plot.scree = TRUE,#绘制碎石图
-    max.iter = 25,#最大迭代次数
-    min.eigen = 1,#最小特征值
+bruceR::EFA(df, varrange=c("BFI_A1:BFI_E8"), # 选取观测变量
+    nfactors="parallel",                     # 决定抽取多少因子
+    method="pca",                            # 主成分分析       
+    rotation="none",                         # 旋转方法，none
+    kaiser=FALSE,                            # 有没有进行kaiser正态化
+    sort.loadings=TRUE,                      # 按照因子载荷排序
+    hide.loadings=0.45,                      # 因子载荷阈值
+    plot.scree = TRUE,                       # 绘制碎石图
+    max.iter = 25,                           # 最大迭代次数
+    min.eigen = 1,                           # 最小特征值
     )  
 ```
 
@@ -552,30 +552,30 @@ https://zhuanlan.zhihu.com/p/37856153
 ## 示例
 
 ```{r echo=TRUE}
-df<-read.csv('data/example13_2.csv')
-rownames(df)<- df$X # 将第一列命名为索引
-df <- df[,-1] # 去除原本的第一咧
-df <-scale(df) # 将数据进行正态化
+df <- read.csv('data/example13_2.csv')
+rownames(df) <- df$X # 将第一列命名为索引
+df <- df[,-1]        # 去除原本的第一咧
+df <- scale(df)      # 将数据进行正态化
 ```
 
 ```{r echo=TRUE}
-d<-dist(df)#计算欧氏距离
+d <- dist(df)          # 计算欧氏距离
 d
 ```
 
 ```{r echo=TRUE}
-fit1<-hclust(d,method = "average") # 层次聚类分析
+fit1 <- hclust(d,method = "average") # 层次聚类分析
 
 plot(fit1,hang = -1,cex=.8,main = "title") # 树状图
 ```
 
 ```{r echo=TRUE}
-fviz_dend(fit1,k=4,rect =T,rect_fill = T,type = "circular",
-          rect_border = c("#2E9FDF", "#00AFBB", "#E7B800", "#FC4E07")) #圆形视图
+fviz_dend(fit1, k=4, rect =T, rect_fill = T, type = "circular",
+          rect_border = c("#2E9FDF", "#00AFBB", "#E7B800", "#FC4E07")) # 圆形视图
 ```
 
 ```{r echo=TRUE}
-heatmap(as.matrix(d)) #热力图
+heatmap(as.matrix(d)) # 热力图
 ```
 
 ## 总结

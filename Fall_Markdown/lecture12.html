@@ -506,14 +506,14 @@ X_p = \lambda_{p1}F_1 + \lambda_{p2}F_2+ ... + \lambda_{pm}F_m +\epsilon_p
 <li><p><span class="math inline">\(X = (X_1, X_2, ... , X_p)\)</span></p></li>
 <li><p><span class="math inline">\(F = (F_1, F_2, ... , F_m)\)</span></p></li>
 <li><p><span class="math inline">\(ε = (\epsilon_1, \epsilon_2, ... , \epsilon_m)\)</span> <br> <br></p></li>
-<li><p><span class="math inline">\(X_i = \lambda_{i1}F_1 + \lambda_{i2}F_2+ ... + \lambda_{im}F_m +\epsilon_i\)</span></p></li>
+<li><p><span class="math inline">\(X_i = \lambda_{i1}F_1 + \lambda_{i2}F_2 + ... + \lambda_{im}F_m + \epsilon_i\)</span></p></li>
 </ul>
 <p><span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, …<span class="math inline">\(X_p\)</span>分别表示某被试在第1个、第2个到第p个变量上的得分，以标准分表示<br> <span class="math inline">\(F_1\)</span>，<span class="math inline">\(F_2\)</span>, …<span class="math inline">\(F_m\)</span>分别表示某被试在第m个公共因子上的得分，以标准分表示<br> <span class="math inline">\(\lambda_{ij}\)</span>表示第i个变量对应回归方程中第j个因子的系数，也称因子载荷</p>
 </section>
 <section id="变量的共同度" class="slide level2">
 <h2>变量的共同度</h2>
 <ul>
-<li><p><span class="math inline">\(X_i = \lambda_{i1}F_1 + \lambda_{i2}F_2+ ... + \lambda_{im}F_m +\epsilon_i\)</span></p></li>
+<li><p><span class="math inline">\(X_i = \lambda_{i1}F_1 + \lambda_{i2}F_2 + ... + \lambda_{im}F_m +\epsilon_i\)</span></p></li>
 <li><p><span class="math inline">\(h_i^2 = \lambda_{i1}^2 + \lambda_{i2}^2 + ... + \lambda_{im}^2\)</span></p></li>
 <li><p>共同度(<span class="math inline">\(h_i^2\)</span>)在数值上等于因子载荷矩阵中第i行因子载荷的平方和，反映”所有因子对这个变量共同制约的程度”，共同度越接近1越好</p></li>
 </ul>
@@ -521,9 +521,9 @@ X_p = \lambda_{p1}F_1 + \lambda_{p2}F_2+ ... + \lambda_{pm}F_m +\epsilon_p
 <section id="section-3" class="slide level2">
 <h2></h2>
 <ul>
-<li><p><span class="math inline">\(X_i = \lambda_{i1}F_1 + \lambda_{i2}F_2+ ... + \lambda_{im}F_m +\epsilon_i\)</span></p></li>
-<li><p><span class="math inline">\(X_p = \lambda_{p1}F_1 +\lambda_{p2}F_2+ ... + \lambda_{pm}F_m +\epsilon_p\)</span></p></li>
-<li><p><span class="math inline">\(v_j^2 = {\textstyle \sum_{i=1}^{p}} \lambda_{ij}^2 = \lambda_{1j}^2 +\lambda_{2j}^2 + ... + \lambda_{pj}^2\)</span></p></li>
+<li><p><span class="math inline">\(X_i = \lambda_{i1}F_1 + \lambda_{i2}F_2+ ... + \lambda_{im}F_m + \epsilon_i\)</span></p></li>
+<li><p><span class="math inline">\(X_p = \lambda_{p1}F_1 +\lambda_{p2}F_2+ ... + \lambda_{pm}F_m + \epsilon_p\)</span></p></li>
+<li><p><span class="math inline">\(v_j^2 = {\textstyle \sum_{i = 1}^{p}} \lambda_{ij}^2 = \lambda_{1j}^2 +\lambda_{2j}^2 + ... + \lambda_{pj}^2\)</span></p></li>
 <li><p>反映公共因子对所有变量总的影响，以及其在所有公共因子中的相对重要性</p></li>
 </ul>
 </section>
@@ -553,8 +553,8 @@ X_p = \lambda_{p1}F_1 + \lambda_{p2}F_2+ ... + \lambda_{pm}F_m +\epsilon_p
 <li><p>KMO &gt; 0.9，非常合适；</p></li>
 <li><p>0.8 &lt; KMO &lt;0.9，合适；</p></li>
 <li><p>0.7 &lt; KMO &lt; 0.8，一般；</p></li>
-<li><p>0.6 &lt; KMO &lt;0.7，不太合适；</p></li>
-<li><p>KMO &lt;0.5，极不合适。</p></li>
+<li><p>0.6 &lt; KM O &lt;0.7，不太合适；</p></li>
+<li><p>KMO &lt; 0.5，极不合适。</p></li>
 </ul></li>
 </ul>
 </section>
@@ -570,7 +570,7 @@ X_p = \lambda_{p1}F_1 + \lambda_{p2}F_2+ ... + \lambda_{pm}F_m +\epsilon_p
 <section id="step-2-因子数的确定" class="slide level2">
 <h2>Step 2: 因子数的确定</h2>
 <ul>
-<li><p>抽取的m个因子对原变量方差的解释率要达到较高比例，一般建议达到80%，实际运用可根据具体情况调整，也可定在40%~60%。</p></li>
+<li><p>抽取的m个因子对原变量方差的解释率要达到较高比例，一般建议达到80%，实际运用可根据具体情况调整，也可定在40% ~ 60%。</p></li>
 <li><p>特征值大于1，低于1的特征值表明该因子可解释的变异信息比原变量的变异方差小。</p></li>
 <li><p>通过碎石图确定。选择碎石曲线从迅速下降到平缓的拐点确定因子数。</p></li>
 <li><p>结合定性分析。结合理论与经验分析。</p></li>
@@ -610,7 +610,7 @@ X_p = \lambda_{p1}F_1 + \lambda_{p2}F_2+ ... + \lambda_{pm}F_m +\epsilon_p
 <li><p><span class="math inline">\(\widehat{F_j} =W_{j1} × ZX_1 + W_{j2} × ZX_2 + ... + W_{jp} × ZX_p\)</span></p>
 <ul>
 <li><span class="math inline">\(W_{ij}\)</span>为标准化后的数据矩阵X的加权系数，反映第i个变量和第j个因子的相关关系</li>
-<li>误差项为真因子分F与因子分估计值<span class="math inline">\(\widehat{F}\)</span>之间的差异, <span class="math inline">\(E = F- \widehat{F}\)</span></li>
+<li>误差项为真因子分F与因子分估计值<span class="math inline">\(\widehat{F}\)</span>之间的差异, <span class="math inline">\(E = F - \widehat{F}\)</span></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -2524,16 +2524,16 @@ X_p = \lambda_{p1}F_1 + \lambda_{p2}F_2+ ... + \lambda_{pm}F_m +\epsilon_p
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">EFA</span>(df, <span class="at">varrange=</span><span class="fu">c</span>(<span class="st">"BFI_A1:BFI_E8"</span>),<span class="co"># 选取观测变量</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a>    <span class="at">nfactors=</span><span class="st">"parallel"</span>, <span class="co">#决定抽取多少因子</span></span>
-<span id="cb4-3"><a href="#cb4-3"></a>    <span class="at">method=</span><span class="st">"minres"</span>,<span class="co"># 因子提取方法,最小残差因子分析       </span></span>
-<span id="cb4-4"><a href="#cb4-4"></a>    <span class="at">rotation=</span><span class="st">"varimax"</span>, <span class="co"># 旋转方法，方差最大化</span></span>
-<span id="cb4-5"><a href="#cb4-5"></a>    <span class="at">kaiser=</span><span class="cn">FALSE</span>, <span class="co"># 有没有进行kaiser正态化</span></span>
-<span id="cb4-6"><a href="#cb4-6"></a>    <span class="at">sort.loadings=</span><span class="cn">TRUE</span>, <span class="co"># 按照因子载荷排序</span></span>
-<span id="cb4-7"><a href="#cb4-7"></a>    <span class="at">hide.loadings=</span><span class="fl">0.45</span>,<span class="co">#因子载荷阈值</span></span>
-<span id="cb4-8"><a href="#cb4-8"></a>    <span class="at">plot.scree =</span> <span class="cn">TRUE</span>,<span class="co">#绘制碎石图</span></span>
-<span id="cb4-9"><a href="#cb4-9"></a>    <span class="at">max.iter =</span> <span class="dv">25</span>,<span class="co">#最大迭代次数</span></span>
-<span id="cb4-10"><a href="#cb4-10"></a>    <span class="at">min.eigen =</span> <span class="dv">1</span>,<span class="co">#最小特征值</span></span>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>bruceR<span class="sc">::</span><span class="fu">EFA</span>(df, <span class="at">varrange=</span><span class="fu">c</span>(<span class="st">"BFI_A1:BFI_E8"</span>), <span class="co"># 选取观测变量</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>    <span class="at">nfactors=</span><span class="st">"parallel"</span>,             <span class="co"># 决定抽取多少因子</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a>    <span class="at">method=</span><span class="st">"minres"</span>,                 <span class="co"># 因子提取方法,最小残差因子分析       </span></span>
+<span id="cb4-4"><a href="#cb4-4"></a>    <span class="at">rotation=</span><span class="st">"oblimin"</span>,              <span class="co"># 旋转方法，方差最大化</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a>    <span class="at">kaiser=</span><span class="cn">FALSE</span>,                    <span class="co"># 有没有进行kaiser正态化</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a>    <span class="at">sort.loadings=</span><span class="cn">TRUE</span>,              <span class="co"># 按照因子载荷排序</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a>    <span class="at">hide.loadings=</span><span class="fl">0.45</span>,              <span class="co"># 因子载荷阈值</span></span>
+<span id="cb4-8"><a href="#cb4-8"></a>    <span class="at">plot.scree =</span> <span class="cn">TRUE</span>,               <span class="co"># 绘制碎石图</span></span>
+<span id="cb4-9"><a href="#cb4-9"></a>    <span class="at">max.iter =</span> <span class="dv">25</span>,                   <span class="co"># 最大迭代次数</span></span>
+<span id="cb4-10"><a href="#cb4-10"></a>    <span class="at">min.eigen =</span> <span class="dv">1</span>,                   <span class="co"># 最小特征值</span></span>
 <span id="cb4-11"><a href="#cb4-11"></a>    )  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -2548,7 +2548,7 @@ Valid Cases: 377 (100.0%)
 Extraction Method:
 - Minimum Residual Factor Analysis
 Rotation Method:
-- Varimax
+- Oblimin
 
 KMO and Bartlett's Test:
 - Kaiser-Meyer-Olkin (KMO) Measure of Sampling Adequacy: MSA = 0.865
@@ -2558,12 +2558,12 @@ Total Variance Explained:
 ────────────────────────────────────────────────────────────────────────────────
            Eigenvalue Variance % Cumulative % SS Loading Variance % Cumulative %
 ────────────────────────────────────────────────────────────────────────────────
-Factor 1        8.026     18.241       18.241      4.077      9.266        9.266
-Factor 2        4.236      9.628       27.869      3.715      8.444       17.710
-Factor 3        3.380      7.681       35.550      3.116      7.082       24.792
-Factor 4        2.182      4.959       40.509      2.972      6.756       31.547
-Factor 5        1.945      4.420       44.929      2.493      5.665       37.213
-Factor 6        1.584      3.600       48.529      1.488      3.381       40.594
+Factor 1        8.026     18.241       18.241      7.482     17.005       17.005
+Factor 2        4.236      9.628       27.869      3.691      8.388       25.393
+Factor 3        3.380      7.681       35.550      2.792      6.345       31.738
+Factor 4        2.182      4.959       40.509      1.597      3.629       35.367
+Factor 5        1.945      4.420       44.929      1.303      2.962       38.329
+Factor 6        1.584      3.600       48.529      0.997      2.265       40.594
 Factor 7        1.278      2.905       51.435                                   
 Factor 8        1.101      2.502       53.937                                   
 Factor 9        1.053      2.394       56.331                                   
@@ -2605,54 +2605,54 @@ Factor 44       0.228      0.519      100.000
 ────────────────────────────────────────────────────────────────────────────────
 
 Factor Loadings (Rotated) (Sorted by Size):
-────────────────────────────────────────────────────────────
-            MR2   MR1    MR3    MR6   MR5    MR4 Communality
-────────────────────────────────────────────────────────────
-BFI_C6    0.729                                        0.590
-BFI_N3    0.678                                        0.559
-BFI_N7   -0.676                                        0.539
-BFI_N5    0.673                                        0.493
-BFI_N1    0.635                                        0.480
-BFI_N2    0.633                                        0.425
-BFI_N4    0.531                                        0.321
-BFI_N8                                                 0.487
-BFI_C7                                                 0.235
-BFI_A9                                                 0.253
-BFI_O2          0.698                                  0.553
-BFI_O1          0.644                                  0.499
-BFI_O7          0.619                                  0.443
-BFI_O4          0.596                                  0.439
-BFI_O8                                                 0.283
-BFI_N6                                                 0.351
-BFI_E3                                                 0.382
-BFI_O5                                                 0.253
-BFI_E1                 0.722                           0.699
-BFI_E6                -0.708                           0.551
-BFI_E8                -0.663                           0.476
-BFI_E2                 0.558                           0.544
-BFI_A8                -0.511                           0.329
-BFI_E5                 0.461                           0.579
-BFI_E4                                                 0.524
-BFI_E7                                                 0.384
-BFI_C1                        0.631                    0.436
-BFI_C8                       -0.586                    0.422
-BFI_C3                        0.553                    0.375
-BFI_C5                        0.550                    0.381
-BFI_C2                        0.489                    0.328
-BFI_C4                        0.467                    0.343
-BFI_C9                                                 0.294
-BFI_A1                              0.589              0.390
-BFI_A4                              0.520              0.364
-BFI_A3                              0.465              0.336
-BFI_A5                                                 0.205
-BFI_A7                                                 0.362
-BFI_A2                                                 0.236
-BFI_A6                                                 0.188
-BFI_O10                                    0.640       0.425
-BFI_O3                                    -0.605       0.499
-BFI_O6                                    -0.488       0.362
-BFI_O9                                                 0.245
-────────────────────────────────────────────────────────────
+────────────────────────────────────────────────────
+            MR1    MR2   MR3 MR4 MR5 MR6 Communality
+────────────────────────────────────────────────────
+BFI_E5    0.679                                0.579
+BFI_E4    0.633                                0.524
+BFI_E1    0.630                                0.699
+BFI_N8    0.627                                0.487
+BFI_E2    0.610                                0.544
+BFI_E3    0.601                                0.382
+BFI_O2    0.538                                0.553
+BFI_O1    0.524                                0.499
+BFI_O7    0.493                                0.443
+BFI_C2    0.489                                0.328
+BFI_N6    0.478                                0.351
+BFI_O4    0.456                                0.439
+BFI_C4                                         0.343
+BFI_C5                                         0.381
+BFI_C3                                         0.375
+BFI_C1                                         0.436
+BFI_A3                                         0.336
+BFI_C8                                         0.422
+BFI_O3                                         0.499
+BFI_A4                                         0.364
+BFI_A8                                         0.329
+BFI_A2                                         0.236
+BFI_C6           0.596                         0.590
+BFI_N1           0.590                         0.480
+BFI_N3   -0.492  0.553                         0.559
+BFI_N7          -0.526                         0.539
+BFI_N5           0.515                         0.493
+BFI_N2           0.486                         0.425
+BFI_O8                                         0.283
+BFI_N4                                         0.321
+BFI_C7                                         0.235
+BFI_C9                                         0.294
+BFI_A6                                         0.188
+BFI_E6                 0.581                   0.551
+BFI_E8                 0.549                   0.476
+BFI_E7                 0.508                   0.384
+BFI_A1                                         0.390
+BFI_O5                                         0.253
+BFI_O9                                         0.245
+BFI_O10                                        0.425
+BFI_O6                                         0.362
+BFI_A7                                         0.362
+BFI_A9                                         0.253
+BFI_A5                                         0.205
+────────────────────────────────────────────────────
 Communality = Sum of Squared (SS) Factor Loadings
 (Uniqueness = 1 - Communality)</code></pre>
 </div>
@@ -2785,16 +2785,16 @@ Communality = Sum of Squared (SS) Factor Loadings
 <section id="示例-1" class="slide level2">
 <h2>示例</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">EFA</span>(df, <span class="at">varrange=</span><span class="fu">c</span>(<span class="st">"BFI_A1:BFI_E8"</span>),<span class="co"># 选取观测变量</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a>    <span class="at">nfactors=</span><span class="st">"parallel"</span>, <span class="co">#决定抽取多少因子</span></span>
-<span id="cb6-3"><a href="#cb6-3"></a>    <span class="at">method=</span><span class="st">"pca"</span>,<span class="co"># 主成分分析       </span></span>
-<span id="cb6-4"><a href="#cb6-4"></a>    <span class="at">rotation=</span><span class="st">"varimax"</span>, <span class="co"># 旋转方法，方差最大化</span></span>
-<span id="cb6-5"><a href="#cb6-5"></a>    <span class="at">kaiser=</span><span class="cn">FALSE</span>, <span class="co"># 有没有进行kaiser正态化</span></span>
-<span id="cb6-6"><a href="#cb6-6"></a>    <span class="at">sort.loadings=</span><span class="cn">TRUE</span>, <span class="co"># 按照因子载荷排序</span></span>
-<span id="cb6-7"><a href="#cb6-7"></a>    <span class="at">hide.loadings=</span><span class="fl">0.45</span>,<span class="co">#因子载荷阈值</span></span>
-<span id="cb6-8"><a href="#cb6-8"></a>    <span class="at">plot.scree =</span> <span class="cn">TRUE</span>,<span class="co">#绘制碎石图</span></span>
-<span id="cb6-9"><a href="#cb6-9"></a>    <span class="at">max.iter =</span> <span class="dv">25</span>,<span class="co">#最大迭代次数</span></span>
-<span id="cb6-10"><a href="#cb6-10"></a>    <span class="at">min.eigen =</span> <span class="dv">1</span>,<span class="co">#最小特征值</span></span>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>bruceR<span class="sc">::</span><span class="fu">EFA</span>(df, <span class="at">varrange=</span><span class="fu">c</span>(<span class="st">"BFI_A1:BFI_E8"</span>), <span class="co"># 选取观测变量</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>    <span class="at">nfactors=</span><span class="st">"parallel"</span>,                     <span class="co"># 决定抽取多少因子</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a>    <span class="at">method=</span><span class="st">"pca"</span>,                            <span class="co"># 主成分分析       </span></span>
+<span id="cb6-4"><a href="#cb6-4"></a>    <span class="at">rotation=</span><span class="st">"none"</span>,                         <span class="co"># 旋转方法，none</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a>    <span class="at">kaiser=</span><span class="cn">FALSE</span>,                            <span class="co"># 有没有进行kaiser正态化</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a>    <span class="at">sort.loadings=</span><span class="cn">TRUE</span>,                      <span class="co"># 按照因子载荷排序</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a>    <span class="at">hide.loadings=</span><span class="fl">0.45</span>,                      <span class="co"># 因子载荷阈值</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a>    <span class="at">plot.scree =</span> <span class="cn">TRUE</span>,                       <span class="co"># 绘制碎石图</span></span>
+<span id="cb6-9"><a href="#cb6-9"></a>    <span class="at">max.iter =</span> <span class="dv">25</span>,                           <span class="co"># 最大迭代次数</span></span>
+<span id="cb6-10"><a href="#cb6-10"></a>    <span class="at">min.eigen =</span> <span class="dv">1</span>,                           <span class="co"># 最小特征值</span></span>
 <span id="cb6-11"><a href="#cb6-11"></a>    )  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -2809,7 +2809,7 @@ Valid Cases: 377 (100.0%)
 Extraction Method:
 - Principal Component Analysis
 Rotation Method:
-- Varimax
+- None
 
 KMO and Bartlett's Test:
 - Kaiser-Meyer-Olkin (KMO) Measure of Sampling Adequacy: MSA = 0.865
@@ -2819,12 +2819,12 @@ Total Variance Explained:
 ───────────────────────────────────────────────────────────────────────────────────
               Eigenvalue Variance % Cumulative % SS Loading Variance % Cumulative %
 ───────────────────────────────────────────────────────────────────────────────────
-Component 1        8.026     18.241       18.241      4.613     10.485       10.485
-Component 2        4.236      9.628       27.869      4.327      9.833       20.318
-Component 3        3.380      7.681       35.550      3.607      8.198       28.515
-Component 4        2.182      4.959       40.509      3.586      8.150       36.665
-Component 5        1.945      4.420       44.929      3.126      7.105       43.770
-Component 6        1.584      3.600       48.529      2.094      4.759       48.529
+Component 1        8.026     18.241       18.241      8.026     18.241       18.241
+Component 2        4.236      9.628       27.869      4.236      9.628       27.869
+Component 3        3.380      7.681       35.550      3.380      7.681       35.550
+Component 4        2.182      4.959       40.509      2.182      4.959       40.509
+Component 5        1.945      4.420       44.929      1.945      4.420       44.929
+Component 6        1.584      3.600       48.529      1.584      3.600       48.529
 Component 7        1.278      2.905       51.435                                   
 Component 8        1.101      2.502       53.937                                   
 Component 9        1.053      2.394       56.331                                   
@@ -2865,55 +2865,55 @@ Component 43       0.239      0.543       99.481
 Component 44       0.228      0.519      100.000                                   
 ───────────────────────────────────────────────────────────────────────────────────
 
-Component Loadings (Rotated) (Sorted by Size):
-─────────────────────────────────────────────────────────────
-            RC2   RC1    RC6    RC3    RC5    RC4 Communality
-─────────────────────────────────────────────────────────────
-BFI_C6    0.746                                         0.620
-BFI_N7   -0.718                                         0.603
-BFI_N5    0.713                                         0.552
-BFI_N3    0.703                                         0.595
-BFI_N2    0.684                                         0.492
-BFI_N1    0.672                                         0.542
-BFI_N4    0.599                                         0.405
-BFI_N8   -0.451                                         0.551
-BFI_O2          0.718                                   0.588
-BFI_O7          0.675                                   0.506
-BFI_O1          0.667                                   0.545
-BFI_O4          0.637                                   0.502
-BFI_O8          0.465                                   0.351
-BFI_N6                                                  0.449
-BFI_E3                                                  0.427
-BFI_O5                                                  0.327
-BFI_C1                 0.693                            0.520
-BFI_C8                -0.666                            0.529
-BFI_C3                 0.617                            0.450
-BFI_C5                 0.609                            0.457
-BFI_C2                 0.558                            0.396
-BFI_C9                -0.548                            0.411
-BFI_C4                 0.525                            0.409
-BFI_C7                                                  0.346
-BFI_E6                       -0.755                     0.618
-BFI_E8                       -0.734                     0.575
-BFI_E1                        0.724                     0.711
-BFI_A8                       -0.609                     0.458
-BFI_E2                        0.586                     0.588
-BFI_E5                        0.475                     0.609
-BFI_E7                       -0.459                     0.470
-BFI_E4                        0.455                     0.563
-BFI_A1                               0.654              0.470
-BFI_A4                               0.592              0.476
-BFI_A5                               0.567              0.328
-BFI_A3                               0.536              0.418
-BFI_A7                              -0.488              0.498
-BFI_A2                                                  0.317
-BFI_A6                                                  0.317
-BFI_O10                                     0.735       0.560
-BFI_O3                                     -0.661       0.577
-BFI_O6                                     -0.571       0.472
-BFI_O9                                                  0.366
-BFI_A9                                                  0.390
-─────────────────────────────────────────────────────────────
+Component Loadings (Sorted by Size):
+───────────────────────────────────────────────────────
+            PC1    PC2   PC3    PC4 PC5 PC6 Communality
+───────────────────────────────────────────────────────
+BFI_E5    0.691                                   0.609
+BFI_E4    0.649                                   0.563
+BFI_N8    0.646                                   0.551
+BFI_E1    0.629                                   0.711
+BFI_E3    0.628                                   0.427
+BFI_E2    0.622                                   0.588
+BFI_O2    0.549                                   0.588
+BFI_O1    0.539                                   0.545
+BFI_C2    0.516                                   0.396
+BFI_O7    0.511                                   0.506
+BFI_N6    0.503                                   0.449
+BFI_C4    0.475                                   0.409
+BFI_O4    0.472                                   0.502
+BFI_C5    0.457                                   0.457
+BFI_C3    0.455                                   0.450
+BFI_C1                                            0.520
+BFI_A3                                            0.418
+BFI_C8                                            0.529
+BFI_O3                                            0.577
+BFI_A4                                            0.476
+BFI_A2                                            0.317
+BFI_N1           0.625                            0.542
+BFI_C6   -0.454  0.613                            0.620
+BFI_N3   -0.503  0.574                            0.595
+BFI_N7          -0.548                            0.603
+BFI_N5           0.545                            0.552
+BFI_N2           0.525                            0.492
+BFI_O8                                            0.351
+BFI_N4                                            0.405
+BFI_C7                                            0.346
+BFI_C9                                            0.411
+BFI_A6                                            0.317
+BFI_E6                 0.610                      0.618
+BFI_E8                 0.589                      0.575
+BFI_E7                 0.567                      0.470
+BFI_A1                                            0.470
+BFI_O5                                            0.327
+BFI_O9                                            0.366
+BFI_O6                       -0.456               0.472
+BFI_O10                                           0.560
+BFI_A8                                            0.458
+BFI_A9                                            0.390
+BFI_A7                                            0.498
+BFI_A5                                            0.328
+───────────────────────────────────────────────────────
 Communality = Sum of Squared (SS) Factor Loadings
 (Uniqueness = 1 - Communality)</code></pre>
 </div>
@@ -2977,7 +2977,7 @@ Communality = Sum of Squared (SS) Factor Loadings
 <h2></h2>
 <ul>
 <li><p>欧式距离（Euclidean Distance）是计算欧式空间中两点之间的直线距离</p></li>
-<li><p><span class="math inline">\(dict_{ED} = \sqrt{{\textstyle \sum_{k=1}^{m}} (x_{ik}-x_{jk})^2}\)</span></p></li>
+<li><p><span class="math inline">\(dict_{ED} = \sqrt{{\textstyle \sum_{k = 1}^{m}} (x_{ik} - x_{jk})^2}\)</span></p></li>
 </ul>
 </section>
 <section id="section-18" class="slide level2">
@@ -2985,7 +2985,7 @@ Communality = Sum of Squared (SS) Factor Loadings
 <ul>
 <li><p>曼哈顿距离（ManhattanDistance）也称绝对值距离，类似于在城市中两个地点之间的实际距离，即沿道路行驶的距离。</p></li>
 <li><p>计算空间中两点各维度指标间差值的绝对值之和。</p></li>
-<li><p><span class="math inline">\(dict_{mand} ={\textstyle \sum_{k=1}^{m}} \left | (x_{ik}-x_{jk})^2 \right |\)</span></p></li>
+<li><p><span class="math inline">\(dict_{mand} ={\textstyle \sum_{k = 1}^{m}} \left | (x_{ik} - x_{jk})^2 \right |\)</span></p></li>
 </ul>
 </section>
 <section id="section-19" class="slide level2">
@@ -2993,7 +2993,7 @@ Communality = Sum of Squared (SS) Factor Loadings
 <ul>
 <li><p>切比雪夫距离（Chebyshev Distance），向量空间中的距离度量。</p></li>
 <li><p>将空间坐标中两个点的距离定义为其各坐标数值差绝对值的最大值。</p></li>
-<li><p><span class="math inline">\(dict_{CD} =max \left | (x_{ik}-x_{jk}) \right |\)</span></p></li>
+<li><p><span class="math inline">\(dict_{CD} =max \left | (x_{ik} - x_{jk}) \right |\)</span></p></li>
 </ul>
 </section>
 <section id="测量指标的量纲统一" class="slide level2">
@@ -3070,13 +3070,13 @@ Communality = Sum of Squared (SS) Factor Loadings
 <section id="示例-2" class="slide level2">
 <h2>示例</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>df<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">'data/example13_2.csv'</span>)</span>
-<span id="cb8-2"><a href="#cb8-2"></a><span class="fu">rownames</span>(df)<span class="ot">&lt;-</span> df<span class="sc">$</span>X <span class="co"># 将第一列命名为索引</span></span>
-<span id="cb8-3"><a href="#cb8-3"></a>df <span class="ot">&lt;-</span> df[,<span class="sc">-</span><span class="dv">1</span>] <span class="co"># 去除原本的第一咧</span></span>
-<span id="cb8-4"><a href="#cb8-4"></a>df <span class="ot">&lt;-</span><span class="fu">scale</span>(df) <span class="co"># 将数据进行正态化</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'data/example13_2.csv'</span>)</span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="fu">rownames</span>(df) <span class="ot">&lt;-</span> df<span class="sc">$</span>X <span class="co"># 将第一列命名为索引</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a>df <span class="ot">&lt;-</span> df[,<span class="sc">-</span><span class="dv">1</span>]        <span class="co"># 去除原本的第一咧</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a>df <span class="ot">&lt;-</span> <span class="fu">scale</span>(df)      <span class="co"># 将数据进行正态化</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>d<span class="ot">&lt;-</span><span class="fu">dist</span>(df)<span class="co">#计算欧氏距离</span></span>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>d <span class="ot">&lt;-</span> <span class="fu">dist</span>(df)          <span class="co"># 计算欧氏距离</span></span>
 <span id="cb9-2"><a href="#cb9-2"></a>d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>           BFI_A1    BFI_A2    BFI_A3    BFI_A4    BFI_A5    BFI_A6    BFI_A7
@@ -3390,7 +3390,7 @@ BFI_E8   5.978740</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>fit1<span class="ot">&lt;-</span><span class="fu">hclust</span>(d,<span class="at">method =</span> <span class="st">"average"</span>) <span class="co"># 层次聚类分析</span></span>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>fit1 <span class="ot">&lt;-</span> <span class="fu">hclust</span>(d,<span class="at">method =</span> <span class="st">"average"</span>) <span class="co"># 层次聚类分析</span></span>
 <span id="cb11-2"><a href="#cb11-2"></a></span>
 <span id="cb11-3"><a href="#cb11-3"></a><span class="fu">plot</span>(fit1,<span class="at">hang =</span> <span class="sc">-</span><span class="dv">1</span>,<span class="at">cex=</span>.<span class="dv">8</span>,<span class="at">main =</span> <span class="st">"title"</span>) <span class="co"># 树状图</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -3398,14 +3398,14 @@ BFI_E8   5.978740</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">fviz_dend</span>(fit1,<span class="at">k=</span><span class="dv">4</span>,<span class="at">rect =</span>T,<span class="at">rect_fill =</span> T,<span class="at">type =</span> <span class="st">"circular"</span>,</span>
-<span id="cb12-2"><a href="#cb12-2"></a>          <span class="at">rect_border =</span> <span class="fu">c</span>(<span class="st">"#2E9FDF"</span>, <span class="st">"#00AFBB"</span>, <span class="st">"#E7B800"</span>, <span class="st">"#FC4E07"</span>)) <span class="co">#圆形视图</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">fviz_dend</span>(fit1, <span class="at">k=</span><span class="dv">4</span>, <span class="at">rect =</span>T, <span class="at">rect_fill =</span> T, <span class="at">type =</span> <span class="st">"circular"</span>,</span>
+<span id="cb12-2"><a href="#cb12-2"></a>          <span class="at">rect_border =</span> <span class="fu">c</span>(<span class="st">"#2E9FDF"</span>, <span class="st">"#00AFBB"</span>, <span class="st">"#E7B800"</span>, <span class="st">"#FC4E07"</span>)) <span class="co"># 圆形视图</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img data-src="lecture12_files/figure-revealjs/unnamed-chunk-8-1.png" width="960"></p>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">heatmap</span>(<span class="fu">as.matrix</span>(d)) <span class="co">#热力图</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">heatmap</span>(<span class="fu">as.matrix</span>(d)) <span class="co"># 热力图</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img data-src="lecture12_files/figure-revealjs/unnamed-chunk-9-1.png" width="960"></p>
 </div>
