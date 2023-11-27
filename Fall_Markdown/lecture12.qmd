@@ -70,7 +70,7 @@ Hu Chuan-Peng
 
 -   Model 2: Freq ~ 1 + Answer_Puppy + Answer_Flower + Agent_Robot + Answer_Puppy * Agent_Robot + Answer_Flower * Agent_Robot</br></br>
 
-![](images/1700804818480.jpg)
+![](images/12_1.jpg)
 
 # Part 1: 探索性因素分析(EFA)
 
@@ -102,13 +102,13 @@ Hu Chuan-Peng
 
 -   探索性因素分析的代数模型：
 
-![](images/1700805337187.jpg)
+![](images/12_2.jpg)
 
 ## 
 
 -   因素分析的代数模型：
 
-![](images/1700805435888.jpg)
+![](images/12_3.jpg)
 
 ## 探索性因素分析的代数模型
 
@@ -228,7 +228,7 @@ $X_1$, $X_2$, ...$X_p$分别表示某被试在第1个、第2个到第p个变量�
 
 ## 
 
-![](images/1700808593460.jpg)
+![](images/12_4.jpg)
 
 ## Step 4 & 5: 因子分计算与命名
 
@@ -277,13 +277,15 @@ bruceR::EFA(df, varrange=c("BFI_A1:BFI_E8"), # 选取观测变量
     )  
 ```
 
-![](images/1701056253249.jpg)
+## 
+
+![](images/12_5.jpg)
 
 # Part 2: 主成分分析(PCA)
 
 ## 
 
-![](images/1700810365953.jpg)
+![](images/12_6.jpg)
 
 ## 
 
@@ -293,7 +295,7 @@ bruceR::EFA(df, varrange=c("BFI_A1:BFI_E8"), # 选取观测变量
 
 ## 
 
-![](images/1700810459154.jpg)
+![](images/12_7.jpg)
 
 ## 标准化
 
@@ -325,7 +327,7 @@ bruceR::EFA(df, varrange=c("BFI_A1:BFI_E8"), # 选取观测变量
 
 ## 
 
-![](images/1700810738376.jpg)
+![](images/12_8.jpg)
 
 ## 
 
@@ -369,7 +371,7 @@ bruceR::EFA(df, varrange=c("BFI_A1:BFI_E8"), # 选取观测变量
 
 ## 
 
-![](images/1700810988139.jpg)
+![](images/12_9.jpg)
 
 -   紫色的线是最大化方差（从投影点（红点）到原点的平方距离的平均值）的线。
 
@@ -383,7 +385,7 @@ bruceR::EFA(df, varrange=c("BFI_A1:BFI_E8"), # 选取观测变量
 
 -   PCA可以用来进行图像压缩，通过舍弃信息较小的维度，保留信息较大的维度，从而实现降低图片的大小。
 
-![](images/1700811066762.jpg)
+![](images/12_10.jpg)
 
 https://blog.csdn.net/ctyqy2015301200079/article/details/85325125
 
@@ -409,11 +411,11 @@ bruceR::EFA(df, varrange=c("BFI_A1:BFI_E8"), # 选取观测变量
 
 ## 
 
-![](images/1701056390059.jpg)
+![](images/12_11.jpg)
 
 ## 
 
-![](images/1700811217292.jpg)
+![](images/12_12.jpg)
 
 # Part 3: 聚类分析
 
@@ -505,13 +507,13 @@ bruceR::EFA(df, varrange=c("BFI_A1:BFI_E8"), # 选取观测变量
 
 ## 
 
-![](images/1700881403678.jpg)
+![](images/12_13.jpg)
 
 https://zhuanlan.zhihu.com/p/37856153
 
 ## 
 
-![](images/1700881449626.jpg)
+![](images/12_14.jpg)
 
 https://zhuanlan.zhihu.com/p/37856153
 
@@ -554,7 +556,7 @@ https://zhuanlan.zhihu.com/p/37856153
 ```{r echo=TRUE}
 df <- read.csv('data/example13_2.csv')
 rownames(df) <- df$X # 将第一列命名为索引
-df <- df[,-1]        # 去除原本的第一咧
+df <- df[,-1]        # 去除原本的第一列
 df <- scale(df)      # 将数据进行正态化
 ```
 
