@@ -61,16 +61,7 @@ Hu Chuan-Peng
 
     -   适合性$\chi^2$检验；
     -   独立性$\chi^2$检验（列联表检验）。
-
-## 卡方检验与广义线性模型（GLM）
-
--   对数线性模型（log-linear model）
-
--   Model 1: Freq ~ 1 + Answer_Puppy + Answer_Flower + Agent_Robot
-
--   Model 2: Freq ~ 1 + Answer_Puppy + Answer_Flower + Agent_Robot + Answer_Puppy * Agent_Robot + Answer_Flower * Agent_Robot</br></br>
-
-![](images/12_1.jpg)
+    -   计数数据与回归模型
 
 # Part 1: 探索性因素分析(EFA)
 
