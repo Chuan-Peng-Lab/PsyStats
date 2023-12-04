@@ -28,6 +28,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="lecture13_files/libs/revealjs/dist/theme/quarto.css">
   <link href="lecture13_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -349,18 +414,19 @@
 <ul>
 <li><p>符号检验</p></li>
 <li><p>符号秩次检验</p></li>
+<li><p>秩和检验</p></li>
 <li><p>中位数检验</p></li>
 <li><p>置换检验</p></li>
 </ul>
 </section>
 <section id="回顾" class="slide level2">
 <h2>回顾</h2>
-<table style="width:100%;">
+<table>
 <colgroup>
-<col style="width: 24%">
-<col style="width: 24%">
+<col style="width: 22%">
 <col style="width: 26%">
-<col style="width: 24%">
+<col style="width: 29%">
+<col style="width: 22%">
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -628,7 +694,7 @@ https://www.youtube.com/watch?v=NZsL2eDQiDQ&amp;t=689s
 </ul>
 <table>
 <colgroup>
-<col style="width: 21%">
+<col style="width: 13%">
 <col style="width: 5%">
 <col style="width: 5%">
 <col style="width: 5%">
@@ -817,6 +883,22 @@ https://www.youtube.com/watch?v=NZsL2eDQiDQ&amp;t=689s
 </section>
 <section id="示例-1" class="slide level2">
 <h2>示例</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(pacman)</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">p_load</span>(<span class="st">'tidyverse'</span>,<span class="st">'coin'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'data/example14_1.csv'</span>) <span class="co"># 读取数据</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">wilcox.test</span>(df<span class="sc">$</span>X1, df<span class="sc">$</span>X2, <span class="at">paired=</span><span class="cn">TRUE</span>) <span class="co"># 符号秩次检验</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Wilcoxon signed rank test with continuity correction
+
+data:  df$X1 and df$X2
+V = 5.5, p-value = 0.002149
+alternative hypothesis: true location shift is not equal to 0</code></pre>
+</div>
+</div>
 </section></section>
 <section>
 <section id="part-3" class="title-slide slide level1 center">
@@ -887,18 +969,18 @@ https://www.youtube.com/watch?v=NZsL2eDQiDQ&amp;t=689s
 <p>某学校两个班采用不同教学方法进行教学，问：两种教学方法是否存在显著差异？</p>
 <table style="width:100%;">
 <colgroup>
-<col style="width: 27%">
-<col style="width: 6%">
-<col style="width: 6%">
-<col style="width: 6%">
-<col style="width: 6%">
-<col style="width: 6%">
-<col style="width: 6%">
-<col style="width: 6%">
-<col style="width: 6%">
-<col style="width: 6%">
-<col style="width: 6%">
-<col style="width: 6%">
+<col style="width: 15%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -971,6 +1053,20 @@ https://www.youtube.com/watch?v=NZsL2eDQiDQ&amp;t=689s
 </section>
 <section id="示例-2" class="slide level2">
 <h2>示例</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'data/example14_2.csv'</span>) <span class="co"># 读取数据</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="fu">wilcox.test</span>(df[df[<span class="st">'group'</span>]<span class="sc">==</span><span class="st">'class1'</span>,<span class="st">'score'</span>], </span>
+<span id="cb4-3"><a href="#cb4-3"></a>            df[df[<span class="st">'group'</span>]<span class="sc">==</span><span class="st">'class2'</span>,<span class="st">'score'</span>], </span>
+<span id="cb4-4"><a href="#cb4-4"></a>            <span class="at">paired=</span><span class="cn">FALSE</span>) <span class="co">#Mann-Whitney U test</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Wilcoxon rank sum exact test
+
+data:  df[df["group"] == "class1", "score"] and df[df["group"] == "class2", "score"]
+W = 6, p-value = 0.1255
+alternative hypothesis: true location shift is not equal to 0</code></pre>
+</div>
+</div>
 </section></section>
 <section>
 <section id="part-4" class="title-slide slide level1 center">
@@ -981,7 +1077,7 @@ https://www.youtube.com/watch?v=NZsL2eDQiDQ&amp;t=689s
 <h2>中位数检验(Median Test)</h2>
 <ul>
 <li><p>两个独立样本检验，如果两个样本的观察值没有显著性差异，那么合并观察值，各样本数据在共同的中位数的上下应各有一半。</p></li>
-<li><p>中位数检验是皮尔逊卡方检验的特例。它是一种非参数检验，用于检验“两个或多个样本的总体的中位数相同” 的原假设。每个样本中的数据被分配到两组，一组是由两组中数值高于中位数的数据组成，另一组是由中位数或低于中位数的数据组成。然后使用皮尔逊卡方检验来确定每个样本中的观测频率是否与结合两组的分布得出的预期频率不同。</p></li>
+<li><p>中位数检验是皮尔逊卡方检验的特例。它是一种非参数检验，用于检验”两个或多个样本的总体的中位数相同” 的原假设。每个样本中的数据被分配到两组，一组是由两组中数值高于中位数的数据组成，另一组是由中位数或低于中位数的数据组成。然后使用皮尔逊卡方检验来确定每个样本中的观测频率是否与结合两组的分布得出的预期频率不同。</p></li>
 </ul>
 </section>
 <section id="示例-3" class="slide level2">
@@ -990,12 +1086,372 @@ https://www.youtube.com/watch?v=NZsL2eDQiDQ&amp;t=689s
 </section>
 <section id="section-24" class="slide level2">
 <h2></h2>
+<ol type="1">
+<li>提出假设<br><br></li>
+</ol>
+<p><span class="math inline">\(H_0:\)</span>两个样本所代表总体的分布位置相同，中位数<span class="math inline">\(m_1= m_2\)</span></p>
+<p><span class="math inline">\(H_1:\)</span>两个样本所代表总体的分布位置不相同,中位数<span class="math inline">\(m_1\ne m_2\)</span></p>
+</section>
+<section id="section-25" class="slide level2">
+<h2></h2>
+<ol start="2" type="1">
+<li>根据虚无假设<span class="math inline">\(H_0\)</span>所提供的前提条件，选择合适的统计模型</li>
+</ol>
+<ul>
+<li>两样本量较小的独立样本。</li>
+</ul>
+</section>
+<section id="section-26" class="slide level2">
+<h2></h2>
+<ol start="3" type="1">
+<li>规定显著性水平<span class="math inline">\(\alpha\)</span>，<span class="math inline">\(\alpha\)</span>确定后，否定域也随之被确定了</li>
+</ol>
+<ul>
+<li>指定小概率的最大限为0.05。</li>
+</ul>
+</section>
+<section id="section-27" class="slide level2">
+<h2></h2>
+<ol start="4" type="1">
+<li>计算检验统计量的值</li>
+</ol>
+<ul>
+<li><p>混合观察值，从小到大排序，找到中位数，</p></li>
+<li><p>分别找到每个样本中大于和小于共同中位数的数据个数，</p></li>
+<li><p>列四格表，进行卡方检验</p></li>
+</ul>
+
+<img data-src="images/13.3.jpg" class="r-stretch quarto-figure-center"></section>
+<section id="section-28" class="slide level2">
+<h2></h2>
+<ol start="5" type="1">
+<li>做出决策。根据显著性水平<span class="math inline">\(\alpha\)</span>和检验统计量的分布，查相应的统计表，确定接受域和否定域的临界值，用计算出的统计量值与临界值做比较，从而做出拒绝或不拒绝虚无假设的决策。</li>
+</ol>
+<ul>
+<li><p><span class="math inline">\(\chi^2 = 4.089 &gt; \chi^2_{0.05} = 3.84\)</span></p></li>
+<li><p>拒绝虚无假设，多动症儿童服用药物后成绩提升幅度大于控制组儿童。</p></li>
+</ul>
+</section>
+<section id="示例-4" class="slide level2">
+<h2>示例</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'data/example14_3.csv'</span>) <span class="co"># 读取数据</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      group X.m count
+1 treatment yes    11
+2 treatment  no     9
+3   control yes     8
+4   control  no    22</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>observed <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">11</span>, <span class="dv">9</span>,<span class="dv">8</span>, <span class="dv">22</span>),<span class="at">nrow=</span><span class="dv">2</span>,<span class="at">ncol=</span><span class="dv">2</span>)<span class="co">#创建数据矩阵</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="fu">chisq.test</span>(observed,<span class="at">correct=</span><span class="cn">FALSE</span>)<span class="co">#卡方检验，不需要校正</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pearson's Chi-squared test
+
+data:  observed
+X-squared = 4.0889, df = 1, p-value = 0.04317</code></pre>
+</div>
+</div>
+</section>
+<section id="非参数检验的优点" class="slide level2">
+<h2>非参数检验的优点</h2>
+<ul>
+<li><p>一般不需要严格的假设前提。</p></li>
+<li><p>稳定性，对个别较大的偏离数据不太敏感。</p></li>
+<li><p>运算简单，容易理解。</p></li>
+<li><p>适用于小样本，无分布样本，数据污染样本，混杂样本，预实验。</p></li>
+</ul>
+</section>
+<section id="非参数检验的缺点" class="slide level2">
+<h2>非参数检验的缺点</h2>
+<ul>
+<li><p>未能充分利用资料的全部信息，对数据变化不敏感，与参数检验相比，犯二类错误的概率大一点</p></li>
+<li><p>对于大样本数据，如不采用适当的近似计算，运算会十分庞杂。</p></li>
+<li><p>不能处理变量间的交互作用。</p></li>
+</ul>
+</section>
+<section id="参数检验-vs-非参数检验" class="slide level2">
+<h2>参数检验 VS 非参数检验</h2>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 23%">
+<col style="width: 23%">
+<col style="width: 30%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">自变量</th>
+<th style="text-align: left;">因变量</th>
+<th style="text-align: left;">参数检验</th>
+<th style="text-align: left;">非参数检验</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">定量变量</td>
+<td style="text-align: left;">定量变量</td>
+<td style="text-align: left;">皮尔逊相关</td>
+<td style="text-align: left;">斯皮尔曼等级相关</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">定性（分类）变量</td>
+<td style="text-align: left;">定性（分类）变量</td>
+<td style="text-align: left;">皮尔逊相关</td>
+<td style="text-align: left;">卡方检验</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">三组或以上的定性变量</td>
+<td style="text-align: left;">定量变量</td>
+<td style="text-align: left;">单样本t检验</td>
+<td style="text-align: left;">符号检验</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">两组定性变量</td>
+<td style="text-align: left;">来自不同样本的定量变量</td>
+<td style="text-align: left;">独立样本t检验</td>
+<td style="text-align: left;">秩和检验，中位数检验</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">两组定性变量</td>
+<td style="text-align: left;">来自同一样本的定量变量</td>
+<td style="text-align: left;">配对样本t检验</td>
+<td style="text-align: left;">符号检验，符号秩次检验</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">三组或三组以上的定性变量</td>
+<td style="text-align: left;">定量变量</td>
+<td style="text-align: left;">方差分析</td>
+<td style="text-align: left;">Kruskal-Walls H检验</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">三组或三组以上的定性变量</td>
+<td style="text-align: left;">两个或两个以上的定量变量</td>
+<td style="text-align: left;">多元方差分析</td>
+<td style="text-align: left;">ANOSIM(Analysis of similarities)</td>
+</tr>
+</tbody>
+</table>
+</section></section>
+<section>
+<section id="part-5" class="title-slide slide level1 center">
+<h1>Part 5</h1>
+
+</section>
+<section id="置换检验permutation-test" class="slide level2">
+<h2>置换检验(Permutation Test)</h2>
+<p>为了缓解当下年轻人普遍的焦虑状况，某临床心理学家发明了一种新的疗法。他想要对疗法的效果进行测试，于是选取了10名有焦虑症状的被试，在确保这10名被试接受测试前的焦虑水平同质的情况下，将这两组被试随机分为两组，一组是治疗组，一组是控制组。接受治疗后，使用焦虑自评量表(SAS)进行测量，两组得分如下：</p>
+<table>
+<thead>
+<tr class="header">
+<th>治疗组</th>
+<th>34</th>
+<th>46</th>
+<th>47</th>
+<th>50</th>
+<th>43</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>控制组</td>
+<td>49</td>
+<td>56</td>
+<td>48</td>
+<td>60</td>
+<td>53</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="section-29" class="slide level2">
+<h2></h2>
+<p>我们是否可以使用之前学到的检验方法来对治疗效果进行检验？</p>
+<ul>
+<li><p>z检验</p></li>
+<li><p>t检验</p></li>
+<li><p>f检验</p></li>
+</ul>
+</section>
+<section id="section-30" class="slide level2">
+<h2></h2>
+<p>无论是z检验，t检验，还是F检验，都有一条最基本的假定——总体呈正态分布。</p>
+<p>但是我们并不知道这些被试的总体的分布情况。那么我们该怎么对治疗效果进行检验呢？</p>
+</section>
+<section id="section-31" class="slide level2">
+<h2></h2>
+<p>置换检验(Permutation test)是Fisher于20世纪30年代提出的一种基于大量计算，利用样本数据的随机排列，进行统计推断的方法。</p>
+<p>因其对总体分布自由，应用较为广泛，特别适用于总体分布未知的小样本资料，以及某些难以用常规方法分析资料的假设检验问题。</p>
+</section>
+<section id="section-32" class="slide level2">
+<h2></h2>
+<p>在介绍置换检验的原理之前，我们先以t检验为例，回顾一下参数检验的基本原理。</p>
+</section>
+<section id="section-33" class="slide level2">
+<h2></h2>
+<ul>
+<li><p>假定治疗组和控制组总体呈正态分布；</p></li>
+<li><p>虚无假设为治疗组和控制组之间没有差异；</p></li>
+<li><p>使用独立样本t检验的方法来计算两组差异的t值以及对应的自由度；</p></li>
+<li><p>将计算得到的t值与对应自由度下的t分布进行比较，得到p值，判断p值是否小于显著性水平；</p></li>
+<li><p>若p值是否大于显著性水平，则没有证据能够拒绝虚无假设，若p值是否小于显著性水平，则有证据能够拒绝虚无假设。</p></li>
+</ul>
+</section>
+<section id="section-34" class="slide level2">
+<h2></h2>
+<p>参数检验的核心就是计算统计量在该统计量分布中的位置，t检验是基于t分布来进行计算，z检验是基于正态分布进行计算，F检验是基于F分布来进行计算。</p>
+
+<img data-src="images/13.4.jpg" class="r-stretch quarto-figure-center"><center>
+https://en.wikipedia.org/wiki/Student%27s_t-distribution
+</center>
+</section>
+<section id="section-35" class="slide level2">
+<h2></h2>
+<p>除了上节课提到的不对参数分布做要求的非参数检验方法外，置换检验通过将样本数据随机排列来构造新的分布。</p>
+<p>那么置换检验是怎样构造新的分布的呢？</p>
+</section>
+<section id="section-36" class="slide level2">
+<h2></h2>
+
+<img data-src="images/13.5.gif" class="r-stretch quarto-figure-center"><center>
+https://commons.wikimedia.org/wiki/File:Permutation_test_example_animation.gif
+</center>
+</section>
+<section id="置换检验的原理" class="slide level2">
+<h2>置换检验的原理</h2>
+<p>首先，我们做出假设：</p>
+<p><span class="math display">\[H_0: \mu_{treatment} = \mu_{control}\]</span> <span class="math display">\[H_1: \mu_{treatment} \ne \mu_{control}\]</span></p>
+<ul>
+<li><p>虚无假设表明新的治疗方法没有效果，</p></li>
+<li><p>备择假设表明新的治疗效果存在效果</p></li>
+</ul>
+</section>
+<section id="section-37" class="slide level2">
+<h2></h2>
+<table>
+<thead>
+<tr class="header">
+<th>治疗组</th>
+<th>34</th>
+<th>46</th>
+<th>47</th>
+<th>50</th>
+<th>43</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>控制组</td>
+<td>49</td>
+<td>56</td>
+<td>48</td>
+<td>60</td>
+<td>53</td>
+</tr>
+</tbody>
+</table>
+<p>然后，我们计算两组均值之差 d = -9.2</p>
+</section>
+<section id="section-38" class="slide level2">
+<h2></h2>
+<table>
+<thead>
+<tr class="header">
+<th>治疗组</th>
+<th>34</th>
+<th>46</th>
+<th>47</th>
+<th>50</th>
+<th>43</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>控制组</td>
+<td>49</td>
+<td>56</td>
+<td>48</td>
+<td>60</td>
+<td>53</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">\[\downarrow\]</span></p>
+<p>将原数据进行重新随机排列</p>
+<p>34, 46, 47, 50, 43, 49, 56, 48, 60, 53</p>
+<p><span class="math display">\[\downarrow\]</span></p>
+<p>将重新随机排列后的结果分为两组</p>
+<table>
+<thead>
+<tr class="header">
+<th>治疗组</th>
+<th>46</th>
+<th>48</th>
+<th>34</th>
+<th>60</th>
+<th>49</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>控制组</td>
+<td>53</td>
+<td>47</td>
+<td>56</td>
+<td>50</td>
+<td>43</td>
+</tr>
+</tbody>
+</table>
+<p>d = -2.4, 计算两组均值的差值</p>
+</section>
+<section id="section-39" class="slide level2">
+<h2></h2>
+<p>重复该过程<span class="math inline">\(i\)</span>次，每一次我们都会得到一个均值的差值<span class="math inline">\(d_i\)</span>,最后我们会得到<span class="math inline">\(i\)</span>个<span class="math inline">\(d_i\)</span>形成的新分布。</p>
+
+<img data-src="images/13.6.jpg" class="r-stretch quarto-figure-center"></section>
+<section id="section-40" class="slide level2">
+<h2></h2>
+<p>最后，我们将真实的治疗组与控制组之间的差值d的相对位置在新分布中表示出来，并计算小于等于该值的差值<span class="math inline">\(d_i\)</span>数量占所有<span class="math inline">\(d_i\)</span>的比例。</p>
+<p><img data-src="images/13.7.jpg" data-fig-align="center"> 因此我们提供了证据支持新的治疗效果对缓解焦虑有效。</p>
+</section>
+<section id="section-41" class="slide level2">
+<h2></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">condition =</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">'treatment'</span>, <span class="dv">5</span>),<span class="fu">rep</span>(<span class="st">'control'</span>, <span class="dv">5</span>))),</span>
+<span id="cb10-2"><a href="#cb10-2"></a>                 <span class="at">number =</span> <span class="fu">c</span>(<span class="dv">34</span>, <span class="dv">46</span>, <span class="dv">47</span>, <span class="dv">50</span>, <span class="dv">43</span>, <span class="dv">49</span>, <span class="dv">56</span>, <span class="dv">48</span>, <span class="dv">60</span>, <span class="dv">53</span>))</span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="fu">oneway_test</span>(number <span class="sc">~</span> condition, </span>
+<span id="cb10-4"><a href="#cb10-4"></a>            <span class="at">data =</span> df, </span>
+<span id="cb10-5"><a href="#cb10-5"></a>            <span class="at">distribution=</span><span class="fu">approximate</span>(<span class="at">nresample=</span><span class="dv">500</span>)) <span class="co"># 置换次数</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Approximative Two-Sample Fisher-Pitman Permutation Test
+
+data:  number by condition (control, treatment)
+Z = 2.0338, p-value = 0.042
+alternative hypothesis: true mu is not equal to 0</code></pre>
+</div>
+</div>
+</section>
+<section id="section-42" class="slide level2">
+<h2></h2>
+<p>一个可视化的例子：羊毛产量会受到清洁剂的影响吗？</p>
+<p>https://www.jwilber.me/permutationtest/</p>
+</section>
+<section id="置换检验的应用" class="slide level2">
+<h2>置换检验的应用</h2>
+<p>在心理学研究中，由于临床数据和神经信号的数据多为小样本数据，且一般都不服从正态分布，故置换检验能发挥很大的作用。</p>
 </section>
 <section id="总结" class="slide level2">
 <h2>总结</h2>
 <ul>
 <li><p>符号检验</p></li>
 <li><p>符号秩次检验</p></li>
+<li><p>秩和检验</p></li>
 <li><p>中位数检验</p></li>
 <li><p>置换检验</p></li>
 </ul>
@@ -1215,6 +1671,44 @@ https://www.youtube.com/watch?v=NZsL2eDQiDQ&amp;t=689s
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

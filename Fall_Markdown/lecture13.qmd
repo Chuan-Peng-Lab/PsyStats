@@ -35,7 +35,7 @@ Hu Chuan-Peng
 
 <h3 style="text-align: center">
 
-2023-12-06
+2023-12-05
 
 </h3>
 
@@ -134,7 +134,7 @@ $H_1:$噪声刺激前后被试的心率差值 $d$ 总体的中位数 $\ne 0$
 
 4.  计算检验统计量的值
 
--   $n_+ = 2$，$n_− = 13$，$n_0$, $N = n_+ + n_− = 15$，检验的统计量为k，$k = min(n_+, n_-) = 2$
+-   $n_+ = 2$，$n_− = 13$，$N = n_+ + n_− = 15$，检验的统计量为k，$k = min(n_+, n_-) = 2$
 
 ## 
 
@@ -213,6 +213,19 @@ $H_1:$噪声刺激前后被试的心率差值 $d$ 总体的中位数 $\ne 0$
 -   拒绝虚无假设，噪声刺激对心率有显著影响
 
 ## 示例
+
+```{r, echo=TRUE}
+library(pacman)
+p_load('tidyverse','coin')
+```
+
+
+
+```{r, echo=TRUE}
+df <- read.csv('data/example14_1.csv') # 读取数据
+wilcox.test(df$X1, df$X2, paired=TRUE) # 符号秩次检验
+```
+
 
 # Part 3
 
@@ -295,6 +308,13 @@ T = 1 + 2 + 4 + 5 + 9 = 21
 
 ## 示例
 
+```{r, echo=TRUE}
+df <- read.csv('data/example14_2.csv') # 读取数据
+wilcox.test(df[df['group']=='class1','score'], 
+            df[df['group']=='class2','score'], 
+            paired=FALSE) #Mann-Whitney U test
+```
+
 # Part 4
 
 ## 中位数检验(Median Test)
@@ -346,6 +366,20 @@ $H_1:$两个样本所代表总体的分布位置不相同,中位数$m_1\ne m_2$
 -   $\chi^2 = 4.089 > \chi^2_{0.05} = 3.84$
 
 -   拒绝虚无假设，多动症儿童服用药物后成绩提升幅度大于控制组儿童。
+
+
+## 示例
+
+```{r, echo=TRUE}
+df <- read.csv('data/example14_3.csv') # 读取数据
+df
+```
+
+```{r, echo=TRUE}
+observed <- matrix(c(11, 9,8, 22),nrow=2,ncol=2)#创建数据矩阵
+chisq.test(observed,correct=FALSE)#卡方检验，不需要校正
+```
+
 
 ## 非参数检验的优点
 
@@ -505,6 +539,17 @@ d = -2.4, 计算两组均值的差值
 因此我们提供了证据支持新的治疗效果对缓解焦虑有效。
 
 
+##
+
+```{r echo=TRUE}
+df <- data.frame(condition = factor(c(rep('treatment', 5),rep('control', 5))),
+                 number = c(34, 46, 47, 50, 43, 49, 56, 48, 60, 53))
+oneway_test(number ~ condition, 
+            data = df, 
+            distribution=approximate(nresample=500)) # 置换次数
+
+
+```
 
 
 ##
