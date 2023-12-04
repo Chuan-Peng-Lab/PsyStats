@@ -29,11 +29,11 @@ This work is licensed under a [Creative Commons Attribution 4.0 International Li
 |  9   | 参数估计2 (04-23, 补05-03) |  9   |               分层线性回归                |
 |  10  |  假设检验（Fish）(04-26)   |  10  |         线性模型作为一个统计框架          |
 |  11  |        P值 (05-10)         |  11  |            卡方检验&列联表分析            |
-|  12  |      两类错误 (05-17)      |  12  |                  AB test                  |
-|  13  |  相关和相关显著性 (05-24)  |  13  | 降维分析------以EFA和Cluster analysis为例 |
-|  14  | z检验和单样本t检验 (05-31) |  14  |           非参检验和permutation           |
-|  15  |        双样本t检验         |  15  |          bootstrap 与 simulation          |
-|  16  |        (补)线性代数        |  16  |                贝叶斯因子                 |
+|  12  |      两类错误 (05-17)      |  12  | 降维分析------以EFA和Cluster analysis为例 |
+|  13  |  相关和相关显著性 (05-24)  |  13  |           非参检验和permutation           |
+|  14  | z检验和单样本t检验 (05-31) |  14  |          bootstrap 与 simulation          |
+|  15  |        双样本t检验         |  15  |                贝叶斯因子: *t*-test       |
+|  16  |        (补)线性代数        |  16  |                贝叶斯因子: *F*-test       |
 
 ## Pictures used in markdown can be found in the following links
 
