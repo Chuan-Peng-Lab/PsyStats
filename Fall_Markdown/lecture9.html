@@ -916,8 +916,8 @@ Residuals:
 
 Coefficients:
                      Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)           681.751      1.174   580.6   &lt;2e-16 ***
-conditionincongruent  123.413      1.665    74.1   &lt;2e-16 ***
+(Intercept)           681.751      1.174  580.63   &lt;2e-16 ***
+conditionincongruent  123.413      1.665   74.11   &lt;2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
@@ -1196,13 +1196,13 @@ cndtnncngrn -0.151</code></pre>
 <div class="cell" data-layout-align="center">
 <details>
 <summary>分层线性回归</summary>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">lmer</span>(<span class="at">formula =</span> <span class="st">'rt ~ 1 + condition + (condition|subject)'</span>, <span class="at">data=</span>df) <span class="co"># 建立分层线性模型</span></span>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">lmer</span>(<span class="at">formula =</span> <span class="st">'rt ~ 1 + condition + (0+condition|subject)'</span>, <span class="at">data=</span>df) <span class="co"># 建立分层线性模型</span></span>
 <span id="cb20-2"><a href="#cb20-2"></a>res <span class="ot">&lt;-</span> <span class="fu">summary</span>(m2) <span class="co"># 模型结果</span></span>
 <span id="cb20-3"><a href="#cb20-3"></a>res</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Linear mixed model fit by REML ['lmerMod']
-Formula: rt ~ 1 + condition + (condition | subject)
+Formula: rt ~ 1 + condition + (0 + condition | subject)
    Data: df
 
 REML criterion at convergence: 815088.4
@@ -1213,8 +1213,8 @@ Scaled residuals:
 
 Random effects:
  Groups   Name                 Variance Std.Dev. Corr
- subject  (Intercept)           9695     98.46       
-          conditionincongruent  2092     45.74   0.20
+ subject  conditioncongruent    9695     98.46       
+          conditionincongruent 13563    116.46   0.92
  Residual                      31251    176.78       
 Number of obs: 61620, groups:  subject, 522
 

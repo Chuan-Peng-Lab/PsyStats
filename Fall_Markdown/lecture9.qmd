@@ -125,14 +125,11 @@ Hu Chuan-Peng
 
 -   $salary_i=\beta_0+\beta_1experience_i+\epsilon$
 
-
 ![](images/1698910895802.png){fig-align="center"}
-
-
 
 散点的不同颜色代表不同学院
 
-<center> Source: http://mfviz.com/hierarchical-models/</center>
+<center>Source: http://mfviz.com/hierarchical-models/</center>
 
 ## 
 
@@ -160,10 +157,10 @@ Hu Chuan-Peng
 -   这意味着：我们需要以学院为单位进行回归分析：
 
     -   $salary_{i,j}=\beta_{0,j}+\beta_{1,j}experience_{i,j}+\epsilon$
-    
-    - $\beta_{0,j}$: 模型中第$j$个学院的截距；
-    
-    - $\beta_{1,j}$: 模型中第$j$个学院的斜率；
+
+    -   $\beta_{0,j}$: 模型中第$j$个学院的截距；
+
+    -   $\beta_{1,j}$: 模型中第$j$个学院的斜率；
 
 ## 
 
@@ -192,10 +189,11 @@ Hu Chuan-Peng
     $salary_{i,j}=\beta_{0,j}+\beta_{1,j}experience_{i,j}+\epsilon$ (no pooling)</br>
 
 -   在 no pooling的基础之上增加一层模型？</br>
-      -   $\beta_{0,j}\sim N(\mu_{\beta_0},\sigma_{\beta_0}^2)$
-      -   $\beta_{1,j}\sim N(\mu_{\beta_1},\sigma_{\beta_1}^2)$
 
-##  Partial pooling
+    -   $\beta_{0,j}\sim N(\mu_{\beta_0},\sigma_{\beta_0}^2)$
+    -   $\beta_{1,j}\sim N(\mu_{\beta_1},\sigma_{\beta_1}^2)$
+
+## Partial pooling
 
 -   同时考虑到组内同质和组间异质但又属于一个更大的群体的情况。
 -   Partial pooling，部分池化
@@ -219,7 +217,7 @@ Hu Chuan-Peng
     -   变化效应(varying effects): 线性模型中的参数，其随着分组的不同而取值不同，也被叫做随机效应（random effects）。
     -   固定效应(fixed effects): 线性模型中参数，其不因分组不同而取值不同，而是仅反映了总体上的参数值。
 
-##
+## 
 
 -   变化截距-固定斜率模型：
     -   假定不同学院的平均工资不同(变化截距)，但工资与工龄之间的变量关系在不同学院中保持相同(固定斜率，$\beta_1$)。
@@ -231,12 +229,9 @@ Hu Chuan-Peng
 
 ## 
 
-   $$y_{i,j} = \beta_{0,j} + \beta_1experience_{i,j} + \epsilon$$ 
-   $$\epsilon \sim N(0,\sigma_e)$$
+$$y_{i,j} = \beta_{0,j} + \beta_1experience_{i,j} + \epsilon$$ $$\epsilon \sim N(0,\sigma_e)$$
 
-   $$\beta_{0,j} = \beta_0 + effect_{group} = \beta_0 + b_{0, j}$$
-   $$b_{0, j} \sim N(0,\sigma_j)$$
-
+$$\beta_{0,j} = \beta_0 + effect_{group} = \beta_0 + b_{0, j}$$ $$b_{0, j} \sim N(0,\sigma_j)$$
 
 -   $\beta_0$: 总体(学校)的员工工资的平均值;
 -   $b_{0, j}$: 组(学院)的平均值与总体(学校)平均值的差值.
@@ -247,7 +242,7 @@ $$salary_{i,j} = (\beta_0 + b_{0,j}) + \beta_1 experience_{i,j} + \epsilon$$
 
 -   简化: $salary_{i,j} = \beta_{0, j} + \beta_1 experience_{i,j} + \epsilon$
 
-    -   $\beta_{0,j} \sim N(\beta_0,\sigma_0)$,  $\epsilon \sim N(0,\sigma_e)$
+    -   $\beta_{0,j} \sim N(\beta_0,\sigma_0)$, $\epsilon \sim N(0,\sigma_e)$
 
 ## 情况二
 
@@ -266,32 +261,25 @@ $$salary_{i,j} = (\beta_0 + b_{0,j}) + \beta_1 experience_{i,j} + \epsilon$$
 
 -   固定截距-变化斜率模型
 
-$$y_{i,j} = \beta_0 + \beta_{1,j} experience_{i,j} + \epsilon$$
-$$\epsilon \sim N(0,\sigma_e)$$
+$$y_{i,j} = \beta_0 + \beta_{1,j} experience_{i,j} + \epsilon$$ $$\epsilon \sim N(0,\sigma_e)$$
 
 -   固定的截距(fixed intercepts): $\beta_0$
 -   变化的斜率(varying/random slopes): $\beta_{1,j}$
 -   $i$:第$i$个员工
 -   $j$:第$j$个学院
 
-
 ## 
 
-
-$$y_{i,j}=\beta_0+\beta_{1,j}experience_{i,j}+\epsilon$$ 
-$$\epsilon \sim N(0,\sigma_e)$$
+$$y_{i,j}=\beta_0+\beta_{1,j}experience_{i,j}+\epsilon$$ $$\epsilon \sim N(0,\sigma_e)$$
 
 -   $\beta_{1,j} = \beta_1 + effect_{1, group} = \beta_1 + b_{1, j}$, $b_{1, j} \sim N(0,\sigma_j)$
 
     -   $\beta_1$: 总体(学校)工龄对员工工资影响的平均值
     -   $b_{1, j}$: 组(学院)工龄对员工工资影响的平均值与总体(学校)平均值的差值
-    
 
 ## 情况三
 
 -   实际上，不同学院的不仅基线水平不同（变化截距, $\beta_0$），工资与工龄之间的变量关系在不同学院中也不同（斜率$\beta_1$也非相同，变化斜率$\beta_1$）
-
-
 
 ![](images/1698826757439.jpg){fig-align="center"}
 
@@ -310,8 +298,6 @@ $$\epsilon \sim N(0,\sigma_e)$$
     -   变化截距: $\beta_{0,j}$
 
     -   变化斜率: $\beta_{1,j}$
-    
-
 
 ## 
 
@@ -342,12 +328,9 @@ $\hat{salary_{i,j}}=\beta_0+\beta_1experience_{i,j}$
 
 完全不考虑分组，一般线性回归方程
 
-## 变化截距，固定斜率 
-
+## 变化截距，固定斜率
 
 ![](images/1698827597107.jpg){fig-align="center"}
-
-
 
 $\hat{y_{i,j}}=\beta_{0,j}+\beta_{1}experience_{i,j}$
 
@@ -355,18 +338,13 @@ $\hat{y_{i,j}}=\beta_{0,j}+\beta_{1}experience_{i,j}$
 
 ![](images/1698827691640.jpg){fig-align="center"}
 
- 
-
 $\hat{y_{i,j}}=\beta_{0}+\beta_{1,j}experience_{i,j}$
 
-## 变化截距，变化斜率 
+## 变化截距，变化斜率
 
 ![](images/1698827698638.jpg){fig-align="center"}
 
-
-
 $\hat{y_{i,j}}=\beta_{0,j}+\beta_{1,j}experience_{i,j}$
-
 
 ## 
 
@@ -376,7 +354,7 @@ $\hat{y_{i,j}}=\beta_{0,j}+\beta_{1,j}experience_{i,j}$
 
 # 分层线性模型实例
 
-##
+## 
 
 -   Stroop任务试图探究一致和不一致条件下的认知控制能力，实验记录被试的反应时间。
 
@@ -436,7 +414,7 @@ ggplot(data = df,
 
 -   该情况假定所有被试都是同质的，不同被试之间在截距和斜率上没有差别。
 
-##
+## 
 
 ```{r echo=TRUE}
 #| code-fold: true    
@@ -807,13 +785,13 @@ ggplot(data = df.est,
 
 ![](images/1698909987884.jpg){fig-align="center"}
 
-<center>https://bookdown.org/MathiasHarrer/Doing_Meta_Analysis_in_R/forest.html </center>
+<center>https://bookdown.org/MathiasHarrer/Doing_Meta_Analysis_in_R/forest.html</center>
 
 ## 
 
 ![](images/1698910073807.jpg){fig-align="center"}
 
-<center>https://bookdown.org/MathiasHarrer/Doing_Meta_Analysis_in_R/forest.html </center>
+<center>https://bookdown.org/MathiasHarrer/Doing_Meta_Analysis_in_R/forest.html</center>
 
 ## 长期追踪
 
@@ -823,9 +801,9 @@ ggplot(data = df.est,
 
 ## 
 
-- 目前我们介绍的HLM仅局限于组间实验设计，对于更复杂的重复测量设计、混合设计或嵌套设计则需要更复杂的HLM。
+-   目前我们介绍的HLM仅局限于组间实验设计，对于更复杂的重复测量设计、混合设计或嵌套设计则需要更复杂的HLM。
 
-- 目前我们的因变量是连续变量，当因变量为分类变量时，我们就需要使用GLMM(generalized linear mixed models)
+-   目前我们的因变量是连续变量，当因变量为分类变量时，我们就需要使用GLMM(generalized linear mixed models)
 
 ## 总结
 
