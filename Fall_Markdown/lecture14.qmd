@@ -67,7 +67,7 @@ Hu Chuan-Peng
 
 ## Permutation
 
-![](images/1702098134345.jpg)
+![](images/14_1.jpg)
 
 ## General flow of permutation tests
 
@@ -87,7 +87,7 @@ Hu Chuan-Peng
 
 ## Bootstrap
 
-![](images/1702098210851.jpg){fig-align="center"}
+![](images/14_2.jpg){fig-align="center"}
 
 ::: {style="text-align:center"}
 https://hranalyticslive.netlify.app/9-confidence-intervals.html
@@ -95,7 +95,7 @@ https://hranalyticslive.netlify.app/9-confidence-intervals.html
 
 ## Bootstrap
 
-![](images/1702098271596.jpg){fig-align="center"}
+![](images/14_3.jpg){fig-align="center"}
 
 ::: {style="text-align:center"}
 https://arifromadhan19.medium.com/resampling-methods-a-simple-introduction-to-the-bootstrap-method-3a36d076852f
@@ -407,10 +407,8 @@ boot_ci
 
 -   与使用样本方差和正态性假设获得的标准区间相比，bootstrap是渐近更准确的。 避免了重复实验以获得其他组的成本。
 
-
 ## Bootstrap局限
 
-       
 -   不适用于数据量太小，无法代表感兴趣的总体的数据
 
 -   不适用于数据存在许多异常值的情况
@@ -418,7 +416,6 @@ boot_ci
 -   不能提供一般的有限样本保证，结果可能取决于样本的代表性
 
 -   使用过程要确保样本内数据的独立性或足够大的样本量
-
 
 ## Bootstrap vs Permutation
 
@@ -454,7 +451,7 @@ boot_ci
 
 ## 
 
-![](images/1702106937157.jpg)
+![](images/14_4.jpg)
 
 ## 在R中生成服从正太分布的假数据
 
@@ -587,7 +584,7 @@ chisq_result
 
 ## 
 
-![](images/1702108326368.jpg)
+![](images/14_5.jpg)
 
 ## 
 
@@ -609,15 +606,15 @@ chisq_result
 
 ## 
 
-![](images/1702108407751.jpg)
+![](images/14_6.jpg)
 
 ## 
 
-![](images/1702108456704.jpg)
+![](images/14_7.jpg)
 
 ## 
 
-![](images/1702108488490.jpg)
+![](images/14_8.jpg)
 
 ## 
 
@@ -625,25 +622,25 @@ chisq_result
 
 要达到80%的统计检验力，我们需要各组人数均为65人左右，即需要搜集130名被试。
 
-![](images/1702108544659.jpg)
+![](images/14_9.jpg)
 
 ## 
 
 在NHST的框架下，在样本量为30的情况下，p值的分布情况
 
-![](images/1702108588205.jpg)
+![](images/14_10.jpg)
 
 ## 
 
 在NHST的框架下，在样本量为65的情况下，p值的分布情况
 
-![](images/1702108624167.jpg)
+![](images/14_11.jpg)
 
 ## 
 
 在NHST的框架下，在样本量为100的情况下，p值的分布情况
 
-![](images/1702108657052.jpg)
+![](images/14_12.jpg)
 
 ## 
 
@@ -664,7 +661,7 @@ chisq_result
 
 ## 
 
-![](images/1702108801390.jpg)
+![](images/14_13.jpg)
 
 ## 
 
@@ -690,17 +687,17 @@ chisq_result
 
 -   生成模型：二项分布的GLM
 
-![](images/1702108896795.jpg)
+![](images/14_14.jpg)
 
 ## 
 
-![](images/1702108919854.jpg)
+![](images/14_15.jpg)
 
 ## 
 
 -   拟合模型
 
-![](images/1702108991120.jpg)
+![](images/14_16.jpg)
 
 ## 
 
@@ -708,21 +705,21 @@ chisq_result
 
     -   线性模拟数据进行标准化，再按照正负转化为二分变量
 
-![](images/1702109042716.jpg)
+![](images/14_17.jpg)
 
 ## 
 
-![](images/1702109074108.jpg)
+![](images/14_18.jpg)
 
 ## 
 
 -   拟合模型
 
-![](images/1702109118073.jpg)
+![](images/14_19.jpg)
 
 ## 
 
-![](images/1702109141905.jpg)
+![](images/14_20.jpg)
 
 ## 总结
 
@@ -733,3 +730,73 @@ chisq_result
     -   参数恢复
 
     -   模型恢复
+
+## Group Project
+
+-   展示时间：2024.1.2
+
+-   提交形式：PPT(展示)、报告(上交)、数据(上交)
+
+-   小组形式：每组5-6人，每组选出一名组长，小组成员名单12.15前交给课代表
+
+## 作业内容
+
+1.  每个小组选择相应的问题
+
+2.  查阅资料，对该数据的基本情况进行描述
+
+3.  选取感兴趣的问题进行探究
+
+4.  将结果整理成文字报告，并用ppt进行展示
+
+## 数据来源
+
+1.  Eisenberg的数据，使用本学期学习到的统计方法对它进行分析，尽量避免与上学期的统计方法雷同；
+
+2.  期刊cognition或psychological science上提供原始数据的文章，对数据分析部分进行重复，不需要重复全部结果，重复部分结果即可；
+
+3.  Estimating the reproducibility of psychological science提供的数据进行重复。
+
+## 相关链接
+
+-   Cognition:https://www.sciencedirect.com/journal/cognition/issues
+
+-   Psychological science:https://journals.sagepub.com/home/pss
+
+-   Open science collaboration(2015) OSF: https://osf.io/ezcuj/
+
+## 报告内容
+
+1.  小组成员信息、分工
+
+2.  小组想要研究的问题
+
+3.  该数据的基本情况
+
+4.  完整的数据分析流程
+
+    -   描述性统计结果 + 可视化
+
+    -   模型选取 + 预设检验
+
+    -   统计结果 + 可视化
+
+5.  讨论
+
+6.  结论
+
+## 建议
+
+1.  格式标准，参照APA格式
+
+2.  结构完整，语句通顺，数据真实
+
+3.  内容美观
+
+4.  建议使用R进行操作
+
+## 评分标准
+
+1.  PPT展示为全班同学对非本组作业进行评分的平均值。
+
+2.  胡传鹏老师、两位助教、各小组组长对非本组作业报告进行评分取平均值。
