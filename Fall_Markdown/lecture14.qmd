@@ -788,7 +788,7 @@ chisq_result
 
 -   提交形式：PPT(展示)、报告(上交)、数据(上交)
 
--   小组形式：每组5-6人，每组选出一名组长，小组成员名单12.15前交给课代表
+-   小组形式：每组5-6人，每组选出一名组长
 
 ## 作业内容
 
@@ -815,6 +815,12 @@ chisq_result
 -   Psychological science:https://journals.sagepub.com/home/pss
 
 -   Open science collaboration(2015) OSF: https://osf.io/ezcuj/
+
+-   Nature human behavior: https://www.nature.com/nathumbehav/
+
+-   Nature communications: https://www.nature.com/ncomms/
+
+-   Science advances: https://www.science.org/journal/sciadv
 
 ## 报告内容
 

@@ -926,49 +926,81 @@ X1    1 100 5.18 1.83   5.12    5.16 1.78 0.38 9.37  8.99 0.06    -0.22 0.18</co
 <img data-src="lecture14_files/figure-revealjs/unnamed-chunk-12-1.png" width="960" class="r-stretch quarto-figure-center"></section>
 <section id="查看数据拟合程度" class="slide level2">
 <h2>查看数据拟合程度</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="co"># 定义似然函数</span></span>
+<span id="cb22-2"><a href="#cb22-2"></a>likelihood <span class="ot">&lt;-</span> <span class="cf">function</span>(params) {</span>
+<span id="cb22-3"><a href="#cb22-3"></a>  mu <span class="ot">&lt;-</span> params[<span class="dv">1</span>]  <span class="co"># 均值参数</span></span>
+<span id="cb22-4"><a href="#cb22-4"></a>  sigma <span class="ot">&lt;-</span> params[<span class="dv">2</span>]  <span class="co"># 标准差参数</span></span>
+<span id="cb22-5"><a href="#cb22-5"></a>  </span>
+<span id="cb22-6"><a href="#cb22-6"></a>  <span class="co"># 计算观测数据的似然值</span></span>
+<span id="cb22-7"><a href="#cb22-7"></a>  log_likelihood <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">dnorm</span>(norm_data, <span class="at">mean =</span> mu, <span class="at">sd =</span> sigma, <span class="at">log =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb22-8"><a href="#cb22-8"></a>  </span>
+<span id="cb22-9"><a href="#cb22-9"></a>  <span class="fu">return</span>(<span class="sc">-</span>log_likelihood)  <span class="co"># 最大化似然函数等效于最小化相反数</span></span>
+<span id="cb22-10"><a href="#cb22-10"></a>}</span>
+<span id="cb22-11"><a href="#cb22-11"></a></span>
+<span id="cb22-12"><a href="#cb22-12"></a><span class="co"># 使用最大似然法进行参数估计</span></span>
+<span id="cb22-13"><a href="#cb22-13"></a>initial_params <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">mean</span>(norm_data), <span class="fu">sd</span>(norm_data))  <span class="co"># 初始参数值</span></span>
+<span id="cb22-14"><a href="#cb22-14"></a>estimated_params <span class="ot">&lt;-</span> <span class="fu">optim</span>(initial_params, likelihood)<span class="sc">$</span>par</span>
+<span id="cb22-15"><a href="#cb22-15"></a></span>
+<span id="cb22-16"><a href="#cb22-16"></a><span class="co"># 输出估计的参数值</span></span>
+<span id="cb22-17"><a href="#cb22-17"></a>estimated_mean <span class="ot">&lt;-</span> estimated_params[<span class="dv">1</span>]</span>
+<span id="cb22-18"><a href="#cb22-18"></a>estimated_sd <span class="ot">&lt;-</span> estimated_params[<span class="dv">2</span>]</span>
+<span id="cb22-19"><a href="#cb22-19"></a></span>
+<span id="cb22-20"><a href="#cb22-20"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"估计的均值:"</span>, estimated_mean))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "估计的均值: 5.18095323881682"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"估计的标准差:"</span>, estimated_sd))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "估计的标准差: 1.81650152159132"</code></pre>
+</div>
+</div>
+</section>
+<section id="section-4" class="slide level2">
+<h2></h2>
 <div class="cell" data-layout-align="center">
 <details>
 <summary>expand for full code</summary>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="co"># 直方图</span></span>
-<span id="cb22-2"><a href="#cb22-2"></a><span class="fu">hist</span>(norm_data, <span class="at">probability =</span> <span class="cn">TRUE</span>, <span class="at">main =</span> <span class="st">"Histogram and PDF Comparison"</span>,</span>
-<span id="cb22-3"><a href="#cb22-3"></a>     <span class="at">xlab =</span> <span class="st">"Values"</span>, <span class="at">ylab =</span> <span class="st">"Density"</span>, <span class="at">col =</span> <span class="st">"lightblue"</span>, <span class="at">border =</span> <span class="st">"black"</span>)</span>
-<span id="cb22-4"><a href="#cb22-4"></a><span class="co"># 理论概率密度函数曲线</span></span>
-<span id="cb22-5"><a href="#cb22-5"></a><span class="fu">curve</span>(<span class="fu">dnorm</span>(x, <span class="at">mean =</span> <span class="dv">5</span>, <span class="at">sd =</span> <span class="dv">2</span>),</span>
-<span id="cb22-6"><a href="#cb22-6"></a>      <span class="at">col =</span> <span class="st">"darkred"</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">yaxt =</span> <span class="st">"n"</span>)</span>
-<span id="cb22-7"><a href="#cb22-7"></a><span class="fu">legend</span>(<span class="st">"topright"</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"Histogram"</span>, <span class="st">"theoretical pdf"</span>), <span class="at">fill =</span> <span class="fu">c</span>(<span class="st">"lightblue"</span>, <span class="st">"darkred"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="co"># 直方图</span></span>
+<span id="cb26-2"><a href="#cb26-2"></a><span class="fu">hist</span>(norm_data, <span class="at">probability =</span> <span class="cn">TRUE</span>, <span class="at">main =</span> <span class="st">"Histogram and PDF Comparison"</span>,</span>
+<span id="cb26-3"><a href="#cb26-3"></a>     <span class="at">xlab =</span> <span class="st">"Values"</span>, <span class="at">ylab =</span> <span class="st">"Density"</span>, <span class="at">col =</span> <span class="st">"lightblue"</span>, <span class="at">border =</span> <span class="st">"black"</span>)</span>
+<span id="cb26-4"><a href="#cb26-4"></a><span class="co"># 理论概率密度函数曲线</span></span>
+<span id="cb26-5"><a href="#cb26-5"></a><span class="fu">curve</span>(<span class="fu">dnorm</span>(x, <span class="at">mean =</span> <span class="dv">5</span>, <span class="at">sd =</span> <span class="dv">2</span>),</span>
+<span id="cb26-6"><a href="#cb26-6"></a>      <span class="at">col =</span> <span class="st">"darkred"</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">yaxt =</span> <span class="st">"n"</span>)</span>
+<span id="cb26-7"><a href="#cb26-7"></a><span class="fu">legend</span>(<span class="st">"topright"</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"Histogram"</span>, <span class="st">"theoretical pdf"</span>), <span class="at">fill =</span> <span class="fu">c</span>(<span class="st">"lightblue"</span>, <span class="st">"darkred"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture14_files/figure-revealjs/unnamed-chunk-13-1.png" width="960"></p>
+<p><img data-src="lecture14_files/figure-revealjs/unnamed-chunk-14-1.png" width="960"></p>
 </figure>
 </div>
 </div>
 <details>
 <summary>expand for full code</summary>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="co"># QQ图</span></span>
-<span id="cb23-2"><a href="#cb23-2"></a><span class="fu">qqnorm</span>(norm_data, <span class="at">main =</span> <span class="st">"QQ Plot"</span>)</span>
-<span id="cb23-3"><a href="#cb23-3"></a><span class="fu">qqline</span>(norm_data, <span class="at">col =</span> <span class="st">"grey"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="co"># QQ图</span></span>
+<span id="cb27-2"><a href="#cb27-2"></a><span class="fu">qqnorm</span>(norm_data, <span class="at">main =</span> <span class="st">"QQ Plot"</span>)</span>
+<span id="cb27-3"><a href="#cb27-3"></a><span class="fu">qqline</span>(norm_data, <span class="at">col =</span> <span class="st">"grey"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture14_files/figure-revealjs/unnamed-chunk-13-2.png" width="960"></p>
+<p><img data-src="lecture14_files/figure-revealjs/unnamed-chunk-14-2.png" width="960"></p>
 </figure>
 </div>
 </div>
 <details>
 <summary>expand for full code</summary>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="co"># Kolmogorov-Smirnov检验</span></span>
-<span id="cb24-2"><a href="#cb24-2"></a>ks_result <span class="ot">&lt;-</span> <span class="fu">ks.test</span>(norm_data, <span class="st">"pnorm"</span>)</span>
-<span id="cb24-3"><a href="#cb24-3"></a>ks_result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="co"># Kolmogorov-Smirnov检验</span></span>
+<span id="cb28-2"><a href="#cb28-2"></a>ks_result <span class="ot">&lt;-</span> <span class="fu">ks.test</span>(norm_data, <span class="st">"pnorm"</span>,<span class="at">mean =</span> <span class="dv">5</span>, <span class="at">sd =</span> <span class="dv">2</span>) <span class="co"># 检查数据是否服从mean=5，sd=2的正态分布</span></span>
+<span id="cb28-3"><a href="#cb28-3"></a>ks_result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Asymptotic one-sample Kolmogorov-Smirnov test
 
 data:  norm_data
-D = 0.95323, p-value &lt; 2.2e-16
+D = 0.093034, p-value = 0.3522
 alternative hypothesis: two-sided</code></pre>
 </div>
 </div>
@@ -976,12 +1008,12 @@ alternative hypothesis: two-sided</code></pre>
 <section id="在r中生成服从二项分布的假数据" class="slide level2">
 <h2>在R中生成服从二项分布的假数据</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb26-2"><a href="#cb26-2"></a></span>
-<span id="cb26-3"><a href="#cb26-3"></a><span class="co"># 成功概率p = 0.5，试验总次数为10</span></span>
-<span id="cb26-4"><a href="#cb26-4"></a>binomial_data <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="dv">100</span>, <span class="dv">10</span>, <span class="fl">0.5</span>)</span>
-<span id="cb26-5"><a href="#cb26-5"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Values =</span> binomial_data)</span>
-<span id="cb26-6"><a href="#cb26-6"></a>binomial_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb30-2"><a href="#cb30-2"></a></span>
+<span id="cb30-3"><a href="#cb30-3"></a><span class="co"># 成功概率p = 0.5，试验总次数为10</span></span>
+<span id="cb30-4"><a href="#cb30-4"></a>binomial_data <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="dv">100</span>, <span class="dv">10</span>, <span class="fl">0.5</span>)</span>
+<span id="cb30-5"><a href="#cb30-5"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Values =</span> binomial_data)</span>
+<span id="cb30-6"><a href="#cb30-6"></a>binomial_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  [1] 4 6 5 7 7 2 5 7 5 5 8 5 6 5 3 7 4 2 4 8 7 6 6 9 6 6 5 5 4 3 8 7 6 6 2 5 6
  [38] 4 4 4 3 5 5 4 3 3 4 5 4 7 2 5 6 3 5 4 3 6 7 4 6 3 5 4 6 5 6 6 6 5 6 6 6 0
@@ -994,7 +1026,7 @@ alternative hypothesis: two-sided</code></pre>
 <div class="cell" data-layout-align="center">
 <details>
 <summary>expand for full code</summary>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="fu">describe</span>(binomial_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="fu">describe</span>(binomial_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>   vars   n mean   sd median trimmed  mad min max range  skew kurtosis   se
@@ -1002,68 +1034,95 @@ X1    1 100 4.99 1.57      5       5 1.48   0   9     9 -0.17     0.14 0.16</cod
 </div>
 <details>
 <summary>expand for full code</summary>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> Values)) <span class="sc">+</span></span>
-<span id="cb30-2"><a href="#cb30-2"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..density..), <span class="at">bins =</span> <span class="dv">10</span>, <span class="at">fill =</span> <span class="st">"grey"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb30-3"><a href="#cb30-3"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Histogram of Binomial Column"</span>,</span>
-<span id="cb30-4"><a href="#cb30-4"></a>       <span class="at">x =</span> <span class="st">"Binomial Values"</span>,</span>
-<span id="cb30-5"><a href="#cb30-5"></a>       <span class="at">y =</span> <span class="st">"Rel.Freq(Binomial in bin)"</span>)<span class="sc">+</span></span>
-<span id="cb30-6"><a href="#cb30-6"></a>  <span class="fu">theme_apa</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> Values)) <span class="sc">+</span></span>
+<span id="cb34-2"><a href="#cb34-2"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..density..), <span class="at">bins =</span> <span class="dv">10</span>, <span class="at">fill =</span> <span class="st">"grey"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb34-3"><a href="#cb34-3"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Histogram of Binomial Column"</span>,</span>
+<span id="cb34-4"><a href="#cb34-4"></a>       <span class="at">x =</span> <span class="st">"Binomial Values"</span>,</span>
+<span id="cb34-5"><a href="#cb34-5"></a>       <span class="at">y =</span> <span class="st">"Rel.Freq(Binomial in bin)"</span>)<span class="sc">+</span></span>
+<span id="cb34-6"><a href="#cb34-6"></a>  <span class="fu">theme_apa</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 
 </div>
-<img data-src="lecture14_files/figure-revealjs/unnamed-chunk-15-1.png" width="960" class="r-stretch quarto-figure-center"></section>
+<img data-src="lecture14_files/figure-revealjs/unnamed-chunk-16-1.png" width="960" class="r-stretch quarto-figure-center"></section>
 <section id="查看数据拟合程度-1" class="slide level2">
 <h2>查看数据拟合程度</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="co"># 定义似然函数</span></span>
+<span id="cb35-2"><a href="#cb35-2"></a>likelihood <span class="ot">&lt;-</span> <span class="cf">function</span>(params) {</span>
+<span id="cb35-3"><a href="#cb35-3"></a>  p <span class="ot">&lt;-</span> params[<span class="dv">1</span>]  <span class="co"># 成功概率参数</span></span>
+<span id="cb35-4"><a href="#cb35-4"></a>  </span>
+<span id="cb35-5"><a href="#cb35-5"></a>  <span class="co"># 计算观测数据的似然值</span></span>
+<span id="cb35-6"><a href="#cb35-6"></a>  log_likelihood <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">dbinom</span>(binomial_data, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">prob =</span> p, <span class="at">log =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb35-7"><a href="#cb35-7"></a>  </span>
+<span id="cb35-8"><a href="#cb35-8"></a>  <span class="fu">return</span>(<span class="sc">-</span>log_likelihood)  <span class="co"># 最大化似然函数等效于最小化相反数</span></span>
+<span id="cb35-9"><a href="#cb35-9"></a>}</span>
+<span id="cb35-10"><a href="#cb35-10"></a></span>
+<span id="cb35-11"><a href="#cb35-11"></a><span class="co"># 使用最大似然法进行参数估计</span></span>
+<span id="cb35-12"><a href="#cb35-12"></a>initial_params <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.5</span>)  <span class="co"># 初始参数值</span></span>
+<span id="cb35-13"><a href="#cb35-13"></a>estimated_params <span class="ot">&lt;-</span> <span class="fu">optim</span>(initial_params, likelihood)<span class="sc">$</span>par</span>
+<span id="cb35-14"><a href="#cb35-14"></a></span>
+<span id="cb35-15"><a href="#cb35-15"></a><span class="co"># 输出估计的参数值</span></span>
+<span id="cb35-16"><a href="#cb35-16"></a>estimated_p <span class="ot">&lt;-</span> estimated_params[<span class="dv">1</span>]</span>
+<span id="cb35-17"><a href="#cb35-17"></a></span>
+<span id="cb35-18"><a href="#cb35-18"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"估计的成功概率:"</span>, estimated_p))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "估计的成功概率: 0.4990234375"</code></pre>
+</div>
+</div>
+</section>
+<section id="section-5" class="slide level2">
+<h2></h2>
 <div class="cell" data-layout-align="center">
 <details>
 <summary>expand for full code</summary>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="co"># 计算理论的二项分布pdf</span></span>
-<span id="cb31-2"><a href="#cb31-2"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="at">by =</span> <span class="dv">1</span>)</span>
-<span id="cb31-3"><a href="#cb31-3"></a>theory_pdf <span class="ot">&lt;-</span> <span class="fu">dbinom</span>(x, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)</span>
-<span id="cb31-4"><a href="#cb31-4"></a></span>
-<span id="cb31-5"><a href="#cb31-5"></a><span class="co"># 绘制直方图</span></span>
-<span id="cb31-6"><a href="#cb31-6"></a><span class="fu">hist</span>(binomial_data, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="fl">0.5</span>, <span class="fl">10.5</span>, <span class="at">by =</span> <span class="dv">1</span>), <span class="at">col =</span> <span class="st">"lightblue"</span>, <span class="at">main =</span> <span class="st">"Comparison of Empirical and Theoretical Binomial Distribution"</span>, <span class="at">xlab =</span> <span class="st">"Number of Successes"</span>)</span>
-<span id="cb31-7"><a href="#cb31-7"></a></span>
-<span id="cb31-8"><a href="#cb31-8"></a><span class="co"># 添加理论PDF曲线</span></span>
-<span id="cb31-9"><a href="#cb31-9"></a><span class="fu">lines</span>(x, theory_pdf <span class="sc">*</span> <span class="fu">length</span>(binomial_data), <span class="at">type =</span> <span class="st">"h"</span>, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="co"># 计算理论的二项分布pdf</span></span>
+<span id="cb37-2"><a href="#cb37-2"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="at">by =</span> <span class="dv">1</span>)</span>
+<span id="cb37-3"><a href="#cb37-3"></a>theory_pdf <span class="ot">&lt;-</span> <span class="fu">dbinom</span>(x, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)</span>
+<span id="cb37-4"><a href="#cb37-4"></a></span>
+<span id="cb37-5"><a href="#cb37-5"></a><span class="co"># 绘制直方图</span></span>
+<span id="cb37-6"><a href="#cb37-6"></a><span class="fu">hist</span>(binomial_data, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="fl">0.5</span>, <span class="fl">10.5</span>, <span class="at">by =</span> <span class="dv">1</span>), <span class="at">col =</span> <span class="st">"lightblue"</span>, <span class="at">main =</span> <span class="st">"Comparison of Empirical and Theoretical Binomial Distribution"</span>, <span class="at">xlab =</span> <span class="st">"Number of Successes"</span>)</span>
+<span id="cb37-7"><a href="#cb37-7"></a></span>
+<span id="cb37-8"><a href="#cb37-8"></a><span class="co"># 添加理论PDF曲线</span></span>
+<span id="cb37-9"><a href="#cb37-9"></a><span class="fu">lines</span>(x, theory_pdf <span class="sc">*</span> <span class="fu">length</span>(binomial_data), <span class="at">type =</span> <span class="st">"h"</span>, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture14_files/figure-revealjs/unnamed-chunk-16-1.png" width="960"></p>
+<p><img data-src="lecture14_files/figure-revealjs/unnamed-chunk-18-1.png" width="960"></p>
 </figure>
 </div>
 </div>
 <details>
 <summary>expand for full code</summary>
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="co"># QQ图</span></span>
-<span id="cb32-2"><a href="#cb32-2"></a><span class="fu">qqnorm</span>(binomial_data, <span class="at">main =</span> <span class="st">"QQ Plot"</span>)</span>
-<span id="cb32-3"><a href="#cb32-3"></a><span class="fu">qqline</span>(binomial_data, <span class="at">col =</span> <span class="st">"grey"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="co"># QQ图</span></span>
+<span id="cb38-2"><a href="#cb38-2"></a><span class="fu">qqnorm</span>(binomial_data, <span class="at">main =</span> <span class="st">"QQ Plot"</span>)</span>
+<span id="cb38-3"><a href="#cb38-3"></a><span class="fu">qqline</span>(binomial_data, <span class="at">col =</span> <span class="st">"grey"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture14_files/figure-revealjs/unnamed-chunk-16-2.png" width="960"></p>
+<p><img data-src="lecture14_files/figure-revealjs/unnamed-chunk-18-2.png" width="960"></p>
 </figure>
 </div>
 </div>
 <details>
 <summary>expand for full code</summary>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="co"># chisq.test</span></span>
-<span id="cb33-2"><a href="#cb33-2"></a>observed_table <span class="ot">&lt;-</span> <span class="fu">table</span>(binomial_data)</span>
-<span id="cb33-3"><a href="#cb33-3"></a>chisq_result <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(observed_table, <span class="at">correct =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb33-4"><a href="#cb33-4"></a>chisq_result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="co"># chisq.test</span></span>
+<span id="cb39-2"><a href="#cb39-2"></a>observed_table <span class="ot">&lt;-</span> binomial_data</span>
+<span id="cb39-3"><a href="#cb39-3"></a>expected <span class="ot">&lt;-</span><span class="fu">rep</span>(<span class="fu">length</span>(binomial_data) <span class="sc">/</span> <span class="dv">2</span>, <span class="dv">100</span>)<span class="sc">/</span><span class="fu">sum</span>(<span class="fu">rep</span>(<span class="fu">length</span>(binomial_data) <span class="sc">/</span> <span class="dv">2</span>, <span class="dv">100</span>)) <span class="co"># 期望频数，二项分布的期望为</span></span>
+<span id="cb39-4"><a href="#cb39-4"></a>chisq_result <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(observed_table, <span class="at">p =</span> expected, <span class="at">correct =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb39-5"><a href="#cb39-5"></a>chisq_result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Chi-squared test for given probabilities
 
 data:  observed_table
-X-squared = 64.7, df = 8, p-value = 5.532e-11</code></pre>
+X-squared = 49.096, df = 99, p-value = 1</code></pre>
 </div>
 </div>
 </section>
-<section id="section-4" class="slide level2">
+<section id="section-6" class="slide level2">
 <h2></h2>
 <ul>
 <li><p>将实验处理记为A，干预组为A1，控制组为A2。</p></li>
@@ -1079,11 +1138,11 @@ X-squared = 64.7, df = 8, p-value = 5.532e-11</code></pre>
 <li><p>参数恢复的好坏，可帮助我们判断某个模型的可靠性和有效性。如果一个模型具有良好的参数恢复，这意味着它能够准确地估计数据的参数，因此可以放心地使用它来做出预测或从数据中得出结论。</p></li>
 </ul>
 </section>
-<section id="section-5" class="slide level2">
+<section id="section-7" class="slide level2">
 <h2></h2>
 
 <img data-src="images/14_5.jpg" class="r-stretch"></section>
-<section id="section-6" class="slide level2">
+<section id="section-8" class="slide level2">
 <h2></h2>
 <ul>
 <li><p>设置模型的参数值，利用生成模型模拟样本量为n的假数据，重复这个过程若干次</p></li>
@@ -1091,7 +1150,7 @@ X-squared = 64.7, df = 8, p-value = 5.532e-11</code></pre>
 <li><p>将假数据的参数的置信区间与模型的参数值进行比较，查看共有多少次假数据的参数的置信区间包含模型参数值。</p></li>
 </ul>
 </section>
-<section id="section-7" class="slide level2">
+<section id="section-9" class="slide level2">
 <h2></h2>
 <ul>
 <li><p>将实验处理记为A，干预组为A1，控制组为A2。</p></li>
@@ -1100,40 +1159,40 @@ X-squared = 64.7, df = 8, p-value = 5.532e-11</code></pre>
 <li><p>然后通过参数恢复来理解我们的实验设计。</p></li>
 </ul>
 </section>
-<section id="section-8" class="slide level2">
-<h2></h2>
-
-<img data-src="images/14_6.jpg" class="r-stretch"></section>
-<section id="section-9" class="slide level2">
-<h2></h2>
-
-<img data-src="images/14_7.jpg" class="r-stretch"></section>
 <section id="section-10" class="slide level2">
 <h2></h2>
 
-<img data-src="images/14_8.jpg" class="r-stretch"></section>
+<img data-src="images/14_6.jpg" class="r-stretch"></section>
 <section id="section-11" class="slide level2">
+<h2></h2>
+
+<img data-src="images/14_7.jpg" class="r-stretch"></section>
+<section id="section-12" class="slide level2">
+<h2></h2>
+
+<img data-src="images/14_8.jpg" class="r-stretch"></section>
+<section id="section-13" class="slide level2">
 <h2></h2>
 <p>我们可以看到随着样本量的变化，在效应量(Cohen’s d)为0.5和显著性水平为0.05的情况下，随着各组样本量不断增大，统计检验力不断增大。</p>
 <p>要达到80%的统计检验力，我们需要各组人数均为65人左右，即需要搜集130名被试。</p>
 
 <img data-src="images/14_9.jpg" class="r-stretch"></section>
-<section id="section-12" class="slide level2">
+<section id="section-14" class="slide level2">
 <h2></h2>
 <p>在NHST的框架下，在样本量为30的情况下，p值的分布情况</p>
 
 <img data-src="images/14_10.jpg" class="r-stretch"></section>
-<section id="section-13" class="slide level2">
+<section id="section-15" class="slide level2">
 <h2></h2>
 <p>在NHST的框架下，在样本量为65的情况下，p值的分布情况</p>
 
 <img data-src="images/14_11.jpg" class="r-stretch"></section>
-<section id="section-14" class="slide level2">
+<section id="section-16" class="slide level2">
 <h2></h2>
 <p>在NHST的框架下，在样本量为100的情况下，p值的分布情况</p>
 
 <img data-src="images/14_12.jpg" class="r-stretch"></section>
-<section id="section-15" class="slide level2">
+<section id="section-17" class="slide level2">
 <h2></h2>
 <ul>
 <li>通过模拟数据，我们获得如下信息
@@ -1156,11 +1215,11 @@ X-squared = 64.7, df = 8, p-value = 5.532e-11</code></pre>
 <li><p>在使用这些模型拟合真实数据时，需要比较不同模型之间是否有区分度和有效。</p></li>
 </ul>
 </section>
-<section id="section-16" class="slide level2">
+<section id="section-18" class="slide level2">
 <h2></h2>
 
 <img data-src="images/14_13.jpg" class="r-stretch"></section>
-<section id="section-17" class="slide level2">
+<section id="section-19" class="slide level2">
 <h2></h2>
 <ul>
 <li><p>首先，选择可能的模型</p></li>
@@ -1170,7 +1229,7 @@ X-squared = 64.7, df = 8, p-value = 5.532e-11</code></pre>
 <li><p>重复上述过程n次，得到每个生成模型中最佳拟合模型的比例</p></li>
 </ul>
 </section>
-<section id="section-18" class="slide level2">
+<section id="section-20" class="slide level2">
 <h2></h2>
 <ul>
 <li><p>以两个有区分度的模型为例。</p></li>
@@ -1178,25 +1237,25 @@ X-squared = 64.7, df = 8, p-value = 5.532e-11</code></pre>
 <li><p>正态分布的线性模型</p></li>
 </ul>
 </section>
-<section id="section-19" class="slide level2">
+<section id="section-21" class="slide level2">
 <h2></h2>
 <ul>
 <li>生成模型：二项分布的GLM</li>
 </ul>
 
 <img data-src="images/14_14.jpg" class="r-stretch"></section>
-<section id="section-20" class="slide level2">
+<section id="section-22" class="slide level2">
 <h2></h2>
 
 <img data-src="images/14_15.jpg" class="r-stretch"></section>
-<section id="section-21" class="slide level2">
+<section id="section-23" class="slide level2">
 <h2></h2>
 <ul>
 <li>拟合模型</li>
 </ul>
 
 <img data-src="images/14_16.jpg" class="r-stretch"></section>
-<section id="section-22" class="slide level2">
+<section id="section-24" class="slide level2">
 <h2></h2>
 <ul>
 <li><p>生成模型2：正态分布的LM</p>
@@ -1206,18 +1265,18 @@ X-squared = 64.7, df = 8, p-value = 5.532e-11</code></pre>
 </ul>
 
 <img data-src="images/14_17.jpg" class="r-stretch"></section>
-<section id="section-23" class="slide level2">
+<section id="section-25" class="slide level2">
 <h2></h2>
 
 <img data-src="images/14_18.jpg" class="r-stretch"></section>
-<section id="section-24" class="slide level2">
+<section id="section-26" class="slide level2">
 <h2></h2>
 <ul>
 <li>拟合模型</li>
 </ul>
 
 <img data-src="images/14_19.jpg" class="r-stretch"></section>
-<section id="section-25" class="slide level2">
+<section id="section-27" class="slide level2">
 <h2></h2>
 
 <img data-src="images/14_20.jpg" class="r-stretch"></section>
@@ -1237,7 +1296,7 @@ X-squared = 64.7, df = 8, p-value = 5.532e-11</code></pre>
 <ul>
 <li><p>展示时间：2024.1.2</p></li>
 <li><p>提交形式：PPT(展示)、报告(上交)、数据(上交)</p></li>
-<li><p>小组形式：每组5-6人，每组选出一名组长，小组成员名单12.15前交给课代表</p></li>
+<li><p>小组形式：每组5-6人，每组选出一名组长</p></li>
 </ul>
 </section>
 <section id="作业内容" class="slide level2">
@@ -1263,6 +1322,9 @@ X-squared = 64.7, df = 8, p-value = 5.532e-11</code></pre>
 <li><p>Cognition:https://www.sciencedirect.com/journal/cognition/issues</p></li>
 <li><p>Psychological science:https://journals.sagepub.com/home/pss</p></li>
 <li><p>Open science collaboration(2015) OSF: https://osf.io/ezcuj/</p></li>
+<li><p>Nature human behavior: https://www.nature.com/nathumbehav/</p></li>
+<li><p>Nature communications: https://www.nature.com/ncomms/</p></li>
+<li><p>Science advances: https://www.science.org/journal/sciadv</p></li>
 </ul>
 </section>
 <section id="报告内容" class="slide level2">
