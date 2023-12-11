@@ -484,6 +484,30 @@ ggplot(df, aes(x = Values)) +
 ```
 
 ## 查看数据拟合程度
+```{r echo=TRUE}
+# 定义似然函数
+likelihood <- function(params) {
+  mu <- params[1]  # 均值参数
+  sigma <- params[2]  # 标准差参数
+  
+  # 计算观测数据的似然值
+  log_likelihood <- sum(dnorm(norm_data, mean = mu, sd = sigma, log = TRUE))
+  
+  return(-log_likelihood)  # 最大化似然函数等效于最小化相反数
+}
+
+# 使用最大似然法进行参数估计
+initial_params <- c(mean(norm_data), sd(norm_data))  # 初始参数值
+estimated_params <- optim(initial_params, likelihood)$par
+
+# 输出估计的参数值
+estimated_mean <- estimated_params[1]
+estimated_sd <- estimated_params[2]
+
+print(paste("估计的均值:", estimated_mean))
+print(paste("估计的标准差:", estimated_sd))
+```
+##
 
 ```{r echo=TRUE}
 #| code-fold: true    #指示折叠或展开代码
@@ -503,10 +527,12 @@ qqnorm(norm_data, main = "QQ Plot")
 qqline(norm_data, col = "grey")
 
 # Kolmogorov-Smirnov检验
-ks_result <- ks.test(norm_data, "pnorm")
+ks_result <- ks.test(norm_data, "pnorm",mean = 5, sd = 2) # 检查数据是否服从mean=5，sd=2的正态分布
 ks_result
 
 ```
+
+
 
 ## 在R中生成服从二项分布的假数据
 
@@ -539,6 +565,30 @@ ggplot(df, aes(x = Values)) +
 ```
 
 ## 查看数据拟合程度
+```{r echo=TRUE}
+
+
+# 定义似然函数
+likelihood <- function(params) {
+  p <- params[1]  # 成功概率参数
+  
+  # 计算观测数据的似然值
+  log_likelihood <- sum(dbinom(binomial_data, size = 10, prob = p, log = TRUE))
+  
+  return(-log_likelihood)  # 最大化似然函数等效于最小化相反数
+}
+
+# 使用最大似然法进行参数估计
+initial_params <- c(0.5)  # 初始参数值
+estimated_params <- optim(initial_params, likelihood)$par
+
+# 输出估计的参数值
+estimated_p <- estimated_params[1]
+
+print(paste("估计的成功概率:", estimated_p))
+```
+
+##
 
 ```{r echo=TRUE}
 #| code-fold: true    #指示折叠或展开代码
@@ -560,8 +610,9 @@ qqnorm(binomial_data, main = "QQ Plot")
 qqline(binomial_data, col = "grey")
 
 # chisq.test
-observed_table <- table(binomial_data)
-chisq_result <- chisq.test(observed_table, correct = FALSE)
+observed_table <- binomial_data
+expected <-rep(length(binomial_data) / 2, 100)/sum(rep(length(binomial_data) / 2, 100)) # 期望频数，二项分布的期望为
+chisq_result <- chisq.test(observed_table, p = expected, correct = FALSE)
 chisq_result
 
 ```
