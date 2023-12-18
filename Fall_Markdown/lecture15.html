@@ -587,7 +587,7 @@ https://rpsychologist.com/pvalue/
 <section id="section-9" class="slide level2">
 <h2></h2>
 <p>假如我们计划收集50人的数据，准备在10人、20人、30人、40人和50人时各分析一次，一旦 p &lt; .05 显著了就停止收集数据。</p>
-<p>后果：在没有效应的数据中，我们也能观测到 &gt; 5%的阳性结果</p>
+<p>后果：在没有效应的数据中，我们也能观测到 &lt; 5%的阳性结果</p>
 
 <img data-src="images/15_9.jpg" class="r-stretch quarto-figure-center"><center>
 Lakens: Improve your statistical inference,
@@ -817,28 +817,29 @@ Tendeiro &amp; Kiers (2019) Psych Meth.
 <section id="示例" class="slide level2">
 <h2>示例</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(BayesFactor) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(BayesFactor) </span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>利用配对样本<em>t</em>检验检验stroop范式下congruent组与incongruent组间是否存在反应时差异。</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># 生成随机数据</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb2-3"><a href="#cb2-3"></a>group1 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
-<span id="cb2-4"><a href="#cb2-4"></a>group2 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="at">mean =</span> <span class="dv">1</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
-<span id="cb2-5"><a href="#cb2-5"></a></span>
-<span id="cb2-6"><a href="#cb2-6"></a><span class="co"># 执行贝叶斯t检验</span></span>
-<span id="cb2-7"><a href="#cb2-7"></a>result <span class="ot">&lt;-</span> <span class="fu">ttestBF</span>(<span class="at">x =</span> group1, </span>
-<span id="cb2-8"><a href="#cb2-8"></a>                  <span class="at">y =</span> group2,</span>
-<span id="cb2-9"><a href="#cb2-9"></a>                  <span class="at">paired=</span><span class="cn">FALSE</span>)</span>
-<span id="cb2-10"><a href="#cb2-10"></a>result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># 读取数据</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'data/example10_2.csv'</span>)</span>
+<span id="cb2-3"><a href="#cb2-3"></a>group1 <span class="ot">&lt;-</span> <span class="fu">as.vector</span>(df<span class="sc">$</span>congruent)</span>
+<span id="cb2-4"><a href="#cb2-4"></a>group2 <span class="ot">&lt;-</span> <span class="fu">as.vector</span>(df<span class="sc">$</span>incongruent)</span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="co"># 执行贝叶斯t检验</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a>result <span class="ot">&lt;-</span> <span class="fu">ttestBF</span>(<span class="at">x =</span> group1, </span>
+<span id="cb2-7"><a href="#cb2-7"></a>                  <span class="at">y =</span> group2,</span>
+<span id="cb2-8"><a href="#cb2-8"></a>                  <span class="at">paired=</span><span class="cn">TRUE</span>) <span class="co"># 是否配对样本</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a>result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Bayes factor analysis
 --------------
-[1] Alt., r=0.707 : 6.180121 ±0%
+[1] Alt., r=0.707 : 70403231 ±0%
 
 Against denominator:
-  Null, mu1-mu2 = 0 
+  Null, mu = 0 
 ---
-Bayes factor type: BFindepSample, JZS</code></pre>
+Bayes factor type: BFoneSample, JZS</code></pre>
 </div>
 </div>
 </section>
@@ -1013,6 +1014,51 @@ Bayes factor type: BFindepSample, JZS</code></pre>
 <img data-src="images/15_33.jpg" class="r-stretch quarto-figure-center"></section>
 <section id="section-28" class="slide level2">
 <h2></h2>
+<ul>
+<li><p>数据：example10_4_w.csv</p></li>
+<li><p>用两因素重复测量方差分析探究一致性 (一致vs不一致)和刺激颜色(红vs蓝vs绿)对反应时的影响，两变量均为组内变量。</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'data/example10_4_w.csv'</span>)</span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="co"># 宽数据转长数据</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a>df.da.l <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="st">"congruent_blue"</span>, <span class="st">"congruent_green"</span>, <span class="st">"congruent_red"</span>,</span>
+<span id="cb5-5"><a href="#cb5-5"></a>                        <span class="st">"incongruent_blue"</span>, <span class="st">"incongruent_green"</span>,<span class="st">"incongruent_red"</span>),</span>
+<span id="cb5-6"><a href="#cb5-6"></a>               <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">"condition"</span>, <span class="st">"stim_color"</span>),</span>
+<span id="cb5-7"><a href="#cb5-7"></a>               <span class="at">names_sep =</span> <span class="st">"_"</span>,</span>
+<span id="cb5-8"><a href="#cb5-8"></a>               <span class="at">values_to =</span> <span class="st">"rt"</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb5-9"><a href="#cb5-9"></a>  <span class="fu">mutate</span>(<span class="at">condition=</span><span class="fu">factor</span>(condition),</span>
+<span id="cb5-10"><a href="#cb5-10"></a>         <span class="at">stim_color=</span><span class="fu">factor</span>(stim_color))</span>
+<span id="cb5-11"><a href="#cb5-11"></a></span>
+<span id="cb5-12"><a href="#cb5-12"></a><span class="fu">head</span>(df.da.l)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 4
+  worker_id condition   stim_color    rt
+  &lt;chr&gt;     &lt;fct&gt;       &lt;fct&gt;      &lt;dbl&gt;
+1 s004      congruent   blue        681.
+2 s004      congruent   green       740 
+3 s004      congruent   red         740.
+4 s004      incongruent blue        750.
+5 s004      incongruent green       837.
+6 s004      incongruent red         830.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># anova</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>result <span class="ot">&lt;-</span> <span class="fu">anovaBF</span>(rt<span class="sc">~</span>condition<span class="sc">*</span>stim_color,<span class="at">data=</span>df.da.l)</span>
+<span id="cb7-3"><a href="#cb7-3"></a>result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Bayes factor analysis
+--------------
+[1] condition                                     : 290190852796 ±0%
+[2] stim_color                                    : 1.032478     ±0.01%
+[3] condition + stim_color                        : 912950910907 ±1.48%
+[4] condition + stim_color + condition:stim_color : 103646545139 ±2.03%
+
+Against denominator:
+  Intercept only 
+---
+Bayes factor type: BFlinearModel, JZS</code></pre>
+</div>
+</div>
 </section>
 <section id="报告bf结果" class="slide level2">
 <h2>报告BF结果</h2>
@@ -1118,9 +1164,6 @@ Bayes factor type: BFindepSample, JZS</code></pre>
 See the Stereogram example, van Doorn et al., 2021
 </center>
 </section>
-<section id="r" class="slide level2">
-<h2>R</h2>
-</section>
 <section id="section-38" class="slide level2">
 <h2></h2>
 <p>Stage 3: Interpreting</p>
@@ -1177,13 +1220,12 @@ See the Stereogram example, van Doorn et al., 2021
 </section>
 <section id="section-44" class="slide level2">
 <h2></h2>
-<p><img data-src="images/15_41.jpg" data-fig-align="center"> ##</p>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/15_42.jpg"></p>
-</figure>
-</div>
-<ul>
+
+<img data-src="images/15_41.jpg" class="r-stretch quarto-figure-center"></section>
+<section id="section-45" class="slide level2">
+<h2></h2>
+
+<img data-src="images/15_42.jpg" class="r-stretch quarto-figure-center"><ul>
 <li><p>If relevant, report the results from both estimation and hypothesis testing</p></li>
 <li><p>If estimating report the posterior median and x% credible interval</p></li>
 </ul>
@@ -1202,11 +1244,11 @@ See the Stereogram example, van Doorn et al., 2021
 <p>Heck, D. W., Boehm, U., Böing-Messing, F., Bürkner, P.-C., Derks, K., Dienes, Z., … Hoijtink, H. (2022). A review of applications of the bayes factor in psychological research. Psychological Methods. https://doi.org/10.1037/met0000454</p>
 <p>Tendeiro, J. N., &amp; Kiers, H. A. L. (2019). A review of issues about null hypothesis Bayesian testing. Psychological Methods, 24(6), 774-795. doi:10.1037/met0000221</p>
 </section>
-<section id="section-45" class="slide level2">
+<section id="section-46" class="slide level2">
 <h2></h2>
 
 <img data-src="images/15_43.jpg" class="r-stretch quarto-figure-center"></section>
-<section id="section-46" class="slide level2">
+<section id="section-47" class="slide level2">
 <h2></h2>
 <ul>
 <li><p>不要迷信文献，批判地看待已发表的论文</p></li>
@@ -1214,19 +1256,19 @@ See the Stereogram example, van Doorn et al., 2021
 </ul>
 <p>贝叶斯因子/p-value/effect size <span class="math inline">\(\rightarrow\)</span> 选择适合自己研究目的的方法</p>
 </section>
-<section id="section-47" class="slide level2">
-<h2></h2>
-
-<img data-src="images/15_44.jpg" class="r-stretch quarto-figure-center"></section>
 <section id="section-48" class="slide level2">
 <h2></h2>
 
-<img data-src="images/15_45.jpg" class="r-stretch quarto-figure-center"></section>
+<img data-src="images/15_44.jpg" class="r-stretch quarto-figure-center"></section>
 <section id="section-49" class="slide level2">
 <h2></h2>
 
-<img data-src="images/15_46.jpg" class="r-stretch quarto-figure-center"></section>
+<img data-src="images/15_45.jpg" class="r-stretch quarto-figure-center"></section>
 <section id="section-50" class="slide level2">
+<h2></h2>
+
+<img data-src="images/15_46.jpg" class="r-stretch quarto-figure-center"></section>
+<section id="section-51" class="slide level2">
 <h2></h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
