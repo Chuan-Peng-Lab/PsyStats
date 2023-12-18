@@ -1,0 +1,117 @@
+---
+title: "regression_homework3"
+author: '+7'
+date: "2023-12-14"
+output: html_document
+---
+
+# 题目1
+
+研究者想探究焦虑与考试成绩之间的关系，在考试前对103名同学进行了焦虑程度的测量。
+
+数据文件为"example15_2.csv"，其中自变量Anxiety为**连续变量**，因变量为Exam得分。
+
+```{r}
+require('pacman')
+p_load('tidyverse','bruceR','papaja', 'psych')
+```
+
+```{r}
+df <- read.csv("../Fall_Markdown/data/example15_2.csv")
+```
+
+## 作业要求
+
+请你使用线性回归，分析焦虑与考试成绩之间的关系，并对回归结果进行解释。
+
+基本步骤已经提供，请在理解基本步骤后根据提示对带有"???"处进行填空。
+
+请注意，只有将"???"替换为正确内容后代码才能正确运行。
+
+## Step 1: 了解数据
+
+```{r}
+df_1 <- df%>%
+  select(Exam, Anxiety) 
+
+bruceR::Describe("???") ## 描述df_1的数据
+```
+
+## Step 2: 检验线性回归的预设
+
+```{r}
+## 检验线性假定&正交
+model_1 <- lm("???", data = df_1) ## 建立回归模型
+plot(model_1,which=1)
+
+## 检验残差方差齐性
+plot(model_1,which=3)
+
+## 检验残差正态分布
+plot(model_1,which=2)
+residuals <- resid(model_1)
+print(shapiro.test(residuals))
+```
+
+## Step 3：计算统计量
+
+```{r}
+model_1 <- lm("???", data = df_1) ## 建立回归模型
+summary("???") ##填入回归模型
+```
+
+## Step 4：结果解释
+"???"
+
+
+# 题目2
+
+研究者想探究焦虑与考试成绩之间的关系，在考试之前对103名同学进行了焦虑程度的测量。
+
+数据文件为"example15_2.csv"，其中自变量Anxiety_1为**分类变量**，因变量为Exam得分。
+
+## 作业要求
+
+请你使用线性回归，分析焦虑与考试成绩之间的关系，并解释回归系数的含义。
+
+基本步骤已经提供，请在理解基本步骤的思想下根据提示对带有"???"处进行填空。
+
+请注意，只有将"???"替换为正确内容后代码才能正确运行。
+
+## Step 1: 虚拟变量编码
+
+```{r}
+df_2 <- df%>%
+  select(Exam, Anxiety_1)%>%
+  mutate("???") ## 将Anxiety_1转化为因子
+contrasts("???") ## 查看虚拟变量编码
+```
+
+## Step 2: 建立回归模型
+
+```{r}
+Model_2 <- lm(data = df_2, "???") ## 建立回归模型
+summary("???") ##填入回归模型
+```
+
+## Step 3: 模型整体检验
+
+Multiple R-squared: "???", Adjusted R-squared: "???", p-value: "???"
+
+## Step 4: 偏回归系数的显著性检验
+
+```{r}
+temp<-summary("???")  ##填入回归模型
+temp[["coefficients"]]
+```
+
+## Step 5:回归系数的解释
+
+采用Dummy coding之后的解释</br>
+
+$\beta_0$: "???"</br>
+
+$\beta_0 + \beta_1$:"???"</br>
+
+$\beta_1$:"???"</br>
+
