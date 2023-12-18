@@ -519,8 +519,8 @@ hist(norm_data, probability = TRUE, main = "Histogram and PDF Comparison",
      xlab = "Values", ylab = "Density", col = "lightblue", border = "black")
 # 理论概率密度函数曲线
 curve(dnorm(x, mean = 5, sd = 2),
-      col = "darkred", lwd = 2, add = TRUE, yaxt = "n")
-legend("topright", legend = c("Histogram", "theoretical pdf"), fill = c("lightblue", "darkred"))
+      col = "red", lwd = 2, add = TRUE, yaxt = "n")
+legend("topright", legend = c("Histogram", "theoretical pdf"), fill = c("lightblue", "red"))
 
 # QQ图
 qqnorm(norm_data, main = "QQ Plot")
@@ -760,7 +760,21 @@ chisq_result
 
 ## 
 
-![](images/14_18.jpg)
+```{r}
+
+data <- rnorm(100, mean=0, sd=1)
+data <- data.frame(data)
+
+# 创建直方图和密度曲线图
+ggplot(data, aes(x = data)) +
+  geom_histogram(aes(y=..density..), bins=10, fill="lightblue", color="black", alpha=0.7) +
+  geom_density(color="red") +
+  ggtitle("Normal Distribution Plot") +
+  xlab("Values") +
+  ylab("Density")+
+  theme_apa()
+
+```
 
 ## 
 
@@ -788,7 +802,7 @@ chisq_result
 
 -   提交形式：PPT(展示)、报告(上交)、数据(上交)
 
--   小组形式：每组5-6人，每组选出一名组长，小组成员名单12.15前交给课代表
+-   小组形式：每组5-6人，每组选出一名组长
 
 ## 作业内容
 
@@ -815,6 +829,12 @@ chisq_result
 -   Psychological science:https://journals.sagepub.com/home/pss
 
 -   Open science collaboration(2015) OSF: https://osf.io/ezcuj/
+
+-   Nature human behavior: https://www.nature.com/nathumbehav/
+
+-   Nature communications: https://www.nature.com/ncomms/
+
+-   Science advances: https://www.science.org/journal/sciadv
 
 ## 报告内容
 
