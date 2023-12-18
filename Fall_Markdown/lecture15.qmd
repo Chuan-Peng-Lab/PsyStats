@@ -225,7 +225,7 @@ Hu Chuan-Peng
 
 假如我们计划收集50人的数据，准备在10人、20人、30人、40人和50人时各分析一次，一旦 p < .05 显著了就停止收集数据。 
 
-后果：在没有效应的数据中，我们也能观测到 > 5%的阳性结果
+后果：在没有效应的数据中，我们也能观测到 < 5%的阳性结果
 
 ![](images/15_9.jpg){fig-align="center"}
 
@@ -648,9 +648,12 @@ $H_{1}: Y_{M_{1}}=\mu+\epsilon$
 ## 
 	
 Two-sample T-test
-		转时针的方向影响人格的开放性？Topolinski & Sparenberg (2012)
-		实验设计：组间，单因素两水平（顺时针 v. 逆时针）
-		数据来源： Wagenmakers et al (2015）重复实验
+
+- 转时针的方向影响人格的开放性？Topolinski & Sparenberg (2012)
+
+- 实验设计：组间，单因素两水平（顺时针 v. 逆时针）
+
+- 数据来源： Wagenmakers et al (2015）重复实验
 
 ![](images/15_32.jpg){fig-align="center"}
 
@@ -898,6 +901,8 @@ Stage 4: reporting the results (Stereogram example)
 ##
 
 ![](images/15_41.jpg){fig-align="center"}
+
+
 ##
 
 ![](images/15_42.jpg){fig-align="center"}
