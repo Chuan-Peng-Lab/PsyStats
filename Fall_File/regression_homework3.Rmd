@@ -31,7 +31,7 @@ df <- read.csv("../Fall_Markdown/data/example15_2.csv")
 ## Step 1: 了解数据
 
 ```{r}
-df_1 <- df%>%
+df_1 <- df %>%
   select(Exam, Anxiety) 
 
 bruceR::Describe("???") ## 描述df_1的数据
@@ -42,13 +42,13 @@ bruceR::Describe("???") ## 描述df_1的数据
 ```{r}
 ## 检验线性假定&正交
 model_1 <- lm("???", data = df_1) ## 建立回归模型
-plot(model_1,which=1)
+plot(model_1, which=1)
 
 ## 检验残差方差齐性
-plot(model_1,which=3)
+plot(model_1, which=3)
 
 ## 检验残差正态分布
-plot(model_1,which=2)
+plot(model_1, which=2)
 residuals <- resid(model_1)
 print(shapiro.test(residuals))
 ```
@@ -81,10 +81,11 @@ summary("???") ##填入回归模型
 ## Step 1: 虚拟变量编码
 
 ```{r}
-df_2 <- df%>%
-  select(Exam, Anxiety_1)%>%
-  mutate("???") ## 将Anxiety_1转化为因子
-contrasts("???") ## 查看虚拟变量编码
+df_2 <- df %>%
+  select(Exam, Anxiety_1) %>%
+  mutate("???")       ## 将Anxiety_1转化为因子
+
+contrasts("???")      ## 查看虚拟变量编码
 ```
 
 ## Step 2: 建立回归模型
@@ -111,7 +112,7 @@ temp[["coefficients"]]
 
 $\beta_0$: "???"</br>
 
-$\beta_0 + \beta_1$:"???"</br>
+$\beta_0 + \beta_1$: "???"</br>
 
-$\beta_1$:"???"</br>
+$\beta_1$: "???"</br>
 
