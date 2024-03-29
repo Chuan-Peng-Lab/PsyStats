@@ -5,7 +5,7 @@ format:
     logo: images/image-393370223.png
     scrollable: true 
     theme: theme.scss
-editor: visual
+editor: source
 fontsize: 24pt
 editor_options: 
   chunk_output_type: inline
